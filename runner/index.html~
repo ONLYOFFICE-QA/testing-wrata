@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Runner</title>
+    <meta content="">
+    <style>
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id='logo'></div>
+      <div id='profile-area'>
+	<input type='text' id='login' name='login' placeholder='login' class='input inline'/>
+	<input type='text' id='password' name='password' placeholder='password' class='input inline'/>
+	<div id='sign-in' class='button blue inline pointer'>sign in</div>
+	<div id='sign-up' class='link inline pointer'><a href='#'>sign up</a></div>  
+      </div>
+    </header>
+    <footer>
+      <div class='author'>Ванюшка Тугин ©</div>
+    </footer>
+  </body>
+</html>

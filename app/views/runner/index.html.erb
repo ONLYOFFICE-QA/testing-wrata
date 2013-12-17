@@ -1,0 +1,137 @@
+<% content_for :head do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            myRunner.showServers();
+            myRunner.setEventChangeBranch();
+            myRunner.showTests();
+            <% client = current_client %>
+            <% if client %>
+              myRunner.selectProject(<%= client.project %>);
+            <% else %>
+              myRunner.selectProject("docs");
+            <% end %>
+            myRunner.getInfoFromAllServer()
+            addSortableToElem($('#sidebar-test-list'));
+        });
+    </script>
+<% end %>
+
+<% client = current_client %>
+<div class="overlay">
+  <div class="overlay-window">
+    <div class="overlay-content">
+      <div class="overlay-text">Loading...</div>
+      <img src="assets/ajax_loader_gray_128.gif">
+    </div>
+  </div>
+</div>
+<div class="rspec-overlay" style="display: none">
+  <div class="rspec-popup-window"></div>
+</div>
+<div class="side-wrap">
+  <div style="position: relative">
+    <div id="open-sidebar">
+      <i id="open-ico" class="glyphicon glyphicon-chevron-left icon-white" style="margin-top: 4px;"></i>
+    </div>
+    <div id="sidebar" class="sidebar-nav-abs">
+      <div style="line-height: 29px;">
+        <div id='list-name' class="inline">My Test List</div>
+        <i id="edit-list-name" class='inline glyphicon glyphicon-pencil icon-white'></i>
+        <hr class="deliver"/>
+      </div>
+      <div class="list-window">
+        <div id="sidebar-test-list">
+        </div>
+      </div>
+      <div id='save-new' class="btn btn-small btn-inverse">Save</div>
+      <div class="start-list">
+        <i class="start-icon"></i>
+        <select class="region">
+          <option>info us</option>
+          <option>info eu</option>
+          <option>com eu</option>
+          <option>com us</option>
+          <option>isa</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main">
+  <div id="popup" class="popup-overlay" style="display: none">
+    <div class="wrap"></div>
+  </div>
+  <div class="content">
+    <div class="block" style="float: left; width: 45%">
+      <div id="servers">
+      </div>
+    </div>
+    <div class="block" style="float: right; margin-bottom: 25px;  width: 55%">
+      <div class="tests-block">
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <% if client && client.project == "docs" %>
+                <li class="active">
+            <% end %>
+            <% if client && client.project == "teamlab" %>
+                <li>
+            <% end %>
+            <% unless client %>
+              <li class="active">
+            <% end %>
+              <a href="#docs" data-toggle="tab">Online Document
+                <select id="docs-branches" class="branch">
+                  <% get_list_branches(DOCS_PROJECT_PATH).each do |branch| %>
+                      <option><%= branch %></option>
+                  <% end %>
+                </select>
+                <i class="start-icon"></i>
+                <select class="region">
+                  <option>isa</option>
+                  <option>info us</option>
+                  <option>info eu</option>
+                  <option>com eu</option>
+                  <option>com us</option>
+                </select>
+              </a>
+
+            </li>
+            <% if client && client.project == "teamlab" %>
+                <li class="active">
+            <% end %>
+            <% if client && client.project == "docs" %>
+                <li>
+            <% end %>
+            <% unless client %>
+                <li>
+            <% end %>
+            <a href="#teamlab" data-toggle="tab">Teamlab
+                <select id="teamlab-branches" class="branch">
+                  <% get_list_branches(TEAMLAB_PROJECT_PATH).each do |branch| %>
+                      <option><%= branch %></option>
+                  <% end %>
+                </select>
+                <i class="start-icon"></i>
+                <select class="region">
+                  <option>info us</option>
+                  <option>info eu</option>
+                  <option>com eu</option>
+                  <option>com us</option>
+                </select>
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane" id="docs">
+              loading test...
+            </div>
+            <div class="tab-pane" id="teamlab">
+              loading test...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+body {
+  font-family: 'serif'; 
+  font-size: 14px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.pointer {
+  cursor: pointer; 
+}
+
+header {
+  top: 0;
+  left:0;
+  position: absolute;
+  padding: 5px 5px 5px 5px;
+  width:100%;
+  height:50px;
+  display: block;
+  background: -webkit-gradient(linear, left top, left bottom, from(#75666B), to(#5C5154));
+  vertical-align: middle;
+}
+
+#logo {
+  float: left;
+  background: url('logo.png') no-repeat;
+  width: 296px;
+  height: 48px;
+}
+
+#profile-area {
+  float: right;
+  line-height: 48px;
+  height: 48px;
+  vertical-align: middle;
+}
+
+.input {
+  border-radius: 5px;
+  border-color: rgb(100, 84, 84);
+  padding: 2px 2px 2px 2px;
+  border-style: solid; 
+}
+
+.input:focus{
+  outline: 0;
+  content: '';
+}
+
+#login {
+    
+}
+
+#password {
+  
+}
+
+#sign-in {
+  line-height: 15px;
+}
+
+#sign-up, #sign-out {
+  
+}
+
+.button {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(68, 143, 255)), color-stop(100%,rgb(35, 35, 253)));
+  padding: 5px 5px 5px;
+  color: #fff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+}
+
+.seporator {
+  width: 2px;
+  line-height: 22px;
+  position: relative;
+  height: 10px;
+  opacity: 0.2;
+  background: white;
+}
+
+.last {
+  margin-right: 20px;
+}

@@ -1,0 +1,882 @@
+body{
+    background-size: 100%;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-attachment: fixed;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;
+    /*background: -webkit-linear-gradient(top right, rgb(228, 228, 228) 30%, #FFFFFF );*/
+}
+
+.bold {
+    font-weight: bold;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.added-test {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+}
+
+.rspec-overlay {
+    position: fixed;
+    z-index: 102;
+    top: 0;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background: rgba(0,0,0,.7);
+}
+
+.overlay {
+    position: fixed;
+    z-index: 102;
+    top: 0;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background: rgba(0,0,0,.7);
+}
+
+.overlay-window {
+    text-align: center;
+    border-radius: 49px;
+    height: 200px;
+    width: 300px;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(243, 243, 243);
+    cursor: wait;
+}
+
+.overlay-content {
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0;
+    right: 0;
+    height: 148px;
+    width: 128px;
+}
+
+.overlay-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.big-loader {
+    background: url('ajax_loader_gray_128.gif');
+    width: 128px;
+    height: 128px;
+}
+
+#topnavbar {
+    font-weight: bold;
+    box-shadow: 0 0 10px #131313;
+}
+
+.user-dropdown.dropdown-menu {
+    text-align: center;
+    min-width: 100px;
+}
+
+i {
+    margin-right: 4px
+}
+
+.sidebar-nav-abs {
+    padding: 10px;
+    width:310px;
+    background: -webkit-linear-gradient(right, rgb(161, 187, 26) 30%, rgb(208, 219, 147) );
+    box-shadow: inset 0 0 0 1px #000000;
+}
+
+#open-sidebar {
+    z-index: 110;
+    padding: 10px;
+    position:fixed;
+    left:0;
+    top:50%;
+    width:20px;
+    height:25px;
+    background: rgb(161, 187, 26);
+    border-radius: 0 10px 10px 0;
+    border-top-color: initial;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: initial;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: initial;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+#open-ico {
+
+}
+
+.delete-test-list {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    padding: 0;
+    cursor: pointer;
+}
+
+#sidebar {
+    z-index: 101;
+}
+
+.sidebar-tooltip {
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    visibility: hidden;
+    position: fixed;
+    left: 35px;
+    margin-top: 17px;
+    border-radius: 5px;
+    padding: 2px;
+    z-index: 999;
+    line-height: 13px;
+}
+
+.name:hover .sidebar-tooltip {
+    visibility: visible;
+}
+
+#open-sidebar:hover .glyphicon-chevron-right.icon-white{
+    /*background-position: -432px -72px;*/
+    background-image: url("bootstrap/img/glyphicons-halflings-green.png");
+}
+
+#open-sidebar:hover .glyphicon-chevron-left.icon-white{
+    /*background-position: -456px -72px;*/
+    background-image: url("bootstrap/img/glyphicons-halflings-green.png");
+}
+
+footer{
+    margin-top: 50px;
+    text-align: center;
+    /*font-weight: bold; */
+    font-family: Consolas;
+}
+
+footer .author {
+    margin: auto;
+}
+
+input.list-name {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    vertical-align: middle;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-weight: normal;
+}
+
+#list-name {
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+hr.deliver {
+    position: relative;
+    margin: 0 0 4px 0;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #ffffff;
+}
+
+.list-window {
+    position: absolute;
+    width: 300px;
+    top: 45px;
+    bottom: 46px;
+    background: #ffffff;
+    padding: 5px;
+}
+
+#save-new {
+    position: absolute;
+    bottom: 10px;
+    display: none;
+    /*visibility: hidden;*/
+}
+
+#clear-list {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.start-list {
+    position: absolute;
+    bottom: 7px;
+    right: 10px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: inset 1px 1px rgba(0, 0, 0, .1);
+    padding: 6px 8px 3px 3px;
+    width: 112px;
+    height: 25px;
+    display: none;
+}
+
+.start-list #save-run {
+    float: right;
+}
+
+.start-list .start-icon, .start-list .region{
+    position: static;
+    vertical-align: middle;
+    display: block;
+}
+
+.start-list .start-icon {
+    float: left;
+}
+
+.start-list .region {
+    float: right;
+}
+
+
+.side-wrap {
+    top:41px;
+    position: fixed;
+    z-index: 101;
+}
+
+.file-name {
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.stroke-list {
+    margin-left: 20px;
+}
+
+.stroke-list .name {
+    font-size: 11px;
+    position: relative;
+    cursor: pointer;
+}
+
+.stroke-list .glyphicon-remove {
+    zoom: 0.75;
+    margin-left: 3px;
+    display: none;
+}
+
+.stroke-list .name:hover i.glyphicon-remove{
+    display: inline-block;
+}
+
+.file-name .icon-remove {
+    zoom: 0.75;
+    margin-left: 3px;
+    margin-top: 3px;
+    display: none;
+}
+
+.file-folder .file-name:hover i.glyphicon-remove{
+    display: inline-block;
+}
+
+.file-folder .glyphicon-folder-close {
+    margin-top: 0;
+}
+
+.content {
+    margin: auto;
+    width: 900px;
+    min-height: 750px;
+}
+
+.block {
+    width: 50%;
+}
+
+#servers {
+    padding: 10px;
+}
+
+.server {
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: solid 1px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    padding: 5px;
+    background: rgb(161, 187, 26);
+}
+
+.server-opener {
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.server label {
+    margin-bottom: 0px;
+}
+
+.info-content {
+    border: solid 1px gray;
+    background: white;
+    padding: 10px;
+    box-shadow: inset 0 0 2px 1px black;
+    position: relative;
+}
+
+.server-info .update-info {
+    border: solid 1px rgb(233, 233, 233);
+    padding: 5px;
+}
+
+.server-info .queue-count {
+    font-weight: bold;
+}
+
+.log-window {
+    padding: 5px;
+    background-color: black;
+    border: 1px inset white;
+    font-size: 12px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.nav-log {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    width: 15px;
+    height: 37px;
+    z-index: 101;
+    display: none;
+}
+
+.log-window:hover .nav-log{
+    display: block;
+}
+
+.log {
+    color: white;
+    height: 110px;
+    width: 285px;
+    word-wrap: break-word;
+    font-size: 14px;
+    text-align: left;
+}
+
+table .log {
+    word-wrap: break-word;
+    color: white;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+table .log-window {
+    width: 580px;
+}
+
+table .center {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table th {
+    font-size: 16px;
+}
+
+/*td.options:hover .open-options{*/
+    /*opacity: 1;*/
+    /*-webkit-transition: opacity 0.5s ease-in-out;*/
+    /*transition: opacity 0.5s ease-in-out;*/
+/*}*/
+
+.open-full-command{
+    color: rgb(100, 100, 100);
+    cursor: pointer;
+}
+
+.full-command {
+    position: absolute;
+    width: 1181px;
+    font-size: 11px;
+    background: rgb(207, 207, 207);
+    border: 1px solid rgb(123, 155, 123);
+    box-shadow: 0px 0px 10px 3px rgba(189, 189, 189, 0.32);
+    border-radius: 10px;
+    left: -599px;
+    top: -40px;
+    padding: 5px;
+    display: none;
+    color: rgb(5, 5, 5);
+}
+
+/*.full-command.showed {*/
+    /*display: block;*/
+/*}*/
+
+.open-options {
+    font-weight: bold;
+    /*opacity: 0;*/
+    cursor: pointer;
+}
+
+.more-options {
+    border: solid 1px rgb(228, 228, 228);
+    text-align: left;
+    padding: 10px;
+    margin: auto;
+    position: relative;
+}
+
+.more-options span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.history-log.fail {
+    color: #c70000
+}
+
+.history-log.success {
+    color: #017201
+}
+
+.queue {
+    padding-left: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(218, 218, 218);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgb(218, 218, 218);
+    font-style: italic;
+    white-space: pre;
+}
+
+.queue label {
+    font-size: 12px;
+}
+
+.loader {
+    background: url(ajax-loader.gif);
+    width: 16px;
+    height: 16px;
+    display: none;
+}
+
+table {
+    -webkit-user-select: text;  /* Chrome all / Safari all */
+    -moz-user-select: text;     /* Firefox all */
+    -ms-user-select: text;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: text;
+    user-select: text;
+}
+
+.server-info .running, .server-info .run-at-value {
+    font-style: italic;
+}
+
+.server-info .running {
+    font-size: 13px;
+}
+
+.show-log {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(48, 85, 65);
+    text-decoration: underline;
+}
+
+.show-current-result {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(19, 15, 85);
+    text-decoration: underline;
+}
+
+.show-log:hover {
+    font-size: 15px;
+    color: green;
+}
+
+.server-info .run-client {
+    font-weight: bold;
+    color: rgb(80, 83, 74);
+}
+
+.server .management {
+    border: solid 1px green;
+    zoom: 1.1;
+    width: 58px;
+    border-radius: 5px;
+    padding: 0 3px;
+    display: inline;
+}
+
+.stop-current {
+    cursor: pointer;
+}
+
+.head-text {
+    font-weight: bold;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;
+    /*background: -webkit-linear-gradient(top right, rgb(228, 228, 228) 30%, #FFFFFF );*/
+}
+
+.show-history {
+    float: right;
+}
+
+.show-history:hover span, .off-server:hover span, .on-server:hover span, .stop-thread:hover span, .stop-current:hover span, .reboot-server:hover span {
+    display: block;
+}
+
+.show-history span {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    border: solid 1px gray;
+    border-radius: 5px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.off-server span, .on-server span, .stop-thread span, .reboot-server span {
+    display: none;
+    position: absolute;
+    top: 68px;
+    border: solid 1px gray;
+    border-radius: 5px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.stop-current span {
+    display: none;
+    position: absolute;
+    border: solid 1px gray;
+    border-radius: 5px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.management .glyphicon-stop {
+    background-position: -315px -73px;
+}
+
+.management .glyphicon-repeat {
+    background-position: -216px -25px;
+}
+
+#file-tree {
+    height: 600px;
+}
+
+input[type="checkbox"].server-input, input[type="checkbox"].folder-input{
+    display: none;
+}
+
+input[type="checkbox"].server-input + label{
+    cursor: pointer;
+    line-height: 22px;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+}
+
+input[type="checkbox"].folder-input + label{
+    cursor: pointer;
+    background-repeat: no-repeat;
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+}
+
+
+input[type="checkbox"].server-input + label::before{
+    margin-top: 5px;
+    content: "";
+    display: block;
+    float: left;
+    height: 22px;
+    width: 17px;
+    background-image: url(radio-ico.png);
+    background-repeat: no-repeat;
+}
+
+input[type="checkbox"].folder-input + label::before{
+    margin-top: 3px;
+    content: "";
+    display: block;
+    float: left;
+    height: 22px;
+    width: 17px;
+    background-image: url(radio-ico.png);
+    background-repeat: no-repeat;
+}
+
+input[type="checkbox"].server-input:checked + label::before, input[type="checkbox"].folder-input:checked + label::before{
+    background-image: url(checked-radio-ico.png);
+}
+
+.tab-content {
+    border: 1px solid #ddd;
+    margin-top: -21px;
+    padding: 14px 14px 0 14px;
+}
+
+.file-name .glyphicon-chevron-down {
+    margin-left: 5px;
+    margin-top: 3px;
+    zoom: 0.7;
+}
+
+.folder {
+    /*padding-left: 12px;*/
+}
+
+.folder-inside {
+    padding-left: 12px;
+}
+
+.tab-content i{
+    margin-bottom: 2px;
+}
+
+.folder-name {
+    font-size: 14px;
+}
+
+.folder-name, .file-name {
+    cursor: pointer;
+}
+
+.glyphicon-remove {
+    cursor: pointer;
+}
+
+.start-icon {
+    position: absolute;
+    top: 9px;
+    right: 89px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    background: url(start.png) no-repeat;
+    background-size: contain;
+    display: none;
+    cursor: pointer;
+}
+
+.start-icon:hover {
+    top: 7px;
+    right: 86px;
+    width: 23px;
+    height: 23px;
+}
+
+li:not(.active) a.with-start i{
+    display: none;
+}
+
+li:not(.active) a.with-start select.region{
+    display: none;
+}
+
+#docs input[type="checkbox"]:checked + #docs .start-icon{
+  display: block;
+}
+
+#sidebar .glyphicon-file {
+    margin-right: -2px;
+}
+
+.list_name {
+    width: 200px;
+    text-align: left;
+}
+
+li.active select.branch {
+    width: 110px;
+    font-size: 10px;
+    margin-bottom: 1px;
+    display: none;
+    height: 24px;
+}
+
+li.active select.branch {
+    width: 110px;
+    font-size: 10px;
+    margin-bottom: 1px;
+    display: inline-block;
+}
+li select.branch {
+    display: none;
+}
+
+ul.nav-tabs li.active a.with-start{
+    padding-right: 114px;
+}
+
+ul.nav-tabs li{
+    position: relative;
+}
+
+a.with-start i{
+    display: block;
+}
+
+select.region {
+    width: 70px;
+    font-size: 10px;
+    margin-bottom: 1px;
+    display: none;
+    height: 24px;
+    position: absolute;
+    top: 9px;
+    right: 13px;
+}
+
+a.with-start select.region{
+    display: block;
+}
+
+#cat {
+    vertical-align: middle;
+    width: 14px;
+    height: 18px;
+    background: url(cat-icon.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+#copyright {
+    cursor: pointer;
+}
+
+label#server, label#client {
+    font-size: 38px;
+    font-weight: bold;
+    display: inline;
+}
+
+.add-file {
+    margin-left: 5px;
+}
+
+#edit-list-name {
+    cursor: pointer;
+}
+
+.nav-tabs > li.active {
+    margin-bottom: -2px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.analyse-area {
+    width: 30px;
+    height: 16px;
+    display: inline-block;
+}
+
+.analyse-area i {
+    display: none;
+}
+
+.analyse-area:hover i {
+    display: inline-block;
+    opacity: 0.3;
+}
+
+.server .progress-bar {
+    cursor: pointer;
+}
+
+.more-options {
+    display: none;
+}
+
+.file-td {
+    display: inline-block;
+    min-width: 600px;
+}
+
+/*.active a {*/
+    /*vertical-align: top;*/
+/*}*/

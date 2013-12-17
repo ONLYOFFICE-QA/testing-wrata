@@ -1,0 +1,19 @@
+<div class="popup-tests">
+  <div class="viewer">
+    <div class="file-head">
+      <div id="test_file_name" data-qtip="<%= @file_path %>"><i id="add-all" class="glyphicon glyphicon-plus-sign icon-green"></i><%= @file_path.slice((@file_path.rindex('/') + 1)..-1) %></div>
+    </div>
+    <div class="close-list-button"><i class='glyphicon glyphicon-remove'></i></div>
+    <div class="tests-window">
+      <div id="tests-list" style="padding: 3px;">
+        <% subtests = get_subtest_by_path(@file_path) %>
+        <% subtests.each do |subtest| %>
+            <div class="subtest-row">
+              <i class="glyphicon glyphicon-plus-sign add-test"></i>
+              <div data-role="<%= subtest[:stroke] %>" class="test-name"><%= subtest[:name] %></div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

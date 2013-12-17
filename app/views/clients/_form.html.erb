@@ -1,0 +1,58 @@
+<%= form_for(@client) do |f| %>
+    <% if @client.errors.any? %>
+        <div id="error_explanation">
+          <h2 style="color: darkred"><%= pluralize(@client.errors.count, "error") %>:</h2>
+
+          <ul>
+            <% @client.errors.full_messages.each do |msg| %>
+                <li style="color: darkred"><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :login %>
+      <%= f.text_field :login %>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div style="margin-top: 10px"></div>
+
+    <div style="font-size: 14px" class="bold">Project</div>
+
+    <div class="field">
+      <%= f.radio_button :project, 'docs', :checked => true, style: 'float:left' %>
+      <%= label :project_docs, 'Online Document', class: 'radio control-label' %>
+    </div>
+
+    <div class="field">
+      <%= f.radio_button :project, 'teamlab', style: 'float:left' %>
+      <%= label :project_teamlab, 'TeamLab', class: 'radio control-label' %>
+    </div>
+
+    <div style="margin-top: 10px"></div>
+
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :second_name %>
+      <%= f.text_field :second_name %>
+    </div>
+    <div class="field">
+      <%= f.label :post, 'Position' %>
+      <%= f.text_field :post %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Save', class: 'btn-small btn-inverse' %>
+    </div>
+<% end %>

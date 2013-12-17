@@ -1,0 +1,48 @@
+<% provide(:title, 'Sign up') %>
+<h1>Sign Up</h1>
+
+<div class='row'>
+  <div class='span6 offset3'>
+    <%= form_for(@client) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= f.label :login, 'Login*', class: 'bold' %>
+        <%= f.text_field :login %>
+
+        <%= f.label :password, 'Password*', class: 'bold' %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, 'Confirmation*', class: 'bold' %>
+        <%= f.password_field :password_confirmation %>
+        <div style="margin-top: 10px"></div>
+
+        <div style="font-size: 14px" class="bold">Project</div>
+
+        <div>
+          <%= f.radio_button :project, 'docs', :checked => true, style: 'float:left' %>
+          <%= label :project_docs, 'Online Document', class: 'radio control-label' %>
+        </div>
+
+        <div>
+          <%= f.radio_button :project, 'teamlab', style: 'float:left' %>
+          <%= label :project_teamlab, 'TeamLab', class: 'radio control-label' %>
+        </div>
+
+        <div style="margin-top: 10px"></div>
+
+        <%= f.label :first_name, class: 'bold' %>
+        <%= f.text_field :first_name %>
+
+        <%= f.label :second_name, class: 'bold' %>
+        <%= f.text_field :second_name %>
+
+        <%= f.label :post, 'Position', class: 'bold' %>
+        <%= f.text_field :post %>
+
+        <%= f.submit 'Create account', class: 'btn btn-large btn-primary', style: 'display: block' %>
+
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Back', runner_path %>

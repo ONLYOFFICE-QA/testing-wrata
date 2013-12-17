@@ -1,0 +1,154 @@
+//// Place all the styles related to the runner controller here.
+//// They will automatically be included in application.css.
+//// You can use Sass (SCSS) here: http://sass-lang.com/
+//
+//#main {
+//  width: 90%;
+//  margin: auto;
+//}
+//
+//#container {
+//  margin: 15%;
+//  width: 800px;
+//  height: 1000px;
+//  //display: inline-block;
+//}
+//
+//.servers-section {
+//  vertical-align: top;
+//  width: 395px;
+//  display: inline-block;
+//}
+//
+//.tests-section {
+//  vertical-align: top;
+//  width: 395px;
+//  display: inline-block;
+//  //height: 100px;
+//  //background-color: #000000;
+//}
+//
+//.user_row {
+//  padding: 5px;
+//}
+//
+//.checkbox-user-input {
+//  display: none;
+//}
+//
+//.checkbox {
+//  display: inline-block;
+//  vertical-align: middle;
+//}
+//
+//.checkbox label {
+//  display: inline-block;
+//  background: transparent url(ch-user-non.png) center no-repeat;
+//  //-webkit-appearance: none;
+//  width: 22px;
+//  height: 22px;
+//  cursor: pointer;
+//}
+//
+//.checkbox-user-input:checked + label {
+//  background: transparent url(ch-user-chckd.png) center no-repeat;
+//}
+//
+//.checkbox-test-input {
+//  display: none;
+//}
+//
+//.checkbox-test-input:checked + label {
+//  background: transparent url(ch-user-chckd.png) center no-repeat;
+//}
+//
+//.user-name {
+//  margin-left: 5px;
+//  display: inline-block;
+//  font: Consolas;
+//  font-size: 20px;
+//  vertical-align: middle;
+//  //text-shadow: 1px 1px 1px #000;
+//}
+//
+//.bulb {
+//  display: inline-block;
+//  border-radius: 50%;
+//  width: 15px;
+//  height: 15px;
+//  cursor: pointer;
+//  vertical-align: middle;
+//}
+//
+//.bulb.online {
+//  background: #62ff12;
+//  box-shadow: inset #a7ff1c 0 0 3px 3px, #62ff12 0 0 3px 3px;
+//}
+//
+//.bulb.offline {
+//  background: #FF0A05;
+//  box-shadow: inset #ff3017 0 0 3px 3px, #ff0a05 0 0 3px 3px;
+//}
+//
+//.bulb.wait {
+//  background: #ffbf10;
+//  box-shadow: inset #ffd20e 0 0 3px 3px, #ffbf10 0 0 3px 3px;
+//}
+//
+//.folder {
+//  margin-left: 10px;
+//}
+//
+//.folder.name {
+//  display: inline-block;
+//}
+//
+//.file {
+//  margin-left: 20px;
+//}
+//
+//.file.name {
+//  display: inline-block;
+//}
+//
+//.test-row {
+//  cursor: pointer;
+//}
+//
+//.folder-row {
+//  cursor: pointer;
+//}
+//
+//.folder-icon {
+//  width: 33px;
+//  height: 33px;
+//  vertical-align: middle;
+//  display: inline-block;
+//}
+//
+//.folder-icon.close {
+//  background: url("folder-close.png") no-repeat 0 50%;
+//}
+//
+//.folder-icon.open {
+//  background: url("folder-open.png") no-repeat 0 50%;
+//}
+//
+//.test-icon {
+//  width: 33px;
+//  height: 33px;
+//  background: url("tests-icon.png") no-repeat 0 50%;
+//  display: inline-block;
+//  vertical-align: middle;
+//}
+//
+//.test-button {
+//  display: inline-block;
+//  vertical-align: middle;
+//}
+//
+//.folder-inside {
+//  padding-top: 5px;
+//}
+//
+//

@@ -1,0 +1,245 @@
+.open-results {
+    color: rgb(52, 47, 54);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rspec-popup-window {
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+    margin-top: 42px;
+    z-index: 100;
+    position: relative;
+    background: white;
+    border: groove 2px rgb(43, 167, 6);
+    -moz-box-shadow: 0 0 20px rgba(255, 255, 255, 0.29);
+    -webkit-box-shadow: 0 0 20px rgba(255, 255, 255, 0.29);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.29);
+    border-radius: 3px;
+    -webkit-user-select: text;  /* Chrome all / Safari all */
+    -moz-user-select: text;     /* Firefox all */
+    -ms-user-select: text;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: text;
+    user-select: text;
+}
+
+.rspec-popup-window .slimScrollDiv {
+    padding-bottom: 2px;
+}
+
+.result-header {
+    position: relative;
+    padding: 12px;
+    background: rgb(121, 235, 92);
+    border-bottom: solid 2px rgba(43, 167, 6, 0.42)
+}
+
+.close-result {
+    background: url(monotone_close_exit_delete.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    background-size: cover;
+}
+
+.file-name span {
+    background: rgba(50, 232, 101, 0.41);
+    border: solid 1px rgba(43, 167, 6, 0.23);
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.popup-content {
+    font-size: 14px;
+    position: absolute;
+    top: 47px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    padding: 15px;
+    background: rgb(253, 255, 249);
+}
+
+.popup-content h1 {
+    text-align: center;
+}
+
+.processing {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b6bcc6), color-stop(1, #9da5b0));
+    border-radius: 2px;
+    padding: 1px;
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
+    margin-bottom: 0px;
+    position: relative;
+    text-align: center;
+}
+
+.processing > div {
+    width: 30%;
+    height: 39px;
+    border-radius: 1px;
+}
+
+.processing > div.success {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(62, 172, 66)), color-stop(1, rgb(0, 255, 71)));
+}
+
+.processing > div.fail {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(148, 35, 35)), color-stop(1, rgb(253, 40, 40)));
+}
+
+.processing span.value {
+    position: absolute;
+    top: 11px;
+    font-size: 24px;
+    text-shadow: rgba(255,255,255, 0.45) 0 1px 0px;
+    font-weight: bold;
+}
+
+.totals {
+    float: left;
+    color: rgb(87, 87, 87);
+    margin-left: 10px;
+}
+
+.totals-time {
+    float: right;
+    color: rgb(87, 87, 87);
+    margin-right: 10px;
+}
+
+.main-describe {
+    word-wrap: break-word;
+    box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.03);
+}
+
+.describe-content {
+    position: absolute;
+    top: 85px;
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+}
+
+.describe {
+    background: rgba(0, 128, 0, 0.07);
+    border: solid 1px rgba(0, 151, 0, 0.26);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.describe-head {
+    background: rgba(0, 231, 64, 0.6);
+    border: 2px solid rgb(4, 148, 4);
+    padding: 2px 2px 2px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.81);
+}
+
+.describe.failed {
+    background: rgba(128, 9, 56, 0.07);
+    border: solid 1px rgba(151, 0, 0, 0.26);
+}
+
+.describe.failed > .describe-head {
+    background: rgba(231, 0, 2, 0.6);
+    border: 2px solid rgba(231, 0, 2, 0.8);
+}
+
+.describe-child {
+    padding: 5px;
+}
+
+.example {
+    margin-bottom: 5px;
+    clear: both;
+    border-radius: 5px;
+}
+
+.example.passed .example-head {
+    background: rgba(0, 231, 64, 0.6);
+}
+
+.example.not_implemented .example-head{
+    background: rgba(235, 235, 10, 0.6);
+}
+
+
+.example.not_implemented .example-name{
+    float: none;
+    text-align: left;
+}
+
+.example-head {
+    padding: 2px 5px 2px 5px;
+    border-radius: 5px;
+}
+
+.example.failed .example-head {
+    background: rgba(231, 0, 2, 0.6);
+    cursor: pointer;
+}
+
+.example-time {
+    text-align: right;
+}
+
+.example-name {
+    float: left;
+}
+
+.example.failed {
+    background: rgba(231, 0, 2, 0.11);
+}
+
+.fail-details {
+    padding: 5px;
+    word-wrap: break-word;
+    display: none;
+}
+
+.fail-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.fail-text div {
+    border: solid 1px rgba(112, 23, 23, 0.05);
+    padding: 2px 5px 2px 5px;
+    color: #9A0002;
+    white-space: pre;
+}
+
+.fail-code-path {
+    font-size: 12px;
+    margin: 10px 0px 10px 10px;
+    white-space: pre-line;
+}
+
+.fail-code {
+    font-size: 12px;
+    font-family: monospace;
+    white-space: pre;
+    background: rgb(255, 244, 244);
+}
+
+.fail-code span.linenum {
+    width: 40px;
+    padding: 0px 10px;
+    color: #000000;
+    border-right: solid 1px rgba(255, 0, 0, 0.16);
+    white-space: pre;
+    display: inline-block;
+}
+
+.fail-code .offending {
+    background-color: gray;
+}

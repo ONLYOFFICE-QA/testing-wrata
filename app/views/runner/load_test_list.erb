@@ -1,0 +1,22 @@
+<% @test_list.test_files.each do |test_file| %>
+    <% path = test_file.name  %>
+    <% strokes = test_file.strokes %>
+    <div class="file-folder">
+        <div class="file-name" data-qtip="<%= path %>">
+          <i class="glyphicon glyphicon-file"></i><%= path.slice((path.rindex('/') + 1)..-1)%><% unless strokes.empty? %><i class="glyphicon glyphicon-chevron-down"></i><% end %><i class="glyphicon glyphicon-remove"></i>
+        </div>
+        <% unless strokes.empty? %>
+          <div class="file-inside">
+            <div class="stroke-list" style="display: block">
+              <% test_file.strokes.each do |stroke| %>
+                  <div class="name" data-qtip="<%= stroke.name %>" data-role="<%= stroke.number %>">
+                    <% name = stroke.name[0..30] %>
+                    <% name += '...' if (stroke.name.size > 30) %>
+                    <%= name  %><i class="glyphicon glyphicon-remove"></i><span class="sidebar-tooltip"><%= stroke.name%></span>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+<% end %>
