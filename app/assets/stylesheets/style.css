@@ -183,7 +183,7 @@ i {
     visibility: visible;
 }
 
-#open-sidebar:hover .icon-chevron-right.icon-white{
+#open-sidebar:hover .glyphicon glyphicon-chevron-right.icon-white{
     /*background-position: -432px -72px;*/
     background-image: url("bootstrap/img/glyphicons-halflings-green.png");
 }

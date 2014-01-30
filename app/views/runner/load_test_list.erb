@@ -3,7 +3,7 @@
     <% strokes = test_file.strokes %>
     <div class="file-folder">
         <div class="file-name" data-qtip="<%= path %>">
-          <i class="icon-file"></i><%= path.slice((path.rindex('/') + 1)..-1)%><% unless strokes.empty? %><i class="icon-chevron-down"></i><% end %><i class="icon-remove"></i>
+          <i class="glyphicon glyphicon-file"></i><%= path.slice((path.rindex('/') + 1)..-1)%><% unless strokes.empty? %><i class="glyphicon glyphicon-chevron-down"></i><% end %><i class="glyphicon glyphicon-remove"></i>
         </div>
         <% unless strokes.empty? %>
           <div class="file-inside">
@@ -12,7 +12,7 @@
                   <div class="name" data-qtip="<%= stroke.name %>" data-role="<%= stroke.number %>">
                     <% name = stroke.name[0..30] %>
                     <% name += '...' if (stroke.name.size > 30) %>
-                    <%= name  %><i class="icon-remove"></i><span class="sidebar-tooltip"><%= stroke.name%></span>
+                    <%= name  %><i class="glyphicon glyphicon-remove"></i><span class="sidebar-tooltip"><%= stroke.name%></span>
                   </div>
               <% end %>
             </div>

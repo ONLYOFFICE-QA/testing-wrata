@@ -49,7 +49,7 @@
     </div>
     <h1>Runs on <label id="<%= @controller.to_s %>"><%= @name %></label>:</h1>
     <div id="clear-history" class="btn btn-small btn-inset" style="position: absolute; right: 0px; top: 58px; right: 20px;">
-      <i class="icon-trash"></i>Clear history
+      <i class="glyphicon glyphicon-trash"></i>Clear history
     </div>
     <table class="table table-bordered">
       <thead>
@@ -118,15 +118,15 @@
             <td class="center"><%= line.created_at.to_s.gsub(' +0400', '') %></td>
             <td class="center">
               <% if line.analysed %>
-                  <i class="icon-ok icon-green"></i>
+                  <i class="glyphicon glyphicon-ok icon-green"></i>
               <% else %>
                   <div class="analyse-area pointer" data-id="<%= line.id %>">
-                    <i class="icon-ok icon-green"></i>
+                    <i class="glyphicon glyphicon-ok icon-green"></i>
                   </div>
               <% end %>
             </td>
             <td class="center">
-              <i class="icon-trash pointer delete-line" delete-data="<%= history_path(line) %>" data-method="delete"></i>
+              <i class="glyphicon glyphicon-trash pointer delete-line" delete-data="<%= history_path(line) %>" data-method="delete"></i>
             </td>
           </tr>
       <% end %>
