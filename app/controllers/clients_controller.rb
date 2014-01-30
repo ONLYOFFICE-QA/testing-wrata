@@ -65,7 +65,7 @@ class ClientsController < ApplicationController
   end
 
   def client_history
-    client = Client.find(params[:id])
+    client = Client.find_by_id(params[:id])
     @name = client.login
     @history = client.histories.order('created_at DESC').limit(10)
     @controller = :client

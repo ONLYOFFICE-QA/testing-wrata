@@ -1,6 +1,7 @@
 $iconGreenSpritePath: url('bootstrap/img/glyphicons-halflings-green.png');
 
-@import "twitter/bootstrap";
+@import "bootstrap";
+@import "bootstrap-responsive";
 
 .icon-green {
   background-image: $iconGreenSpritePath;

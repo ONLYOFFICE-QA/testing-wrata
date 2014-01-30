@@ -34,7 +34,7 @@ class ServersController < ApplicationController
   end
 
   def server_history
-    server = Server.find(params[:id])
+    server = Server.find_by_id(params[:id])
     @name = server.name
     @history = server.histories.order('created_at DESC').limit(10)
     @controller = :server

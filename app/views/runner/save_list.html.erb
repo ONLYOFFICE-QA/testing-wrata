@@ -1,6 +1,6 @@
 <% unless current_client.nil? %>
     <li style="position: relative">
         <a href="#"><%= @test_list.name %></a>
-        <i class="glyphicon glyphicon-trash delete-test-list" style="padding: 0;" delete-data="<%= test_list_path(@test_list) %>"></i>
+        <i class="icon-trash delete-test-list" style="padding: 0;" delete-data="<%= test_list_path(@test_list) %>"></i>
     </li>
 <% end %>

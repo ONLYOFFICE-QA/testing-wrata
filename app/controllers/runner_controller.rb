@@ -8,7 +8,9 @@ class RunnerController < ApplicationController
   STATUS_WAIT = 2
 
   def index
-
+    unless current_client
+      redirect_to signin_path
+    end
   end
 
   def change_branch
@@ -229,27 +231,10 @@ class RunnerController < ApplicationController
 
      output_json = []
 
-     info_threads = []
-
      servers.each do |server|
-       info_threads << Thread.new do
-         server_thread = $threads.get_thread_by_name(server)
-         server_info = {}
-         server_info[:name] = server
-         server_info[:current_test] = server_thread.current_test
-         server_info[:run_client] = server_thread.run_client
-         server_info[:queue_count] = server_thread.queue_count
-         server_info[:queue] = server_thread.get_queue
-         server_info[:status] = server_thread.status
-         server_info[:options] = server_thread.options_hash
-         server_info[:log] = server_thread.log
-         server_info[:log_live] = server_thread.log_live
-         server_info[:processing] = server_thread.get_processing_of_test
-         output_json << server_info
-       end
+       server_thread = $threads.get_thread_by_name(server)
+       output_json << server_thread.get_info_from_server
      end
-
-     info_threads.each {|t| t.join}
 
      output_json = output_json.to_json
 

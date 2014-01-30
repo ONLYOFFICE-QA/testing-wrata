@@ -3,25 +3,16 @@ class ServerThreads < ActionController::Base
 
   def init_threads
     @server_threads = []
-    Server.all.each do |server|
+    Server.all.each do |server_model|
       #unless user.name == AMAZON_SERVER_NAME
-        @server_threads << ServerThread.new(server.name, server.comp_name, server)
+        @server_threads << ServerThread.new(server_model)
       #end
     end
   end
 
   def get_thread_by_name(name)
     @server_threads.each do |thread|
-
-  def get_all_servers_from_threads
-    servers = []
-    @server_threads.each do |thread|
-      servers << thread.server
-    end
-    servers
-  end
-
-      if thread.name == name
+      if thread.server_model.name == name
          return thread
       end
     end
@@ -30,7 +21,7 @@ class ServerThreads < ActionController::Base
   def get_all_servers_from_threads
     servers = []
     @server_threads.each do |thread|
-      servers << thread.server
+      servers << thread.server_model
     end
     servers
   end

@@ -10,7 +10,7 @@
           </td>
           <td class="center">
             <div style="display: inline-block">
-              <div class="history-log pointer <%= test_result(line.total_result) %>"><%= slice_file_name(line.file) %></div>
+              <div class="history-log pointer <%= test_result(line.total_result) %>"><%= line.file %></div>
               <div class="log-window" style="display: block">
                 <div class="log">
                   <% if line.log %>
@@ -48,19 +48,20 @@
                   </div>
                 </div>
             <% end %>
+
           </td>
           <td class="center"><%= line.created_at.to_s.gsub(' +0400', '') %></td>
           <td class="center">
             <% if line.analysed %>
-                <i class="glyphicon glyphicon-ok icon-green"></i>
+                <i class="icon-ok icon-green"></i>
             <% else %>
                 <div class="analyse-area pointer" data-id="<%= line.id %>">
-                  <i class="glyphicon glyphicon-ok icon-green"></i>
+                  <i class="icon-ok icon-green"></i>
                 </div>
             <% end %>
           </td>
           <td class="center">
-            <i class="glyphicon glyphicon-trash pointer delete-line" delete-data="<%= history_path(line) %>" data-method="delete"></i>
+            <i class="icon-trash pointer delete-line" delete-data="<%= history_path(line) %>" data-method="delete"></i>
           </td>
         </tr>
     <% end %>

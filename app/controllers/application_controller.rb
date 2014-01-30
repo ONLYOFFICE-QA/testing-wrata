@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def delete_testlist_by_id(id)
     @test_list = TestList.find(id)
-    if current_client.test_lists.find(id) ==  @test_list
+    if current_client.test_lists.find_by_id(id) ==  @test_list
       @test_list.test_files.each do |test_file|
         test_file.strokes.each do |stroke|
           stroke.destroy

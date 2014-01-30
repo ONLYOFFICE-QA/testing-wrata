@@ -3,6 +3,7 @@ module SessionsHelper
   def sign_in_(client)  #_fix for active-admin
     cookies.permanent[:remember_token] = client.remember_token
     self.current_client = client
+    init_run_manager
   end
 
   def signed_in?
@@ -30,6 +31,16 @@ module SessionsHelper
       test_lists = client.test_lists.order('created_at DESC')
     end
     test_lists
+  end
+
+  def get_run_manager(client_login)
+    $run_managers.find_manager_by_client_login(client_login)
+  end
+
+  def init_run_manager
+    unless get_run_manager current_client.login
+      $run_managers.add_manager ClientRunnerManager.new(current_client)
+    end
   end
 
 end

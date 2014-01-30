@@ -9,7 +9,7 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
-//= require twitter/bootstrap
+//= require bootstrap
 //= require jquery
 //= require jquery_ujs
 //= require_tree
@@ -671,13 +671,13 @@ function Runner() {
             var icon = $(this).children("i");
             if (currentDisplay == "none") {
                 $(this).next(".folder-inside").css("display", "block");
-                icon.addClass("glyphicon-folder-open");
-                icon.removeClass("glyphicon-folder-close");
+                icon.addClass("icon-folder-open");
+                icon.removeClass("icon-folder-close");
             }
             else {
                 $(this).next(".folder-inside").css("display", "none");
-                icon.addClass("glyphicon-folder-close");
-                icon.removeClass("glyphicon-folder-open");
+                icon.addClass("icon-folder-close");
+                icon.removeClass("icon-folder-open");
             }
         });
     };
@@ -801,13 +801,13 @@ function Runner() {
         elem.addClass('added-test');
         elem.removeClass('add-test');
 //        elem.addClass('icon-minus-sign');
-        elem.removeClass('glyphicon-plus-sign');
+        elem.removeClass('icon-plus-sign');
     };
 
     this.setIconToAdd = function (elem) {
         elem.addClass('add-test');
         elem.removeClass('added-test');
-        elem.addClass('glyphicon-plus-sign');
+        elem.addClass('icon-plus-sign');
 //        elem.removeClass('icon-minus-sign');
     };
 
@@ -842,7 +842,7 @@ function Runner() {
 
         var stroke = "<div class='name' data-qtip=\"" + it_name + "\" data-role='" + stroke_number + "'>" +
             cut_it_name +
-            "<i class='glyphicon-remove'></i><span class='sidebar-tooltip'>" + HtmlDecode(it_name) + "</span>" +
+            "<i class='icon-remove'></i><span class='sidebar-tooltip'>" + HtmlDecode(it_name) + "</span>" +
             "</div>";
 
         $('#sidebar-test-list .file-name').each(function () {
@@ -856,7 +856,7 @@ function Runner() {
         if (file_added == false) {
             var stroke_list = "<div class='stroke-list'>" + stroke + "</div>";
             var file_inside = "<div class='file-inside'>" + stroke_list + "</div>";
-            var file_name_elem = "<div class='file-name' data-qtip='" + file_path + "'><i class='glyphicon-file'></i>" + file_name + "<i class='glyphicon-chevron-down'></i><i class='glyphicon-remove'></i></div>";
+            var file_name_elem = "<div class='file-name' data-qtip='" + file_path + "'><i class='icon-file'></i>" + file_name + "<i class='icon-chevron-down'></i><i class='icon-remove'></i></div>";
             var folder = $("<div class='file-folder'>" + file_name_elem + file_inside + "</div>");
 
             $("#sidebar-test-list").append(folder);
@@ -877,7 +877,7 @@ function Runner() {
         var file_name = icon.parent();
         var text = file_name.text();
         var path = file_name.parent().find('input').attr('id');
-        var file_name_elem = "<div class='file-name' data-qtip='" + path + "'><i class='glyphicon-file'></i>" + text + ".rb<i class='glyphicon-remove'></i></div>";
+        var file_name_elem = "<div class='file-name' data-qtip='" + path + "'><i class='icon-file'></i>" + text + ".rb<i class='icon-remove'></i></div>";
         var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
         $("#sidebar-test-list").append(folder);
         _self.setEventToDeleteFolderFromList();
@@ -914,7 +914,7 @@ function Runner() {
     };
 
     this.setEventToOpenFile = function (element) {
-        element.find(".glyphicon-chevron-down").click(function () {
+        element.find(".icon-chevron-down").click(function () {
             // var elem = $(this).next(); //$('#idtest').is(':visible')
             var inside = element.find(".file-inside");
             var currentDisplay = inside.css("display");
@@ -930,7 +930,7 @@ function Runner() {
     this.setEventToDeleteTestFromList = function () {
         var text = "";
         var stroke = "";
-        $(".name .glyphicon-remove").click(function () {
+        $(".name .icon-remove").click(function () {
             var stroke_elem = $(this).parent();
             text = stroke_elem.attr('data-qtip');
             stroke = stroke_elem.attr('data-role');
@@ -964,7 +964,7 @@ function Runner() {
     };
 
     this.setEventToDeleteFolderFromList = function () {
-        $(".file-name .glyphicon-remove").click(function () {
+        $(".file-name .icon-remove").click(function () {
             if ($('#popup').is(':visible')) {
                 $(this).parent().next().children().children().each(function () {
                     var text = $(this).attr('data-qtip');
@@ -1193,8 +1193,8 @@ function openSidebar() {
     var sidebar = $("#sidebar");
     var ico = $("#open-ico");
     sidebar.css('display', 'block');
-    ico.addClass('glyphicon-chevron-left');
-    ico.removeClass('glyphicon-chevron-right');
+    ico.addClass('icon-chevron-left');
+    ico.removeClass('icon-chevron-right');
     $("#main").css("margin-left", "365px");
     $("#popup .wrap").css("margin-left", "365px");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
@@ -1204,8 +1204,8 @@ function closeSidebar() {
     var sidebar = $("#sidebar");
     var ico = $("#open-ico");
     sidebar.css('display', 'none');
-    ico.addClass('glyphicon-chevron-right');
-    ico.removeClass('glyphicon-chevron-left');
+    ico.addClass('icon-chevron-right');
+    ico.removeClass('icon-chevron-left');
     $("#main").css("margin-left", "0");
     $("#popup .wrap").css("margin-left", "0");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
@@ -1582,8 +1582,8 @@ function createRunLocationByOptions(options) {
         return options['portal_region']
     } else if ((options['portal_type'] != null) && (options['portal_region'] == null)) {
         return options['portal_type']
-    } else if ((options['portal_type'] != null) && (options['portal_region'] != null)) {
-        return options['portal_type']
+    } else if((options['portal_type'] != null) && (options['portal_region'] == null)) {
+        return options['portal_type'] + ', ' + options['portal_region']
     }
     else {
         return "don't know location(all null)";
@@ -1625,7 +1625,7 @@ function eventToSetAnalysedToHistory(elem) {
             success: function () {
                 var el = clicked.parent();
                 el.html('');
-                el.append($("<i class='glyphicon-ok'></i>"))
+                el.append($("<i class='icon-ok icon-green'></i>"))
             },
             error: function (e) {
                 console.log(e.message);

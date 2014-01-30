@@ -6,7 +6,7 @@
           <input id="<%= tree[:path] %>" type="checkbox" class="folder-input" name="<%= tree[:path] %>" hidden/>
           <label for="<%= tree[:path] %>" class="normal"></label>
 
-          <div class="folder-name"><i class="glyphicon glyphicon-folder-close"></i><%= tree[:data] %></div>
+          <div class="folder-name"><i class="icon-folder-close"></i><%= tree[:data] %></div>
           <div class="folder-inside" style="display: none">
             <% tree[:children].each do |current_child| %>
                 <% if current_child.class == Hash && current_child.has_key?(:children) %>
@@ -18,7 +18,7 @@
                             <div class="file">
                               <input id="<%= current_child[:path] %>" type="checkbox" class="folder-input" name="<%= current_child[:path] %>" hidden/>
                               <label for="<%= current_child[:path] %>" class="normal"></label>
-                              <div class="file-name"><i class="glyphicon glyphicon-file"></i><%= child_name %><i class="add-file glyphicon glyphicon-plus-sign icon-green"></i></div>
+                              <div class="file-name"><i class="icon-file"></i><%= child_name %><i class="add-file icon-plus-sign icon-green"></i></div>
                             </div>
                         <% end %>
                     <% end %>

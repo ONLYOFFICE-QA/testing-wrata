@@ -3,12 +3,12 @@
       <input id="<%= server.name %>" type="checkbox" class="server-input" name="<%= server.name %>" hidden="">
       <label for="<%= server.name %>" class="normal" style="margin-left: 14px; display: inline-block"><%= server.name %></label>
       <i class="loader"></i>
-      <i class="server-opener glyphicon glyphicon-chevron-down"></i>
+      <i class="server-opener icon-chevron-down"></i>
 
       <div class="server-info" style="display: none">
         <div class="info-content">
           <%= link_to server_history_path(server), :target => '_blank' do %>
-              <i class="show-history glyphicon glyphicon-book"><span>Show history</span></i>
+              <i class="show-history icon-book"><span>Show history</span></i>
           <% end %>
           <label class="head-text"><%= server.description %></label>
           <label class="head-text">IP: <%= server.address %></label>
@@ -16,18 +16,18 @@
               <div class="update-info">
                 Server management:
                 <div class="management">
-                  <i class="on-server glyphicon glyphicon-off icon-green pointer"><span>On server</span></i>
-                  <i class="off-server glyphicon glyphicon-off pointer"><span>Off server</span></i>
-                  <i class="reboot-server glyphicon glyphicon-repeat pointer"><span>Reboot server</span></i>
-                  <i class="stop-thread glyphicon glyphicon-stop pointer" style="margin-right: 0;"><span>Stop thread</span></i>
+                  <i class="on-server icon-off icon-green pointer"><span>On server</span></i>
+                  <i class="off-server icon-off pointer"><span>Off server</span></i>
+                  <i class="reboot-server icon-repeat pointer"><span>Reboot server</span></i>
+                  <i class="stop-thread icon-stop pointer" style="margin-right: 0;"><span>Stop thread</span></i>
                 </div>
-                <div>Who run: <span class="run-client"><i class="glyphicon glyphicon-server"></i><%= DEFAULT_RUN_CLIENT %></span></div>
+                <div>Who run: <span class="run-client"><i class="icon-server"></i><%= DEFAULT_RUN_CLIENT %></span></div>
                 <div>Count in queue: <span class="queue-count pointer">0</span></div>
                 <!-- UPDATE-->
                 <div class="queue" style="display: none"></div>
                 <div class="run-at" style="display: none">Location: <span class="run-at-value"></span></div>
                 <div>Now running:
-                  <span class="running"><%= DEFAULT_CURRENT_TEST %></span><i class="glyphicon glyphicon-stop stop-current" style="display: none"><span>Stop current</span></i>
+                  <span class="running"><%= DEFAULT_CURRENT_TEST %></span><i class="icon-stop stop-current" style="display: none"><span>Stop current</span></i>
                 </div>
                 <!-- BY -->
                 <div class="progress-bar ui-progress-bar ui-container">
@@ -39,8 +39,8 @@
                 </div>
                 <div class="log-window" style="display: none">
                   <div class="nav-log">
-                    <i class="glyphicon glyphicon-chevron-up icon-white log-up"></i>
-                    <i class="glyphicon glyphicon-chevron-down icon-white log-down"></i>
+                    <i class="icon-chevron-up icon-white log-up"></i>
+                    <i class="icon-chevron-down icon-white log-down"></i>
                   </div>
                   <div class="log"></div>
                 </div>

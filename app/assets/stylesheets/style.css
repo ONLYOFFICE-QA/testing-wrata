@@ -183,12 +183,12 @@ i {
     visibility: visible;
 }
 
-#open-sidebar:hover .glyphicon-chevron-right.icon-white{
+#open-sidebar:hover .icon-chevron-right.icon-white{
     /*background-position: -432px -72px;*/
     background-image: url("bootstrap/img/glyphicons-halflings-green.png");
 }
 
-#open-sidebar:hover .glyphicon-chevron-left.icon-white{
+#open-sidebar:hover .icon-chevron-left.icon-white{
     /*background-position: -456px -72px;*/
     background-image: url("bootstrap/img/glyphicons-halflings-green.png");
 }
@@ -309,13 +309,13 @@ hr.deliver {
     cursor: pointer;
 }
 
-.stroke-list .glyphicon-remove {
+.stroke-list .icon-remove {
     zoom: 0.75;
     margin-left: 3px;
     display: none;
 }
 
-.stroke-list .name:hover i.glyphicon-remove{
+.stroke-list .name:hover i.icon-remove{
     display: inline-block;
 }
 
@@ -326,11 +326,11 @@ hr.deliver {
     display: none;
 }
 
-.file-folder .file-name:hover i.glyphicon-remove{
+.file-folder .file-name:hover i.icon-remove{
     display: inline-block;
 }
 
-.file-folder .glyphicon-folder-close {
+.file-folder .icon-folder-close {
     margin-top: 0;
 }
 
@@ -633,11 +633,11 @@ table {
     font-weight: bold;
 }
 
-.management .glyphicon-stop {
+.management .icon-stop {
     background-position: -315px -73px;
 }
 
-.management .glyphicon-repeat {
+.management .icon-repeat {
     background-position: -216px -25px;
 }
 
@@ -698,7 +698,7 @@ input[type="checkbox"].server-input:checked + label::before, input[type="checkbo
     padding: 14px 14px 0 14px;
 }
 
-.file-name .glyphicon-chevron-down {
+.file-name .icon-chevron-down {
     margin-left: 5px;
     margin-top: 3px;
     zoom: 0.7;
@@ -724,7 +724,7 @@ input[type="checkbox"].server-input:checked + label::before, input[type="checkbo
     cursor: pointer;
 }
 
-.glyphicon-remove {
+.icon-remove {
     cursor: pointer;
 }
 
@@ -760,7 +760,7 @@ li:not(.active) a.with-start select.region{
   display: block;
 }
 
-#sidebar .glyphicon-file {
+#sidebar .icon-file {
     margin-right: -2px;
 }
 
