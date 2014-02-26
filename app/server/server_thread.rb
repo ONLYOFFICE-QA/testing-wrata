@@ -16,42 +16,58 @@ class ServerThread
 
   attr_accessor :server_model
 
+  attr_reader :client
+
   TIME_FOR_UPDATE = 15
 
   def initialize(server_model)
     @server_model = server_model
+    @client = nil
     @test = nil
     create_main_thread
     start_pinging_server
     create_progress_scan_thread
     create_log_scan_thread
+    set_default_props
   end
 
-  def server_free?
-    if @test
-      false
-    else
-      true
-    end
+  def free?
+    @test ? false : true
   end
 
-  def start_test(test, client_db)
+  def booked?
+    @client ? true : false
+  end
+
+  def book_server(client)
+    @client = client
+  end
+
+  def unbook_server
+    @client = nil
+  end
+
+  def start_test(test)
     @test = test
-    @running_client = client_db
     start_progress_scan_thread
     start_log_scan_thread
     start_main_thread
   end
 
-  def get_info_from_server
+  def get_info_from_server(current_client)
     server_info = {}
     server_info[:name] = @server_model.name
-    server_info[:test] = { test_name: slice_project_path(@test[:test_path]),
-                           test_options: @test[:test_options].to_hash } if @test
-    server_info[:run_client] = @running_client
+    server_info[:test] = {
+        name: slice_project_path(@test[:test_path]),
+        location: @test[:location],
+        progress: @test_progress
+    } if @test
+    server_info[:booked] = {
+        booked_client: @client.login,
+        booked_by_client: @client == current_client
+    } if @client
     server_info[:status] = @status
     server_info[:log] = @log
-    server_info[:test_progress] = @test_progress
     server_info
   end
 
@@ -61,6 +77,15 @@ class ServerThread
       file_name = file_name[0..file_name.index(':')]
     end
     file_name
+  end
+
+  def test_name
+    @test[:test_name]
+  end
+
+  def reboot
+    stop_test
+    system "knife ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"reboot\""
   end
 
 end

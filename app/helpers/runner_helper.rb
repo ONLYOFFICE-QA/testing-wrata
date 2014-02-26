@@ -47,7 +47,7 @@ module RunnerHelper
   end
 
   def get_list_branches(project_path)
-    system_message = `cd #{project_path}; git pull; git checkout develop; git branch -a`
+    system_message = `cd #{project_path}; git checkout develop; git branch -a`
     branches = []
     system_message.to_s.gsub!('* ', '')
     system_message.to_s.split("\n  ").each do |line|
@@ -65,6 +65,14 @@ module RunnerHelper
     branches_name.delete 'develop'
     branches_name.unshift 'develop'
     branches_name
+  end
+
+  def server_booked?(server_name)
+    $threads.get_thread_by_name(server_name).booked?
+  end
+
+  def client_booked?(server_name)
+    $threads.get_thread_by_name(server_name).client == current_client
   end
 
 end

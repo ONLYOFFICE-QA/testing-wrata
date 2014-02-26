@@ -1,570 +1,117 @@
-testpc-50 HEAD is now at 8ade6b8 Merge remote-tracking branch 'origin/develop' into develop
-testpc-50 remote: Counting objects: 1   [Kremote: Counting objects: 179   [Kremote: Counting objects: 305   [Kremote: Counting objects: 364   [Kremote: Counting objects: 424, done.[K
-testpc-50 remote: Compressing objects:   0% (1/247)   [Kremote: Compressing objects:   1% (3/247)   [Kremote: Compressing objects:   2% (5/247)   [Kremote: Compressing objects:   3% (8/247)   [Kremote: Compressing objects:   4% (10/247)   [Kremote: Compressing objects:   5% (13/247)   [Kremote: Compressing objects:   6% (15/247)   [Kremote: Compressing objects:   7% (18/247)   [Kremote: Compressing objects:   8% (20/247)   [Kremote: Compressing objects:   9% (23/247)   [Kremote: Compressing objects:  10% (25/247)   [Kremote: Compressing objects:  11% (28/247)   [Kremote: Compressing objects:  12% (30/247)   [Kremote: Compressing objects:  13% (33/247)   [Kremote: Compressing objects:  14% (35/247)   [Kremote: Compressing objects:  15% (38/247)   [Kremote: Compressing objects:  16% (40/247)   [Kremote: Compressing objects:  17% (42/247)   [Kremote: Compressing objects:  18% (45/247)   [Kremote: Compressing objects:  19% (47/247)   [Kremote: Compressing objects:  20% (50/247)   [Kremote: Compressing objects:  21% (52/247)   [Kremote: Compressing objects:  22% (55/247)   [Kremote: Compressing objects:  23% (57/247)   [Kremote: Compressing objects:  24% (60/247)   [Kremote: Compressing objects:  25% (62/247)   [Kremote: Compressing objects:  26% (65/247)   [Kremote: Compressing objects:  27% (67/247)   [Kremote: Compressing objects:  28% (70/247)   [Kremote: Compressing objects:  29% (72/247)   [Kremote: Compressing objects:  30% (75/247)   [Kremote: Compressing objects:  31% (77/247)   [Kremote: Compressing objects:  32% (80/247)   [Kremote: Compressing objects:  33% (82/247)   [Kremote: Compressing objects:  34% (84/247)   [Kremote: Compressing objects:  35% (87/247)   [Kremote: Compressing objects:  36% (89/247)   [Kremote: Compressing objects:  37% (92/247)   [Kremote: Compressing objects:  38% (94/247)   [Kremote: Compressing objects:  39% (97/247)   [Kremote: Compressing objects:  40% (99/247)   [Kremote: Compressing objects:  41% (102/247)   [Kremote: Compressing objects:  42% (104/247)   [Kremote: Compressing objects:  43% (107/247)   [Kremote: Compressing objects:  44% (109/247)   [Kremote: Compressing objects:  45% (112/247)   [Kremote: Compressing objects:  46% (114/247)   [Kremote: Compressing objects:  47% (117/247)   [Kremote: Compressing objects:  48% (119/247)   [Kremote: Compressing objects:  49% (122/247)   [Kremote: Compressing objects:  50% (124/247)   [Kremote: Compressing objects:  51% (126/247)   [Kremote: Compressing objects:  52% (129/247)   [Kremote: Compressing objects:  53% (131/247)   [Kremote: Compressing objects:  54% (134/247)   [Kremote: Compressing objects:  55% (136/247)   [Kremote: Compressing objects:  56% (139/247)   [Kremote: Compressing objects:  57% (141/247)   [Kremote: Compressing objects:  58% (144/247)   [Kremote: Compressing objects:  59% (146/247)   [Kremote: Compressing objects:  60% (149/247)   [Kremote: Compressing objects:  61% (151/247)   [Kremote: Compressing objects:  62% (154/247)   [Kremote: Compressing objects:  63% (156/247)   [Kremote: Compressing objects:  64% (159/247)   [Kremote: Compressing objects:  65% (161/247)   [Kremote: Compressing objects:  66% (164/247)   [Kremote: Compressing objects:  67% (166/247)   [Kremote: Compressing objects:  68% (168/247)   [Kremote: Compressing objects:  69% (171/247)   [Kremote: Compressing objects:  70% (173/247)   [Kremote: Compressing objects:  71% (176/247)   [Kremote: Compressing objects:  72% (178/247)   [Kremote: Compressing objects:  73% (181/247)   [Kremote: Compressing objects:  74% (183/247)   [Kremote: Compressing objects:  75% (186/247)   [Kremote: Compressing objects:  76% (188/247)   [Kremote: Compressing objects:  77% (191/247)   [Kremote: Compressing objects:  78% (193/247)   [Kremote:
-testpc-50  Compressing objects:  79% (196/247)   [Kremote: Compressing objects:  80% (198/247)   [Kremote: Compressing objects:  81% (201/247)   [Kremote: Compressing objects:  82% (203/247)   [Kremote: Compressing objects:  83% (206/247)   [Kremote: Compressing objects:  84% (208/247)   [Kremote: Compressing objects:  85% (210/247)   [Kremote: Compressing objects:  86% (213/247)   [Kremote: Compressing objects:  87% (215/247)   [Kremote: Compressing objects:  88% (218/247)   [Kremote: Compressing objects:  89% (220/247)   [Kremote: Compressing objects:  90% (223/247)   [Kremote: Compressing objects:  91% (225/247)   [Kremote: Compressing objects:  92% (228/247)   [Kremote: Compressing objects:  93% (230/247)   [Kremote: Compressing objects:  94% (233/247)   [Kremote: Compressing objects:  95% (235/247)   [Kremote: Compressing objects:  96% (238/247)   [Kremote: Compressing objects:  97% (240/247)   [Kremote: Compressing objects:  98% (243/247)   [Kremote: Compressing objects:  99% (245/247)   [Kremote: Compressing objects: 100% (247/247)   [Kremote: Compressing objects: 100% (247/247), done.[K
-testpc-50 Receiving objects:   0% (1/257)   
-testpc-50 Receiving objects:   1% (3/257)   
-testpc-50 Receiving objects:   2% (6/257)   
-testpc-50 Receiving objects:   3% (8/257)   
-testpc-50 Receiving objects:   4% (11/257)   
-testpc-50 Receiving objects:   5% (13/257)   
-testpc-50 Receiving objects:   6% (16/257)   
-testpc-50 Receiving objects:   7% (18/257)   
-testpc-50 Receiving objects:   8% (21/257)   
-testpc-50 Receiving objects:   9% (24/257)   
-testpc-50 Receiving objects:  10% (26/257)   
-testpc-50 Receiving objects:  11% (29/257)   
-testpc-50 Receiving objects:  12% (31/257)   
-testpc-50 Receiving objects:  13% (34/257)   
-testpc-50 Receiving objects:  14% (36/257)   
-testpc-50 Receiving objects:  15% (39/257)   
-testpc-50 Receiving objects:  16% (42/257)   
-testpc-50 Receiving objects:  17% (44/257)   
-testpc-50 Receiving objects:  18% (47/257)   
-testpc-50 Receiving objects:  19% (49/257)   
-testpc-50 Receiving objects:  20% (52/257)   
-testpc-50 Receiving objects:  21% (54/257)   
-testpc-50 Receiving objects:  22% (57/257)   
-testpc-50 Receiving objects:  23% (60/257)   
-testpc-50 Receiving objects:  24% (62/257)   
-testpc-50 Receiving objects:  25% (65/257)   
-testpc-50 Receiving objects:  26% (67/257)   
-testpc-50 Receiving objects:  27% (70/257)   
-testpc-50 Receiving objects:  28% (72/257)   
-testpc-50 Receiving objects:  29% (75/257)   
-testpc-50 Receiving objects:  30% (78/257)   
-testpc-50 Receiving objects:  31% (80/257)   
-testpc-50 Receiving objects:  32% (83/257)   
-testpc-50 Receiving objects:  33% (85/257)   
-testpc-50 Receiving objects:  34% (88/257)   
-testpc-50 Receiving objects:  35% (90/257)   
-testpc-50 Receiving objects:  36% (93/257)   
-testpc-50 Receiving objects:  37% (96/257)   
-testpc-50 Receiving objects:  38% (98/257)   
-testpc-50 Receiving objects:  39% (101/257)   
-testpc-50 Receiving objects:  40% (103/257)   
-testpc-50 remote: Total 257 (delta 167), reused 11 (delta 6)[K
-testpc-50 Receiving objects:  41% (106/257)   
-testpc-50 Receiving objects:  42% (108/257)   
-testpc-50 Receiving objects:  43% (111/257)   
-testpc-50 Receiving objects:  44% (114/257)   
-testpc-50 Receiving objects:  45% (116/257)   
-testpc-50 Receiving objects:  46% (119/257)   
-testpc-50 Receiving objects:  47% (121/257)   
-testpc-50 Receiving objects:  48% (124/257)   
-testpc-50 Receiving objects:  49% (126/257)   
-testpc-50 Receiving objects:  50% (129/257)   
-testpc-50 Receiving objects:  51% (132/257)   Receiving objects:  52% (134/257)   
-testpc-50 Receiving objects:  53% (137/257)   
-testpc-50 Receiving objects:  54% (139/257)   
-testpc-50 Receiving objects:  55% (142/257)   
-testpc-50 Receiving objects:  56% (144/257)   
-testpc-50 Receiving objects:  57% (147/257)   
-testpc-50 Receiving objects:  58% (150/257)   
-testpc-50 Receiving objects:  59% (152/257)   
-testpc-50 Receiving objects:  60% (155/257)   
-testpc-50 Receiving objects:  61% (157/257)   
-testpc-50 Receiving objects:  62% (160/257)   
-testpc-50 Receiving objects:  63% (162/257)   
-testpc-50 Receiving objects:  64% (165/257)   
-testpc-50 Receiving objects:  65% (168/257)   
-testpc-50 Receiving objects:  66% (170/257)   
-testpc-50 Receiving objects:  67% (173/257)   
-testpc-50 Receiving objects:  68% (175/257)   
-testpc-50 Receiving objects:  69% (178/257)   Receiving objects:  70% (180/257)   
-testpc-50 Receiving objects:  71% (183/257)   
-testpc-50 Receiving objects:  72% (186/257)   
-testpc-50 Receiving objects:  73% (188/257)   
-testpc-50 Receiving objects:  74% (191/257)   
-testpc-50 Receiving objects:  75% (193/257)   
-testpc-50 Receiving objects:  76% (196/257)   
-testpc-50 Receiving objects:  77% (198/257)   
-testpc-50 Receiving objects:  78% (201/257)   
-testpc-50 Receiving objects:  79% (204/257)   
-testpc-50 Receiving objects:  80% (206/257)   
-testpc-50 Receiving objects:  81% (209/257)   
-testpc-50 Receiving objects:  82% (211/257)   
-testpc-50 Receiving objects:  83% (214/257)   
-testpc-50 Receiving objects:  84% (216/257)   
-testpc-50 Receiving objects:  85% (219/257)   
-testpc-50 Receiving objects:  86% (222/257)   
-testpc-50 Receiving objects:  87% (224/257)   
-testpc-50 Receiving objects:  88% (227/257)   
-testpc-50 Receiving objects:  89% (229/257)   
-testpc-50 Receiving objects:  90% (232/257)   
-testpc-50 Receiving objects:  91% (234/257)   
-testpc-50 Receiving objects:  92% (237/257)   
-testpc-50 Receiving objects:  93% (240/257)   
-testpc-50 Receiving objects:  94% (242/257)   
-testpc-50 Receiving objects:  95% (245/257)   
-testpc-50 Receiving objects:  96% (247/257)   
-testpc-50 Receiving objects:  97% (250/257)   
-testpc-50 Receiving objects:  98% (252/257)   
-testpc-50 Receiving objects:  99% (255/257)   
-testpc-50 Receiving objects: 100% (257/257)   
-testpc-50 Receiving objects: 100% (257/257), 47.77 KiB, done.
-testpc-50 Resolving deltas:   0% (0/167)   
-testpc-50 Resolving deltas:   1% (3/167)   
-testpc-50 Resolving deltas:  14% (25/167)   
-testpc-50 Resolving deltas:  15% (26/167)   
-testpc-50 Resolving deltas:  17% (30/167)   
-testpc-50 Resolving deltas:  19% (32/167)   
-testpc-50 Resolving deltas:  22% (38/167)   
-testpc-50 Resolving deltas:  24% (41/167)   
-testpc-50 Resolving deltas:  25% (42/167)   
-testpc-50 Resolving deltas:  39% (66/167)   
-testpc-50 Resolving deltas:  40% (67/167)   
-testpc-50 Resolving deltas:  41% (70/167)   
-testpc-50 Resolving deltas:  43% (72/167)   
-testpc-50 Resolving deltas:  44% (74/167)   
-testpc-50 Resolving deltas:  49% (83/167)   
-testpc-50 Resolving deltas:  52% (87/167)   
-testpc-50 Resolving deltas:  53% (90/167)   
-testpc-50 Resolving deltas:  55% (92/167)   
-testpc-50 Resolving deltas:  56% (94/167)   
-testpc-50 Resolving deltas:  57% (96/167)   
-testpc-50 Resolving deltas:  58% (97/167)   
-testpc-50 Resolving deltas:  59% (99/167)   
-testpc-50 Resolving deltas:  60% (101/167)   
-testpc-50 Resolving deltas:  61% (102/167)   
-testpc-50 Resolving deltas:  62% (104/167)   
-testpc-50 Resolving deltas:  63% (106/167)   
-testpc-50 Resolving deltas:  65% (109/167)   
-testpc-50 Resolving deltas:  66% (111/167)   
-testpc-50 Resolving deltas:  67% (112/167)   
-testpc-50 Resolving deltas:  68% (114/167)   
-testpc-50 Resolving deltas:  69% (116/167)   
-testpc-50 Resolving deltas:  70% (117/167)   
-testpc-50 Resolving deltas:  71% (120/167)   
-testpc-50 Resolving deltas:  72% (121/167)   
-testpc-50 Resolving deltas:  73% (122/167)   
-testpc-50 Resolving deltas:  76% (127/167)   
-testpc-50 Resolving deltas:  78% (131/167)   
-testpc-50 Resolving deltas:  79% (132/167)   
-testpc-50 Resolving deltas:  80% (134/167)   
-testpc-50 Resolving deltas:  82% (137/167)   
-testpc-50 Resolving deltas:  83% (139/167)   
-testpc-50 Resolving deltas:  84% (141/167)   
-testpc-50 Resolving deltas:  88% (147/167)   
-testpc-50 Resolving deltas:  89% (149/167)   
-testpc-50 Resolving deltas:  91% (153/167)   
-testpc-50 Resolving deltas:  92% (155/167)   
-testpc-50 Resolving deltas:  93% (156/167)   
-testpc-50 Resolving deltas:  94% (157/167)   
-testpc-50 Resolving deltas:  95% (159/167)   
-testpc-50 Resolving deltas:  96% (161/167)   
-testpc-50 Resolving deltas:  97% (162/167)   
-testpc-50 Resolving deltas:  98% (165/167)   
-testpc-50 Resolving deltas: 100% (167/167)   
-testpc-50 Resolving deltas: 100% (167/167), completed with 61 local objects.
-testpc-50 From https://bitbucket.org/teamlabruby/OnlineDocuments
-testpc-50    8ade6b8..faa1ae2  develop    -> origin/develop
-testpc-50    171e016..2ea02db  master     -> origin/master
-testpc-50 Updating 8ade6b8..faa1ae2
-testpc-50 Fast-forward
-testpc-50  .gitignore                                         |   25 +-
-testpc-50  .../EtalonEssence/CommentSelectedColorEtalon.bmp   |  Bin 0 -> 294 bytes
-testpc-50  .../DocEditorImageAdvancedFunctions.rb             |    2 -
-testpc-50  .../DocEditorImageTopToolbarFunctions.rb           |    2 +-
-testpc-50  .../DocEditorParagraphContextMenuFunctions.rb      |    4 +-
-testpc-50  .../DocEditorShapeSidebarFunctions.rb              |   22 +
-testpc-50 
-testpc-50  .../DocumentEditor/Sidebar/ShapeSideToolbar.rb     |   12 +
-testpc-50  .../TopToolbar/ToolbarCanvas/TopToolbarList.rb     |   24 +-
-testpc-50  .../Windows/ChartAdvancedSettings.rb               |    2 +-
-testpc-50  .../Windows/TableAdvancedSettings.rb               |    6 +-
-testpc-50  .../Portals/Teamlab/Teamdoc/TeamDocBootstrap.rb    |    4 +-
-testpc-50  .../SpreadsheetFormulaTestHelper.rb                |    4 +-
-testpc-50  .../Sidebar/FormulaEditRowToolbar.rb               |    2 +-
-testpc-50  .../TopToolbar/TopToolbarSpreadsheet.rb            |   20 +-
-testpc-50 
-testpc-50  .../TopToolbar/TopToolbarSpreadsheetMerge.rb       |    2 +-
-testpc-50  .../Common/SmokeOpen/SmokeOpenMoreFiles_spec.rb    |    4 +-
-testpc-50  .../LeftSideBar/file_sidebar_spec.rb               |   68 +-
-testpc-50  .../NumberingTests/numbering_basic_spec.rb         |   51 +-
-testpc-50  .../Objects/Border/border_object_design_spec.rb    | 1100 +++++++++-
-testpc-50  .../Objects/Comment/comment_object_design_spec.rb  |  691 ++++++
-testpc-50 
-testpc-50  .../HightLight/highlight_object_disign_spec.rb     |    2 +-
-testpc-50  .../Objects/Margins/margins_object_design_spec.rb  |   65 +
-testpc-50  .../paragraph_style_objects_design_spec.rb         |    6 +-
-testpc-50 
-testpc-50  .../Collect Version/collect_version_spec.rb        |   16 +-
-testpc-50  .../Functional/FormulaRow/FormulaRowData.rb        |    2 +-
-testpc-50  .../Functional/FormulaRow/formula_row_spec.rb      | 2320 ++++++++++----------
-testpc-50 
-testpc-50  .../AdvancedFormula/advanced_formula_spec.rb       |   46 +-
-testpc-50  .../Functional/Hotkeys/Hotkeys_spec.rb             |   47 +-
-testpc-50  .../Chart/chart_multiply_spec.rb}                  |   10 +-
-testpc-50  .../One User/Smoke/Search/search_spec.rb           |   24 +-
-testpc-50  .../WebSocketPerformanceTestData.rb                |    6 +-
-testpc-50  .../CollobarativeWebSocket/WebSockets.rb           |   17 +-
-testpc-50  .../Studio/Performance/KeepAliveConnection.rb      |   26 +
-testpc-50  RspecTest/TestHelper.rb                            |    4 +-
-testpc-50 
-testpc-50  34 files changed, 3231 insertions(+), 1405 deletions(-)
-testpc-50  create mode 100644 Data/ImagePatterns/EtalonEssence/CommentSelectedColorEtalon.bmp
-testpc-50  create mode 100644 RspecTest/DocEditor/One User/Objects/Comment/comment_object_design_spec.rb
-testpc-50  create mode 100644 RspecTest/DocEditor/One User/Objects/Margins/margins_object_design_spec.rb
-testpc-50  rename RspecTest/SpreadsheetEditor/One User/{Pairwise/Chart/chart_pairwise_spec.rb => Multiply/Chart/chart_multiply_spec.rb} (97%)
-testpc-50  create mode 100644 RspecTest/Studio/Performance/KeepAliveConnection.rb
-testpc-50 Already on 'develop'
-testpc-50 
+testpc-50 HEAD is now at efb2f72 Remove old files
 testpc-50 Already up-to-date.
-testpc-50 Using rake (10.1.0) 
-testpc-50 
-testpc-50 Using activesupport (3.0.0) 
-testpc-50 
-testpc-50 Using archive-tar-minitar (0.5.2) 
-testpc-50 
-testpc-50 Using htmlentities (4.3.1) 
-testpc-50 
-testpc-50 Using nokogiri (1.5.5) 
-testpc-50 
-testpc-50 Using rubyzip (1.0.0) 
-testpc-50 
-testpc-50 Using axlsx (2.0.1) 
-testpc-50 
-testpc-50 Using bindata (1.6.0) 
-testpc-50 
-testpc-50 Using builder (3.2.2) 
-testpc-50 
-testpc-50 Using ffi (1.9.3) 
-testpc-50 
-testpc-50 Using childprocess (0.3.9) 
-testpc-50 
-testpc-50 Using chunky_png (1.2.9) 
-testpc-50 
-testpc-50 Using clipboard (1.0.5) 
-testpc-50 
-testpc-50 Using columnize (0.3.6) 
-testpc-50 
-testpc-50 Using crontab (0.0.2) 
-testpc-50 
-testpc-50 Using i18n (0.6.5) 
-testpc-50 
-testpc-50 Using faker (1.2.0) 
-testpc-50 
-testpc-50 Using yml_reader (0.2) 
-testpc-50 
-testpc-50 Using data_magic (0.16.1) 
-testpc-50 
-testpc-50 Using debugger-ruby_core_source (1.2.4) 
-testpc-50 
-testpc-50 Using debase (0.0.8) 
-testpc-50 
-testpc-50 Using diff-lcs (1.2.5) 
-testpc-50 
-testpc-50 Using differ (0.1.2) 
-testpc-50 
-testpc-50 Using dimensions (1.2.0) 
-testpc-50 
-testpc-50 Using eventmachine (1.0.3) 
-testpc-50 
-testpc-50 Using http_parser.rb (0.5.3) 
-testpc-50 
-testpc-50 Using em-websocket (0.5.0) 
-testpc-50 
-testpc-50 Using websocket (1.0.7) 
-testpc-50 
-testpc-50 Using em-websocket-client (0.1.2) 
-testpc-50 
-testpc-50 Using execjs (2.0.2) 
-testpc-50 
-testpc-50 Using multipart-post (1.2.0) 
-testpc-50 
-testpc-50 Using faraday (0.8.8) 
-testpc-50 
-testpc-50 Using websocket-driver (0.3.0) 
-testpc-50 
-testpc-50 Using faye-websocket (0.7.0) 
-testpc-50 
-testpc-50 Using gdata4ruby (0.1.5) 
-testpc-50 
-testpc-50 Using gcal4ruby (0.5.5) 
-testpc-50 
-testpc-50 Using oauth (0.4.7) 
-testpc-50 
-testpc-50 Using gmail_xoauth (0.4.1) 
-testpc-50 
-testpc-50 Using mime-types (1.25.1) 
-testpc-50 
-testpc-50 Using polyglot (0.3.3) 
-testpc-50 
-testpc-50 Using treetop (1.4.15) 
-testpc-50 
-testpc-50 Using mail (2.5.4) 
-testpc-50 
-testpc-50 Using mime (0.1) 
-testpc-50 
-testpc-50 Using gmail (0.4.0) 
-testpc-50 
-testpc-50 Using httpauth (0.2.0) 
-testpc-50 
+testpc-50 Already on 'develop'
+testpc-50 Already up-to-date.
+testpc-50 Using rake (10.1.1) 
+testpc-50 Using i18n (0.6.9) 
+testpc-50 Using minitest (4.7.5) 
 testpc-50 Using multi_json (1.8.2) 
-testpc-50 
+testpc-50 Using atomic (1.1.14) 
+testpc-50 Using thread_safe (0.1.3) 
+testpc-50 Using tzinfo (0.3.38) 
+testpc-50 Using activesupport (4.0.2) 
+testpc-50 Using archive-tar-minitar (0.5.2) 
+testpc-50 Using htmlentities (4.3.1) 
+testpc-50 Using nokogiri (1.5.5) 
+testpc-50 Using rubyzip (1.1.0) 
+testpc-50 Using axlsx (1.3.6) 
+testpc-50 Using bindata (1.6.0) 
+testpc-50 Using builder (3.2.2) 
+testpc-50 Using ffi (1.9.3) 
+testpc-50 Using childprocess (0.3.9) 
+testpc-50 Using chunky_png (1.2.9) 
+testpc-50 Using clipboard (1.0.5) 
+testpc-50 Using columnize (0.3.6) 
+testpc-50 Using crontab (0.0.2) 
+testpc-50 Using faker (1.2.0) 
+testpc-50 Using yml_reader (0.2) 
+testpc-50 Using data_magic (0.16.1) 
+testpc-50 Using debugger-ruby_core_source (1.2.4) 
+testpc-50 Using debase (0.0.9) 
+testpc-50 Using diff-lcs (1.2.5) 
+testpc-50 Using differ (0.1.2) 
+testpc-50 Using dimensions (1.3.0) 
+testpc-50 Using eventmachine (1.0.3) 
+testpc-50 Using http_parser.rb (0.5.3) 
+testpc-50 Using em-websocket (0.5.0) 
+testpc-50 Using websocket (1.0.7) 
+testpc-50 Using em-websocket-client (0.1.2) 
+testpc-50 Using execjs (2.0.2) 
+testpc-50 Using multipart-post (1.2.0) 
+testpc-50 Using faraday (0.8.8) 
+testpc-50 Using websocket-driver (0.3.1) 
+testpc-50 Using faye-websocket (0.7.1) 
+testpc-50 Using gdata4ruby (0.1.5) 
+testpc-50 Using gcal4ruby (0.5.5) 
+testpc-50 Using oauth (0.4.7) 
+testpc-50 Using gmail_xoauth (0.4.1) 
+testpc-50 Using mime-types (1.25.1) 
+testpc-50 Using polyglot (0.3.3) 
+testpc-50 Using treetop (1.4.15) 
+testpc-50 Using mail (2.5.4) 
+testpc-50 Using mime (0.2.0) 
+testpc-50 Using gmail (0.4.0) 
+testpc-50 Using httpauth (0.2.0) 
 testpc-50 Using jwt (0.1.8) 
-testpc-50 
 testpc-50 Using multi_xml (0.5.5) 
-testpc-50 
 testpc-50 Using rack (1.5.2) 
-testpc-50 
 testpc-50 Using oauth2 (0.9.2) 
-testpc-50 
 testpc-50 Using google_drive (0.3.6) 
-testpc-50 
 testpc-50 Using headless (1.0.1) 
-testpc-50 
-testpc-50 Using image_size (1.1.4) 
-testpc-50 
+testpc-50 Using image_size (1.1.5) 
 testpc-50 Using json (1.8.1) 
-testpc-50 
 testpc-50 Using mysql (2.9.1) 
-testpc-50 
 testpc-50 Using net-ping (1.7.1) 
-testpc-50 
-testpc-50 Using ox (2.0.11) 
-testpc-50 
+testpc-50 Using ox (2.0.12) 
 testpc-50 Using page_navigation (0.9) 
-testpc-50 
-testpc-50 Using selenium-webdriver (2.37.0) 
-testpc-50 
+testpc-50 Using selenium-webdriver (2.39.0) 
 testpc-50 Using watir-webdriver (0.6.4) 
-testpc-50 
-testpc-50 Using page-object (0.9.3) 
-testpc-50 
+testpc-50 Using page-object (0.9.4) 
 testpc-50 Using parseexcel (0.5.2) 
-testpc-50 
 testpc-50 Using rmagick (2.13.2) 
-testpc-50 
 testpc-50 Using ruby-ole (1.2.11.7) 
-testpc-50 
-testpc-50 Using spreadsheet (0.9.5) 
-testpc-50 
-testpc-50 Using roo (1.12.2) 
-testpc-50 
+testpc-50 Using spreadsheet (0.9.6) 
+testpc-50 Using roo (1.13.2) 
 testpc-50 Using rspec-core (2.14.7) 
 testpc-50 Using rspec-expectations (2.14.4) 
-testpc-50 
 testpc-50 Using rspec-mocks (2.14.4) 
-testpc-50 
 testpc-50 Using rspec (2.14.1) 
-testpc-50 
 testpc-50 Using rspec-retry (0.2.1) 
-testpc-50 
 testpc-50 Using ruby-debug-ide (0.4.22) 
-testpc-50 
 testpc-50 Using rubyXL (1.2.10) 
-testpc-50 
 testpc-50 Using web-socket-ruby (0.1.0) 
-testpc-50 
-testpc-50 Using writeexcel (1.0.1) 
-testpc-50 
+testpc-50 Using writeexcel (1.0.3) 
 testpc-50 Using xml-object (0.9.93) 
-testpc-50 
 testpc-50 Using xml-simple (1.1.2) 
-testpc-50 
 testpc-50 Using yard (0.8.7.3) 
-testpc-50 
 testpc-50 Using zip-zip (0.2) 
-testpc-50 
 testpc-50 Using bundler (1.3.5) 
-testpc-50 
-testpc-50 [32mYour bundle is complete![0m
-testpc-50 
-testpc-50 [32mUse `bundle show [gemname]` to see where a bundled gem is installed.[0m
-testpc-50 HEAD is now at 07a0085 Daily Check fix close browser
-testpc-50 remote: Counting objects: 12, done.[K
-testpc-50 remote: Compressing objects:  14% (1/7)   [Kremote: Compressing objects:  28% (2/7)   [Kremote: Compressing objects:  42% (3/7)   [Kremote: Compressing objects:  57% (4/7)   [Kremote: Compressing objects:  71% (5/7)   [Kremote: Compressing objects:  85% (6/7)   [Kremote: Compressing objects: 100% (7/7)   [Kremote: Compressing objects: 100% (7/7), done.[K
-testpc-50 remote: Total 7 (delta 5), reused 0 (delta 0)[K
-testpc-50 Unpacking objects:  14% (1/7)   
-testpc-50 Unpacking objects:  28% (2/7)   
-testpc-50 Unpacking objects:  42% (3/7)   
-testpc-50 Unpacking objects:  57% (4/7)   
-testpc-50 Unpacking objects:  71% (5/7)   
-testpc-50 Unpacking objects:  85% (6/7)   
-testpc-50 Unpacking objects: 100% (7/7)   
-testpc-50 Unpacking objects: 100% (7/7), done.
-testpc-50 From https://bitbucket.org/teamlabqa/SharedFunctional
-testpc-50    07a0085..f0de8a7  master     -> origin/master
-testpc-50 
-testpc-50 Updating 07a0085..f0de8a7
-testpc-50 Fast-forward
-testpc-50 
-testpc-50  Helpers/WebDriver.rb |    8 ++++----
-testpc-50  1 file changed, 4 insertions(+), 4 deletions(-)
-testpc-50 Already on 'master'
-testpc-50 
-testpc-50 Already up-to-date.
-testpc-50 Using json (1.8.1) 
-testpc-50 
-testpc-50 Using mini_portile (0.5.2) 
-testpc-50 
-testpc-50 Using nokogiri (1.6.0) 
-testpc-50 
-testpc-50 Using uuidtools (2.1.4) 
-testpc-50 
-testpc-50 Using aws-sdk (1.11.1) 
-testpc-50 
-testpc-50 Using differ (0.1.2) 
-testpc-50 
-testpc-50 Using multipart-post (1.2.0) 
-testpc-50 
-testpc-50 Using faraday (0.8.8) 
-testpc-50 
-testpc-50 Using ffi (1.9.3) 
-testpc-50 
-testpc-50 Using oauth (0.4.7) 
-testpc-50 
-testpc-50 Using gmail_xoauth (0.4.1) 
-testpc-50 
-testpc-50 Using mime-types (1.25) 
-testpc-50 
-testpc-50 Using polyglot (0.3.3) 
-testpc-50 
-testpc-50 Using treetop (1.4.15) 
-testpc-50 
-testpc-50 Using mail (2.5.4) 
-testpc-50 
-testpc-50 Using mime (0.1) 
-testpc-50 
-testpc-50 Using gmail (0.4.0) 
-testpc-50 
-testpc-50 Using httpauth (0.2.0) 
-testpc-50 
-testpc-50 Using multi_json (1.8.2) 
-testpc-50 
-testpc-50 Using jwt (0.1.8) 
-testpc-50 
-testpc-50 Using multi_xml (0.5.5) 
-testpc-50 
-testpc-50 Using rack (1.5.2) 
-testpc-50 
-testpc-50 Using oauth2 (0.9.2) 
-testpc-50 
-testpc-50 Using google_drive (0.3.6) 
-testpc-50 
-testpc-50 Using headless (1.0.1) 
-testpc-50 
-testpc-50 Using image_size (1.1.4) 
-testpc-50 Using net-ping (1.7.1) 
-testpc-50 
-testpc-50 Using rmagick (2.13.2) 
-testpc-50 
-testpc-50 Using zip (2.0.2) 
-testpc-50 
-testpc-50 Using bundler (1.3.5) 
-testpc-50 
 testpc-50 [32mYour bundle is complete![0m
 testpc-50 [32mUse `bundle show [gemname]` to see where a bundled gem is installed.[0m
-testpc-50 fatal: Unable to create '/home/testpc-50/RubymineProjects/TeamLab/.git/index.lock': File exists.
-testpc-50 
-testpc-50 If no other git process is currently running, this probably means a
-testpc-50 git process crashed in this repository earlier. Make sure no other git
-testpc-50 process is running and remove the file manually to continue.
-testpc-50 
-testpc-50 "19:18:01/17.12.13    [TestrailHelper] Begin initializing Testrail..."
-testpc-50 "19:18:02/17.12.13    [TestrailHelper] Initializing complete!"
-testpc-50 "19:18:02/17.12.13    [UserHelper] Add User - Hamish Mitchell"
-testpc-50 "19:18:02/17.12.13    [UserHelper] Add User - Mark Pottato"
-testpc-50 "19:18:02/17.12.13    [ISAFunctions] Start initialization of selenium for ISA"
-testpc-50 "19:18:03/17.12.13    [HeadlessHelper] xrandr answer: Screen 0: minimum 8 x 8, current 1024 x 768, maximum 8192 x 8192\nDVI-I-0 disconnected (normal left inverted right x axis y axis)\nVGA-0 disconnected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm\nDVI-I-1 disconnected (normal left inverted right x axis y axis)\nHDMI-0 disconnected (normal left inverted right x axis y axis)\n  1024x768 (0x251)   65.0MHz\n        h: width  1024 start 1048 end 1184 total 1344 skew    0 clock   48.4KHz\n        v: height  768 start  771 end  777 total  806           clock   60.0Hz\n"
-testpc-50 "19:18:03/17.12.13    [HeadlessHelper] Real Display Exists: false"
-testpc-50 "19:18:03/17.12.13    [HeadlessHelper] Starting Headless Session"
-testpc-50 "19:18:06/17.12.13    [ISAFunctions] Successfully initialize selenium server"
-testpc-50 
-testpc-50 "19:18:06/17.12.13    [ISAFunctions] Start deleting files on ISA"
-testpc-50 "19:18:06/17.12.13    [ISAFunctions] First file in list deleted"
-testpc-50 "19:18:06/17.12.13    [ISAFunctions] End deleting files on ISA"
-testpc-50 "19:18:06/17.12.13    [ISAFunctions] Start creating new file with name: TestRunner file type: Document"
-testpc-50 "19:18:07/17.12.13    [ISAFunctions] Successfully created new file"
-testpc-50 "19:18:09/17.12.13    [ISAFunctions] Click on link http://192.168.3.213/OfficeWeb/apps/api/documents/index.html?key=192_168_3_249_446022741_2902037713&filetype=docx&url=http%3A%2F%2F192.168.3.213%2Ftestdocs%2Ffiles%2F192.168.3.249%2FTestRunner.docx&title=TestRunner.docx&lang=en&userid=uid-901&username=Hamish%20Mitchell&buttons=save;share; to open file in canvas editor"
-testpc-50 
-testpc-50 "19:18:09/17.12.13    [Management] Start waiting for Round Status"
-testpc-50 
-testpc-50 "19:18:12/17.12.13    [Management] Waiting for Round Status for 1 of 100 timeout"
-testpc-50 "19:18:13/17.12.13    [Management] Waiting for Round Status for 2 of 100 timeout"
-testpc-50 "19:18:14/17.12.13    [Management] Waiting for Round Status for 3 of 100 timeout"
-testpc-50 "19:18:15/17.12.13    [Management] Waiting for Round Status for 4 of 100 timeout"
-testpc-50 "19:18:16/17.12.13    [Management] Waiting for Round Status for 5 of 100 timeout"
-testpc-50 "19:18:17/17.12.13    [Management] Waiting for Round Status for 6 of 100 timeout"
-testpc-50 "19:18:18/17.12.13    [Management] Waiting for Round Status for 7 of 100 timeout"
-testpc-50 "19:18:19/17.12.13    [Management] Waiting for Round Status for 8 of 100 timeout"
-testpc-50 "19:18:28/17.12.13    [ISAFunctions] Start initialization of selenium for ISA"
-testpc-50 RandR extension missing
-testpc-50 "19:18:28/17.12.13    [HeadlessHelper] xrandr answer: "
-testpc-50 "19:18:28/17.12.13    [HeadlessHelper] Real Display Exists: false"
-testpc-50 "19:18:28/17.12.13    [HeadlessHelper] Starting Headless Session"
-testpc-50 "19:18:31/17.12.13    [ISAFunctions] Successfully initialize selenium server"
-testpc-50 "19:18:33/17.12.13    [ISAFunctions] Click on link http://192.168.3.213/OfficeWeb/apps/api/documents/index.html?key=192_168_3_249_446022741_2902037713&filetype=docx&url=http%3A%2F%2F192.168.3.213%2Ftestdocs%2Ffiles%2F192.168.3.249%2FTestRunner.docx&title=TestRunner.docx&lang=en&userid=uid-902&username=Mark%20Pottato&buttons=save;share; to open file in canvas editor"
-testpc-50 "19:18:33/17.12.13    [Management] Start waiting for Round Status"
-testpc-50 "19:18:47/17.12.13    [TopToolbar] Start saving operation"
-testpc-50 "19:18:47/17.12.13    [Management] Start waiting for Round Status"
-testpc-50 "19:18:50/17.12.13    [Management] Waiting for Round Status for 1 of 100 timeout"
-testpc-50 "19:18:51/17.12.13    [Management] Waiting for Round Status for 2 of 100 timeout"
-testpc-50 "19:18:51/17.12.13    [TopToolbar] Document is saved"
-testpc-50 "19:18:52/17.12.13    [TopToolbar] Click on 'Never show this message'"
-testpc-50 
-testpc-50 "19:18:52/17.12.13    [TopToolbar] Click on 'Save' button"
-testpc-50 
-testpc-50 "19:18:52/17.12.13    [TopToolbar] Start updating operation"
-testpc-50 
-testpc-50 "19:18:52/17.12.13    [Management] Start waiting for Round Status"
-testpc-50 
-testpc-50 "19:18:55/17.12.13    [Management] Waiting for Round Status for 1 of 100 timeout"
-testpc-50 "19:18:56/17.12.13    [Management] Waiting for Round Status for 2 of 100 timeout"
-testpc-50 
-testpc-50 "19:18:56/17.12.13    [TopToolbar] DocumentEditor is updated"
-testpc-50 "19:18:57/17.12.13    [LeftSideToolbar] Is Left Sidebar open: false"
-testpc-50 "19:18:57/17.12.13    [LeftSideToolbar] Click on 'File' button"
-testpc-50 "19:18:58/17.12.13    [LeftSideToolbar] Is Left Sidebar open: true"
-testpc-50 "19:18:58/17.12.13    [LeftSideToolbar] Is Download As Tab pressed: true"
-testpc-50 "19:18:59/17.12.13    [LeftSideToolbar] Is Left Sidebar open: true"
-testpc-50 "19:18:59/17.12.13    [Management] Start waiting for Round Status"
-testpc-50 "19:19:02/17.12.13    [Management] Waiting for Round Status for 1 of 300 timeout"
-testpc-50 "19:19:04/17.12.13    [Management] Waiting for Round Status for 2 of 300 timeout"
-testpc-50 Invalid date/time in zip entry
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 Invalid date/time in zip entry
-testpc-50 Invalid date/time in zip entry
-testpc-50 Invalid date/time in zip entry
-testpc-50 
-testpc-50 "19:19:05/17.12.13    [TestrailCase] Set test case result: passed"
-testpc-50 "19:19:10/17.12.13    [HeadlessHelper] Stopping Headless Session"
-testpc-50 "19:19:16/17.12.13    [HeadlessHelper] Stopping Headless Session"
+testpc-50 HEAD is now at f0de8a7 Merge remote-tracking branch 'origin/master'
+testpc-50 Updating f0de8a7..fa2d9fc
+testpc-50 error: The following untracked working tree files would be overwritten by merge:
+testpc-50 	Gemfile.lock
+testpc-50 Please move or remove them before you can merge.
+testpc-50 Aborting
+testpc-50 /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:245:in `mkdir': Permission denied - /mnt/data_share/RunnerLogs (Errno::EACCES)
+testpc-50 	from /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:245:in `fu_mkdir'
+testpc-50 	from /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:219:in `block (2 levels) in mkdir_p'
+testpc-50 	from /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:217:in `reverse_each'
+testpc-50 	from /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:217:in `block in mkdir_p'
+testpc-50 	from /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:203:in `each'
+testpc-50 	from /home/testpc-50/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/fileutils.rb:203:in `mkdir_p'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration.rb:1138:in `file_at'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration.rb:578:in `block in add_formatter'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration.rb:578:in `map'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration.rb:578:in `add_formatter'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration_options.rb:78:in `block in load_formatters_into'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration_options.rb:78:in `each'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration_options.rb:78:in `load_formatters_into'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/configuration_options.rb:28:in `configure'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/command_line.rb:21:in `run'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/runner.rb:80:in `run'
+testpc-50 	from /home/testpc-50/.rvm/gems/ruby-2.0.0-p247/gems/rspec-core-2.14.7/lib/rspec/core/runner.rb:17:in `block in autorun'
 testpc-50 chrome: no process found
 testpc-50 firefox: no process found
 testpc-50 opera: no process found

@@ -47,7 +47,7 @@
     background-size: cover;
 }
 
-.file-name span {
+.rspec-popup-window  .file-name span {
     background: rgba(50, 232, 101, 0.41);
     border: solid 1px rgba(43, 167, 6, 0.23);
     padding: 5px;

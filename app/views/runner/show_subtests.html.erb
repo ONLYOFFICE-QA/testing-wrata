@@ -9,7 +9,7 @@
         <% subtests = get_subtest_by_path(@file_path) %>
         <% subtests.each do |subtest| %>
             <div class="subtest-row">
-              <i class="icon-plus-sign add-test"></i>
+              <i class="glyphicon glyphicon-plus-sign add-test"></i>
               <div data-role="<%= subtest[:stroke] %>" class="test-name"><%= subtest[:name] %></div>
             </div>
         <% end %>

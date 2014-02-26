@@ -59,9 +59,9 @@ function Runner() {
     const SIDE_MAX_TEST_LENGTH = 40;
     var _self = this;
 
-    this.updateInfoFromAllServer = function () {
+    this.eventToGetUpdatedDataFromServer = function () {
         setInterval(function () {
-            _self.getInfoFromAllServer()
+            _self.getUpdatedDataFromServer()
         }, STATUS.UPDATE_INTERVAL);
     };
 
@@ -103,44 +103,10 @@ function Runner() {
         return $('li.active .branch').val();
     };
 
-    this.startTests = function () {
-        $.ajax({
-            url: 'runner/start',
-            type: 'POST',
-            data: {
-                'selectedServers': this.getSelectedServers(),
-                'selectedTests': this.getSelectedTests(),
-                'server': this.getServerFromActiveTab(),
-                'region': this.getRegionFromActiveTab(),
-                'branch': this.getBranch(),
-                'project': this.getCurrentProject()
-            },
-            beforeSend: function () {
-                _self.disableStartButtons()
-            },
-            complete: function () {
-                _self.enableStartButtons()
-            },
-            success: function (data) {
-                console.log(data);
-                _self.clearServerLogs(_self.getSelectedServers());
-                uncheckAllTests();
-                uncheckAllServers();
-                showAndHideList();
-                hideStartButtonFromTabPane();
-                alert('successful started')
-            },
-            error: function (e) {
-                console.log(e.message);
-                failAlert();
-            }
-        })
-    };
-
     this.showCurrentRspecResult = function (server_name) {
         $.ajax({
             url: 'servers/show_current_results',
-            type: 'POST',
+            type: 'GET',
             data: {
                 'server': server_name
             },
@@ -152,10 +118,9 @@ function Runner() {
         })
     };
 
-    this.eventToShowCurrentRspecResult = function () {
-        $('.server .progress-bar').click(function () {
-            var server = $(this).parent().parent().parent().parent();
-            var server_name = server.find('input').attr('id');
+    this.eventToShowCurrentRspecResult = function (elem) {
+        elem.on('click', function () {
+            var server_name = $(this).attr('data-server')
             _self.showCurrentRspecResult(server_name)
         })
     };
@@ -181,54 +146,24 @@ function Runner() {
         }
     };
 
-    this.startTestList = function () {
-        $.ajax({
-            url: 'runner/start_list',
-            type: 'POST',
-            data: {
-                'selectedServers': this.getSelectedServers(),
-                'testList': this.getTestList(),
-                'server': this.getServerFromSidebar(),
-                'region': this.getRegionFromSidebar(),
-                'branch': this.getBranch(),
-                'project': this.getCurrentProject()
-            },
-            beforeSend: function () {
-                _self.disableStartButtons()
-            },
-            complete: function () {
-                _self.enableStartButtons()
-            },
-            success: function (data) {
-                console.log(data);
-                _self.clearServerLogs(_self.getSelectedServers());
-                uncheckAllTests();
-                uncheckAllServers();
-                showAndHideList();
-                hideStartButtonFromTabPane();
-                alert('successful started');
-            },
-            error: function (e) {
-                console.log(e.message);
-                failAlert();
-            }
-        })
-    };
-
     this.getSaveRunProperty = function () {
         return $('#save-run').prop('checked')
     };
 
-    this.getInfoFromAllServer = function () {
+    this.getUpdatedDataFromServer = function () {
         $.ajax({
-            url: 'runner/get_info',
-            type: 'POST',
+            url: 'runner/get_updated_data',
+            type: 'GET',
+            async: false,
             data: {
                 'servers': _self.getAllServers()
             },
             success: function (data) {
-//                console.log(data);
-                _self.setDataOnServersView(data);
+                _self.setDataOnServersView(data['servers_data']);
+                _self.clearServersQueue();
+                _self.clearTestsQueue();
+                _self.setDataOnQueuePanel(data['queue_data']);
+                _self.toggleClearTestButton();
             },
             error: function (e) {
                 console.log(e.message);
@@ -237,80 +172,141 @@ function Runner() {
         })
     };
 
-    this.getAllServers = function () {
+    this.getAllServers = function() {
         var servers = [];
-        $('.server input').each(function () {
+        $('.server').each(function () {
             servers.push($(this).attr('id'));
         });
         return servers
     };
 
+    this.clearServersQueue = function() {
+        clearElementInside($('#server-queue'));
+    };
+
+    this.clearTestsQueue = function() {
+        clearElementInside($('#test-queue'));
+    };
+
+    this.setDataOnQueuePanel = function(queue_data) {
+        _self.showBookedServers(queue_data['servers']);
+        _self.showTestsFromQueue(queue_data['tests']);
+    };
+
+    this.showBookedServers = function(servers) {
+        for(var i = 0; i < servers.length; i++) {
+            _self.appendServerOnQueue(servers[i])
+        }
+    };
+
+    this.appendServerOnQueue = function(server) {
+        var button = $('<div class="unbook-button" data-server="'+ server + '">unbook</div>');
+        var node = $('<div class="server-node"><i class="glyphicon glyphicon-hdd"></i>' + server + '</div>');
+        node.append(button);
+        _self.eventToUnbookServer(button, true);
+        $('#server-queue').append(node);
+    };
+
+    this.showTestsFromQueue = function(tests) {
+        for(var i = 0; i < tests.length; i++) {
+            _self.appendTestsOnQueue(tests[i])
+        }
+    };
+
+    this.appendTestsOnQueue = function(test) {
+        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>com eu</option><option>com us</option><option>isa</option></select>'
+        select = $(select);
+        _self.eventToChangeLocationForTest(select);
+        select.find(":contains('" + test['location'] + "')").prop('selected', true);
+        var props = $('<div class="props"></div>');
+        props.append(select);
+        var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test['test_name'] + '</div>');
+        var testNode = $('<div class="test-node" data-id="' + test['id'] + '" data-path="' + test['test_path'] + '"></div>');
+        testNode.append(name);
+        testNode.append(props);
+        $('#test-queue').append(testNode);
+    };
+
     this.setDataOnServersView = function (data) {
         for (var i = 0; i < data.length; i++) {
-            var selector = '.server input#' + data[i]['name'];
-            var server = $(selector).parent();
-            server.find('.queue-count').html(data[i]['queue_count']);
-            server.find('.running').html(data[i]['current_test']);
-            server.find('.run-client').html("<i class='glyphicon glyphicon-server'></i>" + data[i]['run_client']);
-            _self.setQueueToServerView(server.find('.queue'), data[i]['queue']);
-            _self.setLogToServerView(server, data[i]['log']);
+            var selector = '#' + data[i]['name'];
+            var server = $(selector);
             _self.setStatusToServerView(server, data[i]['status']);
-            _self.setProcessingToServer(server, data[i]['current_test']);
-            _self.showStopCurrent(server.find('.stop-current'), data[i]['current_test']);
-            _self.showRunOptions(server.find('.run-at'), data[i]['current_test'], data[i]['options']);
-            _self.showProcessing(server.find('.progress-bar'), data[i]['current_test'], data[i]['processing']);
-        }
-    };
-
-    this.showProcessing = function (proc_elem, current_test, proc_value) {
-        if (current_test != 'nothing') {
-            proc_elem.fadeIn();
-            var progress_bar = proc_elem.find('.ui-progress');
-            var progress_value = proc_elem.find('.value');
-            if (proc_value == '0') {
-                progress_bar.css('display', 'none');
-                progress_value.text('0%')
+            if (data[i]['status']) {
+                if('test' in data[i]) {
+                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i]['test']['progress']);
+                    _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
+                        data[i]['test']['name'], data[i]['test']['location']);
+                    server.find('.glyphicon-stop').show();
+                    _self.setLogToServerView(server, data[i]['log']);
+                } else {
+                    server.find('.ui-progress-bar').hide();
+                    server.find('.glyphicon-stop').hide();
+                }
+                if('booked' in data[i]) {
+                    _self.showBookedClient(server.find('.user-icon'), data[i]['booked']['booked_client']);
+                    if (data[i]['booked']['booked_by_client']) {
+                        _self.showUnbookButton(server.find("div.button"));
+                    } else {
+                        _self.hideUnbookButton(server.find("div.button"));
+                    }
+                } else {
+                    _self.hideBookedClient(server.find('.user-icon'));
+                    _self.showBookButton(server.find("div.button"));
+                }
             } else {
-                progress_bar.css('width', proc_value + '%');
-                progress_bar.css('display', 'block');
-                progress_value.text(proc_value + '%')
+                server.find('.ui-progress-bar').hide();
+                server.find('.glyphicon-stop').hide();
+                _self.hideUnbookButton(server.find("div.button"));
+                _self.hideBookedClient(server.find('.user-icon'));
             }
-        } else {
-            proc_elem.css('display', 'none')
         }
     };
 
-    this.showRunOptions = function (options_view, test, options) {
-        if (test == 'nothing') {
-            options_view.slideUp();
-        } else {
-            options_view.slideDown();
-            options_view.find('.run-at-value').html(createRunLocationByOptions(options));
-        }
+    this.showTestProgress = function(progress_elem, progress) {
+        var ui_progress = progress_elem.find('.ui-progress');
+        ui_progress.css('width', progress + '%');
+        progress_elem.find('.value').text(progress + '%');
+        progress_elem.show();
     };
 
-    this.showStopCurrent = function (icon, test) {
-        if (test == 'nothing') {
-            icon.css('display', 'none')
-        } else {
-            icon.css('display', 'inline-block')
-        }
+    this.setTestNameAndOptions = function(hidden_elem, name, location) {
+        hidden_elem.find('.name').text(name);
+        hidden_elem.find('.location').text(location);
     };
 
-    this.setProcessingToServer = function (server, test) {
-        if (test == 'nothing') {
-            server.find('.loader').css('display', 'none')
-        } else {
-            server.find('.loader').css('display', 'inline-block')
-        }
+    this.hideUnbookButton = function(button) {
+        button.hide();
+    };
+
+    this.showUnbookButton = function(button) {
+        _self.changeBookButtonOnUnbook(button);
+        button.show();
+        _self.eventToUnbookServer(button, false);
+    };
+
+    this.showBookButton = function(button) {
+        _self.changeUnbookButtonOnBook(button);
+        button.show();
+        _self.eventToBookServer(button);
+    };
+
+    this.showBookedClient = function(userIcon, userName) {
+        userIcon.find('span').text(userName);
+        userIcon.show()
+    };
+
+    this.hideBookedClient = function(userIcon) {
+        userIcon.find('span').text('');
+        userIcon.hide()
     };
 
     this.setStatusToServerView = function (server, status) {
         if (status == true) {
-            server.css('background', 'rgb(161, 187, 26)')
+            server.removeClass('off');
         }
         else {
-            server.css('background', 'rgb(153,23,23)')
+            server.addClass('off');
         }
     };
 
@@ -323,42 +319,10 @@ function Runner() {
         //  }
     };
 
-    this.setQueueToServerView = function (queue_div, queue) {
-        queue_div.html('');
-        var length = queue.length,
-            test_name = null;
-        if (length != 0) {
-            for (var i = 0; i < length; i++) {
-                test_name = queue[i]['test'].split('/').slice(-1)[0];
-                var elem = '' + (i + 1) + '. ' + test_name;
-                queue_div.append($('<label>' + elem + '</label>'))
-            }
-        }
-
-    };
-
-    this.rerunThread = function (server) {
-        $.ajax({
-            url: 'runner/rerun_thread',
-            type: 'POST',
-            async: false,
-            data: {
-                'server': server
-            },
-            success: function () {
-                alert('Thread was reinitialize and queue was cleared successfully!')
-            },
-            error: function (e) {
-                console.log(e.message);
-                failAlert();
-            }
-        })
-    };
-
     this.rebootServer = function (server) {
         $.ajax({
             url: 'servers/reboot',
-            type: 'POST',
+            type: 'GET',
             async: false,
             data: {
                 'server': server
@@ -390,34 +354,186 @@ function Runner() {
         })
     };
 
-    this.eventToRerunThread = function () {
-        $('i.stop-thread').click(function () {
-            var result = confirm('Are you really want to stop all tests on this server?');
-            if (result) {
-                var server = $(this).parent().parent().parent().parent().parent();
-                var server_name = server.find('input').attr('id');
-                _self.rerunThread(server_name);
-            }
-        })
-    };
-
-    this.eventToRebootServer = function () {
-        $('i.reboot-server').click(function () {
-            var server = $(this).parent().parent().parent().parent().parent();
-            var server_name = server.find('input').attr('id');
+    this.eventToRebootServer = function(elem) {
+        elem.on('click', function () {
+            var server_name = $(this).attr('data-server');
             _self.rebootServer(server_name);
         })
     };
 
-    this.eventToStopThread = function () {
-        $('i.stop-current').click(function () {
+    this.eventToStopTest = function (elem) {
+        elem.on('click', function () {
             var result = confirm('Are you really want to stop this test?');
             if (result) {
-                var server = $(this).parent().parent().parent().parent().parent();
-                var server_name = server.find('input').attr('id');
+                var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
             }
         })
+    };
+
+    this.bookServer = function(button, server_name) {
+        $.ajax({
+            url: 'queue/book_server',
+            context: this,
+            async: false,
+            data: {
+                'server': server_name
+            },
+            type: 'POST',
+            success: function () {
+                button.unbind();
+                _self.changeBookButtonOnUnbook(button);
+                _self.eventToUnbookServer(button, false);
+                _self.getUpdatedDataFromServer();
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.changeBookButtonOnUnbook = function(button) {
+        var className = button.attr('class');
+        if (className.indexOf('unbook') == -1) {
+            button.removeClass('book-button');
+            button.text('unbook');
+            button.addClass('unbook-button');
+        }
+    };
+
+    this.changeUnbookButtonOnBook = function(button) {
+        var className = button.attr('class');
+        if (className.indexOf('unbook') != -1) {
+            button.removeClass('unbook-button');
+            button.text('book');
+            button.addClass('book-button');
+        }
+    };
+
+    this.eventToBookServer = function(elems) {
+        offEventsOnElem(elems);
+        elems.on('click', function() {
+            _self.bookServer($(this), $(this).attr('data-server'))
+        })
+    };
+
+    this.unbookServer = function(button, server_name, hide_button) {
+        $.ajax({
+            url: 'queue/unbook_server',
+            context: this,
+            async: false,
+            data: {
+                'server': server_name
+            },
+            type: 'POST',
+            success: function () {
+                button.unbind();
+                _self.changeUnbookButtonOnBook(button);
+                if (hide_button)
+                    button.hide();
+                _self.eventToBookServer(button);
+                _self.getUpdatedDataFromServer();
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.eventToUnbookServer = function(elems, hide_button) {
+        offEventsOnElem(elems);
+        elems.on('click', function() {
+            _self.unbookServer($(this), $(this).attr('data-server'), hide_button)
+        })
+    };
+
+    this.addTestInQueue = function(test_path, branch, location) {
+        $.ajax({
+            url: 'queue/add_test',
+            context: this,
+            async: false,
+            data: {
+                'test_path': test_path,
+                'branch': branch,
+                'location': location
+            },
+            type: 'POST',
+            success: function () {
+
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.addTestsInQueue = function(test_path_array, branch, location) {
+        $.ajax({
+            url: 'queue/add_tests',
+            context: this,
+            async: false,
+            data: {
+                'tests_path': test_path_array,
+                'branch': branch,
+                'location': location
+            },
+            type: 'POST',
+            success: function () {
+
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.eventToAddTestsFromSidebar = function(elem) {
+        elem.on('click', function(){
+            var tests = _self.getTestPathsFromSidebar();
+            var branch = _self.getBranch();
+            var location = $('#list-region').val();
+            _self.addTestsInQueue(tests, branch, location);
+            _self.getUpdatedDataFromServer();
+        });
+    };
+
+    this.getTestPathsFromSidebar = function() {
+        var tests = [];
+        $('#sidebar .file-name').each(function(){
+                 tests.push($(this).attr('data-qtip'))
+        });
+        return tests;
+    };
+
+    this.eventToAddTestInQueue = function(elem) {
+        elem.on('click', function(){
+            _self.addTestInQueue($(this).attr('data-test'), _self.getBranch(), $('li.active .region').val());
+            _self.getUpdatedDataFromServer();
+        });
+    };
+
+    this.addFolderInQueue = function(folder_elem) {
+        var tests = [];
+        folder_elem.find('.add-button-file').each(function(){
+            tests.push($(this).attr('data-test'));
+        });
+        if (tests.length != 0) {
+            var branch = _self.getBranch();
+            var location = $('li.active .region').val();
+            _self.addTestsInQueue(tests, branch, location);
+        }
+
+    };
+
+    this.eventToAddFolderInQueue = function(folder_elem) {
+        folder_elem.on('click', function(){
+            _self.addFolderInQueue($(this).parent());
+            _self.getUpdatedDataFromServer();
+        });
     };
 
     this.showServers = function () {
@@ -425,19 +541,20 @@ function Runner() {
             url: 'runner/show_servers',
             context: this,
             async: false,
-            type: 'POST',
+            type: 'GET',
             success: function (data) {
-                $("div#servers").html(data);
-                _self.serverOpenerEvent();
+                var trimmed_data = $($.trim(data));
+                $("div#servers").html(trimmed_data);
+                _self.eventToOpenServer(trimmed_data.find('.server-header'));
+                _self.eventToOpenLogBySelector('.log-opener span');
+                _self.eventToSlimScrollLog(trimmed_data.find('.log'));
+                _self.eventToBookServer(trimmed_data.find('.book-button'));
+                _self.eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
+                _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
 //                $('input#amazon').prop('checked', true);//КОСТЫЛЬ ДЛЯ ТОГО,ЧТОБЫ СРАЗУ БЫЛ ВЫДЕЛЕН!
-                logSlimScrollEvents();
-                _self.updateInfoFromAllServer();
-                _self.eventToRerunThread();
-                _self.eventToRebootServer();
-                _self.eventToStopThread();
-                _self.eventToShowCurrentRspecResult();
-                openQueueEvent();
-                openLogEvent();
+                _self.eventToGetUpdatedDataFromServer();
+                _self.eventToRebootServer(trimmed_data.find('.glyphicon-repeat'));
+                _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
             error: function (e) {
                 console.log(e.message);
@@ -446,20 +563,23 @@ function Runner() {
         })
     };
 
-    this.showTests = function () {
+    this.showTestsView = function () {
         var project = _self.getCurrentProject();
         $.ajax({
             url: 'runner/show_tests',
             context: this,
-            async: false,
-            type: 'POST',
+            async: true,
+            type: 'GET',
             success: function (data) {
-                $(".tests-block .tab-content").html(data);
-                _self.setEventChangeInput();
+                var trimmed_data = $($.trim(data));
+                $(".tests-block .tab-content").html(trimmed_data);
                 _self.setEventToOpenFolder();
                 _self.eventToOpenFileInclude();
                 _self.eventToAddFile();
                 _self.selectProject(project);
+                _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
+                _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
+                hideSectionOverlay();
             },
             error: function (e) {
                 console.log(e.message);
@@ -468,17 +588,65 @@ function Runner() {
         })
     };
 
-    this.setEventChangeInput = function () {
-        $(".tab-content input").change(function () {
-            checkIncluded($(this));
-            checkSelectedInputsAndShowRun();
-        });
+    this.eventForPullProjectsAndFillTests = function(elem) {
+        elem.on('click', function() {
+            _self.pullProjectsAndFillTests();
+        })
+    };
 
-        $(".server input").change(function () {
-            checkIncluded($(this));
-            checkSelectedInputsAndShowRun();
-            showAndHideList();
-        });
+    this.pullProjectsAndFillTests = function() {
+        showSectionOverlay();
+        $.ajax({
+            url: 'runner/pull_projects',
+            context: this,
+            async: true,
+            type: 'GET',
+            success: function() {
+                _self.showBranchesList();
+                _self.showTestsView();
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.showBranchesList = function() {
+        $.ajax({
+            url: 'runner/get_branches',
+            context: this,
+            async: false,
+            type: 'GET',
+            success: function (data) {
+                _self.setDocBranches(data['doc_branches']);
+                _self.setTeamlabBranches(data['tm_branches']);
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.pullProjectsAndGetAllView = function(){
+        _self.pullProjectsAndFillTests();
+    };
+
+    this.setDocBranches = function(branches) {
+        var select = $('#docs-branches');
+        clearElementInside(select);
+        for(var i = 0; i < branches.length; i++) {
+            select.append($("<option>" + branches[i] + "</option>"))
+        }
+    };
+
+    this.setTeamlabBranches = function(branches) {
+        var select = $('#teamlab-branches');
+        clearElementInside(select);
+        for(var i = 0; i < branches.length; i++) {
+            select.append($("<option>" + branches[i] + "</option>"))
+        }
     };
 
     this.saveTestList = function () {
@@ -530,7 +698,7 @@ function Runner() {
         if (checkAlreadyExist != true) {
             $('#test_list_menu').prepend(list_menu);
             var menu_link = list_menu.children('a').first();
-            $(menu_link).click(function () {
+            $(menu_link).on('click', function () {
                 _self.eventToLoadTestList($(this));
             });
             list_menu.find('i.delete-test-list').off('click');
@@ -556,7 +724,7 @@ function Runner() {
     };
 
     this.setEventToDeleteTestList = function (list_menu) {
-        list_menu.find('i.delete-test-list').click(function () {
+        list_menu.find('i.delete-test-list').on('click', function () {
             _self.EventToDeleteTestList($(this).parent());
         });
     };
@@ -566,15 +734,16 @@ function Runner() {
         $.ajax({
             url: 'runner/change_branch',
             context: this,
-            async: false,
-            type: 'POST',
+            async: true,
+            type: 'GET',
             data: {
                 'project': project,
                 'branch': _self.getCurrentBranch()
             },
-            success: function (data) {
+            success: function () {
                 var startIcon = $(".active .start-icon");
                 startIcon.parent().removeClass('with-start');
+                _self.showTestsView();
             },
             error: function (e) {
                 console.log(e.message);
@@ -586,9 +755,30 @@ function Runner() {
     this.setEventChangeBranch = function () {
         $('li select.branch').change(function () {
             var project = _self.getCurrentProject();
+            showSectionOverlay();
             _self.changeBranch();
-            _self.showTests();
             alert('successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
+        })
+    };
+
+    this.eventToChangeLocationForTest = function(elem) {
+        elem.change(function(){
+            var test_id = elem.parent().parent().attr('data-id');
+            var new_location = elem.val();
+            _self.changeLocationForTest(test_id, new_location)
+        })
+    };
+
+    this.changeLocationForTest = function(test_id, new_location) {
+        $.ajax({
+            url: 'queue/change_test_location',
+            data: { test_id: test_id, new_location: new_location },
+            context: this,
+            type: 'POST',
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
         })
     };
 
@@ -597,7 +787,7 @@ function Runner() {
         $.ajax({
             url: 'runner/load_test_list',
             context: this,
-            type: 'POST',
+            type: 'GET',
             async: true,
 //            async: false,
 //            beforeSend: (),
@@ -615,15 +805,14 @@ function Runner() {
                 _self.selectProject(data['project']);
                 _self.selectBranch(data['branch']);
                 _self.changeBranch();
-                _self.showTests();
+//                _self.showTestsView();
                 _self.setEventToOpenFile($('.file-folder'));
                 _self.setEventToDeleteFolderFromList();
                 _self.setEventToDeleteTestFromList();
                 _self.checkAllAddedOnSidebar();
                 addSortableToElem($('.stroke-list'));
                 openSidebar();
-                showSaveButton();
-                showStartList();
+                showStartPanel();
                 unlockAllTab();
                 unlockAllBranchSelect();
                 lockInactiveTab();
@@ -666,18 +855,18 @@ function Runner() {
     };
 
     this.setEventToOpenFolder = function () {
-        $(".folder-name").click(function () {
+        $(".folder-name").on('click', function () {
             var currentDisplay = $(this).next(".folder-inside").css("display");
             var icon = $(this).children("i");
             if (currentDisplay == "none") {
                 $(this).next(".folder-inside").css("display", "block");
-                icon.addClass("glyphicon glyphicon-folder-open");
-                icon.removeClass("glyphicon glyphicon-folder-close");
+                icon.addClass("glyphicon-folder-open");
+                icon.removeClass("glyphicon-folder-close");
             }
             else {
                 $(this).next(".folder-inside").css("display", "none");
-                icon.addClass("glyphicon glyphicon-folder-close");
-                icon.removeClass("glyphicon glyphicon-folder-open");
+                icon.addClass("glyphicon-folder-close");
+                icon.removeClass("glyphicon-folder-open");
             }
         });
     };
@@ -687,21 +876,18 @@ function Runner() {
             url: 'runner/show_subtests',
             data: { filePath: path },
             context: this,
-            type: 'POST',
+            type: 'GET',
             success: function (data) {
                 $('.popup-overlay').css("display", "block");
                 $("#popup .wrap").html(data);
-                $('.viewer').click(function (e) {
-                    e.stopPropagation();
-                });
+                stopPropagation($('.viewer'));
                 _self.setEventToCloseTestsList();
                 $("#tests-list").slimScroll({
                     height: '100%',
-                    width: '790px'
+                    width: '780px'
                 });
-                _self.checkSelectedTests();
                 _self.setEventToAddToList($(".add-test"));
-                $('#add-all').click(function () {
+                $('#add-all').on('click', function () {
                     _self.addAllTests();
                 })
             },
@@ -713,31 +899,21 @@ function Runner() {
     };
 
     this.eventToOpenFileInclude = function () {
-        $(".folder .file-name").click(function () {
-            if (_self.checkAddedOnSidebar($(this))) {
+        $(".folder .glyphicon-file").on('click', function () {
+            if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('data-test'))) {
                 alert('File already added to sidebar! Delete him or choose another!')
             }
             else {
-                var path = $(this).prev().prev().attr('id');
+                var path = $(this).parent().parent().find('.add-button-file').attr('data-test');
                 myRunner.showIncludedTests(path);
             }
         })
     };
 
-    this.checkAddedOnSidebar = function (file_name) {
-        var name = file_name.parent().find('input').attr('id');
-        var icon = file_name.find('i.add-file').css('display');
+    this.checkAddedOnSidebar = function (file_path) {
         var already_add = false;
-        if (icon == 'none') {
-            $('#sidebar .file-name').each(function () {
-                var current_name = $(this).attr('data-qtip');
-                if ($(this).parent().children().size() == 1) {
-                    if (current_name == name) {
-                        already_add = true;
-                        return true;
-                    }
-                }
-            });
+        if ($('#sidebar-test-list *[data-qtip="' + file_path + '"]').size() != 0) {
+            already_add = true;
         }
         return already_add
     };
@@ -746,7 +922,7 @@ function Runner() {
         _self.makeAllAddButtonsVisible();
         var added_files = _self.getListSidebarFiles();
         $(".tab-content .file-name").each(function () {
-            var cur_file = $(this).parent().find('input').attr('id');
+            var cur_file = $(this).parent().find('.add-button-file').attr('data-test');
             if (jQuery.inArray(cur_file, added_files) != -1) {
                 $(this).find('i.add-file').css('display', 'none')
             }
@@ -767,34 +943,13 @@ function Runner() {
         return files
     };
 
-    this.checkSelectedTests = function () {
-        $('#sidebar .file-name').each(function () {
-            if ($(this).attr('data-qtip') == $('#test_file_name').attr('data-qtip')) {
-                $(this).next().children().children().each(function () {
-                    var text = $(this).attr('data-qtip');
-                    var stroke = $(this).attr('data-role');
-                    $(".subtest-row .test-name").each(function () {
-                        if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
-                            var icon = $(this).prev('.add-test');
-                            _self.setIconToAdded(icon);
-                        }
-                    });
-                })
-            }
-        })
-    };
-
-    this.serverOpenerEvent = function () {
-        $('.server-opener').click(function () {
-            var server_info = $(this).next();
-            var currentDisplay = server_info.css('display');
-            if (currentDisplay == 'none') {
-                server_info.slideDown();
-            }
-            else {
-                server_info.slideUp();
-            }
-        })
+    this.eventToOpenServer = function(header) {
+        header.on('click', function (e) {
+            if (!$(e.target).is("label")) return;
+            var server_content = $(this).next();
+            server_content.slideToggle();
+        });
+        stopPropagation(header.find('div.button'))
     };
 
     this.setIconToAdded = function (elem) {
@@ -812,10 +967,10 @@ function Runner() {
     };
 
     this.setEventToCloseTestsList = function () {
-        $(".close-list-button").click(function () {
+        $(".close-list-button").on('click', function () {
             $('.popup-overlay').fadeOut();
         });
-        $('.popup-overlay').click(function () {
+        $('.popup-overlay').on('click', function () {
             $(this).fadeOut();
         })
     };
@@ -840,9 +995,9 @@ function Runner() {
             cut_it_name = it_name.substr(0, SIDE_MAX_TEST_LENGTH) + '...';
         }
 
-        var stroke = "<div class='name' data-qtip=\"" + it_name + "\" data-role='" + stroke_number + "'>" +
-            cut_it_name +
-            "<i class='glyphicon glyphicon-remove'></i><span class='sidebar-tooltip'>" + HtmlDecode(it_name) + "</span>" +
+        var stroke = "<div class='name shower' data-qtip=\"" + it_name + "\" data-role='" + stroke_number + "'>" +
+            "<div class='text-name'>" + cut_it_name + "</div>" +
+            "<i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + HtmlDecode(it_name) + "</span>" +
             "</div>";
 
         $('#sidebar-test-list .file-name').each(function () {
@@ -856,19 +1011,19 @@ function Runner() {
         if (file_added == false) {
             var stroke_list = "<div class='stroke-list'>" + stroke + "</div>";
             var file_inside = "<div class='file-inside'>" + stroke_list + "</div>";
-            var file_name_elem = "<div class='file-name' data-qtip='" + file_path + "'><i class='glyphicon glyphicon-file'></i>" + file_name + "<i class='glyphicon glyphicon-chevron-down'></i><i class='glyphicon glyphicon-remove'></i></div>";
+            var file_name_elem = "<div class='file-name shower' data-qtip='" + file_path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + file_name + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + file_name + "</span></div>";
             var folder = $("<div class='file-folder'>" + file_name_elem + file_inside + "</div>");
 
             $("#sidebar-test-list").append(folder);
             _self.setEventToOpenFile(folder);
             _self.setEventToDeleteFolderFromList();
+            $('*[data-test="' + file_path + '"]').parent().find('i.add-file').hide();
             addSortableToElem(folder.find('.stroke-list'));
         }
         _self.setEventToDeleteTestFromList();
         _self.setIconToAdded(icon_add);
-        showSaveButton();
+        showStartPanel();
         icon_add.off("click");
-        showStartList();
         lockInactiveTab();
         lockActiveBranchSelect();
     };
@@ -876,31 +1031,28 @@ function Runner() {
     this.addFileToSidebar = function (icon) {
         var file_name = icon.parent();
         var text = file_name.text();
-        var path = file_name.parent().find('input').attr('id');
-        var file_name_elem = "<div class='file-name' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i>" + text + ".rb<i class='glyphicon glyphicon-remove'></i></div>";
+        var path = file_name.parent().find('.add-button-file').attr('data-test');
+        var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + text + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + text + "</span></div>";
         var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
         $("#sidebar-test-list").append(folder);
         _self.setEventToDeleteFolderFromList();
         icon.css('display', 'none');
-        showSaveButton();
+        showStartPanel();
         openSidebar();
-        showStartList();
         lockInactiveTab();
         lockActiveBranchSelect();
     };
 
     this.eventToAddFile = function () {
         var icons = $('.tab-content i.add-file');
-        icons.click(function (e) {
-            e.stopPropagation();
-        });
-        icons.click(function () {
+        offEventsOnElem(icons);
+        icons.on('click', function () {
             _self.addFileToSidebar($(this));
         })
     };
 
     this.setEventToAddToList = function (element) {
-        $(element).click(function () {
+        $(element).on('click', function () {
             _self.addTestToList($(this));
             openSidebar();
             var path = $('#test_file_name').attr('data-qtip');
@@ -914,7 +1066,7 @@ function Runner() {
     };
 
     this.setEventToOpenFile = function (element) {
-        element.find(".glyphicon glyphicon-chevron-down").click(function () {
+        element.find(".glyphicon glyphicon-chevron-down").on('click', function () {
             // var elem = $(this).next(); //$('#idtest').is(':visible')
             var inside = element.find(".file-inside");
             var currentDisplay = inside.css("display");
@@ -930,7 +1082,7 @@ function Runner() {
     this.setEventToDeleteTestFromList = function () {
         var text = "";
         var stroke = "";
-        $(".name .glyphicon.glyphicon-remove").click(function () {
+        $(".name .glyphicon-remove").on('click', function () {
             var stroke_elem = $(this).parent();
             text = stroke_elem.attr('data-qtip');
             stroke = stroke_elem.attr('data-role');
@@ -945,8 +1097,8 @@ function Runner() {
             if (stroke_size == 1) {
                 var folder = stroke_elem.parent().parent().parent();
                 var path = folder.find('.file-name').attr('data-qtip');
-                $('.tab-pane input').each(function () {
-                    var current_path = $(this).attr('id');
+                $('.tab-pane .add-button-file').each(function () {
+                    var current_path = $(this).attr('data-test');
                     if (current_path == path) {
                         $(this).parent().find('i.add-file').css('display', 'inline-block')
                     }
@@ -956,15 +1108,21 @@ function Runner() {
             else {
                 stroke_elem.remove();
             }
-            hideSaveButton();
-            hideStartList();
+            hideStartPanel();
             unlockInactiveTab();
             unlockActiveBranchSelect();
         });
     };
 
+    this.eventToOpenLogBySelector = function (opener_selector) {
+        $(opener_selector).on('click', function () {
+            var opener_index = $(opener_selector).index($(this));
+            $('.log-window').eq(opener_index).slideToggle();
+        })
+    };
+
     this.setEventToDeleteFolderFromList = function () {
-        $(".file-name .glyphicon.glyphicon-remove").click(function () {
+        $(".file-name .glyphicon-remove").on('click', function () {
             if ($('#popup').is(':visible')) {
                 $(this).parent().next().children().children().each(function () {
                     var text = $(this).attr('data-qtip');
@@ -983,7 +1141,7 @@ function Runner() {
                 $('.tab-content i.add-file').each(function () {
                     var display = $(this).css('display');
                     if (display == 'none') {
-                        var current_path = $(this).parent().parent().find('input').attr('id');
+                        var current_path = $(this).parent().parent().find('.add-button-file').attr('data-test');
                         if (current_path == path) {
                             $(this).css('display', 'inline-block');
                         }
@@ -991,8 +1149,7 @@ function Runner() {
                 })
             }
             $(this).parent().parent().remove();
-            hideSaveButton();
-            hideStartList();
+            hideStartPanel();
             unlockInactiveTab();
             unlockActiveBranchSelect();
         })
@@ -1037,13 +1194,111 @@ function Runner() {
     this.createNewList = function () {
         $("#sidebar-test-list").html("");
         $("#list-name").text("New Test List");
-        hideSaveButton();
-        hideStartList();
+        hideStartPanel();
         unlockInactiveTab();
         unlockActiveBranchSelect();
         _self.makeAllAddButtonsVisible();
-    }
+    };
 
+    this.eventToSlimScrollLog = function (log) {
+        log.slimScroll({
+            height:'80px'
+        });
+    };
+
+    this.eventToSortTestQueue = function (){
+        var removeIntent = false;
+        $('#test-queue').sortable({
+            over: function () {
+                removeIntent = false;
+            },
+            out: function () {
+                removeIntent = true;
+            },
+            beforeStop: function (event, ui) {
+                if(removeIntent == true){
+                    ui.item.remove();
+                    _self.deleteTestFromQueue(ui.item.attr('data-id'));
+                }
+            },
+            update: function(event, ui) {
+                if (removeIntent != true) {
+                    var first = ui.item.attr('data-id');
+                    var second = ui.item.prev().attr('data-id');
+                    var in_start = false;
+                    if (second == undefined) {
+                        in_start = true
+                    }
+                    _self.swapTestsInQueue(first, second, in_start);
+                }
+            }
+        });
+    };
+
+    this.deleteTestFromQueue = function(test_id) {
+        $.ajax({
+            url: 'queue/delete_test',
+            data: { test_id: test_id },
+            async: false,
+            type: 'POST',
+            success: function() {
+                _self.toggleClearTestButton();
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        });
+    };
+
+    this.swapTestsInQueue = function(test_id1, test_id2, in_start) {
+        $.ajax({
+            url: 'queue/swap_tests',
+            data: { test_id1: test_id1, test_id2: test_id2, in_start: in_start },
+            async: false,
+            type: 'POST',
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        });
+    };
+
+    this.clearTestQueue = function() {
+        $.ajax({
+            url: 'queue/clear_tests',
+            async: false,
+            type: 'POST',
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        });
+    };
+
+    this.eventToClearTestQueue = function(elem) {
+        elem.on('click', function(){
+            _self.clearTestQueue();
+            _self.getUpdatedDataFromServer();
+        })
+    };
+
+    this.checkQueueEmpty = function() {
+        var empty = true;
+        if($('.test-node :visible').size() != 0) {
+           empty = false;
+        }
+        return empty;
+    };
+
+
+    this.toggleClearTestButton = function() {
+        if (this.checkQueueEmpty()) {
+            $('#clear-tests').hide()
+        } else {
+            $('#clear-tests').show()
+        }
+    }
 }
 
 var myRunner = new Runner();
@@ -1057,7 +1312,7 @@ $(function () {
     closeSidebar();
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
 
-    $("#open-sidebar").click(function () {
+    $("#open-sidebar").on('click', function () {
         var sidebar = $("#sidebar");
         var visibility = sidebar.css("display");
         if (visibility == 'none') {
@@ -1068,15 +1323,15 @@ $(function () {
         }
     });
 
-    $("#copyright").click(function () {
+    $("#copyright").on('click', function () {
         changeBgZooey()
     });
 
-    $("#cat").click(function () {
+    $("#cat").on('click', function () {
         changeBgCat()
     });
 
-    $("#edit-list-name").click(function () {
+    $("#edit-list-name").on('click', function () {
         changeDivToInput();
         $(this).css('visibility', 'hidden');
         eventsEditInput()
@@ -1091,19 +1346,7 @@ $(function () {
         setSideBarHeight(getSideBarHeight());
     });
 
-    $('.nav-tabs .start-icon').click(function () {
-        if ($(this).attr('disable') != 'disabled') {
-            myRunner.startTests();
-        }
-    });
-
-    $('#sidebar .start-icon').click(function () {
-        if ($(this).attr('disable') != 'disabled') {
-            myRunner.startTestList();
-        }
-    });
-
-    $('#save-new').click(function () {
+    $('#save-new').on('click', function () {
         if (verifyListName($("#list-name").text())) {
             if ($("#sidebar-test-list").children().size() != 0) {
                 myRunner.saveTestList();
@@ -1114,7 +1357,7 @@ $(function () {
         }
     });
 
-    $('#test_list_menu a').click(function () {
+    $('#test_list_menu a').on('click', function () {
         if ($(this).attr('href')) {
             myRunner.eventToLoadTestList($(this));
         }
@@ -1124,79 +1367,18 @@ $(function () {
         }
     });
 
-    $('.nav-tabs a').click(function () {
-        var tab = $(this).parent();
-        if (!tab.hasClass('active')) {
-            checkInactiveTabAndShowRun();
-        }
-    });
-
-    myRunner.setEventChangeInput();
     myRunner.setEventToDeleteTestList($('#test_list_menu li'));
 
 });
-
-function logSlimScrollEvents() {
-    $('.server .log').slimScroll({
-        height: '110px',
-        width: '330px',
-        color: '#a1bb1a'
-    });
-    logUpEvent();
-    logDownEvent();
-}
-
-function openQueueEvent() {
-    $('.queue-count').click(function () {
-        var queue = $(this).parent().parent().find('.queue');
-        if (queue.html() != '') {
-            if (queue.css('display') == 'none') {
-                queue.slideDown()
-            }
-            else {
-                queue.slideUp()
-            }
-        }
-    })
-}
-
-function openLogEvent() {
-    $('.show-log').click(function () {
-        var log = $(this).parent().parent().find('.log-window');
-        if (log.css('display') == 'none') {
-            log.slideDown();
-        }
-        else {
-            log.slideUp();
-        }
-    })
-}
-
-function checkIncluded(input) {
-    if (input.is(':checked') == true) {
-        input.parent().find("input").prop('checked', true);
-    }
-    else {
-        input.parent().find("input").prop("checked", false);
-    }
-}
-
-function uncheckAllServers() {
-    $('#servers input').prop('checked', false)
-}
-
-function uncheckAllTests() {
-    $('.tests-block input').prop('checked', false)
-}
 
 function openSidebar() {
     var sidebar = $("#sidebar");
     var ico = $("#open-ico");
     sidebar.css('display', 'block');
-    ico.addClass('glyphicon glyphicon-chevron-left');
-    ico.removeClass('glyphicon glyphicon-chevron-right');
-    $("#main").css("margin-left", "365px");
-    $("#popup .wrap").css("margin-left", "365px");
+    ico.addClass('glyphicon-chevron-left');
+    ico.removeClass('glyphicon-chevron-right');
+    $("#main").css("margin-left", "230px");
+    $("#popup .wrap").css("margin-left", "230px");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
 }
 
@@ -1204,8 +1386,8 @@ function closeSidebar() {
     var sidebar = $("#sidebar");
     var ico = $("#open-ico");
     sidebar.css('display', 'none');
-    ico.addClass('glyphicon glyphicon-chevron-right');
-    ico.removeClass('glyphicon glyphicon-chevron-left');
+    ico.addClass('glyphicon-chevron-right');
+    ico.removeClass('glyphicon-chevron-left');
     $("#main").css("margin-left", "0");
     $("#popup .wrap").css("margin-left", "0");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
@@ -1229,7 +1411,7 @@ function getNeededToggleCoordinates() {
     if ($("#sidebar").css('display') != 'none') {
         sidebarWidth = $("#sidebar").outerWidth();
     }
-    coordinates['left'] = sidebarWidth - 1;
+    coordinates['left'] = sidebarWidth + 4;
     return coordinates
 }
 
@@ -1275,7 +1457,7 @@ function changeInputToDiv() {
     var textFromInput = $("input.list-name").val();
     if (verifyListName(textFromInput)) {
         var listNameDiv = $("#list-name");
-        listNameDiv.html('');
+        clearElementInside(listNameDiv);
         listNameDiv.text(textFromInput);
         $("#edit-list-name").css('visibility', 'visible')
     }
@@ -1292,60 +1474,6 @@ function eventsEditInput() {
             $(this).blur();
         }
     })
-}
-
-function checkSelectedInputsAndShowRun() {
-    var startIcon = $(".active .start-icon");
-    var activeTab = $(".nav.nav-tabs .active a").attr('href');
-    var servers_input = $(".server input:checked").length;
-    var docsInputs = '';
-    if (activeTab == '#docs') {
-        docsInputs = $("#docs input:checked").length;
-        if (docsInputs > 0 && servers_input > 0) {
-            startIcon.parent().addClass('with-start')
-        }
-        else {
-            startIcon.parent().removeClass('with-start')
-        }
-    }
-    else {
-        docsInputs = $("#teamlab input:checked").length;
-        if (docsInputs > 0 && servers_input > 0) {
-            startIcon.parent().addClass('with-start')
-        }
-        else {
-            startIcon.parent().removeClass('with-start')
-        }
-    }
-}
-
-function checkInactiveTabAndShowRun() {
-    var startIcon = $(":not(.active) .start-icon");
-    var inactiveTab = $(".nav.nav-tabs :not(.active) a").attr('href');
-    var servers_input = $(".server input:checked").length;
-    var docsInputs = '';
-    if (inactiveTab == '#docs') {
-        docsInputs = $("#docs input:checked").length;
-        if (docsInputs > 0 && servers_input > 0) {
-            startIcon.parent().addClass('with-start')
-        }
-        else {
-            startIcon.parent().removeClass('with-start')
-        }
-    }
-    else {
-        docsInputs = $("#teamlab input:checked").length;
-        if (docsInputs > 0 && servers_input > 0) {
-            startIcon.parent().addClass('with-start')
-        }
-        else {
-            startIcon.parent().removeClass('with-start')
-        }
-    }
-}
-
-function hideStartButtonFromTabPane() {
-    $(".nav-tabs .start-icon").parent().removeClass('with-start')
 }
 
 function verifyListName(listName) {
@@ -1368,7 +1496,7 @@ function showMoreHistoryForServer() {
     $.ajax({
         url: '/server_history/show_more',
         context: this,
-        type: 'POST',
+        type: 'GET',
         data: {
             'showed': current_showed,
             'server': server
@@ -1399,7 +1527,7 @@ function showMoreHistoryForClient() {
     $.ajax({
         url: '/client_history/show_more',
         context: this,
-        type: 'POST',
+        type: 'GET',
         data: {
             'showed': current_showed,
             'name': name
@@ -1424,32 +1552,8 @@ function showMoreHistoryForClient() {
     })
 }
 
-function logUpEvent() {
-    $('.log-up').click(function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
-    });
-}
-
-function logUpEventToElem(elem) {
-    elem.click(function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
-    });
-}
-
-function logDownEvent() {
-    $('.log-down').click(function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
-    })
-}
-
-function logDownEventToElem(elem) {
-    elem.click(function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
-    })
-}
-
 function openLogInHistoryEvent() {
-    $('.history-log').click(function () {
+    $('.history-log').on('click', function () {
         var log_window = $(this).next();
         var currentDisplay = log_window.css('display');
         if (currentDisplay == 'none') {
@@ -1463,7 +1567,7 @@ function openLogInHistoryEvent() {
 }
 
 function openLogInHistoryEventToElem(elem) {
-    elem.click(function () {
+    elem.on('click', function () {
         var log_window = $(this).next();
         var currentDisplay = log_window.css('display');
         if (currentDisplay == 'none') {
@@ -1501,21 +1605,10 @@ function HtmlDecode(val) {
     return $("<div/>").html(val).text();
 }
 
-function showSaveButton() {
+function showStartPanel() {
     if (checkEmptyList() == false) {
-        $('#save-new').css('display', 'block')
+        $('.start-panel').show();
     }
-}
-
-function showStartList() {
-    if ((checkEmptyList() == false) && (checkSelectedServer())) {
-        $('.start-list').css('display', 'block')
-    }
-}
-
-function showAndHideList() {
-    showStartList();
-    hideStartList();
 }
 
 function lockInactiveTab() {
@@ -1556,15 +1649,9 @@ function unlockInactiveTab() {
     }
 }
 
-function hideStartList() {
-    if ((checkEmptyList()) || (checkSelectedServer() == false)) {
-        $('.start-list').css('display', 'none')
-    }
-}
-
-function hideSaveButton() {
+function hideStartPanel() {
     if (checkEmptyList()) {
-        $('#save-new').css('display', 'none')
+        $('.start-panel').hide();
     }
 }
 
@@ -1572,26 +1659,8 @@ function checkEmptyList() {
     return $('#sidebar-test-list').children().size() == 0
 }
 
-function checkSelectedServer() {
-    return $('.server input:checked').size() != 0
-}
-
-
-function createRunLocationByOptions(options) {
-    if ((options['portal_type'] == null) && (options['portal_region'] != null)) {
-        return options['portal_region']
-    } else if ((options['portal_type'] != null) && (options['portal_region'] == null)) {
-        return options['portal_type']
-    } else if((options['portal_type'] != null) && (options['portal_region'] == null)) {
-        return options['portal_type'] + ', ' + options['portal_region']
-    }
-    else {
-        return "don't know location(all null)";
-    }
-}
-
 function eventToDeleteHistoryLine(elem) {
-    elem.click(function () {
+    elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
             url: clicked.attr('delete-data'),
@@ -1612,8 +1681,33 @@ function eventToDeleteHistoryLine(elem) {
     })
 }
 
+function eventToRetest(elem) {
+    elem.on('click', function () {
+        var clicked = $(this);
+        $.ajax({
+            url: '/queue/retest',
+            data: {
+                test_path: clicked.attr('data-path'),
+                tm_branch: clicked.attr('data-tm-branch'),
+                doc_branch: clicked.attr('data-doc-branch'),
+                location: clicked.attr('data-location')
+            },
+            async: false,
+            type: 'POST',
+            success: function () {
+                alert('Test was added in your queue.')
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        });
+
+    })
+}
+
 function eventToSetAnalysedToHistory(elem) {
-    elem.click(function () {
+    elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
             url: '/history/set_analysed',
@@ -1624,7 +1718,7 @@ function eventToSetAnalysedToHistory(elem) {
             },
             success: function () {
                 var el = clicked.parent();
-                el.html('');
+                clearElementInside(el);
                 el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"))
             },
             error: function (e) {
@@ -1655,21 +1749,13 @@ function currentTestOnServer(server_el) {
     return server_el.find('.running').text()
 }
 
-function currentLogOnServer(server_el) {
-    return server_el.find('.log').text()
-}
-
-function setLogToServer(server_el, logl) {
-    server_el.find('.log').html(logl)
-}
-
 function eventToOpenRspecResults(elem) {
-    elem.click(function () {
+    elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
             url: '/history/show_html_results',
             async: false,
-            type: 'POST',
+            type: 'GET',
             data: {
                 'history_id': clicked.attr('data-id')
             },
@@ -1695,7 +1781,7 @@ function eventsForRspecPopup() {
 }
 
 function eventToOpenDescribe() {
-    $('.describe-head').click(function () {
+    $('.describe-head').on('click', function () {
         var describeChild = $(this).next('.describe-child');
         var cur_display = describeChild.css('display');
         if (cur_display == 'none') {
@@ -1707,7 +1793,7 @@ function eventToOpenDescribe() {
 }
 
 function evenToOpenFailDetails() {
-    $('.example.failed .example-head').click(function () {
+    $('.example.failed .example-head').on('click', function () {
         var failDetails = $(this).next('.fail-details');
         var cur_display = failDetails.css('display');
         if (cur_display == 'none') {
@@ -1727,15 +1813,13 @@ function closePopupRspecResults() {
 }
 
 function eventToCloseRspecPopup() {
-    $('.close-result').click(function () {
+    $('.close-result').on('click', function () {
         closePopupRspecResults()
     });
-    $('div.rspec-overlay').click(function () {
+    $('div.rspec-overlay').on('click', function () {
         closePopupRspecResults()
     });
-    $('.rspec-popup-window').click(function (e) {
-        e.stopPropagation();
-    });
+    offEventsOnElem($('.rspec-popup-window'));
 }
 
 
@@ -1752,7 +1836,7 @@ function setFailedToFailedDescribes() {
 }
 
 function eventToOpenMoreOptions(elem) {
-    elem.click(function(){
+    elem.on('click', function(){
         var more_options = $(this).next('.more-options');
         var cur_display = more_options.css('display');
         if (cur_display == 'none') {
@@ -1827,19 +1911,62 @@ function enableClearHistoryButton() {
 }
 
 function eventToClearHistoryOnServer(elem) {
-    elem.click(function(){
+    elem.on('click', function(){
         var server_name = $('#server').text();
         clearHistoryOnServer(server_name)
     })
 }
 
 function eventToClearHistoryOnClient(elem) {
-    elem.click(function(){
+    elem.on('click', function(){
         var name = $('#client').text();
         clearHistoryOnClient(name)
     })
 }
 
+function offEventsOnElem(elem) {
+    elem.off();
+}
+
+function clearElementInside(elem) {
+    elem.html('');
+}
+
+function stopPropagation(elem) {
+    elem.click(function(e){ e.stopPropagation()})
+}
+
+function logUpEvent() {
+    $('.log-up').on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
+    });
+}
+
+function logUpEventToElem(elem) {
+    elem.on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
+    });
+}
+
+function logDownEvent() {
+    $('.log-down').on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
+    })
+}
+
+function logDownEventToElem(elem) {
+    elem.on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
+    })
+}
+
+function showSectionOverlay() {
+    $('.section-overlay').show();
+}
+
+function hideSectionOverlay() {
+    $('.section-overlay').hide();
+}
 //
 //$(document).ready(function() {
 //

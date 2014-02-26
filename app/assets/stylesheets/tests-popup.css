@@ -15,13 +15,13 @@
 
 .tests-window {
     position: absolute;
-    top: 31px;
+    top: 36px;
     bottom: 5px;
     background: #ffffff;
     border: solid 1px dimgrey;
     /*box-shadow: inset 0 0 2px 1px black;*/
     padding: 5px 0 5px 5px;
-    border-radius: 0 5px 5px 5px;
+    border-radius: 0 3px 3px 3px;
 }
 
 #test_file_name {
@@ -39,7 +39,7 @@
     border-left-color: dimgrey;
     border-left-style: solid;
     border-left-width: 1px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 3px 3px 0 0;
     background: white;
     padding: 7px 10px 0 8px;
 }
@@ -55,24 +55,25 @@
 #add-all {
     margin-top: 3px;
     cursor: pointer;
+    color: rgb(73, 127, 209);
 }
 
 .popup-tests {
     width: 800px;
     height: 70%;
-    margin-left: 0;
     margin: 0 auto;
-    margin-top: 42px;
+    margin-top: 60px;
     z-index: 100;
     position: relative;
 }
 
 .viewer {
-    border: 2px solid #000000;
-    border-radius: 5px;
+    border: 1px solid #000000;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,.4);
+    border-radius: 3px;
     padding: 5px;
     height: 100%;
-    background: #BBCF54;
+    background: linear-gradient(to bottom, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%);
     position: relative;
     width: 800px;
 }
@@ -102,4 +103,5 @@
 
 .test-name {
     display: inline-block;
+    color: rgb(0, 10, 27);
 }

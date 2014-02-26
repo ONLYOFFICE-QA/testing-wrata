@@ -6,6 +6,7 @@
             logDownEvent();
             openLogInHistoryEvent();
             eventToDeleteHistoryLine($('.delete-line'));
+            eventToRetest($('.retest'));
             eventToSetAnalysedToHistory($('.analyse-area'));
             eventToOpenMoreOptions($('.open-options'));
             eventToShowFullStartOption($('.open-full-command'));
@@ -48,19 +49,19 @@
       <div class="rspec-popup-window"></div>
     </div>
     <h1>Runs on <label id="<%= @controller.to_s %>"><%= @name %></label>:</h1>
-    <div id="clear-history" class="btn btn-small btn-inset" style="position: absolute; right: 0px; top: 58px; right: 20px;">
+    <button id="clear-history" class="btn btn-primary" style="position: absolute; right: 0px; top: 58px; right: 20px;">
       <i class="glyphicon glyphicon-trash"></i>Clear history
-    </div>
+    </button>
     <table class="table table-bordered">
       <thead>
       <tr>
         <th class="center">Client</th>
         <th class="center">File</th>
         <th class="center">Result</th>
-        <th class="center">Run Options</th>
-        <th class="center">Time</th>
-        <th class="center">Analysed</th>
-        <th class="center">Delete?</th>
+        <th class="center">Run params</th>
+        <th class="center">End time</th>
+        <!--<th class="center">Analysed</th>-->
+        <th class="center">Options</th>
       </tr>
       </thead>
       <tbody>
@@ -75,7 +76,9 @@
             </td>
             <td class="center">
               <div style="display: inline-block">
-                <div class="history-log pointer <%= test_result(line.total_result) %>"><%= line.file %></div>
+                <div class="history-log pointer <%= test_result(line.total_result) %>">
+                  <%= line.file.gsub(RUBYMINE_PROJECTS_PATH, '') %>
+                </div>
                 <div class="log-window" style="display: block">
                   <div class="log">
                     <% if line.log %>
@@ -95,9 +98,9 @@
             </td>
             <td class="center options">
               <% start_option = line.start_option %>
+              <% portal_type = start_option.portal_type.nil? ? '' : start_option.portal_type %>
+              <% portal_region = start_option.portal_region.nil? ? '' : start_option.portal_region %>
               <% if start_option %>
-                  <% portal_type = start_option.portal_type.nil? ? '' : start_option.portal_type %>
-                  <% portal_region = start_option.portal_region.nil? ? '' : start_option.portal_region %>
                   <div>
                     <div class="open-options"><%= portal_type + ' ' + portal_region %></div>
                     <div class="more-options">
@@ -116,24 +119,29 @@
 
             </td>
             <td class="center"><%= line.created_at.to_s.gsub(' +0400', '') %></td>
+            <!--<td class="center">-->
+              <!--<% if line.analysed %>-->
+                  <!--<i class="glyphicon glyphicon-ok icon-green"></i>-->
+              <!--<% else %>-->
+                  <!--<div class="analyse-area pointer" data-id="<%= line.id %>">-->
+                    <!--<i class="glyphicon glyphicon-ok icon-green"></i>-->
+                  <!--</div>-->
+              <!--<% end %>-->
+            <!--</td>-->
             <td class="center">
-              <% if line.analysed %>
-                  <i class="glyphicon glyphicon-ok icon-green"></i>
-              <% else %>
-                  <div class="analyse-area pointer" data-id="<%= line.id %>">
-                    <i class="glyphicon glyphicon-ok icon-green"></i>
-                  </div>
-              <% end %>
-            </td>
-            <td class="center">
-              <i class="glyphicon glyphicon-trash pointer delete-line" delete-data="<%= history_path(line) %>" data-method="delete"></i>
+              <i class="retest glyphicon glyphicon-repeat shower" data-path="<%= line.file %>" data-tm-branch="<%= start_option.teamlab_branch %>"  data-doc-branch="<%= start_option.docs_branch %>" data-location="<%= portal_type + portal_region %>">
+                <span class="hidden-tool">Add this test in queue with current params</span>
+              </i>
+              <i class="glyphicon glyphicon-trash delete-line shower" delete-data="<%= history_path(line) %>" data-method="delete">
+                <span class="hidden-tool">Delete this test from history</span>
+              </i>
             </td>
           </tr>
       <% end %>
       </tbody>
     </table>
     <div style="text-align: center">
-      <div id="show-more" class="btn btn-inverse">Show more</div>
+      <button id="show-more" class="btn btn-info">Show more</button>
     </div>
 
 <% end %>

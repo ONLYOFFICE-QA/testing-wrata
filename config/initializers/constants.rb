@@ -2,7 +2,7 @@ DOCS_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments"
 TEAMLAB_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab"
 DOCS_TESTS_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments/RspecTest"
 TEAMLAB_TESTS_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab/Rspec"
-SERVERS_LOGS_PATH = "#{ENV['HOME']}/RubymineProjects/runner/app/server/logs"
+SERVERS_LOGS_PATH = "#{ENV['HOME']}/RubymineProjects/runner4.3/app/server/logs"
 DOCS_PROJECT_NAME = 'OnlineDocuments'
 TEAMLAB_PROJECT_NAME = 'TeamLab'
 DOCS_PATH_WITHOUT_HOME = '~/RubymineProjects/OnlineDocuments'
@@ -26,4 +26,5 @@ SUCCESS_TEST_STR = ' 0 failures'
 INFO_SERVER = 'info'
 COM_SERVER = 'com'
 EMPTY_STRING = ''
+TIME_FOR_UPDATE = 15
 

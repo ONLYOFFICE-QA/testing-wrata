@@ -1,56 +1,47 @@
 <% def show_server_row(server) %>
-    <div class="server">
-      <input id="<%= server.name %>" type="checkbox" class="server-input" name="<%= server.name %>" hidden="">
-      <label for="<%= server.name %>" class="normal" style="margin-left: 14px; display: inline-block"><%= server.name %></label>
-      <i class="loader"></i>
-      <i class="server-opener glyphicon glyphicon-chevron-down"></i>
-
-      <div class="server-info" style="display: none">
-        <div class="info-content">
-          <%= link_to server_history_path(server), :target => '_blank' do %>
-              <i class="show-history glyphicon glyphicon-book"><span>Show history</span></i>
-          <% end %>
-          <label class="head-text"><%= server.description %></label>
-          <label class="head-text">IP: <%= server.address %></label>
-          <% unless server.name == AMAZON_SERVER_NAME %>
-              <div class="update-info">
-                Server management:
-                <div class="management">
-                  <i class="on-server glyphicon glyphicon-off icon-green pointer"><span>On server</span></i>
-                  <i class="off-server glyphicon glyphicon-off pointer"><span>Off server</span></i>
-                  <i class="reboot-server glyphicon glyphicon-repeat pointer"><span>Reboot server</span></i>
-                  <i class="stop-thread glyphicon glyphicon-stop pointer" style="margin-right: 0;"><span>Stop thread</span></i>
-                </div>
-                <div>Who run: <span class="run-client"><i class="glyphicon glyphicon-server"></i><%= DEFAULT_RUN_CLIENT %></span></div>
-                <div>Count in queue: <span class="queue-count pointer">0</span></div>
-                <!-- UPDATE-->
-                <div class="queue" style="display: none"></div>
-                <div class="run-at" style="display: none">Location: <span class="run-at-value"></span></div>
-                <div>Now running:
-                  <span class="running"><%= DEFAULT_CURRENT_TEST %></span><i class="glyphicon glyphicon-stop stop-current" style="display: none"><span>Stop current</span></i>
-                </div>
-                <!-- BY -->
-                <div class="progress-bar ui-progress-bar ui-container">
-                  <div class="ui-progress" style="width: 100%;"></div><!-- .ui-progress -->
-                  <span class="value ui-label">0%</span><!-- progress value -->
-                </div><!-- #progress_bar -->
-                <div class="show-log pointer">
-                  <span>Show log</span>
-                </div>
-                <div class="log-window" style="display: none">
-                  <div class="nav-log">
-                    <i class="glyphicon glyphicon-chevron-up icon-white log-up"></i>
-                    <i class="glyphicon glyphicon-chevron-down icon-white log-down"></i>
-                  </div>
-                  <div class="log"></div>
-                </div>
-                <!-- JQUERY-->
-              </div>
-          <% end %>
-          <!--<div class="server"><i class="icon-server"></i>facetostool</div>-->
-          <!--<div class="server"><i class="icon-server"></i>zagudi</div>-->
+    <div id="<%= server.name %>" class="server">
+      <div class="server-header">
+        <% if server_booked?(server.name) %>
+            <% if client_booked?(server.name) %>
+                <div class="unbook-button button active" data-server="<%= server.name %>">unbook</div>
+            <% else %>
+                <div class="book-button button active" data-server="<%= server.name %>" style="visibility: hidden">book</div>
+            <% end %>
+        <% else %>
+            <div class="book-button button active" data-server="<%= server.name %>">book</div>
+        <% end %>
+        <label><%= server.name %></label>
+        <i class="user-icon glyphicon glyphicon-user">​<span class="hidden-tool">Facetostool</span></i>
+        <div class="ui-progress-bar ui-container" data-server="<%= server.name %>" >
+          <div class="ui-progress" style="width: 26.8%; display: block;"></div>
+          <!-- .ui-progress -->
+          <span class="value ui-label">26.8%</span><!-- progress value -->
+          <span class="test hidden-tool">
+            <div class="name">ASDNJKASNFjknsajkdnasjknfjkasndjk</div>
+            <div class="location">eu com</div>
+          </span>
         </div>
       </div>
+      <% unless server.name == AMAZON_SERVER_NAME %>
+          <div class="server-content">
+            <div class="mini-panel">
+              <ul>
+                <li><i class="glyphicon glyphicon-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i></li>
+                <li><i class="glyphicon glyphicon-repeat shower" data-server="<%= server.name %>"><span class="hidden-tool"> reboot</span></i></li>
+                <li>
+                  <%= link_to server_history_path(server), :target => '_blank' do %>
+                  <i class="glyphicon glyphicon-book shower"><span class="hidden-tool"> history</span></i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <div class="server-ip">IP: <%= server.address %></div>
+            <div class="log-opener"><span>logs</span></div>
+            <div class="log-window" style="display: none">
+              <div class="log"></div>
+            </div>
+          </div>
+      <% end %>
     </div>
 <% end %>
 

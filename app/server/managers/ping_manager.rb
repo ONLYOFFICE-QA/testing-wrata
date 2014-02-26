@@ -1,0 +1,19 @@
+module PingManager
+
+  def start_pinging_server
+    Thread.new do
+      while true
+        command = "ping -w1 -c1 #{@server_model.address}"
+        r, w = IO.pipe
+        pid = spawn(command, :out => w)
+        Process.wait pid
+        w.close
+        status = r.read.include?('0 received')
+        @status = !status
+        sleep TIME_FOR_UPDATE
+      end
+    end
+  end
+
+
+end

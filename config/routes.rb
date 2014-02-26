@@ -5,35 +5,46 @@ Runner::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :clients
-  post '/client_history/show_more', to: 'clients#show_more'
+  get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
 
   resources :test_lists, only: [:index, :destroy]
   resources :history, only: :destroy
   post 'history/set_analysed'
-  post '/history/show_html_results' #, as: '/history/show_html_results'
+  get '/history/show_html_results' #, as: '/history/show_html_results'
 
   get 'runner/index'
-  post 'runner/index'
-  post 'runner/get_status'
-  post 'runner/start'
-  post 'runner/start_list'
-  post 'runner/show_servers'
-  post 'runner/show_tests'
-  post 'runner/show_subtests'
-  post 'runner/load_test_list'
-  post 'runner/change_branch'
-  post 'runner/get_info'
-  post 'runner/rerun_thread'
+  get 'runner/start'
+  get 'runner/start_list'
+  get 'runner/show_servers'
+  get 'runner/show_tests'
+  get 'runner/show_subtests'
+  get 'runner/load_test_list'
+  get 'runner/change_branch'
+  get 'runner/get_updated_data'
+  get 'runner/rerun_thread'
+  get 'runner/pull_projects'
+  get 'runner/get_branches'
   post 'runner/stop_current'
+
+  post 'queue/book_server'
+  post 'queue/unbook_server'
+  post 'queue/add_test'
+  post 'queue/add_tests'
+  post 'queue/delete_test'
+  post 'queue/swap_tests'
+  post 'queue/delete_test'
+  post 'queue/change_test_location'
+  post 'queue/clear_tests'
+  post 'queue/retest'
 
   post 'runner/save_list'
 
   #resources :servers
-  post '/server_history/show_more', to: 'servers#show_more'
-  post '/servers/reboot'
-  post '/servers/show_current_results'
+  get '/server_history/show_more', to: 'servers#show_more'
+  get '/servers/reboot'
+  get '/servers/show_current_results'
   post '/servers/clear_history'
   get '/server_history/:id', to: 'servers#server_history' , as: 'server_history'
 

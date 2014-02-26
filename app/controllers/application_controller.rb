@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   #include ServerThreads
 
   #before_filter :create_threads
+  before_action :require_login
 
   # Force signout to prevent CSRF attacks
   def handle_unverified_request
@@ -27,10 +28,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #protected
-  #
-  #def create_threads
-  #  init_threads
-  #end
+  private
 
+  def require_login
+    if signed_in?
+      init_run_manager
+    end
+  end
 end

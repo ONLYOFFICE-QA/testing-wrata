@@ -1,18 +1,26 @@
 <% content_for :head do %>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             myRunner.showServers();
+            $("#test-queue").slimScroll({width: '192px', height: '316px'});
+            $("#server-queue").slimScroll({width: '137px', height: '316px'});
+            myRunner.eventToSortTestQueue();
+            myRunner.getUpdatedDataFromServer();
+            myRunner.eventToClearTestQueue($('#clear-tests'));
+            addSortableToElem($('#sidebar-test-list'));
+            myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
+        });
+        window.onload = function() {
+            myRunner.pullProjectsAndGetAllView();
             myRunner.setEventChangeBranch();
-            myRunner.showTests();
+            myRunner.eventToAddTestsFromSidebar($('#add-list'));
             <% client = current_client %>
             <% if client %>
-              myRunner.selectProject(<%= client.project %>);
+            myRunner.selectProject(<%= client.project %>);
             <% else %>
-              myRunner.selectProject("docs");
+            myRunner.selectProject("docs");
             <% end %>
-            myRunner.getInfoFromAllServer()
-            addSortableToElem($('#sidebar-test-list'));
-        });
+        };
     </script>
 <% end %>
 
@@ -31,22 +39,23 @@
 <div class="side-wrap">
   <div style="position: relative">
     <div id="open-sidebar">
-      <i id="open-ico" class="glyphicon glyphicon-chevron-left icon-white" style="margin-top: 4px;"></i>
+      <i id="open-ico" class="glyphicon glyphicon-chevron-left" style="margin-top: 4px; left: -5px; top: -2px;"></i>
     </div>
     <div id="sidebar" class="sidebar-nav-abs">
-      <div style="line-height: 29px;">
+      <div>
         <div id='list-name' class="inline">My Test List</div>
-        <i id="edit-list-name" class='inline glyphicon glyphicon-pencil icon-white'></i>
-        <hr class="deliver"/>
+        <i id="edit-list-name" class='inline glyphicon glyphicon-pencil'></i>
       </div>
       <div class="list-window">
         <div id="sidebar-test-list">
         </div>
       </div>
-      <div id='save-new' class="btn btn-small btn-inverse">Save</div>
-      <div class="start-list">
-        <i class="start-icon"></i>
-        <select class="region">
+      <div class="start-panel">
+        <div id='save-new'>
+          <i class="glyphicon glyphicon-floppy-save"></i>Save
+        </div>
+        <div id='add-list'>Add in queue</div>
+        <select id='list-region' class="region form-control">
           <option>info us</option>
           <option>info eu</option>
           <option>com eu</option>
@@ -63,11 +72,36 @@
     <div class="wrap"></div>
   </div>
   <div class="content">
-    <div class="block" style="float: left; width: 45%">
+    <div class="block" style="float: left; width: 23%">
       <div id="servers">
       </div>
     </div>
-    <div class="block" style="float: right; margin-bottom: 25px;  width: 55%">
+    <div class="block" style="width: 37%; float: left;padding-right: 12px;">
+      <div id="queue-panel">
+        <div class="panel-header">
+          <div class="list-header" style="width: 38%">
+            <i class="glyphicon glyphicon-list-alt"></i>servers
+          </div>
+          <div class="list-header" style="width: 61%">
+            <i class="glyphicon glyphicon-list-alt"></i>tests
+          </div>
+          <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
+        </div>
+        <div class="queues">
+          <div style="float: left" class="queue-list">
+            <div id="server-queue">
+              <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server1</div>
+              <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server2</div>
+            </div>
+          </div>
+          <div  class="queue-list" style="margin-left: 5px; width: 202px">
+            <div id="test-queue"></div>
+          </div>
+        </div>
+        <div class="options-panel"></div>
+      </div>
+    </div>
+    <div class="block" style="float: right; margin-bottom: 25px;  width: 40%; position: relative;">
       <div class="tests-block">
         <div class="tabbable"> <!-- Only required for left/right tabs -->
           <ul class="nav nav-tabs">
@@ -78,23 +112,20 @@
                 <li>
             <% end %>
             <% unless client %>
-              <li class="active">
+                <li class="active">
             <% end %>
-              <a href="#docs" data-toggle="tab">Online Document
-                <select id="docs-branches" class="branch">
-                  <% get_list_branches(DOCS_PROJECT_PATH).each do |branch| %>
-                      <option><%= branch %></option>
-                  <% end %>
-                </select>
-                <i class="start-icon"></i>
-                <select class="region">
-                  <option>isa</option>
-                  <option>info us</option>
-                  <option>info eu</option>
-                  <option>com eu</option>
-                  <option>com us</option>
-                </select>
-              </a>
+            <a href="#docs" data-toggle="tab">Online Document
+              <select id="docs-branches" class="branch form-control">
+              </select>
+              <i class="start-icon"></i>
+              <select class="region form-control">
+                <option>isa</option>
+                <option>info us</option>
+                <option>info eu</option>
+                <option>com eu</option>
+                <option>com us</option>
+              </select>
+            </a>
 
             </li>
             <% if client && client.project == "teamlab" %>
@@ -107,19 +138,16 @@
                 <li>
             <% end %>
             <a href="#teamlab" data-toggle="tab">Teamlab
-                <select id="teamlab-branches" class="branch">
-                  <% get_list_branches(TEAMLAB_PROJECT_PATH).each do |branch| %>
-                      <option><%= branch %></option>
-                  <% end %>
-                </select>
-                <i class="start-icon"></i>
-                <select class="region">
-                  <option>info us</option>
-                  <option>info eu</option>
-                  <option>com eu</option>
-                  <option>com us</option>
-                </select>
-              </a>
+              <select id="teamlab-branches" class="branch form-control">
+              </select>
+              <i class="start-icon"></i>
+              <select class="region form-control">
+                <option>info us</option>
+                <option>info eu</option>
+                <option>com eu</option>
+                <option>com us</option>
+              </select>
+            </a>
             </li>
           </ul>
           <div class="tab-content">
@@ -129,6 +157,15 @@
             <div class="tab-pane" id="teamlab">
               loading test...
             </div>
+          </div>
+        </div>
+      </div>
+      <i class="update-tests glyphicon glyphicon-repeat"></i>
+      <div class="section-overlay">
+        <div class="overlay-window">
+          <div class="overlay-content">
+            <div class="overlay-text">Pulling...</div>
+            <img src="assets/ajax_loader_gray_128.gif">
           </div>
         </div>
       </div>
