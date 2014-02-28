@@ -9,7 +9,7 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
-//= require twitter/bootstrap
+//= require bootstrap
 //= require jquery
 //= require jquery_ujs
 //= require_tree
@@ -312,10 +312,10 @@ function Runner() {
 
     this.setLogToServerView = function (server_el, log) {
         // if ((currentLogOnServer(server_el) == '') && (currentTestOnServer(server_el) == 'nothing')) {
-        if (log != '') {
+//        if (log != '') {
             var log_div = server_el.find('.log');
             log_div.html(log.replace(/\n/g, '<br>'));
-        }
+//        }
         //  }
     };
 
@@ -784,6 +784,7 @@ function Runner() {
 
     this.eventToLoadTestList = function (elem) {
         $("#list-name").text(elem.text());
+        showSectionOverlay();
         $.ajax({
             url: 'runner/load_test_list',
             context: this,
@@ -1513,6 +1514,7 @@ function showMoreHistoryForServer() {
             eventToOpenRspecResults(trimmed_data.find('.open-results'));
             eventToOpenMoreOptions(trimmed_data.find('.open-options'));
             eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
+            eventToRetest(trimmed_data.find('.retest'));
         },
         error: function (e) {
             console.log(e.message);

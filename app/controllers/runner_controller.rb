@@ -4,7 +4,7 @@ require_relative '../../../SharedFunctional/RunnerHelper/TestrailRunnerHelper'
 class RunnerController < ApplicationController
 
   def index
-
+    @controller = :runner
   end
 
   def pull_projects

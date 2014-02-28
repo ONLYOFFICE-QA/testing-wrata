@@ -8,11 +8,11 @@ module TestManager
   end
 
   def stop_test
-    system "knife ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""
+    system "ssh #{@server_model.name}@#{@server_model.address} \"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""
   end
 
   def generate_run_test_command(test, options)
-    "knife ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\""
+    "ssh #{@server_model.name}@#{@server_model.address} \"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\""
   end
 
   def open_folder_with_project(test_path)

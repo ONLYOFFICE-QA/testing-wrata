@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
   def require_login
     if signed_in?
       init_run_manager
+    else
+      redirect_to signin_path
     end
   end
 end

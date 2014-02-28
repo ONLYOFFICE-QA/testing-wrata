@@ -1,5 +1,5 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign Up</h1>
+<h1 style="margin-left: 9%">Sign Up</h1>
 
 <%= form_for(@client, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
     <%= render 'shared/error_messages' %>
@@ -73,4 +73,4 @@
 
 <% end %>
 
-<%= link_to 'Back', runner_path %>
+<%= link_to 'Back', runner_path , style: 'margin-left: 9%'%>

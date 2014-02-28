@@ -67,7 +67,11 @@ module HTMLResultManager
     results = nil
     if @test
       if html_result_exist?
-        results = ResultParser.parse_rspec_html(rspec_html_result_path)
+        begin
+          results = ResultParser.parse_rspec_html(rspec_html_result_path)
+        rescue
+          results = nil
+        end
       end
     end
     results

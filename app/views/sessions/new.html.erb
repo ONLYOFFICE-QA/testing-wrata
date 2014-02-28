@@ -1,5 +1,5 @@
 <% provide(:title, "Sign in") %>
-<h1>Sign in</h1>
+<h1 style="margin-left: 9%;">Sign in</h1>
 <%= form_for(:session, url: sessions_path, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
 
     <div class="form-group">
@@ -24,4 +24,4 @@
     <!--<input class="btn btn-primary" name="commit" type="submit" value="Log in">-->
 <% end %>
 
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<p style="margin-left: 9%;">New user? <%= link_to "Sign up now!", signup_path %></p>

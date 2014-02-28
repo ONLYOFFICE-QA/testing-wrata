@@ -116,7 +116,7 @@ footer {
     width: 100%;
     height: 100%;
     top: 0px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.4);
     border-radius: 5px;
 }
 
@@ -124,6 +124,7 @@ footer {
     border-radius: 20px;
     height: 60px;
     width: 170px;
+    color: rgba(221, 221, 221, 1);
 }
 
 .section-overlay .overlay-content {
@@ -450,6 +451,10 @@ hr.deliver {
     cursor: pointer;
 }
 
+.add-button-file:active, .add-button-folder:active {
+    background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 117, 192) 100%);
+}
+
 .book-button, .unbook-button {
     font-size: 10px;
     display: inline-block;
@@ -483,7 +488,7 @@ hr.deliver {
 }
 
 .book-button:active {
-    background: linear-gradient(to bottom, rgb(106, 185, 19) 15%, rgb(106, 185, 19) 100%)
+    background: linear-gradient(to bottom, rgb(187, 211, 49) 15%, rgb(187, 211, 49) 100%)
 }
 
 .unbook-button {
@@ -578,7 +583,8 @@ hr.deliver {
 .server-header .ui-progress-bar span.ui-label {
     position: absolute;
     top: 0;
-    left: 37%;
+    width: 60px;
+    left: 0;
     font-size: 12px;
     line-height: 16px;
     text-shadow: rgba(255,255,255, 0.45) 0 1px 0px;
@@ -600,6 +606,7 @@ hr.deliver {
     display: inline-block;
     width: 60px;
     margin-right: 5px;
+    text-align: center;
     float: right;
     top: 3px;
     vertical-align: middle;
@@ -634,7 +641,7 @@ hr.deliver {
 .table .shower:hover > span.hidden-tool {
     margin-left: -40px;
     width: 100px;
-    background: rgba(123, 245, 245, 0.46);
+    background: rgba(179, 243, 245, 0.90);
     color: rgb(102, 102, 102);
     border-radius: 2px;
     padding: 2px 2px 4px 2px;

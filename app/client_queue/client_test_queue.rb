@@ -10,9 +10,13 @@ class ClientTestQueue
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
     doc_branch, tm_branch = get_branches(test_project, branch, location.split(' ')[0])
-    @tests << { test_path: test_path, id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
+    @tests << { test_path: reformat_path(test_path), id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
                 location: location, test_name: test_name, project: test_project }
     @id += 1
+  end
+
+  def reformat_path(test_path)
+    test_path.include?(HOME_DIRECTORY) ? test_path.gsub(HOME_DIRECTORY, '~') : test_path
   end
 
   def push_test_with_branches(test_path, tm_branch, doc_branch, location)
@@ -93,3 +97,6 @@ class ClientTestQueue
   end
 
 end
+#
+#str = ' //home/runner/RubymineProjects/OnlineDocuments/RspecTest/Studio/run_test_single_spec.rb'
+#p str.gsub("/#{ENV['HOME']}", '~')

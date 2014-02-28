@@ -25,7 +25,7 @@ module ServersHelper
 
   def test_result(total_result)
     if test_fail?(total_result)
-      'fail'
+      'danger'
     else
       'success'
     end

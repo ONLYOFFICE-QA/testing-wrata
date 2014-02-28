@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
 
+  skip_before_action :require_login, only: [:new, :create]
   # GET /clients/1
   # GET /clients/1.json
   def show

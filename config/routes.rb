@@ -39,6 +39,8 @@ Runner::Application.routes.draw do
   post 'queue/clear_tests'
   post 'queue/retest'
 
+  get 'delay_run', to: 'delay_run#index'
+
   post 'runner/save_list'
 
   #resources :servers

@@ -52,7 +52,7 @@
     <button id="clear-history" class="btn btn-primary" style="position: absolute; right: 0px; top: 58px; right: 20px;">
       <i class="glyphicon glyphicon-trash"></i>Clear history
     </button>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hovers">
       <thead>
       <tr>
         <th class="center">Client</th>
@@ -66,7 +66,7 @@
       </thead>
       <tbody>
       <% @history.each do |line| %>
-          <tr>
+          <tr class="<%= test_result(line.total_result) %>">
             <td class="center">
               <% if line.client.nil? %>
                   Guest
@@ -76,7 +76,7 @@
             </td>
             <td class="center">
               <div style="display: inline-block">
-                <div class="history-log pointer <%= test_result(line.total_result) %>">
+                <div class="history-log pointer">
                   <%= line.file.gsub(RUBYMINE_PROJECTS_PATH, '') %>
                 </div>
                 <div class="log-window" style="display: block">
