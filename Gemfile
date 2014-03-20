@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.3'
 
+gem 'resque', git: 'https://github.com/resque/resque.git', branch: '1-x-stable'
+#gem 'resque-scheduler'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -9,7 +12,7 @@ gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 
 gem 'sqlite3'
 
-gem "ransack"
+gem 'ransack'
 
 gem 'net-ping'
 

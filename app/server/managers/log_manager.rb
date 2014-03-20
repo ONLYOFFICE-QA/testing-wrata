@@ -63,7 +63,7 @@ module LogManager
   end
 
   def init_last_log
-    unless log_file_empty?
+    if !log_file_empty?
       lines = IO.readlines(server_log_path)
       full_size = lines.size
       if @last_log_end == full_size or full_size < @last_log_end      # return if we don't get new lines in log file
@@ -76,6 +76,8 @@ module LogManager
         end
       end
       @last_log_end = full_size                      # init new end of log
+    else
+      @log = EMPTY_STRING
     end
   end
 

@@ -28,7 +28,7 @@ module HistoryManager
     history.server = @server_model
     history.total_result = get_final_results_from_html
     history.log = get_full_log
-    if File.exist?(rspec_html_result_path)
+    if html_result_exist?
       file = File.open(rspec_html_result_path, 'r') { |io| io.read }
       history.data = file
     end

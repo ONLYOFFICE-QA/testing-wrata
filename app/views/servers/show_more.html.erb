@@ -8,6 +8,9 @@
                 <%= line.client.login %>
             <% end %>
           </td>
+          <% if @controller == :client %>
+              <td class="center"><%= line.server.name %></td>
+          <% end %>
           <td class="center">
             <div style="display: inline-block">
               <div class="history-log pointer">

@@ -76,7 +76,7 @@ class ClientTestQueue
   end
 
   def get_project(test_path)
-    test_path.include? DOCS_PROJECT_NAME ? DOCS_TAB_NAME : TEAMLAB_TAB_NAME
+    test_path.include?(DOCS_PROJECT_NAME) ? DOCS_TAB_NAME : TEAMLAB_TAB_NAME
   end
 
   def get_branches(project, branch, region)

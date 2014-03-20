@@ -513,6 +513,7 @@ function Runner() {
         elem.on('click', function(){
             _self.addTestInQueue($(this).attr('data-test'), _self.getBranch(), $('li.active .region').val());
             _self.getUpdatedDataFromServer();
+            imitateHover($('.test-node :first'))
         });
     };
 
@@ -1821,7 +1822,7 @@ function eventToCloseRspecPopup() {
     $('div.rspec-overlay').on('click', function () {
         closePopupRspecResults()
     });
-    offEventsOnElem($('.rspec-popup-window'));
+    stopPropagation($('.rspec-popup-window'));
 }
 
 
@@ -1968,6 +1969,10 @@ function showSectionOverlay() {
 
 function hideSectionOverlay() {
     $('.section-overlay').hide();
+}
+
+function imitateHover(elem) {
+    $(elem).mouseenter().mouseleave();
 }
 //
 //$(document).ready(function() {

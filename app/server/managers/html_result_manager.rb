@@ -1,7 +1,7 @@
 module HTMLResultManager
 
   def rspec_html_result_path
-    "/mnt/data_share/RunnerLogs/#{@name}.html"
+    "/mnt/data_share/RunnerLogs/#{@server_model.name}.html"
   end
 
   def html_result_exist?
@@ -34,9 +34,13 @@ module HTMLResultManager
     processing = '0'
     if @test
       if html_result_exist?
-        processing_from_html = ResultParser.get_processing_of_rspec_html(rspec_html_result_path)
-        unless processing_from_html == ''
-          processing = processing_from_html
+        begin
+          processing_from_html = ResultParser.get_processing_of_rspec_html(rspec_html_result_path)
+          unless processing_from_html == ''
+            processing = processing_from_html
+          end
+        rescue
+
         end
       end
     end
@@ -45,11 +49,13 @@ module HTMLResultManager
 
   def create_progress_scan_thread
     @progress_scan_thread = Thread.new do
-      unless @test
-        Thread.stop
+      while true
+        unless @test
+          Thread.stop
+        end
+        @test_progress = get_test_progress
+        sleep TIME_FOR_UPDATE
       end
-      @test_progress = get_test_progress
-      sleep TIME_FOR_UPDATE
     end
   end
 

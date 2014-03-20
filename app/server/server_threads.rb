@@ -3,7 +3,8 @@ class ServerThreads < ActionController::Base
 
   def init_threads
     @server_threads = []
-    Server.all.each do |server_model|
+    servers = Server.all.sort_by {|s| s.name.split('nct-at')[1].to_i}
+    servers.each do |server_model|
       #unless user.name == AMAZON_SERVER_NAME
         @server_threads << ServerThread.new(server_model)
       #end

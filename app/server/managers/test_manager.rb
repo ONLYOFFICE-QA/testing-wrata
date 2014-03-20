@@ -12,7 +12,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    "ssh #{@server_model.name}@#{@server_model.address} \"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\""
+    "ssh #{@server_model.name}@#{@server_model.address} \"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" "
   end
 
   def open_folder_with_project(test_path)

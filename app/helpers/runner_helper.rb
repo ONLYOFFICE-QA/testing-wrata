@@ -75,4 +75,12 @@ module RunnerHelper
     $threads.get_thread_by_name(server_name).client == current_client
   end
 
+  def check_active(project_name)
+    if current_client.project == project_name
+      'active'
+    else
+      ''
+    end
+  end
+
 end

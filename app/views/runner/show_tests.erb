@@ -49,10 +49,10 @@
     <% end %>
 
 <% else %>
-    <div class="tab-pane active" id="docs">
+    <div class="tab-pane <%= check_active('docs') %>" id="docs">
       <% show_file_tree(directory_hash(DOCS_TESTS_PATH)[:children], :docs) %>
     </div>
-    <div class="tab-pane" id="teamlab">
+    <div class="tab-pane <%= check_active('teamlab') %>" id="teamlab">
       <% show_file_tree(directory_hash(TEAMLAB_TESTS_PATH)[:children], :tm) %>
     </div>
 <% end %>

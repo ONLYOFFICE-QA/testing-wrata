@@ -65,9 +65,8 @@ class QueueController < ApplicationController
   private
 
   def get_manager
-    client = current_client
-    if client
-      @manager = $run_managers.find_manager_by_client_login(client.login)
+    if @client
+      @manager = $run_managers.find_manager_by_client_login(@client.login)
     else
       flash[:error] = 'You need be authorized' # Not quite right!
       render signin_path

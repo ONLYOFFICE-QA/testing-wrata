@@ -444,7 +444,7 @@ hr.deliver {
     box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
     line-height: 11px;
     padding: 1px;
-    margin-top: -6px;
+    margin-top: -4px;
     border-radius: 3px;
     font-weight: bold;
     vertical-align: middle;
@@ -514,7 +514,8 @@ hr.deliver {
 .server-content {
     padding: 10px;
     font-weight: bold;
-    color: #D1D6E7
+    color: #D1D6E7;
+    display: none;
 }
 
 .mini-panel {
@@ -627,6 +628,10 @@ hr.deliver {
     font-style: normal;
 }
 
+.server-header .user-icon > span.hidden-tool {
+    padding: 4px 2px;
+}
+
 .shower:hover > span.hidden-tool
 {
     opacity: 1;
@@ -647,14 +652,28 @@ hr.deliver {
     padding: 2px 2px 4px 2px;
 }
 
-.server-header .user-icon:hover > span.hidden-tool, .server-header .ui-progress-bar:hover > span.hidden-tool{
+.server-header .user-icon:hover > span.hidden-tool{
     opacity: 1;
     text-decoration:none;
     visibility: visible;
     overflow: visible;
-    margin-top: -15px;
+    margin-top: -20px;
     display: inline;
     margin-left: -20px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+}
+
+.server-header .ui-progress-bar:hover > span.hidden-tool {
+    opacity: 1;
+    text-decoration:none;
+    visibility: visible;
+    overflow: visible;
+    margin-top: 1px;
+    display: inline;
+    margin-left: -30px;
     background: rgba(0,0,0,0.7);
     border-radius: 3px;
     color: white;
@@ -719,6 +738,7 @@ table .center {
 }
 
 .full-command {
+    z-index: 110;
     position: absolute;
     width: 1181px;
     font-size: 11px;

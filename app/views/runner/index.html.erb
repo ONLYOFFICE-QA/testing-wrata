@@ -16,9 +16,9 @@
             myRunner.eventToAddTestsFromSidebar($('#add-list'));
             <% client = current_client %>
             <% if client %>
-            myRunner.selectProject(<%= client.project %>);
+            myRunner.selectProject('<%= client.project %>');
             <% else %>
-            myRunner.selectProject("docs");
+            myRunner.selectProject('docs');
             <% end %>
         };
     </script>

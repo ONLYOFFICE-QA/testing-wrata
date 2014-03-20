@@ -15,8 +15,6 @@
             <% elsif @controller == :client %>
                 eventToClearHistoryOnClient($('#clear-history'));
             <% end %>
-
-
         });
     </script>
 <% end %>
@@ -56,6 +54,9 @@
       <thead>
       <tr>
         <th class="center">Client</th>
+        <% if @controller == :client %>
+            <th class="center">Server</th>
+        <% end %>
         <th class="center">File</th>
         <th class="center">Result</th>
         <th class="center">Run params</th>
@@ -74,6 +75,9 @@
                   <%= line.client.login %>
               <% end %>
             </td>
+            <% if @controller == :client %>
+                <td class="center"><%= line.server.name %></td>
+            <% end %>
             <td class="center">
               <div style="display: inline-block">
                 <div class="history-log pointer">

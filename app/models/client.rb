@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
   attr_accessible :login, :password, :password_confirmation, :post, :first_name, :second_name, :project
   has_many :test_lists
   has_many :histories
+  has_many :delayed_runs
 
   has_secure_password
   validates_confirmation_of :password

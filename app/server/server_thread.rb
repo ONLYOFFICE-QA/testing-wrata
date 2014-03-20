@@ -24,6 +24,7 @@ class ServerThread
     @server_model = server_model
     @client = nil
     @test = nil
+    delete_html_result
     create_main_thread
     start_pinging_server
     create_progress_scan_thread

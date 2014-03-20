@@ -53,7 +53,7 @@ class ResultParser
   private
 
   def self.get_processing(page)
-    processing = page.css('script:contains("moveProgressBar")').last()
+    processing = page.css('script:contains("moveProgressBar")').last
     if processing
       process = processing.text.strip.split('\'')[1]
       if process == ''
@@ -118,7 +118,7 @@ class ResultParser
   end
 
   def self.parse_example(example)
-    example_obj = Example.new()
+    example_obj = Example.new
     example_obj.text = example.css('span').first.text
     example_obj.passed = example[:class].split(' ')[1]
     if example_obj.passed == 'failed'

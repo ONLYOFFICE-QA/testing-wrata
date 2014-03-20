@@ -1,4 +1,10 @@
+require 'resque/server'
 Runner::Application.routes.draw do
+
+  #authenticate :admin do
+    mount Resque::Server, :at => '/resque'
+  #end
+
   root :to => 'runner#index', :as => 'runner'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -40,6 +46,7 @@ Runner::Application.routes.draw do
   post 'queue/retest'
 
   get 'delay_run', to: 'delay_run#index'
+  post 'delay_run/add_run', to: 'delay_run#add_run'
 
   post 'runner/save_list'
 

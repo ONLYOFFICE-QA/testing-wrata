@@ -38,8 +38,9 @@ module SessionsHelper
   end
 
   def init_run_manager
-    unless get_run_manager current_client.login
-      $run_managers.add_manager ClientRunnerManager.new(current_client)
+    @client = current_client
+    unless get_run_manager @client.login
+      $run_managers.add_manager ClientRunnerManager.new(@client)
     end
   end
 

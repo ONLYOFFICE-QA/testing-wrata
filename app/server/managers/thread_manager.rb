@@ -11,8 +11,10 @@ module ThreadManager
       test_options = ServerOptions.new(@test[:doc_branch], @test[:tm_branch], location.split(' ')[0], location.split(' ')[1])
       full_start_command = start_test_on_server(test_path, test_options)    #MAIN FUNCTION
       add_data_to_history(test_path, test_options, full_start_command, @client)
+      init_last_log
+      delete_log_file
       delete_html_result
-      @log_end = 0
+      @last_log_end = 0
       @test = nil
     end
   end

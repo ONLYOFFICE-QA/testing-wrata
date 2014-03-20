@@ -65,7 +65,7 @@ class RunnerController < ApplicationController
   end
 
   def get_client_name(client)
-    if current_client
+    if @client
       client.login
     else
       GUEST_NAME
@@ -85,16 +85,16 @@ class RunnerController < ApplicationController
 
     test_list_name = test_list_hash['name']
 
-    if current_client.nil?
+    if @client.nil?
       render :layout => false
       return
     end
 
-    old_test_list = current_client.test_lists.find_by_name(test_list_name)
+    old_test_list = @client.test_lists.find_by_name(test_list_name)
     delete_testlist_by_id(old_test_list.id) if old_test_list
 
     @test_list = TestList.new(name: test_list_name)
-    @test_list.client = current_client
+    @test_list.client = @client
     @test_list.branch = branch
     @test_list.project = project
     if @test_list.save
@@ -130,7 +130,7 @@ class RunnerController < ApplicationController
   def load_test_list
     list_name = params['listName']
 
-    @test_list = current_client.test_lists.find_by_name(list_name)
+    @test_list = @client.test_lists.find_by_name(list_name)
 
     respond_to do |format|
       format.json { render :json => {
@@ -151,7 +151,7 @@ class RunnerController < ApplicationController
      servers = params['servers']
      servers.delete(AMAZON_SERVER_NAME)
 
-     client = current_client
+     client = @client
 
      output_json = {}
      server_data = []
@@ -185,7 +185,7 @@ class RunnerController < ApplicationController
   def stop_current
     server = params['server']
 
-    $threads.get_thread_by_name(server).stop_current
+    $threads.get_thread_by_name(server).stop_test
 
     render :nothing => true
   end
