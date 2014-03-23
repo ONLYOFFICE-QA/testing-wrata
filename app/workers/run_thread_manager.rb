@@ -116,6 +116,9 @@ module RunThreadManager
                  run.start_time
                end
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
+    while Time.now >  time
+      time = old_time + time_to_sec(hour.to_i, minute.to_i)
+    end
     puts ' '
     puts '====================================================='
     puts '=========== UPDATE RUN INFO ========================='
@@ -131,16 +134,6 @@ module RunThreadManager
 
   def time_to_sec(hours, minute)
     hours*60*60 + minute*60
-  end
-
-end
-
-class TestRunClass
-
-  include RunThreadManager
-
-  def initialize(runs = [])
-    @runs = runs
   end
 
 end

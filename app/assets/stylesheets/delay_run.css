@@ -1,0 +1,58 @@
+.add-run-button {
+    background: #8cca11;
+    background: -moz-linear-gradient(top, #8cca11 15%, #699a0d 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #8cca11), color-stop(100%, #699a0d));
+    background: -webkit-linear-gradient(top, #8cca11 15%, #699a0d 100%);
+    background: -o-linear-gradient(top, #8cca11 15%, #699a0d 100%);
+    background: -ms-linear-gradient(top, #8cca11 15%, #699a0d 100%);
+    background: linear-gradient(to bottom, #8ec226 15%, #7baf18 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8cca11', endColorstr='#699a0d', GradientType=0);
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid #567517;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 #2f2f2f;
+    cursor: pointer;
+    width: 80px;
+    color: rgb(70, 88, 70);
+    font-weight: bold;
+}
+
+.add-run-button span {
+    margin-top: 0;
+    line-height: 15px;
+    vertical-align: top;
+}
+
+.test-list-row input {
+    text-align: center;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.test-list-row {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.test-list-row .form-control {
+    height: 21px;
+    line-height: 20px;
+    padding: 0;
+}
+
+.date input {
+    width: 100px;
+}
+
+.time input, .each-time input {
+    width: 37px;
+}
+
+.location select {
+    width: 70px;
+}
+
+.run-method select {
+    width: 100px;
+}

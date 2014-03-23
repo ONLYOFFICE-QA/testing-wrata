@@ -24,6 +24,10 @@ class DelayedRunManager
     init_runs_from_db
   end
 
+  def get_client_runs(client)
+    client.delayed_runs
+  end
+
   private
 
   def init_runs_from_db
@@ -43,4 +47,4 @@ class DelayedRunManager
 
 end
 #
-#$delayed_runs = DelayedRunManager.new
+$delayed_runs = DelayedRunManager.new

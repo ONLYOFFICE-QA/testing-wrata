@@ -1,9 +1,47 @@
 <div class="">
-  <% get_client_test_lists.each do |tl| %>
+  <% @client_runs.each do |run| %>
+      <% datetime = run.next_start ? run.next_start : run.start_time %>
       <div class="test-list-row">
-        <div class="name"><%= tl.name %></div>
-        <div class="time"><input/></div>
+        <div class="list-name" style="display: inline-block;">
+          <%= run.name %>
+        </div>
+        <div class="date" style="display: inline-block;margin-left: 5px;">
+          <label>Start date: </label>
+          <input class="form-control" placeholder="Select date" value="<%= datetime.strftime('%d-%m-%y')  %>">
+        </div>
+        <div class="time" style="display: inline-block;margin-left: 5px;">
+          <label>Start time: </label>
+          <input class="hour form-control" placeholder="Hour" value="<%= datetime.strftime('%H') %>">
+          :
+          <input class="min form-control" placeholder="Min" value="<%= datetime.strftime('%M') %>">
+        </div>
+        <div class="location" style="display: inline-block; margin-left: 5px;">
+          <select class="form-control" style="width: 110px;">
+            <option>info eu</option>
+            <option>info us</option>
+            <option>com eu</option>
+            <option>com us</option>
+            <option>isa</option>
+          </select>
+        </div>
+        <div class="run-method" style="display: inline-block; margin-left: 5px;">
+          <select class="form-control" style="width: 110px;">
+            <option>once</option>
+            <option>each day</option>
+            <option>each week</option>
+            <option>each time</option>
+          </select>
+        </div>
+        <div class="each-time" style="display: inline-block; margin-left: 5px;">
+          <input class="form-control" placeholder="Hour" style="width: 32px;"></div>
+        :
+          <input class="form-control" placeholder="Min" style="width: 32px;">
+        </div>
       </div>
   <% end %>
+  <div class="add-run-button">
+    <i class="glyphicon glyphicon-plus-sign" style="font-size: 14px;"></i>
+    <span>Add run</span>
+  </div>
 </div>
 

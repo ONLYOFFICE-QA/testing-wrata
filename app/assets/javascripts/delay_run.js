@@ -25,9 +25,9 @@ function sendWork(f_type, name, method, start_time, location) {
 
 $(document).ready(function(){
 
-    $('.time input').pickmeup({
+    $('.date input').pickmeup({
         hide_on_select:  true,
-        format:         'Y-m-d'
+        format:         'd/m/Y'
     });
 
 });

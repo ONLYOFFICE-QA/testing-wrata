@@ -3,7 +3,7 @@ class DelayRunController < ApplicationController
   before_action :get_manager
 
   def index
-
+    @client_runs = $delayed_runs.get_client_runs(@client)
   end
 
   def add_run
