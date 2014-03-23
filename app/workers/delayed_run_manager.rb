@@ -47,4 +47,4 @@ class DelayedRunManager
 
 end
 #
-$delayed_runs = DelayedRunManager.new
+#$delayed_runs = DelayedRunManager.new
