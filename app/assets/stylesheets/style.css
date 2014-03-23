@@ -536,6 +536,7 @@ hr.deliver {
 .mini-panel ul{
     float: right;
     margin: 0;
+    padding-left: 0;
 }
 
 .mini-panel a {
