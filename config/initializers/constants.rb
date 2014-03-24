@@ -28,3 +28,5 @@ COM_SERVER = 'com'
 EMPTY_STRING = ''
 TIME_FOR_UPDATE = 15
 
+SECURITY_PASSWORD = 'All love wheel'
+

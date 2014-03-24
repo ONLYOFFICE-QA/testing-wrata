@@ -36,14 +36,18 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(params[:client])
 
-    if @client.save
-      sign_in_ @client
-      flash[:success] = 'Welcome to the BEST RUNNER IN THE WORLD!'
-      redirect_to runner_path
+    if params['security_password'] == SECURITY_PASSWORD
+      if @client.save
+        sign_in_ @client
+        flash[:success] = 'Welcome to the BEST RUNNER IN THE WORLD!'
+        redirect_to runner_path
+      else
+        render 'new'
+      end
     else
+      flash[:error] = 'WRONG SECURITY PASSWORD! TRY CALL TO g U M K A -LLI II U H r O JI E T!'
       render 'new'
     end
-
   end
 
   # PUT /clients/1

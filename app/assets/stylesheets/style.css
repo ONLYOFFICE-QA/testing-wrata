@@ -1245,6 +1245,12 @@ a, a:link, a:visited  {
     /*visibility: hidden;*/
     font-size: 10px;
 }
+
+.alert-error {
+    text-align: center;
+    background: rgba(128, 15, 0, 0.1);
+    color: red;
+}
 /*.active a {*/
 /*$('#test-queue').slimScroll({*/
     /*color: 'rgba(0, 0, 0, 0.4)'}*/
