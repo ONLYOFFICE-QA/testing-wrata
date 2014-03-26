@@ -7,10 +7,6 @@ module ServersHelper
     file_name[1..-1]
   end
 
-  #def get_user_log(user_name)
-  #  user_thread = $threads.get_thread_by_name(user_name).get_log
-  #end
-  #
   def test_fail?(total_result)
     if total_result.nil?
       true

@@ -31,8 +31,8 @@ class ClientTestQueue
     @tests.empty?
   end
 
-  def pop_test
-    @tests.pop
+  def shift_test
+    @tests.shift
   end
 
   def delete_test(test_id)

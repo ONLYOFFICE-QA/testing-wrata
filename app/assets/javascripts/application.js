@@ -288,6 +288,7 @@ function Runner() {
     this.showBookButton = function(button) {
         _self.changeUnbookButtonOnBook(button);
         button.show();
+        button.css('visibility', 'visible');
         _self.eventToBookServer(button);
     };
 
