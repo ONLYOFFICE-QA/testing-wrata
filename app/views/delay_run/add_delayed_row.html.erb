@@ -1,0 +1,47 @@
+<div class="test-list-row">
+  <% current_time = Time.now %>
+  <div class="list-name" style="display: inline-block;">
+    <select class="form-control" style="width: 110px;">
+      <% @client.test_lists.each do |tl| %>
+          <option><%= tl.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="date" style="display: inline-block;margin-left: 5px;">
+    <label>Start date: </label>
+    <input class="form-control" placeholder="Select date" value="<%= current_time.strftime('%d/%m/%Y')  %>">
+  </div>
+  <div class="time" style="display: inline-block;margin-left: 5px;">
+    <label>Start time: </label>
+    <input class="hour form-control" placeholder="Hour" value="<%= current_time.strftime('%H') %>">
+    :
+    <input class="min form-control" placeholder="Min" value="<%= current_time.strftime('%M') %>">
+  </div>
+  <div class="location" style="display: inline-block; margin-left: 5px;">
+    <label>Location:</label>
+    <select class="form-control" style="width: 110px;">
+      <option>info eu</option>
+      <option>info us</option>
+      <option>com eu</option>
+      <option>com us</option>
+      <option>isa</option>
+    </select>
+  </div>
+  <div class="run-method" style="display: inline-block; margin-left: 5px;">
+    <label>Method:</label>
+    <select class="form-control" style="width: 110px;">
+      <option>once</option>
+      <option>each day</option>
+      <option>each week</option>
+      <option>each time</option>
+    </select>
+  </div>
+  <div class="each-time" style="display: none; margin-left: 5px;">
+    <input class="hour form-control" placeholder="Hour" style="width: 32px;">
+  :
+    <input class="min form-control" placeholder="Min" style="width: 32px;">
+  </div>
+  <div class="save-delayed-run">
+    <i class="glyphicon glyphicon-floppy-disk"></i>
+  </div>
+</div>

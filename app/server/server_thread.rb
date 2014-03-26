@@ -170,8 +170,8 @@ end
   #  start_options.portal_region = options.portal_region
   #  start_options.start_command = start_command
   #  unless start_options.save
-  #    error = start_options.errors.full_messages
-  #    p error
+  #    empty_pages = start_options.errors.full_messages
+  #    p empty_pages
   #  end
   #end
   #
@@ -187,8 +187,8 @@ end
   #    history.data = file
   #  end
   #  unless history.save
-  #    error = history.errors.full_messages
-  #    p error
+  #    empty_pages = history.errors.full_messages
+  #    p empty_pages
   #  end
   #  history
   #end

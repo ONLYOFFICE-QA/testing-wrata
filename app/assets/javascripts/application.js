@@ -51,6 +51,10 @@ function Client(login, file_lists) {
     this.file_lists = file_lists;
 }
 
+function trim_data(data) {
+    return $($.trim(data));
+}
+
 function Runner() {
     const UPDATE_INTERVAL = 1000;
     const STATUS_ONLINE = 0;
@@ -287,7 +291,7 @@ function Runner() {
 
     this.showBookButton = function(button) {
         _self.changeUnbookButtonOnBook(button);
-        button.show();
+        button.show().css('visibility', 'visible');
         _self.eventToBookServer(button);
     };
 
@@ -544,7 +548,7 @@ function Runner() {
             async: false,
             type: 'GET',
             success: function (data) {
-                var trimmed_data = $($.trim(data));
+                var trimmed_data = trim_data(data);
                 $("div#servers").html(trimmed_data);
                 _self.eventToOpenServer(trimmed_data.find('.server-header'));
                 _self.eventToOpenLogBySelector('.log-opener span');
@@ -572,7 +576,7 @@ function Runner() {
             async: true,
             type: 'GET',
             success: function (data) {
-                var trimmed_data = $($.trim(data));
+                var trimmed_data = trim_data(data);
                 $(".tests-block .tab-content").html(trimmed_data);
                 _self.setEventToOpenFolder();
                 _self.eventToOpenFileInclude();
@@ -671,7 +675,7 @@ function Runner() {
                     alert('Sign up for saving!');
                     return;
                 }
-                var trimmed_data = $($.trim(data));
+                var trimmed_data = trim_data(data);
                 _self.appendListDropdownMenu(trimmed_data);
             },
             error: function (e) {
@@ -1504,7 +1508,7 @@ function showMoreHistoryForServer() {
             'server': server
         },
         success: function (data) {
-            var trimmed_data = $($.trim(data));
+            var trimmed_data = trim_data(data)
             $('tbody').append(trimmed_data);
             scrollLogEventToElem(trimmed_data.find('.log'));
             logUpEventToElem(trimmed_data.find('.log-up'));
@@ -1536,7 +1540,7 @@ function showMoreHistoryForClient() {
             'name': name
         },
         success: function (data) {
-            var trimmed_data = $($.trim(data));
+            var trimmed_data = trim_data(data);
             $('tbody').append(trimmed_data);
             scrollLogEventToElem(trimmed_data.find('.log'));
             logUpEventToElem(trimmed_data.find('.log-up'));

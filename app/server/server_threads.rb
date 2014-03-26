@@ -1,6 +1,8 @@
 require 'server_thread'
 class ServerThreads < ActionController::Base
 
+  attr_accessor :lock
+
   def init_threads
     @server_threads = []
     servers = Server.all.sort_by {|s| s.name.split('nct-at')[1].to_i}
@@ -9,6 +11,7 @@ class ServerThreads < ActionController::Base
         @server_threads << ServerThread.new(server_model)
       #end
     end
+    @lock = Mutex.new
   end
 
   def get_thread_by_name(name)

@@ -1,7 +1,7 @@
 <%= form_for(@test_file) do |f| %>
   <% if @test_file.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@test_file.errors.count, "error") %> prohibited this test_file from being saved:</h2>
+      <h2><%= pluralize(@test_file.errors.count, "empty_pages") %> prohibited this test_file from being saved:</h2>
 
       <ul>
       <% @test_file.errors.full_messages.each do |msg| %>

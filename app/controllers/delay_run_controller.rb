@@ -4,6 +4,9 @@ class DelayRunController < ApplicationController
 
   def index
     @client_runs = $delayed_runs.get_client_runs(@client)
+    if @client.test_lists.empty?
+      render 'empty_pages#empty_test_list'
+    end
   end
 
   def add_run
@@ -20,6 +23,9 @@ class DelayRunController < ApplicationController
 
   end
 
+  def add_delayed_row
+    render :layout => false
+  end
 
   private
 
@@ -27,7 +33,7 @@ class DelayRunController < ApplicationController
     if @client
       @manager = $run_managers.find_manager_by_client_login(@client.login)
     else
-      flash[:error] = 'You need be authorized' # Not quite right!
+      flash[:empty_pages] = 'You need be authorized' # Not quite right!
       render signin_path
     end
   end

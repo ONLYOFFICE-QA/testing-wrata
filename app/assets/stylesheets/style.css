@@ -1245,6 +1245,16 @@ a, a:link, a:visited  {
     /*visibility: hidden;*/
     font-size: 10px;
 }
+
+.centered-message {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(119, 103, 103);
+    width: 100%;
+}
 /*.active a {*/
 /*$('#test-queue').slimScroll({*/
     /*color: 'rgba(0, 0, 0, 0.4)'}*/
