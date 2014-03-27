@@ -24,7 +24,9 @@ class DelayRunController < ApplicationController
     20.times do
       Thread.new do
         history = History.new
-        history.save
+        $threads.lock.synchronize do
+          history.save
+        end
       end
     end
 
