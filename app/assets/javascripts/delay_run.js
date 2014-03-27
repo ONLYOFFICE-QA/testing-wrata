@@ -25,7 +25,7 @@ function sendWork(f_type, name, method, start_time, location) {
 
 function testDB() {
     $.ajax({
-        url: 'delay_run/history_shit',
+        url: '/delay_run/history_shit',
         type: 'POST',
         success: function () {
         },
