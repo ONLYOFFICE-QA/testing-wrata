@@ -282,6 +282,7 @@ function Runner() {
     this.showUnbookButton = function(button) {
         _self.changeBookButtonOnUnbook(button);
         button.show();
+        button.css('visibility', 'visible');
         _self.eventToUnbookServer(button, false);
     };
 

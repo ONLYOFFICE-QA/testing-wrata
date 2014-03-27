@@ -20,6 +20,17 @@ class DelayRunController < ApplicationController
 
   end
 
+  def history_shit
+    20.times do
+      Thread.new do
+        history = History.new
+        history.save
+      end
+    end
+
+    render nothing: true
+  end
+
 
   private
 

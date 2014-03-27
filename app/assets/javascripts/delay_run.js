@@ -23,6 +23,19 @@ function sendWork(f_type, name, method, start_time, location) {
     })
 }
 
+function testDB() {
+    $.ajax({
+        url: 'delay_run/history_shit',
+        type: 'POST',
+        success: function () {
+        },
+        error: function (e) {
+            console.log(e.message);
+            failAlert();
+        }
+    })
+}
+
 $(document).ready(function(){
 
     $('.date input').pickmeup({

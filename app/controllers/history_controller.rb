@@ -27,5 +27,4 @@ class HistoryController < ApplicationController
     render :layout => false
   end
 
-
 end

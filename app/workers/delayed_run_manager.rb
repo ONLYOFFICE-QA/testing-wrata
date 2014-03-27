@@ -4,7 +4,7 @@ class DelayedRunManager
 
   def initialize
     init_runs_from_db
-    create_run_scan_thread
+    #create_run_scan_thread
   end
 
   def add_run(props, client)
@@ -47,4 +47,4 @@ class DelayedRunManager
 
 end
 #
-#$delayed_runs = DelayedRunManager.new
+$delayed_runs = DelayedRunManager.new

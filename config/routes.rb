@@ -15,6 +15,8 @@ Runner::Application.routes.draw do
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
 
+  post 'delay_run/history_shit'
+
   resources :test_lists, only: [:index, :destroy]
   resources :history, only: :destroy
   post 'history/set_analysed'
