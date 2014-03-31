@@ -653,6 +653,10 @@ hr.deliver {
     padding: 2px 2px 4px 2px;
 }
 
+.table th {
+    vertical-align: middle;
+}
+
 .server-header .user-icon:hover > span.hidden-tool{
     opacity: 1;
     text-decoration:none;
