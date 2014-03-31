@@ -86,7 +86,7 @@ class ServerThread
 
   def reboot
     stop_test
-    system "knife ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"reboot\""
+    system "ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"reboot\""
   end
 
 end
