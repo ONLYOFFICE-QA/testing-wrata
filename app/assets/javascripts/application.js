@@ -167,7 +167,7 @@ function Runner() {
             },
             error: function (e) {
                 console.log(e.message);
-                failAlert();
+//                failAlert();
             }
         })
     };
