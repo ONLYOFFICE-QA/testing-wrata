@@ -648,7 +648,7 @@ function Runner() {
                 _self.eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
                 _self.eventForCreateAndDestroyServer(trimmed_data.find('.glyphicon-off'));
-               // _self.eventToGetUpdatedDataFromServer();
+                _self.eventToGetUpdatedDataFromServer();
                 _self.eventToRebootServer(trimmed_data.find('.glyphicon-repeat'));
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
