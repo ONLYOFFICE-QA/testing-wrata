@@ -14,7 +14,7 @@ class ServerThread
   include TestManager
   include ThreadManager
 
-  attr_accessor :server_model
+  attr_accessor :server_model, :_status
 
   attr_reader :client
 
@@ -24,6 +24,7 @@ class ServerThread
     @server_model = server_model
     @client = nil
     @test = nil
+    @_status = :normal
     delete_html_result
     create_main_thread
     start_pinging_server
@@ -54,6 +55,7 @@ class ServerThread
 
   def start_test(test)
     @test = test
+    @time_start = Time.now
     start_progress_scan_thread
     start_log_scan_thread
     start_main_thread
@@ -65,15 +67,21 @@ class ServerThread
     server_info[:test] = {
         name: slice_project_path(@test[:test_path]),
         location: @test[:location],
-        progress: @test_progress
+        progress: @test_progress,
+        time: get_testing_time
     } if @test
     server_info[:booked] = {
         booked_client: @client.login,
         booked_by_client: @client == current_client
     } if @client
     server_info[:status] = @status
+    server_info[:_status] = @_status
     server_info[:log] = @log
     server_info
+  end
+
+  def get_testing_time
+    Time.at(Time.now - @time_start).utc.strftime('%H:%M')
   end
 
   def slice_project_path(file_name)

@@ -1,20 +1,17 @@
 body{
     font-size: 12px;
     background-size: 100%;
-    -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-    -o-background-size: 100%; /* Opera 9.6+ */
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
     background-repeat: no-repeat;
     background-position: top left;
     background-attachment: fixed;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
-
-    /* No support for these yet, use at own risk */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    /*background: -webkit-linear-gradient(top right, rgb(228, 228, 228) 30%, #FFFFFF );*/
 }
 
 #all {
@@ -115,7 +112,7 @@ footer {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0px;
+    top: 0;
     background: rgba(0,0,0,0.4);
     border-radius: 5px;
 }
@@ -234,7 +231,6 @@ i {
 footer{
     margin-top: 50px;
     text-align: center;
-    /*font-weight: bold; */
     font-family: Consolas, tahoma, arial;
 }
 
@@ -291,7 +287,7 @@ hr.deliver {
     bottom: 10px;
     background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 104, 150) 100%);
     border: 1px solid #105bad;
-    box-shadow: 0 0 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);
     border-radius: 3px;
     padding: 4px 6px;
     /*visibility: hidden;*/
@@ -386,6 +382,7 @@ hr.deliver {
 
 #servers {
     padding: 0 10px;
+    background: red;
 }
 
 .server {
@@ -394,13 +391,18 @@ hr.deliver {
     width: 210px;
     border: 1px solid rgb(10, 21, 56);
     border-radius: 4px;
-    border-radius: 4px;
     box-shadow: 0 0 2px 0 rgb(131, 131, 131);
     background: #0075c0; /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3a85de', endColorstr='#215aa0', GradientType=0); /* IE6-9 */
     user-select: none;
     -webkit-user-select: none;
+    position: relative;
 }
+
+.server .section-overlay {
+    display: none;
+}
+
 
 .server.off .server-header {
     background: linear-gradient(to bottom, rgb(202, 17, 17) 15%, rgb(154, 13, 13) 100%);
@@ -420,7 +422,7 @@ hr.deliver {
     padding: 5px;
     border: 1px solid rgb(140, 202, 17);
     border-radius: 3px;
-    box-shadow: 0px 1px 5px 0px #2f2f2f;
+    box-shadow: 0 1px 5px 0 #2f2f2f;
     cursor: pointer;
 }
 
@@ -506,7 +508,7 @@ hr.deliver {
 
 .server-name {
     font-weight: bold;
-    text-shadow: 0px 0px 2px #ccc;
+    text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
     display: inline-block;
 }
@@ -559,9 +561,9 @@ hr.deliver {
     -webkit-border-radius: 3px;
     background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b6bcc6), color-stop(1, #9da5b0));
     background: -moz-linear-gradient(#9da5b0 0%, #b6bcc6 100%);
-    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
-    -moz-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
-    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
+    -webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
+    -moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
 }
 .server-header .ui-progress {
     display: block;
@@ -575,9 +577,9 @@ hr.deliver {
     background-color: #74d04c;
     background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0.00, rgba(255,255,255,0.17)), color-stop(0.25, rgba(255,255,255,0.17)), color-stop(0.26, rgba(255,255,255,0)), color-stop(0.50, rgba(255,255,255,0)), color-stop(0.51, rgba(255,255,255,0.17)), color-stop(0.75, rgba(255,255,255,0.17)), color-stop(0.76, rgba(255,255,255,0)), color-stop(1.00, rgba(255,255,255,0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, #74d04c), color-stop(1, #9bdd62));
     background: -moz-repeating-linear-gradient(top left -30deg, rgba(255,255,255,0.17), rgba(255,255,255,0.17) 15px, rgba(255,255,255,0) 15px, rgba(255,255,255,0) 30px), -moz-linear-gradient(#9bdd62 0%, #74d04c 100%);
-    -webkit-box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
-    -moz-box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
-    box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
+    -webkit-box-shadow: inset 0 1px 0 0 #dbf383, inset 0 -1px 1px #58c43a;
+    -moz-box-shadow: inset 0 1px 0 0 #dbf383, inset 0 -1px 1px #58c43a;
+    box-shadow: inset 0 1px 0 0 #dbf383, inset 0 -1px 1px #58c43a;
     border: 1px solid #4c8932;
     -webkit-animation: animate-stripes 2s linear infinite;
 }
@@ -585,11 +587,11 @@ hr.deliver {
 .server-header .ui-progress-bar span.ui-label {
     position: absolute;
     top: 0;
-    width: 60px;
+    width: 76px;
     left: 0;
     font-size: 12px;
     line-height: 16px;
-    text-shadow: rgba(255,255,255, 0.45) 0 1px 0px;
+    text-shadow: rgba(255,255,255, 0.45) 0 1px 0;
     font-weight: bold;
 }
 
@@ -606,7 +608,7 @@ hr.deliver {
 
 .server-header .ui-progress-bar {
     display: inline-block;
-    width: 60px;
+    width: 76px;
     margin-right: 5px;
     text-align: center;
     float: right;
@@ -844,14 +846,11 @@ table {
 
 .head-text {
     font-weight: bold;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
-
-    /* No support for these yet, use at own risk */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    /*background: -webkit-linear-gradient(top right, rgb(228, 228, 228) 30%, #FFFFFF );*/
 }
 
 #file-tree {
@@ -1147,6 +1146,10 @@ a, a:link, a:visited  {
     color: rgb(7, 66, 7);
 }
 
+.list-header i {
+    cursor: default;
+}
+
 .test-node {
     line-height: 19px;
     vertical-align: middle;
@@ -1232,7 +1235,7 @@ a, a:link, a:visited  {
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .retest-button {
@@ -1243,7 +1246,7 @@ a, a:link, a:visited  {
     bottom: 10px;
     background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 104, 150) 100%);
     border: 1px solid #105bad;
-    box-shadow: 0 0 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);
     border-radius: 3px;
     padding: 4px 6px;
     /*visibility: hidden;*/

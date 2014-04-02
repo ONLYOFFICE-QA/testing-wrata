@@ -233,8 +233,9 @@ function Runner() {
             var server = $(selector);
             _self.setStatusToServerView(server, data[i]['status']);
             if (data[i]['status']) {
+                _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {
-                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i]['test']['progress']);
+                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i]['test']['progress'], data[i]['test']['time']);
                     _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
                         data[i]['test']['name'], data[i]['test']['location']);
                     server.find('.glyphicon-stop').show();
@@ -259,7 +260,99 @@ function Runner() {
                 server.find('.glyphicon-stop').hide();
                 _self.hideUnbookButton(server.find("div.button"));
                 _self.hideBookedClient(server.find('.user-icon'));
+                _self.changeDestroyOnCreate(server.find('.glyphicon-off'));
             }
+            if(data[i]['_status']  == 'normal') {
+                _self.hideServerSectionOverlay(data[i]['name'])
+            } else if (data[i]['_status']  == 'destroying') {
+                server.find('.server-content').show();
+                _self.showServerSectionOverlay(data[i]['name'], 'Destroying...')
+            } else if (data[i]['_status']  == 'creating') {
+                server.find('.server-content').show();
+                _self.showServerSectionOverlay(data[i]['name'], 'Creating...')
+            }
+        }
+    };
+
+    this.createServer = function(server) {
+        $.ajax({
+            url: 'servers/create',
+            type: 'POST',
+            async: true,
+            data: {
+                'server': server
+            },
+            success: function () {
+                _self.hideServerSectionOverlay(server);
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.destroyServer = function(server) {
+        $.ajax({
+            url: 'servers/destroy',
+            type: 'POST',
+            async: true,
+            data: {
+                'server': server
+            },
+            success: function () {
+                _self.hideServerSectionOverlay(server);
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        })
+    };
+
+    this.showServerSectionOverlay = function(server,message) {
+        var selector = 'div#' + server + ' .section-overlay';
+        $(selector).find('.overlay-text').text(message);
+        $(selector).show();
+    };
+
+    this.hideServerSectionOverlay = function(server) {
+        var selector = 'div#' + server + ' .section-overlay';
+        $(selector).hide()
+    };
+
+    this.createAndDestroyServer = function(button) {
+      var serverName = button.attr('data-server');
+      if (button.hasClass('create')) {
+          _self.showServerSectionOverlay(serverName, 'Creating...');
+          _self.createServer(serverName);
+      } else if (button.hasClass('destroy')) {
+          _self.showServerSectionOverlay(serverName, 'Destroying...');
+          _self.destroyServer(serverName);
+      }
+    };
+
+    this.eventForCreateAndDestroyServer = function(button) {
+        button.on('click', function () {
+            var result = confirm('Are you really want to ' + $(this).find('.hidden-tool').text() + ' this server?');
+            if (result)
+                _self.createAndDestroyServer($(this))
+        })
+    };
+
+    this.changeCreateOnDestroy = function(button) {
+        if (button.hasClass('create')) {
+            button.removeClass('create');
+            button.addClass('destroy');
+            button.find('span').text('destroy');
+        }
+    };
+
+    this.changeDestroyOnCreate = function(button) {
+        if (button.hasClass('destroy')) {
+            button.removeClass('destroy');
+            button.addClass('create');
+            button.find('span').text('create');
         }
     };
 
@@ -554,8 +647,8 @@ function Runner() {
                 _self.eventToBookServer(trimmed_data.find('.book-button'));
                 _self.eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
-//                $('input#amazon').prop('checked', true);//КОСТЫЛЬ ДЛЯ ТОГО,ЧТОБЫ СРАЗУ БЫЛ ВЫДЕЛЕН!
-                _self.eventToGetUpdatedDataFromServer();
+                _self.eventForCreateAndDestroyServer(trimmed_data.find('.glyphicon-off'));
+               // _self.eventToGetUpdatedDataFromServer();
                 _self.eventToRebootServer(trimmed_data.find('.glyphicon-repeat'));
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
@@ -1966,11 +2059,11 @@ function logDownEventToElem(elem) {
 }
 
 function showSectionOverlay() {
-    $('.section-overlay').show();
+    $(".block:last() .section-overlay").show();
 }
 
 function hideSectionOverlay() {
-    $('.section-overlay').hide();
+    $(".block:last() .section-overlay").hide();
 }
 
 function imitateHover(elem) {

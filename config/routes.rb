@@ -52,12 +52,13 @@ Runner::Application.routes.draw do
 
   post 'runner/save_list'
 
-  #resources :servers
   get '/server_history/show_more', to: 'servers#show_more'
   get '/servers/reboot'
   get '/servers/show_current_results'
-  post '/servers/clear_history'
   get '/server_history/:id', to: 'servers#server_history' , as: 'server_history'
+  post '/servers/destroy'
+  post '/servers/create'
+  post '/servers/clear_history'
 
   resources :sessions, only: [:new, :create, :destroy]
 

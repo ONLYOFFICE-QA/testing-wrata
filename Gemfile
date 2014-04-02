@@ -40,6 +40,7 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'puma'
 
+gem 'digitalocean'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
