@@ -356,10 +356,10 @@ function Runner() {
         }
     };
 
-    this.showTestProgress = function(progress_elem, progress) {
+    this.showTestProgress = function(progress_elem, progress, time) {
         var ui_progress = progress_elem.find('.ui-progress');
         ui_progress.css('width', progress + '%');
-        progress_elem.find('.value').text(progress + '%');
+        progress_elem.find('.value').text(progress + '% ' + time);
         progress_elem.show();
     };
 
