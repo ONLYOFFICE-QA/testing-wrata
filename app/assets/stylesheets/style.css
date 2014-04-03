@@ -621,7 +621,7 @@ hr.deliver {
 
 .shower > span.hidden-tool, .server-header .user-icon > span.hidden-tool, .server-header .ui-progress-bar > span.hidden-tool
 {
-    padding: 1px 2px;
+    padding: 2px;
     opacity: 0;
     visibility: hidden;
     z-index: 120;
@@ -700,7 +700,7 @@ hr.deliver {
 }
 
 .log-opener {
-    margin-top: 1px;
+    margin-top: 6px;
     text-align: center;
 }
 
