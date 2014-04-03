@@ -586,7 +586,7 @@ hr.deliver {
 .server-header .ui-progress-bar span.ui-label {
     position: absolute;
     top: 0;
-    width: 76px;
+    width: 70px;
     left: 0;
     font-size: 12px;
     line-height: 16px;
@@ -602,12 +602,12 @@ hr.deliver {
     font-size: 12px;
     float: right;
     margin-top: 3px;
-    margin-right: 5px;
+    margin-right: 3px;
 }
 
 .server-header .ui-progress-bar {
     display: inline-block;
-    width: 76px;
+    width: 70px;
     margin-right: 5px;
     text-align: center;
     float: right;
