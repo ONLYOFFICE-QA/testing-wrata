@@ -10,13 +10,15 @@ class DelayRunController < ApplicationController
   end
 
   def add_run
-    $delayed_runs.add_run(params, @client)
+    @run = $delayed_runs.add_run(params, @client)
 
-    render nothing: true
+    render layout: false
   end
 
-  def change_time
+  def change_run
+    $delayed_runs.change_run(params)
 
+    render nothing: true
   end
 
   def delete_run

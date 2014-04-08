@@ -2,7 +2,7 @@
   <div id="added-test-lists">
     <% @client_runs.each do |run| %>
         <% datetime = run.next_start ? run.next_start : run.start_time %>
-        <div class="test-list-row" data-id="">
+        <div class="test-list-row" data-id="<%= run.id %>">
           <div class="list-name" style="display: inline-block;">
             <%= run.name %>
           </div>
@@ -26,15 +26,18 @@
           </div>
           <div class="run-method" style="display: inline-block; margin-left: 5px;">
             <label>Method:</label>
-            <select class="form-control" style="width: 110px;">
-              <option>each time</option>
-            </select>
+            <input class="form-control" style="width: 110px;" disabled value="<%= run.method.include?('once') ? 'once': 'each time' %>">
           </div>
-          <div class="each-time" style="display: inline-block; margin-left: 5px;">
-            <% hour, minute = BullshitHelper.match_minutes_and_hours(run.method)%>
-            <input class="form-control" placeholder="Hour" style="width: 32px;" value="<%= hour %>">
-            :
-            <input class="form-control" placeholder="Min" style="width: 32px;" value="<%= minute %>">
+          <% unless run.method.include?('once') %>
+              <div class="each-time" style="display: inline-block; margin-left: 5px;">
+                <% hour, minute = BullshitHelper.match_minutes_and_hours(run.method)%>
+                <input class="form-control" placeholder="Hour" style="width: 32px;" value="<%= hour %>">
+                :
+                <input class="form-control" placeholder="Min" style="width: 32px;" value="<%= minute %>">
+              </div>
+          <% end %>
+          <div class="save-changed-run">
+            <i class="glyphicon glyphicon-floppy-disk"></i>
           </div>
         </div>
     <% end %>

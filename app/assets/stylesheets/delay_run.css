@@ -1,6 +1,16 @@
 #added-test-lists {
     padding: 5px 5px 0 5px;
     border: 1px solid rgb(243, 243, 243);
+    margin-bottom: 10px;
+}
+
+.list-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#added-test-lists label {
+    color: #6B6B6B;
 }
 
 .add-run-button {
@@ -71,7 +81,7 @@
     background: linear-gradient(to bottom, #92C728 15%, #8DC71E 100%);
 }
 
-.save-delayed-run {
+.save-delayed-run, .save-changed-run {
     display: inline-block;
     font-size: 18px;
     margin-left: 5px;
@@ -80,10 +90,14 @@
     padding-left: 5px;
 }
 
-.save-delayed-run i {
+.save-changed-run {
+    opacity: 0;
+}
+
+.save-delayed-run i, .save-changed-run i {
     vertical-align: middle;
 }
 
-.save-delayed-run:hover {
+.save-delayed-run:hover, .save-changed-run:hover {
     color: #000000;
 }

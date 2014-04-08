@@ -8,14 +8,14 @@ class DelayedRunManager
   end
 
   def add_run(props, client)
-    add_run_in_db(props, client)
+    run = add_run_in_db(props, client)
     init_runs_from_db
     start_run_scan_thread
+    run
   end
 
-  def update_run(run_id, props)
-    run = @runs.find(run_id)
-    run.update_attributes(props)
+  def change(params)
+    update_attributes(params)
     init_runs_from_db
   end
 
@@ -40,6 +40,15 @@ class DelayedRunManager
     run.method = props['method']
     run.f_type = props['f_type']
     run.name = props['name']
+    run.location = props['location']
+    run.start_time = props['start_time']
+    run.save
+    run
+  end
+
+  def update_attributes(props)
+    run = DelayedRun.find(props['id'])
+    run.method = props['method']
     run.location = props['location']
     run.start_time = props['start_time']
     run.save

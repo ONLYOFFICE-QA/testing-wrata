@@ -47,7 +47,8 @@ Runner::Application.routes.draw do
 
   get 'delay_run', to: 'delay_run#index'
   get 'delay_run/add_delayed_row'
-  post 'delay_run/add_run', to: 'delay_run#add_run'
+  post 'delay_run/add_run'
+  post 'delay_run/change_run'
 
   post 'runner/save_list'
 

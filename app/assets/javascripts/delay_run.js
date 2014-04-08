@@ -13,8 +13,31 @@ function saveDelayedRun(f_type, name, method, start_time, location) {
             location:    location
         },
         type: 'POST',
-        success: function () {
-            alert('Job gon')
+        success: function (data) {
+            var trimmed_data = trim_data(data);
+            inputChangeEvent(trimmed_data.find('input'));
+            eventForCalendar(trimmed_data.find('.date input'));
+            trimmed_data.appendTo($('#added-test-lists')).show('fast');
+        },
+        error: function (e) {
+            console.log(e.message);
+            failAlert();
+        }
+    })
+}
+
+function saveChangedRun(run_id, method, start_time, location) {
+    $.ajax({
+        url: 'delay_run/change_run',
+        data: {
+            id: run_id,
+            method:      method,
+            start_time:  start_time,
+            location:    location
+        },
+        type: 'POST',
+        success: function (data) {
+
         },
         error: function (e) {
             console.log(e.message);
@@ -34,8 +57,20 @@ function eventToSaveDelayedRun(elem) {
         var start_time = start_date + ' ' + start_time_h + ':' + start_time_m;
         var location = row.find('.location select').val();
         var method = parseRunMethod(row.find('.run-method select').val(), row.find('.each-time .hour').val(), row.find('.each-time .min').val());
-        saveDelayedRun(f_type, name, method, start_time, location)
+        saveDelayedRun(f_type, name, method, start_time, location);
+        row.hide('fast');
     })
+}
+
+function eventForCalendar(input) {
+    input.pickmeup({
+        hide_on_select:  true,
+        format:         'd/m/Y'
+    });
+}
+
+function eventToChangeDelayedRun(elem) {
+
 }
 
 function parseRunMethod(method, hour, min) {
@@ -66,6 +101,7 @@ function addRow() {
             var trimmed_data = trim_data(data);
             eventToShowEachTimeInputs(trimmed_data.find('.run-method select'));
             eventToSaveDelayedRun(trimmed_data.find('.save-delayed-run'));
+            eventForCalendar(trimmed_data.find('.date input'));
             $('#test-lists').append(trimmed_data);
         },
         error: function (e) {
@@ -79,24 +115,28 @@ function eventToShowEachTimeInputs(select) {
 
     select.change(function(){
         if ($(this).val() == 'each time') {
-            $(this).parent().next().css('display','inline-block')
+            $(this).parent().next().css('display','inline-block');
         }
         else {
-            $(this).parent().next().hide()
+            $(this).parent().next().hide();
         }
     })
+}
 
+function inputChangeEvent(input) {
+    input.keyup(function () {
+        $(this).parent().parent().find('.save-changed-run').animate({opacity: 1}, 500)
+    });
 }
 
 $(document).ready(function(){
 
-    $('.date input').pickmeup({
-        hide_on_select:  true,
-        format:         'd/m/Y'
-    });
+    eventForCalendar($('.date input'));
 
     $('.add-run-button').click(function() {
         addRow();
     });
+
+    inputChangeEvent($('input'));
 
 });
