@@ -77,6 +77,7 @@ class ServerThread
     server_info[:status] = @status
     server_info[:_status] = @_status
     server_info[:log] = @log
+    server_info[:server_ip] = @server_model.address
     server_info
   end
 

@@ -1257,6 +1257,16 @@ a, a:link, a:visited  {
     background: rgba(128, 15, 0, 0.1);
     color: red;
 }
+
+.server-ip span{
+    -webkit-user-select: text;  /* Chrome all / Safari all */
+    -moz-user-select: text;     /* Firefox all */
+    -ms-user-select: text;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: text;
+    user-select: text;
+}
 /*.active a {*/
 /*$('#test-queue').slimScroll({*/
     /*color: 'rgba(0, 0, 0, 0.4)'}*/

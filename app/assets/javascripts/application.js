@@ -227,11 +227,16 @@ function Runner() {
         $('#test-queue').append(testNode);
     };
 
+    this.setServerIp = function(server, ip) {
+        server.find('.server-ip span').text(ip);
+    };
+
     this.setDataOnServersView = function (data) {
         for (var i = 0; i < data.length; i++) {
             var selector = '#' + data[i]['name'];
             var server = $(selector);
             _self.setStatusToServerView(server, data[i]['status']);
+            _self.setServerIp(server, data[i]['server_ip']);
             if (data[i]['status']) {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {

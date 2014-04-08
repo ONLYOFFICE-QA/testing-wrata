@@ -1,4 +1,3 @@
-require_relative '../../../SharedFunctional/CloudServices/DigitalOcean/DigitalOceanWrapper'
 class ServersController < ApplicationController
 
   before_action :create_digital_ocean, :only => [:create, :destroy]
