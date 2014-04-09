@@ -1239,7 +1239,7 @@ a, a:link, a:visited  {
     bottom: 10px;
     background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 104, 150) 100%);
     border: 1px solid #105bad;
-    box-shadow: 0 0 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);
     border-radius: 3px;
     padding: 4px 6px;
     /*visibility: hidden;*/
