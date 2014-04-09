@@ -52,14 +52,14 @@ class ServersController < ApplicationController
     @digital_ocean.wait_until_droplet_have_status(params['server'])
     new_address = @digital_ocean.get_droplet_ip_by_name(params['server'])
     update_server_ip(params['server'], new_address)
-    set_server_status(params['server'], :normal)
+    set_server_status(params['server'], :created)
     render :nothing => true
   end
 
   def destroy
     set_server_status(params['server'], :destroying)
     @digital_ocean.destroy_droplet_by_name(params['server'])
-    set_server_status(params['server'], :normal)
+    set_server_status(params['server'], :destroyed)
     render :nothing => true
   end
 
@@ -71,7 +71,7 @@ class ServersController < ApplicationController
 
   def set_server_status(server_name, status)
     server = $threads.get_thread_by_name(server_name)
-    server._status = status
+    server.server_model.update_attribute(:_status, status)
   end
 
   def update_server_ip(server_name, new_address)
