@@ -13,19 +13,11 @@ class ServerThreads < ActionController::Base
   end
 
   def get_thread_by_name(name)
-    @server_threads.each do |thread|
-      if thread.server_model.name == name
-         return thread
-      end
-    end
+    @server_threads.select {|thread| thread.server_model.name == name}.first
   end
 
   def get_all_servers_from_threads
-    servers = []
-    @server_threads.each do |thread|
-      servers << thread.server_model
-    end
-    servers
+    @server_threads.inject([]) {|servers, thread| servers << thread.server_model}
   end
 
   def update_models
