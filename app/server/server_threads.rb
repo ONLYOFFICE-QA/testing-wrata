@@ -27,6 +27,11 @@ class ServerThreads < ActionController::Base
     end
   end
 
+  #def update_model_for_server(server_model)
+  #  thread = @server_threads.select { |thread| server_model == thread.server_model };
+  #
+  #end
+
   def add_threads
     new_servers = Server.all.sort_by {|s| s.name.split('nct-at')[1].to_i}
     old_servers = @server_threads.inject([]) {|arr, thread| arr << thread.server_model }

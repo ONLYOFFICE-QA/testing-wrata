@@ -72,12 +72,12 @@ class ServersController < ApplicationController
   def set_server_status(server_name, status)
     server = $threads.get_thread_by_name(server_name)
     server.server_model.update_attribute(:_status, status)
+    $threads.update_models
   end
 
   def update_server_ip(server_name, new_address)
     server = Server.where(name: server_name).first
     server.update_attribute(:address, new_address)
-    $threads.update_models
   end
 
 end
