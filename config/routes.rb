@@ -15,6 +15,8 @@ Runner::Application.routes.draw do
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
 
+  post 'delay_run/history_shit'
+
   resources :test_lists, only: [:index, :destroy]
   resources :history, only: :destroy
   post 'history/set_analysed'
@@ -52,12 +54,13 @@ Runner::Application.routes.draw do
 
   post 'runner/save_list'
 
-  #resources :servers
   get '/server_history/show_more', to: 'servers#show_more'
   get '/servers/reboot'
   get '/servers/show_current_results'
-  post '/servers/clear_history'
   get '/server_history/:id', to: 'servers#server_history' , as: 'server_history'
+  post '/servers/destroy'
+  post '/servers/create'
+  post '/servers/clear_history'
 
   resources :sessions, only: [:new, :create, :destroy]
 

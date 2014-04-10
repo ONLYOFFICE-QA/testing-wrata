@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails'
 
 gem 'resque', git: 'https://github.com/resque/resque.git', branch: '1-x-stable'
-#gem 'resque-scheduler'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 
@@ -20,18 +16,14 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'rubyzip'#, '~> 0.9.9'
 
-gem 'sass-rails', '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0.0'
-#gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-#    :git => 'https://github.com/anjlab/bootstrap-rails.git',
-#    :branch => '3.0.0'
+gem 'sass-rails'
+gem 'coffee-rails'
+
 gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'jquery-rails'
 #
 gem 'aws-sdk'
-
-gem 'chef'
 
 # To use ActiveModel has_secure_password
 #gem 'bcrypt-ruby', '~> 3.0.0'
@@ -46,7 +38,9 @@ gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+gem 'puma'
 
+gem 'digitalocean'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

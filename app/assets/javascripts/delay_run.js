@@ -37,7 +37,19 @@ function saveChangedRun(run_id, method, start_time, location) {
         },
         type: 'POST',
         success: function (data) {
+        },
+        error: function (e) {
+            console.log(e.message);
+            failAlert();
+        }
+    })
+}
 
+function testDB() {
+    $.ajax({
+        url: '/delay_run/history_shit',
+        type: 'POST',
+        success: function () {
         },
         error: function (e) {
             console.log(e.message);

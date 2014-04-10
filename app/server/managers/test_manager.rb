@@ -8,11 +8,11 @@ module TestManager
   end
 
   def stop_test
-    system "ssh #{@server_model.name}@#{@server_model.address} \"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""
+    system "ssh -o StrictHostKeyChecking=no #{@server_model.name}@#{@server_model.address} \"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""
   end
 
   def generate_run_test_command(test, options)
-    "ssh #{@server_model.name}@#{@server_model.address} \"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" 2>&1"
+    "ssh -o StrictHostKeyChecking=no #{@server_model.name}@#{@server_model.address} \"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" 2>&1"
   end
 
   def open_folder_with_project(test_path)

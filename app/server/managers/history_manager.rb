@@ -10,10 +10,7 @@ module HistoryManager
     start_options.portal_type = options.portal_type
     start_options.portal_region = options.portal_region
     start_options.start_command = start_command
-    unless start_options.save
-      error = start_options.errors.full_messages
-      p error
-    end
+    $threads.lock.synchronize { start_options.save }
   end
 
   def add_data_to_history(test, options, start_command, client_line_db)
@@ -32,10 +29,7 @@ module HistoryManager
       file = File.open(rspec_html_result_path, 'r') { |io| io.read }
       history.data = file
     end
-    unless history.save
-      error = history.errors.full_messages
-      p error
-    end
+    $threads.lock.synchronize { history.save }
     history
   end
 

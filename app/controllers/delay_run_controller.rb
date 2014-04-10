@@ -28,6 +28,19 @@ class DelayRunController < ApplicationController
   def add_delayed_row
     render :layout => false
   end
+  def history_shit
+    20.times do
+      Thread.new do
+        history = History.new
+        $threads.lock.synchronize do
+          history.save
+        end
+      end
+    end
+
+    render nothing: true
+  end
+
 
   private
 

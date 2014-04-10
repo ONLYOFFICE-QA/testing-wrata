@@ -1,9 +1,5 @@
 module RunnerHelper
 
-  def get_user_status
-    rand(3)
-  end
-
   def directory_hash(path, name=nil)
     data = {:data => (name || path)}
     data[:children] = children = []
