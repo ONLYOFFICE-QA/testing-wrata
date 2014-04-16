@@ -115,8 +115,8 @@ function Runner() {
                 'server': server_name
             },
             success: function (data) {
-                showPopupRspecResults();
-                $('.rspec-popup-window').html(data);
+                showPopup();
+                $('.popup-window').html(data);
                 eventsForRspecPopup();
             }
         })
@@ -1472,6 +1472,8 @@ $(function () {
         }
     });
 
+    eventToClosePopup();
+
     myRunner.setEventToDeleteTestList($('#test_list_menu li'));
 
 });
@@ -1516,7 +1518,7 @@ function getNeededToggleCoordinates() {
     if ($("#sidebar").css('display') != 'none') {
         sidebarWidth = $("#sidebar").outerWidth();
     }
-    coordinates['left'] = sidebarWidth + 4;
+    coordinates['left'] = sidebarWidth - 1;
     return coordinates
 }
 
@@ -1866,8 +1868,8 @@ function eventToOpenRspecResults(elem) {
                 'history_id': clicked.attr('data-id')
             },
             success: function (data) {
-                showPopupRspecResults();
-                $('.rspec-popup-window').html(data)
+                showPopup();
+                $('.popup-window').html(data)
                 eventsForRspecPopup();
             },
             error: function (e) {
@@ -1879,7 +1881,6 @@ function eventToOpenRspecResults(elem) {
 }
 
 function eventsForRspecPopup() {
-    eventToCloseRspecPopup();
     eventToOpenDescribe();
     evenToOpenFailDetails();
     setScrollOnMainDescribe();
@@ -1910,24 +1911,23 @@ function evenToOpenFailDetails() {
     })
 }
 
-function showPopupRspecResults() {
-    $('.rspec-overlay').fadeIn()
+function showPopup() {
+    $('.popup-overlay').fadeIn()
 }
 
-function closePopupRspecResults() {
-    $('.rspec-overlay').fadeOut()
+function closePopup() {
+    $('.popup-overlay').fadeOut()
 }
 
-function eventToCloseRspecPopup() {
+function eventToClosePopup() {
     $('.close-result').on('click', function () {
-        closePopupRspecResults()
+        closePopup()
     });
-    $('div.rspec-overlay').on('click', function () {
-        closePopupRspecResults()
+    $('div.popup-overlay').on('click', function () {
+        closePopup()
     });
-    stopPropagation($('.rspec-popup-window'));
+    stopPropagation($('.popup-window'));
 }
-
 
 function setScrollOnMainDescribe() {
     $('.main-describe').slimScroll({ width: 'auto', height: '100%', size: '3px'})

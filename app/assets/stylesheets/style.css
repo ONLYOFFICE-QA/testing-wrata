@@ -15,7 +15,6 @@ body{
 }
 
 #all {
-    padding: 5px;
 }
 
 .bold {
@@ -49,7 +48,7 @@ footer {
     vertical-align: text-top;
 }
 
-.rspec-overlay {
+.popup-overlay {
     position: fixed;
     z-index: 102;
     top: 0;
@@ -1276,6 +1275,18 @@ a, a:link, a:visited  {
     font-weight: bold;
     color: rgb(119, 103, 103);
     width: 100%;
+}
+
+.delay-runs {
+    padding: 5px 10px 5px 5px;
+    text-align: center;
+}
+
+.runs-head {
+    font-weight: bold;
+    color: rgb(86, 92, 86);
+    border-bottom: 1px solid rgb(213, 228, 215);
+    padding-bottom: 10px;
 }
 /*.active a {*/
 /*$('#test-queue').slimScroll({*/

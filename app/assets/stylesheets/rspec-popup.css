@@ -4,11 +4,11 @@
     cursor: pointer;
 }
 
-.rspec-popup-window {
-    width: 80%;
+.popup-window {
+    max-width: 1024px;
     height: 90%;
     margin: 0 auto;
-    margin-top: 42px;
+    margin-top: 52px;
     z-index: 100;
     position: relative;
     background: white;
@@ -26,7 +26,7 @@
     user-select: text;
 }
 
-.rspec-popup-window .slimScrollDiv {
+.popup-window .slimScrollDiv {
     padding-bottom: 2px;
 }
 
@@ -47,7 +47,7 @@
     background-size: cover;
 }
 
-.rspec-popup-window  .file-name span {
+.popup-window .file-name span {
     background: rgba(50, 232, 101, 0.41);
     border: solid 1px rgba(43, 167, 6, 0.23);
     padding: 5px;
@@ -60,9 +60,9 @@
     font-size: 14px;
     position: absolute;
     top: 47px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
+    bottom: 0;
+    right: 0;
+    left: 0;
     padding: 15px;
     background: rgb(253, 255, 249);
 }
@@ -75,8 +75,8 @@
     background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b6bcc6), color-stop(1, #9da5b0));
     border-radius: 2px;
     padding: 1px;
-    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
-    margin-bottom: 0px;
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
+    margin-bottom: 0;
     position: relative;
     text-align: center;
 }
@@ -99,7 +99,7 @@
     position: absolute;
     top: 11px;
     font-size: 24px;
-    text-shadow: rgba(255,255,255, 0.45) 0 1px 0px;
+    text-shadow: rgba(255,255,255, 0.45) 0 1px 0;
     font-weight: bold;
 }
 
@@ -117,7 +117,7 @@
 
 .main-describe {
     word-wrap: break-word;
-    box-shadow: 0px 0px 0px 1px rgba(51, 51, 51, 0.03);
+    box-shadow: 0 0 0 1px rgba(51, 51, 51, 0.03);
 }
 
 .describe-content {
@@ -220,7 +220,7 @@
 
 .fail-code-path {
     font-size: 12px;
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0 10px 10px;
     white-space: pre-line;
 }
 

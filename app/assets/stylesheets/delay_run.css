@@ -4,6 +4,18 @@
     margin-bottom: 10px;
 }
 
+.nav-div {
+    color: #999999;
+    padding: 15px 10px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.nav-div:hover {
+    color: white;
+    background-color: transparent;
+}
+
 .list-name {
     font-size: 14px;
     font-weight: bold;
@@ -47,6 +59,7 @@
 }
 
 .test-list-row {
+    display: none;
     margin-bottom: 5px;
     font-size: 14px;
 }
@@ -81,7 +94,7 @@
     background: linear-gradient(to bottom, #92C728 15%, #8DC71E 100%);
 }
 
-.save-delayed-run, .save-changed-run {
+.save-delayed-run, .save-changed-run, .delete-run, .delete-row {
     display: inline-block;
     font-size: 18px;
     margin-left: 5px;
@@ -90,14 +103,14 @@
     padding-left: 5px;
 }
 
-.save-changed-run {
-    opacity: 0;
+.save-changed-run i {
+    display: none;
 }
 
-.save-delayed-run i, .save-changed-run i {
+.save-delayed-run i, .save-changed-run i, .delete-run i, .delete-row i {
     vertical-align: middle;
 }
 
-.save-delayed-run:hover, .save-changed-run:hover {
+.save-delayed-run:hover, .save-changed-run:hover, .delete-run:hover, .delete-row:hover {
     color: #000000;
 }

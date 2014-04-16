@@ -5,7 +5,9 @@ class DelayRunController < ApplicationController
   def index
     @client_runs = $delayed_runs.get_client_runs(@client)
     if @client.test_lists.empty?
-      render 'empty_pages#empty_test_list'
+      render template: 'empty_pages/empty_test_list', layout: false
+    else
+      render layout: false
     end
   end
 
@@ -22,12 +24,15 @@ class DelayRunController < ApplicationController
   end
 
   def delete_run
+    $delayed_runs.delete_run(params['id'])
 
+    render nothing: true
   end
 
   def add_delayed_row
     render :layout => false
   end
+
   def history_shit
     20.times do
       Thread.new do
@@ -40,7 +45,6 @@ class DelayRunController < ApplicationController
 
     render nothing: true
   end
-
 
   private
 

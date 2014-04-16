@@ -82,7 +82,7 @@ module RunThreadManager
     now = Time.now
     run_datetime = time_to_run.to_time
     if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
-      puts 'MINUS TIME: ' + (now - run_datetime).abs.to_s
+      puts 'TIME BEFORE RUN: ' + (now - run_datetime).abs.to_s
       ((now - run_datetime).abs <= INFELICITY) or (run_datetime < now)
     else
       run_datetime < now

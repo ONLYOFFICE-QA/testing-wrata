@@ -2,6 +2,25 @@
  * Created by runner on 3/3/14.
  */
 
+function eventForOpenDelayRuns(elem) {
+    elem.on('click', function(){
+        openDelayRuns();
+    })
+}
+
+function openDelayRuns() {
+    $.ajax({
+        url: '/delay_run',
+        type: 'GET',
+        success: function (data) {
+            showPopup();
+            var trimmed_data = trim_data(data);
+            delayRunsEvents(trimmed_data);
+            $('.popup-window').html(trimmed_data);
+        }
+    })
+}
+
 function saveDelayedRun(f_type, name, method, start_time, location) {
     $.ajax({
         url: 'delay_run/add_run',
@@ -17,7 +36,9 @@ function saveDelayedRun(f_type, name, method, start_time, location) {
             var trimmed_data = trim_data(data);
             inputChangeEvent(trimmed_data.find('input'));
             eventForCalendar(trimmed_data.find('.date input'));
-            trimmed_data.appendTo($('#added-test-lists')).show('fast');
+            eventToChangeDelayedRun(trimmed_data.find('.save-changed-run'));
+            eventToDeleteDelayedRun(trimmed_data.find('.delete-run'));
+            trimmed_data.appendTo($('#added-test-lists')).fadeIn('slow');
         },
         error: function (e) {
             console.log(e.message);
@@ -45,9 +66,25 @@ function saveChangedRun(run_id, method, start_time, location) {
     })
 }
 
+function deleteRun(run_id) {
+    $.ajax({
+        url: 'delay_run/delete_run',
+        data: {
+            id: run_id
+        },
+        type: 'POST',
+        success: function (data) {
+        },
+        error: function (e) {
+            console.log(e.message);
+            failAlert();
+        }
+    })
+}
+
 function testDB() {
     $.ajax({
-        url: '/delay_run/history_shit',
+        url: 'delay_run/history_shit',
         type: 'POST',
         success: function () {
         },
@@ -55,6 +92,21 @@ function testDB() {
             console.log(e.message);
             failAlert();
         }
+    })
+}
+
+function eventToChangeDelayedRun(elem) {
+    elem.click(function(){
+        var row = $(this).parent();
+        var id = row.attr('data-id');
+        var start_date = row.find('.date input').val();
+        var start_time_h = row.find('.time .hour').val();
+        var start_time_m = row.find('.time .min').val();
+        var start_time = start_date + ' ' + start_time_h + ':' + start_time_m;
+        var location = row.find('.location select').val();
+        var method = parseRunMethod(row.find('.run-method input').val(), row.find('.each-time .hour').val(), row.find('.each-time .min').val());
+        saveChangedRun(id, method, start_time, location);
+        $(this).find('i').fadeOut('slow');
     })
 }
 
@@ -70,7 +122,18 @@ function eventToSaveDelayedRun(elem) {
         var location = row.find('.location select').val();
         var method = parseRunMethod(row.find('.run-method select').val(), row.find('.each-time .hour').val(), row.find('.each-time .min').val());
         saveDelayedRun(f_type, name, method, start_time, location);
-        row.hide('fast');
+        row.fadeOut('slow');
+    })
+}
+
+function eventToDeleteDelayedRun(elem) {
+    elem.click(function(){
+        var row = $(this).parent();
+        var id = row.attr('data-id');
+        deleteRun(id);
+        row.fadeOut('slow', function(){
+            $(this).remove();
+        })
     })
 }
 
@@ -79,10 +142,6 @@ function eventForCalendar(input) {
         hide_on_select:  true,
         format:         'd/m/Y'
     });
-}
-
-function eventToChangeDelayedRun(elem) {
-
 }
 
 function parseRunMethod(method, hour, min) {
@@ -114,7 +173,8 @@ function addRow() {
             eventToShowEachTimeInputs(trimmed_data.find('.run-method select'));
             eventToSaveDelayedRun(trimmed_data.find('.save-delayed-run'));
             eventForCalendar(trimmed_data.find('.date input'));
-            $('#test-lists').append(trimmed_data);
+            eventToDeleteRow(trimmed_data.find('.delete-row'));
+            trimmed_data.appendTo($('#test-lists')).fadeIn('slow');
         },
         error: function (e) {
             console.log(e.message);
@@ -130,25 +190,39 @@ function eventToShowEachTimeInputs(select) {
             $(this).parent().next().css('display','inline-block');
         }
         else {
-            $(this).parent().next().hide();
+            $(this).parent().next().fadeOut();
         }
     })
 }
 
-function inputChangeEvent(input) {
-    input.keyup(function () {
-        $(this).parent().parent().find('.save-changed-run').animate({opacity: 1}, 500)
+function eventToDeleteRow(elem) {
+    elem.on('click', function(){
+        $(this).parent().fadeOut('slow', function(){
+            $(this).remove();
+        })
+    })
+}
+
+function eventToAddRow(elem) {
+    elem.on('click', function() {
+        addRow();
     });
 }
 
-$(document).ready(function(){
-
-    eventForCalendar($('.date input'));
-
-    $('.add-run-button').click(function() {
-        addRow();
+function inputChangeEvent(input) {
+    input.keyup(function () {
+        $(this).parent().parent().find('.save-changed-run i').fadeIn();
     });
+}
 
-    inputChangeEvent($('input'));
+function delayRunsEvents(trimmed_data) {
+    eventForCalendar(trimmed_data.find('.date input'));
+    eventToChangeDelayedRun(trimmed_data.find('.save-changed-run'));
+    eventToDeleteDelayedRun(trimmed_data.find('.delete-run'));
+    inputChangeEvent(trimmed_data.find('input'));
+    eventToAddRow(trimmed_data.find('.add-run-button'));
+}
 
+$(document).ready(function(){
+    eventForOpenDelayRuns($('#delay-runs'));
 });

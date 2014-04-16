@@ -1,7 +1,8 @@
 class EmptyPagesController < ApplicationController
 
-  def empty_test_lists
-    p 'loh'
+  def empty_test_list
+
+    render layout: false
   end
 
 end

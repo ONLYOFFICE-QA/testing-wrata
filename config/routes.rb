@@ -47,10 +47,11 @@ Runner::Application.routes.draw do
   post 'queue/clear_tests'
   post 'queue/retest'
 
-  get 'delay_run', to: 'delay_run#index'
+  get 'delay_run', to: 'delay_run#index', as: 'delay_run'
   get 'delay_run/add_delayed_row'
   post 'delay_run/add_run'
   post 'delay_run/change_run'
+  post 'delay_run/delete_run'
 
   post 'runner/save_list'
 
@@ -68,7 +69,7 @@ Runner::Application.routes.draw do
   get '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  get 'empty_pages/empty_test_lists', as: 'empty_test_lists'
+  get 'empty_pages/empty_test_list', as: 'empty_test_list'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
