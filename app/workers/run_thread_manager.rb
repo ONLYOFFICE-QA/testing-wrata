@@ -5,7 +5,7 @@ module RunThreadManager
   WEEK_TIME = 7*24*60*60
 
   def create_run_scan_thread
-    @run_scan_thread = Thread.new do
+    @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       while true
         Thread.stop if @runs.empty?
         @runs.delete_if do |run|

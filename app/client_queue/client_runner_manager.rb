@@ -12,7 +12,7 @@ class ClientRunnerManager
   end
 
   def create_client_runner_thread
-    @client_runner_thread = Thread.new do
+    @client_runner_thread = Thread.new(caller: method(__method__).owner.to_s) do
       while true
         Thread.stop unless ready_to_start?
         @client_servers.servers_threads.each do |server|

@@ -22,7 +22,7 @@ class DelayRunController < ApplicationController
 
   def history_shit
     20.times do
-      Thread.new do
+      Thread.new(caller: method(__method__).owner.to_s) do
         history = History.new
         $threads.lock.synchronize do
           history.save

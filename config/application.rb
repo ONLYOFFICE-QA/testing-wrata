@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+require_relative 'thread_logging'
 
 require 'rails/all'
 

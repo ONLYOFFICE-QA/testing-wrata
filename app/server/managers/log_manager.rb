@@ -41,7 +41,7 @@ module LogManager
   end
 
   def create_log_scan_thread
-    @log_scan_thread = Thread.new do
+    @log_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       while true
         unless @test                       # Stop Thread if test was ended
           Thread.stop                                 #

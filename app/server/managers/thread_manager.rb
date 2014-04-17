@@ -1,7 +1,7 @@
 module ThreadManager
 
   def create_main_thread
-    @main_thread = Thread.new do
+    @main_thread = Thread.new(caller: method(__method__).owner.to_s) do
       unless @test
         Thread.stop
       end

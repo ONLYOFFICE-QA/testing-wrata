@@ -1,7 +1,7 @@
 module PingManager
 
   def start_pinging_server
-    Thread.new do
+    Thread.new(caller: method(__method__).owner.to_s) do
       while true
         if @server_model._status == :destroyed
           @status = false

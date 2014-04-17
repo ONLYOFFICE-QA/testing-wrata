@@ -48,7 +48,7 @@ module HTMLResultManager
   end
 
   def create_progress_scan_thread
-    @progress_scan_thread = Thread.new do
+    @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       while true
         unless @test
           Thread.stop
