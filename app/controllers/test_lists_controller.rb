@@ -1,6 +1,7 @@
 class TestListsController < ApplicationController
   # GET /test_lists
   # GET /test_lists.json
+
   def index
     @test_lists = TestList.find_all_by_client_id(current_client.id)
 
@@ -20,5 +21,7 @@ class TestListsController < ApplicationController
     end
 
   end
+
+
 
 end

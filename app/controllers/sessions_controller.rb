@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       sign_in_ client
       redirect_to runner_path
     else
-      flash.now[:error] = 'Invalid login/password combination' # Not quite right!
+      flash.now[:empty_pages] = 'Invalid login/password combination' # Not quite right!
       render 'new'
     end
   end

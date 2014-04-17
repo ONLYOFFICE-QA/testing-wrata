@@ -1,0 +1,42 @@
+<div class="test-list-row" style="display: none;" data-id="<%= @run.id %>">
+  <% datetime = @run.next_start ? @run.next_start : @run.start_time %>
+  <div class="list-name" style="display: inline-block;">
+    <%= @run.name %>
+  </div>
+  <div class="date" style="display: inline-block;margin-left: 5px;">
+    <label>Start date: </label>
+    <input class="form-control" placeholder="Select date" value="<%= datetime.strftime('%d/%m/%Y') %>">
+  </div>
+  <div class="time" style="display: inline-block;margin-left: 5px;">
+    <label>Start time: </label>
+    <input class="hour form-control" placeholder="Hour" value="<%= datetime.strftime('%H') %>">
+    :
+    <input class="min form-control" placeholder="Min" value="<%= datetime.strftime('%M') %>">
+  </div>
+  <div class="location" style="display: inline-block; margin-left: 5px;">
+    <label>Location:</label>
+    <select class="form-control" style="width: 110px;">
+      <% ['info us', 'info eu', 'com eu', 'com us', 'isa'].each do |location| %>
+          <option <%= 'selected' if @run.location == location %>><%= location %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="run-method" style="display: inline-block; margin-left: 5px;">
+    <label>Method:</label>
+    <input class="form-control" style="width: 110px;" disabled value="<%= @run.method.include?('once') ? 'once': 'each time' %>">
+  </div>
+  <% unless @run.method.include?('once') %>
+      <div class="each-time" style="display: inline-block; margin-left: 5px;">
+        <% hour, minute = BullshitHelper.match_minutes_and_hours(@run.method)%>
+        <input class="form-control" placeholder="Hour" style="width: 32px;" value="<%= hour %>">
+        :
+        <input class="form-control" placeholder="Min" style="width: 32px;" value="<%= minute %>">
+      </div>
+  <% end %>
+  <div class="save-changed-run">
+    <i class="glyphicon glyphicon-floppy-disk"></i>
+  </div>
+  <div class="delete-run">
+    <i class="glyphicon glyphicon-floppy-remove"></i>
+  </div>
+</div>

@@ -7,6 +7,9 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right" style="line-height: 36px;">
           <% if @controller == :runner %>
+              <li>
+                <div id="delay-runs" class="nav-div">DelayRuns</div>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle transition-color" data-toggle="dropdown"><i class="glyphicon glyphicon-flag icon-white"></i>Test Lists <b class="caret"></b></a>
                 <ul id="test_list_menu" class="dropdown-menu">

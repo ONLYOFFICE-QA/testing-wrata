@@ -51,6 +51,10 @@ function Client(login, file_lists) {
     this.file_lists = file_lists;
 }
 
+function trim_data(data) {
+    return $($.trim(data));
+}
+
 function Runner() {
     const UPDATE_INTERVAL = 1000;
     const STATUS_ONLINE = 0;
@@ -111,8 +115,8 @@ function Runner() {
                 'server': server_name
             },
             success: function (data) {
-                showPopupRspecResults();
-                $('.rspec-popup-window').html(data);
+                showPopup();
+                $('.popup-window').html(data);
                 eventsForRspecPopup();
             }
         })
@@ -387,7 +391,6 @@ function Runner() {
     this.showBookButton = function(button) {
         _self.changeUnbookButtonOnBook(button);
         button.show();
-        button.css('visibility', 'visible');
         _self.eventToBookServer(button);
     };
 
@@ -644,7 +647,7 @@ function Runner() {
             async: false,
             type: 'GET',
             success: function (data) {
-                var trimmed_data = $($.trim(data));
+                var trimmed_data = trim_data(data);
                 $("div#servers").html(trimmed_data);
                 _self.eventToOpenServer(trimmed_data.find('.server-header'));
                 _self.eventToOpenLogBySelector('.log-opener span');
@@ -672,7 +675,7 @@ function Runner() {
             async: true,
             type: 'GET',
             success: function (data) {
-                var trimmed_data = $($.trim(data));
+                var trimmed_data = trim_data(data);
                 $(".tests-block .tab-content").html(trimmed_data);
                 _self.setEventToOpenFolder();
                 _self.eventToOpenFileInclude();
@@ -771,7 +774,7 @@ function Runner() {
                     alert('Sign up for saving!');
                     return;
                 }
-                var trimmed_data = $($.trim(data));
+                var trimmed_data = trim_data(data);
                 _self.appendListDropdownMenu(trimmed_data);
             },
             error: function (e) {
@@ -1469,6 +1472,8 @@ $(function () {
         }
     });
 
+    eventToClosePopup();
+
     myRunner.setEventToDeleteTestList($('#test_list_menu li'));
 
 });
@@ -1513,7 +1518,7 @@ function getNeededToggleCoordinates() {
     if ($("#sidebar").css('display') != 'none') {
         sidebarWidth = $("#sidebar").outerWidth();
     }
-    coordinates['left'] = sidebarWidth + 4;
+    coordinates['left'] = sidebarWidth - 1;
     return coordinates
 }
 
@@ -1604,7 +1609,7 @@ function showMoreHistoryForServer() {
             'server': server
         },
         success: function (data) {
-            var trimmed_data = $($.trim(data));
+            var trimmed_data = trim_data(data)
             $('tbody').append(trimmed_data);
             scrollLogEventToElem(trimmed_data.find('.log'));
             logUpEventToElem(trimmed_data.find('.log-up'));
@@ -1636,7 +1641,7 @@ function showMoreHistoryForClient() {
             'name': name
         },
         success: function (data) {
-            var trimmed_data = $($.trim(data));
+            var trimmed_data = trim_data(data);
             $('tbody').append(trimmed_data);
             scrollLogEventToElem(trimmed_data.find('.log'));
             logUpEventToElem(trimmed_data.find('.log-up'));
@@ -1863,8 +1868,8 @@ function eventToOpenRspecResults(elem) {
                 'history_id': clicked.attr('data-id')
             },
             success: function (data) {
-                showPopupRspecResults();
-                $('.rspec-popup-window').html(data)
+                showPopup();
+                $('.popup-window').html(data)
                 eventsForRspecPopup();
             },
             error: function (e) {
@@ -1876,7 +1881,6 @@ function eventToOpenRspecResults(elem) {
 }
 
 function eventsForRspecPopup() {
-    eventToCloseRspecPopup();
     eventToOpenDescribe();
     evenToOpenFailDetails();
     setScrollOnMainDescribe();
@@ -1907,24 +1911,23 @@ function evenToOpenFailDetails() {
     })
 }
 
-function showPopupRspecResults() {
-    $('.rspec-overlay').fadeIn()
+function showPopup() {
+    $('.popup-overlay').fadeIn()
 }
 
-function closePopupRspecResults() {
-    $('.rspec-overlay').fadeOut()
+function closePopup() {
+    $('.popup-overlay').fadeOut()
 }
 
-function eventToCloseRspecPopup() {
+function eventToClosePopup() {
     $('.close-result').on('click', function () {
-        closePopupRspecResults()
+        closePopup()
     });
-    $('div.rspec-overlay').on('click', function () {
-        closePopupRspecResults()
+    $('div.popup-overlay').on('click', function () {
+        closePopup()
     });
-    stopPropagation($('.rspec-popup-window'));
+    stopPropagation($('.popup-window'));
 }
-
 
 function setScrollOnMainDescribe() {
     $('.main-describe').slimScroll({ width: 'auto', height: '100%', size: '3px'})

@@ -1,7 +1,7 @@
 <%= form_for(@client, html: { class: 'form-horizontal', role: 'form'}) do |f| %>
     <% if @client.errors.any? %>
         <div id="error_explanation">
-          <h2 style="color: darkred"><%= pluralize(@client.errors.count, "error") %>:</h2>
+          <h2 style="color: darkred"><%= pluralize(@client.errors.count, "empty_pages") %>:</h2>
 
           <ul>
             <% @client.errors.full_messages.each do |msg| %>

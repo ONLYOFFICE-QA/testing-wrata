@@ -10,6 +10,7 @@ class ServerThreads < ActionController::Base
     servers.each do |server_model|
       @server_threads << ServerThread.new(server_model)
     end
+    @lock = Mutex.new
   end
 
   def get_thread_by_name(name)

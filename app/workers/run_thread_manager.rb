@@ -62,20 +62,12 @@ module RunThreadManager
       when method.match(/hours/), method.match(/minutes/)
         if check_each_round run
           add_to_queue run
-          hours, minutes = match_minutes_and_hours(method)
+          hours, minutes = BullshitHelper.match_minutes_and_hours(method)
           move_next_start_on(run, hours, minutes)
         end
       else
         fail "Don't know check_method: #{run.method}"
     end
-  end
-
-  def match_minutes_and_hours(method)
-    hours = method.match(/_(\d*)_hours/)
-    hours = hours.captures.first if hours
-    minutes = method.match(/_(\d*)_minutes/)
-    minutes = minutes.captures.first if minutes
-    return hours, minutes
   end
 
   def check_each_round(run)
@@ -90,7 +82,7 @@ module RunThreadManager
     now = Time.now
     run_datetime = time_to_run.to_time
     if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
-      puts 'MINUS TIME: ' + (now - run_datetime).abs.to_s
+      puts 'TIME BEFORE RUN: ' + (now - run_datetime).abs.to_s
       ((now - run_datetime).abs <= INFELICITY) or (run_datetime < now)
     else
       run_datetime < now
@@ -117,7 +109,7 @@ module RunThreadManager
                end
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
     while Time.now >  time
-      time = old_time + time_to_sec(hour.to_i, minute.to_i)
+      time = time + time_to_sec(hour.to_i, minute.to_i)
     end
     puts ' '
     puts '====================================================='
