@@ -1289,7 +1289,7 @@ a, a:link, a:visited  {
     padding-bottom: 10px;
 }
 
-.server-name label {
+.server-header label {
     width: 64px;
     overflow: hidden;
     height: 20px;
