@@ -1290,7 +1290,7 @@ a, a:link, a:visited  {
 }
 
 .server-header label {
-    width: 64px;
+    width: 56px;
     overflow: hidden;
     height: 20px;
     display: inline-block;
