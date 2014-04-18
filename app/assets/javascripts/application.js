@@ -271,14 +271,14 @@ function Runner() {
                 _self.hideBookedClient(server.find('.user-icon'));
                 _self.changeDestroyOnCreate(server.find('.glyphicon-off'));
             }
-            if(data[i]['_status']  == 'normal') {
-                _self.hideServerSectionOverlay(data[i]['name'])
-            } else if (data[i]['_status']  == 'destroying') {
+            if (data[i]['_status']  == 'destroying') {
                 server.find('.server-content').show();
                 _self.showServerSectionOverlay(data[i]['name'], 'Destroying...')
             } else if (data[i]['_status']  == 'creating') {
                 server.find('.server-content').show();
                 _self.showServerSectionOverlay(data[i]['name'], 'Creating...')
+            } else {
+                _self.hideServerSectionOverlay(data[i]['name'])
             }
         }
     };
