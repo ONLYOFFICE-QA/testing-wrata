@@ -19,6 +19,10 @@
 .list-name {
     font-size: 14px;
     font-weight: bold;
+    width: 115px;
+    height: 20px;
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 #added-test-lists label {
