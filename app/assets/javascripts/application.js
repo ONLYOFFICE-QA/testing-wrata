@@ -413,11 +413,13 @@ function Runner() {
         }
     };
 
+    "18:04:05/18.04.14    [WebDriver] Opened page: http://teamlab.com\n18:04:27/18.04.14    [HeadlessHelper] Stopping Headless Session"
+
     this.setLogToServerView = function (server_el, log) {
         // if ((currentLogOnServer(server_el) == '') && (currentTestOnServer(server_el) == 'nothing')) {
 //        if (log != '') {
             var log_div = server_el.find('.log');
-            log_div.html(log.replace(/\n/g, '<br>'));
+            log_div.text(log);
 //        }
         //  }
     };

@@ -1077,6 +1077,10 @@ label#server, label#client {
     cursor: pointer;
 }
 
+.server .log {
+    white-space: pre-wrap;
+}
+
 .more-options {
     display: none;
 }
