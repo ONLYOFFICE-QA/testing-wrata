@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409102410) do
+ActiveRecord::Schema.define(version: 20140418103045) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "resource_id",   null: false
@@ -102,10 +102,11 @@ ActiveRecord::Schema.define(version: 20140409102410) do
     t.string   "name"
     t.text     "description"
     t.string   "address"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "comp_name"
-    t.string   "_status",     default: "normal"
+    t.string   "_status",        default: "normal"
+    t.integer  "book_client_id"
   end
 
   create_table "start_options", force: true do |t|

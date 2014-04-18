@@ -22,7 +22,7 @@ class ServerThread
 
   def initialize(server_model)
     @server_model = server_model
-    @client = nil
+    @client = server_model.booked_client
     @test = nil
     @_status = :normal
     delete_html_result
@@ -47,10 +47,12 @@ class ServerThread
 
   def book_server(client)
     @client = client
+    server_model.book(client)
   end
 
   def unbook_server
     @client = nil
+    server_model.unbook
   end
 
   def start_test(test)

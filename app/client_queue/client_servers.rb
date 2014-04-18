@@ -26,9 +26,6 @@ class ClientServers
     end
   end
 
-  # [{name: server1, server_thread: ServerThread1},
-  # {name: server2, server_thread: ServerThread2}]
-
   def delete_server(server_name, client)
     server_thread = $threads.get_thread_by_name(server_name)
     if server_thread.client == client

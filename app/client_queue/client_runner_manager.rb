@@ -43,7 +43,12 @@ class ClientRunnerManager
   end
 
   def init_servers(servers)
-    @client_servers = ClientServers.new(servers)
+    servers = Server.where(:book_client_id => client.id).to_a
+    client_servers = []
+    servers.each do |server|
+      client_servers << {name: server.name, server_thread: $threads.get_thread_by_name(server.name)}
+    end
+    @client_servers = ClientServers.new(client_servers)
   end
 
   def get_booked_servers
