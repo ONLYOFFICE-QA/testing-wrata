@@ -218,7 +218,7 @@ function Runner() {
     };
 
     this.appendTestsOnQueue = function(test) {
-        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>com eu</option><option>com us</option><option>isa</option></select>'
+        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>isa</option></select>'
         select = $(select);
         _self.eventToChangeLocationForTest(select);
         select.find(":contains('" + test['location'] + "')").prop('selected', true);
