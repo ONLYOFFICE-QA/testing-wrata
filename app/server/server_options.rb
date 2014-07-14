@@ -13,6 +13,7 @@ class ServerOptions
 
   def create_options
     @teamlab_branch = 'master' if @docs_branch == 'master'
+    @docs_branch = 'master' if @teamlab_branch == 'master'
     command =  "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " +
         "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull && git checkout #{@shared_branch} && git pull && bundle install && " +
         "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " +
