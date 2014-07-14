@@ -8,7 +8,7 @@ module RunThreadManager
     @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       while true
         Thread.stop if @runs.empty?
-        @runs.delete_if do |run|
+        @runs = @runs.to_a.delete_if do |run|
           method_timing run
         end
         puts '.....'
