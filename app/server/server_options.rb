@@ -47,7 +47,7 @@ class ServerOptions
         "sed -i \\\"s/@@server_region = 'eu'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
         "sed -i \\\"s/@@server_region = 'sg'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
         "sed -i \\\"s/@@server_region= 'us'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
-        "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
+        "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
         "sed -i \\\"s/@@server_region= 'sg'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
   end
 
