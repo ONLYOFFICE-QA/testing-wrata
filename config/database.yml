@@ -22,4 +22,4 @@ production:
   adapter: sqlite3
   database: db/production.sqlite3
   pool: 2000
-  timeout: 10000
+  timeout: 20000
