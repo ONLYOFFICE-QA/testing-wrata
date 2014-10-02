@@ -1,4 +1,5 @@
 class ServersController < ApplicationController
+  EXECUTOR_IMAGE_NAME = 'nct-at-v1.1'
 
   before_action :create_digital_ocean, :only => [:create, :destroy]
 
@@ -48,7 +49,7 @@ class ServersController < ApplicationController
 
   def create
     set_server_status(params['server'], :creating)
-    @digital_ocean.restore_image_by_name(params['server'])
+    @digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, params['server'])
     @digital_ocean.wait_until_droplet_have_status(params['server'])
     new_address = @digital_ocean.get_droplet_ip_by_name(params['server'])
     update_server_ip(params['server'], new_address)
