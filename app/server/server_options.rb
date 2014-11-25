@@ -30,7 +30,7 @@ class ServerOptions
   def generate_region_command
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
-    create_portal = if @portal_type == 'isa'
+    create_portal = if @portal_type == 'default'
                       "sed -i \\\"s/@create_portal = true/@create_portal = false/g\\\" #{portal_data_docs} && "
                     else
                       "sed -i \\\"s/@create_portal = false/@create_portal = true/g\\\" #{portal_data_docs} && "
