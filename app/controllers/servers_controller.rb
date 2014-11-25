@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-  EXECUTOR_IMAGE_NAME = 'nct-at-v1.1'
+  EXECUTOR_IMAGE_NAME = 'nct-at-stable'
 
   before_action :create_digital_ocean, :only => [:create, :destroy]
 
