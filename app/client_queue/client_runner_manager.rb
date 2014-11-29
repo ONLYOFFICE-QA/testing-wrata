@@ -45,6 +45,10 @@ class ClientRunnerManager
   def init_servers(servers)
     servers = Server.where(:book_client_id => client.id).to_a
     client_servers = []
+     if $threads.nil?
+       $threads = ServerThreads.new
+       $threads.init_threads
+     end
     servers.each do |server|
       client_servers << {name: server.name, server_thread: $threads.get_thread_by_name(server.name)}
     end

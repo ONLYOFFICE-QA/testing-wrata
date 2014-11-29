@@ -55,6 +55,3 @@ class ServerThreads < ActionController::Base
 
   # To change this template use File | Settings | File Templates.
 end
-
-$threads = ServerThreads.new
-$threads.init_threads
