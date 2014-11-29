@@ -31,12 +31,14 @@ class ServerOptions
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
     create_portal = if @portal_type == 'default'
-                      "sed -i \\\"s/@create_portal = true/@create_portal = false/g\\\" #{portal_data_docs} && "
+                      "sed -i \\\"s/@create_portal = true/@create_portal = false/g\\\" #{portal_data_docs}"
                     else
-                      "sed -i \\\"s/@create_portal = false/@create_portal = true/g\\\" #{portal_data_docs} && "
+                      "sed -i \\\"s/@create_portal = false/@create_portal = true/g\\\" #{portal_data_docs}"
                     end
-    create_portal +
-        "sed -i \\\"s/@create_portal_domain = '.info'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " +
+    region_command = create_portal
+    unless @portal_type == 'default'
+      region_command +=
+        " && sed -i \\\"s/@create_portal_domain = '.info'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " +
         "sed -i \\\"s/@create_portal_domain = '.com'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && "  +
         "sed -i \\\"s/@create_portal_region = 'us'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " +
         "sed -i \\\"s/@create_portal_region = 'eu'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " +
@@ -49,6 +51,8 @@ class ServerOptions
         "sed -i \\\"s/@@server_region= 'us'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
         "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
         "sed -i \\\"s/@@server_region= 'sg'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
+    end
+    region_command
   end
 
   def to_hash
