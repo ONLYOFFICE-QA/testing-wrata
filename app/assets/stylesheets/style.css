@@ -1101,7 +1101,7 @@ a, a:link, a:visited  {
 /******************** QUEUE-PANEL *******************/
 #queue-panel {
     margin: 0 auto;
-    height: 360px;
+    height: 90vh;
     padding: 5px;
     background: rgb(140, 202, 17); /* Old browsers */
     background: -moz-linear-gradient(top, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%); /* FF3.6+ */
@@ -1116,11 +1116,11 @@ a, a:link, a:visited  {
 }
 
 .queues {
-    height: 328px;
+    height: 85vh;
 }
 
 .queue-list {
-    height: 326px;
+    height: 85vh;
     width: 147px;
     background: rgba(255,255,255,0.97);
     box-shadow: inset 0 0 2px 1px rgba(0,0,0,0.4);
