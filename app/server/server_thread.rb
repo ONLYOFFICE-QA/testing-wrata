@@ -4,6 +4,12 @@
 #    @que
 #  end
 #end
+require_relative '../../app/server/managers/history_manager'
+require_relative '../../app/server/managers/html_result_manager'
+require_relative '../../app/server/managers/log_manager'
+require_relative '../../app/server/managers/ping_manager'
+require_relative '../../app/server/managers/test_manager'
+require_relative '../../app/server/managers/thread_manager'
 
 class ServerThread
 
