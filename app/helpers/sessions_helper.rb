@@ -34,6 +34,7 @@ module SessionsHelper
   end
 
   def get_run_manager(client_login)
+    $run_managers = RunnerManagers.new if $run_managers.nil?
     $run_managers.find_manager_by_client_login(client_login)
   end
 
