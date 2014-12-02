@@ -49,7 +49,12 @@ class ServersController < ApplicationController
 
   def create
     set_server_status(params['server'], :creating)
-    @digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, params['server'])
+    begin
+      @digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, params['server'])
+    rescue => e
+      set_server_status(params['server'], :destroyed)
+      fail e
+    end
     @digital_ocean.wait_until_droplet_have_status(params['server'])
     new_address = @digital_ocean.get_droplet_ip_by_name(params['server'])
     update_server_ip(params['server'], new_address)
