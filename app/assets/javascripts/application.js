@@ -36,6 +36,11 @@ function failAlert() {
     alert('Fail! Something goes wrong!')
 }
 
+function infoPopup(info_html) {
+    var popup = open("", "Info Popup", "width=800,height=400");
+    popup.document.body.innerHTML = info_html;
+}
+
 function FileTest(name, stroke_numbers) {
     this.name = name;
     this.stroke_numbers = stroke_numbers;
@@ -297,6 +302,7 @@ function Runner() {
             error: function (e) {
                 console.log(e.message);
                 failAlert();
+                infoPopup(e.responseText)
             }
         })
     };
