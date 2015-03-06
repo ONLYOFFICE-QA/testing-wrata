@@ -43,6 +43,7 @@ class DelayedRunManager
   def delete_run_from_db(id)
     run = DelayedRun.find(id)
     run.destroy
+    init_runs_from_db
   end
 
   def add_run_in_db(props, client)
@@ -54,6 +55,7 @@ class DelayedRunManager
     run.location = props['location']
     run.start_time = props['start_time']
     run.save
+    init_runs_from_db
     run
   end
 
@@ -63,9 +65,8 @@ class DelayedRunManager
     run.location = props['location']
     run.start_time = props['start_time']
     run.next_start = props['start_time']
+    init_runs_from_db
     run.save
   end
 
 end
-
-$delayed_runs = DelayedRunManager.new
