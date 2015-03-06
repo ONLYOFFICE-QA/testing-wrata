@@ -11,7 +11,7 @@ module RunThreadManager
         @runs = @runs.to_a.delete_if do |run|
           method_timing run
         end
-        puts '.....'
+        Rails.logger.info 'Waiting for next check for delay runner'
         sleep 5
       end
     end
@@ -82,8 +82,9 @@ module RunThreadManager
     now = Time.now
     run_datetime = time_to_run.to_time
     if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
-      puts 'TIME BEFORE RUN: ' + (now - run_datetime).abs.to_s
-      ((now - run_datetime).abs <= INFELICITY) or (run_datetime < now)
+      time_diff = (now - run_datetime).abs
+      Rails.logger.info "For delay run at #{time_to_run} time left #{time_diff} seconds"
+      (time_diff <= INFELICITY) or (run_datetime < now)
     else
       run_datetime < now
     end
