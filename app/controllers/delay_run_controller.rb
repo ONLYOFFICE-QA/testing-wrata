@@ -1,5 +1,5 @@
 class DelayRunController < ApplicationController
-  before_action :get_manager
+  before_action :manager
 
   def index
     @client_runs = $delayed_runs.get_client_runs(@client)
@@ -47,7 +47,7 @@ class DelayRunController < ApplicationController
 
   private
 
-  def get_manager
+  def manager
     if @client
       @manager = $run_managers.find_manager_by_client_login(@client.login)
     else

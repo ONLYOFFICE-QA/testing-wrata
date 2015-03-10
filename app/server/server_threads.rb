@@ -16,7 +16,7 @@ class ServerThreads < ActionController::Base
     @server_threads.select { |thread| thread.server_model.name == name }.first
   end
 
-  def get_all_servers_from_threads
+  def all_servers_from_threads
     @server_threads.inject([]) { |servers, thread| servers << thread.server_model }
   end
 

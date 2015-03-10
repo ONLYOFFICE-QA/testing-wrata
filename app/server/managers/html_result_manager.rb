@@ -15,7 +15,7 @@ module HTMLResultManager
     File.delete(rspec_html_result_path) if html_result_exist?
   end
 
-  def get_final_results_from_html
+  def final_results_from_html
     total_result = ''
     if html_result_exist?
       total_result = ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)
@@ -27,7 +27,7 @@ module HTMLResultManager
     total_result
   end
 
-  def get_test_progress
+  def test_progress
     processing = '0'
     if @test
       if html_result_exist?
@@ -46,7 +46,7 @@ module HTMLResultManager
     @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         Thread.stop unless @test
-        @test_progress = get_test_progress
+        @test_progress = test_progress
         sleep TIME_FOR_UPDATE
       end
     end
@@ -60,7 +60,7 @@ module HTMLResultManager
     end
   end
 
-  def get_full_results_of_test
+  def full_results_of_test
     results = nil
     if @test
       if html_result_exist?

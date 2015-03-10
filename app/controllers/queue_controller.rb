@@ -1,5 +1,5 @@
 class QueueController < ApplicationController
-  before_action :get_manager
+  before_action :manager
 
   def book_server
     @manager.add_server(params['server'])
@@ -63,7 +63,7 @@ class QueueController < ApplicationController
 
   private
 
-  def get_manager
+  def manager
     if @client
       @manager = $run_managers.find_manager_by_client_login(@client.login)
     else

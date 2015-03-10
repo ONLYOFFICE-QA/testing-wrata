@@ -161,7 +161,7 @@ function Runner() {
 
     this.getUpdatedDataFromServer = function () {
         $.ajax({
-            url: 'runner/get_updated_data',
+            url: 'runner/updated_data',
             type: 'GET',
             async: false,
             data: {
@@ -726,7 +726,7 @@ function Runner() {
 
     this.showBranchesList = function() {
         $.ajax({
-            url: 'runner/get_branches',
+            url: 'runner/branches',
             context: this,
             async: false,
             type: 'GET',

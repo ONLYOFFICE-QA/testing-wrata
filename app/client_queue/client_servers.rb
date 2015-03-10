@@ -5,7 +5,7 @@ class ClientServers
     @servers_threads = servers_names
   end
 
-  def get_servers_from_queue
+  def servers_from_queue
     servers = []
     @servers_threads.each do |cur_node|
       servers << cur_node[:name]
@@ -31,7 +31,7 @@ class ClientServers
     @servers_threads.delete(name: server_name, server_thread: ($threads.get_thread_by_name(server_name)))
   end
 
-  def get_server_by_name(server_name)
+  def server_by_name(server_name)
     server = nil
     @servers_threads.each do |current|
       server = current[:server_thread] if current[:name] == server_name

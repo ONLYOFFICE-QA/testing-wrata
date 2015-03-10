@@ -13,7 +13,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle transition-color" data-toggle="dropdown"><i class="glyphicon glyphicon-flag icon-white"></i>Test Lists <b class="caret"></b></a>
                 <ul id="test_list_menu" class="dropdown-menu">
-                  <% get_client_test_lists.each do |test_list| %>
+                  <% client_test_lists.each do |test_list| %>
                       <li style="position: relative">
                         <a href="#"><%= test_list.name %></a>
                         <i class="glyphicon glyphicon-trash delete-test-list" style="padding: 0;" delete-data="<%= test_list_path(test_list) %>"></i>

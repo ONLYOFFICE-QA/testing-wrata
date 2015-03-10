@@ -10,7 +10,7 @@ class ClientTestQueue
   def push_test(test_path, branch, location)
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
-    doc_branch, tm_branch = get_branches(test_project, branch, location.split(' ')[0])
+    doc_branch, tm_branch = branches(test_project, branch, location.split(' ')[0])
     @tests << { test_path: reformat_path(test_path), id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
                 location: location, test_name: test_name, project: test_project }
     @id += 1
@@ -72,7 +72,7 @@ class ClientTestQueue
     test_path.include?(DOCS_PROJECT_NAME) ? DOCS_TAB_NAME : TEAMLAB_TAB_NAME
   end
 
-  def get_branches(project, branch, region)
+  def branches(project, branch, region)
     teamlab_branch = TEAMLAB_DEFAULT_BRANCH
     doc_branch = DOCS_DEFAULT_BRANCH
     if project == DOCS_TAB_NAME

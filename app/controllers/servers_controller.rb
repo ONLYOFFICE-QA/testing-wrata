@@ -5,7 +5,7 @@ class ServersController < ApplicationController
 
   def show_current_results
     server_thread = $threads.get_thread_by_name(params[:server])
-    @rspec_result = server_thread.get_full_results_of_test
+    @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
     render 'history/show_html_results', layout: false

@@ -21,7 +21,7 @@ module SessionsHelper
     @current_client ||= Client.find_by_remember_token(cookies[:remember_token])
   end
 
-  def get_client_test_lists
+  def client_test_lists
     test_lists = []
     client = current_client
     test_lists = client.test_lists.order('created_at DESC') unless client.nil?

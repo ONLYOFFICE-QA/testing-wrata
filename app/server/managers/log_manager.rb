@@ -70,7 +70,7 @@ module LogManager
     end
   end
 
-  def get_full_log
+  def full_log
     if log_file_exist?
       lines = IO.readlines(server_log_path)
       log = EMPTY_STRING

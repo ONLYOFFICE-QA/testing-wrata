@@ -13,7 +13,7 @@ class RunnerController < ApplicationController
     render nothing: true
   end
 
-  def get_branches
+  def branches
     tm_branches = view_context.get_list_branches(TEAMLAB_PROJECT_PATH)
     doc_branches = view_context.get_list_branches(DOCS_PROJECT_PATH)
     respond_to do |format|
@@ -40,27 +40,13 @@ class RunnerController < ApplicationController
   end
 
   def show_servers
-    @servers = $threads.get_all_servers_from_threads
+    @servers = $threads.all_servers_from_threads
 
     render layout: false
   end
 
   def show_tests
     render layout: false
-  end
-
-  def get_status
-    json = []
-    @servers = $threads.get_all_servers_from_threads
-    @servers.each do |server|
-      json << {
-        name: server.name.downcase,
-        status: rand(3)
-      }
-    end
-    respond_to do |format|
-      format.json { render json: json.to_json }
-    end
   end
 
   def get_client_name(client)
@@ -148,7 +134,7 @@ class RunnerController < ApplicationController
     # }
   end
 
-  def get_updated_data
+  def updated_data
     servers = params['servers']
     servers.delete(AMAZON_SERVER_NAME)
 
@@ -166,8 +152,8 @@ class RunnerController < ApplicationController
 
     output_json[:servers_data] = server_data
     output_json[:queue_data] = {}
-    output_json[:queue_data][:servers] = manager.get_booked_servers
-    output_json[:queue_data][:tests] = manager.get_tests
+    output_json[:queue_data][:servers] = manager.booked_servers
+    output_json[:queue_data][:tests] = manager.tests
 
     output_json = output_json.to_json
 

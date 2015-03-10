@@ -29,10 +29,10 @@ Runner::Application.routes.draw do
   get 'runner/show_subtests'
   get 'runner/load_test_list'
   get 'runner/change_branch'
-  get 'runner/get_updated_data'
+  get 'runner/updated_data'
   get 'runner/rerun_thread'
   get 'runner/pull_projects'
-  get 'runner/get_branches'
+  get 'runner/branches'
   post 'runner/stop_current'
 
   post 'queue/book_server'

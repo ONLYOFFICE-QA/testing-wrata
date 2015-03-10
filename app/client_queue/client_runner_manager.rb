@@ -49,11 +49,11 @@ class ClientRunnerManager
     @client_servers = ClientServers.new(client_servers)
   end
 
-  def get_booked_servers
-    @client_servers.get_servers_from_queue
+  def booked_servers
+    @client_servers.servers_from_queue
   end
 
-  def get_tests
+  def tests
     @tests.tests
   end
 

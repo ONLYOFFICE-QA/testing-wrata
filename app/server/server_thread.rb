@@ -71,7 +71,7 @@ class ServerThread
       name: slice_project_path(@test[:test_path]),
       location: @test[:location],
       progress: @test_progress,
-      time: get_testing_time
+      time: testing_time
     } if @test
     server_info[:booked] = {
       booked_client: @client.login,
@@ -84,7 +84,7 @@ class ServerThread
     server_info
   end
 
-  def get_testing_time
+  def testing_time
     Time.at(Time.now - @time_start).utc.strftime('%H:%M')
   end
 
