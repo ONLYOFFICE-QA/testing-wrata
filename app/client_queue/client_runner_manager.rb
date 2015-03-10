@@ -15,11 +15,10 @@ class ClientRunnerManager
       loop do
         Thread.stop unless ready_to_start?
         @client_servers.servers_threads.each do |server|
-          if server[:server_thread].free?
-            next_test = @tests.shift_test
-            if next_test
-              server[:server_thread].start_test(next_test)
-            end
+          next unless server[:server_thread].free?
+          next_test = @tests.shift_test
+          if next_test
+            server[:server_thread].start_test(next_test)
           end
         end
         sleep TIME_FOR_SCAN
