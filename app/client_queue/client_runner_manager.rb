@@ -17,9 +17,7 @@ class ClientRunnerManager
         @client_servers.servers_threads.each do |server|
           next unless server[:server_thread].free?
           next_test = @tests.shift_test
-          if next_test
-            server[:server_thread].start_test(next_test)
-          end
+          server[:server_thread].start_test(next_test) if next_test
         end
         sleep TIME_FOR_SCAN
       end
@@ -28,9 +26,7 @@ class ClientRunnerManager
 
   def start_client_runner_thread
     if @client_runner_thread.alive?
-      if @client_runner_thread.stop?
-        @client_runner_thread.run
-      end
+      @client_runner_thread.run if @client_runner_thread.stop?
     else
       create_client_runner_thread
     end

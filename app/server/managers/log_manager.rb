@@ -22,21 +22,15 @@ module LogManager
   end
 
   def create_log_file
-    if log_file_exist?
-      File.new(server_log_path, 'w')
-    end
+    File.new(server_log_path, 'w') if log_file_exist?
   end
 
   def clear_log_file
-    if log_file_exist?
-      File.open(server_log_path, 'w') { |f| f.write('') }
-    end
+    File.open(server_log_path, 'w') { |f| f.write('') } if log_file_exist?
   end
 
   def delete_log_file
-    if log_file_exist?
-      File.delete(server_log_path)
-    end
+    File.delete(server_log_path) if log_file_exist?
   end
 
   def create_log_scan_thread
@@ -53,9 +47,7 @@ module LogManager
 
   def start_log_scan_thread
     if @log_scan_thread.alive?
-      if @log_scan_thread.stop?
-        @log_scan_thread.run
-      end
+      @log_scan_thread.run if @log_scan_thread.stop?
     else
       create_log_scan_thread
     end
@@ -65,9 +57,7 @@ module LogManager
     if !log_file_empty?
       lines = IO.readlines(server_log_path)
       full_size = lines.size
-      if @last_log_end == full_size or full_size < @last_log_end      # return if we don't get new lines in log file
-        return
-      end
+      return if @last_log_end == full_size or full_size < @last_log_end      # return if we don't get new lines in log file
       @log = EMPTY_STRING                             # clear before init new log
       lines[@last_log_end..-1].each do |line|
         unless empty_line?(line)                      # check if line don't 'empty', like 'testpc-9  '
@@ -85,9 +75,7 @@ module LogManager
       lines = IO.readlines(server_log_path)
       log = EMPTY_STRING
       lines.each do |line|
-        unless empty_line?(line)
-          log += delete_comp_name_from_line line
-        end
+        log += delete_comp_name_from_line line unless empty_line?(line)
       end
       return log
     end

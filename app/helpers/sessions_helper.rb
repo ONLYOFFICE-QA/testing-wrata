@@ -24,9 +24,7 @@ module SessionsHelper
   def get_client_test_lists
     test_lists = []
     client = current_client
-    unless client.nil?
-      test_lists = client.test_lists.order('created_at DESC')
-    end
+    test_lists = client.test_lists.order('created_at DESC') unless client.nil?
     test_lists
   end
 

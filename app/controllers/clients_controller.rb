@@ -25,9 +25,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
-    unless current_client == @client
-      redirect_to runner_path
-    end
+    redirect_to runner_path unless current_client == @client
   end
 
   # POST /clients

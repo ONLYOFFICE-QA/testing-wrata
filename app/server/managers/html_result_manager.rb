@@ -12,9 +12,7 @@ module HTMLResultManager
   end
 
   def delete_html_result
-    if html_result_exist?
-      File.delete(rspec_html_result_path)
-    end
+    File.delete(rspec_html_result_path) if html_result_exist?
   end
 
   def get_final_results_from_html
@@ -35,9 +33,7 @@ module HTMLResultManager
       if html_result_exist?
         begin
           processing_from_html = ResultParser.get_processing_of_rspec_html(rspec_html_result_path)
-          unless processing_from_html == ''
-            processing = processing_from_html
-          end
+          processing = processing_from_html unless processing_from_html == ''
         rescue
 
         end
@@ -49,9 +45,7 @@ module HTMLResultManager
   def create_progress_scan_thread
     @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
-        unless @test
-          Thread.stop
-        end
+        Thread.stop unless @test
         @test_progress = get_test_progress
         sleep TIME_FOR_UPDATE
       end
@@ -60,9 +54,7 @@ module HTMLResultManager
 
   def start_progress_scan_thread
     if @progress_scan_thread.alive?
-      if @progress_scan_thread.stop?
-        @progress_scan_thread.run
-      end
+      @progress_scan_thread.run if @progress_scan_thread.stop?
     else
       create_progress_scan_thread
     end

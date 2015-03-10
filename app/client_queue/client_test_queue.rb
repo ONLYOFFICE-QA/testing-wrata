@@ -83,9 +83,7 @@ class ClientTestQueue
         teamlab_branch = TEAMLAB_COM_MAIN_BRANCH
       end
     end
-    if project == TEAMLAB_TAB_NAME
-      teamlab_branch = branch
-    end
+    teamlab_branch = branch if project == TEAMLAB_TAB_NAME
     [doc_branch, teamlab_branch]
   end
 end

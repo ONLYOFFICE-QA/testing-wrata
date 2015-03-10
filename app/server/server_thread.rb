@@ -90,9 +90,7 @@ class ServerThread
 
   def slice_project_path(file_name)
     file_name = file_name.slice((file_name.rindex('/') + 1)..-1)
-    if file_name.include?(':')
-      file_name = file_name[0..file_name.index(':')]
-    end
+    file_name = file_name[0..file_name.index(':')] if file_name.include?(':')
     file_name
   end
 

@@ -36,9 +36,7 @@ class ClientServers
   def get_server_by_name(server_name)
     server = nil
     @servers_threads.each do |current|
-      if current[:name] == server_name
-        server = current[:server_thread]
-      end
+      server = current[:server_thread] if current[:name] == server_name
     end
     server
   end

@@ -18,9 +18,7 @@ module RunThreadManager
 
   def start_run_scan_thread
     if @run_scan_thread.alive?
-      if @run_scan_thread.stop?
-        @run_scan_thread.run
-      end
+      @run_scan_thread.run if @run_scan_thread.stop?
     else
       create_log_scan_thread
     end

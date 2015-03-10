@@ -5,9 +5,7 @@ class ResultCreator
     if level == 0
       @final_result = describe
     else
-      if level > 0
-        @final_result.find_last_on_lvl(level - 1).child << describe
-      end
+      @final_result.find_last_on_lvl(level - 1).child << describe if level > 0
     end
   end
 end

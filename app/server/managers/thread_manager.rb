@@ -2,9 +2,7 @@ module ThreadManager
   def create_main_thread
     @main_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
-        unless @test
-          Thread.stop
-        end
+        Thread.stop unless @test
         test_path = @test[:test_path]
         location = @test[:location]
         clear_log_file
@@ -22,9 +20,7 @@ module ThreadManager
 
   def start_main_thread
     if @main_thread.alive?
-      if @main_thread.stop?
-        @main_thread.run
-      end
+      @main_thread.run if @main_thread.stop?
     else
       create_main_thread
     end
