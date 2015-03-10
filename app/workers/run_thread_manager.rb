@@ -108,9 +108,7 @@ module RunThreadManager
                  run.start_time
                end
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
-    while Time.now >  time
-      time += time_to_sec(hour.to_i, minute.to_i)
-    end
+    time += time_to_sec(hour.to_i, minute.to_i) while Time.now >  time
     puts ' '
     puts '====================================================='
     puts '=========== UPDATE RUN INFO ========================='
