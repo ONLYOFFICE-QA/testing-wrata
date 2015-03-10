@@ -1,11 +1,10 @@
 require 'resque/server'
 Runner::Application.routes.draw do
+  # authenticate :admin do
+  mount Resque::Server, at: '/resque'
+  # end
 
-  #authenticate :admin do
-    mount Resque::Server, :at => '/resque'
-  #end
-
-  root :to => 'runner#index', :as => 'runner'
+  root to: 'runner#index', as: 'runner'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -20,7 +19,7 @@ Runner::Application.routes.draw do
   resources :test_lists, only: [:index, :destroy]
   resources :history, only: :destroy
   post 'history/set_analysed'
-  get '/history/show_html_results' #, as: '/history/show_html_results'
+  get '/history/show_html_results' # , as: '/history/show_html_results'
 
   get 'runner/index'
   get 'runner/start'
@@ -58,7 +57,7 @@ Runner::Application.routes.draw do
   get '/server_history/show_more', to: 'servers#show_more'
   get '/servers/reboot'
   get '/servers/show_current_results'
-  get '/server_history/:id', to: 'servers#server_history' , as: 'server_history'
+  get '/server_history/:id', to: 'servers#server_history', as: 'server_history'
   post '/servers/destroy'
   post '/servers/create'
   post '/servers/clear_history'

@@ -5,18 +5,18 @@ class TestListsControllerTest < ActionController::TestCase
     @test_list = test_lists(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:test_lists)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create test_list" do
+  test 'should create test_list' do
     assert_difference('TestList.count') do
       post :create, test_list: { client_id: @test_list.client_id, name: @test_list.name }
     end
@@ -24,22 +24,22 @@ class TestListsControllerTest < ActionController::TestCase
     assert_redirected_to test_list_path(assigns(:test_list))
   end
 
-  test "should show test_list" do
+  test 'should show test_list' do
     get :show, id: @test_list
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @test_list
     assert_response :success
   end
 
-  test "should update test_list" do
+  test 'should update test_list' do
     put :update, id: @test_list, test_list: { client_id: @test_list.client_id, name: @test_list.name }
     assert_redirected_to test_list_path(assigns(:test_list))
   end
 
-  test "should destroy test_list" do
+  test 'should destroy test_list' do
     assert_difference('TestList.count', -1) do
       delete :destroy, id: @test_list
     end

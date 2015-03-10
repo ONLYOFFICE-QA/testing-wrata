@@ -10,5 +10,4 @@ class Example
     @log = log
     @passed = passed
   end
-
 end

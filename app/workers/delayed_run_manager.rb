@@ -1,5 +1,4 @@
 class DelayedRunManager
-
   include RunThreadManager
 
   def initialize
@@ -25,7 +24,7 @@ class DelayedRunManager
   end
 
   def delete_runs_by_testlist_name(client, name)
-    runs = client.delayed_runs.select {|run| run.name == name}
+    runs = client.delayed_runs.select { |run| run.name == name }
     runs.each &:destroy
   end
 
@@ -68,5 +67,4 @@ class DelayedRunManager
     init_runs_from_db
     run.save
   end
-
 end

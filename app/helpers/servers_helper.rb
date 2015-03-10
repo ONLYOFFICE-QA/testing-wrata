@@ -1,5 +1,4 @@
 module ServersHelper
-
   def slice_file_name(file_name)
     if file_name.include?('/')
       file_name.slice! "#{ENV['HOME']}/RubymineProjects/"
@@ -35,5 +34,4 @@ module ServersHelper
     end
     result
   end
-
 end

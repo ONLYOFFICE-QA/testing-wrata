@@ -1,5 +1,4 @@
 class StartOption < ActiveRecord::Base
-
   belongs_to :history
 
   attr_accessible :docs_branch,
@@ -9,5 +8,4 @@ class StartOption < ActiveRecord::Base
                   :portal_region,
                   :portal_type,
                   :start_command
-
 end

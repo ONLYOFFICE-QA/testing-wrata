@@ -1,16 +1,15 @@
 module RunnerHelper
-
-  def directory_hash(path, name=nil)
-    data = {:data => (name || path)}
+  def directory_hash(path, name = nil)
+    data = { data: (name || path) }
     data[:children] = children = []
     data[:path] = path
     Dir.foreach(path).sort.each do |entry|
-      next if (entry == '..' || entry == '.')
+      next if entry == '..' || entry == '.'
       full_path = File.join(path, entry)
       if File.directory?(full_path)
         children << directory_hash(full_path, entry)
       else
-        children << {:name => entry, :path => full_path}
+        children << { name: entry, path: full_path }
       end
     end
     data
@@ -22,7 +21,7 @@ module RunnerHelper
     test_file.each_with_index do |line, index|
       if line =~ /it [\'\"](.*)?[\'\"] do/
         test_name = line.scan /it [\'\"](.*?)[\'\"] do/
-        file_tests << {:name =>  test_name.first.first, :stroke => (index + 1) }
+        file_tests << { name: test_name.first.first, stroke: (index + 1) }
       end
     end
     test_file.close
@@ -47,7 +46,7 @@ module RunnerHelper
     branches = []
     system_message.to_s.gsub!('* ', '')
     system_message.to_s.split("\n  ").each do |line|
-      branches << line.to_s.split(" ")
+      branches << line.to_s.split(' ')
     end
     branches.flatten!
     branches.delete '->'
@@ -78,5 +77,4 @@ module RunnerHelper
       ''
     end
   end
-
 end

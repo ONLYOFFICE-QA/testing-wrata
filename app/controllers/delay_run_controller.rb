@@ -1,5 +1,4 @@
 class DelayRunController < ApplicationController
-
   before_action :get_manager
 
   def index
@@ -30,7 +29,7 @@ class DelayRunController < ApplicationController
   end
 
   def add_delayed_row
-    render :layout => false
+    render layout: false
   end
 
   def history_shit
@@ -56,5 +55,4 @@ class DelayRunController < ApplicationController
       render signin_path
     end
   end
-
 end

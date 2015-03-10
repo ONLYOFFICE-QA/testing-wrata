@@ -1,5 +1,4 @@
 class Client < ActiveRecord::Base
-
   attr_accessible :login, :password, :password_confirmation, :post, :first_name, :second_name, :project
   has_many :test_lists
   has_many :histories
@@ -8,21 +7,21 @@ class Client < ActiveRecord::Base
   has_secure_password
   validates_confirmation_of :password
 
-  validates :password, :presence => true,
-            :length => {:minimum => 3, :maximum => 20}
+  validates :password, presence: true,
+                       length: { minimum: 3, maximum: 20 }
 
-  validates :password_confirmation, :presence => true
+  validates :password_confirmation, presence: true
 
-  validates :login, :uniqueness => true,
-                    :presence => true,
-                    :length => {:minimum => 3, :maximum => 20}
+  validates :login, uniqueness: true,
+                    presence: true,
+                    length: { minimum: 3, maximum: 20 }
 
   before_save :create_remember_token
 
   public
 
   def amazon_client?
-    AMAZON_CLIENTS.include?(self.login)
+    AMAZON_CLIENTS.include?(login)
   end
 
   private
@@ -31,13 +30,12 @@ class Client < ActiveRecord::Base
     self.remember_token = SecureRandom.urlsafe_base64
   end
   #
-  #validates :first_name, :presence => true,
+  # validates :first_name, :presence => true,
   #                       :length => {:minimum => 3, :maximum => 20}
   #
-  #validates :second_name, :presence => true,
+  # validates :second_name, :presence => true,
   #                        :length => {:minimum => 3, :maximum => 20}
   #
-  #validates :post, :presence => true,
+  # validates :post, :presence => true,
   #          :length => {:minimum => 3, :maximum => 20}
-
 end

@@ -1,5 +1,4 @@
 class ClientRunnerManager
-
   TIME_FOR_SCAN = 15
 
   attr_reader :client
@@ -13,7 +12,7 @@ class ClientRunnerManager
 
   def create_client_runner_thread
     @client_runner_thread = Thread.new(caller: method(__method__).owner.to_s) do
-      while true
+      loop do
         Thread.stop unless ready_to_start?
         @client_servers.servers_threads.each do |server|
           if server[:server_thread].free?
@@ -43,14 +42,14 @@ class ClientRunnerManager
   end
 
   def init_servers(servers)
-    servers = Server.where(:book_client_id => client.id).to_a
+    servers = Server.where(book_client_id: client.id).to_a
     client_servers = []
-     if $threads.nil?
-       $threads = ServerThreads.new
-       $threads.init_threads
-     end
+    if $threads.nil?
+      $threads = ServerThreads.new
+      $threads.init_threads
+    end
     servers.each do |server|
-      client_servers << {name: server.name, server_thread: $threads.get_thread_by_name(server.name)}
+      client_servers << { name: server.name, server_thread: $threads.get_thread_by_name(server.name) }
     end
     @client_servers = ClientServers.new(client_servers)
   end
@@ -118,7 +117,6 @@ class ClientRunnerManager
   end
 
   def ready_to_start?
-    !(@tests.empty? or @client_servers.empty?)
+    !(@tests.empty? || @client_servers.empty?)
   end
-
 end

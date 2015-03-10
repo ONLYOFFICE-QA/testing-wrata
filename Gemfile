@@ -14,7 +14,7 @@ gem 'net-ping'
 
 gem 'uglifier', '>= 1.3.0'
 
-gem 'rubyzip'#, '~> 0.9.9'
+gem 'rubyzip' # , '~> 0.9.9'
 
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -26,7 +26,7 @@ gem 'jquery-rails'
 gem 'aws-sdk'
 
 # To use ActiveModel has_secure_password
-#gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'magic_encoding'
 

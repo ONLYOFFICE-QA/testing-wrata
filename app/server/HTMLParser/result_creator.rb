@@ -1,5 +1,4 @@
 class ResultCreator
-
   def push_to_end(describe, level)
     if level == 0
       @final_result = describe
@@ -13,5 +12,4 @@ class ResultCreator
   def get_result
     @final_result
   end
-
 end

@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   include SessionsHelper
-  #include ServerThreads
+  # include ServerThreads
 
-  #before_filter :create_threads
+  # before_filter :create_threads
   before_action :require_login
 
   # Force signout to prevent CSRF attacks
@@ -20,9 +20,7 @@ class ApplicationController < ActionController::Base
     name = @test_list.name
     if current_client.test_lists.find_by_id(id) ==  @test_list
       @test_list.test_files.each do |test_file|
-        test_file.strokes.each do |stroke|
-          stroke.destroy
-        end
+        test_file.strokes.each(&:destroy)
         test_file.destroy
       end
       @test_list.destroy

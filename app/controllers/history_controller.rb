@@ -1,18 +1,17 @@
 class HistoryController < ApplicationController
-
   # DELETE /history/1
   def destroy
     @history = History.find(params[:id])
     @history.destroy
 
-    render :nothing => true
+    render nothing: true
   end
 
   def set_analysed
     @history = History.find(params['id'])
     @history.analysed = true
     @history.save
-    render :nothing => true
+    render nothing: true
   end
 
   def show_html_results
@@ -24,7 +23,6 @@ class HistoryController < ApplicationController
       @rspec_result = ResultParser.parse_rspec_html_string(history_data)
     end
 
-    render :layout => false
+    render layout: false
   end
-
 end

@@ -1,9 +1,9 @@
-#encoding: UTF-8
-#class Queue
+# encoding: UTF-8
+# class Queue
 #  def get_queue
 #    @que
 #  end
-#end
+# end
 require_relative '../../app/server/managers/history_manager'
 require_relative '../../app/server/managers/html_result_manager'
 require_relative '../../app/server/managers/log_manager'
@@ -12,7 +12,6 @@ require_relative '../../app/server/managers/test_manager'
 require_relative '../../app/server/managers/thread_manager'
 
 class ServerThread
-
   include HistoryManager
   include HTMLResultManager
   include LogManager
@@ -73,14 +72,14 @@ class ServerThread
     server_info = {}
     server_info[:name] = @server_model.name
     server_info[:test] = {
-        name: slice_project_path(@test[:test_path]),
-        location: @test[:location],
-        progress: @test_progress,
-        time: get_testing_time
+      name: slice_project_path(@test[:test_path]),
+      location: @test[:location],
+      progress: @test_progress,
+      time: get_testing_time
     } if @test
     server_info[:booked] = {
-        booked_client: @client.login,
-        booked_by_client: @client == current_client
+      booked_client: @client.login,
+      booked_by_client: @client == current_client
     } if @client
     server_info[:status] = @status
     server_info[:_status] = @server_model._status
@@ -109,7 +108,4 @@ class ServerThread
     stop_test
     system "ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"reboot\""
   end
-
 end
-
-

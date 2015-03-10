@@ -1,5 +1,4 @@
 class RspecResult
-
   attr_accessor :processing, :result, :time, :total, :describe
 
   def initialize(describe = nil, processing = nil, result = nil, time = nil, total = nil)
@@ -9,5 +8,4 @@ class RspecResult
     @time = time
     @total = total
   end
-
 end

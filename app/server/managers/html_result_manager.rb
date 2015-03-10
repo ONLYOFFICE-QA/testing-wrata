@@ -1,5 +1,4 @@
 module HTMLResultManager
-
   def rspec_html_result_path
     "/mnt/data_share/RunnerLogs/#{@server_model.name}.html"
   end
@@ -49,7 +48,7 @@ module HTMLResultManager
 
   def create_progress_scan_thread
     @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
-      while true
+      loop do
         unless @test
           Thread.stop
         end
@@ -82,5 +81,4 @@ module HTMLResultManager
     end
     results
   end
-
 end

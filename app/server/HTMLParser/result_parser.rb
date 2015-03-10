@@ -6,17 +6,16 @@ require_relative 'rspec_result'
 
 class  String
   def get_style_param(param)
-    m = self.match /#{param}:\s(.*);/
+    m = match /#{param}:\s(.*);/
     m[1]
   end
 
   def delete_px
-    self.gsub 'px', ''
+    gsub 'px', ''
   end
 end
 
 class ResultParser
-
   LEVEL_MARGIN = 15
 
   def self.parse_rspec_html(html_path)
@@ -102,14 +101,14 @@ class ResultParser
   end
 
   def self.get_describe_level(describe)
-    describe.xpath('./dl')[0][:style].get_style_param('margin-left').delete_px.to_i/LEVEL_MARGIN
+    describe.xpath('./dl')[0][:style].get_style_param('margin-left').delete_px.to_i / LEVEL_MARGIN
   end
 
   def self.parse_describe(describe)
     describe_obj = Describe.new(describe.css('dt').text)
     unless describe.css('dd').empty?
       describe.css('dd').each_with_index do |example|
-        #example_log = describe.xpath("//dd/preceding-sibling::text()[1]")[@@example_index].text.strip
+        # example_log = describe.xpath("//dd/preceding-sibling::text()[1]")[@@example_index].text.strip
         describe_obj.child << parse_example(example)
         @@example_index += 1
       end
@@ -131,21 +130,20 @@ class ResultParser
     end
     example_obj
   end
-
 end
 #
-#f = File.new('/home/testpc-37/RubymineProjects/OnlineDocuments/RspecTest/DocEditor/One Server/Smoke/Content/Character/output.html')
-#str = f.read
-#res = ResultParser.parse_rspec_html("/mnt/data_share/RunnerLogs/nct-at7.html")
-#p str
+# f = File.new('/home/testpc-37/RubymineProjects/OnlineDocuments/RspecTest/DocEditor/One Server/Smoke/Content/Character/output.html')
+# str = f.read
+# res = ResultParser.parse_rspec_html("/mnt/data_share/RunnerLogs/nct-at7.html")
+# p str
 
-#proc = ResultParser.get_total_result_of_rspec_html("/mnt/data_share/RunnerLogs/testpc-50.html")
-#p proc
-#"//*[@id="div_group_2"]/dl/text()[(preceding::dd[1])]
+# proc = ResultParser.get_total_result_of_rspec_html("/mnt/data_share/RunnerLogs/testpc-50.html")
+# p proc
+# "//*[@id="div_group_2"]/dl/text()[(preceding::dd[1])]
 # "
-#"срус
+# "срус
 
-#str = '<dd class="example not_implemented"><span class="not_implemented_spec_name">Check preview for paragraph borders (PENDING: http://192.168.3.112/show_bug.cgi?id=19629)</span></dd>'
-#nkgr = Nokogiri::HTML(str)
-#cl = nkgr.css('.example')[0][:class]
-#p cl.split(' ')[1]
+# str = '<dd class="example not_implemented"><span class="not_implemented_spec_name">Check preview for paragraph borders (PENDING: http://192.168.3.112/show_bug.cgi?id=19629)</span></dd>'
+# nkgr = Nokogiri::HTML(str)
+# cl = nkgr.css('.example')[0][:class]
+# p cl.split(' ')[1]

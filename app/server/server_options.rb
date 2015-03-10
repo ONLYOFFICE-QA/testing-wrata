@@ -1,5 +1,4 @@
 class ServerOptions
-
   attr_accessor :portal_type, :portal_region, :docs_branch, :teamlab_branch, :teamlab_api_branch, :shared_branch
 
   def initialize(docs_branch = 'develop', teamlab_branch = 'master', portal_type = 'info', portal_region = 'us',  shared_branch = 'master', teamlab_api_branch = TM_API_DEFAULT)
@@ -14,12 +13,12 @@ class ServerOptions
   def create_options
     @teamlab_branch = 'master' if @docs_branch == 'master'
     @docs_branch = 'master' if @teamlab_branch == 'master'
-    command =  "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " +
-        "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull && git checkout #{@shared_branch} && git pull && bundle install && " +
-        "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " +
-        "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull && git checkout #{@teamlab_api_branch} && git pull && " +
+    command =  "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " \
+        "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull && git checkout #{@shared_branch} && git pull && bundle install && " \
+        "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " \
+        "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull && git checkout #{@teamlab_api_branch} && git pull && " \
         "#{generate_region_command} "
-    #"cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " +
+    # "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " +
     #    "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull && git checkout #{@shared_branch} && git pull && bundle install && " +
     #    "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " +
     #    "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull && git checkout #{@teamlab_api_branch} && git pull && " +
@@ -38,18 +37,18 @@ class ServerOptions
     region_command = create_portal
     unless @portal_type == 'default'
       region_command +=
-        " && sed -i \\\"s/@create_portal_domain = '.info'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " +
-        "sed -i \\\"s/@create_portal_domain = '.com'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && "  +
-        "sed -i \\\"s/@create_portal_region = 'us'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " +
-        "sed -i \\\"s/@create_portal_region = 'eu'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " +
-        "sed -i \\\"s/@create_portal_region = 'sg'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " +
-        "sed -i \\\"s/@@portal_type = '.info'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " +
-        "sed -i \\\"s/@@portal_type = '.com'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && "  +
-        "sed -i \\\"s/@@server_region = 'us'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
-        "sed -i \\\"s/@@server_region = 'eu'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
-        "sed -i \\\"s/@@server_region = 'sg'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
-        "sed -i \\\"s/@@server_region= 'us'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
-        "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " +
+        " && sed -i \\\"s/@create_portal_domain = '.info'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@create_portal_domain = '.com'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && "  \
+        "sed -i \\\"s/@create_portal_region = 'us'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@create_portal_region = 'eu'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@create_portal_region = 'sg'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@@portal_type = '.info'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
+        "sed -i \\\"s/@@portal_type = '.com'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && "  \
+        "sed -i \\\"s/@@server_region = 'us'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
+        "sed -i \\\"s/@@server_region = 'eu'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
+        "sed -i \\\"s/@@server_region = 'sg'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
+        "sed -i \\\"s/@@server_region= 'us'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
+        "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
         "sed -i \\\"s/@@server_region= 'sg'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
     end
     region_command
@@ -58,9 +57,8 @@ class ServerOptions
   def to_hash
     hash = {}
     instance_variables.each do |var|
-      hash[var.to_s.delete('@')] = self.instance_variable_get(var)
+      hash[var.to_s.delete('@')] = instance_variable_get(var)
     end
     hash
   end
-
 end

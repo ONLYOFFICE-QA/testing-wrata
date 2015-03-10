@@ -2,7 +2,6 @@ require 'find'
 require_relative '../../../SharedFunctional/RunnerHelper/TestrailRunnerHelper'
 
 class RunnerController < ApplicationController
-
   def index
     @controller = :runner
   end
@@ -11,19 +10,19 @@ class RunnerController < ApplicationController
     `cd #{DOCS_PROJECT_PATH}; git reset --hard; git pull;`
     `cd #{TEAMLAB_PROJECT_PATH}; git reset --hard; git pull;`
 
-    render :nothing => true
+    render nothing: true
   end
 
   def get_branches
     tm_branches = view_context.get_list_branches(TEAMLAB_PROJECT_PATH)
     doc_branches = view_context.get_list_branches(DOCS_PROJECT_PATH)
     respond_to do |format|
-      format.json {
-        render :json => {
-            tm_branches: tm_branches,
-            doc_branches: doc_branches,
+      format.json do
+        render json: {
+          tm_branches: tm_branches,
+          doc_branches: doc_branches
         }.to_json
-      }
+      end
       format.html
     end
   end
@@ -37,17 +36,17 @@ class RunnerController < ApplicationController
       `cd #{TEAMLAB_PROJECT_PATH}; git checkout #{branch}; git pull;`
     end
 
-    render :nothing => true
+    render nothing: true
   end
 
   def show_servers
     @servers = $threads.get_all_servers_from_threads
 
-    render :layout => false
+    render layout: false
   end
 
   def show_tests
-    render :layout => false
+    render layout: false
   end
 
   def get_status
@@ -55,12 +54,12 @@ class RunnerController < ApplicationController
     @servers = $threads.get_all_servers_from_threads
     @servers.each do |server|
       json << {
-          :name => server.name.downcase,
-          :status => rand(3)
+        name: server.name.downcase,
+        status: rand(3)
       }
     end
     respond_to do |format|
-      format.json { render :json => json.to_json }
+      format.json { render json: json.to_json }
     end
   end
 
@@ -75,7 +74,7 @@ class RunnerController < ApplicationController
   def show_subtests
     @file_path = params['filePath']
 
-    render :layout => false
+    render layout: false
   end
 
   def save_list
@@ -86,7 +85,7 @@ class RunnerController < ApplicationController
     test_list_name = test_list_hash['name']
 
     if @client.nil?
-      render :layout => false
+      render layout: false
       return
     end
 
@@ -101,12 +100,12 @@ class RunnerController < ApplicationController
 
       test_files_hash = test_list_hash['file_tests']
 
-      test_files_hash.each do |number, test_file_hash|
+      test_files_hash.each do |_number, test_file_hash|
         test_file = TestFile.new(name: test_file_hash['file_name'])
         test_file.test_list = @test_list
         if test_file.save
           if test_file_hash['strokes']
-            test_file_hash['strokes'].each do |number, stroke_hash|
+            test_file_hash['strokes'].each do |_number, stroke_hash|
               stroke = Stroke.new(name: stroke_hash['name'], number: stroke_hash['number'])
               stroke.test_file = test_file
               if stroke.save
@@ -124,7 +123,7 @@ class RunnerController < ApplicationController
 
     end
 
-    render :layout => false
+    render layout: false
   end
 
   def load_test_list
@@ -133,53 +132,54 @@ class RunnerController < ApplicationController
     @test_list = @client.test_lists.find_by_name(list_name)
 
     respond_to do |format|
-      format.json { render :json => {
+      format.json do
+        render json: {
           project: @test_list.project,
           branch: @test_list.branch,
-          html: render_to_string(template: 'runner/load_test_list', :layout => false),
-      }.to_json }
+          html: render_to_string(template: 'runner/load_test_list', layout: false)
+        }.to_json
+      end
       format.html
     end
 
-    #render json: {
+    # render json: {
     #    'html' => render_to_string(partial: 'load_test_list', :formats => [:html], :handlers=>[:erb], :layout => false, locals: {test_list: @test_list}),
     #    'project' => 'docs'
-    #}
+    # }
   end
 
   def get_updated_data
-     servers = params['servers']
-     servers.delete(AMAZON_SERVER_NAME)
+    servers = params['servers']
+    servers.delete(AMAZON_SERVER_NAME)
 
-     client = @client
+    client = @client
 
-     output_json = {}
-     server_data = []
+    output_json = {}
+    server_data = []
 
-     servers.each do |server|
-       server_thread = $threads.get_thread_by_name(server)
-       server_data << server_thread.get_info_from_server(client)
-     end
+    servers.each do |server|
+      server_thread = $threads.get_thread_by_name(server)
+      server_data << server_thread.get_info_from_server(client)
+    end
 
-     manager = $run_managers.find_manager_by_client_login(client.login)
+    manager = $run_managers.find_manager_by_client_login(client.login)
 
-     output_json[:servers_data] = server_data
-     output_json[:queue_data] = {}
-     output_json[:queue_data][:servers] = manager.get_booked_servers
-     output_json[:queue_data][:tests] = manager.get_tests
+    output_json[:servers_data] = server_data
+    output_json[:queue_data] = {}
+    output_json[:queue_data][:servers] = manager.get_booked_servers
+    output_json[:queue_data][:tests] = manager.get_tests
 
-     output_json = output_json.to_json
+    output_json = output_json.to_json
 
-     respond_to do |format|
-       format.json { render :json => output_json }
-     end
+    respond_to do |format|
+      format.json { render json: output_json }
+    end
   end
 
   def rerun_thread
-
     $threads.get_thread_by_name(params['server']).rerun_thread
 
-    render :nothing => true
+    render nothing: true
   end
 
   def stop_current
@@ -187,8 +187,6 @@ class RunnerController < ApplicationController
 
     $threads.get_thread_by_name(server).stop_test
 
-    render :nothing => true
+    render nothing: true
   end
-
 end
-

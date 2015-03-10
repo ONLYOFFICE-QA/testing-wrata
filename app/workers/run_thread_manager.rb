@@ -1,12 +1,11 @@
 module RunThreadManager
-
-  INFELICITY = 2*60  # 2 min update interval
-  DAY_TIME = 24*60*60
-  WEEK_TIME = 7*24*60*60
+  INFELICITY = 2 * 60  # 2 min update interval
+  DAY_TIME = 24 * 60 * 60
+  WEEK_TIME = 7 * 24 * 60 * 60
 
   def create_run_scan_thread
     @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
-      while true
+      loop do
         Thread.stop if @runs.empty?
         @runs = @runs.to_a.delete_if do |run|
           method_timing run
@@ -36,8 +35,8 @@ module RunThreadManager
     manager = $run_managers.find_manager_by_client_login(run.client.login)
     case run.f_type
       when 'file'
-        #@test_list = run.client.test_lists.find_by_name()
-        #manager.add_test(tests, branch, location)
+        # @test_list = run.client.test_lists.find_by_name()
+        # manager.add_test(tests, branch, location)
       when 'test_list'
         test_list = run.client.test_lists.find_by_name(run.name)
         names = test_list.test_files.inject([]) do |arr, test_file|
@@ -84,7 +83,7 @@ module RunThreadManager
     if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
       time_diff = (now - run_datetime).abs
       Rails.logger.info "For delay run at #{time_to_run} time left #{time_diff} seconds"
-      (time_diff <= INFELICITY) or (run_datetime < now)
+      (time_diff <= INFELICITY) || (run_datetime < now)
     else
       run_datetime < now
     end
@@ -110,7 +109,7 @@ module RunThreadManager
                end
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
     while Time.now >  time
-      time = time + time_to_sec(hour.to_i, minute.to_i)
+      time += time_to_sec(hour.to_i, minute.to_i)
     end
     puts ' '
     puts '====================================================='
@@ -126,7 +125,6 @@ module RunThreadManager
   end
 
   def time_to_sec(hours, minute)
-    hours*60*60 + minute*60
+    hours * 60 * 60 + minute * 60
   end
-
 end

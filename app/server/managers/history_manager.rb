@@ -1,5 +1,4 @@
 module HistoryManager
-
   def save_start_options_in_db(history_db_line, options, start_command)
     start_options = StartOption.new
     start_options.history = history_db_line
@@ -32,5 +31,4 @@ module HistoryManager
     $threads.lock.synchronize { history.save }
     history
   end
-
 end

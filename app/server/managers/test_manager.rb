@@ -1,8 +1,7 @@
 module TestManager
-
   def start_test_on_server(test_path, options)
     full_start_command = generate_run_test_command(test_path, options)
-    pid = Process.spawn(full_start_command, :out => [server_log_path, 'w'])
+    pid = Process.spawn(full_start_command, out: [server_log_path, 'w'])
     Process.wait(pid)
     full_start_command
   end
@@ -26,15 +25,12 @@ module TestManager
   def kill_all_browsers_on_server
     'killall chrome 2>&1; killall firefox 2>&1; killall opera 2>&1'
   end
-
 end
 
 module Process
   def self.alive?(pid)
-    begin
-      Process.getpgid(pid)
-    rescue Errno::ESRCH
-      false
-    end
+    Process.getpgid(pid)
+  rescue Errno::ESRCH
+    false
   end
 end

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   skip_before_action :require_login, only: [:new, :create]
 
   def new
@@ -20,5 +19,4 @@ class SessionsController < ApplicationController
     sign_out_
     redirect_to runner_path
   end
-
 end

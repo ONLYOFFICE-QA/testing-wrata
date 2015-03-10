@@ -1,5 +1,4 @@
 class RunnerManagers
-
   def initialize(managers = [])
     @managers = managers
   end
@@ -20,7 +19,6 @@ class RunnerManagers
     end
     manager
   end
-
 end
 
 Thread.abort_on_exception = true

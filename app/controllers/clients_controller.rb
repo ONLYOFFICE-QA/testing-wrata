@@ -1,5 +1,4 @@
 class ClientsController < ApplicationController
-
   skip_before_action :require_login, only: [:new, :create]
   # GET /clients/1
   # GET /clients/1.json
@@ -66,7 +65,6 @@ class ClientsController < ApplicationController
         end
       end
     end
-
   end
 
   def client_history
@@ -94,7 +92,6 @@ class ClientsController < ApplicationController
     @history = client.histories.order('created_at DESC').limit(10).offset(showed.to_i)
     @controller = :client
 
-    render '/servers/show_more', :layout => false
+    render '/servers/show_more', layout: false
   end
-
 end

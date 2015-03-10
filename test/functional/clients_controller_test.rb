@@ -5,18 +5,18 @@ class ClientsControllerTest < ActionController::TestCase
     @client = clients(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:clients)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create client" do
+  test 'should create client' do
     assert_difference('Client.count') do
       post :create, client: { first_name: @client.first_name, login: @client.login, password: @client.password, post: @client.post, second_name: @client.second_name }
     end
@@ -24,22 +24,22 @@ class ClientsControllerTest < ActionController::TestCase
     assert_redirected_to client_path(assigns(:client))
   end
 
-  test "should show client" do
+  test 'should show client' do
     get :show, id: @client
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @client
     assert_response :success
   end
 
-  test "should update client" do
+  test 'should update client' do
     put :update, id: @client, client: { first_name: @client.first_name, login: @client.login, password: @client.password, post: @client.post, second_name: @client.second_name }
     assert_redirected_to client_path(assigns(:client))
   end
 
-  test "should destroy client" do
+  test 'should destroy client' do
     assert_difference('Client.count', -1) do
       delete :destroy, id: @client
     end

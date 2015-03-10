@@ -1,5 +1,4 @@
 class ClientServers
-
   attr_accessor :servers_threads
 
   def initialize(servers_names = [])
@@ -22,7 +21,7 @@ class ClientServers
     server_thread = $threads.get_thread_by_name(server_name)
     unless server_thread.booked?
       server_thread.book_server(client)
-      @servers_threads << {name: server_name, server_thread: server_thread}
+      @servers_threads << { name: server_name, server_thread: server_thread }
     end
   end
 
@@ -30,9 +29,8 @@ class ClientServers
     server_thread = $threads.get_thread_by_name(server_name)
     if server_thread.client == client
       server_thread.unbook_server
-      @servers_threads.delete({ name: server_name, server_thread:  ($threads.get_thread_by_name(server_name)) })
+      @servers_threads.delete(name: server_name, server_thread:  ($threads.get_thread_by_name(server_name)))
     end
-
   end
 
   def get_server_by_name(server_name)
@@ -48,6 +46,4 @@ class ClientServers
   def clear
     @servers_threads.clear
   end
-
 end
-

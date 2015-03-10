@@ -1,5 +1,4 @@
 class CreateStartOptions < ActiveRecord::Migration
-
   def change
     create_table :start_options do |t|
       t.string :docs_branch
@@ -11,5 +10,4 @@ class CreateStartOptions < ActiveRecord::Migration
       t.text :start_command
     end
   end
-
 end

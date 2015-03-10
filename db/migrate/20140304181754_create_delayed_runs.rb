@@ -1,5 +1,4 @@
 class CreateDelayedRuns < ActiveRecord::Migration
-
   def change
     create_table :delayed_runs do |t|
       t.string :type
@@ -10,5 +9,4 @@ class CreateDelayedRuns < ActiveRecord::Migration
       t.timestamps
     end
   end
-
 end

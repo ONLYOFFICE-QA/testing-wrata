@@ -4,8 +4,8 @@ class TestList < ActiveRecord::Base
   belongs_to :client
   has_many :test_files
 
-  validates :name, :presence => true,
-            :length => {:minimum => 3, :maximum => 20}
+  validates :name, presence: true,
+                   length: { minimum: 3, maximum: 20 }
 
-  #validates :client_id, :presence =>  true
+  # validates :client_id, :presence =>  true
 end

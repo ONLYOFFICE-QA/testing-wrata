@@ -1,5 +1,4 @@
 module LogManager
-
   def set_default_props
     @last_log_end = 0
     @log = EMPTY_STRING
@@ -30,7 +29,7 @@ module LogManager
 
   def clear_log_file
     if log_file_exist?
-      File.open(server_log_path, 'w') {|f| f.write('') }
+      File.open(server_log_path, 'w') { |f| f.write('') }
     end
   end
 
@@ -42,7 +41,7 @@ module LogManager
 
   def create_log_scan_thread
     @log_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
-      while true
+      loop do
         unless @test                       # Stop Thread if test was ended
           Thread.stop                                 #
         end
@@ -102,8 +101,7 @@ module LogManager
   def delete_comp_name_from_line(line)
     line.gsub("#{@server_model.name} ", '')
   end
-
 end
 
-#File.open('loh.txt', 'w')
+# File.open('loh.txt', 'w')
 p File.dirname(__FILE__)

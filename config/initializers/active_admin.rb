@@ -1,11 +1,10 @@
 ActiveAdmin.setup do |config|
-
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Runner Demo"
+  config.site_title = 'Runner Demo'
 
   # Set the link url for the title. For example, to take
   # servers to your main site. Defaults to no link.
@@ -57,7 +56,6 @@ ActiveAdmin.setup do |config|
   # within the controller.
   config.authentication_method = :authenticate_admin_user!
 
-
   # == Current Server
   #
   # Active Admin will associate actions with the current
@@ -66,7 +64,6 @@ ActiveAdmin.setup do |config|
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
   config.current_user_method = :current_admin_user
-
 
   # == Logging Out
   #
@@ -110,13 +107,11 @@ ActiveAdmin.setup do |config|
   #     without_comments.allow_comments = false
   #   end
 
-
   # == Batch Actions
   #
   # Enable and disable Batch Actions
   #
   config.batch_actions = true
-
 
   # == Controller Filters
   #
@@ -124,7 +119,6 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   # config.before_filter :do_something_awesome
-
 
   # == Register Stylesheets & Javascripts
   #
@@ -141,7 +135,6 @@ ActiveAdmin.setup do |config|
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
 
-
   # == CSV options
   #
   # Set the CSV builder separator (default is ",")
@@ -150,13 +143,12 @@ ActiveAdmin.setup do |config|
   # Set the CSV builder options (default is {})
   # config.csv_options = {}
 
-
   # == Menu System
   #
   # You can add a navigation menu to be used in your application, or configure a provided menu
-  # 
+  #
   # To change the default utility navigation to show a link to your website & a logout btn
-  # 
+  #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
@@ -189,7 +181,6 @@ ActiveAdmin.setup do |config|
   #
   #   end
 
-
   # == Pagination
   #
   # Pagination is enabled by default for all resources.
@@ -197,14 +188,11 @@ ActiveAdmin.setup do |config|
   #
   # config.default_per_page = 30
 
-
   # == Filters
   #
-  # By default the index screen includes a “Filters” sidebar on the right 
+  # By default the index screen includes a “Filters” sidebar on the right
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
-
-
 end

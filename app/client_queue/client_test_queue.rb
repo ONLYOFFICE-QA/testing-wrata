@@ -1,6 +1,5 @@
 class ClientTestQueue
-
-  #* param tests - array of tests
+  # * param tests - array of tests
   def initialize(tests = [])
     @tests = tests
     @id = 0
@@ -93,10 +92,9 @@ class ClientTestQueue
     if project == TEAMLAB_TAB_NAME
       teamlab_branch = branch
     end
-    return doc_branch, teamlab_branch
+    [doc_branch, teamlab_branch]
   end
-
 end
 #
-#str = ' //home/runner/RubymineProjects/OnlineDocuments/RspecTest/Studio/run_test_single_spec.rb'
-#p str.gsub("/#{ENV['HOME']}", '~')
+# str = ' //home/runner/RubymineProjects/OnlineDocuments/RspecTest/Studio/run_test_single_spec.rb'
+# p str.gsub("/#{ENV['HOME']}", '~')
