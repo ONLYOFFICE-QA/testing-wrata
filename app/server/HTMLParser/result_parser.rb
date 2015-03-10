@@ -49,8 +49,6 @@ class ResultParser
     rspec_results
   end
 
-  private
-
   def self.get_processing(page)
     processing = page.css('script:contains("moveProgressBar")').last
     if processing
