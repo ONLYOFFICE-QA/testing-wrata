@@ -1,7 +1,7 @@
 class ServerOptions
   attr_accessor :portal_type, :portal_region, :docs_branch, :teamlab_branch, :teamlab_api_branch, :shared_branch
 
-  def initialize(docs_branch = 'develop', teamlab_branch = 'master', portal_type = 'info', portal_region = 'us',  shared_branch = 'master', teamlab_api_branch = TM_API_DEFAULT)
+  def initialize(docs_branch = 'develop', teamlab_branch = 'master', portal_type = 'info', portal_region = 'us', shared_branch = 'master', teamlab_api_branch = TM_API_DEFAULT)
     @docs_branch = docs_branch
     @teamlab_branch = teamlab_branch
     @shared_branch = shared_branch
@@ -13,7 +13,7 @@ class ServerOptions
   def create_options
     @teamlab_branch = 'master' if @docs_branch == 'master'
     @docs_branch = 'master' if @teamlab_branch == 'master'
-    command =  "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " \
+    command = "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " \
         "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull && git checkout #{@shared_branch} && git pull && bundle install && " \
         "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " \
         "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull && git checkout #{@teamlab_api_branch} && git pull && " \

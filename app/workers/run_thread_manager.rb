@@ -1,5 +1,5 @@
 module RunThreadManager
-  INFELICITY = 2 * 60  # 2 min update interval
+  INFELICITY = 2 * 60 # 2 min update interval
   DAY_TIME = 24 * 60 * 60
   WEEK_TIME = 7 * 24 * 60 * 60
 
@@ -32,16 +32,16 @@ module RunThreadManager
     puts ' '
     manager = $run_managers.find_manager_by_client_login(run.client.login)
     case run.f_type
-      when 'file'
-        # @test_list = run.client.test_lists.find_by_name()
-        # manager.add_test(tests, branch, location)
-      when 'test_list'
-        test_list = run.client.test_lists.find_by_name(run.name)
-        names = test_list.test_files.inject([]) do |arr, test_file|
-          arr << test_file.name
-        end
-        manager.add_tests(names, test_list.branch, run.location)
-      else
+    when 'file'
+      # @test_list = run.client.test_lists.find_by_name()
+      # manager.add_test(tests, branch, location)
+    when 'test_list'
+      test_list = run.client.test_lists.find_by_name(run.name)
+      names = test_list.test_files.inject([]) do |arr, test_file|
+        arr << test_file.name
+      end
+      manager.add_tests(names, test_list.branch, run.location)
+    else
 
     end if manager
   end
@@ -51,19 +51,19 @@ module RunThreadManager
   def method_timing(run)
     method = run[:method]
     case
-      when method.match(/once/)
-        if check_time run.start_time
-          add_to_queue run
-          delete_from_db run
-        end
-      when method.match(/hours/), method.match(/minutes/)
-        if check_each_round run
-          add_to_queue run
-          hours, minutes = BullshitHelper.match_minutes_and_hours(method)
-          move_next_start_on(run, hours, minutes)
-        end
-      else
-        fail "Don't know check_method: #{run.method}"
+    when method.match(/once/)
+      if check_time run.start_time
+        add_to_queue run
+        delete_from_db run
+      end
+    when method.match(/hours/), method.match(/minutes/)
+      if check_each_round run
+        add_to_queue run
+        hours, minutes = BullshitHelper.match_minutes_and_hours(method)
+        move_next_start_on(run, hours, minutes)
+      end
+    else
+      fail "Don't know check_method: #{run.method}"
     end
   end
 
@@ -106,7 +106,7 @@ module RunThreadManager
                  run.start_time
                end
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
-    time += time_to_sec(hour.to_i, minute.to_i) while Time.now >  time
+    time += time_to_sec(hour.to_i, minute.to_i) while Time.now > time
     puts ' '
     puts '====================================================='
     puts '=========== UPDATE RUN INFO ========================='

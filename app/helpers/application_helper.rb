@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def make_start_list(test, options)
-    AmazonEC2Helper.start_test_executioner("rspec '#{edit_file_path(test)}'", options)   # start on Amazon
+    AmazonEC2Helper.start_test_executioner("rspec '#{edit_file_path(test)}'", options) # start on Amazon
     "AmazonEC2Helper.start_test_executioner(rspec '#{edit_file_path(test)}', #{options})" # for output into browser console
   end
 

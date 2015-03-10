@@ -106,11 +106,6 @@ Style/EmptyElse:
 Style/GlobalVars:
   Enabled: false
 
-# Offense count: 9
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Enabled: false
-
 # Offense count: 3
 # Configuration parameters: Methods.
 Style/SingleLineBlockParams:

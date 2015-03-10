@@ -52,15 +52,14 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
 
-    if current_client == @client
-      respond_to do |format|
-        if @client.update_attributes(params[:client])
-          format.html { redirect_to @client, notice: 'Client was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: 'edit' }
-          format.json { render json: @client.errors, status: :unprocessable_entity }
-        end
+    return unless current_client == @client
+    respond_to do |format|
+      if @client.update_attributes(params[:client])
+        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end

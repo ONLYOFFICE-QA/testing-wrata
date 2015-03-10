@@ -1,5 +1,5 @@
 module SessionsHelper
-  def sign_in_(client)  # _fix for active-admin
+  def sign_in_(client) # _fix for active-admin
     cookies.permanent[:remember_token] = client.remember_token
     self.current_client = client
     init_run_manager
@@ -35,8 +35,7 @@ module SessionsHelper
 
   def init_run_manager
     @client = current_client
-    unless get_run_manager @client.login
-      $run_managers.add_manager ClientRunnerManager.new(@client)
-    end
+    return if get_run_manager @client.login
+    $run_managers.add_manager ClientRunnerManager.new(@client)
   end
 end

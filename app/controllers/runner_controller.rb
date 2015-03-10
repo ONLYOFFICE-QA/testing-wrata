@@ -28,8 +28,8 @@ class RunnerController < ApplicationController
   end
 
   def change_branch
-    branch =  params['branch']
-    project =  params['project'].to_sym
+    branch = params['branch']
+    project = params['project'].to_sym
     if project == :docs
       `cd #{DOCS_PROJECT_PATH}; git checkout #{branch}; git pull;`
     elsif  project == :teamlab
@@ -80,7 +80,7 @@ class RunnerController < ApplicationController
   def save_list
     test_list_hash = params['test_list']
     branch = params['branch']
-    project =  params['project']
+    project = params['project']
 
     test_list_name = test_list_hash['name']
 
