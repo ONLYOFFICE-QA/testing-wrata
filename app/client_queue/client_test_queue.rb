@@ -37,7 +37,7 @@ class ClientTestQueue
   end
 
   def delete_test(test_id)
-    test = @tests.select { |test| test[:id] == test_id }.first
+    test = @tests.select { |cur_test| cur_test[:id] == test_id }.first
     @tests.delete(test)
   end
 
@@ -56,7 +56,7 @@ class ClientTestQueue
   end
 
   def change_test_location(test_id, new_location)
-    test = @tests.find { |test| test[:id] == test_id }
+    test = @tests.find { |cur_test| cur_test[:id] == test_id }
     test[:location] = new_location
   end
 
