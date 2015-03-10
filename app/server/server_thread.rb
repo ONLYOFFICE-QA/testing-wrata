@@ -38,10 +38,6 @@ class ServerThread
     set_default_props
   end
 
-  def change_model(server_model)
-    @server_model = server_model
-  end
-
   def free?
     @test ? false : true
   end

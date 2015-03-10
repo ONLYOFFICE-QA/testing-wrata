@@ -59,7 +59,7 @@ class ClientRunnerManager
   end
 
   def get_tests
-    @tests.get_tests
+    @tests.tests
   end
 
   def swap_tests(test_id1, test_id2, in_start)

@@ -23,7 +23,7 @@ class ServerThreads < ActionController::Base
   def update_models
     servers = Server.all.sort_by { |s| s.name.split('nct-at')[1].to_i }
     @server_threads.each_with_index do |server_thread, i|
-      server_thread.change_model(servers[i])
+      server_thread.server_model = servers[i]
     end
   end
 

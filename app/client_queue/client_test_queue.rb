@@ -1,4 +1,6 @@
 class ClientTestQueue
+  attr_accessor :tests
+
   # * param tests - array of tests
   def initialize(tests = [])
     @tests = tests
@@ -37,14 +39,6 @@ class ClientTestQueue
   def delete_test(test_id)
     test = @tests.select { |test| test[:id] == test_id }.first
     @tests.delete(test)
-  end
-
-  def reinit(tests = [])
-    @tests = tests
-  end
-
-  def get_tests
-    @tests
   end
 
   def swap_tests(test_id1, test_id2, in_start)

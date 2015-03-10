@@ -97,7 +97,7 @@ class ResultParser
     page.at_css('div.results').xpath('./div').each do |current|
       results.push_to_end(parse_describe(current), get_describe_level(current))
     end
-    results.get_result
+    results.final_result
   end
 
   def self.get_describe_level(describe)
