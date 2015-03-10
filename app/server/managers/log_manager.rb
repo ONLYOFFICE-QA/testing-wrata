@@ -57,7 +57,7 @@ module LogManager
     if !log_file_empty?
       lines = IO.readlines(server_log_path)
       full_size = lines.size
-      return if @last_log_end == full_size or full_size < @last_log_end      # return if we don't get new lines in log file
+      return if @last_log_end == full_size || full_size < @last_log_end      # return if we don't get new lines in log file
       @log = EMPTY_STRING                             # clear before init new log
       lines[@last_log_end..-1].each do |line|
         unless empty_line?(line)                      # check if line don't 'empty', like 'testpc-9  '

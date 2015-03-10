@@ -49,12 +49,6 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 10
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/AndOr:
-  Enabled: false
-
 # Offense count: 4
 Style/AsciiComments:
   Enabled: false
