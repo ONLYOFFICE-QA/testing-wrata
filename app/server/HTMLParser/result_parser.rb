@@ -66,7 +66,7 @@ class ResultParser
   end
 
   def self.get_total_result(page)
-    get_totals(page).include? (' 0 failures')
+    get_totals(page).include?(' 0 failures')
   end
 
   def self.get_total_time(page)
