@@ -129,19 +129,3 @@ class ResultParser
     example_obj
   end
 end
-#
-# f = File.new('/home/testpc-37/RubymineProjects/OnlineDocuments/RspecTest/DocEditor/One Server/Smoke/Content/Character/output.html')
-# str = f.read
-# res = ResultParser.parse_rspec_html("/mnt/data_share/RunnerLogs/nct-at7.html")
-# p str
-
-# proc = ResultParser.get_total_result_of_rspec_html("/mnt/data_share/RunnerLogs/testpc-50.html")
-# p proc
-# "//*[@id="div_group_2"]/dl/text()[(preceding::dd[1])]
-# "
-# "срус
-
-# str = '<dd class="example not_implemented"><span class="not_implemented_spec_name">Check preview for paragraph borders (PENDING: http://192.168.3.112/show_bug.cgi?id=19629)</span></dd>'
-# nkgr = Nokogiri::HTML(str)
-# cl = nkgr.css('.example')[0][:class]
-# p cl.split(' ')[1]

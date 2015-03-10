@@ -20,8 +20,8 @@ module HTMLResultManager
     if html_result_exist?
       total_result = ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)
       if total_result == ''                                                                    #
-        sleep 0.5                                                                              # Иногда не успевает проставить, поэтому
-        total_result = ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)     # нужно подождать пока rspec проставит
+        sleep 0.5                                                                              # Sometimes haven't time for check
+        total_result = ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)     # so need to wait while rspec to check
       end                                                                                      #
     end
     total_result

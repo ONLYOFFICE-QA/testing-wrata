@@ -50,10 +50,6 @@ Metrics/PerceivedComplexity:
   Max: 10
 
 # Offense count: 4
-Style/AsciiComments:
-  Enabled: false
-
-# Offense count: 4
 # Configuration parameters: IndentWhenRelativeTo, SupportedStyles, IndentOneStep.
 Style/CaseIndentation:
   Enabled: false
