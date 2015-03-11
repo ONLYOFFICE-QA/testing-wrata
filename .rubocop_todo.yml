@@ -67,10 +67,6 @@ Style/ClassVars:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 2
-Style/EmptyElse:
-  Enabled: false
-
 # Offense count: 37
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:

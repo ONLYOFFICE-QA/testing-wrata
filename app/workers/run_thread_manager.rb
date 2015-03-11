@@ -41,8 +41,6 @@ module RunThreadManager
         arr << test_file.name
       end
       manager.add_tests(names, test_list.branch, run.location)
-    else
-
     end if manager
   end
 

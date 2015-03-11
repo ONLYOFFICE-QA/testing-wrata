@@ -105,8 +105,6 @@ class RunnerController < ApplicationController
           puts test_file.errors.full_messages
         end
       end
-    else
-
     end
 
     render layout: false
