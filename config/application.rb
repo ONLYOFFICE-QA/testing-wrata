@@ -58,5 +58,6 @@ module Runner
     config.assets.precompile += %w( bootstrap-responsive-custom.css )
 
     config.i18n.enforce_available_locales = true
+    config.middleware.use Rack::Deflater
   end
 end
