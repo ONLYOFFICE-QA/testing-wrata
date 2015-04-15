@@ -6,7 +6,7 @@ gem 'resque', git: 'https://github.com/resque/resque.git', branch: '1-x-stable'
 
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 
-gem 'sqlite3'
+gem 'pg'
 
 gem 'ransack'
 
