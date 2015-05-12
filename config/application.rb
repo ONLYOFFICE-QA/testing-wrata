@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 require_relative 'thread_logging'
 
 require 'rails/all'
+require_relative '../../SharedFunctional/testing_shared'
 
 Bundler.require(:default, Rails.env)
 
