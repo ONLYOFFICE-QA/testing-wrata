@@ -1,5 +1,5 @@
 require 'rubygems'
-require_relative '../../SharedFunctional/CloudServices/DigitalOcean/DigitalOceanWrapper'
+require_relative '../../SharedFunctional/testing_shared'
 # Set up gems listed in the Gemfile.
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
