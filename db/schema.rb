@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418103045) do
+ActiveRecord::Schema.define(version: 20150518095519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,6 @@ ActiveRecord::Schema.define(version: 20140418103045) do
     t.datetime "updated_at"
     t.string   "namespace"
   end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -46,9 +42,6 @@ ActiveRecord::Schema.define(version: 20140418103045) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
-
   create_table "clients", force: true do |t|
     t.string   "login"
     t.string   "password"
@@ -61,8 +54,6 @@ ActiveRecord::Schema.define(version: 20140418103045) do
     t.string   "remember_token"
     t.string   "project"
   end
-
-  add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree
 
   create_table "delayed_runs", force: true do |t|
     t.string   "f_type"
@@ -82,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140418103045) do
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "log"
+    t.text     "log"
     t.boolean  "analysed",     default: false
     t.binary   "data"
     t.string   "total_result"
