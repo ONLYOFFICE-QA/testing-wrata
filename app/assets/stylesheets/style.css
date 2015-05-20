@@ -432,6 +432,11 @@ hr.deliver {
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
+    overflow: hidden;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 90%;
 }
 
 .add-button-file, .add-button-folder {
@@ -1292,17 +1297,3 @@ a, a:link, a:visited  {
     border-bottom: 1px solid rgb(213, 228, 215);
     padding-bottom: 10px;
 }
-
-.server-header label {
-    width: 56px;
-    overflow: hidden;
-    height: 20px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-/*.active a {*/
-/*$('#test-queue').slimScroll({*/
-    /*color: 'rgba(0, 0, 0, 0.4)'}*/
-/*)*/
-/*}*/
