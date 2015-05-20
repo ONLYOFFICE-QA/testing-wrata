@@ -26,6 +26,11 @@ module TestManager
   def kill_all_browsers_on_server
     'killall chrome 2>&1; killall firefox 2>&1; killall opera 2>&1'
   end
+
+  def reboot
+    stop_test
+    system "ssh name:#{@server_model.comp_name} -x #{TEST_SPOT_USER_NAME} \"reboot\""
+  end
 end
 
 module Process
