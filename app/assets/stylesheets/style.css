@@ -437,6 +437,7 @@ hr.deliver {
     display: inline-block;
     vertical-align: middle;
     width: 90%;
+    white-space: nowrap
 }
 
 .add-button-file, .add-button-folder {
