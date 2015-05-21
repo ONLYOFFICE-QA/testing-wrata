@@ -97,9 +97,4 @@ class ServerThread
   def test_name
     @test[:test_name]
   end
-
-  def reboot
-    stop_test
-    system "ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"reboot\""
-  end
 end
