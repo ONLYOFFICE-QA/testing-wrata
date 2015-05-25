@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ServersControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
+    @user = server(:one)
   end
 
   test 'should get index' do
