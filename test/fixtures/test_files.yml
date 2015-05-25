@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  stroke_numbers: 1
-  file_list_id: MyString
+  name: MyString_One
+  test_list_id: 1
 
 two:
-  name: MyString
-  stroke_numbers: 1
-  file_list_id: MyString
+  name: MyString_Two
+  test_list_id: 1
