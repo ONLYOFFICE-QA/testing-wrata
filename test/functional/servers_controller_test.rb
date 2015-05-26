@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ServersControllerTest < ActionController::TestCase
   setup do
-    @user = servers(:one)
+    @server = servers(:one)
   end
 
   test 'should get index' do
@@ -16,27 +16,27 @@ class ServersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should create user' do
+  test 'should create server' do
     assert_difference('Server.count') do
-      post :create, user: { address: @user.address, description: @user.description, name: @user.name }
+      post :create, server: { address: @server.address, description: @server.description, name: @server.name }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to server_path(assigns(:server))
   end
 
-  test 'should show user' do
-    get :show, id: @user
+  test 'should show server' do
+    get :show, id: @server
     assert_response :success
   end
 
   test 'should get edit' do
-    get :edit, id: @user
+    get :edit, id: @server
     assert_response :success
   end
 
-  test 'should update user' do
-    put :update, id: @user, user: { address: @user.address, description: @user.description, name: @user.name }
-    assert_redirected_to user_path(assigns(:user))
+  test 'should update server' do
+    put :update, id: @server, user: { address: @server.address, description: @server.description, name: @server.name }
+    assert_redirected_to server_path(assigns(:server))
   end
 
   test 'should destroy user' do
