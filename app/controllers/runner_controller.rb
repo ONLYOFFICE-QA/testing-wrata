@@ -133,6 +133,7 @@ class RunnerController < ApplicationController
 
   def updated_data
     servers = params['servers']
+    servers ||= []
 
     client = @client
 
