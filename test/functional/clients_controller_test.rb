@@ -17,6 +17,7 @@ class ClientsControllerTest < ActionController::TestCase
   end
 
   test 'should create client' do
+    a = post :create, client: { first_name: @client.first_name, login: @client.login, password: @client.password, post: @client.post, second_name: @client.second_name }
     assert_difference('Client.count') do
       post :create, client: { first_name: @client.first_name, login: @client.login, password: @client.password, post: @client.post, second_name: @client.second_name }
     end
