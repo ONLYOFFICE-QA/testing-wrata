@@ -10,6 +10,7 @@ Runner::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :clients
+  resources :servers
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
