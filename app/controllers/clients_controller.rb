@@ -47,6 +47,12 @@ class ClientsController < ApplicationController
     end
   end
 
+  def destroy
+    Client.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to clients_url
+  end
+
   # PUT /clients/1
   # PUT /clients/1.json
   def update
