@@ -17,12 +17,11 @@ class ClientsControllerTest < ActionController::TestCase
   end
 
   test 'should create client' do
-    a = post :create, client: { first_name: @client.first_name, login: @client.login, password: @client.password, post: @client.post, second_name: @client.second_name }
     assert_difference('Client.count') do
-      post :create, client: { first_name: @client.first_name, login: @client.login, password: @client.password, post: @client.post, second_name: @client.second_name }
+      post :create, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass'}, security_password: SECURITY_PASSWORD
     end
 
-    assert_redirected_to client_path(assigns(:client))
+    assert_redirected_to runner_path
   end
 
   test 'should show client' do
