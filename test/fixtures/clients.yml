@@ -1,16 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  login: MyString
-  password: MyString
-  first_name: MyString
-  second_name: MyString
-  post: MyString
+  login: one_login
+  password: one_password
+  first_name: one_name
+  second_name: one_second_name
+  post: one_post
   id: 1
 
 two:
-  login: MyString
-  password: MyString
-  first_name: MyString
-  second_name: MyString
-  post: MyString
+  login: two_login
+  password: two_lpassword
+  first_name: two_name
+  second_name: two_lsecond_name
+  post: two_lpost
+  id: 2
