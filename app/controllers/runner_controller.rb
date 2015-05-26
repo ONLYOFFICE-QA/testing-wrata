@@ -133,7 +133,7 @@ class RunnerController < ApplicationController
 
   def updated_data
     servers = params['servers']
-    servers.delete(AMAZON_SERVER_NAME)
+    servers ||= []
 
     client = @client
 

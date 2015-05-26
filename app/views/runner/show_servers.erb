@@ -30,31 +30,29 @@
           </span>
         </div>
       </div>
-      <% unless server.name == AMAZON_SERVER_NAME %>
-          <div class="server-content">
-            <div class="mini-panel">
-              <ul>
-                <li><i class="glyphicon glyphicon-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i></li>
-                <li><i class="glyphicon glyphicon-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i></li>
-                <li>
-                  <%= link_to server_history_path(server), :target => '_blank' do %>
-                  <i class="glyphicon glyphicon-book shower"><span class="hidden-tool"> history</span></i>
-                  <% end %>
-                </li>
-              </ul>
-            </div>
-            <div class="server-ip">IP: <span><%= server.address %></span></div>
-            <div class="log-opener"><span>logs</span></div>
-            <div class="log-window" style="display: none">
-              <div class="log"></div>
-            </div>
+        <div class="server-content">
+          <div class="mini-panel">
+             <ul>
+              <li><i class="glyphicon glyphicon-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i></li>
+              <li><i class="glyphicon glyphicon-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i></li>
+              <li>
+                <%= link_to server_history_path(server), :target => '_blank' do %>
+                <i class="glyphicon glyphicon-book shower"><span class="hidden-tool"> history</span></i>
+                <% end %>
+              </li>
+            </ul>
           </div>
-      <% end %>
+          <div class="server-ip">IP: <span><%= server.address %></span></div>
+          <div class="log-opener"><span>logs</span></div>
+          <div class="log-window" style="display: none">
+            <div class="log"></div>
+          </div>
+        </div>
     </div>
 <% end %>
 
 <% @servers.each do |server| %>
-    <% if server.name == AMAZON_SERVER_NAME or IGNORED_MACHINES.include?(server.name) %>
+    <% if IGNORED_MACHINES.include?(server.name) %>
         <% if current_client %>
             <% if current_client.amazon_client? %>
                 <% show_server_row(server) %>
