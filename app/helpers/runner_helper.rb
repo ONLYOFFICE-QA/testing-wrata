@@ -42,7 +42,7 @@ module RunnerHelper
   end
 
   def get_list_branches(project_path)
-    system_message = `cd #{project_path}; git checkout develop; git branch -a`
+    system_message = `cd #{project_path}; git pull --prune; git checkout develop; git branch -a`
     branches = []
     system_message.to_s.gsub!('* ', '')
     system_message.to_s.split("\n  ").each do |line|
