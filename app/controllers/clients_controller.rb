@@ -63,7 +63,6 @@ class ClientsController < ApplicationController
       if @client.update_attributes(params[:client])
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
-        redirect_to @client
       else
         format.html { render action: 'edit' }
         format.json { render json: @client.errors, status: :unprocessable_entity }
