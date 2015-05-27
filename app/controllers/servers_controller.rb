@@ -51,7 +51,7 @@ class ServersController < ApplicationController
     @server = Server.new(params[:server])
 
     if @server.save
-      redirect_to servers_path
+      redirect_to @server
     else
       render 'new'
     end
