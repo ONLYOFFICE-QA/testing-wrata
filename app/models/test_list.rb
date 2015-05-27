@@ -1,5 +1,5 @@
 class TestList < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :client_id
 
   belongs_to :client
   has_many :test_files

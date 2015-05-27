@@ -1,4 +1,4 @@
-<h1>Listing users</h1>
+<h1>Listing servers</h1>
 
 <table>
   <tr>
@@ -10,18 +10,18 @@
     <th></th>
   </tr>
 
-<% @servers.each do |user| %>
+<% Server.all.each do |server| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= user.description %></td>
-    <td><%= user.address %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= server.name %></td>
+    <td><%= server.description %></td>
+    <td><%= server.address %></td>
+    <td><%= link_to 'Show', server %></td>
+    <td><%= link_to 'Edit', edit_server_path(server) %></td>
+    <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Server', new_user_path %>
+<%= link_to 'New Server', new_server_path%>

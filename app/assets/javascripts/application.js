@@ -290,7 +290,7 @@ function Runner() {
 
     this.createServer = function(server) {
         $.ajax({
-            url: 'servers/create',
+            url: 'servers/cloud_server_create',
             type: 'POST',
             async: true,
             data: {
@@ -309,7 +309,7 @@ function Runner() {
 
     this.destroyServer = function(server) {
         $.ajax({
-            url: 'servers/destroy',
+            url: 'servers/cloud_server_destroy',
             type: 'POST',
             async: true,
             data: {
