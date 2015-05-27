@@ -1,4 +1,4 @@
-<h1>Listing users</h1>
+<h1>Listing servers</h1>
 
 <table>
   <tr>
@@ -10,7 +10,7 @@
     <th></th>
   </tr>
 
-<% @servers.each do |user| %>
+<% Server.all.each do |user| %>
   <tr>
     <td><%= user.name %></td>
     <td><%= user.description %></td>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Server', new_user_path %>
+<%= link_to 'New Server', new_server_path%>
