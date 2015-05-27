@@ -25,6 +25,16 @@ class ServersController < ApplicationController
     end
   end
 
+  # GET /servers/new
+  def new
+    @server = Server.new
+  end
+
+  # GET /servers/1/edit
+  def edit
+    @server = Server.find(params[:id])
+  end
+
   def show_current_results
     server_thread = $threads.get_thread_by_name(params[:server])
     @rspec_result = server_thread.full_results_of_test

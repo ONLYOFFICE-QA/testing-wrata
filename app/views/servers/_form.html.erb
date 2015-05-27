@@ -1,4 +1,4 @@
-<%= form_for(@server = Server.new) do |f| %>
+<%= form_for(@server) do |f| %>
   <% if @server.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "empty_pages") %> prohibited this user from being saved:</h2>
