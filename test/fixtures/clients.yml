@@ -10,8 +10,8 @@ one:
 
 two:
   login: two_login
-  password: two_lpassword
+  password: two_password
   first_name: two_name
-  second_name: two_lsecond_name
-  post: two_lpost
+  second_name: two_second_name
+  post: two_post
   id: 2
