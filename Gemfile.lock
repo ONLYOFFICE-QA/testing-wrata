@@ -364,6 +364,7 @@ GEM
       loofah (~> 2.0)
     rails-observers (0.1.2)
       activemodel (~> 4.0)
+    rails-perftest (0.0.6)
     railties (4.2.1)
       actionpack (= 4.2.1)
       activesupport (= 4.2.1)
@@ -416,6 +417,7 @@ GEM
     rubocop-rspec (1.3.0)
     ruby-debug-ide (0.4.32)
       rake (>= 0.8.1)
+    ruby-prof (0.15.8)
     ruby-progressbar (1.7.5)
     ruby-rc4 (0.1.5)
     rubyzip (1.1.7)
@@ -541,6 +543,7 @@ DEPENDENCIES
   puma
   rails (~> 4.2.1)
   rails-observers
+  rails-perftest
   rake
   ransack
   resque!
@@ -551,6 +554,7 @@ DEPENDENCIES
   rubocop
   rubocop-rspec
   ruby-debug-ide
+  ruby-prof
   rubyzip
   sass-rails
   selenium-webdriver (~> 2.45.0)
