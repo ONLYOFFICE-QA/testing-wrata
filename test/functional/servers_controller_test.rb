@@ -39,11 +39,11 @@ class ServersControllerTest < ActionController::TestCase
     assert_redirected_to server_path(assigns(:server))
   end
 
-  test 'should destroy user' do
+  test 'should destroy server' do
     assert_difference('Server.count', -1) do
-      delete :destroy, id: @user
+      delete :destroy, id: @server
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to servers_path
   end
 end
