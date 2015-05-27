@@ -48,6 +48,16 @@ class ServersController < ApplicationController
   end
 
   def create
+    @server = Server.new(params[:server])
+
+    if @server.save
+      redirect_to servers_path
+    else
+      render 'new'
+    end
+  end
+
+  def cloud_server_create
     set_server_status(params['server'], :creating)
     begin
       @digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, params['server'])
