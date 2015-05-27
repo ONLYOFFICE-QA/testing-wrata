@@ -18,7 +18,7 @@ class TestFilesControllerTest < ActionController::TestCase
 
   test 'should create test_file' do
     assert_difference('TestFile.count') do
-      post :create, test_file: { file_list_id: @test_file.file_list_id, name: @test_file.name, stroke_numbers: @test_file.stroke_numbers }
+      post :create, test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name, stroke_numbers: @test_file.stroke_numbers }
     end
 
     assert_redirected_to test_file_path(assigns(:test_file))
@@ -35,7 +35,7 @@ class TestFilesControllerTest < ActionController::TestCase
   end
 
   test 'should update test_file' do
-    put :update, id: @test_file, test_file: { file_list_id: @test_file.file_list_id, name: @test_file.name, stroke_numbers: @test_file.stroke_numbers }
+    put :update, id: @test_file, test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name, stroke_numbers: @test_file.stroke_numbers }
     assert_redirected_to test_file_path(assigns(:test_file))
   end
 
