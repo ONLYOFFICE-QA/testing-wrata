@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString_One
+  name: one_test_file
   test_list_id: 1
 
 two:
-  name: MyString_Two
-  test_list_id: 1
+  name: two_test_file
+  test_list_id: 2
