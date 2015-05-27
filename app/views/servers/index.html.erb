@@ -10,14 +10,14 @@
     <th></th>
   </tr>
 
-<% Server.all.each do |user| %>
+<% Server.all.each do |server| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= user.description %></td>
-    <td><%= user.address %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_server_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= server.name %></td>
+    <td><%= server.description %></td>
+    <td><%= server.address %></td>
+    <td><%= link_to 'Show', server %></td>
+    <td><%= link_to 'Edit', edit_server_path(server) %></td>
+    <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
