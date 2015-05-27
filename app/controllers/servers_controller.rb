@@ -3,6 +3,17 @@ class ServersController < ApplicationController
 
   before_action :create_digital_ocean, only: [:create, :destroy]
 
+  # GET /test_lists
+  # GET /test_lists.json
+  def index
+    @servers = Server.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @servers }
+    end
+  end
+
   # GET /clients/1
   # GET /clients/1.json
   def show
