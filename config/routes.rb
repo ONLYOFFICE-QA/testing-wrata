@@ -16,6 +16,8 @@ Runner::Application.routes.draw do
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
+  post '/servers/cloud_server_create'
+  post '/servers/cloud_server_destroy'
 
   post 'delay_run/history_shit'
 

@@ -1,7 +1,7 @@
 class ServersController < ApplicationController
   EXECUTOR_IMAGE_NAME = 'nct-at-stable'
 
-  before_action :create_digital_ocean, only: [:create, :destroy]
+  before_action :create_digital_ocean, only: [:cloud_server_create, :cloud_server_destroy]
 
   # GET /test_lists
   # GET /test_lists.json
