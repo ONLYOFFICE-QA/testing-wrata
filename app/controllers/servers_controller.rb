@@ -3,6 +3,17 @@ class ServersController < ApplicationController
 
   before_action :create_digital_ocean, only: [:create, :destroy]
 
+  # GET /clients/1
+  # GET /clients/1.json
+  def show
+    @server = Server.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @server }
+    end
+  end
+
   def show_current_results
     server_thread = $threads.get_thread_by_name(params[:server])
     @rspec_result = server_thread.full_results_of_test
