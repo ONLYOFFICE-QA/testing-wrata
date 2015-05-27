@@ -57,6 +57,22 @@ class ServersController < ApplicationController
     end
   end
 
+  # PUT /clients/1
+  # PUT /clients/1.json
+  def update
+    @server = Server.find(params[:id])
+
+    respond_to do |format|
+      if @server.update_attributes(params[:server])
+        format.html { redirect_to @server, notice: 'Server was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @server.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def cloud_server_create
     set_server_status(params['server'], :creating)
     begin
