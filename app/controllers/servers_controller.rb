@@ -73,6 +73,12 @@ class ServersController < ApplicationController
   end
 
   def destroy
+    Server.find(params[:id]).destroy
+    flash[:success] = "Server deleted"
+    redirect_to servers_url
+  end
+
+  def cloud_server_destroy
     set_server_status(params['server'], :destroying)
     @digital_ocean.destroy_droplet_by_name(params['server'])
     set_server_status(params['server'], :destroyed)
