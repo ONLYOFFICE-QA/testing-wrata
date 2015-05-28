@@ -12,6 +12,7 @@ Runner::Application.routes.draw do
   resources :servers
   resources :test_files
   resources :test_lists
+  resources :histories
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
