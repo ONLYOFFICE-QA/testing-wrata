@@ -12,6 +12,7 @@ Runner::Application.routes.draw do
   resources :servers
   resources :test_files
   resources :test_lists
+  resources :histories
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
   post '/clients/clear_history'
@@ -20,8 +21,6 @@ Runner::Application.routes.draw do
 
   post 'delay_run/history_shit'
 
-  resources :test_lists, only: [:index, :destroy]
-  resources :history, only: :destroy
   post 'history/set_analysed'
   get '/history/show_html_results' # , as: '/history/show_html_results'
 

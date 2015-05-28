@@ -40,7 +40,7 @@ class ServersController < ApplicationController
     @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
-    render 'history/show_html_results', layout: false
+    render 'histories/show_html_results', layout: false
   end
 
   def clear_history

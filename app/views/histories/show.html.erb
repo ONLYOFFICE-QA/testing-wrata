@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="enable-select">
+  <p>
+    <b>File:</b>
+    <%= @history.file %>
+  </p>
+
+  <p>
+    <b>Log:</b>
+    <%= simple_format(@history.log) %>
+  </p>
+
+  <p>
+    <b>ServerID:</b>
+    <%= @history.server_id %>
+  </p>
+
+  <p>
+    <b>ClientID:</b>
+    <%= @history.client_id %>
+  </p>
+</div>
+
+<%= link_to 'Edit', edit_history_path(@history) %> |
+<%= link_to 'Back', histories_path %>
