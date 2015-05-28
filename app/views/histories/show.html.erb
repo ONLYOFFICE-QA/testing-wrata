@@ -1,4 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>File:</b>
+  <%= @history.file %>
+</p>
+
+<p>
+  <b>Log:</b>
+  <%= @history.log %>
+</p>
+
+<p>
+  <b>ServerID:</b>
+  <%= @history.server_id %>
+</p>
+
+<p>
+  <b>ClientID:</b>
+  <%= @history.client_id %>
+</p>
+
 <%= link_to 'Edit', edit_history_path(@history) %> |
 <%= link_to 'Back', histories_path %>
