@@ -15,6 +15,11 @@
   <%= @server.address %>
 </p>
 
+<p>
+  <b>Status:</b>
+  <%= @server._status %>
+</p>
+
 
 <%= link_to 'Edit', edit_server_path(@server) %> |
 <%= link_to 'Back', servers_path %>
