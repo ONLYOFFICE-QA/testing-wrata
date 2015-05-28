@@ -21,8 +21,6 @@ Runner::Application.routes.draw do
 
   post 'delay_run/history_shit'
 
-  resources :test_lists, only: [:index, :destroy]
-  resources :histories, only: :destroy
   post 'history/set_analysed'
   get '/history/show_html_results' # , as: '/history/show_html_results'
 
