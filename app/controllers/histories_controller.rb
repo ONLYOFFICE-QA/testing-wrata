@@ -1,4 +1,4 @@
-class HistoryController < ApplicationController
+class HistoriesController < ApplicationController
   # DELETE /history/1
   def destroy
     @history = History.find(params[:id])
