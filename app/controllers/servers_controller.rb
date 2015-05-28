@@ -97,6 +97,7 @@ class ServersController < ApplicationController
 
     respond_to do |format|
       if @server.update_attributes(params[:server])
+        $threads.update_models
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }
       else
