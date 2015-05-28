@@ -83,6 +83,7 @@ class ServersController < ApplicationController
     @server = Server.new(params[:server])
 
     if @server.save
+      $threads.add_threads
       redirect_to @server
     else
       render 'new'
