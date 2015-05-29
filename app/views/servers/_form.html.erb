@@ -1,33 +1,33 @@
 <%= form_for(@server) do |f| %>
-  <% if @server.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "empty_pages") %> prohibited this user from being saved:</h2>
+    <% if @server.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "empty_pages") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
     <div class="field">
-    <%= f.label :_status %><br />
-    <%= f.text_field :_status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br/>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :address %><br/>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :_status %><br/>
+      <%= f.text_field :_status %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
