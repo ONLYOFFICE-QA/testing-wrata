@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-  EXECUTOR_IMAGE_NAME = 'nct-at-stable'
+  EXECUTOR_IMAGE_NAME = 'nct-at-develop'
 
   before_action :create_digital_ocean, only: [:cloud_server_create, :cloud_server_destroy]
 
@@ -83,6 +83,7 @@ class ServersController < ApplicationController
     @server = Server.new(params[:server])
 
     if @server.save
+      $threads.add_threads
       redirect_to @server
     else
       render 'new'
@@ -96,6 +97,7 @@ class ServersController < ApplicationController
 
     respond_to do |format|
       if @server.update_attributes(params[:server])
+        $threads.update_models
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }
       else
@@ -122,6 +124,7 @@ class ServersController < ApplicationController
 
   def destroy
     Server.find(params[:id]).destroy
+    $threads.delete_threads
     flash[:success] = "Server deleted"
     redirect_to servers_url
   end
