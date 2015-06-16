@@ -21,8 +21,8 @@ Runner::Application.routes.draw do
 
   post 'delay_run/history_shit'
 
-  post 'history/set_analysed'
-  get '/history/show_html_results' # , as: '/history/show_html_results'
+  post 'histories/set_analysed'
+  get '/histories/show_html_results' # , as: '/history/show_html_results'
 
   get 'runner/index'
   get 'runner/start'

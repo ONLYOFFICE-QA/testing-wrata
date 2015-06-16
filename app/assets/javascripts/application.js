@@ -1826,7 +1826,7 @@ function eventToSetAnalysedToHistory(elem) {
     elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
-            url: '/history/set_analysed',
+            url: '/histories/set_analysed',
             async: false,
             type: 'POST',
             data: {
@@ -1869,7 +1869,7 @@ function eventToOpenRspecResults(elem) {
     elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
-            url: '/history/show_html_results',
+            url: '/histories/show_html_results',
             async: false,
             type: 'GET',
             data: {
