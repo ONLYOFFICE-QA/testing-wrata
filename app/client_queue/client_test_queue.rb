@@ -87,6 +87,4 @@ class ClientTestQueue
     [doc_branch, teamlab_branch]
   end
 end
-#
-# str = ' //home/runner/RubymineProjects/OnlineDocuments/RspecTest/Studio/run_test_single_spec.rb'
-# p str.gsub("/#{ENV['HOME']}", '~')
+
