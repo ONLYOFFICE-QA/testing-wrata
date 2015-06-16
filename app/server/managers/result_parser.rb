@@ -1,8 +1,8 @@
 require 'nokogiri'
-require_relative 'describe'
-require_relative 'example'
-require_relative 'result_creator'
-require_relative 'rspec_result'
+require_relative 'result_parser/describe'
+require_relative 'result_parser/example'
+require_relative 'result_parser/result_creator'
+require_relative 'result_parser/rspec_result'
 
 class  String
   def get_style_param(param)
@@ -14,7 +14,6 @@ class  String
     gsub 'px', ''
   end
 end
-
 class ResultParser
   LEVEL_MARGIN = 15
 
