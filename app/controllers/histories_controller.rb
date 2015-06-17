@@ -86,7 +86,11 @@ class HistoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_history
-      @history = History.find(params[:id])
+      if params[:history_id].nil? # FIXME: Dirty hack to get test and test result view in test history work at same time
+        @history = History.find(params[:id])
+      else
+        @history = History.find(params[:history_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
