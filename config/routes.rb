@@ -12,6 +12,7 @@ Runner::Application.routes.draw do
   resources :servers
   resources :test_files
   resources :test_lists
+  get '/histories/show_html_results' # should always be on top of `resources :histories` for server_history rspec-result correctly shown
   resources :histories
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
@@ -22,7 +23,6 @@ Runner::Application.routes.draw do
   post 'delay_run/history_shit'
 
   post 'histories/set_analysed'
-  get '/histories/show_html_results' # , as: '/history/show_html_results'
 
   get 'runner/index'
   get 'runner/start'
