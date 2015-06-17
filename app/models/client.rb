@@ -18,12 +18,6 @@ class Client < ActiveRecord::Base
 
   before_save :create_remember_token
 
-  public
-
-  def amazon_client?
-    AMAZON_CLIENTS.include?(login)
-  end
-
   private
 
   def create_remember_token
