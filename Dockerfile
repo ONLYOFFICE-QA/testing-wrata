@@ -1,7 +1,7 @@
 # NOT WORKING
 cd ~/RubymineProjects/testing-wrata
 apt-get update
-apt-get install postgresql pg-dev
+apt-get install postgresql-common postgresql libpq-dev nodejs
 vim /etc/postgresql/9.3/main/pg_hba.conf
 service postgresql restart
 rake db:reset db:migrate
