@@ -52,16 +52,11 @@
 <% end %>
 
 <% @servers.each do |server| %>
-    <% if IGNORED_MACHINES.include?(server.name) %>
-        <% if current_client %>
-            <% if current_client.amazon_client? %>
-                <% show_server_row(server) %>
-            <% end %>
+    <% if current_client %>
+        <% if current_client.amazon_client? %>
+            <% show_server_row(server) %>
         <% end %>
-    <% else %>
-        <% show_server_row(server) %>
     <% end %>
-
 <% end %>
 
 

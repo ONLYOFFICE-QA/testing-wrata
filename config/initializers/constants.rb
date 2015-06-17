@@ -20,7 +20,6 @@ GUEST_NAME = 'Guest'
 DEFAULT_CURRENT_TEST = 'nothing'
 DEFAULT_RUN_CLIENT = 'nobody'
 AMAZON_CLIENTS = ['shockwavenn']
-IGNORED_MACHINES = [] # ['nct-at2', 'nct-at4']
 SUCCESS_TEST_STR = ' 0 failures'
 INFO_SERVER = 'info'
 COM_SERVER = 'com'
