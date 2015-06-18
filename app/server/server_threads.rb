@@ -13,7 +13,7 @@ class ServerThreads < ActionController::Base
   end
 
   def get_thread_by_name(name)
-    @server_threads.select { |thread| thread.server_model.name == name }.first
+    @server_threads.find { |thread| thread.server_model.name == name }
   end
 
   def all_servers_from_threads
