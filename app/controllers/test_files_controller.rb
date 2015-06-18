@@ -62,6 +62,7 @@ class TestFilesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_test_file
     @test_file = TestFile.find(params[:id])
