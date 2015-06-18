@@ -41,16 +41,6 @@ function infoPopup(info_html) {
     popup.document.body.innerHTML = info_html;
 }
 
-function FileTest(name, stroke_numbers) {
-    this.name = name;
-    this.stroke_numbers = stroke_numbers;
-}
-
-function FileList(name, file_tests) {
-    this.name = name;
-    this.file_tests = file_tests;
-}
-
 function Client(login, file_lists) {
     this.login = login;
     this.file_lists = file_lists;
@@ -992,7 +982,7 @@ function Runner() {
 
     this.getListSidebarFiles = function () {
         var files = [];
-        $("#sidebar").find(".file-name").each(function () {
+        $("#sidebar .file-name").each(function () {
             files.push($(this).attr('data-qtip'));
         });
         return files
@@ -1966,10 +1956,6 @@ function clearHistoryOnClient(client) {
 
 function disableClearHistoryButton() {
     $('#clear-history').prop('disabled', true);
-}
-
-function enableClearHistoryButton() {
-    $('#clear-history').prop('disabled', false);
 }
 
 function eventToClearHistoryOnServer(elem) {
