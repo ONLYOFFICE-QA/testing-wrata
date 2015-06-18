@@ -51,10 +51,6 @@ function trim_data(data) {
 }
 
 function Runner() {
-    const UPDATE_INTERVAL = 1000;
-    const STATUS_ONLINE = 0;
-    const STATUS_OFFLINE = 1;
-    const STATUS_WAIT = 2;
     const SIDE_MAX_TEST_LENGTH = 40;
     var _self = this;
     var testListUpdating = false;
@@ -798,7 +794,6 @@ function Runner() {
 
     this.setEventChangeBranch = function () {
         $('li select.branch').change(function () {
-            var project = _self.getCurrentProject();
             showSectionOverlay();
             _self.changeBranch();
             alert('successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
