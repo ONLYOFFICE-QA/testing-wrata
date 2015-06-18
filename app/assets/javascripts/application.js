@@ -132,7 +132,7 @@ function Runner() {
 
     this.eventToShowCurrentRspecResult = function (elem) {
         elem.on('click', function () {
-            var server_name = $(this).attr('data-server')
+            var server_name = $(this).attr('data-server');
             _self.showCurrentRspecResult(server_name)
         })
     };
@@ -226,7 +226,7 @@ function Runner() {
     };
 
     this.appendTestsOnQueue = function(test) {
-        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>'
+        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>';
         select = $(select);
         _self.eventToChangeLocationForTest(select);
         select.find(":contains('" + test['location'] + "')").prop('selected', true);
@@ -421,8 +421,6 @@ function Runner() {
             server.addClass('off');
         }
     };
-
-    "18:04:05/18.04.14    [WebDriver] Opened page: http://teamlab.com\n18:04:27/18.04.14    [HeadlessHelper] Stopping Headless Session"
 
     this.setLogToServerView = function (server_el, log) {
         // if ((currentLogOnServer(server_el) == '') && (currentTestOnServer(server_el) == 'nothing')) {
@@ -1605,7 +1603,7 @@ function verifyListName(listName) {
         alert('Name of list is too long or short!(more then ' + MAX_LENGTH + ' or less then ' + MIN_LENGTH + ' symbols)');
         return false;
     }
-    var result = true
+    var result = true;
     $('#test_list_menu a').each(function () {
         if ($(this).text() == listName) {
             result = confirm('Current list name already exist. Test list will be overwrite!');
@@ -1626,7 +1624,7 @@ function showMoreHistoryForServer() {
             'server': server
         },
         success: function (data) {
-            var trimmed_data = trim_data(data)
+            var trimmed_data = trim_data(data);
             $('tbody').append(trimmed_data);
             scrollLogEventToElem(trimmed_data.find('.log'));
             logUpEventToElem(trimmed_data.find('.log-up'));
@@ -1886,7 +1884,7 @@ function eventToOpenRspecResults(elem) {
             },
             success: function (data) {
                 showPopup();
-                $('.popup-window').html(data)
+                $('.popup-window').html(data);
                 eventsForRspecPopup();
             },
             error: function (e) {
