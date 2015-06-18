@@ -16,7 +16,6 @@
 //
 //
 /*jshint esnext: true */
-
 $.ajaxSetup({
     headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -34,7 +33,6 @@ const MAX_LENGTH = 26;
 const MIN_LENGTH = 3;
 
 function failAlert() {
-    alert('Fail! Something goes wrong!')
 }
 
 function infoPopup(info_html) {
@@ -59,7 +57,7 @@ function Runner() {
     this.eventToGetUpdatedDataFromServer = function () {
         setInterval(function () {
             if (!testListUpdating) {
-                _self.getUpdatedDataFromServer()
+                _self.getUpdatedDataFromServer();
             }
         }, STATUS.UPDATE_INTERVAL);
     };
@@ -80,14 +78,14 @@ function Runner() {
                 $('.popup-window').html(data);
                 eventsForRspecPopup();
             }
-        })
+        });
     };
 
     this.eventToShowCurrentRspecResult = function (elem) {
         elem.on('click', function () {
             var server_name = $(this).attr('data-server');
-            _self.showCurrentRspecResult(server_name)
-        })
+            _self.showCurrentRspecResult(server_name);
+        });
     };
 
     this.getUpdatedDataFromServer = function () {
@@ -109,7 +107,7 @@ function Runner() {
                 console.log(e.message);
 //                failAlert();
             }
-        })
+        });
     };
 
     this.getAllServers = function() {
@@ -117,7 +115,7 @@ function Runner() {
         $('.server').each(function () {
             servers.push($(this).attr('id'));
         });
-        return servers
+        return servers;
     };
 
     this.clearServersQueue = function() {
@@ -135,7 +133,7 @@ function Runner() {
 
     this.showBookedServers = function(servers) {
         for(var i = 0; i < servers.length; i++) {
-            _self.appendServerOnQueue(servers[i])
+            _self.appendServerOnQueue(servers[i]);
         }
     };
 
@@ -149,7 +147,7 @@ function Runner() {
 
     this.showTestsFromQueue = function(tests) {
         for(var i = 0; i < tests.length; i++) {
-            _self.appendTestsOnQueue(tests[i])
+            _self.appendTestsOnQueue(tests[i]);
         }
     };
 
@@ -209,12 +207,12 @@ function Runner() {
             }
             if (data[i]['_status']  == 'destroying') {
                 server.find('.server-content').show();
-                _self.showServerSectionOverlay(data[i]['name'], 'Destroying...')
+                _self.showServerSectionOverlay(data[i]['name'], 'Destroying...');
             } else if (data[i]['_status']  == 'creating') {
                 server.find('.server-content').show();
-                _self.showServerSectionOverlay(data[i]['name'], 'Creating...')
+                _self.showServerSectionOverlay(data[i]['name'], 'Creating...');
             } else {
-                _self.hideServerSectionOverlay(data[i]['name'])
+                _self.hideServerSectionOverlay(data[i]['name']);
             }
         }
     };
@@ -233,9 +231,9 @@ function Runner() {
             error: function (e) {
                 console.log(e.message);
                 failAlert();
-                infoPopup(e.responseText)
+                infoPopup(e.responseText);
             }
-        })
+        });
     };
 
     this.destroyServer = function(server) {
@@ -253,7 +251,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.showServerSectionOverlay = function(server,message) {
@@ -264,7 +262,7 @@ function Runner() {
 
     this.hideServerSectionOverlay = function(server) {
         var selector = 'div#' + server + ' .section-overlay';
-        $(selector).hide()
+        $(selector).hide();
     };
 
     this.createAndDestroyServer = function(button) {
@@ -282,8 +280,8 @@ function Runner() {
         button.on('click', function () {
             var result = confirm('Are you really want to ' + $(this).find('.hidden-tool').text() + ' this server?');
             if (result)
-                _self.createAndDestroyServer($(this))
-        })
+                _self.createAndDestroyServer($(this));
+        });
     };
 
     this.changeCreateOnDestroy = function(button) {
@@ -333,12 +331,12 @@ function Runner() {
 
     this.showBookedClient = function(userIcon, userName) {
         userIcon.find('span').text(userName);
-        userIcon.show()
+        userIcon.show();
     };
 
     this.hideBookedClient = function(userIcon) {
         userIcon.find('span').text('');
-        userIcon.hide()
+        userIcon.hide();
     };
 
     this.setStatusToServerView = function (server, status) {
@@ -368,13 +366,13 @@ function Runner() {
                 'server': server
             },
             success: function () {
-                alert('The server was going to reboot.')
+                alert('The server was going to reboot.');
             },
             error: function (e) {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.stopCurrent = function (server) {
@@ -386,19 +384,19 @@ function Runner() {
                 'server': server
             },
             success: function () {
-                alert('Current test was stopped successfully!')
+                alert('Current test was stopped successfully!');
             },
             error: function (e) {
                 console.log(e.message);
             }
-        })
+        });
     };
 
     this.eventToRebootServer = function(elem) {
         elem.on('click', function () {
             var server_name = $(this).attr('data-server');
             _self.rebootServer(server_name);
-        })
+        });
     };
 
     this.eventToStopTest = function (elem) {
@@ -408,7 +406,7 @@ function Runner() {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
             }
-        })
+        });
     };
 
     this.bookServer = function(button, server_name) {
@@ -430,7 +428,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.changeBookButtonOnUnbook = function(button) {
@@ -454,8 +452,8 @@ function Runner() {
     this.eventToBookServer = function(elems) {
         offEventsOnElem(elems);
         elems.on('click', function() {
-            _self.bookServer($(this), $(this).attr('data-server'))
-        })
+            _self.bookServer($(this), $(this).attr('data-server'));
+        });
     };
 
     this.unbookServer = function(button, server_name, hide_button) {
@@ -479,14 +477,14 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.eventToUnbookServer = function(elems, hide_button) {
         offEventsOnElem(elems);
         elems.on('click', function() {
-            _self.unbookServer($(this), $(this).attr('data-server'), hide_button)
-        })
+            _self.unbookServer($(this), $(this).attr('data-server'), hide_button);
+        });
     };
 
     this.addTestInQueue = function(test_path, branch, location) {
@@ -507,7 +505,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.addTestsInQueue = function(test_path_array, branch, location) {
@@ -528,7 +526,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.eventToAddTestsFromSidebar = function(elem) {
@@ -544,7 +542,7 @@ function Runner() {
     this.getTestPathsFromSidebar = function() {
         var tests = [];
         $('#sidebar').find('.file-name').each(function(){
-                 tests.push($(this).attr('data-qtip'))
+                 tests.push($(this).attr('data-qtip'));
         });
         return tests;
     };
@@ -553,7 +551,7 @@ function Runner() {
         elem.on('click', function(){
             _self.addTestInQueue($(this).attr('data-test'), _self.getBranch(), $('li.active .region').val());
             _self.getUpdatedDataFromServer();
-            imitateHover($('.test-node :first'))
+            imitateHover($('.test-node :first'));
         });
     };
 
@@ -601,7 +599,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.showTestsView = function () {
@@ -626,13 +624,13 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.eventForPullProjectsAndFillTests = function(elem) {
         elem.on('click', function() {
             _self.pullProjectsAndFillTests();
-        })
+        });
     };
 
     this.pullProjectsAndFillTests = function() {
@@ -650,7 +648,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.showBranchesList = function() {
@@ -667,7 +665,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.pullProjectsAndGetAllView = function(){
@@ -678,7 +676,7 @@ function Runner() {
         var select = $('#docs-branches');
         clearElementInside(select);
         for(var i = 0; i < branches.length; i++) {
-            select.append($("<option>" + branches[i] + "</option>"))
+            select.append($("<option>" + branches[i] + "</option>"));
         }
     };
 
@@ -686,7 +684,7 @@ function Runner() {
         var select = $('#teamlab-branches');
         clearElementInside(select);
         for(var i = 0; i < branches.length; i++) {
-            select.append($("<option>" + branches[i] + "</option>"))
+            select.append($("<option>" + branches[i] + "</option>"));
         }
     };
 
@@ -704,7 +702,7 @@ function Runner() {
                 showOverlay('Saving...');
             },
             complete: function () {
-                hideOverlay()
+                hideOverlay();
             },
             success: function (data) {
                 if (data == "") {
@@ -718,7 +716,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.getCurrentBranch = function () {
@@ -733,7 +731,7 @@ function Runner() {
         var checkAlreadyExist = false;
         $('#test_list_menu').find('a').each(function () {
             if ($(this).text() == list_menu.find('a').first().text()) {
-                checkAlreadyExist = true
+                checkAlreadyExist = true;
             }
         });
         if (checkAlreadyExist != true) {
@@ -755,13 +753,13 @@ function Runner() {
             async: false,
             type: 'DELETE',
             success: function () {
-                list_menu.remove()
+                list_menu.remove();
             },
             error: function (e) {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.setEventToDeleteTestList = function (list_menu) {
@@ -790,7 +788,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.setEventChangeBranch = function () {
@@ -798,15 +796,15 @@ function Runner() {
             showSectionOverlay();
             _self.changeBranch();
             alert('successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
-        })
+        });
     };
 
     this.eventToChangeLocationForTest = function(elem) {
         elem.change(function(){
             var test_id = elem.parent().parent().attr('data-id');
             var new_location = elem.val();
-            _self.changeLocationForTest(test_id, new_location)
-        })
+            _self.changeLocationForTest(test_id, new_location);
+        });
     };
 
     this.changeLocationForTest = function(test_id, new_location) {
@@ -819,7 +817,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.eventToLoadTestList = function (elem) {
@@ -836,7 +834,7 @@ function Runner() {
                 showOverlay('Loading...');
             },
             complete: function () {
-                hideOverlay()
+                hideOverlay();
             },
             data: {
                 'listName': elem.text()
@@ -864,7 +862,7 @@ function Runner() {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.selectBranch = function (branch) {
@@ -891,7 +889,7 @@ function Runner() {
                 tmTab.addClass('active');
                 docsTab.removeClass('active');
             }
-        })
+        });
 
     };
 
@@ -930,25 +928,25 @@ function Runner() {
                 _self.setEventToAddToList($(".add-test"));
                 $('#add-all').on('click', function () {
                     _self.addAllTests();
-                })
+                });
             },
             error: function (e) {
                 console.log(e.message);
                 failAlert();
             }
-        })
+        });
     };
 
     this.eventToOpenFileInclude = function () {
         $(".folder .glyphicon-file").on('click', function () {
             if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('data-test'))) {
-                alert('File already added to sidebar! Delete him or choose another!')
+                alert('File already added to sidebar! Delete him or choose another!');
             }
             else {
                 var path = $(this).parent().parent().find('.add-button-file').attr('data-test');
                 myRunner.showIncludedTests(path);
             }
-        })
+        });
     };
 
     this.checkAddedOnSidebar = function (file_path) {
@@ -956,7 +954,7 @@ function Runner() {
         if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() != 0) {
             already_add = true;
         }
-        return already_add
+        return already_add;
     };
 
     this.checkAllAddedOnSidebar = function () {
@@ -965,15 +963,15 @@ function Runner() {
         $(".tab-content .file-name").each(function () {
             var cur_file = $(this).parent().find('.add-button-file').attr('data-test');
             if (jQuery.inArray(cur_file, added_files) != -1) {
-                $(this).find('i.add-file').css('display', 'none')
+                $(this).find('i.add-file').css('display', 'none');
             }
         });
     };
 
     this.makeAllAddButtonsVisible = function () {
         $('.tab-content i.add-file').each(function () {
-            $(this).css('display', 'inline-block')
-        })
+            $(this).css('display', 'inline-block');
+        });
     };
 
     this.getListSidebarFiles = function () {
@@ -981,7 +979,7 @@ function Runner() {
         $("#sidebar .file-name").each(function () {
             files.push($(this).attr('data-qtip'));
         });
-        return files
+        return files;
     };
 
     this.eventToOpenServer = function(header) {
@@ -990,7 +988,7 @@ function Runner() {
             var server_content = $(this).next();
             server_content.slideToggle();
         });
-        stopPropagation(header.find('div.button'))
+        stopPropagation(header.find('div.button'));
     };
 
     this.setIconToAdded = function (elem) {
@@ -1013,7 +1011,7 @@ function Runner() {
         });
         $('.popup-overlay').on('click', function () {
             $(this).fadeOut();
-        })
+        });
     };
 
     this.addAllTests = function () {
@@ -1089,7 +1087,7 @@ function Runner() {
         offEventsOnElem(icons);
         icons.on('click', function () {
             _self.addFileToSidebar($(this));
-        })
+        });
     };
 
     this.setEventToAddToList = function (element) {
@@ -1100,10 +1098,10 @@ function Runner() {
             $('.tab-pane.active input').each(function () {
                 var current_path = $(this).attr('id');
                 if (current_path == path) {
-                    $(this).parent().find('i.add-file').css('display', 'none')
+                    $(this).parent().find('i.add-file').css('display', 'none');
                 }
             });
-        })
+        });
     };
 
     this.setEventToOpenFile = function (element) {
@@ -1117,7 +1115,7 @@ function Runner() {
             else {
                 inside.slideUp();
             }
-        })
+        });
     };
 
     this.setEventToDeleteTestFromList = function () {
@@ -1141,7 +1139,7 @@ function Runner() {
                 $('.tab-pane .add-button-file').each(function () {
                     var current_path = $(this).attr('data-test');
                     if (current_path == path) {
-                        $(this).parent().find('i.add-file').css('display', 'inline-block')
+                        $(this).parent().find('i.add-file').css('display', 'inline-block');
                     }
                 });
                 folder.remove();
@@ -1159,7 +1157,7 @@ function Runner() {
         $(opener_selector).on('click', function () {
             var opener_index = $(opener_selector).index($(this));
             $('.log-window').eq(opener_index).slideToggle();
-        })
+        });
     };
 
     this.setEventToDeleteFolderFromList = function () {
@@ -1187,13 +1185,13 @@ function Runner() {
                             $(this).css('display', 'inline-block');
                         }
                     }
-                })
+                });
             }
             $(this).parent().parent().remove();
             hideStartPanel();
             unlockInactiveTab();
             unlockActiveBranchSelect();
-        })
+        });
     };
 
     this.getSidebarFileTest = function (file_folder) {
@@ -1257,10 +1255,10 @@ function Runner() {
                 removeIntent = true;
             },
             start: function () {
-                testListUpdating = true
+                testListUpdating = true;
             },
             stop: function () {
-                testListUpdating = false
+                testListUpdating = false;
             },
             beforeStop: function (event, ui) {
                 if(removeIntent == true){
@@ -1274,7 +1272,7 @@ function Runner() {
                     var second = ui.item.prev().attr('data-id');
                     var in_start = false;
                     if (second == undefined) {
-                        in_start = true
+                        in_start = true;
                     }
                     _self.swapTestsInQueue(first, second, in_start);
                 }
@@ -1327,7 +1325,7 @@ function Runner() {
         elem.on('click', function(){
             _self.clearTestQueue();
             _self.getUpdatedDataFromServer();
-        })
+        });
     };
 
     this.checkQueueEmpty = function() {
@@ -1341,11 +1339,11 @@ function Runner() {
 
     this.toggleClearTestButton = function() {
         if (this.checkQueueEmpty()) {
-            $('#clear-tests').hide()
+            $('#clear-tests').hide();
         } else {
-            $('#clear-tests').show()
+            $('#clear-tests').show();
         }
-    }
+    };
 }
 
 var myRunner = new Runner();
@@ -1371,17 +1369,17 @@ $(function () {
     });
 
     $("#copyright").on('click', function () {
-        changeBgZooey()
+        changeBgZooey();
     });
 
     $("#cat").on('click', function () {
-        changeBgCat()
+        changeBgCat();
     });
 
     $("#edit-list-name").on('click', function () {
         changeDivToInput();
         $(this).css('visibility', 'hidden');
-        eventsEditInput()
+        eventsEditInput();
     });
 
     $("#sidebar-test-list").slimScroll({
@@ -1445,7 +1443,7 @@ function closeSidebar() {
 function getSideBarHeight() {
     var topNavHeight = $("#topnavbar").height();
     var windowHeight = $(window).height();
-    return windowHeight - topNavHeight - constants['fixedBottom']
+    return windowHeight - topNavHeight - constants['fixedBottom'];
 }
 function setSideBarHeight(height) {
     $("#sidebar").height(height);
@@ -1461,7 +1459,7 @@ function getNeededToggleCoordinates() {
         sidebarWidth = $("#sidebar").outerWidth();
     }
     coordinates['left'] = sidebarWidth - 1;
-    return coordinates
+    return coordinates;
 }
 
 function setToggleSidebarCoordinates(coordinates) {
@@ -1508,7 +1506,7 @@ function changeInputToDiv() {
         var listNameDiv = $("#list-name");
         clearElementInside(listNameDiv);
         listNameDiv.text(textFromInput);
-        $("#edit-list-name").css('visibility', 'visible')
+        $("#edit-list-name").css('visibility', 'visible');
     }
 }
 
@@ -1522,7 +1520,7 @@ function eventsEditInput() {
         if (e.which == 13) {
             $(this).blur();
         }
-    })
+    });
 }
 
 function verifyListName(listName) {
@@ -1568,7 +1566,7 @@ function showMoreHistoryForServer() {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function showMoreHistoryForClient() {
@@ -1599,7 +1597,7 @@ function showMoreHistoryForClient() {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function openLogInHistoryEvent() {
@@ -1706,7 +1704,7 @@ function hideStartPanel() {
 }
 
 function checkEmptyList() {
-    return $('#sidebar-test-list').children().size() == 0
+    return $('#sidebar-test-list').children().size() == 0;
 }
 
 function eventToDeleteHistoryLine(elem) {
@@ -1727,8 +1725,7 @@ function eventToDeleteHistoryLine(elem) {
                 failAlert();
             }
         });
-
-    })
+    });
 }
 
 function eventToRetest(elem) {
@@ -1745,15 +1742,14 @@ function eventToRetest(elem) {
             async: false,
             type: 'POST',
             success: function () {
-                alert('Test was added in your queue.')
+                alert('Test was added in your queue.');
             },
             error: function (e) {
                 console.log(e.message);
                 failAlert();
             }
         });
-
-    })
+    });
 }
 
 function eventToSetAnalysedToHistory(elem) {
@@ -1769,7 +1765,7 @@ function eventToSetAnalysedToHistory(elem) {
             success: function () {
                 var el = clicked.parent();
                 clearElementInside(el);
-                el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"))
+                el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"));
             },
             error: function (e) {
                 console.log(e.message);
@@ -1777,11 +1773,11 @@ function eventToSetAnalysedToHistory(elem) {
             }
         });
 
-    })
+    });
 }
 
 function addSortableToElem(elem) {
-    elem.sortable({ })
+    elem.sortable({ });
 }
 
 function showOverlay(text) {
@@ -1796,7 +1792,7 @@ function hideOverlay() {
 }
 
 function currentTestOnServer(server_el) {
-    return server_el.find('.running').text()
+    return server_el.find('.running').text();
 }
 
 function eventToOpenRspecResults(elem) {
@@ -1818,8 +1814,8 @@ function eventToOpenRspecResults(elem) {
                 console.log(e.message);
                 failAlert();
             }
-        })
-    })
+        });
+    });
 }
 
 function eventsForRspecPopup() {
@@ -1834,9 +1830,9 @@ function eventToOpenDescribe() {
         var describeChild = $(this).next('.describe-child');
         var cur_display = describeChild.css('display');
         if (cur_display == 'none') {
-            describeChild.slideDown()
+            describeChild.slideDown();
         } else {
-            describeChild.slideUp()
+            describeChild.slideUp();
         }
     });
 }
@@ -1846,41 +1842,41 @@ function evenToOpenFailDetails() {
         var failDetails = $(this).next('.fail-details');
         var cur_display = failDetails.css('display');
         if (cur_display == 'none') {
-            failDetails.slideDown()
+            failDetails.slideDown();
         } else {
-            failDetails.slideUp()
+            failDetails.slideUp();
         }
-    })
+    });
 }
 
 function showPopup() {
-    $('.popup-overlay').fadeIn()
+    $('.popup-overlay').fadeIn();
 }
 
 function closePopup() {
-    $('.popup-overlay').fadeOut()
+    $('.popup-overlay').fadeOut();
 }
 
 function eventToClosePopup() {
     $('.close-result').on('click', function () {
-        closePopup()
+        closePopup();
     });
     $('div.popup-overlay').on('click', function () {
-        closePopup()
+        closePopup();
     });
     stopPropagation($('.popup-window'));
 }
 
 function setScrollOnMainDescribe() {
-    $('.main-describe').slimScroll({ width: 'auto', height: '100%', size: '3px'})
+    $('.main-describe').slimScroll({ width: 'auto', height: '100%', size: '3px'});
 }
 
 function setFailedToFailedDescribes() {
     $('.describe').each(function () {
         if ($(this).find('.failed').length != 0) {
-            $(this).addClass('failed')
+            $(this).addClass('failed');
         }
-    })
+    });
 }
 
 function eventToOpenMoreOptions(elem) {
@@ -1888,22 +1884,22 @@ function eventToOpenMoreOptions(elem) {
         var more_options = $(this).next('.more-options');
         var cur_display = more_options.css('display');
         if (cur_display == 'none') {
-            more_options.slideDown()
+            more_options.slideDown();
         } else {
-            more_options.slideUp()
+            more_options.slideUp();
         }
-    })
+    });
 }
 
 function eventToShowFullStartOption(elem) {
     elem.hover(
         function() {
             var to_show = $(this).find('.full-command');
-            to_show.fadeIn('fast')
+            to_show.fadeIn('fast');
         }, function() {
             var to_show = $(this).find('.full-command');
-            to_show.fadeOut('fast')
-    })
+            to_show.fadeOut('fast');
+    });
 }
 
 function clearHistoryOnServer(server_name) {
@@ -1925,7 +1921,7 @@ function clearHistoryOnServer(server_name) {
         complete: function() {
             location.reload();
         }
-    })
+    });
 }
 
 function clearHistoryOnClient(client) {
@@ -1947,7 +1943,7 @@ function clearHistoryOnClient(client) {
         complete: function() {
             location.reload();
         }
-    })
+    });
 }
 
 function disableClearHistoryButton() {
@@ -1957,15 +1953,15 @@ function disableClearHistoryButton() {
 function eventToClearHistoryOnServer(elem) {
     elem.on('click', function(){
         var server_name = $('#server').text();
-        clearHistoryOnServer(server_name)
-    })
+        clearHistoryOnServer(server_name);
+    });
 }
 
 function eventToClearHistoryOnClient(elem) {
     elem.on('click', function(){
         var name = $('#client').text();
-        clearHistoryOnClient(name)
-    })
+        clearHistoryOnClient(name);
+    });
 }
 
 function offEventsOnElem(elem) {
@@ -1977,7 +1973,7 @@ function clearElementInside(elem) {
 }
 
 function stopPropagation(elem) {
-    elem.click(function(e){ e.stopPropagation()})
+    elem.click(function(e){ e.stopPropagation();});
 }
 
 function logUpEvent() {
@@ -1995,13 +1991,13 @@ function logUpEventToElem(elem) {
 function logDownEvent() {
     $('.log-down').on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
-    })
+    });
 }
 
 function logDownEventToElem(elem) {
     elem.on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
-    })
+    });
 }
 
 function showSectionOverlay() {
