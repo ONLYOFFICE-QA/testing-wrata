@@ -556,7 +556,7 @@ function Runner() {
 
     this.getTestPathsFromSidebar = function() {
         var tests = [];
-        $('#sidebar .file-name').each(function(){
+        $('#sidebar').find('.file-name').each(function(){
                  tests.push($(this).attr('data-qtip'))
         });
         return tests;
@@ -744,7 +744,7 @@ function Runner() {
 
     this.appendListDropdownMenu = function (list_menu) {
         var checkAlreadyExist = false;
-        $('#test_list_menu a').each(function () {
+        $('#test_list_menu').find('a').each(function () {
             if ($(this).text() == list_menu.find('a').first().text()) {
                 checkAlreadyExist = true
             }
@@ -934,7 +934,7 @@ function Runner() {
             type: 'GET',
             success: function (data) {
                 $('.popup-overlay').css("display", "block");
-                $("#popup .wrap").html(data);
+                $("#popup").find(".wrap").html(data);
                 stopPropagation($('.viewer'));
                 _self.setEventToCloseTestsList();
                 $("#tests-list").slimScroll({
@@ -967,7 +967,7 @@ function Runner() {
 
     this.checkAddedOnSidebar = function (file_path) {
         var already_add = false;
-        if ($('#sidebar-test-list *[data-qtip="' + file_path + '"]').size() != 0) {
+        if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() != 0) {
             already_add = true;
         }
         return already_add
@@ -992,7 +992,7 @@ function Runner() {
 
     this.getListSidebarFiles = function () {
         var files = [];
-        $("#sidebar .file-name").each(function () {
+        $("#sidebar").find(".file-name").each(function () {
             files.push($(this).attr('data-qtip'));
         });
         return files
@@ -1055,7 +1055,7 @@ function Runner() {
             "<i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + HtmlDecode(it_name) + "</span>" +
             "</div>";
 
-        $('#sidebar-test-list .file-name').each(function () {
+        $('#sidebar-test-list').find('.file-name').each(function () {
             if ($(this).attr('data-qtip') == file_path) {
                 file_added = true;
                 $(this).next().children('.stroke-list').
@@ -1418,7 +1418,7 @@ $(function () {
         }
     });
 
-    $('#test_list_menu a').on('click', function () {
+    $('#test_list_menu').find('a').on('click', function () {
         if ($(this).attr('href')) {
             myRunner.eventToLoadTestList($(this));
         }
@@ -1430,7 +1430,7 @@ $(function () {
 
     eventToClosePopup();
 
-    myRunner.setEventToDeleteTestList($('#test_list_menu li'));
+    myRunner.setEventToDeleteTestList($('#test_list_menu').find('li'));
 
 });
 
@@ -1441,7 +1441,7 @@ function openSidebar() {
     ico.addClass('glyphicon-chevron-left');
     ico.removeClass('glyphicon-chevron-right');
     $("#main").css("margin-left", "230px");
-    $("#popup .wrap").css("margin-left", "230px");
+    $("#popup").find(".wrap").css("margin-left", "230px");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
 }
 
@@ -1452,7 +1452,7 @@ function closeSidebar() {
     ico.addClass('glyphicon-chevron-right');
     ico.removeClass('glyphicon-chevron-left');
     $("#main").css("margin-left", "0");
-    $("#popup .wrap").css("margin-left", "0");
+    $("#popup").find(".wrap").css("margin-left", "0");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
 }
 
@@ -1545,7 +1545,7 @@ function verifyListName(listName) {
         return false;
     }
     var result = true;
-    $('#test_list_menu a').each(function () {
+    $('#test_list_menu').find('a').each(function () {
         if ($(this).text() == listName) {
             result = confirm('Current list name already exist. Test list will be overwrite!');
         }
