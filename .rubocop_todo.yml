@@ -106,7 +106,3 @@ Style/IndentationConsistency:
 Style/NumericLiterals:
   MinDigits: 15
 
-# Offense count: 3
-# Configuration parameters: Methods.
-Style/SingleLineBlockParams:
-  Enabled: false

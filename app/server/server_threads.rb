@@ -17,7 +17,7 @@ class ServerThreads < ActionController::Base
   end
 
   def all_servers_from_threads
-    @server_threads.inject([]) { |servers, thread| servers << thread.server_model }
+    @server_threads.inject([]) { |a, e| a << e.server_model }
   end
 
   def update_models
@@ -34,7 +34,7 @@ class ServerThreads < ActionController::Base
 
   def add_threads
     new_servers = Server.all.sort_by { |s| s.name.split('nct-at')[1].to_i }
-    old_servers = @server_threads.inject([]) { |arr, thread| arr << thread.server_model }
+    old_servers = @server_threads.inject([]) { |a, e| a << e.server_model }
     difference = new_servers - old_servers
     difference.each do |server|
       @server_threads << ServerThread.new(server)
@@ -43,7 +43,7 @@ class ServerThreads < ActionController::Base
 
   def delete_threads
     new_servers = Server.all.sort_by { |s| s.name.split('nct-at')[1].to_i }
-    old_servers = @server_threads.inject([]) { |arr, thread| arr << thread.server_model }
+    old_servers = @server_threads.inject([]) { |a, e| a << e.server_model }
     difference = old_servers - new_servers
     difference.each do |diff_model|
       @server_threads.delete_if do |thread|
