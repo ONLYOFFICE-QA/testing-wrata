@@ -77,40 +77,6 @@ function Runner() {
         }, STATUS.UPDATE_INTERVAL);
     };
 
-    this.getSelectedServers = function () {
-        var server_names = [];
-        $(".server input:checked").each(function () {
-            var selected_id = $(this).attr('id');
-            server_names.push(selected_id);
-        });
-        return server_names;
-    };
-
-    this.getSelectedTests = function () {
-        var test_names = [];
-        $(".tab-pane.active .file input:checked").each(function () {
-            var selected_id = $(this).attr('id');
-            test_names.push(selected_id);
-        });
-        return test_names;
-    };
-
-    this.getRegionFromActiveTab = function () {
-        return $('li.active .region').val().split(' ')[1]
-    };
-
-    this.getServerFromActiveTab = function () {
-        return $('li.active .region').val().split(' ')[0]
-    };
-
-    this.getRegionFromSidebar = function () {
-        return $('#sidebar .region').val().split(' ')[1]
-    };
-
-    this.getServerFromSidebar = function () {
-        return $('#sidebar .region').val().split(' ')[0]
-    };
-
     this.getBranch = function () {
         return $('li.active .branch').val();
     };
@@ -135,31 +101,6 @@ function Runner() {
             var server_name = $(this).attr('data-server');
             _self.showCurrentRspecResult(server_name)
         })
-    };
-
-    this.disableStartButtons = function () {
-        $('.start-icon').attr('disable', 'disabled')
-    };
-
-    this.enableStartButtons = function () {
-        $('.start-icon').removeAttr('disable')
-    };
-
-    this.clearServerLogs = function (servers) {
-        for (var i = 0; i < servers.length; i++) {
-            _self.clearLogForServer(servers[i]);
-        }
-    };
-
-    this.clearLogForServer = function (server_name) {
-        var server = $('.server #' + server_name).parent();
-        if (currentTestOnServer(server) == 'nothing') {
-            setLogToServer(server, '')
-        }
-    };
-
-    this.getSaveRunProperty = function () {
-        return $('#save-run').prop('checked')
     };
 
     this.getUpdatedDataFromServer = function () {
