@@ -41,16 +41,6 @@ function infoPopup(info_html) {
     popup.document.body.innerHTML = info_html;
 }
 
-function FileTest(name, stroke_numbers) {
-    this.name = name;
-    this.stroke_numbers = stroke_numbers;
-}
-
-function FileList(name, file_tests) {
-    this.name = name;
-    this.file_tests = file_tests;
-}
-
 function Client(login, file_lists) {
     this.login = login;
     this.file_lists = file_lists;
@@ -61,51 +51,16 @@ function trim_data(data) {
 }
 
 function Runner() {
-    const UPDATE_INTERVAL = 1000;
-    const STATUS_ONLINE = 0;
-    const STATUS_OFFLINE = 1;
-    const STATUS_WAIT = 2;
     const SIDE_MAX_TEST_LENGTH = 40;
     var _self = this;
+    var testListUpdating = false;
 
     this.eventToGetUpdatedDataFromServer = function () {
         setInterval(function () {
-            _self.getUpdatedDataFromServer()
+            if (!testListUpdating) {
+                _self.getUpdatedDataFromServer()
+            }
         }, STATUS.UPDATE_INTERVAL);
-    };
-
-    this.getSelectedServers = function () {
-        var server_names = [];
-        $(".server input:checked").each(function () {
-            var selected_id = $(this).attr('id');
-            server_names.push(selected_id);
-        });
-        return server_names;
-    };
-
-    this.getSelectedTests = function () {
-        var test_names = [];
-        $(".tab-pane.active .file input:checked").each(function () {
-            var selected_id = $(this).attr('id');
-            test_names.push(selected_id);
-        });
-        return test_names;
-    };
-
-    this.getRegionFromActiveTab = function () {
-        return $('li.active .region').val().split(' ')[1]
-    };
-
-    this.getServerFromActiveTab = function () {
-        return $('li.active .region').val().split(' ')[0]
-    };
-
-    this.getRegionFromSidebar = function () {
-        return $('#sidebar .region').val().split(' ')[1]
-    };
-
-    this.getServerFromSidebar = function () {
-        return $('#sidebar .region').val().split(' ')[0]
     };
 
     this.getBranch = function () {
@@ -129,34 +84,9 @@ function Runner() {
 
     this.eventToShowCurrentRspecResult = function (elem) {
         elem.on('click', function () {
-            var server_name = $(this).attr('data-server')
+            var server_name = $(this).attr('data-server');
             _self.showCurrentRspecResult(server_name)
         })
-    };
-
-    this.disableStartButtons = function () {
-        $('.start-icon').attr('disable', 'disabled')
-    };
-
-    this.enableStartButtons = function () {
-        $('.start-icon').removeAttr('disable')
-    };
-
-    this.clearServerLogs = function (servers) {
-        for (var i = 0; i < servers.length; i++) {
-            _self.clearLogForServer(servers[i]);
-        }
-    };
-
-    this.clearLogForServer = function (server_name) {
-        var server = $('.server #' + server_name).parent();
-        if (currentTestOnServer(server) == 'nothing') {
-            setLogToServer(server, '')
-        }
-    };
-
-    this.getSaveRunProperty = function () {
-        return $('#save-run').prop('checked')
     };
 
     this.getUpdatedDataFromServer = function () {
@@ -223,7 +153,7 @@ function Runner() {
     };
 
     this.appendTestsOnQueue = function(test) {
-        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>'
+        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>';
         select = $(select);
         _self.eventToChangeLocationForTest(select);
         select.find(":contains('" + test['location'] + "')").prop('selected', true);
@@ -419,8 +349,6 @@ function Runner() {
         }
     };
 
-    "18:04:05/18.04.14    [WebDriver] Opened page: http://teamlab.com\n18:04:27/18.04.14    [HeadlessHelper] Stopping Headless Session"
-
     this.setLogToServerView = function (server_el, log) {
         // if ((currentLogOnServer(server_el) == '') && (currentTestOnServer(server_el) == 'nothing')) {
 //        if (log != '') {
@@ -614,7 +542,7 @@ function Runner() {
 
     this.getTestPathsFromSidebar = function() {
         var tests = [];
-        $('#sidebar .file-name').each(function(){
+        $('#sidebar').find('.file-name').each(function(){
                  tests.push($(this).attr('data-qtip'))
         });
         return tests;
@@ -802,7 +730,7 @@ function Runner() {
 
     this.appendListDropdownMenu = function (list_menu) {
         var checkAlreadyExist = false;
-        $('#test_list_menu a').each(function () {
+        $('#test_list_menu').find('a').each(function () {
             if ($(this).text() == list_menu.find('a').first().text()) {
                 checkAlreadyExist = true
             }
@@ -866,7 +794,6 @@ function Runner() {
 
     this.setEventChangeBranch = function () {
         $('li select.branch').change(function () {
-            var project = _self.getCurrentProject();
             showSectionOverlay();
             _self.changeBranch();
             alert('successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
@@ -992,7 +919,7 @@ function Runner() {
             type: 'GET',
             success: function (data) {
                 $('.popup-overlay').css("display", "block");
-                $("#popup .wrap").html(data);
+                $("#popup").find(".wrap").html(data);
                 stopPropagation($('.viewer'));
                 _self.setEventToCloseTestsList();
                 $("#tests-list").slimScroll({
@@ -1025,7 +952,7 @@ function Runner() {
 
     this.checkAddedOnSidebar = function (file_path) {
         var already_add = false;
-        if ($('#sidebar-test-list *[data-qtip="' + file_path + '"]').size() != 0) {
+        if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() != 0) {
             already_add = true;
         }
         return already_add
@@ -1113,7 +1040,7 @@ function Runner() {
             "<i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + HtmlDecode(it_name) + "</span>" +
             "</div>";
 
-        $('#sidebar-test-list .file-name').each(function () {
+        $('#sidebar-test-list').find('.file-name').each(function () {
             if ($(this).attr('data-qtip') == file_path) {
                 file_added = true;
                 $(this).next().children('.stroke-list').
@@ -1328,6 +1255,12 @@ function Runner() {
             out: function () {
                 removeIntent = true;
             },
+            start: function () {
+                testListUpdating = true
+            },
+            stop: function () {
+                testListUpdating = false
+            },
             beforeStop: function (event, ui) {
                 if(removeIntent == true){
                     ui.item.remove();
@@ -1470,7 +1403,7 @@ $(function () {
         }
     });
 
-    $('#test_list_menu a').on('click', function () {
+    $('#test_list_menu').find('a').on('click', function () {
         if ($(this).attr('href')) {
             myRunner.eventToLoadTestList($(this));
         }
@@ -1482,7 +1415,7 @@ $(function () {
 
     eventToClosePopup();
 
-    myRunner.setEventToDeleteTestList($('#test_list_menu li'));
+    myRunner.setEventToDeleteTestList($('#test_list_menu').find('li'));
 
 });
 
@@ -1493,7 +1426,7 @@ function openSidebar() {
     ico.addClass('glyphicon-chevron-left');
     ico.removeClass('glyphicon-chevron-right');
     $("#main").css("margin-left", "230px");
-    $("#popup .wrap").css("margin-left", "230px");
+    $("#popup").find(".wrap").css("margin-left", "230px");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
 }
 
@@ -1504,7 +1437,7 @@ function closeSidebar() {
     ico.addClass('glyphicon-chevron-right');
     ico.removeClass('glyphicon-chevron-left');
     $("#main").css("margin-left", "0");
-    $("#popup .wrap").css("margin-left", "0");
+    $("#popup").find(".wrap").css("margin-left", "0");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
 }
 
@@ -1596,8 +1529,8 @@ function verifyListName(listName) {
         alert('Name of list is too long or short!(more then ' + MAX_LENGTH + ' or less then ' + MIN_LENGTH + ' symbols)');
         return false;
     }
-    var result = true
-    $('#test_list_menu a').each(function () {
+    var result = true;
+    $('#test_list_menu').find('a').each(function () {
         if ($(this).text() == listName) {
             result = confirm('Current list name already exist. Test list will be overwrite!');
         }
@@ -1617,7 +1550,7 @@ function showMoreHistoryForServer() {
             'server': server
         },
         success: function (data) {
-            var trimmed_data = trim_data(data)
+            var trimmed_data = trim_data(data);
             $('tbody').append(trimmed_data);
             scrollLogEventToElem(trimmed_data.find('.log'));
             logUpEventToElem(trimmed_data.find('.log-up'));
@@ -1877,7 +1810,7 @@ function eventToOpenRspecResults(elem) {
             },
             success: function (data) {
                 showPopup();
-                $('.popup-window').html(data)
+                $('.popup-window').html(data);
                 eventsForRspecPopup();
             },
             error: function (e) {
@@ -2018,10 +1951,6 @@ function clearHistoryOnClient(client) {
 
 function disableClearHistoryButton() {
     $('#clear-history').prop('disabled', true);
-}
-
-function enableClearHistoryButton() {
-    $('#clear-history').prop('disabled', false);
 }
 
 function eventToClearHistoryOnServer(elem) {
