@@ -97,10 +97,10 @@ function Runner() {
                 'servers': _self.getAllServers()
             },
             success: function (data) {
-                _self.setDataOnServersView(data['servers_data']);
+                _self.setDataOnServersView(data.servers_data);
                 _self.clearServersQueue();
                 _self.clearTestsQueue();
-                _self.setDataOnQueuePanel(data['queue_data']);
+                _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
             },
             error: function (e) {
@@ -127,8 +127,8 @@ function Runner() {
     };
 
     this.setDataOnQueuePanel = function(queue_data) {
-        _self.showBookedServers(queue_data['servers']);
-        _self.showTestsFromQueue(queue_data['tests']);
+        _self.showBookedServers(queue_data.servers);
+        _self.showTestsFromQueue(queue_data.tests);
     };
 
     this.showBookedServers = function(servers) {
@@ -155,11 +155,11 @@ function Runner() {
         var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>';
         select = $(select);
         _self.eventToChangeLocationForTest(select);
-        select.find(":contains('" + test['location'] + "')").prop('selected', true);
+        select.find(":contains('" + test.location + "')").prop('selected', true);
         var props = $('<div class="props"></div>');
         props.append(select);
-        var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test['test_name'] + '</div>');
-        var testNode = $('<div class="test-node" data-id="' + test['id'] + '" data-path="' + test['test_path'] + '"></div>');
+        var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test.test_name + '</div>');
+        var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '"></div>');
         testNode.append(name);
         testNode.append(props);
         $('#test-queue').append(testNode);
@@ -171,25 +171,25 @@ function Runner() {
 
     this.setDataOnServersView = function (data) {
         for (var i = 0; i < data.length; i++) {
-            var selector = '#' + data[i]['name'];
+            var selector = '#' + data[i].name;
             var server = $(selector);
-            _self.setStatusToServerView(server, data[i]['status']);
-            _self.setServerIp(server, data[i]['server_ip']);
-            if (data[i]['status']) {
+            _self.setStatusToServerView(server, data[i].status);
+            _self.setServerIp(server, data[i].server_ip);
+            if (data[i].status) {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {
-                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i]['test']['progress'], data[i]['test']['time']);
+                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time);
                     _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
-                        data[i]['test']['name'], data[i]['test']['location']);
+                        data[i].test.name, data[i].test.location);
                     server.find('.glyphicon-stop').show();
-                    _self.setLogToServerView(server, data[i]['log']);
+                    _self.setLogToServerView(server, data[i].log);
                 } else {
                     server.find('.ui-progress-bar').hide();
                     server.find('.glyphicon-stop').hide();
                 }
                 if('booked' in data[i]) {
-                    _self.showBookedClient(server.find('.user-icon'), data[i]['booked']['booked_client']);
-                    if (data[i]['booked']['booked_by_client']) {
+                    _self.showBookedClient(server.find('.user-icon'), data[i].booked.booked_client);
+                    if (data[i].booked.booked_by_client) {
                         _self.showUnbookButton(server.find("div.button"));
                     } else {
                         _self.hideUnbookButton(server.find("div.button"));
@@ -205,14 +205,14 @@ function Runner() {
                 _self.hideBookedClient(server.find('.user-icon'));
                 _self.changeDestroyOnCreate(server.find('.glyphicon-off'));
             }
-            if (data[i]['_status']  == 'destroying') {
+            if (data[i]._status  == 'destroying') {
                 server.find('.server-content').show();
-                _self.showServerSectionOverlay(data[i]['name'], 'Destroying...');
-            } else if (data[i]['_status']  == 'creating') {
+                _self.showServerSectionOverlay(data[i].name, 'Destroying...');
+            } else if (data[i]._status  == 'creating') {
                 server.find('.server-content').show();
-                _self.showServerSectionOverlay(data[i]['name'], 'Creating...');
+                _self.showServerSectionOverlay(data[i].name, 'Creating...');
             } else {
-                _self.hideServerSectionOverlay(data[i]['name']);
+                _self.hideServerSectionOverlay(data[i].name);
             }
         }
     };
@@ -658,8 +658,8 @@ function Runner() {
             async: false,
             type: 'GET',
             success: function (data) {
-                _self.setDocBranches(data['doc_branches']);
-                _self.setTeamlabBranches(data['tm_branches']);
+                _self.setDocBranches(data.doc_branches);
+                _self.setTeamlabBranches(data.tm_branches);
             },
             error: function (e) {
                 console.log(e.message);
@@ -840,9 +840,9 @@ function Runner() {
                 'listName': elem.text()
             },
             success: function (data) {
-                $("#sidebar-test-list").html(data['html']);
-                _self.selectProject(data['project']);
-                _self.selectBranch(data['branch']);
+                $("#sidebar-test-list").html(data.html);
+                _self.selectProject(data.project);
+                _self.selectBranch(data.branch);
                 _self.changeBranch();
 //                _self.showTestsView();
                 _self.setEventToOpenFile($('.file-folder'));
@@ -1197,16 +1197,16 @@ function Runner() {
     this.getSidebarFileTest = function (file_folder) {
         var file_name = file_folder.find('.file-name').attr('data-qtip');
         var file_test = {};
-        file_test['file_name'] = file_name;
+        file_test.file_name = file_name;
         if (file_folder.children().size() > 1) {
             var strokes = [];
             file_folder.find('.name').each(function () {
                 var stroke = {};
-                stroke['name'] = $(this).attr('data-qtip');
-                stroke['number'] = $(this).attr('data-role');
+                stroke.name = $(this).attr('data-qtip');
+                stroke.number = $(this).attr('data-role');
                 strokes.push(stroke);
             });
-            file_test['strokes'] = strokes;
+            file_test.strokes = strokes;
         }
         return file_test;
     };
@@ -1225,8 +1225,8 @@ function Runner() {
         var file_selectors = $('.file-folder');
         var file_tests = _self.getTestFiles(file_selectors);
         var file_list = {};                        //
-        file_list['name'] = name;             //LIKE
-        file_list['file_tests'] = file_tests;      //HASH
+        file_list.name = name;             //LIKE
+        file_list.file_tests = file_tests;      //HASH
         return file_list;                          //
     };
 
@@ -1443,7 +1443,7 @@ function closeSidebar() {
 function getSideBarHeight() {
     var topNavHeight = $("#topnavbar").height();
     var windowHeight = $(window).height();
-    return windowHeight - topNavHeight - constants['fixedBottom'];
+    return windowHeight - topNavHeight - constants.fixedBottom;
 }
 function setSideBarHeight(height) {
     $("#sidebar").height(height);
@@ -1458,13 +1458,13 @@ function getNeededToggleCoordinates() {
     if ($("#sidebar").css('display') != 'none') {
         sidebarWidth = $("#sidebar").outerWidth();
     }
-    coordinates['left'] = sidebarWidth - 1;
+    coordinates.left = sidebarWidth - 1;
     return coordinates;
 }
 
 function setToggleSidebarCoordinates(coordinates) {
     var elem = $("#open-sidebar");
-    elem.css('left', coordinates['left']);
+    elem.css('left', coordinates.left);
 }
 
 function changeBgZooey() {
