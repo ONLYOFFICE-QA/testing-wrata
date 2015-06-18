@@ -33,6 +33,7 @@ const MAX_LENGTH = 26;
 const MIN_LENGTH = 3;
 
 function failAlert() {
+    alert('Fail! Something goes wrong!');
 }
 
 function infoPopup(info_html) {
