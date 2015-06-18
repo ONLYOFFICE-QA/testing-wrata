@@ -68,13 +68,13 @@ class TestListsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test_list
-      @test_list = TestList.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_test_list
+    @test_list = TestList.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def test_list_params
-      params[:test_list]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def test_list_params
+    params[:test_list]
+  end
 end
