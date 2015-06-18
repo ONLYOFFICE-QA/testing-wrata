@@ -4,7 +4,7 @@ class TestListsController < ApplicationController
   # GET /test_lists
   # GET /test_lists.json
   def index
-    @test_lists = TestList.where(:client_id => current_client.id).all
+    @test_lists = TestList.where(client_id: current_client.id).all
 
     respond_to do |format|
       format.html # index.html.erb

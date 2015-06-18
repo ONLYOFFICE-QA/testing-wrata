@@ -89,9 +89,3 @@ Style/EmptyLinesAroundBlockBody:
 Style/GlobalVars:
   Enabled: false
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, UseHashRocketsWithSymbolValues.
-Style/HashSyntax:
-  Enabled: false
-
