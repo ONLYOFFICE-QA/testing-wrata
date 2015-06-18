@@ -68,11 +68,6 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/EmptyLines:
-  Enabled: false
-
 # Offense count: 42
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:

@@ -63,7 +63,6 @@ class HistoriesController < ApplicationController
     end
   end
 
-
   def set_analysed
     @history = History.find(params['id'])
     @history.analysed = true
