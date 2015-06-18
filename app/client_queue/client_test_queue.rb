@@ -87,4 +87,3 @@ class ClientTestQueue
     [doc_branch, teamlab_branch]
   end
 end
-
