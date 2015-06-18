@@ -67,10 +67,13 @@ function Runner() {
     const STATUS_WAIT = 2;
     const SIDE_MAX_TEST_LENGTH = 40;
     var _self = this;
+    var testListUpdating = false;
 
     this.eventToGetUpdatedDataFromServer = function () {
         setInterval(function () {
-            _self.getUpdatedDataFromServer()
+            if (!testListUpdating) {
+                _self.getUpdatedDataFromServer()
+            }
         }, STATUS.UPDATE_INTERVAL);
     };
 
@@ -1327,6 +1330,12 @@ function Runner() {
             },
             out: function () {
                 removeIntent = true;
+            },
+            start: function () {
+                testListUpdating = true
+            },
+            stop: function () {
+                testListUpdating = false
             },
             beforeStop: function (event, ui) {
                 if(removeIntent == true){
