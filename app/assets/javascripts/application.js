@@ -15,6 +15,7 @@
 //= require_tree
 //
 //
+/*jshint esnext: true */
 
 $.ajaxSetup({
     headers: {
