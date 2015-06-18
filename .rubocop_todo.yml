@@ -115,9 +115,3 @@ Style/SingleLineBlockParams:
 # Cop supports --auto-correct.
 Style/SingleSpaceBeforeFirstArg:
   Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
-Style/SpaceInsideBlockBraces:
-  Enabled: false

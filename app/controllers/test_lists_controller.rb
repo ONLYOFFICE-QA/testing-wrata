@@ -62,7 +62,7 @@ class TestListsController < ApplicationController
     delete_testlist_by_id(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to test_lists_url}
+      format.html { redirect_to test_lists_url }
       format.json { head :no_content }
     end
   end
