@@ -2,7 +2,6 @@ require 'resque/server'
 Runner::Application.routes.draw do
   mount Resque::Server, at: '/resque'
 
-
   root to: 'runner#index', as: 'runner'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -63,7 +63,6 @@ class HistoriesController < ApplicationController
     end
   end
 
-
   def set_analysed
     @history = History.find(params['id'])
     @history.analysed = true
@@ -84,13 +83,14 @@ class HistoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_history
-      @history = History.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def history_params
-      params[:history]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_history
+    @history = History.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def history_params
+    params[:history]
+  end
 end

@@ -37,18 +37,18 @@ class ClientTestQueue
   end
 
   def delete_test(test_id)
-    test = @tests.select { |cur_test| cur_test[:id] == test_id }.first
+    test = @tests.find { |cur_test| cur_test[:id] == test_id }
     @tests.delete(test)
   end
 
   def swap_tests(test_id1, test_id2, in_start)
-    test1 = @tests.select { |test| test[:id] == test_id1 }.first
+    test1 = @tests.find { |test| test[:id] == test_id1 }
     test1_index = @tests.index(test1)
     if in_start == 'true'
       elem = @tests.delete_at(test1_index)
       @tests.insert(0, elem)
     else
-      test2 = @tests.select { |test| test[:id] == test_id2 }.first
+      test2 = @tests.find { |test| test[:id] == test_id2 }
       test2_index = @tests.index(test2)
       elem = @tests.delete_at(test1_index)
       @tests.insert(test2_index, elem)
@@ -87,4 +87,3 @@ class ClientTestQueue
     [doc_branch, teamlab_branch]
   end
 end
-

@@ -125,7 +125,7 @@ class ServersController < ApplicationController
   def destroy
     Server.find(params[:id]).destroy
     $threads.delete_threads
-    flash[:success] = "Server deleted"
+    flash[:success] = 'Server deleted'
     redirect_to servers_url
   end
 

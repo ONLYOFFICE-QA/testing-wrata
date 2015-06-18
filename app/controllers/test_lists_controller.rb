@@ -4,7 +4,7 @@ class TestListsController < ApplicationController
   # GET /test_lists
   # GET /test_lists.json
   def index
-    @test_lists = TestList.where(:client_id => current_client.id).all
+    @test_lists = TestList.where(client_id: current_client.id).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -62,19 +62,20 @@ class TestListsController < ApplicationController
     delete_testlist_by_id(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to test_lists_url}
+      format.html { redirect_to test_lists_url }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test_list
-      @test_list = TestList.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def test_list_params
-      params[:test_list]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_test_list
+    @test_list = TestList.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def test_list_params
+    params[:test_list]
+  end
 end

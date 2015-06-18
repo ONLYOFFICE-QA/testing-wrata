@@ -62,13 +62,14 @@ class TestFilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test_file
-      @test_file = TestFile.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def test_file_params
-      params[:test_file]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_test_file
+    @test_file = TestFile.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def test_file_params
+    params[:test_file]
+  end
 end
