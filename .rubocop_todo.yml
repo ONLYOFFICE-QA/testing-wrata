@@ -110,8 +110,3 @@ Style/NumericLiterals:
 # Configuration parameters: Methods.
 Style/SingleLineBlockParams:
   Enabled: false
-
-# Offense count: 54
-# Cop supports --auto-correct.
-Style/SingleSpaceBeforeFirstArg:
-  Enabled: false
