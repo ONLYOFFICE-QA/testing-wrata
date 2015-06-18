@@ -154,10 +154,10 @@ function parseRunMethod(method, hour, min) {
         run_method = 'each_168_hours';
     }else if (method == 'each time'){
         run_method = 'each';
-        if (hour != ''){
+        if (hour !== ''){
             run_method = run_method + '_' + hour + '_hours';
         }
-        if (min != ''){
+        if (min !== ''){
             run_method = run_method + '_' + min + '_minutes';
         }
     }

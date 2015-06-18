@@ -340,7 +340,7 @@ function Runner() {
     };
 
     this.setStatusToServerView = function (server, status) {
-        if (status == true) {
+        if (status === true) {
             server.removeClass('off');
         }
         else {
@@ -560,7 +560,7 @@ function Runner() {
         folder_elem.find('.add-button-file').each(function(){
             tests.push($(this).attr('data-test'));
         });
-        if (tests.length != 0) {
+        if (tests.length !== 0) {
             var branch = _self.getBranch();
             var location = $('li.active .region').val();
             _self.addTestsInQueue(tests, branch, location);
@@ -705,7 +705,7 @@ function Runner() {
                 hideOverlay();
             },
             success: function (data) {
-                if (data == "") {
+                if (data === "") {
                     alert('Sign up for saving!');
                     return;
                 }
@@ -734,7 +734,7 @@ function Runner() {
                 checkAlreadyExist = true;
             }
         });
-        if (checkAlreadyExist != true) {
+        if (checkAlreadyExist !== true) {
             $('#test_list_menu').prepend(list_menu);
             var menu_link = list_menu.children('a').first();
             $(menu_link).on('click', function () {
@@ -951,7 +951,7 @@ function Runner() {
 
     this.checkAddedOnSidebar = function (file_path) {
         var already_add = false;
-        if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() != 0) {
+        if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() !== 0) {
             already_add = true;
         }
         return already_add;
@@ -1047,7 +1047,7 @@ function Runner() {
                     append(stroke);
             }
         });
-        if (file_added == false) {
+        if (file_added === false) {
             var stroke_list = "<div class='stroke-list'>" + stroke + "</div>";
             var file_inside = "<div class='file-inside'>" + stroke_list + "</div>";
             var file_name_elem = "<div class='file-name shower' data-qtip='" + file_path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + file_name + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + file_name + "</span></div>";
@@ -1261,17 +1261,17 @@ function Runner() {
                 testListUpdating = false;
             },
             beforeStop: function (event, ui) {
-                if(removeIntent == true){
+                if(removeIntent === true){
                     ui.item.remove();
                     _self.deleteTestFromQueue(ui.item.attr('data-id'));
                 }
             },
             update: function(event, ui) {
-                if (removeIntent != true) {
+                if (removeIntent !== true) {
                     var first = ui.item.attr('data-id');
                     var second = ui.item.prev().attr('data-id');
                     var in_start = false;
-                    if (second == undefined) {
+                    if (second === undefined) {
                         in_start = true;
                     }
                     _self.swapTestsInQueue(first, second, in_start);
@@ -1330,7 +1330,7 @@ function Runner() {
 
     this.checkQueueEmpty = function() {
         var empty = true;
-        if($('.test-node :visible').size() != 0) {
+        if($('.test-node :visible').size() !== 0) {
            empty = false;
         }
         return empty;
@@ -1393,7 +1393,7 @@ $(function () {
 
     $('#save-new').on('click', function () {
         if (verifyListName($("#list-name").text())) {
-            if ($("#sidebar-test-list").children().size() != 0) {
+            if ($("#sidebar-test-list").children().size() !== 0) {
                 myRunner.saveTestList();
             }
             else {
@@ -1654,13 +1654,13 @@ function HtmlDecode(val) {
 }
 
 function showStartPanel() {
-    if (checkEmptyList() == false) {
+    if (checkEmptyList() === false) {
         $('.start-panel').show();
     }
 }
 
 function lockInactiveTab() {
-    if (checkEmptyList() == false) {
+    if (checkEmptyList() === false) {
         var tab = $('.nav-tabs li:not(.active) a');
         tab.attr("data-toggle", "");
         tab.css('background-color', '#eee');
@@ -1668,13 +1668,13 @@ function lockInactiveTab() {
 }
 
 function lockActiveBranchSelect() {
-    if (checkEmptyList() == false) {
+    if (checkEmptyList() === false) {
         $('.nav-tabs li.active select.branch').attr('disabled', 'disabled');
     }
 }
 
 function unlockActiveBranchSelect() {
-    if (checkEmptyList() == true) {
+    if (checkEmptyList() === true) {
         $('.nav-tabs li.active select.branch').removeAttr('disabled');
     }
 }
@@ -1690,7 +1690,7 @@ function unlockAllBranchSelect() {
 }
 
 function unlockInactiveTab() {
-    if (checkEmptyList() == true) {
+    if (checkEmptyList() === true) {
         var tab = $('.nav-tabs li:not(.active) a');
         tab.attr("data-toggle", "tab");
         tab.css('background-color', '');
@@ -1704,7 +1704,7 @@ function hideStartPanel() {
 }
 
 function checkEmptyList() {
-    return $('#sidebar-test-list').children().size() == 0;
+    return $('#sidebar-test-list').children().size() === 0;
 }
 
 function eventToDeleteHistoryLine(elem) {
@@ -1873,7 +1873,7 @@ function setScrollOnMainDescribe() {
 
 function setFailedToFailedDescribes() {
     $('.describe').each(function () {
-        if ($(this).find('.failed').length != 0) {
+        if ($(this).find('.failed').length !== 0) {
             $(this).addClass('failed');
         }
     });
