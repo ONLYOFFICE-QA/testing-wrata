@@ -8,6 +8,7 @@ Runner::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :clients
+  get '/servers/show_current_results' # should always be on top of `resources :servers` for correctly shown current status
   resources :servers
   resources :test_files
   resources :test_lists
@@ -58,7 +59,6 @@ Runner::Application.routes.draw do
 
   get '/server_history/show_more', to: 'servers#show_more'
   get '/servers/reboot'
-  get '/servers/show_current_results'
   get '/server_history/:id', to: 'servers#server_history', as: 'server_history'
   post '/servers/destroy'
   post '/servers/create'
