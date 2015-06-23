@@ -17,7 +17,7 @@ class ServerThreads < ActionController::Base
   end
 
   def all_servers_from_threads
-    @server_threads.inject([]) { |a, e| a << e.server_model }
+    Server.sort_servers(@server_threads.inject([]) { |a, e| a << e.server_model })
   end
 
   def update_models
