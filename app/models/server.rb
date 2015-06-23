@@ -22,7 +22,7 @@ class Server < ActiveRecord::Base
     save
   end
 
-  def self.all_sorted
-    Server.all.sort_by { |s| s.name[/\d+/].to_i }
+  def self.sort_servers(servers_array)
+    servers_array.sort_by { |s| s.name[/\d+/].to_i }
   end
 end
