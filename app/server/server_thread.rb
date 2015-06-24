@@ -1,9 +1,3 @@
-# encoding: UTF-8
-# class Queue
-#  def get_queue
-#    @que
-#  end
-# end
 require_relative '../../app/server/managers/history_manager'
 require_relative '../../app/server/managers/html_result_manager'
 require_relative '../../app/server/managers/log_manager'

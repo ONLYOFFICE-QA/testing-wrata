@@ -18,11 +18,6 @@ class ServerOptions
         "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " \
         "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull && git checkout #{@teamlab_api_branch} && git pull && " \
         "#{generate_region_command} "
-    # "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull && git checkout #{@docs_branch} && git pull && bundle install && " +
-    #    "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull && git checkout #{@shared_branch} && git pull && bundle install && " +
-    #    "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull && git checkout #{@teamlab_branch} && git pull && bundle install && " +
-    #    "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull && git checkout #{@teamlab_api_branch} && git pull && " +
-    #    "#{generate_region_command} "
     command
   end
 
