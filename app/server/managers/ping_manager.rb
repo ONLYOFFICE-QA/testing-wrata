@@ -10,6 +10,7 @@ module PingManager
           pid = spawn(command, out: w)
           Process.wait pid
           w.close
+          Rails.logger.info "Executed '#{command}'"
           status = r.read.include?('0 received')
           @status = !status
         end
