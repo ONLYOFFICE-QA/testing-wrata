@@ -481,6 +481,25 @@ function Runner() {
         });
     };
 
+    this.unbookAllServerS = function(button, server_name, hide_button) {
+        $.ajax({
+            url: 'queue/unbook_all_servers',
+            context: this,
+            async: false,
+            type: 'POST',
+            success: function () {
+                button.unbind();
+                if (hide_button)
+                    button.hide();
+                _self.getUpdatedDataFromServer();
+            },
+            error: function (e) {
+                console.log(e.message);
+                failAlert();
+            }
+        });
+    };
+
     this.eventToUnbookServer = function(elems, hide_button) {
         offEventsOnElem(elems);
         elems.on('click', function() {
