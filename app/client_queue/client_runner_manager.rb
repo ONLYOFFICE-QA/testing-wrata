@@ -105,7 +105,7 @@ class ClientRunnerManager
 
   def delete_all_servers
     @client_servers.servers_threads.each do |current_server|
-      delete_server(current_server['name'])
+      delete_server(current_server[:name])
     end
   end
 
