@@ -172,4 +172,10 @@ class RunnerController < ApplicationController
 
     render nothing: true
   end
+
+  def stop_all_booked
+    $threads.get_threads_by_user(current_client).each(&:stop_test)
+
+    render nothing: true
+  end
 end

@@ -37,6 +37,7 @@ Runner::Application.routes.draw do
   get 'runner/pull_projects'
   get 'runner/branches'
   post 'runner/stop_current'
+  post 'runner/stop_all_booked'
 
   post 'queue/book_server'
   post 'queue/unbook_server'

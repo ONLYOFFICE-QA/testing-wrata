@@ -6,6 +6,7 @@
             $("#server-queue").slimScroll({width: '137px', height: '84vh'});
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
+            myRunner.eventToStopAllBooked($('#stop-booked'));
             myRunner.eventToClearTestQueue($('#clear-tests'));
             myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
@@ -81,10 +82,11 @@
     <div class="block" style="width: 37%; float: left;padding-right: 12px;">
       <div id="queue-panel">
         <div class="panel-header">
-          <div class="list-header" style="width: 32%">
+          <div class="list-header">
             <i class="glyphicon glyphicon-list-alt"></i>servers
           </div>
           <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
+          <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
           <div class="list-header" style="width: 61%">
             <i class="glyphicon glyphicon-list-alt"></i>tests
           </div>

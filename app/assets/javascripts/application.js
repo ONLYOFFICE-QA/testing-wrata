@@ -104,6 +104,7 @@ function Runner() {
                 _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
                 _self.toggleUnbookAllServersButton();
+                _self.toggleStopAllBookedServers();
             },
             error: function (e) {
                 console.log(e.message);
@@ -394,6 +395,26 @@ function Runner() {
         });
     };
 
+    this.stopAllBooked = function () {
+        $.ajax({
+            url: 'runner/stop_all_booked',
+            type: 'POST',
+            async: true,
+            beforeSend: function () {
+                showOverlay('Stopping tests on all booked servers');
+            },
+            complete: function () {
+                hideOverlay();
+            },
+            success: function () {
+                alert('All test on all booked servers stop successfully!');
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        });
+    };
+
     this.eventToRebootServer = function(elem) {
         elem.on('click', function () {
             var server_name = $(this).attr('data-server');
@@ -407,6 +428,15 @@ function Runner() {
             if (result) {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
+            }
+        });
+    };
+
+    this.eventToStopAllBooked = function (elem) {
+        elem.on('click', function () {
+            var result = confirm('Are you really want to stop all test on booked servers?');
+            if (result) {
+                _self.stopAllBooked();
             }
         });
     };
@@ -1383,6 +1413,14 @@ function Runner() {
             $('#clear-servers').hide();
         } else {
             $('#clear-servers').show();
+        }
+    };
+
+    this.toggleStopAllBookedServers = function() {
+        if (this.checkAnyBookedServers()) {
+            $('#stop-booked').hide();
+        } else {
+            $('#stop-booked').show();
         }
     };
 }
