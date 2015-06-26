@@ -436,7 +436,6 @@ function Runner() {
         elem.on('click', function () {
             var result = confirm('Are you really want to stop all test on booked servers?');
             if (result) {
-                var server_name = $(this).attr('data-server');
                 _self.stopAllBooked();
             }
         });
