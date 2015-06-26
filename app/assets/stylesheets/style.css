@@ -73,7 +73,7 @@ footer {
 .overlay-window {
     text-align: center;
     border-radius: 49px;
-    height: 200px;
+    height: 300px;
     width: 300px;
     overflow: auto;
     margin: auto;
@@ -89,13 +89,12 @@ footer {
 .overlay-content {
     overflow: auto;
     margin: auto;
+    margin-top: 20%;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    height: 148px;
-    width: 128px;
 }
 
 .overlay-text {
