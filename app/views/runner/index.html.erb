@@ -7,6 +7,7 @@
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
             myRunner.eventToClearTestQueue($('#clear-tests'));
+            myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
         });
@@ -82,6 +83,7 @@
         <div class="panel-header">
           <div class="list-header" style="width: 38%">
             <i class="glyphicon glyphicon-list-alt"></i>servers
+            <i id="clear-servers" class="glyphicon glyphicon-trash"></i>
           </div>
           <div class="list-header" style="width: 61%">
             <i class="glyphicon glyphicon-list-alt"></i>tests
