@@ -394,6 +394,20 @@ function Runner() {
         });
     };
 
+    this.stopAllBooked = function () {
+        $.ajax({
+            url: 'runner/stop_all_booked',
+            type: 'POST',
+            async: false,
+            success: function () {
+                alert('All test on all booked servers stop successfully!');
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        });
+    };
+
     this.eventToRebootServer = function(elem) {
         elem.on('click', function () {
             var server_name = $(this).attr('data-server');

@@ -172,4 +172,7 @@ class RunnerController < ApplicationController
 
     render nothing: true
   end
+
+  def stop_all_booked
+  end
 end
