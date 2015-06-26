@@ -103,6 +103,7 @@ function Runner() {
                 _self.clearTestsQueue();
                 _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
+                _self.toggleUnbookAllServersButton();
             },
             error: function (e) {
                 console.log(e.message);
@@ -472,6 +473,7 @@ function Runner() {
                 if (hide_button)
                     button.hide();
                 _self.eventToBookServer(button);
+                _self.toggleUnbookAllServersButton();
                 _self.getUpdatedDataFromServer();
             },
             error: function (e) {
@@ -1360,12 +1362,27 @@ function Runner() {
         return empty;
     };
 
-
     this.toggleClearTestButton = function() {
         if (this.checkQueueEmpty()) {
             $('#clear-tests').hide();
         } else {
             $('#clear-tests').show();
+        }
+    };
+
+    this.checkAnyBookedServers = function() {
+        var empty = true;
+        if($('.server-node :visible').size() !== 0) {
+            empty = false;
+        }
+        return empty;
+    };
+
+    this.toggleUnbookAllServersButton = function() {
+        if (this.checkAnyBookedServers()) {
+            $('#clear-servers').hide();
+        } else {
+            $('#clear-servers').show();
         }
     };
 }
