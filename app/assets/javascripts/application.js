@@ -481,16 +481,13 @@ function Runner() {
         });
     };
 
-    this.unbookAllServers = function(button, server_name, hide_button) {
+    this.unbookAllServers = function() {
         $.ajax({
             url: 'queue/unbook_all_servers',
             context: this,
             async: false,
             type: 'POST',
             success: function () {
-                button.unbind();
-                if (hide_button)
-                    button.hide();
                 _self.getUpdatedDataFromServer();
             },
             error: function (e) {
