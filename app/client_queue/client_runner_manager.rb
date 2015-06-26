@@ -104,8 +104,9 @@ class ClientRunnerManager
   end
 
   def delete_all_servers
-    @client_servers.servers_threads.each do |current_server|
-      delete_server(current_server[:name])
+    booked_servers = @client_servers.servers_threads.collect { |e| e[:name] }
+    booked_servers.each do |current_name|
+      delete_server(current_name)
     end
   end
 
