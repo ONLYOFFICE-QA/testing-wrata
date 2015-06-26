@@ -1151,6 +1151,7 @@ a, a:link, a:visited  {
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
+    width: 27%
 }
 
 .list-header i {
