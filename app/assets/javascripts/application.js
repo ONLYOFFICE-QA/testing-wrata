@@ -481,7 +481,7 @@ function Runner() {
         });
     };
 
-    this.unbookAllServerS = function(button, server_name, hide_button) {
+    this.unbookAllServers = function(button, server_name, hide_button) {
         $.ajax({
             url: 'queue/unbook_all_servers',
             context: this,
@@ -1344,6 +1344,13 @@ function Runner() {
     this.eventToClearTestQueue = function(elem) {
         elem.on('click', function(){
             _self.clearTestQueue();
+            _self.getUpdatedDataFromServer();
+        });
+    };
+
+    this.eventToClearServerList = function(elem) {
+        elem.on('click', function(){
+            _self.unbookAllServers();
             _self.getUpdatedDataFromServer();
         });
     };
