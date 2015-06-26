@@ -16,6 +16,10 @@ class ServerThreads < ActionController::Base
     @server_threads.find { |thread| thread.server_model.name == name }
   end
 
+  def get_threads_by_user(client)
+    @server_threads.select { |thread| thread.server_model.book_client_id == client.id }
+  end
+
   def all_servers_from_threads
     Server.sort_servers(@server_threads.inject([]) { |a, e| a << e.server_model })
   end
