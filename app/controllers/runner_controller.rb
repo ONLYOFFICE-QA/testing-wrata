@@ -174,5 +174,6 @@ class RunnerController < ApplicationController
   end
 
   def stop_all_booked
+    $threads.get_threads_by_user(current_client).each(&:stop_test)
   end
 end
