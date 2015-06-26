@@ -518,6 +518,7 @@ function Runner() {
         $.ajax({
             url: 'queue/unbook_all_servers',
             context: this,
+            async: false,
             type: 'POST',
             success: function () {
                 _self.getUpdatedDataFromServer();
