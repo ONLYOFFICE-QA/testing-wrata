@@ -6,6 +6,7 @@
             $("#server-queue").slimScroll({width: '137px', height: '84vh'});
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
+            myRunner.eventToStopAllBooked($('#stop-booked'));
             myRunner.eventToClearTestQueue($('#clear-tests'));
             myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
