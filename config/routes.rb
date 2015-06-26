@@ -40,6 +40,7 @@ Runner::Application.routes.draw do
 
   post 'queue/book_server'
   post 'queue/unbook_server'
+  post 'queue/unbook_all_servers'
   post 'queue/add_test'
   post 'queue/add_tests'
   post 'queue/delete_test'

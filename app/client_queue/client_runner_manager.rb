@@ -103,6 +103,13 @@ class ClientRunnerManager
     @client_servers.delete_server(server_name, client)
   end
 
+  def delete_all_servers
+    booked_servers = @client_servers.servers_threads.collect { |e| e[:name] }
+    booked_servers.each do |current_name|
+      delete_server(current_name)
+    end
+  end
+
   def change_tests(tests)
     @tests = ClientTestQueue.new(tests)
   end
