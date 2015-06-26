@@ -104,6 +104,7 @@ function Runner() {
                 _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
                 _self.toggleUnbookAllServersButton();
+                _self.toggleStopAllBookedServers();
             },
             error: function (e) {
                 console.log(e.message);
@@ -1412,6 +1413,14 @@ function Runner() {
             $('#clear-servers').hide();
         } else {
             $('#clear-servers').show();
+        }
+    };
+
+    this.toggleStopAllBookedServers = function() {
+        if (this.checkAnyBookedServers()) {
+            $('#stop-booked').hide();
+        } else {
+            $('#stop-booked').show();
         }
     };
 }
