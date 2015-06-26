@@ -411,6 +411,16 @@ function Runner() {
         });
     };
 
+    this.eventToStopAllBooked = function (elem) {
+        elem.on('click', function () {
+            var result = confirm('Are you really want to stop all test on booked servers?');
+            if (result) {
+                var server_name = $(this).attr('data-server');
+                _self.stopAllBooked();
+            }
+        });
+    };
+
     this.bookServer = function(button, server_name) {
         $.ajax({
             url: 'queue/book_server',
