@@ -19,15 +19,9 @@
     font-size: 16px;
     font-weight: bold;
     display: inline-block;
-    border-top-color: dimgrey;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-right-color: dimgrey;
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-left-color: dimgrey;
-    border-left-style: solid;
-    border-left-width: 1px;
+    border-top: 1px solid dimgrey;
+    border-right: 1px solid dimgrey;
+    border-left: 1px solid dimgrey;
     border-radius: 3px 3px 0 0;
     background: white;
     padding: 7px 10px 0 8px;
@@ -50,8 +44,7 @@
 .popup-tests {
     width: 800px;
     height: 70%;
-    margin: 0 auto;
-    margin-top: 60px;
+    margin: 60px auto 0;
     z-index: 100;
     position: relative;
 }

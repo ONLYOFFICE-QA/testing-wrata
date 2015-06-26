@@ -7,8 +7,7 @@
 .popup-window {
     max-width: 1024px;
     height: 90%;
-    margin: 0 auto;
-    margin-top: 52px;
+    margin: 52px auto 0;
     z-index: 100;
     position: relative;
     background: white;
