@@ -398,7 +398,13 @@ function Runner() {
         $.ajax({
             url: 'runner/stop_all_booked',
             type: 'POST',
-            async: false,
+            async: true,
+            beforeSend: function () {
+                showOverlay('Stopping tests on all booked servers');
+            },
+            complete: function () {
+                hideOverlay();
+            },
             success: function () {
                 alert('All test on all booked servers stop successfully!');
             },
@@ -511,7 +517,6 @@ function Runner() {
         $.ajax({
             url: 'queue/unbook_all_servers',
             context: this,
-            async: false,
             type: 'POST',
             success: function () {
                 _self.getUpdatedDataFromServer();
