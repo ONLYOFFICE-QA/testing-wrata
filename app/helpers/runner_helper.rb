@@ -20,7 +20,7 @@ module RunnerHelper
     file_tests = []
     test_file.each_with_index do |line, index|
       if line =~ /it [\'\"](.*)?[\'\"] do/
-        test_name = line.scan /it [\'\"](.*?)[\'\"] do/
+        test_name = line.scan(/it [\'\"](.*?)[\'\"] do/)
         file_tests << { name: test_name.first.first, stroke: (index + 1) }
       end
     end

@@ -29,7 +29,7 @@ module ServersHelper
   def get_test_result(log)
     result = ''
     if log.class == String
-      result = log.match /[0-9]{1,} example.+[0-9]{1,} failure.{0,}/
+      result = log.match(/[0-9]{1,} example.+[0-9]{1,} failure.{0,}/)
       result.to_s
     end
     result
