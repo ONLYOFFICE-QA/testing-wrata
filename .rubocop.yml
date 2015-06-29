@@ -1,5 +1,5 @@
 inherit_from:
     - .rubocop_todo.yml
 AllCops:
-  Excludes:
+  Exclude:
     - db/schema.rb
