@@ -6,7 +6,7 @@ class ServersController < ApplicationController
   # GET /test_lists
   # GET /test_lists.json
   def index
-    @servers = Server.all
+    @servers = Server.sort_servers(Server.all)
 
     respond_to do |format|
       format.html # index.html.erb
