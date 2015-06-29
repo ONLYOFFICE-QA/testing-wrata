@@ -8,7 +8,7 @@ module TestManager
   end
 
   def stop_test
-    system "ssh -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} \"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""
+    system "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} \"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""
   end
 
   def generate_run_test_command(test, options)
