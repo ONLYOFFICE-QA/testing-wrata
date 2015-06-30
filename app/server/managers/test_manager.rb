@@ -16,7 +16,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    generate_ssh_command("\"source ~/.rvm/scripts/rvm; source /usr/local/rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" 2>&1")
+    generate_ssh_command("\"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" 2>&1")
   end
 
   def open_folder_with_project(test_path)
