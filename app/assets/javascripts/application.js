@@ -1799,12 +1799,6 @@ function stopPropagation(elem) {
     elem.click(function(e){ e.stopPropagation();});
 }
 
-function logDownEventToElem(elem) {
-    elem.on('click', function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
-    });
-}
-
 function showSectionOverlay() {
     $(".block:last() .section-overlay").show();
 }

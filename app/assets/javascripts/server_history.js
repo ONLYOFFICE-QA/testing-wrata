@@ -113,6 +113,12 @@ function logDownEvent() {
     });
 }
 
+function logDownEventToElem(elem) {
+    elem.on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
+    });
+}
+
 function openLogInHistoryEventToElem(elem) {
     elem.on('click', function () {
         var log_window = $(this).next();
