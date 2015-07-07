@@ -1798,17 +1798,6 @@ function setFailedToFailedDescribes() {
     });
 }
 
-function eventToShowFullStartOption(elem) {
-    elem.hover(
-        function() {
-            var to_show = $(this).find('.full-command');
-            to_show.fadeIn('fast');
-        }, function() {
-            var to_show = $(this).find('.full-command');
-            to_show.fadeOut('fast');
-    });
-}
-
 function clearHistoryOnServer(server_name) {
     $.ajax({
         url: '/servers/clear_history',
