@@ -167,7 +167,7 @@ function eventToSetAnalysedToHistory(elem) {
 }
 
 function eventToOpenMoreOptions(elem) {
-    elem.on('click', function(){
+    elem.on('click', function () {
         var more_options = $(this).next('.more-options');
         var cur_display = more_options.css('display');
         if (cur_display == 'none') {
@@ -179,25 +179,27 @@ function eventToOpenMoreOptions(elem) {
 }
 
 function eventToShowFullStartOption(elem) {
-    elem.hover(
-        function() {
+    elem.click(
+        function () {
             var to_show = $(this).find('.full-command');
-            to_show.fadeIn('fast');
-        }, function() {
-            var to_show = $(this).find('.full-command');
-            to_show.fadeOut('fast');
+            if ($(to_show).is(":visible")) {
+                to_show.fadeOut('fast');
+            }
+            else {
+                to_show.fadeIn('fast');
+            }
         });
 }
 
 function eventToClearHistoryOnServer(elem) {
-    elem.on('click', function(){
+    elem.on('click', function () {
         var server_name = $('#server').text();
         clearHistoryOnServer(server_name);
     });
 }
 
 function eventToClearHistoryOnClient(elem) {
-    elem.on('click', function(){
+    elem.on('click', function () {
         var name = $('#client').text();
         clearHistoryOnClient(name);
     });
