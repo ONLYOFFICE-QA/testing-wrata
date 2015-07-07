@@ -1799,12 +1799,6 @@ function stopPropagation(elem) {
     elem.click(function(e){ e.stopPropagation();});
 }
 
-function logUpEventToElem(elem) {
-    elem.on('click', function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
-    });
-}
-
 function logDownEventToElem(elem) {
     elem.on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
