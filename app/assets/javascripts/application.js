@@ -1696,29 +1696,6 @@ function checkEmptyList() {
     return $('#sidebar-test-list').children().size() === 0;
 }
 
-function eventToSetAnalysedToHistory(elem) {
-    elem.on('click', function () {
-        var clicked = $(this);
-        $.ajax({
-            url: '/histories/set_analysed',
-            async: false,
-            type: 'POST',
-            data: {
-                'id': clicked.attr('data-id')
-            },
-            success: function () {
-                var el = clicked.parent();
-                clearElementInside(el);
-                el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"));
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
-            }
-        });
-
-    });
-}
-
 function addSortableToElem(elem) {
     elem.sortable({ });
 }
