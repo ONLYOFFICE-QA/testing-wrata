@@ -195,3 +195,10 @@ function eventToClearHistoryOnServer(elem) {
         clearHistoryOnServer(server_name);
     });
 }
+
+function eventToClearHistoryOnClient(elem) {
+    elem.on('click', function(){
+        var name = $('#client').text();
+        clearHistoryOnClient(name);
+    });
+}
