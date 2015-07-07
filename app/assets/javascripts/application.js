@@ -147,7 +147,9 @@ function Runner() {
 
     this.setDataOnQueuePanel = function(queue_data) {
         _self.showBookedServers(queue_data.servers);
+        _self.setBookedServersCount(queue_data.servers.length)
         _self.showTestsFromQueue(queue_data.tests);
+        _self.showTestsInQueueCount(queue_data.tests.length)
     };
 
     this.showBookedServers = function(servers) {
@@ -170,6 +172,10 @@ function Runner() {
         }
     };
 
+    this.showTestsInQueueCount = function(testsCount) {
+        $('#test-queue-title').text('Tests (' + testsCount + ')');
+    };
+
     this.appendTestsOnQueue = function(test) {
         var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>';
         select = $(select);
@@ -186,6 +192,10 @@ function Runner() {
 
     this.setServerIp = function(server, ip) {
         server.find('.server-ip span').text(ip);
+    };
+
+    this.setBookedServersCount = function(serversCount) {
+        $('#booked-servers-title').text('Servers (' + serversCount + ')');
     };
 
     this.setDataOnServersView = function (data) {
