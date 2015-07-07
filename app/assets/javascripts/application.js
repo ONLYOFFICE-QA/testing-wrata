@@ -1979,12 +1979,6 @@ function logUpEventToElem(elem) {
     });
 }
 
-function logDownEvent() {
-    $('.log-down').on('click', function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
-    });
-}
-
 function logDownEventToElem(elem) {
     elem.on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);

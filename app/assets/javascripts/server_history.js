@@ -80,3 +80,9 @@ function logUpEvent() {
     });
 }
 
+function logDownEvent() {
+    $('.log-down').on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
+    });
+}
+
