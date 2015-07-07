@@ -1798,18 +1798,6 @@ function setFailedToFailedDescribes() {
     });
 }
 
-function eventToOpenMoreOptions(elem) {
-    elem.on('click', function(){
-        var more_options = $(this).next('.more-options');
-        var cur_display = more_options.css('display');
-        if (cur_display == 'none') {
-            more_options.slideDown();
-        } else {
-            more_options.slideUp();
-        }
-    });
-}
-
 function eventToShowFullStartOption(elem) {
     elem.hover(
         function() {
