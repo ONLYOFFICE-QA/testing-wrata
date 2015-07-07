@@ -32,6 +32,12 @@ const STATUS = {
 const MAX_LENGTH = 26;
 const MIN_LENGTH = 3;
 
+var isPageBeingRefreshed = false;
+
+window.onbeforeunload = function() {
+    isPageBeingRefreshed = true;
+};
+
 function failAlert() {
     alert('Fail! Something goes wrong!');
 }
@@ -693,8 +699,12 @@ function Runner() {
                 _self.showBranchesList();
                 _self.showTestsView();
             },
-            error: function (e) {
-                console.log(e.message);
+            error: function (xhr, type, errorThrown) {
+                xhr.abort();
+                if (isPageBeingRefreshed) {
+                    return;
+                }
+                console.log(xhr.responseText);
                 failAlert();
             }
         });
