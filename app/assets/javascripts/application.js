@@ -148,6 +148,7 @@ function Runner() {
     this.setDataOnQueuePanel = function(queue_data) {
         _self.showBookedServers(queue_data.servers);
         _self.showTestsFromQueue(queue_data.tests);
+        _self.showTestsInQueueCount(queue_data.tests.length)
     };
 
     this.showBookedServers = function(servers) {
@@ -168,6 +169,10 @@ function Runner() {
         for(var i = 0; i < tests.length; i++) {
             _self.appendTestsOnQueue(tests[i]);
         }
+    };
+
+    this.showTestsInQueueCount = function(testsCount) {
+        $('#test-queue-title').text('Tests (' + testsCount + ')');
     };
 
     this.appendTestsOnQueue = function(test) {
