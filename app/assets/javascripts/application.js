@@ -147,6 +147,7 @@ function Runner() {
 
     this.setDataOnQueuePanel = function(queue_data) {
         _self.showBookedServers(queue_data.servers);
+        _self.setBookedServersCount(queue_data.servers.length)
         _self.showTestsFromQueue(queue_data.tests);
         _self.showTestsInQueueCount(queue_data.tests.length)
     };
