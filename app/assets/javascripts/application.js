@@ -706,7 +706,7 @@ function Runner() {
                     return;
                 }
                 console.log(xhr.responseText);
-                failAlert();
+                failAlert(errorThrown);
             }
         });
     };
