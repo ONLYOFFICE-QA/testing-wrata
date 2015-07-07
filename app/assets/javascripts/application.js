@@ -38,7 +38,7 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
-function ajaxErrorIfNotPageRefresh(xhr, type, errorThrown) {
+function ajaxErrorUnlessPageRefresh(xhr, type, errorThrown) {
     xhr.abort();
     if (isPageBeingRefreshed) {
         return;
@@ -248,7 +248,7 @@ function Runner() {
                 _self.hideServerSectionOverlay(server);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -265,7 +265,7 @@ function Runner() {
                 _self.hideServerSectionOverlay(server);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -385,7 +385,7 @@ function Runner() {
                 alert('The server was going to reboot.');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -402,7 +402,7 @@ function Runner() {
                 alert('Current test was stopped successfully!');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -422,7 +422,7 @@ function Runner() {
                 alert('All test on all booked servers stop successfully!');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -469,7 +469,7 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -518,7 +518,7 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -533,7 +533,7 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -560,7 +560,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -580,7 +580,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -652,7 +652,7 @@ function Runner() {
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -676,7 +676,7 @@ function Runner() {
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -699,7 +699,7 @@ function Runner() {
                 _self.showTestsView();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -715,7 +715,7 @@ function Runner() {
                 _self.setTeamlabBranches(data.tm_branches);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -765,7 +765,7 @@ function Runner() {
                 _self.appendListDropdownMenu(trimmed_data);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -807,7 +807,7 @@ function Runner() {
                 list_menu.remove();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -835,7 +835,7 @@ function Runner() {
                 _self.showTestsView();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -863,7 +863,7 @@ function Runner() {
             context: this,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -907,7 +907,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -978,7 +978,7 @@ function Runner() {
                 });
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -1336,7 +1336,7 @@ function Runner() {
                 _self.toggleClearTestButton();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -1348,7 +1348,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -1359,7 +1359,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     };
@@ -1636,7 +1636,7 @@ function showMoreHistoryForServer() {
             eventToRetest(trimmed_data.find('.retest'));
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
@@ -1666,7 +1666,7 @@ function showMoreHistoryForClient() {
             eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
@@ -1792,7 +1792,7 @@ function eventToDeleteHistoryLine(elem) {
                 });
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     });
@@ -1815,7 +1815,7 @@ function eventToRetest(elem) {
                 alert('Test was added in your queue.');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     });
@@ -1837,7 +1837,7 @@ function eventToSetAnalysedToHistory(elem) {
                 el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
 
@@ -1879,7 +1879,7 @@ function eventToOpenRspecResults(elem) {
                 eventsForRspecPopup();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
         });
     });
@@ -1982,7 +1982,7 @@ function clearHistoryOnServer(server_name) {
             showOverlay('Deleting...');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         },
         complete: function() {
             location.reload();
@@ -2003,7 +2003,7 @@ function clearHistoryOnClient(client) {
             showOverlay('Deleting...');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         },
         complete: function() {
             location.reload();
