@@ -43,8 +43,8 @@ function ajaxErrorIfNotPageRefresh(xhr, type, errorThrown) {
     if (isPageBeingRefreshed) {
         return;
     }
-    console.log(xhr.responseText);
     failAlert(errorThrown);
+    infoPopup(xhr.responseText);
 }
 
 function failAlert(alertText) {
