@@ -38,8 +38,9 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
-function failAlert() {
-    alert('Fail! Something goes wrong!');
+function failAlert(alertText) {
+    alertText = alertText || "Unknown Error";
+    alert('Fail! Something goes wrong!\n' + alertText);
 }
 
 function infoPopup(info_html) {
