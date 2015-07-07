@@ -181,13 +181,8 @@ function eventToOpenMoreOptions(elem) {
 function eventToShowFullStartOption(elem) {
     elem.click(
         function () {
-            var to_show = $(this).find('.full-command');
-            if ($(to_show).is(":visible")) {
-                to_show.fadeOut('fast');
-            }
-            else {
-                to_show.fadeIn('fast');
-            }
+            var to_show = $(this.parentNode).find('.full-command');
+            $(to_show).fadeToggle();
         });
 }
 
