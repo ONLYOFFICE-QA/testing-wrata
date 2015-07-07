@@ -1844,13 +1844,6 @@ function disableClearHistoryButton() {
     $('#clear-history').prop('disabled', true);
 }
 
-function eventToClearHistoryOnServer(elem) {
-    elem.on('click', function(){
-        var server_name = $('#server').text();
-        clearHistoryOnServer(server_name);
-    });
-}
-
 function eventToClearHistoryOnClient(elem) {
     elem.on('click', function(){
         var name = $('#client').text();

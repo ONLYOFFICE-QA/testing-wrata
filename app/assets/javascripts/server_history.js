@@ -188,3 +188,10 @@ function eventToShowFullStartOption(elem) {
             to_show.fadeOut('fast');
         });
 }
+
+function eventToClearHistoryOnServer(elem) {
+    elem.on('click', function(){
+        var server_name = $('#server').text();
+        clearHistoryOnServer(server_name);
+    });
+}
