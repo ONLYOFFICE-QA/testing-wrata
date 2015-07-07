@@ -74,6 +74,27 @@ function showMoreHistoryForClient() {
     });
 }
 
+function clearHistoryOnServer(server_name) {
+    $.ajax({
+        url: '/servers/clear_history',
+        async: false,
+        type: 'POST',
+        data: {
+            'server': server_name
+        },
+        beforeSend: function () {
+            disableClearHistoryButton();
+            showOverlay('Deleting...');
+        },
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+        },
+        complete: function() {
+            location.reload();
+        }
+    });
+}
+
 function logUpEvent() {
     $('.log-up').on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
