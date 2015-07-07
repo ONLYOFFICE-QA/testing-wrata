@@ -38,6 +38,15 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
+function ajaxErrorIfNotPageRefresh(xhr, type, errorThrown) {
+    xhr.abort();
+    if (isPageBeingRefreshed) {
+        return;
+    }
+    console.log(xhr.responseText);
+    failAlert(errorThrown);
+}
+
 function failAlert(alertText) {
     alertText = alertText || "Unknown Error";
     alert('Fail! Something goes wrong!\n' + alertText);
@@ -701,12 +710,7 @@ function Runner() {
                 _self.showTestsView();
             },
             error: function (xhr, type, errorThrown) {
-                xhr.abort();
-                if (isPageBeingRefreshed) {
-                    return;
-                }
-                console.log(xhr.responseText);
-                failAlert(errorThrown);
+                ajaxErrorIfNotPageRefresh(xhr, type, errorThrown)
             }
         });
     };
