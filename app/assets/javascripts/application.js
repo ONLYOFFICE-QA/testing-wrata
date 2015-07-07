@@ -1696,29 +1696,6 @@ function checkEmptyList() {
     return $('#sidebar-test-list').children().size() === 0;
 }
 
-function eventToRetest(elem) {
-    elem.on('click', function () {
-        var clicked = $(this);
-        $.ajax({
-            url: '/queue/retest',
-            data: {
-                test_path: clicked.attr('data-path'),
-                tm_branch: clicked.attr('data-tm-branch'),
-                doc_branch: clicked.attr('data-doc-branch'),
-                location: clicked.attr('data-location')
-            },
-            async: false,
-            type: 'POST',
-            success: function () {
-                alert('Test was added in your queue.');
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
-            }
-        });
-    });
-}
-
 function eventToSetAnalysedToHistory(elem) {
     elem.on('click', function () {
         var clicked = $(this);
