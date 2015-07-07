@@ -1715,28 +1715,6 @@ function currentTestOnServer(server_el) {
     return server_el.find('.running').text();
 }
 
-function eventToOpenRspecResults(elem) {
-    elem.on('click', function () {
-        var clicked = $(this);
-        $.ajax({
-            url: '/histories/show_html_results',
-            async: false,
-            type: 'GET',
-            data: {
-                'history_id': clicked.attr('data-id')
-            },
-            success: function (data) {
-                showPopup();
-                $('.popup-window').html(data);
-                eventsForRspecPopup();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
-            }
-        });
-    });
-}
-
 function eventsForRspecPopup() {
     eventToOpenDescribe();
     evenToOpenFailDetails();
