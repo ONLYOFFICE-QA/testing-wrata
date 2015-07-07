@@ -86,6 +86,20 @@ function logDownEvent() {
     });
 }
 
+function openLogInHistoryEventToElem(elem) {
+    elem.on('click', function () {
+        var log_window = $(this).next();
+        var currentDisplay = log_window.css('display');
+        if (currentDisplay == 'none') {
+            log_window.slideDown();
+        }
+        else {
+            log_window.slideUp();
+        }
+    });
+    elem.next().css('display', 'none');
+}
+
 function openLogInHistoryEvent() {
     $('.history-log').on('click', function () {
         var log_window = $(this).next();
