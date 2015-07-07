@@ -193,6 +193,10 @@ function Runner() {
         server.find('.server-ip span').text(ip);
     };
 
+    this.setBookedServersCount = function(serversCount) {
+        $('#booked-servers-title').text('Servers (' + serversCount + ')');
+    };
+
     this.setDataOnServersView = function (data) {
         for (var i = 0; i < data.length; i++) {
             var selector = '#' + data[i].name;
