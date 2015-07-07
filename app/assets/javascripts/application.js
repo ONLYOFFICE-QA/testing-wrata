@@ -1973,12 +1973,6 @@ function stopPropagation(elem) {
     elem.click(function(e){ e.stopPropagation();});
 }
 
-function logUpEvent() {
-    $('.log-up').on('click', function () {
-        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
-    });
-}
-
 function logUpEventToElem(elem) {
     elem.on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
