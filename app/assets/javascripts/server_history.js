@@ -99,3 +99,23 @@ function openLogInHistoryEvent() {
     });
     $('.log-window').css('display', 'none');
 }
+
+function eventToDeleteHistoryLine(elem) {
+    elem.on('click', function () {
+        var clicked = $(this);
+        $.ajax({
+            url: clicked.attr('delete-data'),
+            async: false,
+            type: 'DELETE',
+            success: function () {
+                var tr = clicked.parent().parent();
+                tr.hide('slow', function () {
+                    tr.remove();
+                });
+            },
+            error: function (xhr, type, errorThrown) {
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            }
+        });
+    });
+}
