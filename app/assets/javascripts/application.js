@@ -1648,12 +1648,6 @@ function openLogInHistoryEventToElem(elem) {
     elem.next().css('display', 'none');
 }
 
-function historyEvents() {
-    logUpEvent();
-    logDownEvent();
-    openLogInHistoryEvent();
-}
-
 function HtmlEncode(val) {
     return $("<div/>").text(val).html();
 }
