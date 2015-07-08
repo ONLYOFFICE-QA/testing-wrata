@@ -120,6 +120,7 @@ function Runner() {
                 _self.clearTestsQueue();
                 _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
+                _self.toggleShuffleTestButton();
                 _self.toggleUnbookAllServersButton();
                 _self.toggleStopAllBookedServers();
             },
@@ -1366,6 +1367,7 @@ function Runner() {
             type: 'POST',
             success: function() {
                 _self.toggleClearTestButton();
+                _self.toggleShuffleTestButton();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
