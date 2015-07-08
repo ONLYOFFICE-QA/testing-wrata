@@ -7,6 +7,7 @@
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
             myRunner.eventToStopAllBooked($('#stop-booked'));
+            myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
             myRunner.eventToClearTestQueue($('#clear-tests'));
             myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
@@ -88,6 +89,7 @@
             <i class="glyphicon glyphicon-list-alt"></i>
             <span id="test-queue-title">tests</span>
           </div>
+          <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
           <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
         </div>
         <div class="queues">

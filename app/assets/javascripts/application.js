@@ -120,6 +120,7 @@ function Runner() {
                 _self.clearTestsQueue();
                 _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
+                _self.toggleShuffleTestButton();
                 _self.toggleUnbookAllServersButton();
                 _self.toggleStopAllBookedServers();
             },
@@ -1366,6 +1367,7 @@ function Runner() {
             type: 'POST',
             success: function() {
                 _self.toggleClearTestButton();
+                _self.toggleShuffleTestButton();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -1396,9 +1398,27 @@ function Runner() {
         });
     };
 
+    this.shuffleTestQueue = function() {
+        $.ajax({
+            url: 'queue/shuffle_tests',
+            async: false,
+            type: 'POST',
+            error: function (xhr, type, errorThrown) {
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            }
+        });
+    };
+
     this.eventToClearTestQueue = function(elem) {
         elem.on('click', function(){
             _self.clearTestQueue();
+            _self.getUpdatedDataFromServer();
+        });
+    };
+
+    this.eventToShuffleTestQueue = function(elem) {
+        elem.on('click', function(){
+            _self.shuffleTestQueue();
             _self.getUpdatedDataFromServer();
         });
     };
@@ -1423,6 +1443,14 @@ function Runner() {
             $('#clear-tests').hide();
         } else {
             $('#clear-tests').show();
+        }
+    };
+
+    this.toggleShuffleTestButton = function() {
+        if (this.checkQueueEmpty()) {
+            $('#shuffle-tests').hide();
+        } else {
+            $('#shuffle-tests').show();
         }
     };
 

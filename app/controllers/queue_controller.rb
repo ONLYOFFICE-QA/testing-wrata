@@ -49,6 +49,12 @@ class QueueController < ApplicationController
     render nothing: true
   end
 
+  def shuffle_tests
+    @manager.shuffle_test
+
+    render nothing: true
+  end
+
   def clear_booked_servers
     @manager.clear_booked_servers
 

@@ -73,6 +73,10 @@ class ClientRunnerManager
     @tests.clear
   end
 
+  def shuffle_test
+    @tests.shuffle
+  end
+
   def add_test(test, branch, location)
     @tests.push_test(test, branch, location)
     start_client_runner_thread if ready_to_start?
