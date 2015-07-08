@@ -1180,6 +1180,7 @@ a, a:link, a:visited  {
     color: #5b5e5b;
     border: 1px solid rgba(106, 155, 15, 0.1);
     border-radius: 3px;
+    word-break:break-all
 }
 
 .server-node i, .test-node i {
