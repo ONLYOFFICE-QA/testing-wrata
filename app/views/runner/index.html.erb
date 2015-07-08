@@ -122,13 +122,9 @@
               </select>
               <i class="start-icon"></i>
               <select class="region form-control">
-                <option>info us</option>
-                <option>info eu</option>
-                <option>info sg</option>
-                <option>com eu</option>
-                <option>com us</option>
-                <option>com sg</option>
-                <option selected="selected">default</option>
+                <% REGION_LIST.each do |region| %>
+                    <option><%= region %></option>
+                <% end %>
               </select>
             </a>
 
