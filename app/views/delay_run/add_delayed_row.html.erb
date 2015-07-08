@@ -20,13 +20,9 @@
   <div class="location" style="display: inline-block; margin-left: 5px;">
     <label>Location:</label>
     <select class="form-control" style="width: 110px;">
-      <option>info us</option>
-      <option>info eu</option>
-      <option>info sg</option>
-      <option>com eu</option>
-      <option>com us</option>
-      <option>com sg</option>
-      <option>default</option>
+      <% REGION_LIST.each do |region| %>
+          <option><%= region %></option>
+      <% end %>
     </select>
   </div>
   <div class="run-method" style="display: inline-block; margin-left: 5px;">
