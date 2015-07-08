@@ -12,6 +12,7 @@ Runner::Application.routes.draw do
   resources :servers
   resources :test_files
   resources :test_lists
+  resources :queue
   get '/histories/show_html_results' # should always be on top of `resources :histories` for server_history rspec-result correctly shown
   resources :histories
   get '/client_history/show_more', to: 'clients#show_more'
@@ -38,18 +39,6 @@ Runner::Application.routes.draw do
   get 'runner/branches'
   post 'runner/stop_current'
   post 'runner/stop_all_booked'
-
-  post 'queue/book_server'
-  post 'queue/unbook_server'
-  post 'queue/unbook_all_servers'
-  post 'queue/add_test'
-  post 'queue/add_tests'
-  post 'queue/delete_test'
-  post 'queue/swap_tests'
-  post 'queue/delete_test'
-  post 'queue/change_test_location'
-  post 'queue/clear_tests'
-  post 'queue/retest'
 
   get 'delay_run', to: 'delay_run#index', as: 'delay_run'
   get 'delay_run/add_delayed_row'
