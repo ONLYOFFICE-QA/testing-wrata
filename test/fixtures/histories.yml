@@ -1,0 +1,15 @@
+one:
+  log: one_log
+  file: one_file.rb
+  server_id: 1
+  client_id: 1
+  analysed: true
+  total_result: 1
+
+two:
+  log: two_log
+  file: two_file.rb
+  server_id: 2
+  client_id: 2
+  analysed: false
+  total_result: 2

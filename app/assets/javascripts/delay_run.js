@@ -5,7 +5,7 @@
 function eventForOpenDelayRuns(elem) {
     elem.on('click', function(){
         openDelayRuns();
-    })
+    });
 }
 
 function openDelayRuns() {
@@ -18,7 +18,7 @@ function openDelayRuns() {
             delayRunsEvents(trimmed_data);
             $('.popup-window').html(trimmed_data);
         }
-    })
+    });
 }
 
 function saveDelayedRun(f_type, name, method, start_time, location) {
@@ -44,7 +44,7 @@ function saveDelayedRun(f_type, name, method, start_time, location) {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function saveChangedRun(run_id, method, start_time, location) {
@@ -63,7 +63,7 @@ function saveChangedRun(run_id, method, start_time, location) {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function deleteRun(run_id) {
@@ -79,7 +79,7 @@ function deleteRun(run_id) {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function testDB() {
@@ -92,7 +92,7 @@ function testDB() {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function eventToChangeDelayedRun(elem) {
@@ -107,7 +107,7 @@ function eventToChangeDelayedRun(elem) {
         var method = parseRunMethod(row.find('.run-method input').val(), row.find('.each-time .hour').val(), row.find('.each-time .min').val());
         saveChangedRun(id, method, start_time, location);
         $(this).find('i').fadeOut('slow');
-    })
+    });
 }
 
 function eventToSaveDelayedRun(elem) {
@@ -123,7 +123,7 @@ function eventToSaveDelayedRun(elem) {
         var method = parseRunMethod(row.find('.run-method select').val(), row.find('.each-time .hour').val(), row.find('.each-time .min').val());
         saveDelayedRun(f_type, name, method, start_time, location);
         row.fadeOut('slow');
-    })
+    });
 }
 
 function eventToDeleteDelayedRun(elem) {
@@ -133,8 +133,8 @@ function eventToDeleteDelayedRun(elem) {
         deleteRun(id);
         row.fadeOut('slow', function(){
             $(this).remove();
-        })
-    })
+        });
+    });
 }
 
 function eventForCalendar(input) {
@@ -147,18 +147,18 @@ function eventForCalendar(input) {
 function parseRunMethod(method, hour, min) {
     var run_method = '';
     if (method == 'once') {
-        run_method = method
+        run_method = method;
     }else if (method == 'each day') {
-        run_method = 'each_24_hours'
+        run_method = 'each_24_hours';
     }else if (method == 'each week'){
-        run_method = 'each_168_hours'
+        run_method = 'each_168_hours';
     }else if (method == 'each time'){
         run_method = 'each';
-        if (hour != ''){
-            run_method = run_method + '_' + hour + '_hours'
+        if (hour !== ''){
+            run_method = run_method + '_' + hour + '_hours';
         }
-        if (min != ''){
-            run_method = run_method + '_' + min + '_minutes'
+        if (min !== ''){
+            run_method = run_method + '_' + min + '_minutes';
         }
     }
     return run_method;
@@ -180,7 +180,7 @@ function addRow() {
             console.log(e.message);
             failAlert();
         }
-    })
+    });
 }
 
 function eventToShowEachTimeInputs(select) {
@@ -192,15 +192,15 @@ function eventToShowEachTimeInputs(select) {
         else {
             $(this).parent().next().fadeOut();
         }
-    })
+    });
 }
 
 function eventToDeleteRow(elem) {
     elem.on('click', function(){
         $(this).parent().fadeOut('slow', function(){
             $(this).remove();
-        })
-    })
+        });
+    });
 }
 
 function eventToAddRow(elem) {

@@ -5,7 +5,7 @@ Thread.class_eval do
 
   def initialize(*args, &block)
     args.each do |arg|
-      MyLogger.write_in_file(arg[:caller], "Init new thread \n") if arg[:caller]
+      MyLogger.write_in_file(arg[:caller], "Init new thread \n") if arg.is_a?(Hash) && arg[:caller]
     end
     old_initialize(*args, &block)
   end

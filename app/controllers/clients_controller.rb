@@ -1,5 +1,12 @@
 class ClientsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+
+  # GET /test_files
+  # GET /test_files.json
+  def index
+    @clients = Client.all
+  end
+
   # GET /clients/1
   # GET /clients/1.json
   def show
@@ -45,6 +52,12 @@ class ClientsController < ApplicationController
       flash[:error] = 'WRONG SECURITY PASSWORD! TRY CALL TO g U M K A -LLI II U H r O JI E T!'
       render 'new'
     end
+  end
+
+  def destroy
+    Client.find(params[:id]).destroy
+    flash[:success] = 'User deleted'
+    redirect_to clients_url
   end
 
   # PUT /clients/1

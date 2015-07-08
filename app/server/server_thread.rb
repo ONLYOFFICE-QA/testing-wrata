@@ -1,9 +1,3 @@
-# encoding: UTF-8
-# class Queue
-#  def get_queue
-#    @que
-#  end
-# end
 require_relative '../../app/server/managers/history_manager'
 require_relative '../../app/server/managers/html_result_manager'
 require_relative '../../app/server/managers/log_manager'
@@ -96,10 +90,5 @@ class ServerThread
 
   def test_name
     @test[:test_name]
-  end
-
-  def reboot
-    stop_test
-    system "ssh name:#{@server_model.comp_name} -x #{@server_model.name} \"reboot\""
   end
 end

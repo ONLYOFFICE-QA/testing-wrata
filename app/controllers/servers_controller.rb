@@ -1,14 +1,46 @@
 class ServersController < ApplicationController
-  EXECUTOR_IMAGE_NAME = 'nct-at-stable'
+  EXECUTOR_IMAGE_NAME = 'nct-at-develop'
 
-  before_action :create_digital_ocean, only: [:create, :destroy]
+  before_action :create_digital_ocean, only: [:cloud_server_create, :cloud_server_destroy]
+
+  # GET /test_lists
+  # GET /test_lists.json
+  def index
+    @servers = Server.sort_servers(Server.all)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @servers }
+    end
+  end
+
+  # GET /clients/1
+  # GET /clients/1.json
+  def show
+    @server = Server.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @server }
+    end
+  end
+
+  # GET /servers/new
+  def new
+    @server = Server.new
+  end
+
+  # GET /servers/1/edit
+  def edit
+    @server = Server.find(params[:id])
+  end
 
   def show_current_results
     server_thread = $threads.get_thread_by_name(params[:server])
     @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
-    render 'history/show_html_results', layout: false
+    render 'histories/show_html_results', layout: false
   end
 
   def clear_history
@@ -48,6 +80,34 @@ class ServersController < ApplicationController
   end
 
   def create
+    @server = Server.new(params[:server])
+
+    if @server.save
+      $threads.add_threads
+      redirect_to @server
+    else
+      render 'new'
+    end
+  end
+
+  # PUT /clients/1
+  # PUT /clients/1.json
+  def update
+    @server = Server.find(params[:id])
+
+    respond_to do |format|
+      if @server.update_attributes(params[:server])
+        $threads.update_models
+        format.html { redirect_to @server, notice: 'Server was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @server.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def cloud_server_create
     set_server_status(params['server'], :creating)
     begin
       @digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, params['server'])
@@ -63,6 +123,13 @@ class ServersController < ApplicationController
   end
 
   def destroy
+    Server.find(params[:id]).destroy
+    $threads.delete_threads
+    flash[:success] = 'Server deleted'
+    redirect_to servers_url
+  end
+
+  def cloud_server_destroy
     set_server_status(params['server'], :destroying)
     @digital_ocean.destroy_droplet_by_name(params['server'])
     set_server_status(params['server'], :destroyed)

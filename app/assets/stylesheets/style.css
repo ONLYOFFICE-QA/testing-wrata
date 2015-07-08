@@ -4,9 +4,7 @@ body{
     -moz-background-size: 100%;
     -webkit-background-size: 100%;
     -o-background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-attachment: fixed;
+    background: no-repeat fixed top left;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -73,7 +71,7 @@ footer {
 .overlay-window {
     text-align: center;
     border-radius: 49px;
-    height: 200px;
+    height: 300px;
     width: 300px;
     overflow: auto;
     margin: auto;
@@ -94,8 +92,6 @@ footer {
     left: 0;
     bottom: 0;
     right: 0;
-    height: 148px;
-    width: 128px;
 }
 
 .overlay-text {
@@ -182,15 +178,9 @@ i {
     height:40px;
     background: rgb(128, 184, 19);
     border-radius: 0 10px 10px 0;
-    border-top-color: initial;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-right-color: initial;
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-bottom-color: initial;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
+    border-top: 1px solid initial;
+    border-right: 1px solid initial;
+    border-bottom: 1px solid initial;
     cursor: pointer;
 }
 
@@ -384,8 +374,7 @@ hr.deliver {
 }
 
 .server {
-    margin: 0 auto;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
     width: 210px;
     border: 1px solid rgb(10, 21, 56);
     border-radius: 4px;
@@ -432,6 +421,12 @@ hr.deliver {
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
+    overflow: hidden;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 56px;
+    white-space: nowrap
 }
 
 .add-button-file, .add-button-folder {
@@ -791,12 +786,8 @@ table .center {
 
 .queue {
     padding-left: 10px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: rgb(218, 218, 218);
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-top-color: rgb(218, 218, 218);
+    border-top: 1px solid rgb(218, 218, 218);
+    border-bottom: 1px solid rgb(218, 218, 218);
     font-style: italic;
     white-space: pre;
 }
@@ -1140,12 +1131,19 @@ a, a:link, a:visited  {
     display: none;
 }
 
+#shuffle-tests {
+    position: absolute;
+    right: 20px;
+    display: none;
+}
+
 .list-header {
     display: inline-block;
     text-align: center;
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
+    width: 27%
 }
 
 .list-header i {
@@ -1188,6 +1186,7 @@ a, a:link, a:visited  {
     color: #5b5e5b;
     border: 1px solid rgba(106, 155, 15, 0.1);
     border-radius: 3px;
+    word-break:break-all;
 }
 
 .server-node i, .test-node i {
@@ -1293,16 +1292,6 @@ a, a:link, a:visited  {
     padding-bottom: 10px;
 }
 
-.server-header label {
-    width: 56px;
-    overflow: hidden;
-    height: 20px;
-    display: inline-block;
-    vertical-align: middle;
+.enable-select {
+    -webkit-user-select: text;
 }
-
-/*.active a {*/
-/*$('#test-queue').slimScroll({*/
-    /*color: 'rgba(0, 0, 0, 0.4)'}*/
-/*)*/
-/*}*/

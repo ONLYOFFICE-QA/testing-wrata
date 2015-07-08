@@ -73,6 +73,10 @@ class ClientRunnerManager
     @tests.clear
   end
 
+  def shuffle_test
+    @tests.shuffle
+  end
+
   def add_test(test, branch, location)
     @tests.push_test(test, branch, location)
     start_client_runner_thread if ready_to_start?
@@ -101,6 +105,13 @@ class ClientRunnerManager
 
   def delete_server(server_name)
     @client_servers.delete_server(server_name, client)
+  end
+
+  def delete_all_servers
+    booked_servers = @client_servers.servers_threads.collect { |e| e[:name] }
+    booked_servers.each do |current_name|
+      delete_server(current_name)
+    end
   end
 
   def change_tests(tests)

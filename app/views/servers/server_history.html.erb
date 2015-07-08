@@ -101,7 +101,7 @@
               </div>
             </td>
             <td class="center options">
-              <% start_option = line.start_option %>
+              <% start_option = line.start_option.nil? ? StartOption.new : line.start_option %>
               <% portal_type = start_option.portal_type.nil? ? '' : start_option.portal_type %>
               <% portal_region = start_option.portal_region.nil? ? '' : start_option.portal_region %>
               <% if start_option %>
@@ -116,7 +116,8 @@
                       <% unless portal_region == '' %>
                           <div>Portal region: <span class="value"><%= portal_region %></span></div>
                       <% end %>
-                      <div class="open-full-command">Show full start command<div class="full-command"><%= start_option.start_command %></div></div>
+                      <div class="open-full-command">Show full start command</div>
+                      <div class="full-command"><%= start_option.start_command %></div>
                     </div>
                   </div>
               <% end %>

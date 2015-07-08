@@ -133,7 +133,7 @@ class RunnerController < ApplicationController
 
   def updated_data
     servers = params['servers']
-    servers.delete(AMAZON_SERVER_NAME)
+    servers ||= []
 
     client = @client
 
@@ -169,6 +169,12 @@ class RunnerController < ApplicationController
     server = params['server']
 
     $threads.get_thread_by_name(server).stop_test
+
+    render nothing: true
+  end
+
+  def stop_all_booked
+    $threads.get_threads_by_user(current_client).each(&:stop_test)
 
     render nothing: true
   end

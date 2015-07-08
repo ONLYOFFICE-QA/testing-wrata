@@ -6,7 +6,10 @@
             $("#server-queue").slimScroll({width: '137px', height: '84vh'});
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
+            myRunner.eventToStopAllBooked($('#stop-booked'));
+            myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
             myRunner.eventToClearTestQueue($('#clear-tests'));
+            myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
         });
@@ -58,13 +61,9 @@
         </div>
         <div id='add-list'>Add in queue</div>
         <select id='list-region' class="region form-control">
-          <option>info us</option>
-          <option>info eu</option>
-          <option>info sg</option>
-          <option>com eu</option>
-          <option>com us</option>
-          <option>com sg</option>
-          <option>default</option>
+          <% REGION_LIST.each do |region| %>
+              <option><%= region %></option>
+          <% end %>
         </select>
       </div>
     </div>
@@ -80,12 +79,17 @@
     <div class="block" style="width: 37%; float: left;padding-right: 12px;">
       <div id="queue-panel">
         <div class="panel-header">
-          <div class="list-header" style="width: 38%">
-            <i class="glyphicon glyphicon-list-alt"></i>servers
+          <div class="list-header">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span id="booked-servers-title">servers</span>
           </div>
+          <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
+          <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
           <div class="list-header" style="width: 61%">
-            <i class="glyphicon glyphicon-list-alt"></i>tests
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <span id="test-queue-title">tests</span>
           </div>
+          <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
           <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
         </div>
         <div class="queues">
@@ -120,13 +124,9 @@
               </select>
               <i class="start-icon"></i>
               <select class="region form-control">
-                <option>info us</option>
-                <option>info eu</option>
-                <option>info sg</option>
-                <option>com eu</option>
-                <option>com us</option>
-                <option>com sg</option>
-                <option selected="selected">default</option>
+                <% REGION_LIST.each do |region| %>
+                    <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
+                <% end %>
               </select>
             </a>
 
@@ -145,13 +145,9 @@
               </select>
               <i class="start-icon"></i>
               <select class="region form-control">
-                <option>info us</option>
-                <option>info eu</option>
-                <option>info sg</option>
-                <option>com eu</option>
-                <option>com us</option>
-                <option>com sg</option>
-                <option selected="selected">default</option>
+                <% REGION_LIST.each do |region| %>
+                    <option><%= region %></option>
+                <% end %>
               </select>
             </a>
             </li>

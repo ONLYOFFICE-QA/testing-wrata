@@ -11,6 +11,8 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
+/app/server/logs/*.log
+/app/server/logs/*.txt
 /log/*.log
 /tmp
 /.idea

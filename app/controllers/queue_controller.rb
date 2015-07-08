@@ -13,6 +13,12 @@ class QueueController < ApplicationController
     render nothing: true
   end
 
+  def unbook_all_servers
+    @manager.delete_all_servers
+
+    render nothing: true
+  end
+
   def add_test
     @manager.add_test(params['test_path'], params['branch'], params['location'])
 
@@ -39,6 +45,12 @@ class QueueController < ApplicationController
 
   def clear_tests
     @manager.clear_test_queue
+
+    render nothing: true
+  end
+
+  def shuffle_tests
+    @manager.shuffle_test
 
     render nothing: true
   end

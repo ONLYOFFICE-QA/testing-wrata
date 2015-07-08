@@ -21,4 +21,8 @@ class Server < ActiveRecord::Base
     self.book_client_id = nil
     save
   end
+
+  def self.sort_servers(servers_array)
+    servers_array.sort_by { |s| s.name[/\d+/].to_i }
+  end
 end

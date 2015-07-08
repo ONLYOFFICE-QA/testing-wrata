@@ -25,11 +25,7 @@ module RunThreadManager
   end
 
   def add_to_queue(run)
-    puts ' '
-    puts '===================================================='
-    puts '=========== START TEST ============================='
-    puts '===================================================='
-    puts ' '
+    Rails.logger.info 'add_to_queue: start test'
     manager = $run_managers.find_manager_by_client_login(run.client.login)
     case run.f_type
     when 'file'
@@ -86,11 +82,7 @@ module RunThreadManager
   end
 
   def delete_from_db(run)
-    puts ' '
-    puts '====================================================='
-    puts '=========== DELETE TEST ============================='
-    puts '====================================================='
-    puts ' '
+    Rails.logger.info 'delete_from_db: delete test'
     run.destroy
     true
   end
@@ -105,14 +97,8 @@ module RunThreadManager
                end
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
     time += time_to_sec(hour.to_i, minute.to_i) while Time.now > time
-    puts ' '
-    puts '====================================================='
-    puts '=========== UPDATE RUN INFO ========================='
-    puts '=========== OLD TIME: ' + old_time.to_s + ' =============='
-    puts '=========== NEW TIME: ' + time.to_s + ' =================='
-    puts '=========== UPDATE RUN INFO ========================='
-    puts '====================================================='
-    puts ' '
+    Rails.logger.info 'move_next_start_on: update run info'
+    Rails.logger.info "move_next_start_on: old time: #{old_time}, new time: #{time}"
     run.update_attributes(next_start: time)
     false
     #
