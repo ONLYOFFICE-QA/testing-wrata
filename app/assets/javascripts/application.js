@@ -1426,6 +1426,14 @@ function Runner() {
         }
     };
 
+    this.toggleShuffleTestButton = function() {
+        if (this.checkQueueEmpty()) {
+            $('#shuffle-tests').hide();
+        } else {
+            $('#shuffle-tests').show();
+        }
+    };
+
     this.checkAnyBookedServers = function() {
         var empty = true;
         if($('.server-node :visible').size() !== 0) {
