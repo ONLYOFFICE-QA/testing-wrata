@@ -24,5 +24,6 @@ INFO_SERVER = 'info'
 COM_SERVER = 'com'
 EMPTY_STRING = ''
 TIME_FOR_UPDATE = 15
+REGION_LIST = ['info us', 'info eu', 'info sg', 'com us', 'com eu', 'com sg', 'com org', 'default']
 
 SECURITY_PASSWORD = 'All love wheel'
