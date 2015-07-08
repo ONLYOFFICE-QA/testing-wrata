@@ -207,7 +207,7 @@ function Runner() {
         var props = $('<div class="props"></div>');
         props.append(select);
         var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test.test_name + '</div>');
-        var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '"></div>');
+        var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '" title="' + test.test_path + '"></div>');
         testNode.append(name);
         testNode.append(props);
         $('#test-queue').append(testNode);
