@@ -65,7 +65,7 @@ class ClientTestQueue
   end
 
   def shuffle
-    @tests.shuffle
+    @tests.shuffle!
   end
 
   def get_name_from_path(test_path)
