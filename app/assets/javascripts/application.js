@@ -33,6 +33,7 @@ const MAX_LENGTH = 26;
 const MIN_LENGTH = 3;
 
 var isPageBeingRefreshed = false;
+var regionSelector;
 
 window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
@@ -185,8 +186,20 @@ function Runner() {
         return optionValues
     };
 
+    this.generateRegionSelect = function() {
+        regionSelector = '';
+            this.getRegionList().forEach(function(entry) {
+                regionSelector += '<option>' + entry + '</option>'
+            });
+        return regionSelector;
+    };
+
+
     this.appendTestsOnQueue = function(test) {
-        var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>';
+        if (typeof regionSelector === 'undefined') {
+            this.generateRegionSelect()
+        }
+        var select = '<select class="region form-control">' + regionSelector + '</select>';
         select = $(select);
         _self.eventToChangeLocationForTest(select);
         select.find(":contains('" + test.location + "')").prop('selected', true);
