@@ -64,6 +64,10 @@ class ClientTestQueue
     @tests.clear
   end
 
+  def shuffle
+    @tests.shuffle
+  end
+
   def get_name_from_path(test_path)
     test_path[(test_path.rindex('/') + 1)..-1]
   end
