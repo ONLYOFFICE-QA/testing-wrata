@@ -176,6 +176,10 @@ function Runner() {
         $('#test-queue-title').text('Tests (' + testsCount + ')');
     };
 
+    this.getRegionList = function() {
+        return document.getElementById('list-region').options;
+    };
+
     this.appendTestsOnQueue = function(test) {
         var select = '<select class="region form-control"><option>info eu</option><option>info us</option><option>info sg</option><option>com eu</option><option>com us</option><option>com sg</option><option>default</option></select>';
         select = $(select);
