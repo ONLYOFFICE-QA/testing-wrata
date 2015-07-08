@@ -45,6 +45,7 @@ Runner::Application.routes.draw do
   post 'queue/add_test'
   post 'queue/add_tests'
   post 'queue/delete_test'
+  post 'queue/shuffle_tests'
   post 'queue/swap_tests'
   post 'queue/delete_test'
   post 'queue/change_test_location'
