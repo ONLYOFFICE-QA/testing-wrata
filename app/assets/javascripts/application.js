@@ -177,7 +177,12 @@ function Runner() {
     };
 
     this.getRegionList = function() {
-        return document.getElementById('list-region').options;
+        var optionValues = [];
+
+        $('#list-region option').each(function() {
+            optionValues.push($(this).val());
+        });
+        return optionValues
     };
 
     this.appendTestsOnQueue = function(test) {
