@@ -1398,6 +1398,17 @@ function Runner() {
         });
     };
 
+    this.shuffleTestQueue = function() {
+        $.ajax({
+            url: 'queue/shuffle_tests',
+            async: false,
+            type: 'POST',
+            error: function (xhr, type, errorThrown) {
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            }
+        });
+    };
+
     this.eventToClearTestQueue = function(elem) {
         elem.on('click', function(){
             _self.clearTestQueue();
