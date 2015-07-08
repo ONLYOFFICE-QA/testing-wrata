@@ -60,13 +60,9 @@
         </div>
         <div id='add-list'>Add in queue</div>
         <select id='list-region' class="region form-control">
-          <option>info us</option>
-          <option>info eu</option>
-          <option>info sg</option>
-          <option>com eu</option>
-          <option>com us</option>
-          <option>com sg</option>
-          <option>default</option>
+          <% REGION_LIST.each do |region| %>
+              <option><%= region %></option>
+          <% end %>
         </select>
       </div>
     </div>
