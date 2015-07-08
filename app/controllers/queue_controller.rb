@@ -50,7 +50,7 @@ class QueueController < ApplicationController
   end
 
   def shuffle_tests
-    @manager.clear_test_queue
+    @manager.shuffle_test
 
     render nothing: true
   end
