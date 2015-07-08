@@ -1416,6 +1416,13 @@ function Runner() {
         });
     };
 
+    this.eventToShuffleTestQueue = function(elem) {
+        elem.on('click', function(){
+            _self.shuffleTestQueue();
+            _self.getUpdatedDataFromServer();
+        });
+    };
+
     this.eventToClearServerList = function(elem) {
         elem.on('click', function(){
             _self.unbookAllServers();
