@@ -95,9 +95,21 @@ function clearHistoryOnServer(server_name) {
     });
 }
 
+function logUpEvent() {
+    $('.log-up').on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
+    });
+}
+
 function logUpEventToElem(elem) {
     elem.on('click', function () {
         $(this).parent().parent().find('.log').trigger('scrollContent', [-0.02]);
+    });
+}
+
+function logDownEvent() {
+    $('.log-down').on('click', function () {
+        $(this).parent().parent().find('.log').trigger('scrollContent', [0.02]);
     });
 }
 
