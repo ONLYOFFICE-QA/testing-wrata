@@ -14,6 +14,7 @@ class ServerThread
   include ThreadManager
 
   attr_accessor :server_model, :_status
+  attr_accessor :ssh_pid
 
   attr_reader :client
 
@@ -24,6 +25,7 @@ class ServerThread
     @client = server_model.booked_client
     @test = nil
     @_status = :normal
+    @ssh_pid = nil
     delete_html_result
     create_main_thread
     start_pinging_server
