@@ -1,4 +1,3 @@
-require 'resque/server'
 Runner::Application.routes.draw do
   root to: 'runner#index', as: 'runner'
 
