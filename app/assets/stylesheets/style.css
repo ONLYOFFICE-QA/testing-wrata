@@ -812,6 +812,7 @@ table {
     /* No support for these yet, use at own risk */
     -o-user-select: text;
     user-select: text;
+    width: 100%;
 }
 
 .server-info .running, .server-info .run-at-value {
