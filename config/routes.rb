@@ -1,7 +1,4 @@
-require 'resque/server'
 Runner::Application.routes.draw do
-  mount Resque::Server, at: '/resque'
-
   root to: 'runner#index', as: 'runner'
 
   resources :clients
