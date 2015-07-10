@@ -812,6 +812,7 @@ table {
     /* No support for these yet, use at own risk */
     -o-user-select: text;
     user-select: text;
+    width: 100%;
 }
 
 .server-info .running, .server-info .run-at-value {
@@ -1295,4 +1296,21 @@ a, a:link, a:visited  {
 
 .enable-select {
     -webkit-user-select: text;
+}
+
+form input[type=text],
+form input[type=password],
+form input[type=email],
+form input[type=number],
+form input[type=url],
+form input[type=tel],
+form input[type=date],
+form textarea {
+    width: calc(80% - 22px);
+    border: 1px solid #c9d0d6;
+    border-radius: 3px;
+    font-size: 0.95em;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    outline: none;
+    padding: 8px 10px 7px;
 }
