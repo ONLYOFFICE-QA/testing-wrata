@@ -2,7 +2,6 @@ instance_eval(File.read('../SharedFunctional/Gemfile'))
 
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
-gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'coffee-rails'
 gem 'devise'
