@@ -1,5 +1,5 @@
 module SessionsHelper
-  def sign_in_(client) # _fix for active-admin
+  def sign_in_(client)
     cookies.permanent[:remember_token] = client.remember_token
     self.current_client = client
     init_run_manager
@@ -10,7 +10,7 @@ module SessionsHelper
     !current_client.nil?
   end
 
-  def sign_out_ # _fix for active-admin
+  def sign_out_
     self.current_client = nil
     cookies.delete(:remember_token)
   end

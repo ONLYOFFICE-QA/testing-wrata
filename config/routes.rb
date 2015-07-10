@@ -4,9 +4,6 @@ Runner::Application.routes.draw do
 
   root to: 'runner#index', as: 'runner'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
   resources :clients
   get '/servers/show_current_results' # should always be on top of `resources :servers` for correctly shown current status
   resources :servers

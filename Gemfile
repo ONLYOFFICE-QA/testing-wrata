@@ -2,12 +2,12 @@ instance_eval(File.read('../SharedFunctional/Gemfile'))
 
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
-gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'coffee-rails'
 gem 'devise'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'magic_encoding'
 gem 'pg'
 gem 'protected_attributes'

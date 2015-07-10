@@ -650,6 +650,7 @@ hr.deliver {
 
 .table th {
     vertical-align: middle;
+    background: #c3d9ff;
 }
 
 .server-header .user-icon:hover > span.hidden-tool{
