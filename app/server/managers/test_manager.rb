@@ -2,8 +2,8 @@ module TestManager
   TEST_SPOT_USER_NAME = 'nct-at'
   def start_test_on_server(test_path, options)
     full_start_command = generate_run_test_command(test_path, options)
-    pid = Process.spawn(full_start_command, out: [server_log_path, 'w'])
-    Process.wait(pid)
+    @ssh_pid = Process.spawn(full_start_command, out: [server_log_path, 'w'])
+    Process.wait(@ssh_pid)
     full_start_command
   end
 
@@ -13,6 +13,7 @@ module TestManager
 
   def stop_test
     system(generate_ssh_command("\"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""))
+    Process.kill('KILL', @ssh_pid)
   end
 
   def generate_run_test_command(test, options)
