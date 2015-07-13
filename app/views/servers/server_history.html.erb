@@ -2,8 +2,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             scrollLogEventToElem($('.log'));
-            logUpEvent();
-            logDownEvent();
+            logUpEventToElem( $('.log-up'));
+            logDownEventToElem( $('.log-up'));
             openLogInHistoryEvent();
             eventToDeleteHistoryLine($('.delete-line'));
             eventToRetest($('.retest'));
