@@ -61,10 +61,7 @@ class TestListsController < ApplicationController
   def destroy
     delete_testlist_by_id(params[:id])
 
-    respond_to do |format|
-      format.html { redirect_to test_lists_url }
-      format.json { head :no_content }
-    end
+    render nothing: true
   end
 
   private
