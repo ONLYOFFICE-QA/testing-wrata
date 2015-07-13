@@ -31,8 +31,6 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-    @client = Client.find(params[:id])
-    redirect_to runner_path unless current_client == @client
   end
 
   # POST /clients
@@ -65,7 +63,6 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
 
-    return unless current_client == @client
     respond_to do |format|
       if @client.update_attributes(params[:client])
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
