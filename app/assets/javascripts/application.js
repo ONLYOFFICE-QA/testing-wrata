@@ -56,7 +56,7 @@ function failAlert(alertText) {
 
 function infoPopup(info_html) {
     var popup = open("", "Info Popup", "width=800,height=400");
-    popup.document.body.innerHTML = info_html;
+    popup.document.body.innerHTML = info_html.replace(/(?:\r\n|\r|\n)/g, '<br />');
 }
 
 function Client(login, file_lists) {
