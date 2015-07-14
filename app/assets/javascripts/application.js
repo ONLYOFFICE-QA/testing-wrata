@@ -295,6 +295,9 @@ function Runner() {
             data: {
                 'server': server
             },
+            beforeSend: function () {
+                _self.unbookServer(null, server, true);
+            },
             success: function () {
                 _self.hideServerSectionOverlay(server);
             },
@@ -543,13 +546,15 @@ function Runner() {
             },
             type: 'POST',
             success: function () {
-                button.unbind();
-                _self.changeUnbookButtonOnBook(button);
-                if (hide_button)
-                    button.hide();
-                _self.eventToBookServer(button);
-                _self.toggleUnbookAllServersButton();
-                _self.getUpdatedDataFromServer();
+                if (button != null) {
+                    button.unbind();
+                    _self.changeUnbookButtonOnBook(button);
+                    if (hide_button)
+                        button.hide();
+                    _self.eventToBookServer(button);
+                    _self.toggleUnbookAllServersButton();
+                    _self.getUpdatedDataFromServer();
+                }
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
