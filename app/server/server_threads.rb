@@ -25,9 +25,12 @@ class ServerThreads < ActionController::Base
   end
 
   def update_models
-    servers = Server.sort_servers(Server.all)
-    @server_threads.each_with_index do |server_thread, i|
-      server_thread.server_model = servers[i]
+    servers = Server.all
+    servers.each do |current_server|
+      @server_threads.each do |current_thread|
+        next unless current_server.id == current_thread.server_model.id
+        current_thread.server_model = current_server
+      end
     end
   end
 

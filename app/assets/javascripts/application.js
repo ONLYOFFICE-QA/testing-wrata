@@ -295,6 +295,9 @@ function Runner() {
             data: {
                 'server': server
             },
+            beforeSend: function () {
+                _self.unbookServer(server);
+            },
             success: function () {
                 _self.hideServerSectionOverlay(server);
             },
@@ -533,7 +536,9 @@ function Runner() {
         });
     };
 
-    this.unbookServer = function(button, server_name, hide_button) {
+    this.unbookServer = function(server_name, button, hide_button) {
+        button = typeof button !== 'undefined' ? button : null;
+        hide_button = typeof hide_button !== 'undefined' ? hide_button : null;
         $.ajax({
             url: 'queue/unbook_server',
             context: this,
@@ -543,13 +548,15 @@ function Runner() {
             },
             type: 'POST',
             success: function () {
-                button.unbind();
-                _self.changeUnbookButtonOnBook(button);
-                if (hide_button)
-                    button.hide();
-                _self.eventToBookServer(button);
-                _self.toggleUnbookAllServersButton();
-                _self.getUpdatedDataFromServer();
+                if (button != null) {
+                    button.unbind();
+                    _self.changeUnbookButtonOnBook(button);
+                    if (hide_button)
+                        button.hide();
+                    _self.eventToBookServer(button);
+                    _self.toggleUnbookAllServersButton();
+                    _self.getUpdatedDataFromServer();
+                }
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -575,7 +582,7 @@ function Runner() {
     this.eventToUnbookServer = function(elems, hide_button) {
         offEventsOnElem(elems);
         elems.on('click', function() {
-            _self.unbookServer($(this), $(this).attr('data-server'), hide_button);
+            _self.unbookServer($(this).attr('data-server'), $(this), hide_button);
         });
     };
 
