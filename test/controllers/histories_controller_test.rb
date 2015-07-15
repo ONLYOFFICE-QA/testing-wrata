@@ -44,6 +44,6 @@ class HistoriesControllerTest < ActionController::TestCase
       delete :destroy, id: @history
     end
 
-    assert_redirected_to histories_path
+    assert_response :success
   end
 end
