@@ -296,7 +296,7 @@ function Runner() {
                 'server': server
             },
             beforeSend: function () {
-                _self.unbookServer(null, server, true);
+                _self.unbookServer(server);
             },
             success: function () {
                 _self.hideServerSectionOverlay(server);
@@ -536,7 +536,9 @@ function Runner() {
         });
     };
 
-    this.unbookServer = function(button, server_name, hide_button) {
+    this.unbookServer = function(server_name, button, hide_button) {
+        button = typeof button !== 'undefined' ? button : null;
+        hide_button = typeof hide_button !== 'undefined' ? hide_button : null;
         $.ajax({
             url: 'queue/unbook_server',
             context: this,
@@ -580,7 +582,7 @@ function Runner() {
     this.eventToUnbookServer = function(elems, hide_button) {
         offEventsOnElem(elems);
         elems.on('click', function() {
-            _self.unbookServer($(this), $(this).attr('data-server'), hide_button);
+            _self.unbookServer($(this).attr('data-server'), $(this), hide_button);
         });
     };
 
