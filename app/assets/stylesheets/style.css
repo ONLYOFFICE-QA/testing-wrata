@@ -1257,8 +1257,7 @@ a, a:link, a:visited  {
 }
 
 #info-alert {
-    visibility: hidden;
-    position: absolute;
+    display:none;
 }
 
 .alert-error {
