@@ -390,8 +390,7 @@ hr.deliver {
     display: none;
 }
 
-
-.server.off .server-header {
+.server.off .server-header, .ui-dialog > .ui-widget-header  {
     background: linear-gradient(to bottom, rgb(202, 17, 17) 15%, rgb(154, 13, 13) 100%);
     border: 1px solid rgb(202, 17, 17);
 }
