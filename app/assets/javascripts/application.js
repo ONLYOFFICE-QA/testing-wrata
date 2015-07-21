@@ -40,8 +40,20 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
-function showInfoAlert(){
-    $("#info-alert").dialog();
+function showInfoAlert(alertText){
+    var alert = $("#info-alert")
+    alertText = alertText || "Unknown Error";
+    alert.text(alertText);
+    alert.dialog({
+        buttons: [
+            {
+                text: "OK",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        ]
+    });
 }
 
 function ajaxErrorUnlessPageRefresh(xhr, type, errorThrown) {
