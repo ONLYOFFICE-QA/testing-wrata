@@ -1764,13 +1764,12 @@ function showOverlay(text) {
     if (typeof text === 'undefined'){
         $('.overlay').show();
         $('.overlay-window').hide();
-
     } else {
         $('.overlay .overlay-text').text(text);
         $('.overlay').show();
         $('.overlay-window').show();
-        return false;
     }
+    return false;
 }
 
 function hideOverlay() {
