@@ -45,6 +45,12 @@ function showInfoAlert(alertText){
     alertText = alertText || "Unknown Error";
     alert.text(alertText);
     alert.dialog({
+        open: function( ) {
+          showOverlay();
+        },
+        close: function( ) {
+          hideOverlay();
+        },
         buttons: [
             {
                 text: "OK",
