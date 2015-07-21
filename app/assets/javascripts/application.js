@@ -1761,9 +1761,16 @@ function addSortableToElem(elem) {
 }
 
 function showOverlay(text) {
-    $('.overlay .overlay-text').text(text);
-    $('.overlay').show();
-    return false;
+    if (typeof text === 'undefined'){
+        $('.overlay').show();
+        $('.overlay-window').hide();
+
+    } else {
+        $('.overlay .overlay-text').text(text);
+        $('.overlay').show();
+        $('.overlay-window').show();
+        return false;
+    }
 }
 
 function hideOverlay() {
