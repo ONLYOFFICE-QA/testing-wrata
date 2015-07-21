@@ -40,18 +40,35 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
+function showInfoAlert(alertText){
+    var alert = $("#info-alert")
+    alertText = alertText || "Unknown Error";
+    alert.text(alertText);
+    alert.dialog({
+        open: function( ) {
+          showOverlay();
+        },
+        close: function( ) {
+          hideOverlay();
+        },
+        buttons: [
+            {
+                text: "OK",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        ]
+    });
+}
+
 function ajaxErrorUnlessPageRefresh(xhr, type, errorThrown) {
     xhr.abort();
     if (isPageBeingRefreshed) {
         return;
     }
-    failAlert(errorThrown);
+    showInfoAlert(errorThrown);
     infoPopup(xhr.responseText);
-}
-
-function failAlert(alertText) {
-    alertText = alertText || "Unknown Error";
-    alert('Fail! Something goes wrong!\n' + alertText);
 }
 
 function infoPopup(info_html) {
@@ -127,7 +144,6 @@ function Runner() {
             },
             error: function (e) {
                 console.log(e.message);
-//                failAlert();
             }
         });
     };
@@ -1745,8 +1761,14 @@ function addSortableToElem(elem) {
 }
 
 function showOverlay(text) {
-    $('.overlay .overlay-text').text(text);
-    $('.overlay').show();
+    if (typeof text === 'undefined'){
+        $('.overlay').show();
+        $('.overlay-window').hide();
+    } else {
+        $('.overlay .overlay-text').text(text);
+        $('.overlay').show();
+        $('.overlay-window').show();
+    }
     return false;
 }
 
