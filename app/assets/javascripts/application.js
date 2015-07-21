@@ -40,6 +40,10 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
+function showInfoAlert(){
+    $("#info-alert").dialog();
+}
+
 function ajaxErrorUnlessPageRefresh(xhr, type, errorThrown) {
     xhr.abort();
     if (isPageBeingRefreshed) {
