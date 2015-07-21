@@ -40,9 +40,8 @@ function saveDelayedRun(f_type, name, method, start_time, location) {
             eventToDeleteDelayedRun(trimmed_data.find('.delete-run'));
             trimmed_data.appendTo($('#added-test-lists')).fadeIn('slow');
         },
-        error: function (e) {
-            console.log(e.message);
-            failAlert();
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
@@ -59,9 +58,8 @@ function saveChangedRun(run_id, method, start_time, location) {
         type: 'POST',
         success: function (data) {
         },
-        error: function (e) {
-            console.log(e.message);
-            failAlert();
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
@@ -75,9 +73,8 @@ function deleteRun(run_id) {
         type: 'POST',
         success: function (data) {
         },
-        error: function (e) {
-            console.log(e.message);
-            failAlert();
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
@@ -88,9 +85,8 @@ function testDB() {
         type: 'POST',
         success: function () {
         },
-        error: function (e) {
-            console.log(e.message);
-            failAlert();
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
@@ -176,9 +172,8 @@ function addRow() {
             eventToDeleteRow(trimmed_data.find('.delete-row'));
             trimmed_data.appendTo($('#test-lists')).fadeIn('slow');
         },
-        error: function (e) {
-            console.log(e.message);
-            failAlert();
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
         }
     });
 }
