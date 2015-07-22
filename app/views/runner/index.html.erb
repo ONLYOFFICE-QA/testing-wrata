@@ -13,7 +13,7 @@
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
         });
-        window.onload = function() {
+        window.onload = function () {
             myRunner.pullProjectsAndGetAllView();
             myRunner.setEventChangeBranch();
             myRunner.eventToAddTestsFromSidebar($('#add-list'));
@@ -79,18 +79,22 @@
     <div class="block" style="width: 37%; float: left;padding-right: 12px;">
       <div id="queue-panel">
         <div class="panel-header">
-          <div class="list-header">
-            <i class="glyphicon glyphicon-list-alt"></i>
-            <span id="booked-servers-title">servers</span>
+          <div class="server-list-header">
+            <div class="list-header">
+              <i class="glyphicon glyphicon-list-alt"></i>
+              <span id="booked-servers-title">servers</span>
+            </div>
+            <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
+            <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
           </div>
-          <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
-          <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
-          <div class="list-header" style="width: 61%">
-            <i class="glyphicon glyphicon-list-alt"></i>
-            <span id="test-queue-title">tests</span>
+          <div class="test-queue-list-header">
+            <div class="list-header" style="width: 61%">
+              <i class="glyphicon glyphicon-list-alt"></i>
+              <span id="test-queue-title">tests</span>
+            </div>
+            <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
+            <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
           </div>
-          <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
-          <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
         </div>
         <div class="queues">
           <div style="float: left" class="queue-list">
@@ -163,6 +167,7 @@
         </div>
       </div>
       <i class="update-tests glyphicon glyphicon-repeat"></i>
+
       <div class="section-overlay">
         <div class="overlay-window">
           <div class="overlay-content">
