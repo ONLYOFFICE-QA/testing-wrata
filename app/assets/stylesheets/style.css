@@ -423,7 +423,7 @@ hr.deliver {
     height: 20px;
     display: inline-block;
     vertical-align: middle;
-    width: 56px;
+    width: 50%;
     white-space: nowrap
 }
 
@@ -543,7 +543,7 @@ hr.deliver {
 .server-header .ui-progress-bar {
     /* Usual setup stuff */
     position: relative;
-    height: 14px;
+    height: 20%;
     margin-bottom: 3px;
     background-color: #abb2bc;
     border-radius: 3px;
@@ -578,8 +578,7 @@ hr.deliver {
 .server-header .ui-progress-bar span.ui-label {
     position: absolute;
     top: 0;
-    width: 70px;
-    left: 0;
+    left: 3px;
     font-size: 12px;
     line-height: 16px;
     text-shadow: rgba(255,255,255, 0.45) 0 1px 0;
