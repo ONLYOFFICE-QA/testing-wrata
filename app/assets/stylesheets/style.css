@@ -1163,7 +1163,7 @@ a, a:link, a:visited  {
 
 .test-node .name{
     color: #5b5e5b;
-    width: 131px;
+    width: 80%;
     display: inline-block;
     overflow: hidden;
     font-weight: bold;
@@ -1196,6 +1196,7 @@ a, a:link, a:visited  {
 
 .test-node .props {
     float: right;
+    width: 20%;
 }
 
 .test-node select.region.form-control{
