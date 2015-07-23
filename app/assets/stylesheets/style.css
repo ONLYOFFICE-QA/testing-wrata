@@ -1212,7 +1212,6 @@ a, a:link, a:visited  {
 }
 
 .test-node select.region.form-control{
-    width: 56px;
     font-size: 9px;
     height: 17px;
     display: block;
@@ -1223,6 +1222,7 @@ a, a:link, a:visited  {
     margin-top: 1px;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
 }
 
 .test-node select.region.form-control:hover {
