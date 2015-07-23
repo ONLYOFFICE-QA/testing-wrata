@@ -413,7 +413,9 @@ hr.deliver {
 
 .server-header .unbook-button, .server-header .book-button {
     margin-top: -2px;
-    width: 20%;
+    width: 15%;
+    text-align: center;
+    overflow: hidden;
 }
 
 .server-header label{
