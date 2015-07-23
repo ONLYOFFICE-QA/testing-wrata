@@ -1039,8 +1039,8 @@ label#server, label#client {
     cursor: pointer;
 }
 
-.server-header .test .location {
-    float: right;
+.server-header .test * {
+    text-align: right;
 }
 
 .nav-tabs > li.active {
