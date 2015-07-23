@@ -1123,10 +1123,12 @@ a, a:link, a:visited  {
 
 .server-list-header {
     width: 50%;
+    float: left;
 }
 
 .test-queue-list-header {
     width: 50%;
+    float: right;
 }
 
 #clear-tests {
