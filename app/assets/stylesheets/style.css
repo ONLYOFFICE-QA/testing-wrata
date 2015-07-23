@@ -593,6 +593,9 @@ hr.deliver {
     line-height: 16px;
     text-shadow: rgba(255,255,255, 0.45) 0 1px 0;
     font-weight: bold;
+    overflow: hidden;
+    width: 90%;
+    white-space: nowrap;
 }
 
 .hidden-tool {
