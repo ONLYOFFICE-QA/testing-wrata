@@ -249,7 +249,7 @@ function Runner() {
                 if('test' in data[i]) {
                     _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time);
                     _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
-                        data[i].test.name, data[i].test.location);
+                        data[i].test.name, data[i].test.location, data[i].test.progress, data[i].test.time);
                     server.find('.glyphicon-stop').show();
                     _self.setLogToServerView(server, data[i].log);
                 } else {
@@ -376,9 +376,11 @@ function Runner() {
         progress_elem.show();
     };
 
-    this.setTestNameAndOptions = function(hidden_elem, name, location) {
+    this.setTestNameAndOptions = function(hidden_elem, name, location, progress, time) {
         hidden_elem.find('.name').text(name);
         hidden_elem.find('.location').text(location);
+        hidden_elem.find('.progress').text('progress ' + progress + '%');
+        hidden_elem.find('.time').text(time);
     };
 
     this.hideUnbookButton = function(button) {
