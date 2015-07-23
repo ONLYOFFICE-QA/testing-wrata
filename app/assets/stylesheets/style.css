@@ -1155,7 +1155,15 @@ a, a:link, a:visited  {
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
-    width: 75%
+    width: 70%
+}
+
+#stop-booked {
+    float: right;
+}
+
+#clear-servers {
+    float: right;
 }
 
 .list-header i {
