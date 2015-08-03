@@ -57,10 +57,7 @@ class HistoriesController < ApplicationController
     @history = History.find(params[:id])
     @history.destroy
 
-    respond_to do |format|
-      format.html { redirect_to histories_url }
-      format.json { head :no_content }
-    end
+    render nothing: true
   end
 
   def set_analysed

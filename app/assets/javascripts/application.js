@@ -40,18 +40,35 @@ window.onbeforeunload = function() {
     isPageBeingRefreshed = true;
 };
 
+function showInfoAlert(alertText){
+    var alert = $("#info-alert")
+    alertText = alertText || "Unknown Error";
+    alert.text(alertText);
+    alert.dialog({
+        open: function( ) {
+          showOverlay();
+        },
+        close: function( ) {
+          hideOverlay();
+        },
+        buttons: [
+            {
+                text: "OK",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        ]
+    });
+}
+
 function ajaxErrorUnlessPageRefresh(xhr, type, errorThrown) {
     xhr.abort();
     if (isPageBeingRefreshed) {
         return;
     }
-    failAlert(errorThrown);
+    showInfoAlert(errorThrown);
     infoPopup(xhr.responseText);
-}
-
-function failAlert(alertText) {
-    alertText = alertText || "Unknown Error";
-    alert('Fail! Something goes wrong!\n' + alertText);
 }
 
 function infoPopup(info_html) {
@@ -127,7 +144,6 @@ function Runner() {
             },
             error: function (e) {
                 console.log(e.message);
-//                failAlert();
             }
         });
     };
@@ -233,7 +249,7 @@ function Runner() {
                 if('test' in data[i]) {
                     _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time);
                     _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
-                        data[i].test.name, data[i].test.location);
+                        data[i].test.name, data[i].test.location, data[i].test.progress, data[i].test.time);
                     server.find('.glyphicon-stop').show();
                     _self.setLogToServerView(server, data[i].log);
                 } else {
@@ -294,6 +310,9 @@ function Runner() {
             async: true,
             data: {
                 'server': server
+            },
+            beforeSend: function () {
+                _self.unbookServer(server);
             },
             success: function () {
                 _self.hideServerSectionOverlay(server);
@@ -357,9 +376,11 @@ function Runner() {
         progress_elem.show();
     };
 
-    this.setTestNameAndOptions = function(hidden_elem, name, location) {
+    this.setTestNameAndOptions = function(hidden_elem, name, location, progress, time) {
         hidden_elem.find('.name').text(name);
         hidden_elem.find('.location').text(location);
+        hidden_elem.find('.progress').text('progress ' + progress + '%');
+        hidden_elem.find('.time').text(time);
     };
 
     this.hideUnbookButton = function(button) {
@@ -533,7 +554,9 @@ function Runner() {
         });
     };
 
-    this.unbookServer = function(button, server_name, hide_button) {
+    this.unbookServer = function(server_name, button, hide_button) {
+        button = typeof button !== 'undefined' ? button : null;
+        hide_button = typeof hide_button !== 'undefined' ? hide_button : null;
         $.ajax({
             url: 'queue/unbook_server',
             context: this,
@@ -543,13 +566,15 @@ function Runner() {
             },
             type: 'POST',
             success: function () {
-                button.unbind();
-                _self.changeUnbookButtonOnBook(button);
-                if (hide_button)
-                    button.hide();
-                _self.eventToBookServer(button);
-                _self.toggleUnbookAllServersButton();
-                _self.getUpdatedDataFromServer();
+                if (button != null) {
+                    button.unbind();
+                    _self.changeUnbookButtonOnBook(button);
+                    if (hide_button)
+                        button.hide();
+                    _self.eventToBookServer(button);
+                    _self.toggleUnbookAllServersButton();
+                    _self.getUpdatedDataFromServer();
+                }
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -575,7 +600,7 @@ function Runner() {
     this.eventToUnbookServer = function(elems, hide_button) {
         offEventsOnElem(elems);
         elems.on('click', function() {
-            _self.unbookServer($(this), $(this).attr('data-server'), hide_button);
+            _self.unbookServer($(this).attr('data-server'), $(this), hide_button);
         });
     };
 
@@ -1738,8 +1763,14 @@ function addSortableToElem(elem) {
 }
 
 function showOverlay(text) {
-    $('.overlay .overlay-text').text(text);
-    $('.overlay').show();
+    if (typeof text === 'undefined'){
+        $('.overlay').show();
+        $('.overlay-window').hide();
+    } else {
+        $('.overlay .overlay-text').text(text);
+        $('.overlay').show();
+        $('.overlay-window').show();
+    }
     return false;
 }
 

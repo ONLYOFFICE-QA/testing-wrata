@@ -361,7 +361,6 @@ hr.deliver {
 
 .content {
     margin: auto;
-    width: 1024px;
     min-height: 750px;
 }
 
@@ -375,7 +374,6 @@ hr.deliver {
 
 .server {
     margin: 0 auto 10px;
-    width: 210px;
     border: 1px solid rgb(10, 21, 56);
     border-radius: 4px;
     box-shadow: 0 0 2px 0 rgb(131, 131, 131);
@@ -390,8 +388,7 @@ hr.deliver {
     display: none;
 }
 
-
-.server.off .server-header {
+.server.off .server-header, .ui-dialog > .ui-widget-header  {
     background: linear-gradient(to bottom, rgb(202, 17, 17) 15%, rgb(154, 13, 13) 100%);
     border: 1px solid rgb(202, 17, 17);
 }
@@ -415,6 +412,9 @@ hr.deliver {
 
 .server-header .unbook-button, .server-header .book-button {
     margin-top: -2px;
+    width: 15%;
+    text-align: center;
+    overflow: hidden;
 }
 
 .server-header label{
@@ -425,7 +425,7 @@ hr.deliver {
     height: 20px;
     display: inline-block;
     vertical-align: middle;
-    width: 56px;
+    width: 45%;
     white-space: nowrap
 }
 
@@ -546,6 +546,7 @@ hr.deliver {
     /* Usual setup stuff */
     position: relative;
     height: 14px;
+    width: 20%;
     margin-bottom: 3px;
     background-color: #abb2bc;
     border-radius: 3px;
@@ -557,6 +558,12 @@ hr.deliver {
     -webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
     -moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
     box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 0 0 #FFF;
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+    float: right;
+    top: 3px;
+    vertical-align: middle;
 }
 .server-header .ui-progress {
     display: block;
@@ -580,12 +587,14 @@ hr.deliver {
 .server-header .ui-progress-bar span.ui-label {
     position: absolute;
     top: 0;
-    width: 70px;
-    left: 0;
+    left: 3px;
     font-size: 12px;
     line-height: 16px;
     text-shadow: rgba(255,255,255, 0.45) 0 1px 0;
     font-weight: bold;
+    overflow: hidden;
+    width: 90%;
+    white-space: nowrap;
 }
 
 .hidden-tool {
@@ -597,16 +606,6 @@ hr.deliver {
     float: right;
     margin-top: 3px;
     margin-right: 3px;
-}
-
-.server-header .ui-progress-bar {
-    display: inline-block;
-    width: 70px;
-    margin-right: 5px;
-    text-align: center;
-    float: right;
-    top: 3px;
-    vertical-align: middle;
 }
 
 .glyphicon {
@@ -1039,8 +1038,8 @@ label#server, label#client {
     cursor: pointer;
 }
 
-.server-header .test .location {
-    float: right;
+.server-header .test * {
+    text-align: right;
 }
 
 .nav-tabs > li.active {
@@ -1114,7 +1113,7 @@ a, a:link, a:visited  {
 
 .queue-list {
     height: 85vh;
-    width: 147px;
+    width: 50%;
     background: rgba(255,255,255,0.97);
     box-shadow: inset 0 0 2px 1px rgba(0,0,0,0.4);
     display: inline-block;
@@ -1124,6 +1123,16 @@ a, a:link, a:visited  {
 .panel-header {
     height: 20px;
     position: relative;
+}
+
+.server-list-header {
+    width: 50%;
+    float: left;
+}
+
+.test-queue-list-header {
+    width: 50%;
+    float: right;
 }
 
 #clear-tests {
@@ -1145,7 +1154,15 @@ a, a:link, a:visited  {
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
-    width: 27%
+    width: 70%
+}
+
+#stop-booked {
+    float: right;
+}
+
+#clear-servers {
+    float: right;
 }
 
 .list-header i {
@@ -1165,7 +1182,7 @@ a, a:link, a:visited  {
 
 .test-node .name{
     color: #5b5e5b;
-    width: 131px;
+    width: 80%;
     display: inline-block;
     overflow: hidden;
     font-weight: bold;
@@ -1198,10 +1215,10 @@ a, a:link, a:visited  {
 
 .test-node .props {
     float: right;
+    width: 20%;
 }
 
 .test-node select.region.form-control{
-    width: 56px;
     font-size: 9px;
     height: 17px;
     display: block;
@@ -1212,6 +1229,7 @@ a, a:link, a:visited  {
     margin-top: 1px;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
 }
 
 .test-node select.region.form-control:hover {
@@ -1254,6 +1272,14 @@ a, a:link, a:visited  {
     padding: 4px 6px;
     /*visibility: hidden;*/
     font-size: 10px;
+}
+
+.ui-front {
+    z-index: 105 !important;
+}
+
+#info-alert {
+    display:none;
 }
 
 .alert-error {

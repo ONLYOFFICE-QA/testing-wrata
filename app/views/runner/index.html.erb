@@ -2,8 +2,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             myRunner.showServers();
-            $("#test-queue").slimScroll({width: '192px', height: '84vh'});
-            $("#server-queue").slimScroll({width: '137px', height: '84vh'});
+            $("#test-queue").slimScroll({height: '84vh'});
+            $("#server-queue").slimScroll({height: '84vh'});
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
             myRunner.eventToStopAllBooked($('#stop-booked'));
@@ -13,7 +13,7 @@
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
         });
-        window.onload = function() {
+        window.onload = function () {
             myRunner.pullProjectsAndGetAllView();
             myRunner.setEventChangeBranch();
             myRunner.eventToAddTestsFromSidebar($('#add-list'));
@@ -35,6 +35,10 @@
       <img src="assets/ajax_loader_gray_128.gif">
     </div>
   </div>
+</div>
+
+<div id="info-alert" title="Something happened">
+  <p>This is alert</p>
 </div>
 
 <div class="popup-overlay" style="display: none">
@@ -79,18 +83,22 @@
     <div class="block" style="width: 37%; float: left;padding-right: 12px;">
       <div id="queue-panel">
         <div class="panel-header">
-          <div class="list-header">
-            <i class="glyphicon glyphicon-list-alt"></i>
-            <span id="booked-servers-title">servers</span>
+          <div class="server-list-header">
+            <div class="list-header">
+              <i class="glyphicon glyphicon-list-alt"></i>
+              <span id="booked-servers-title">servers</span>
+            </div>
+            <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
+            <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
           </div>
-          <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
-          <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
-          <div class="list-header" style="width: 61%">
-            <i class="glyphicon glyphicon-list-alt"></i>
-            <span id="test-queue-title">tests</span>
+          <div class="test-queue-list-header">
+            <div class="list-header">
+              <i class="glyphicon glyphicon-list-alt"></i>
+              <span id="test-queue-title">tests</span>
+            </div>
+            <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
+            <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
           </div>
-          <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
-          <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
         </div>
         <div class="queues">
           <div style="float: left" class="queue-list">
@@ -99,7 +107,7 @@
               <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server2</div>
             </div>
           </div>
-          <div  class="queue-list" style="margin-left: 5px; width: 202px">
+          <div class="queue-list">
             <div id="test-queue"></div>
           </div>
         </div>

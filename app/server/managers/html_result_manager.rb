@@ -8,7 +8,8 @@ module HTMLResultManager
   end
 
   def save_to_html
-    " --format html -o #{rspec_html_result_path}"
+    # TODO: fix absolute path to formatter
+    " --format HtmlWithPassedTime --require ~/RubymineProjects/SharedFunctional/helpers/rspec/formatter/html_with_passed_time.rb -o #{rspec_html_result_path}"
   end
 
   def delete_html_result
