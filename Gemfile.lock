@@ -244,7 +244,7 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql (2.9.1)
+    mysql2 (0.3.19)
     nenv (0.2.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -354,7 +354,7 @@ GEM
     rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
-    rspec-retry (0.4.0)
+    rspec-retry (0.4.2)
       rspec-core
     rspec-support (3.2.2)
     rubocop (0.32.0)
@@ -377,7 +377,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    selenium-webdriver (2.45.0)
+    selenium-webdriver (2.47.1)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
@@ -448,19 +448,19 @@ DEPENDENCIES
   clipboard
   coffee-rails
   debase
-  debase-ruby_core_source (~> 0.7.8)
+  debase-ruby_core_source (>= 0.7.8)
   detect_language
   devise
   differ
-  droplet_kit (~> 1.2.2)
-  eventmachine (~> 1.0.6)
+  droplet_kit (>= 1.2.2)
+  eventmachine (>= 1.0.6)
   faraday
   faye-websocket
-  ffi-hunspell (~> 0.3.0)
+  ffi-hunspell (>= 0.3.0)
   future_proof
   gcal4ruby
   gmail
-  google-api-client (~> 0.8.5)
+  google-api-client (>= 0.8.5)
   google_drive (>= 1.0.1)
   guard-rubocop
   headless
@@ -476,7 +476,7 @@ DEPENDENCIES
   magic_encoding
   mail
   mechanize
-  mysql
+  mysql2
   net-ping
   nokogiri
   overcommit
@@ -492,17 +492,17 @@ DEPENDENCIES
   ransack
   rmagick
   roo
-  rspec (~> 3.2, < 3.3)
-  rspec-retry
+  rspec
+  rspec-retry (>= 0.4.2)
   rubocop
   rubocop-rspec
   ruby-debug-ide
   ruby-prof
   rubyzip
   sass-rails
-  selenium-webdriver (~> 2.45.0)
+  selenium-webdriver (>= 2.46.2)
   sqlite3
-  teamlab (~> 0.3.10)
+  teamlab (>= 0.3.10)
   uglifier (>= 1.3.0)
   watir-webdriver
   whatlanguage
@@ -510,4 +510,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
