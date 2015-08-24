@@ -379,7 +379,7 @@ function Runner() {
     this.setTestNameAndOptions = function(hidden_elem, name, location, progress, time) {
         hidden_elem.find('.name').text(name);
         hidden_elem.find('.location').text(location);
-        hidden_elem.find('.progress').text('progress ' + progress + '%');
+        hidden_elem.find('.test-progress').text('progress ' + progress + '%');
         hidden_elem.find('.time').text(time);
     };
 
