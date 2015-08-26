@@ -1531,7 +1531,7 @@ $(function () {
                 myRunner.saveTestList();
             }
             else {
-                alert('Nothing to save! Add tests from tests sections.');
+                showInfoAlert('Nothing to save! Add tests from tests sections.');
             }
         }
     });
