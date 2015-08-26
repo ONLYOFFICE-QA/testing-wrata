@@ -428,23 +428,6 @@ function Runner() {
         //  }
     };
 
-    this.rebootServer = function (server) {
-        $.ajax({
-            url: 'servers/reboot',
-            type: 'GET',
-            async: false,
-            data: {
-                'server': server
-            },
-            success: function () {
-                alert('The server was going to reboot.');
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
-            }
-        });
-    };
-
     this.stopCurrent = function (server) {
         $.ajax({
             url: 'runner/stop_current',
@@ -479,13 +462,6 @@ function Runner() {
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
-        });
-    };
-
-    this.eventToRebootServer = function(elem) {
-        elem.on('click', function () {
-            var server_name = $(this).attr('data-server');
-            _self.rebootServer(server_name);
         });
     };
 
@@ -707,7 +683,6 @@ function Runner() {
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
                 _self.eventForCreateAndDestroyServer(trimmed_data.find('.glyphicon-off'));
                 _self.eventToGetUpdatedDataFromServer();
-                _self.eventToRebootServer(trimmed_data.find('.glyphicon-repeat'));
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
             error: function (xhr, type, errorThrown) {
