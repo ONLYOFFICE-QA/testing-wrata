@@ -1020,7 +1020,7 @@ function Runner() {
     this.eventToOpenFileInclude = function () {
         $(".folder .glyphicon-file").on('click', function () {
             if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('data-test'))) {
-                alert('File already added to sidebar! Delete him or choose another!');
+                showInfoAlert('File already added to sidebar! Delete him or choose another!');
             }
             else {
                 var path = $(this).parent().parent().find('.add-button-file').attr('data-test');
