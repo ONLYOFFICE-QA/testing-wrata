@@ -169,7 +169,7 @@ function eventToRetest(elem) {
             async: false,
             type: 'POST',
             success: function () {
-                alert('Test was added in your queue.');
+                showInfoAlert('Test was added in your queue.');
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
