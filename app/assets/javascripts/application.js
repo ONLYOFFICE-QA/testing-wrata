@@ -437,7 +437,7 @@ function Runner() {
                 'server': server
             },
             success: function () {
-                alert('Current test was stopped successfully!');
+                showInfoAlert('Current test was stopped successfully!');
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
