@@ -1659,7 +1659,7 @@ function eventsEditInput() {
 
 function verifyListName(listName) {
     if (listName.length > MAX_LENGTH || listName.length < MIN_LENGTH) {
-        alert('Name of list is too long or short!(more then ' + MAX_LENGTH + ' or less then ' + MIN_LENGTH + ' symbols)');
+        showInfoAlert('Name of list is too long or short!(more then ' + MAX_LENGTH + ' or less then ' + MIN_LENGTH + ' symbols)');
         return false;
     }
     var result = true;
