@@ -457,7 +457,7 @@ function Runner() {
                 hideOverlay();
             },
             success: function () {
-                alert('All test on all booked servers stop successfully!');
+                showInfoAlert('All test on all booked servers stop successfully!');
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
