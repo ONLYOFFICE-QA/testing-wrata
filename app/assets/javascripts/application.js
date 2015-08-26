@@ -792,7 +792,7 @@ function Runner() {
             },
             success: function (data) {
                 if (data === "") {
-                    alert('Sign up for saving!');
+                    showInfoAlert('Sign up for saving!');
                     return;
                 }
                 var trimmed_data = trim_data(data);
@@ -878,7 +878,7 @@ function Runner() {
         $('li select.branch').change(function () {
             showSectionOverlay();
             _self.changeBranch();
-            alert('successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
+            showInfoAlert('Branch successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
         });
     };
 
