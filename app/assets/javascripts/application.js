@@ -1763,6 +1763,7 @@ function eventsForRspecPopup() {
     evenToOpenFailDetails();
     setScrollOnMainDescribe();
     setFailedToFailedDescribes();
+    eventToClosePopup();
 }
 
 function eventToOpenDescribe() {
@@ -1798,7 +1799,7 @@ function closePopup() {
 }
 
 function eventToClosePopup() {
-    $('.close-result').on('click', function () {
+    $('.close-result.pointer').on('click', function () {
         closePopup();
     });
     $('div.popup-overlay').on('click', function () {
