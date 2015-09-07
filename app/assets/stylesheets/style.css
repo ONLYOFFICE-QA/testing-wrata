@@ -33,6 +33,10 @@ footer {
     width: 100%;
 }
 
+.red-background {
+    background: linear-gradient(to bottom, rgb(202, 17, 17) 15%, rgb(154, 13, 13) 100%) !important;
+}
+
 .inline {
     display: inline-block;
 }
