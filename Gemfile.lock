@@ -55,6 +55,9 @@ GEM
       multi_json (~> 1.0)
     aws-sdk-resources (2.0.46)
       aws-sdk-core (= 2.0.46)
+    aws-sdk-v1 (1.65.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -395,6 +398,7 @@ DEPENDENCIES
   actionpack-page_caching
   activesupport
   aws-sdk
+  aws-sdk-v1
   bootstrap-sass (~> 3.1.1)
   clipboard
   coffee-rails
