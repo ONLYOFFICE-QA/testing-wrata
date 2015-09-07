@@ -43,11 +43,27 @@ module HTMLResultManager
     processing
   end
 
+  def test_failed_count
+    processing = '0'
+    if @test
+      if html_result_exist?
+        begin
+          processing_from_html = ResultParser.get_failed_cases_count_from_html(rspec_html_result_path)
+          processing = processing_from_html unless processing_from_html == ''
+        rescue
+
+        end
+      end
+    end
+    processing
+  end
+
   def create_progress_scan_thread
     @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         Thread.stop unless @test
         @test_progress = test_progress
+        @test_failed_count = test_failed_count
         sleep TIME_FOR_UPDATE
       end
     end
