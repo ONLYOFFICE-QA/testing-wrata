@@ -247,7 +247,7 @@ function Runner() {
             if (data[i].status) {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {
-                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time);
+                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
                     _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
                         data[i].test.name, data[i].test.location, data[i].test.progress, data[i].test.time);
                     server.find('.glyphicon-stop').show();
@@ -369,9 +369,12 @@ function Runner() {
         }
     };
 
-    this.showTestProgress = function(progress_elem, progress, time) {
+    this.showTestProgress = function(progress_elem, progress, time, failed_count) {
         var ui_progress = progress_elem.find('.ui-progress');
         ui_progress.css('width', progress + '%');
+        if (failed_count != 0) {
+            ui_progress.addClass('red-background')
+        }
         progress_elem.find('.value').text(progress + '% ' + time);
         progress_elem.show();
     };
@@ -428,23 +431,6 @@ function Runner() {
         //  }
     };
 
-    this.rebootServer = function (server) {
-        $.ajax({
-            url: 'servers/reboot',
-            type: 'GET',
-            async: false,
-            data: {
-                'server': server
-            },
-            success: function () {
-                alert('The server was going to reboot.');
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
-            }
-        });
-    };
-
     this.stopCurrent = function (server) {
         $.ajax({
             url: 'runner/stop_current',
@@ -454,7 +440,7 @@ function Runner() {
                 'server': server
             },
             success: function () {
-                alert('Current test was stopped successfully!');
+                showInfoAlert('Current test was stopped successfully!');
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -474,18 +460,11 @@ function Runner() {
                 hideOverlay();
             },
             success: function () {
-                alert('All test on all booked servers stop successfully!');
+                showInfoAlert('All test on all booked servers stop successfully!');
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
             }
-        });
-    };
-
-    this.eventToRebootServer = function(elem) {
-        elem.on('click', function () {
-            var server_name = $(this).attr('data-server');
-            _self.rebootServer(server_name);
         });
     };
 
@@ -707,7 +686,6 @@ function Runner() {
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
                 _self.eventForCreateAndDestroyServer(trimmed_data.find('.glyphicon-off'));
                 _self.eventToGetUpdatedDataFromServer();
-                _self.eventToRebootServer(trimmed_data.find('.glyphicon-repeat'));
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
             error: function (xhr, type, errorThrown) {
@@ -817,7 +795,7 @@ function Runner() {
             },
             success: function (data) {
                 if (data === "") {
-                    alert('Sign up for saving!');
+                    showInfoAlert('Sign up for saving!');
                     return;
                 }
                 var trimmed_data = trim_data(data);
@@ -903,7 +881,7 @@ function Runner() {
         $('li select.branch').change(function () {
             showSectionOverlay();
             _self.changeBranch();
-            alert('successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
+            showInfoAlert('Branch successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
         });
     };
 
@@ -1045,7 +1023,7 @@ function Runner() {
     this.eventToOpenFileInclude = function () {
         $(".folder .glyphicon-file").on('click', function () {
             if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('data-test'))) {
-                alert('File already added to sidebar! Delete him or choose another!');
+                showInfoAlert('File already added to sidebar! Delete him or choose another!');
             }
             else {
                 var path = $(this).parent().parent().find('.add-button-file').attr('data-test');
@@ -1556,7 +1534,7 @@ $(function () {
                 myRunner.saveTestList();
             }
             else {
-                alert('Nothing to save! Add tests from tests sections.');
+                showInfoAlert('Nothing to save! Add tests from tests sections.');
             }
         }
     });
@@ -1684,7 +1662,7 @@ function eventsEditInput() {
 
 function verifyListName(listName) {
     if (listName.length > MAX_LENGTH || listName.length < MIN_LENGTH) {
-        alert('Name of list is too long or short!(more then ' + MAX_LENGTH + ' or less then ' + MIN_LENGTH + ' symbols)');
+        showInfoAlert('Name of list is too long or short!(more then ' + MAX_LENGTH + ' or less then ' + MIN_LENGTH + ' symbols)');
         return false;
     }
     var result = true;
@@ -1788,6 +1766,7 @@ function eventsForRspecPopup() {
     evenToOpenFailDetails();
     setScrollOnMainDescribe();
     setFailedToFailedDescribes();
+    eventToClosePopup();
 }
 
 function eventToOpenDescribe() {
@@ -1823,7 +1802,7 @@ function closePopup() {
 }
 
 function eventToClosePopup() {
-    $('.close-result').on('click', function () {
+    $('.close-result.pointer').on('click', function () {
         closePopup();
     });
     $('div.popup-overlay').on('click', function () {

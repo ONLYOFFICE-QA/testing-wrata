@@ -67,6 +67,7 @@ class ServerThread
       name: slice_project_path(@test[:test_path]),
       location: @test[:location],
       progress: @test_progress,
+      failed_count: @test_failed_count,
       time: testing_time
     } if @test
     server_info[:booked] = {
