@@ -372,6 +372,7 @@ function Runner() {
     this.showTestProgress = function(progress_elem, progress, time, failed_count) {
         var ui_progress = progress_elem.find('.ui-progress');
         ui_progress.css('width', progress + '%');
+        ui_progress.removeClass('red-background');
         if (failed_count != 0) {
             ui_progress.addClass('red-background')
         }
@@ -474,6 +475,7 @@ function Runner() {
             if (result) {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
+                _self.getUpdatedDataFromServer()
             }
         });
     };

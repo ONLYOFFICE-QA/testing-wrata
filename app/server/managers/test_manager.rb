@@ -1,3 +1,5 @@
+require 'process_exists'
+
 module TestManager
   TEST_SPOT_USER_NAME = 'nct-at'
   def start_test_on_server(test_path, options)
@@ -8,16 +10,20 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} #{command}"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} '#{command}'"
+  end
+
+  def execute_docker_command(command)
+    generate_ssh_command("docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"")
   end
 
   def stop_test
-    system(generate_ssh_command("\"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""))
-    Process.kill('KILL', @ssh_pid)
+    system(generate_ssh_command('docker stop $(docker ps -q)'))
+    Process.kill('KILL', @ssh_pid) if Process.exists?(@ssh_pid)
   end
 
   def generate_run_test_command(test, options)
-    generate_ssh_command("\"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" 2>&1")
+    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server} 2>&1")
   end
 
   def open_folder_with_project(test_path)
