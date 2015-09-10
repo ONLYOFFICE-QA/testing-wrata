@@ -8,16 +8,16 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} #{command}"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} \"docker run -it --privileged=true onlyofficetestingrobot/nct-at-testing-node sh -c #{command}\""
   end
 
   def stop_test
-    system(generate_ssh_command("\"killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}\""))
+    system(generate_ssh_command("killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}"))
     Process.kill('KILL', @ssh_pid)
   end
 
   def generate_run_test_command(test, options)
-    generate_ssh_command("\"source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server}\" 2>&1")
+    generate_ssh_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server} 2>&1")
   end
 
   def open_folder_with_project(test_path)
