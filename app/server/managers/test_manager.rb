@@ -1,3 +1,5 @@
+require 'process_exists'
+
 module TestManager
   TEST_SPOT_USER_NAME = 'nct-at'
   def start_test_on_server(test_path, options)
@@ -17,7 +19,7 @@ module TestManager
 
   def stop_test
     system(generate_ssh_command('docker stop $(docker ps -a -q)'))
-    Process.kill('KILL', @ssh_pid)
+    Process.kill('KILL', @ssh_pid) if Process.exists?(@ssh_pid)
   end
 
   def generate_run_test_command(test, options)
