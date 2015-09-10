@@ -16,7 +16,7 @@ module TestManager
   end
 
   def stop_test
-    system(generate_ssh_command("killall -9 git;killall -9 ruby; killall -9 rspec; #{kill_all_browsers_on_server}"))
+    system(generate_ssh_command('docker stop $(docker ps -a -q)'))
     Process.kill('KILL', @ssh_pid)
   end
 
