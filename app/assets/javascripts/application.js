@@ -474,6 +474,7 @@ function Runner() {
             if (result) {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
+                _self.getUpdatedDataFromServer()
             }
         });
     };
