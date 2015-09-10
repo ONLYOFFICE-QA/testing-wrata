@@ -8,7 +8,7 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} 'docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"#{command}\"'"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} 'docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"'"
   end
 
   def stop_test
