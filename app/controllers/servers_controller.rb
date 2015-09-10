@@ -1,5 +1,5 @@
 class ServersController < ApplicationController
-  EXECUTOR_IMAGE_NAME = 'nct-at'
+  EXECUTOR_IMAGE_NAME = 'nct-at-docker'
 
   before_action :create_digital_ocean, only: [:cloud_server_create, :cloud_server_destroy]
 
