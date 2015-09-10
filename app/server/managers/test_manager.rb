@@ -8,7 +8,11 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} 'docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"'"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} '#{command}'"
+  end
+
+  def execute_docker_command(command)
+    generate_ssh_command("docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"")
   end
 
   def stop_test
@@ -17,7 +21,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    generate_ssh_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server} 2>&1")
+    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server} 2>&1")
   end
 
   def open_folder_with_project(test_path)
