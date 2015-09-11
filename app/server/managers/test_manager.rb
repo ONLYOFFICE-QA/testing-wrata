@@ -10,7 +10,7 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<SSHCOMMAND\n#{command}\nSSHCOMMAND"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
 
   def execute_docker_command(command)
@@ -19,7 +19,7 @@ module TestManager
   end
 
   def stop_test
-    system(generate_ssh_command('docker stop $(docker ps -q)'))
+    system(generate_ssh_command('docker stop -t 0 $(docker ps -q)'))
     Process.kill('KILL', @ssh_pid) if Process.exists?(@ssh_pid)
   end
 
