@@ -14,7 +14,8 @@ module TestManager
   end
 
   def execute_docker_command(command)
-    generate_ssh_command("docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"")
+    shm_increase = 'sudo umount /dev/shm; sudo mount -t tmpfs -o rw,nosuid,nodev,noexec,relatime,size=512M tmpfs /dev/shm;' # TODO: remove after docker implement `-shm` argument https://github.com/docker/docker/issues/2606
+    generate_ssh_command("docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"#{shm_increase}sudo mount -a; #{command}\"")
   end
 
   def stop_test
