@@ -10,7 +10,7 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} '#{command}'"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<SSHCOMMAND\n#{command}\nSSHCOMMAND"
   end
 
   def execute_docker_command(command)
@@ -23,7 +23,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server} 2>&1")
+    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
   end
 
   def open_folder_with_project(test_path)
