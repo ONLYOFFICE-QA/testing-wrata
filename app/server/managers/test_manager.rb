@@ -10,7 +10,7 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<SSHCOMMAND\n#{command}\nSSHCOMMAND"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
 
   def execute_docker_command(command)
