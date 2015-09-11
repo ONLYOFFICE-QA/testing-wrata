@@ -36,12 +36,7 @@ class ServerOptions
         "sed -i \\\"s/@create_portal_domain = '.com'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && "  \
         "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
         "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region = 'us'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region = 'eu'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region = 'sg'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region= 'us'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region= 'sg'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
+        "sed -i \\\"s/@@server_region\s?= '.*'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
     end
     region_command
   end
