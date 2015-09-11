@@ -32,19 +32,10 @@ class ServerOptions
     region_command = create_portal
     unless @portal_type == 'default'
       region_command +=
-        " && sed -i \\\"s/@create_portal_domain = '.info'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
-        "sed -i \\\"s/@create_portal_domain = '.com'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && "  \
-        "sed -i \\\"s/@create_portal_region = 'us'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
-        "sed -i \\\"s/@create_portal_region = 'eu'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
-        "sed -i \\\"s/@create_portal_region = 'sg'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
-        "sed -i \\\"s/@@portal_type = '.info'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@portal_type = '.com'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && "  \
-        "sed -i \\\"s/@@server_region = 'us'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region = 'eu'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region = 'sg'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region= 'us'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region= 'eu'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region= 'sg'/@@server_region= '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
+        " && sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
+        "sed -i \\\"s/@@server_region = '.*'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
     end
     region_command
   end

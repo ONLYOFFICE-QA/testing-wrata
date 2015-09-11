@@ -10,20 +10,21 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} '#{command}'"
+    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
 
   def execute_docker_command(command)
-    generate_ssh_command("docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"")
+    shm_increase = 'sudo umount /dev/shm; sudo mount -t tmpfs -o rw,nosuid,nodev,noexec,relatime,size=512M tmpfs /dev/shm;' # TODO: remove after docker implement `-shm` argument https://github.com/docker/docker/issues/2606
+    generate_ssh_command("docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true onlyofficetestingrobot/nct-at-testing-node bash -c \"#{shm_increase}sudo mount -a; #{command}\"")
   end
 
   def stop_test
-    system(generate_ssh_command('docker stop $(docker ps -q)'))
+    system(generate_ssh_command('docker stop -t 0 $(docker ps -q)'))
     Process.kill('KILL', @ssh_pid) if Process.exists?(@ssh_pid)
   end
 
   def generate_run_test_command(test, options)
-    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html}; #{kill_all_browsers_on_server} 2>&1")
+    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
   end
 
   def open_folder_with_project(test_path)
