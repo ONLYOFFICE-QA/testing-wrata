@@ -1086,10 +1086,6 @@ label#server, label#client {
     min-width: 600px;
 }
 
-#topnavbar {
-    height: 50px;
-}
-
 a, a:link, a:visited  {
     text-decoration: none;
 }
