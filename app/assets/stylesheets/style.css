@@ -154,6 +154,7 @@ footer {
 #topnavbar {
     font-weight: bold;
     box-shadow: 0 0 10px #131313;
+    height: 50px;
 }
 
 .user-dropdown.dropdown-menu {
@@ -1084,10 +1085,6 @@ label#server, label#client {
 .file-td {
     display: inline-block;
     min-width: 600px;
-}
-
-#topnavbar {
-    height: 50px;
 }
 
 a, a:link, a:visited  {
