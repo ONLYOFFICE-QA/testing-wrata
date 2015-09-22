@@ -1,6 +1,4 @@
 class ServersController < ApplicationController
-  before_action :create_digital_ocean, only: [:cloud_server_create, :cloud_server_destroy]
-
   # GET /test_lists
   # GET /test_lists.json
   def index
@@ -127,10 +125,6 @@ class ServersController < ApplicationController
   end
 
   private
-
-  def create_digital_ocean
-    @digital_ocean = DigitalOceanWrapper.new
-  end
 
   def set_server_status(server_name, status)
     server = $threads.get_thread_by_name(server_name)
