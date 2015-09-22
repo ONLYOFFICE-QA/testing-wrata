@@ -1,4 +1,6 @@
 class Server < ActiveRecord::Base
+  EXECUTOR_IMAGE_NAME = 'nct-at-docker'
+
   has_many :histories
 
   attr_accessible :address, :description, :name, :comp_name, :_status, :book_client_id, :last_activity_date
