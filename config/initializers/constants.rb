@@ -27,4 +27,4 @@ TIME_FOR_UPDATE = 15
 REGION_LIST = ['info us', 'info eu', 'info sg', 'com us', 'com eu', 'com sg', 'com org', 'default']
 DEFAULT_REGION = 'default'
 SECURITY_PASSWORD = 'All love wheel'
-TIMEOUT_SERVER_SELFDESTROY = 10
+TIMEOUT_SERVER_SELFDESTROY = 60 * 60
