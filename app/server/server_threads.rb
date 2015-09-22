@@ -56,6 +56,10 @@ class ServerThreads < ActionController::Base
   end
 
   def destroy_inactive_threads
-    p 'a'
+    @server_threads.each do |server_thread|
+      if server_thread.should_be_destroyed?
+        server_thread.server_model.cloud_server_destroy
+      end
+    end
   end
 end
