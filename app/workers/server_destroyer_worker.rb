@@ -2,7 +2,7 @@ class ServerDestroyerWorker
   def create_thread
     @server_destroyer_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
-        puts 'stuff'
+        $threads.destroy_inactive_threads unless $threads.nil?
         sleep TIME_FOR_UPDATE
       end
     end
