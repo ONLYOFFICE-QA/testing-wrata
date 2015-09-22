@@ -34,6 +34,7 @@ class Server < ActiveRecord::Base
     new_address = $digital_ocean.get_droplet_ip_by_name(name)
     update_column(:address, new_address)
     update_column(:_status, :created)
+    update_column(:last_activity_date, Time.current)
   end
 
   def cloud_server_destroy
