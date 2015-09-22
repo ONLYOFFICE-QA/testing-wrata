@@ -96,7 +96,8 @@ class ServerThread
   # @return [True, False] condition for server destroy
   def should_be_destroyed?
     return false if @server_model.last_test_run_date.nil? # do not destroy if there is no data about last run
-    inactive_time > TIMEOUT_SERVER_SELFDESTROY && @server_model._status == :created
+    return false unless @server_model._status == :created
+    inactive_time > TIMEOUT_SERVER_SELFDESTROY
   end
 
   def slice_project_path(file_name)
