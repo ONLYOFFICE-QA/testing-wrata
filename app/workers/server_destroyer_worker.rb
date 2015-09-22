@@ -3,7 +3,7 @@ class ServerDestroyerWorker
     @server_destroyer_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         puts 'stuff'
-        sleep 30
+        sleep TIME_FOR_UPDATE
       end
     end
   end
