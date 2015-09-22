@@ -1,7 +1,7 @@
 class Server < ActiveRecord::Base
   has_many :histories
 
-  attr_accessible :address, :description, :name, :comp_name, :_status, :book_client_id
+  attr_accessible :address, :description, :name, :comp_name, :_status, :book_client_id, :last_test_run_date
 
   # validates :address, uniqueness: true
   def _status
