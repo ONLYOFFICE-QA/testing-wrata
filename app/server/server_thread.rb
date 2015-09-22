@@ -75,6 +75,7 @@ class ServerThread
       booked_by_client: @client == current_client
     } if @client
     server_info[:status] = @status
+    server_info[:last_test_run_date] = @server_model.last_test_run_date.to_s
     server_info[:_status] = @server_model._status
     server_info[:log] = @log
     server_info[:server_ip] = @server_model.address
