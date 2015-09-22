@@ -10,6 +10,7 @@ class ServerThreads < ActionController::Base
       @server_threads << ServerThread.new(server_model)
     end
     @lock = Mutex.new
+    self
   end
 
   def get_thread_by_name(name)
@@ -52,5 +53,9 @@ class ServerThreads < ActionController::Base
         thread.server_model == diff_model
       end
     end
+  end
+
+  def destroy_inactive_threads
+    p 'a'
   end
 end
