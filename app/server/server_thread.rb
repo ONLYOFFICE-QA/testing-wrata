@@ -73,7 +73,7 @@ class ServerThread
     server_info[:booked] = {
       booked_client: @client.login,
       booked_by_client: @client == current_client
-    } if @client
+    } if @client && !@server_model.book_client_id.nil?
     server_info[:status] = @status
     server_info[:last_activity_date] = @server_model.last_activity_date.to_s
     server_info[:_status] = @server_model._status
