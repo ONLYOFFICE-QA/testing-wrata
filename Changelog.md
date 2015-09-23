@@ -1,6 +1,6 @@
 # Change log
 
-## master (unreleased)
+## 1.5
 * Fix collapsing navbar on mobile devices (small screens)
 * Add ability to get last test run date for each server
 * Servers will turn off after specific amount of time of inactivity
