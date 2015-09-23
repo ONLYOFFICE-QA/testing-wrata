@@ -1,5 +1,8 @@
 # Change log
 
+## 1.5.1
+* Fix turning off booked servers
+
 ## 1.5
 * Fix collapsing navbar on mobile devices (small screens)
 * Add ability to get last test run date for each server

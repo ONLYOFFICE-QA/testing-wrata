@@ -8,7 +8,7 @@ class ClientServers
   def servers_from_queue
     servers = []
     @servers_threads.each do |cur_node|
-      servers << cur_node[:name]
+      servers << cur_node[:name] unless cur_node[:server_thread].server_model.book_client_id.nil?
     end
     servers
   end
