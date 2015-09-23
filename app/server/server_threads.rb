@@ -10,6 +10,7 @@ class ServerThreads < ActionController::Base
       @server_threads << ServerThread.new(server_model)
     end
     @lock = Mutex.new
+    self
   end
 
   def get_thread_by_name(name)
@@ -50,6 +51,15 @@ class ServerThreads < ActionController::Base
     difference.each do |diff_model|
       @server_threads.delete_if do |thread|
         thread.server_model == diff_model
+      end
+    end
+  end
+
+  def destroy_inactive_servers
+    @server_threads.each do |server_thread|
+      if server_thread.should_be_destroyed?
+        Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
+        server_thread.server_model.cloud_server_destroy
       end
     end
   end

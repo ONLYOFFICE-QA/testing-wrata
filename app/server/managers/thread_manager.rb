@@ -6,10 +6,12 @@ module ThreadManager
         test_path = @test[:test_path]
         location = @test[:location]
         clear_log_file
+        @server_model.update_column(:executing_command_now, true)
         test_options = ServerOptions.new(@test[:doc_branch], @test[:tm_branch], location.split(' ')[0], location.split(' ')[1])
         full_start_command = start_test_on_server(test_path, test_options)
         add_data_to_history(test_path, test_options, full_start_command, @client)
-        @server_model.update_column(:last_test_run_date, Time.current)
+        @server_model.update_column(:executing_command_now, false)
+        @server_model.update_column(:last_activity_date, Time.current)
         init_last_log
         delete_log_file
         delete_html_result

@@ -1,8 +1,4 @@
 class ServersController < ApplicationController
-  EXECUTOR_IMAGE_NAME = 'nct-at-docker'
-
-  before_action :create_digital_ocean, only: [:cloud_server_create, :cloud_server_destroy]
-
   # GET /test_lists
   # GET /test_lists.json
   def index
@@ -108,17 +104,9 @@ class ServersController < ApplicationController
   end
 
   def cloud_server_create
-    set_server_status(params['server'], :creating)
-    begin
-      @digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, params['server'])
-    rescue => e
-      set_server_status(params['server'], :destroyed)
-      raise e
-    end
-    @digital_ocean.wait_until_droplet_have_status(params['server'])
-    new_address = @digital_ocean.get_droplet_ip_by_name(params['server'])
-    update_server_ip(params['server'], new_address)
-    set_server_status(params['server'], :created)
+    server = $threads.get_thread_by_name(params['server'])
+    server.server_model.cloud_server_create
+    $threads.update_models
     render nothing: true
   end
 
@@ -130,17 +118,13 @@ class ServersController < ApplicationController
   end
 
   def cloud_server_destroy
-    set_server_status(params['server'], :destroying)
-    @digital_ocean.destroy_droplet_by_name(params['server'])
-    set_server_status(params['server'], :destroyed)
+    server = $threads.get_thread_by_name(params['server'])
+    server.server_model.cloud_server_destroy
+    $threads.update_models
     render nothing: true
   end
 
   private
-
-  def create_digital_ocean
-    @digital_ocean = DigitalOceanWrapper.new
-  end
 
   def set_server_status(server_name, status)
     server = $threads.get_thread_by_name(server_name)

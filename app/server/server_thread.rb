@@ -75,7 +75,7 @@ class ServerThread
       booked_by_client: @client == current_client
     } if @client
     server_info[:status] = @status
-    server_info[:last_test_run_date] = @server_model.last_test_run_date.to_s
+    server_info[:last_activity_date] = @server_model.last_activity_date.to_s
     server_info[:_status] = @server_model._status
     server_info[:log] = @log
     server_info[:server_ip] = @server_model.address
@@ -84,6 +84,21 @@ class ServerThread
 
   def testing_time
     Time.at(Time.now - @time_start).utc.strftime('%H:%M')
+  end
+
+  # Return inactive time of current server
+  # @return [Float] time of server inactivity
+  def inactive_time
+    Time.current - @server_model.last_activity_date
+  end
+
+  # Check if current server should be self-destroyed
+  # @return [True, False] condition for server destroy
+  def should_be_destroyed?
+    return false if @server_model.last_activity_date.nil? # do not destroy if there is no data about last run
+    return false unless @server_model._status == :created
+    return false if @server_model.executing_command_now
+    inactive_time > TIMEOUT_SERVER_SELFDESTROY
   end
 
   def slice_project_path(file_name)
