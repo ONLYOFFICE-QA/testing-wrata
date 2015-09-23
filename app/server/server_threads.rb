@@ -55,7 +55,7 @@ class ServerThreads < ActionController::Base
     end
   end
 
-  def destroy_inactive_threads
+  def destroy_inactive_servers
     @server_threads.each do |server_thread|
       if server_thread.should_be_destroyed?
         Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
