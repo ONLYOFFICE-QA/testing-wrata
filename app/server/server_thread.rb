@@ -68,7 +68,9 @@ class ServerThread
       location: @test[:location],
       progress: @test_progress,
       failed_count: @test_failed_count,
-      time: testing_time
+      time: testing_time,
+      doc_branch: @test[:doc_branch],
+      tm_branch: @test[:tm_branch]
     } if @test
     server_info[:booked] = {
       booked_client: @client.login,

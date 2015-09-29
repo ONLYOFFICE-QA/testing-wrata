@@ -248,8 +248,7 @@ function Runner() {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {
                     _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
-                    _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'),
-                        data[i].test.name, data[i].test.location, data[i].test.progress, data[i].test.time);
+                    _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
                     server.find('.glyphicon-stop').show();
                     _self.setLogToServerView(server, data[i].log);
                 } else {
@@ -380,11 +379,13 @@ function Runner() {
         progress_elem.show();
     };
 
-    this.setTestNameAndOptions = function(hidden_elem, name, location, progress, time) {
-        hidden_elem.find('.name').text(name);
-        hidden_elem.find('.location').text(location);
-        hidden_elem.find('.test-progress').text('progress ' + progress + '%');
-        hidden_elem.find('.time').text(time);
+    this.setTestNameAndOptions = function(hidden_elem, test) {
+        hidden_elem.find('.name').text(test.name);
+        hidden_elem.find('.location').text(test.location);
+        hidden_elem.find('.test-progress').text('progress ' + test.progress + '%');
+        hidden_elem.find('.time').text(test.time);
+        hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
+        hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
     };
 
     this.hideUnbookButton = function(button) {
