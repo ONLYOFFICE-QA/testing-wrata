@@ -44,6 +44,7 @@ class Server < ActiveRecord::Base
     update_column(:_status, :destroying)
     $digital_ocean.destroy_droplet_by_name(name)
     update_column(:_status, :destroyed)
+    update_column(:executing_command_now, false)
   end
 
   def self.sort_servers(servers_array)
