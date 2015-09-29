@@ -625,6 +625,7 @@ hr.deliver {
     position: absolute;
     font-size: 12px;
     font-style: normal;
+    white-space: nowrap;
 }
 
 .server-header .user-icon > span.hidden-tool {
