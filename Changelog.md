@@ -1,5 +1,8 @@
 # Change log
 
+## 1.5.2
+* Fix booking servers after auto-destroy
+
 ## 1.5.1
 * Fix turning off booked servers
 
