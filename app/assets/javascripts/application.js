@@ -384,6 +384,8 @@ function Runner() {
         hidden_elem.find('.location').text(test.location);
         hidden_elem.find('.test-progress').text('progress ' + test.progress + '%');
         hidden_elem.find('.time').text(test.time);
+        hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
+        hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
     };
 
     this.hideUnbookButton = function(button) {
