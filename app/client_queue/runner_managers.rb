@@ -1,4 +1,6 @@
 class RunnerManagers
+  attr_accessor :managers
+
   def initialize(managers = [])
     @managers = managers
   end

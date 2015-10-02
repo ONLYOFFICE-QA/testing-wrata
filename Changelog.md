@@ -1,5 +1,8 @@
 # Change log
 
+## 1.5.4
+* Fix booking servers after auto-destroy AGAIN
+
 ## 1.5.3
 * Add info about branches in info popup. Fix #98
 

@@ -57,9 +57,11 @@ class ServerThreads < ActionController::Base
 
   def destroy_inactive_servers
     @server_threads.each do |server_thread|
-      if server_thread.should_be_destroyed?
-        Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
-        server_thread.server_model.cloud_server_destroy
+      next unless server_thread.should_be_destroyed?
+      Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
+      server_thread.server_model.cloud_server_destroy
+      $run_managers.managers.each do |current_manager|
+        current_manager.delete_server(server_thread.server_model.name)
       end
     end
   end
