@@ -8,4 +8,9 @@ class StartOption < ActiveRecord::Base
                   :portal_region,
                   :portal_type,
                   :start_command
+
+  # @return [String] full server region with server type
+  def server_location
+    "#{portal_type} #{portal_region}"
+  end
 end
