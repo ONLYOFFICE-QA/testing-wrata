@@ -34,7 +34,9 @@ function saveDelayedRun(f_type, name, method, start_time, location) {
         type: 'POST',
         success: function (data) {
             var trimmed_data = trim_data(data);
-            inputChangeEvent(trimmed_data.find('input'));
+            dataChangeEvent(trimmed_data.find('input'));
+            dataChangeEvent(trimmed_data.find('select'));
+            dataChangeEvent(trimmed_data.find('.date input'));
             eventForCalendar(trimmed_data.find('.date input'));
             eventToChangeDelayedRun(trimmed_data.find('.save-changed-run'));
             eventToDeleteDelayedRun(trimmed_data.find('.delete-run'));
@@ -204,8 +206,11 @@ function eventToAddRow(elem) {
     });
 }
 
-function inputChangeEvent(input) {
-    input.keyup(function () {
+function dataChangeEvent(elem) {
+    elem.keyup(function () {
+        $(this).parent().parent().find('.save-changed-run i').fadeIn();
+    });
+    elem.change(function () {
         $(this).parent().parent().find('.save-changed-run i').fadeIn();
     });
 }
@@ -214,7 +219,9 @@ function delayRunsEvents(trimmed_data) {
     eventForCalendar(trimmed_data.find('.date input'));
     eventToChangeDelayedRun(trimmed_data.find('.save-changed-run'));
     eventToDeleteDelayedRun(trimmed_data.find('.delete-run'));
-    inputChangeEvent(trimmed_data.find('input'));
+    dataChangeEvent(trimmed_data.find('input'));
+    dataChangeEvent(trimmed_data.find('select'));
+    dataChangeEvent(trimmed_data.find('.date input'));
     eventToAddRow(trimmed_data.find('.add-run-button'));
 }
 
