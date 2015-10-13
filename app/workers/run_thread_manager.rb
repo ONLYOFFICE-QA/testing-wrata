@@ -47,7 +47,7 @@ module RunThreadManager
     method = run[:method]
     case
     when method.match(/once/)
-      if check_time run.start_time
+      if run.should_start_by_time?(run.start_time)
         add_to_queue run
         delete_from_db run
       end
@@ -64,9 +64,9 @@ module RunThreadManager
 
   def check_each_round(run)
     if run.next_start
-      check_time(run.next_start)
+      run.should_start_by_time?(run.next_start)
     else
-      check_time(run.start_time)
+      run.should_start_by_time?(run.start_time)
     end
   end
 
