@@ -11,6 +11,7 @@ class StartOption < ActiveRecord::Base
 
   # @return [String] full server region with server type
   def server_location
+    return portal_type if portal_region.nil?
     "#{portal_type} #{portal_region}"
   end
 end
