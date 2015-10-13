@@ -7,7 +7,7 @@ module RunThreadManager
     @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         Thread.stop if @runs.empty?
-        @runs = @runs.to_a.delete_if do |run|
+        @runs.to_a.each do |run|
           method_timing run
         end
         Rails.logger.info 'Waiting for next check for delay runner'
