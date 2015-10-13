@@ -1,5 +1,4 @@
 module RunThreadManager
-  INFELICITY = 2 * 60 # 2 min update interval
   DAY_TIME = 24 * 60 * 60
   WEEK_TIME = 7 * 24 * 60 * 60
 
