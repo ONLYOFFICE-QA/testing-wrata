@@ -70,18 +70,6 @@ module RunThreadManager
     end
   end
 
-  def check_time(time_to_run)
-    now = Time.now
-    run_datetime = time_to_run.to_time
-    if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
-      time_diff = (now - run_datetime).abs
-      Rails.logger.info "For delay run at #{time_to_run} time left #{time_diff} seconds"
-      (time_diff <= INFELICITY) || (run_datetime < now)
-    else
-      run_datetime < now
-    end
-  end
-
   def delete_from_db(run)
     Rails.logger.info 'delete_from_db: delete test'
     run.destroy
