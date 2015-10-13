@@ -1,5 +1,4 @@
 module RunThreadManager
-  INFELICITY = 2 * 60 # 2 min update interval
   DAY_TIME = 24 * 60 * 60
   WEEK_TIME = 7 * 24 * 60 * 60
 
@@ -7,7 +6,7 @@ module RunThreadManager
     @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         Thread.stop if @runs.empty?
-        @runs = @runs.to_a.delete_if do |run|
+        @runs.to_a.each do |run|
           method_timing run
         end
         Rails.logger.info 'Waiting for next check for delay runner'
@@ -47,7 +46,7 @@ module RunThreadManager
     method = run[:method]
     case
     when method.match(/once/)
-      if check_time run.start_time
+      if run.should_start_by_time?(run.start_time)
         add_to_queue run
         delete_from_db run
       end
@@ -64,21 +63,9 @@ module RunThreadManager
 
   def check_each_round(run)
     if run.next_start
-      check_time(run.next_start)
+      run.should_start_by_time?(run.next_start)
     else
-      check_time(run.start_time)
-    end
-  end
-
-  def check_time(time_to_run)
-    now = Time.now
-    run_datetime = time_to_run.to_time
-    if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
-      time_diff = (now - run_datetime).abs
-      Rails.logger.info "For delay run at #{time_to_run} time left #{time_diff} seconds"
-      (time_diff <= INFELICITY) || (run_datetime < now)
-    else
-      run_datetime < now
+      run.should_start_by_time?(run.start_time)
     end
   end
 
