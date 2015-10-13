@@ -1,5 +1,8 @@
 # Change log
 
+## 1.5.4.1
+* Minor changes in internal logic of DelayedRun
+
 ## 1.5.4
 * Fix booking servers after auto-destroy AGAIN
 
