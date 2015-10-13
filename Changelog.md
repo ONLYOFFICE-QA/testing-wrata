@@ -1,5 +1,8 @@
 # Change log
 
+## master (unreleased)
+* Fix problem with reruning test with last parameter #103
+
 ## 1.5.4.1
 * Minor changes in internal logic of DelayedRun
 
