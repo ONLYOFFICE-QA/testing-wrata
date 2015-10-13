@@ -29,7 +29,7 @@ class DelayedRunManager
   end
 
   def get_client_runs(client)
-    client.delayed_runs
+    client.delayed_runs.sort
   end
 
   private
