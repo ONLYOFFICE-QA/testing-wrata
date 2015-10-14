@@ -113,10 +113,7 @@ class ServersController < ApplicationController
   def cloud_server_fetch_ip
     server = $threads.get_thread_by_name(params['server'])
     ip = server.server_model.fetch_ip
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: ip }
-    end
+    render json: { ip: ip.to_s }
   end
 
   def destroy
