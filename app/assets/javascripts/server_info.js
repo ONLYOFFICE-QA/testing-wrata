@@ -1,5 +1,5 @@
 /**
- * Created by lobashov-2 on 14.10.15.
+ * Created by Pavel.Lobashov on 14.10.15.
  */
 fetch_server_ip = function (server) {
     var ip;
