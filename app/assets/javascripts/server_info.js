@@ -2,15 +2,15 @@
  * Created by lobashov-2 on 14.10.15.
  */
 fetch_server_ip = function (server) {
+    var ip;
     $.ajax({
-        url: 'servers/cloud_server_create',
+        url: '/servers/cloud_server_fetch_ip',
         type: 'GET',
-        async: false,
         data: {
             'server': server
         },
         success: function (data) {
-            alert(data)
+            update_ip_value(data['ip']);
         },
         error: function (e) {
             console.log(e.message);
@@ -18,6 +18,10 @@ fetch_server_ip = function (server) {
     });
 };
 
-$("#fetch-ip").on("click",function(){
+update_ip_value = function(value) {
+        $("#server_address").val(value);
+}
+
+$("#fetch-ip").on("click", function(){
     fetch_server_ip($( "#server_name" ).val());
-});
+})
