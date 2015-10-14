@@ -110,6 +110,15 @@ class ServersController < ApplicationController
     render nothing: true
   end
 
+  def cloud_server_fetch_ip
+    server = $threads.get_thread_by_name(params['server'])
+    ip = server.server_model.fetch_ip
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: ip }
+    end
+  end
+
   def destroy
     Server.find(params[:id]).destroy
     $threads.delete_threads
