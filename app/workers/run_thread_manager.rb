@@ -5,7 +5,6 @@ module RunThreadManager
   def create_run_scan_thread
     @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
-        Thread.stop if @runs.empty?
         @runs.to_a.each do |run|
           method_timing run
         end
