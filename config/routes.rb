@@ -3,6 +3,7 @@ Runner::Application.routes.draw do
 
   resources :clients
   get '/servers/show_current_results' # should always be on top of `resources :servers` for correctly shown current status
+  get '/servers/cloud_server_fetch_ip'
   resources :servers
   resources :test_files
   resources :test_lists
