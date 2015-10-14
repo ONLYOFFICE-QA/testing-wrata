@@ -3,6 +3,7 @@
 ## master (unreleased)
 * Fix problem with reruning test with last parameter #103
 * Add ability to show links, url and native html from parsed rspec results
+* Add more info on server view page
 
 ## 1.5.4.1
 * Minor changes in internal logic of DelayedRun
