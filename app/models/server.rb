@@ -50,4 +50,9 @@ class Server < ActiveRecord::Base
   def self.sort_servers(servers_array)
     servers_array.sort_by { |s| s.name[/\d+/].to_i }
   end
+
+  # @return [String] ip of current server.
+  def fetch_ip
+    $digital_ocean.get_droplet_ip_by_name(name)
+  end
 end
