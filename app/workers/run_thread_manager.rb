@@ -1,6 +1,7 @@
 module RunThreadManager
   DAY_TIME = 24 * 60 * 60
   WEEK_TIME = 7 * 24 * 60 * 60
+  CHECK_TIMEOUT = 60
 
   def create_run_scan_thread
     @run_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
@@ -8,8 +9,8 @@ module RunThreadManager
         @runs.to_a.each do |run|
           method_timing run
         end
-        Rails.logger.info 'Waiting for next check for delay runner'
-        sleep 5
+        Rails.logger.info "Waiting for #{CHECK_TIMEOUT} seconds for next check for delay runner"
+        sleep CHECK_TIMEOUT
       end
     end
   end
