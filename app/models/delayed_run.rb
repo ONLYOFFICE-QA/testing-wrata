@@ -12,7 +12,7 @@ class DelayedRun < ActiveRecord::Base
     run_datetime = time_to_run.to_time
     if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
       time_diff = (now - run_datetime).abs
-      Rails.logger.info "For delay run #{self} at #{time_to_run} time left #{time_diff} seconds"
+      Rails.logger.info "For delay run #{self} at #{time_to_run} time left #{(time_diff / 60).to_i} minutes"
       (time_diff <= INFELICITY) || (run_datetime < now)
     else
       run_datetime < now
