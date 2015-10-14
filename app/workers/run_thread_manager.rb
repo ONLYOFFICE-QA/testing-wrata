@@ -9,7 +9,7 @@ module RunThreadManager
         @runs.to_a.each do |run|
           method_timing run
         end
-        Rails.logger.info "Waiting for #{CHECK_TIMEOUT} seconds for next check for delay runner"
+        Rails.logger.info "Waiting for #{CHECK_TIMEOUT} seconds for next check for delay runs"
         sleep CHECK_TIMEOUT
       end
     end
