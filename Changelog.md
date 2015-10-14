@@ -4,6 +4,8 @@
 * Fix problem with reruning test with last parameter #103
 * Add ability to show links, url and native html from parsed rspec results
 * Add more info on server view page
+* Do not stop RunThreadManager in any cases. Always check for delayed runs
+* Add default values for DelayedRuns view - each time
 
 ## 1.5.4.1
 * Minor changes in internal logic of DelayedRun
