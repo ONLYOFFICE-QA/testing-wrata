@@ -97,6 +97,7 @@ class ServerThread
   # Check if current server should be self-destroyed
   # @return [True, False] condition for server destroy
   def should_be_destroyed?
+    return false unless @server_model.self_destruction
     return false if @server_model.last_activity_date.nil? # do not destroy if there is no data about last run
     return false unless @server_model._status == :created
     return false if @server_model.executing_command_now
