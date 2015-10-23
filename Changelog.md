@@ -1,5 +1,8 @@
 # Change log
 
+## 1.6.1
+* Add ability to disable self-destruction of servers
+
 ## 1.6
 * Fix problem with reruning test with last parameter #103
 * Add ability to show links, url and native html from parsed rspec results
