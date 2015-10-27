@@ -1,5 +1,8 @@
 # Change log
 
+## unreleased
+* Force delete ALL running containers while starting tests
+
 ## 1.6.1
 * Add ability to disable self-destruction of servers
 
