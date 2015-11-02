@@ -59,9 +59,13 @@ class ServerThreads < ActionController::Base
     @server_threads.each do |server_thread|
       next unless server_thread.should_be_destroyed?
       Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
-      server_thread.server_model.cloud_server_destroy
-      $run_managers.managers.each do |current_manager|
-        current_manager.delete_server(server_thread.server_model.name)
+      begin
+        server_thread.server_model.cloud_server_destroy
+        $run_managers.managers.each do |current_manager|
+          current_manager.delete_server(server_thread.server_model.name)
+        end
+      rescue => e
+        Rails.logger.error("Server: #{server_thread.server_model.name}, cannot be destroyed because of: #{e}")
       end
     end
   end
