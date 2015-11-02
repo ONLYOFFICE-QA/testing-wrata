@@ -2,6 +2,8 @@
 
 ## unreleased
 * Force delete ALL running containers while starting tests
+* Rework handling DO keys. Now keys can be changed during runtime of server.
+  Also incorrect keys will no longer crash server
 
 ## 1.6.1
 * Add ability to disable self-destruction of servers
