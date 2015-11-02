@@ -42,7 +42,12 @@ class Server < ActiveRecord::Base
   def cloud_server_destroy
     unbook
     update_column(:_status, :destroying)
-    $digital_ocean.destroy_droplet_by_name(name)
+    begin
+      $digital_ocean.destroy_droplet_by_name(name)
+    rescue => e
+      update_column(:_status, :created)
+      raise e
+    end
     update_column(:_status, :destroyed)
     update_column(:executing_command_now, false)
   end
