@@ -1,5 +1,8 @@
 # Change log
 
+## master (unreleased)
+* You can use now not only branch, but tags and identificators
+
 ## 1.6.2
 * Force delete ALL running containers while starting tests
 * Rework handling DO keys. Now keys can be changed during runtime of server.
