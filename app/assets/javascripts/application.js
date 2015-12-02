@@ -751,8 +751,8 @@ function Runner() {
             async: false,
             type: 'GET',
             success: function (data) {
-                _self.setDocBranches(data.doc_branches);
-                _self.setTeamlabBranches(data.tm_branches);
+                _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
+                _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -764,21 +764,17 @@ function Runner() {
         _self.pullProjectsAndFillTests();
     };
 
-    this.setDocBranches = function(branches) {
-        var select = $('#docs-branches');
-        clearElementInside(select);
+    this.setGitReferences = function(control, branches, tags) {
+        clearElementInside(control);
+        control.append($("<option disabled>Branches</option>"));
         for(var i = 0; i < branches.length; i++) {
-            select.append($("<option>" + branches[i] + "</option>"));
+            control.append($("<option>" + branches[i] + "</option>"));
         }
-    };
-
-    this.setTeamlabBranches = function(branches) {
-        var select = $('#teamlab-branches');
-        clearElementInside(select);
-        for(var i = 0; i < branches.length; i++) {
-            select.append($("<option>" + branches[i] + "</option>"));
+        control.append($("<option disabled>Tags</option>"));
+        for(var i = 0; i < tags.length; i++) {
+            control.append($("<option>" + tags[i] + "</option>"));
         }
-    };
+    }
 
     this.saveTestList = function () {
         $.ajax({
