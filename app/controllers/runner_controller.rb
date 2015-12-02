@@ -14,12 +14,16 @@ class RunnerController < ApplicationController
 
   def branches
     tm_branches = view_context.get_list_branches(TEAMLAB_PROJECT_PATH)
+    tm_tags = view_context.get_tags(TEAMLAB_PROJECT_PATH)
     doc_branches = view_context.get_list_branches(DOCS_PROJECT_PATH)
+    doc_tags = view_context.get_tags(DOCS_PROJECT_PATH)
     respond_to do |format|
       format.json do
         render json: {
           tm_branches: tm_branches,
-          doc_branches: doc_branches
+          tm_tags: tm_tags,
+          doc_branches: doc_branches,
+          doc_tags: doc_tags
         }.to_json
       end
       format.html
@@ -31,7 +35,7 @@ class RunnerController < ApplicationController
     project = params['project'].to_sym
     if project == :docs
       `cd #{DOCS_PROJECT_PATH}; git checkout #{branch}; git pull;`
-    elsif  project == :teamlab
+    elsif project == :teamlab
       `cd #{TEAMLAB_PROJECT_PATH}; git checkout #{branch}; git pull;`
     end
 

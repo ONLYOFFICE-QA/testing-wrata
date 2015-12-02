@@ -62,6 +62,14 @@ module RunnerHelper
     branches_name
   end
 
+  # Get list of tags in project
+  # @param project_path [String] path to project
+  # @return [Array, String] list of tags
+  def get_tags(project_path)
+    system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -q; git tag -l`
+    system_message.split("\n")
+  end
+
   def server_booked?(server_name)
     $threads.get_thread_by_name(server_name).booked?
   end
