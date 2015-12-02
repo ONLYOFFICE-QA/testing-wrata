@@ -59,7 +59,7 @@ module RunnerHelper
     end
     branches_name.delete 'develop'
     branches_name.unshift 'develop'
-    branches_name + get_tags(project_path)
+    branches_name
   end
 
   # Get list of tags in project
