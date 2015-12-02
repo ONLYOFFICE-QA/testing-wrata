@@ -59,7 +59,15 @@ module RunnerHelper
     end
     branches_name.delete 'develop'
     branches_name.unshift 'develop'
-    branches_name
+    branches_name + get_tags(project_path)
+  end
+
+  # Get list of tags in project
+  # @param project_path [String] path to project
+  # @return [Array, String] list of tags
+  def get_tags(project_path)
+    system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -q; git tag -l`
+    system_message.split("\n")
   end
 
   def server_booked?(server_name)
