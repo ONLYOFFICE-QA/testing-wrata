@@ -880,7 +880,7 @@ function Runner() {
         $('li select.branch').change(function () {
             showSectionOverlay();
             _self.changeBranch();
-            showInfoAlert('Branch successful changed'); // Знаю что, тупой костыль, но переделывать времени нет
+            showInfoAlert('Branch or Tag was successful changed');
         });
     };
 
