@@ -1,7 +1,9 @@
 # Change log
 
-## master (unreleased)
+## 1.7.0
 * You can use now not only branch, but tags as identificators
+* Ensure, that webserver can be run on `puma` server (Was already included in Gemfile)
+* Update Gemfile.lock version of files
 
 ## 1.6.2
 * Force delete ALL running containers while starting tests
