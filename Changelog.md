@@ -1,5 +1,8 @@
 # Change log
 
+## 1.7.1
+* Fix order in which project are pulled. If there was new dependencies in `testing-shared` - they will be included in OnlineDocuments
+
 ## 1.7.0
 * You can use now not only branch, but tags as identificators
 * Ensure, that webserver can be run on `puma` server (Was already included in Gemfile)
