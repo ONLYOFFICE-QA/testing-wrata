@@ -1,5 +1,10 @@
 # Change log
 
+## 1.8
+### New features
+* Test list now shown not only `spec` and `RSpec` folder, but all project folders
+* Ability to run any file, not only `_spec.rb`. Currently only supported `_spec.rb` and generic `.rb` files
+
 ## 1.7.1
 * Fix order in which project are pulled. If there was new dependencies in `testing-shared` - they will be included in OnlineDocuments
 

@@ -4,7 +4,7 @@ module RunnerHelper
     data[:children] = children = []
     data[:path] = path
     Dir.foreach(path).sort.each do |entry|
-      next if entry == '..' || entry == '.'
+      next if entry.start_with?('.')
       full_path = File.join(path, entry)
       if File.directory?(full_path)
         children << directory_hash(full_path, entry)
@@ -26,19 +26,6 @@ module RunnerHelper
     end
     test_file.close
     file_tests
-  end
-
-  def get_file_path(file_name, project)
-    project_path = if project == :docs
-                     DOCS_TESTS_PATH
-                   elsif project == :tm
-                     TEAMLAB_TESTS_PATH
-                   end
-    path_to_test = ''
-    Find.find(project_path) do |path|
-      path_to_test = path if path =~ /#{file_name}/
-    end
-    path_to_test.gsub(project_path, '')
   end
 
   def get_list_branches(project_path)
