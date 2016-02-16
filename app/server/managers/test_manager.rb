@@ -12,7 +12,7 @@ module TestManager
   end
 
   def start_test_on_server(test_path, options)
-    full_start_command = generate_run_test_command(test_path, options)
+    full_start_command = generate_run_test_command(test_path.gsub('~', '$HOME'), options)
     @ssh_pid = Process.spawn(full_start_command, out: [server_log_path, 'w'])
     Process.wait(@ssh_pid)
     full_start_command
