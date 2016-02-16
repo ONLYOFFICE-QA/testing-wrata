@@ -11,13 +11,12 @@
                     <% show_file_tree(current_child, project) %>
                 <% else %>
                     <% unless current_child.has_key?(:children) %>
-                        <% if current_child[:name].include?('_spec.rb') %>
-                            <% child_name = current_child[:name].split('.')[0] %>
-                            <div class="file">
-                              <div class="add-button-file active" data-test="<%= current_child[:path] %>" style="">add</div>
-                              <div class="file-name"><i class="glyphicon glyphicon-file"></i><%= child_name %><i class="add-file glyphicon glyphicon-plus-sign"></i></div>
-                            </div>
-                        <% end %>
+                        <% child_name = current_child[:name] %>
+                        <div class="file">
+                          <div class="add-button-file active" data-test="<%= current_child[:path] %>" style="">add</div>
+                          <div class="file-name"><i class="glyphicon glyphicon-file"></i><%= child_name %>
+                            <i class="add-file glyphicon glyphicon-plus-sign"></i></div>
+                        </div>
                     <% end %>
                 <% end %>
             <% end %>
