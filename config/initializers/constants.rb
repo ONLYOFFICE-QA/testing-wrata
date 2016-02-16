@@ -1,7 +1,7 @@
 DOCS_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments"
 TEAMLAB_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab"
-DOCS_TESTS_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments/spec"
-TEAMLAB_TESTS_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab/Rspec"
+DOCS_TESTS_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments/"
+TEAMLAB_TESTS_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab/"
 SERVERS_LOGS_PATH = 'app/server/logs'
 DOCS_PROJECT_NAME = 'OnlineDocuments'
 TEAMLAB_PROJECT_NAME = 'TeamLab'
