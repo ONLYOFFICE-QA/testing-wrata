@@ -28,19 +28,6 @@ module RunnerHelper
     file_tests
   end
 
-  def get_file_path(file_name, project)
-    project_path = if project == :docs
-                     DOCS_TESTS_PATH
-                   elsif project == :tm
-                     TEAMLAB_TESTS_PATH
-                   end
-    path_to_test = ''
-    Find.find(project_path) do |path|
-      path_to_test = path if path =~ /#{file_name}/
-    end
-    path_to_test.gsub(project_path, '')
-  end
-
   def get_list_branches(project_path)
     system_message = `cd #{project_path}; git pull --prune; git checkout develop; git branch -a`
     branches = []
