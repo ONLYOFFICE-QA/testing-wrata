@@ -32,26 +32,26 @@
 <% if @client %>
     <% if @client.project == 'docs' %>
         <div class="tab-pane active" id="docs">
-          <% show_file_tree(directory_hash(DOCS_TESTS_PATH)[:children], :docs) %>
+          <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
         </div>
         <div class="tab-pane" id="teamlab">
-          <% show_file_tree(directory_hash(TEAMLAB_TESTS_PATH)[:children], :tm) %>
+          <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :tm) %>
         </div>
     <% end %>
     <% if @client.project == 'teamlab' %>
         <div class="tab-pane" id="docs">
-          <% show_file_tree(directory_hash(DOCS_TESTS_PATH)[:children], :docs) %>
+          <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
         </div>
         <div class="tab-pane active" id="teamlab">
-          <% show_file_tree(directory_hash(TEAMLAB_TESTS_PATH)[:children], :tm) %>
+          <% show_file_tree(directory_hash(TEAMLAB_PROJECT_PATH)[:children], :tm) %>
         </div>
     <% end %>
 
 <% else %>
     <div class="tab-pane <%= check_active('docs') %>" id="docs">
-      <% show_file_tree(directory_hash(DOCS_TESTS_PATH)[:children], :docs) %>
+      <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
     </div>
     <div class="tab-pane <%= check_active('teamlab') %>" id="teamlab">
-      <% show_file_tree(directory_hash(TEAMLAB_TESTS_PATH)[:children], :tm) %>
+      <% show_file_tree(directory_hash(TEAMLAB_PROJECT_PATH)[:children], :tm) %>
     </div>
 <% end %>
