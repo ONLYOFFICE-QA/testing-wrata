@@ -2,6 +2,15 @@ require 'process_exists'
 
 module TestManager
   TEST_SPOT_USER_NAME = 'nct-at'
+
+  # Determine which command is used to run test
+  # @return [String] command to run test. Empty if not supported.
+  def command_executioner(test)
+    return 'rspec' if test.end_with?('_spec.rb')
+    return 'ruby' if test.end_with?('rb')
+    ''
+  end
+
   def start_test_on_server(test_path, options)
     full_start_command = generate_run_test_command(test_path, options)
     @ssh_pid = Process.spawn(full_start_command, out: [server_log_path, 'w'])
@@ -24,7 +33,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && rspec '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
+    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && #{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
   end
 
   def open_folder_with_project(test_path)
