@@ -1,5 +1,10 @@
 # Change log
 
+## 1.9
+## New features
+* Use `--shm-size` option for `docker run` for increasing it. Remove old code for increase shm by runtime.
+Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pull/16168)
+
 ## 1.8
 ### New features
 * Test list now shown not only `spec` and `RSpec` folder, but all project folders
