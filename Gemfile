@@ -2,6 +2,7 @@ instance_eval(File.read('../SharedFunctional/Gemfile'))
 
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
+gem 'bootbox-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'coffee-rails'
 gem 'devise'

@@ -131,7 +131,7 @@
               <select id="docs-branches" class="branch form-control">
               </select>
               <i class="start-icon"></i>
-              <select class="region form-control">
+              <select id='portal-list-docs' class="region form-control">
                 <% REGION_LIST.each do |region| %>
                     <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
                 <% end %>
@@ -152,7 +152,7 @@
               <select id="teamlab-branches" class="branch form-control">
               </select>
               <i class="start-icon"></i>
-              <select class="region form-control">
+              <select id='portal-list-onlyoffice' class="region form-control">
                 <% REGION_LIST.each do |region| %>
                     <option><%= region %></option>
                 <% end %>
