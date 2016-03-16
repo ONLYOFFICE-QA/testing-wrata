@@ -1,7 +1,7 @@
 require 'process_exists'
 
 module TestManager
-  TEST_SPOT_USER_NAME = 'nct-at'
+  TEST_SPOT_USER_NAME = 'nct-at'.freeze
 
   # Determine which command is used to run test
   # @return [String] command to run test. Empty if not supported.
@@ -9,6 +9,15 @@ module TestManager
     return 'rspec' if test.end_with?('_spec.rb')
     return 'ruby' if test.end_with?('rb')
     ''
+  end
+
+  # Set environment options to test
+  # @param options [ServerOptions] options of run
+  # @return [String] bash string
+  def env_variables_options(options)
+    env_variables = 'export DISPLAY=:0.0'
+    env_variables += " && export SPEC_SERVER_IP='#{options.portal_type}'" if options.on_custom_portal?
+    env_variables
   end
 
   def start_test_on_server(test_path, options)
@@ -32,7 +41,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && export DISPLAY=:0.0 && #{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
+    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && #{env_variables_options(options)} && #{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
   end
 
   def open_folder_with_project(test_path)
