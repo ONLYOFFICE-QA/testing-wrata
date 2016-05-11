@@ -7,6 +7,7 @@
             myRunner.eventToSortTestQueue();
             myRunner.getUpdatedDataFromServer();
             myRunner.eventToStopAllBooked($('#stop-booked'));
+            myRunner.eventToDestroyAllUnBooked($('#destroy-servers'));
             myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
             myRunner.eventToClearTestQueue($('#clear-tests'));
             myRunner.eventToClearServerList($('#clear-servers'));
@@ -84,6 +85,7 @@
       <div id="queue-panel">
         <div class="panel-header">
           <div class="server-list-header">
+            <i id="destroy-servers" class="glyphicon glyphicon-off" title="Destroy all unbooked servers"></i>
             <div class="list-header">
               <i class="glyphicon glyphicon-list-alt"></i>
               <span id="booked-servers-title">servers</span>
