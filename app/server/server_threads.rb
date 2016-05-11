@@ -55,6 +55,21 @@ class ServerThreads < ActionController::Base
     end
   end
 
+  def destroy_unbooked_servers
+    @server_threads.each do |server_thread|
+      next unless server_thread.server_model.book_client_id.nil?
+      next unless server_thread.server_model._status == :created
+      begin
+        server_thread.server_model.cloud_server_destroy
+        $run_managers.managers.each do |current_manager|
+          current_manager.delete_server(server_thread.server_model.name)
+        end
+      rescue => e
+        Rails.logger.error("Server: #{server_thread.server_model.name}, cannot be destroyed because of: #{e}")
+      end
+    end
+  end
+
   def destroy_inactive_servers
     @server_threads.each do |server_thread|
       next unless server_thread.should_be_destroyed?

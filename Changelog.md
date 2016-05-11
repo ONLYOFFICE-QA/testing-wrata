@@ -6,6 +6,7 @@
 Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pull/16168)
 * Add ability to send custom portal name to spec.  It use enviroment variable `SPEC_SERVER_IP`. 
 You should implement parsing it in your tests, to correctly run tests on customs ip.
+* Add single button to destroy all unbooked servers
 
 
 ## 1.8

@@ -470,6 +470,26 @@ function Runner() {
             }
         });
     };
+    
+    this.destroyAllUnbooked = function () {
+        $.ajax({
+            url: 'runner/destroy_all_unbooked_servers',
+            type: 'POST',
+            async: true,
+            beforeSend: function () {
+                showOverlay('Destroy all unbooked servers');
+            },
+            complete: function () {
+                hideOverlay();
+            },
+            success: function () {
+                showInfoAlert('All unbooked servers destroyed');
+            },
+            error: function (xhr, type, errorThrown) {
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            }
+        });
+    };
 
     this.eventToStopTest = function (elem) {
         elem.on('click', function () {
@@ -487,6 +507,15 @@ function Runner() {
             var result = confirm('Are you really want to stop all test on booked servers?');
             if (result) {
                 _self.stopAllBooked();
+            }
+        });
+    };
+    
+    this.eventToDestroyAllUnBooked = function (elem) {
+        elem.on('click', function () {
+            var result = confirm('Are you really want to destroy all unbooked servers?');
+            if (result) {
+                _self.destroyAllUnbooked();
             }
         });
     };
