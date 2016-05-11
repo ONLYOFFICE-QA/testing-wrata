@@ -33,6 +33,7 @@ Runner::Application.routes.draw do
   get 'runner/branches'
   post 'runner/stop_current'
   post 'runner/stop_all_booked'
+  post 'runner/destroy_all_unbooked_servers'
 
   post 'queue/book_server'
   post 'queue/unbook_server'

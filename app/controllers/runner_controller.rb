@@ -182,4 +182,10 @@ class RunnerController < ApplicationController
 
     render nothing: true
   end
+
+  def destroy_all_unbooked_servers
+    $threads.destroy_unbooked_servers
+
+    render nothing: true
+  end
 end
