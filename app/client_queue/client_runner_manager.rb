@@ -79,7 +79,7 @@ class ClientRunnerManager
   end
 
   def add_tests(tests, branch, location)
-    tests.each do |test|
+    tests.reverse.each do |test|
       @tests.push_test(test, branch, location)
     end
     start_client_runner_thread if ready_to_start?
