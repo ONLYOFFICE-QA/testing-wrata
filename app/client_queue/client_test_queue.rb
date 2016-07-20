@@ -11,8 +11,8 @@ class ClientTestQueue
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
     doc_branch, tm_branch = branches(test_project, branch, location.split(' ')[0])
-    @tests << { test_path: reformat_path(test_path), id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
-                location: location, test_name: test_name, project: test_project }
+    @tests.unshift(test_path: reformat_path(test_path), id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
+                   location: location, test_name: test_name, project: test_project)
     @id += 1
   end
 
@@ -23,8 +23,8 @@ class ClientTestQueue
   def push_test_with_branches(test_path, tm_branch, doc_branch, location)
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
-    @tests << { test_path: test_path, id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
-                location: location, test_name: test_name, project: test_project }
+    @tests.unshift(test_path: test_path, id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
+                   location: location, test_name: test_name, project: test_project)
     @id += 1
   end
 
@@ -83,7 +83,7 @@ class ClientTestQueue
       doc_branch = branch
       if region == INFO_SERVER
         teamlab_branch = TEAMLAB_INFO_MAIN_BRANCH
-      elsif  region == COM_SERVER
+      elsif region == COM_SERVER
         teamlab_branch = TEAMLAB_COM_MAIN_BRANCH
       end
     end

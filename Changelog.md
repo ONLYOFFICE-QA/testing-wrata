@@ -8,6 +8,9 @@ Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pul
 You should implement parsing it in your tests, to correctly run tests on customs ip.
 * Add single button to destroy all unbooked servers
 
+## Changes
+* Add button for spec file now adds it to beginning of queue, instead of end. Behaviour not changed if add folder
+
 
 ## 1.8
 ### New features
