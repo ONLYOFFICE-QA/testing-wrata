@@ -31,12 +31,12 @@ module RunThreadManager
       # @test_list = run.client.test_lists.find_by_name()
       # manager.add_test(tests, branch, location)
     when 'test_list'
-      fail NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
+      raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
       test_list = run.client.test_lists.find_by_name(run.name)
       names = test_list.test_files.inject([]) do |arr, test_file|
         arr << test_file.name
       end
-      manager.add_tests(names, test_list.branch, run.location)
+      manager.add_tests(names, test_list.branch, run.location, to_begin_of_queue: false)
     end if manager
   end
 
