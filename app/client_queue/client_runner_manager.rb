@@ -78,9 +78,9 @@ class ClientRunnerManager
     start_client_runner_thread if ready_to_start?
   end
 
-  def add_tests(tests, branch, location)
+  def add_tests(tests, branch, location, to_begin_of_queue: true)
     tests.reverse.each do |test|
-      @tests.push_test(test, branch, location)
+      @tests.push_test(test, branch, location, to_begin_of_queue: to_begin_of_queue)
     end
     start_client_runner_thread if ready_to_start?
   end
