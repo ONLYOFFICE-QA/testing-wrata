@@ -32,7 +32,7 @@ module TestManager
   end
 
   def execute_docker_command(command)
-    generate_ssh_command("docker rm -f $(docker ps -a -q); docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true --shm-size=512m onlyofficetestingrobot/nct-at-testing-node bash -c \"sudo mount -a; #{command}\"")
+    generate_ssh_command("docker rm -f $(docker ps -a -q); docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true --shm-size=512m onlyofficetestingrobot/nct-at-testing-node bash -c \"bash /before-run.sh; #{command}\"")
   end
 
   def stop_test
