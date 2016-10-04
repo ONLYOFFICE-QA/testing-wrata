@@ -7,6 +7,7 @@ Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pul
 * Add ability to send custom portal name to spec.  It use enviroment variable `SPEC_SERVER_IP`. 
 You should implement parsing it in your tests, to correctly run tests on customs ip.
 * Add single button to destroy all unbooked servers
+* Add ability to run before spec any command from `/before-run.sh`, not only `sudo mount -a`
 
 ## Changes
 * Add button for spec file now adds it to beginning of queue, instead of end. Behaviour not changed if add folder
