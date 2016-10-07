@@ -1,22 +1,23 @@
 require 'find'
 
 class RunnerController < ApplicationController
+  include GitHelper
   def index
     @controller = :runner
   end
 
   def pull_projects
-    `cd #{DOCS_PROJECT_PATH}; git reset --hard; git pull;`
-    `cd #{TEAMLAB_PROJECT_PATH}; git reset --hard; git pull;`
+    cleanup_project(DOCS_PROJECT_PATH)
+    cleanup_project(TEAMLAB_PROJECT_PATH)
 
     render nothing: true
   end
 
   def branches
-    tm_branches = view_context.get_list_branches(TEAMLAB_PROJECT_PATH)
-    tm_tags = view_context.get_tags(TEAMLAB_PROJECT_PATH)
-    doc_branches = view_context.get_list_branches(DOCS_PROJECT_PATH)
-    doc_tags = view_context.get_tags(DOCS_PROJECT_PATH)
+    tm_branches = get_list_branches(TEAMLAB_PROJECT_PATH)
+    tm_tags = get_tags(TEAMLAB_PROJECT_PATH)
+    doc_branches = get_list_branches(DOCS_PROJECT_PATH)
+    doc_tags = get_tags(DOCS_PROJECT_PATH)
     respond_to do |format|
       format.json do
         render json: {
@@ -34,9 +35,9 @@ class RunnerController < ApplicationController
     branch = params['branch']
     project = params['project'].to_sym
     if project == :docs
-      `cd #{DOCS_PROJECT_PATH}; git checkout #{branch}; git pull;`
+      change_project_branch(DOCS_PROJECT_PATH, branch)
     elsif project == :teamlab
-      `cd #{TEAMLAB_PROJECT_PATH}; git checkout #{branch}; git pull;`
+      change_project_branch(TEAMLAB_PROJECT_PATH, branch)
     end
 
     render nothing: true

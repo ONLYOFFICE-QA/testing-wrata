@@ -28,35 +28,6 @@ module RunnerHelper
     file_tests
   end
 
-  def get_list_branches(project_path)
-    system_message = `cd #{project_path}; git pull --prune; git checkout develop; git branch -a`
-    branches = []
-    system_message.to_s.gsub!('* ', '')
-    system_message.to_s.split("\n  ").each do |line|
-      branches << line.to_s.split(' ')
-    end
-    branches.flatten!
-    branches.delete '->'
-    branches_name = []
-    branches.each do |branch|
-      if branch.include?('/') && branch.include?('remote')
-        branches_name << branch.gsub('remotes/origin/', '')
-        next
-      end
-    end
-    branches_name.delete 'develop'
-    branches_name.unshift 'develop'
-    branches_name
-  end
-
-  # Get list of tags in project
-  # @param project_path [String] path to project
-  # @return [Array, String] list of tags
-  def get_tags(project_path)
-    system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -q; git tag -l`
-    system_message.split("\n")
-  end
-
   def server_booked?(server_name)
     $threads.get_thread_by_name(server_name).booked?
   end
