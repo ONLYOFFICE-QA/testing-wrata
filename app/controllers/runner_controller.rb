@@ -1,13 +1,14 @@
 require 'find'
 
 class RunnerController < ApplicationController
+  include GitHelper
   def index
     @controller = :runner
   end
 
   def pull_projects
-    `cd #{DOCS_PROJECT_PATH}; git reset --hard; git pull;`
-    `cd #{TEAMLAB_PROJECT_PATH}; git reset --hard; git pull;`
+    cleanup_project(DOCS_PROJECT_PATH)
+    cleanup_project(TEAMLAB_PROJECT_PATH)
 
     render nothing: true
   end
