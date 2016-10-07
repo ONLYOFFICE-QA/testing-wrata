@@ -14,10 +14,10 @@ class RunnerController < ApplicationController
   end
 
   def branches
-    tm_branches = view_context.get_list_branches(TEAMLAB_PROJECT_PATH)
-    tm_tags = view_context.get_tags(TEAMLAB_PROJECT_PATH)
-    doc_branches = view_context.get_list_branches(DOCS_PROJECT_PATH)
-    doc_tags = view_context.get_tags(DOCS_PROJECT_PATH)
+    tm_branches = get_list_branches(TEAMLAB_PROJECT_PATH)
+    tm_tags = get_tags(TEAMLAB_PROJECT_PATH)
+    doc_branches = get_list_branches(DOCS_PROJECT_PATH)
+    doc_tags = get_tags(DOCS_PROJECT_PATH)
     respond_to do |format|
       format.json do
         render json: {
