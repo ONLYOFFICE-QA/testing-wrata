@@ -35,9 +35,9 @@ class RunnerController < ApplicationController
     branch = params['branch']
     project = params['project'].to_sym
     if project == :docs
-      `cd #{DOCS_PROJECT_PATH}; git checkout #{branch}; git pull;`
+      change_project_branch(DOCS_PROJECT_PATH, branch)
     elsif project == :teamlab
-      `cd #{TEAMLAB_PROJECT_PATH}; git checkout #{branch}; git pull;`
+      change_project_branch(TEAMLAB_PROJECT_PATH, branch)
     end
 
     render nothing: true

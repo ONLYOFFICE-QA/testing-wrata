@@ -1,5 +1,13 @@
 # Stuff for working with git
 module GitHelper
+  # Change branch in directory
+  # @param dir [String] directory with repo
+  # @param branch [String] branch to set
+  # @return [String] result of command
+  def change_project_branch(dir, branch)
+    `cd #{dir}; git checkout -f #{branch}; git pull;`
+  end
+
   # Clean all stuff that may left by checkouts
   # @param dir [String] directory to cleanup
   # @return [String] result of cleanup
