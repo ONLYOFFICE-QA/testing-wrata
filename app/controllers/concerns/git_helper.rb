@@ -12,17 +12,18 @@ module GitHelper
   # @param dir [String] directory to cleanup
   # @return [String] result of cleanup
   def cleanup_project(dir)
-    `cd #{dir}; git reset --hard; git clean -f; git pull;`
+    `cd #{dir}; git reset --hard; git clean -f; git pull --prune;`
   end
 
   # List all branches in git repo
   # @param project_path [String] directory to get branches
   # @return [Array, String] result of cleanup
   def get_list_branches(project_path)
-    system_message = `cd #{project_path}; git pull --prune; git checkout -f develop; git branch -a`
+    cleanup_project(project_path)
+    branches_string = `git branch -a`
     branches = []
-    system_message.to_s.gsub!('* ', '')
-    system_message.to_s.split("\n  ").each do |line|
+    branches_string.delete!('* ')
+    branches_string.split("\n  ").each do |line|
       branches << line.to_s.split(' ')
     end
     branches.flatten!

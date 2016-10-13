@@ -14,6 +14,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 
 ## Fixes
 * Fix problem with checkout of tag and running `git pull` after that
+* Fix showing `Already up-to-date` in branches list
 
 ## 1.8
 ### New features
