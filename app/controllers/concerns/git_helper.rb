@@ -20,16 +20,12 @@ module GitHelper
   # @return [Array, String] result of cleanup
   def get_list_branches(project_path)
     cleanup_project(project_path)
-    branches_string = `git branch -a`
-    branches = []
-    branches_string.delete!('* ')
-    branches_string.split("\n  ").each do |line|
-      branches << line.to_s.split(' ')
-    end
+    branches = get_branches(project_path)
     branches.flatten!
     branches.delete '->'
     branches_name = []
     branches.each do |branch|
+      next if branch.include?('HEAD')
       if branch.include?('/') && branch.include?('remote')
         branches_name << branch.gsub('remotes/origin/', '')
         next
@@ -45,6 +41,15 @@ module GitHelper
   # @return [Array, String] list of tags
   def get_tags(project_path)
     system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -qf; git tag -l`
+    system_message.split("\n")
+  end
+
+  # Get list of branches in project
+  # @param project_path [String] path to project
+  # @return [Array, String] list of branches
+  def get_branches(project_path)
+    system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -qf; git branch -a`
+    system_message.delete!('* ')
     system_message.split("\n")
   end
 end
