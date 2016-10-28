@@ -73,6 +73,12 @@ class ClientTestQueue
     @tests.shuffle!
   end
 
+  def remove_duplicates
+    @tests.uniq! do |current_test|
+      current_test.except(:id)
+    end
+  end
+
   def get_name_from_path(test_path)
     test_path[(test_path.rindex('/') + 1)..-1]
   end
