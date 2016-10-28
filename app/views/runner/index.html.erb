@@ -9,6 +9,7 @@
             myRunner.eventToStopAllBooked($('#stop-booked'));
             myRunner.eventToDestroyAllUnBooked($('#destroy-servers'));
             myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
+            myRunner.eventToRemoveDuplicatesFromQueue($('#remove-duplicates-tests'));
             myRunner.eventToClearTestQueue($('#clear-tests'));
             myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
@@ -98,6 +99,7 @@
               <i class="glyphicon glyphicon-list-alt"></i>
               <span id="test-queue-title">tests</span>
             </div>
+            <i id="remove-duplicates-tests" class="glyphicon glyphicon-indent-left" title="Remove duplicates in queue"></i>
             <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
             <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
           </div>

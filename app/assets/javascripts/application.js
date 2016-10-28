@@ -140,6 +140,7 @@ function Runner() {
                 _self.setDataOnQueuePanel(data.queue_data);
                 _self.toggleClearTestButton();
                 _self.toggleShuffleTestButton();
+                _self.toggleRemoveDuplicatesQueue();
                 _self.toggleUnbookAllServersButton();
                 _self.toggleStopAllBookedServers();
             },
@@ -1509,6 +1510,32 @@ function Runner() {
         } else {
             $('#stop-booked').show();
         }
+    };
+
+    this.toggleRemoveDuplicatesQueue = function() {
+        if (this.checkQueueEmpty()) {
+            $('#remove-duplicates-tests').hide();
+        } else {
+            $('#remove-duplicates-tests').show();
+        }
+    };
+
+    this.eventToRemoveDuplicatesFromQueue = function (elem) {
+        elem.on('click', function () {
+            _self.removeDuplicatesFromQueue();
+            _self.getUpdatedDataFromServer();
+        });
+    };
+
+    this.removeDuplicatesFromQueue = function() {
+        $.ajax({
+            url: 'queue/remove_duplicates',
+            async: false,
+            type: 'POST',
+            error: function (xhr, type, errorThrown) {
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            }
+        });
     };
 }
 

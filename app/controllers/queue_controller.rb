@@ -55,6 +55,12 @@ class QueueController < ApplicationController
     render nothing: true
   end
 
+  def remove_duplicates
+    @manager.remove_duplicates
+
+    render nothing: true
+  end
+
   def clear_booked_servers
     @manager.clear_booked_servers
 

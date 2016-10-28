@@ -22,3 +22,7 @@ gem 'ruby-prof'
 gem 'sass-rails'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
