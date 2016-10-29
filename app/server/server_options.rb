@@ -16,22 +16,21 @@ class ServerOptions
     command = "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull --all --prune && git checkout #{@shared_branch} && bundle install && " \
         "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull --all --prune && git checkout #{@docs_branch} && bundle install && " \
         "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull --all --prune && git checkout #{@teamlab_branch} && bundle install && " \
-        "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull --all --prune && git checkout #{@teamlab_api_branch} && " \
-        "#{generate_region_command} "
+        "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull --all --prune && git checkout #{@teamlab_api_branch}" \
+        "#{generate_region_command}"
     command
   end
 
   def generate_region_command
-    region_command = ''
+    return '' if @portal_type == 'default'
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
-    unless @portal_type == 'default'
-      region_command +=
-        "sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
-        "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
-        "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
-        "sed -i \\\"s/@@server_region = '.*'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} "
-    end
+    region_command = ' && '
+    region_command +=
+      "sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
+      "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
+      "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
+      "sed -i \\\"s/@@server_region = '.*'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab}"
     region_command
   end
 
