@@ -36,7 +36,7 @@ module LogManager
   def create_log_scan_thread
     @log_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
-        unless @test                       # Stop Thread if test was ended
+        unless @test # Stop Thread if test was ended
           Thread.stop                                 #
         end
         init_last_log                                 # check each TIME_FOR_UPDATE new log
@@ -57,14 +57,14 @@ module LogManager
     if !log_file_empty?
       lines = IO.readlines(server_log_path)
       full_size = lines.size
-      return if @last_log_end == full_size || full_size < @last_log_end      # return if we don't get new lines in log file
+      return if @last_log_end == full_size || full_size < @last_log_end # return if we don't get new lines in log file
       @log = EMPTY_STRING                             # clear before init new log
       lines[@last_log_end..-1].each do |line|
         unless empty_line?(line)                      # check if line don't 'empty', like 'testpc-9  '
           @log += delete_comp_name_from_line line     # delete testpc-9(and etc.) from log line
         end
       end
-      @last_log_end = full_size                      # init new end of log
+      @last_log_end = full_size # init new end of log
     else
       @log = EMPTY_STRING
     end
@@ -90,6 +90,3 @@ module LogManager
     line.gsub("#{@server_model.name} ", '')
   end
 end
-
-# File.open('loh.txt', 'w')
-p File.dirname(__FILE__)
