@@ -22,17 +22,12 @@ class ServerOptions
   end
 
   def generate_region_command
+    region_command = ''
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
-    create_portal = if @portal_type == 'default'
-                      "sed -i \\\"s/@create_portal = true/@create_portal = false/g\\\" #{portal_data_docs}"
-                    else
-                      "sed -i \\\"s/@create_portal = false/@create_portal = true/g\\\" #{portal_data_docs}"
-                    end
-    region_command = create_portal
     unless @portal_type == 'default'
       region_command +=
-        " && sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
+        "sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{@portal_type}'/g\\\" #{portal_data_docs} && " \
         "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{@portal_region}'/g\\\" #{portal_data_docs} && " \
         "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{@portal_type}'/g\\\" #{portal_data_teamlab} && " \
         "sed -i \\\"s/@@server_region = '.*'/@@server_region = '#{@portal_region}'/g\\\" #{portal_data_teamlab} "

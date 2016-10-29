@@ -12,6 +12,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 
 ## Changes
 * Add button for spec file now adds it to beginning of queue, instead of end. Behaviour not changed if add folder
+* Remove setting `@create_portal` flag in `portal_data_docs`. It broke stuff if there is custom portal
 
 ## Fixes
 * Fix problem with checkout of tag and running `git pull` after that
