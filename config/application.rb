@@ -2,7 +2,6 @@ require File.expand_path('../boot', __FILE__)
 require_relative 'thread_logging'
 
 require 'rails/all'
-require_relative '../../SharedFunctional/testing_shared'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

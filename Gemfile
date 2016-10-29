@@ -1,4 +1,4 @@
-instance_eval(File.read('../SharedFunctional/Gemfile'))
+source 'https://rubygems.org'
 
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'magic_encoding'
 gem 'onlyoffice_digitalocean_wrapper', git: 'https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper'
+gem 'onlyoffice_rspec_result_parser', git: 'https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser'
 gem 'pg'
 gem 'process_exists'
 gem 'protected_attributes'
