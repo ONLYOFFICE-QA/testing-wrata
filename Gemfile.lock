@@ -6,6 +6,13 @@ GIT
       activesupport (~> 4)
       droplet_kit (~> 1)
 
+GIT
+  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser
+  revision: ed8ce1f735feeaf03e2a4457788182982e353520
+  specs:
+    onlyoffice_rspec_result_parser (0.0.1)
+      nokogiri (~> 1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -228,6 +235,7 @@ DEPENDENCIES
   jquery-ui-rails
   magic_encoding
   onlyoffice_digitalocean_wrapper!
+  onlyoffice_rspec_result_parser!
   pg
   process_exists
   protected_attributes

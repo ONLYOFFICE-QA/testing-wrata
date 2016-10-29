@@ -6,9 +6,9 @@
         <div class="describe-child">
             <% unless main_describe.child.empty? %>
                 <% main_describe.child.each do |cur_child| %>
-                    <% if cur_child.class == Example %>
+                    <% if cur_child.class == OnlyofficeRspecResultParser::Example %>
                         <% create_example(cur_child) %>
-                    <% elsif cur_child.class == Describe %>
+                    <% elsif cur_child.class == OnlyofficeRspecResultParser::Describe %>
                         <% create_describe(cur_child) %>
                     <% end %>
                 <% end %>
@@ -25,9 +25,9 @@
         <div class="describe-child">
             <% unless describe.child.empty? %>
                 <% describe.child.each do |cur_child| %>
-                    <% if cur_child.class == Example %>
+                    <% if cur_child.class == OnlyofficeRspecResultParser::Example %>
                         <% create_example(cur_child) %>
-                    <% elsif cur_child.class == Describe %>
+                    <% elsif cur_child.class == OnlyofficeRspecResultParser::Describe %>
                         <% create_describe(cur_child) %>
                     <% end %>
                 <% end %>

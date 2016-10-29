@@ -19,11 +19,11 @@ module HTMLResultManager
   def final_results_from_html
     total_result = ''
     if html_result_exist?
-      total_result = ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)
+      total_result = OnlyofficeRspecResultParser::ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)
       if total_result == ''                                                                    #
         sleep 0.5                                                                              # Sometimes haven't time for check
-        total_result = ResultParser.get_total_result_of_rspec_html(rspec_html_result_path)     # so need to wait while rspec to check
-      end                                                                                      #
+        total_result = OnlyofficeRspecResultParser::ResultParser.get_total_result_of_rspec_html(rspec_html_result_path) # so need to wait while rspec to check
+      end #
     end
     total_result
   end
@@ -33,7 +33,7 @@ module HTMLResultManager
     if @test
       if html_result_exist?
         begin
-          processing_from_html = ResultParser.get_processing_of_rspec_html(rspec_html_result_path)
+          processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_processing_of_rspec_html(rspec_html_result_path)
           processing = processing_from_html unless processing_from_html == ''
         rescue
 
@@ -48,7 +48,7 @@ module HTMLResultManager
     if @test
       if html_result_exist?
         begin
-          processing_from_html = ResultParser.get_failed_cases_count_from_html(rspec_html_result_path)
+          processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_failed_cases_count_from_html(rspec_html_result_path)
           processing = processing_from_html unless processing_from_html == ''
         rescue
 
@@ -82,7 +82,7 @@ module HTMLResultManager
     if @test
       if html_result_exist?
         begin
-          results = ResultParser.parse_rspec_html(rspec_html_result_path)
+          results = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html(rspec_html_result_path)
         rescue
           results = nil
         end
