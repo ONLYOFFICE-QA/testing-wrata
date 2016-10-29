@@ -1,4 +1,4 @@
-instance_eval(File.read('../SharedFunctional/Gemfile'))
+source 'https://rubygems.org'
 
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
