@@ -4,6 +4,7 @@
 ## New features
 * Use `--shm-size` option for `docker run` for increasing it. Remove old code for increase shm by runtime.
 Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pull/16168)
+* Docker rm executed containers after finish task
 * Add ability to send custom portal name to spec.  It use enviroment variable `SPEC_SERVER_IP`. 
 You should implement parsing it in your tests, to correctly run tests on customs ip.
 * Add single button to destroy all unbooked servers
