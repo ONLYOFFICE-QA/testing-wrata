@@ -744,7 +744,6 @@ function Runner() {
                 _self.selectProject(project);
                 _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
                 _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
-                hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -779,11 +778,12 @@ function Runner() {
         $.ajax({
             url: 'runner/branches',
             context: this,
-            async: false,
+            async: true,
             type: 'GET',
             success: function (data) {
                 _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
                 _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
+                hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)

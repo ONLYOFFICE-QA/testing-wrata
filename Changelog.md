@@ -19,6 +19,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Fix showing `Already up-to-date` in branches list
 * Fix fetching branch info for `TeamLab` project
 * Fix issue with new lin of Server list (#149)
+* Fix hanging page issue while pull branches of projects
 
 ## 1.8
 ### New features
