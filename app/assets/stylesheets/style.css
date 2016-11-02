@@ -1133,6 +1133,7 @@ a, a:link, a:visited  {
 .server-list-header {
     width: 50%;
     float: left;
+    position: absolute;
 }
 
 .test-queue-list-header {
@@ -1162,6 +1163,7 @@ a, a:link, a:visited  {
 .list-header {
     display: inline-block;
     text-align: center;
+    white-space: nowrap;
     font-weight: bold;
     text-shadow: 0 0 2px #ccc;
     color: rgb(7, 66, 7);
@@ -1169,11 +1171,13 @@ a, a:link, a:visited  {
 }
 
 #stop-booked {
-    float: right;
+    position: absolute;
+    right: 0;
 }
 
 #clear-servers {
-    float: right;
+    position: absolute;
+    right: 20px;
 }
 
 .list-header i {

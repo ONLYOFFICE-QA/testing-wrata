@@ -18,6 +18,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Fix problem with checkout of tag and running `git pull` after that
 * Fix showing `Already up-to-date` in branches list
 * Fix fetching branch info for `TeamLab` project
+* Fix issue with new lin of Server list (#149)
 
 ## 1.8
 ### New features
