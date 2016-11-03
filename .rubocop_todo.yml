@@ -96,13 +96,6 @@ Style/EmptyCaseCondition:
   Exclude:
     - 'app/workers/run_thread_manager.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Style/ExtraSpacing:
-  Exclude:
-    - 'script/rails'
-
 # Offense count: 56
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:
