@@ -11,7 +11,6 @@ TEAMLAB_DEFAULT_BRANCH = 'develop'.freeze
 DOCS_DEFAULT_BRANCH = 'develop'.freeze
 TEAMLAB_INFO_MAIN_BRANCH = 'develop'.freeze
 TEAMLAB_COM_MAIN_BRANCH = 'master'.freeze
-TM_API_DEFAULT = 'develop'.freeze
 DOCS_TAB_NAME = 'docs'.freeze
 TEAMLAB_TAB_NAME = 'teamlab'.freeze
 GUEST_NAME = 'Guest'.freeze
