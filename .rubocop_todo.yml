@@ -132,12 +132,3 @@ Style/MutableConstant:
 Style/RedundantParentheses:
   Exclude:
     - 'app/client_queue/client_servers.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: only_raise, only_fail, semantic
-Style/SignalException:
-  Exclude:
-    - 'app/controllers/delay_run_controller.rb'
-    - 'app/workers/run_thread_manager.rb'

@@ -57,7 +57,7 @@ module RunThreadManager
         move_next_start_on(run, hours, minutes)
       end
     else
-      fail "Don't know check_method: #{run.method}"
+      raise "Don't know check_method: #{run.method}"
     end
   end
 
