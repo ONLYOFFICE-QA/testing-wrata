@@ -113,10 +113,4 @@ Style/IfInsideElse:
   Exclude:
     - 'app/helpers/servers_helper.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/MultilineIfModifier:
-  Exclude:
-    - 'app/server/server_thread.rb'
-    - 'app/workers/run_thread_manager.rb'
 

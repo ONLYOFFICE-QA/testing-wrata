@@ -63,19 +63,23 @@ class ServerThread
   def get_info_from_server(current_client)
     server_info = {}
     server_info[:name] = @server_model.name
-    server_info[:test] = {
-      name: slice_project_path(@test[:test_path]),
-      location: @test[:location],
-      progress: @test_progress,
-      failed_count: @test_failed_count,
-      time: testing_time,
-      doc_branch: @test[:doc_branch],
-      tm_branch: @test[:tm_branch]
-    } if @test
-    server_info[:booked] = {
-      booked_client: @client.login,
-      booked_by_client: @client == current_client
-    } if @client && !@server_model.book_client_id.nil?
+    if @test
+      server_info[:test] = {
+        name: slice_project_path(@test[:test_path]),
+        location: @test[:location],
+        progress: @test_progress,
+        failed_count: @test_failed_count,
+        time: testing_time,
+        doc_branch: @test[:doc_branch],
+        tm_branch: @test[:tm_branch]
+      }
+    end
+    if @client && !@server_model.book_client_id.nil?
+      server_info[:booked] = {
+        booked_client: @client.login,
+        booked_by_client: @client == current_client
+      }
+    end
     server_info[:status] = @status
     server_info[:last_activity_date] = @server_model.last_activity_date.to_s
     server_info[:_status] = @server_model._status
