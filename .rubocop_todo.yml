@@ -141,10 +141,3 @@ Style/SignalException:
   Exclude:
     - 'app/controllers/delay_run_controller.rb'
     - 'app/workers/run_thread_manager.rb'
-
-# Offense count: 1
-# Configuration parameters: Methods.
-# Methods: {"reduce"=>["acc", "elem"]}, {"inject"=>["acc", "elem"]}
-Style/SingleLineBlockParams:
-  Exclude:
-    - 'app/server/server_threads.rb'
