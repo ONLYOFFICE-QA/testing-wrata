@@ -23,7 +23,7 @@ class ClientServers
     @servers_threads << { name: server_name, server_thread: server_thread }
   end
 
-  def delete_server(server_name, client)
+  def delete_server(server_name)
     server_thread = $threads.get_thread_by_name(server_name)
     server_thread.unbook_server
     @servers_threads.delete(name: server_name, server_thread: $threads.get_thread_by_name(server_name))

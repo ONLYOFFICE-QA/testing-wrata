@@ -104,7 +104,7 @@ class ClientRunnerManager
   end
 
   def delete_server(server_name)
-    @client_servers.delete_server(server_name, client)
+    @client_servers.delete_server(server_name)
   end
 
   def delete_all_servers
