@@ -32,7 +32,7 @@ class ServersController < ApplicationController
   end
 
   def show_current_results
-    server_thread = $threads.get_thread_by_name(params[:server])
+    server_thread = Runner::Application.config.threads.get_thread_by_name(params[:server])
     @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
@@ -59,7 +59,7 @@ class ServersController < ApplicationController
   end
 
   def reboot
-    $threads.get_thread_by_name(params['server']).reboot
+    Runner::Application.config.threads.get_thread_by_name(params['server']).reboot
 
     render nothing: true
   end
@@ -79,7 +79,7 @@ class ServersController < ApplicationController
     @server = Server.new(params[:server])
 
     if @server.save
-      $threads.add_threads
+      Runner::Application.config.threads.add_threads
       redirect_to @server
     else
       render 'new'
@@ -93,7 +93,7 @@ class ServersController < ApplicationController
 
     respond_to do |format|
       if @server.update_attributes(params[:server])
-        $threads.update_models
+        Runner::Application.config.threads.update_models
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }
       else
@@ -104,38 +104,38 @@ class ServersController < ApplicationController
   end
 
   def cloud_server_create
-    server = $threads.get_thread_by_name(params['server'])
+    server = Runner::Application.config.threads.get_thread_by_name(params['server'])
     server.server_model.cloud_server_create
-    $threads.update_models
+    Runner::Application.config.threads.update_models
     render nothing: true
   end
 
   def cloud_server_fetch_ip
-    server = $threads.get_thread_by_name(params['server'])
+    server = Runner::Application.config.threads.get_thread_by_name(params['server'])
     ip = server.server_model.fetch_ip
     render json: { ip: ip.to_s }
   end
 
   def destroy
     Server.find(params[:id]).destroy
-    $threads.delete_threads
+    Runner::Application.config.threads.delete_threads
     flash[:success] = 'Server deleted'
     redirect_to servers_url
   end
 
   def cloud_server_destroy
-    server = $threads.get_thread_by_name(params['server'])
+    server = Runner::Application.config.threads.get_thread_by_name(params['server'])
     server.server_model.cloud_server_destroy
-    $threads.update_models
+    Runner::Application.config.threads.update_models
     render nothing: true
   end
 
   private
 
   def set_server_status(server_name, status)
-    server = $threads.get_thread_by_name(server_name)
+    server = Runner::Application.config.threads.get_thread_by_name(server_name)
     server.server_model.update_attribute(:_status, status)
-    $threads.update_models
+    Runner::Application.config.threads.update_models
   end
 
   def update_server_ip(server_name, new_address)

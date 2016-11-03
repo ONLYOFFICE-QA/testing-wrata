@@ -29,13 +29,13 @@ module SessionsHelper
   end
 
   def get_run_manager(client_login)
-    $run_managers = RunnerManagers.new if $run_managers.nil?
-    $run_managers.find_manager_by_client_login(client_login)
+    Runner::Application.config.run_manager = RunnerManagers.new if Runner::Application.config.run_manager.nil?
+    Runner::Application.config.run_manager.find_manager_by_client_login(client_login)
   end
 
   def init_run_manager
     @client = current_client
     return if get_run_manager @client.login
-    $run_managers.add_manager ClientRunnerManager.new(@client)
+    Runner::Application.config.run_manager.add_manager ClientRunnerManager.new(@client)
   end
 end

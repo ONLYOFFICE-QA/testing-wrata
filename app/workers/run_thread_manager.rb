@@ -25,7 +25,7 @@ module RunThreadManager
 
   def add_to_queue(run)
     Rails.logger.info 'add_to_queue: start test'
-    manager = $run_managers.find_manager_by_client_login(run.client.login)
+    manager = Runner::Application.config.run_manager.find_manager_by_client_login(run.client.login)
     return unless manager
     case run.f_type
     when 'test_list'

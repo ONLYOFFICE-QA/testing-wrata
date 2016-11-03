@@ -27,13 +27,13 @@ class Server < ActiveRecord::Base
   def cloud_server_create
     update_column(:_status, :creating)
     begin
-      $digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name)
+      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name)
     rescue => e
       update_column(:_status, :destroyed)
       raise e
     end
-    $digital_ocean.wait_until_droplet_have_status(name)
-    new_address = $digital_ocean.get_droplet_ip_by_name(name)
+    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name)
+    new_address = RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
     update_column(:address, new_address)
     update_column(:_status, :created)
     update_column(:last_activity_date, Time.current)
@@ -43,7 +43,7 @@ class Server < ActiveRecord::Base
     unbook
     update_column(:_status, :destroying)
     begin
-      $digital_ocean.destroy_droplet_by_name(name)
+      RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
     rescue => e
       update_column(:_status, :created)
       raise e
@@ -58,6 +58,6 @@ class Server < ActiveRecord::Base
 
   # @return [String] ip of current server.
   def fetch_ip
-    $digital_ocean.get_droplet_ip_by_name(name)
+    RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
   end
 end

@@ -45,7 +45,7 @@ class RunnerController < ApplicationController
   end
 
   def show_servers
-    @servers = $threads.all_servers_from_threads
+    @servers = Runner::Application.config.threads.all_servers_from_threads
 
     render layout: false
   end
@@ -146,11 +146,11 @@ class RunnerController < ApplicationController
     server_data = []
 
     servers.each do |server|
-      server_thread = $threads.get_thread_by_name(server)
+      server_thread = Runner::Application.config.threads.get_thread_by_name(server)
       server_data << server_thread.get_info_from_server(client)
     end
 
-    manager = $run_managers.find_manager_by_client_login(client.login)
+    manager = Runner::Application.config.run_manager.find_manager_by_client_login(client.login)
 
     output_json[:servers_data] = server_data
     output_json[:queue_data] = {}
@@ -165,7 +165,7 @@ class RunnerController < ApplicationController
   end
 
   def rerun_thread
-    $threads.get_thread_by_name(params['server']).rerun_thread
+    Runner::Application.config.threads.get_thread_by_name(params['server']).rerun_thread
 
     render nothing: true
   end
@@ -173,19 +173,19 @@ class RunnerController < ApplicationController
   def stop_current
     server = params['server']
 
-    $threads.get_thread_by_name(server).stop_test
+    Runner::Application.config.threads.get_thread_by_name(server).stop_test
 
     render nothing: true
   end
 
   def stop_all_booked
-    $threads.get_threads_by_user(current_client).each(&:stop_test)
+    Runner::Application.config.threads.get_threads_by_user(current_client).each(&:stop_test)
 
     render nothing: true
   end
 
   def destroy_all_unbooked_servers
-    $threads.destroy_unbooked_servers
+    Runner::Application.config.threads.destroy_unbooked_servers
 
     render nothing: true
   end

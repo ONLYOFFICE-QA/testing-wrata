@@ -61,7 +61,7 @@ class ServerThreads < ActionController::Base
       next unless server_thread.server_model._status == :created
       begin
         server_thread.server_model.cloud_server_destroy
-        $run_managers.managers.each do |current_manager|
+        Runner::Application.config.run_manager.managers.each do |current_manager|
           current_manager.delete_server(server_thread.server_model.name)
         end
       rescue => e
@@ -76,7 +76,7 @@ class ServerThreads < ActionController::Base
       Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
       begin
         server_thread.server_model.cloud_server_destroy
-        $run_managers.managers.each do |current_manager|
+        Runner::Application.config.run_manager.managers.each do |current_manager|
           current_manager.delete_server(server_thread.server_model.name)
         end
       rescue => e

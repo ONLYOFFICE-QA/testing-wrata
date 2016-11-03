@@ -83,7 +83,7 @@ class QueueController < ApplicationController
 
   def manager
     if @client
-      @manager = $run_managers.find_manager_by_client_login(@client.login)
+      @manager = Runner::Application.config.run_manager.find_manager_by_client_login(@client.login)
     else
       flash[:empty_pages] = 'You need be authorized' # Not quite right!
       render signin_path
