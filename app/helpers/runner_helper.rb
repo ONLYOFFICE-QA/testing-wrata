@@ -6,11 +6,11 @@ module RunnerHelper
     Dir.foreach(path).sort.each do |entry|
       next if entry.start_with?('.')
       full_path = File.join(path, entry)
-      if File.directory?(full_path)
-        children << directory_hash(full_path, entry)
-      else
-        children << { name: entry, path: full_path }
-      end
+      children << if File.directory?(full_path)
+                    directory_hash(full_path, entry)
+                  else
+                    { name: entry, path: full_path }
+                  end
     end
     data
   end
