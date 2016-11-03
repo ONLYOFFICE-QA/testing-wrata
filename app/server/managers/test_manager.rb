@@ -28,11 +28,22 @@ module TestManager
   end
 
   def generate_ssh_command(command)
-    "ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no #{TEST_SPOT_USER_NAME}@#{@server_model.address} <<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
+    'ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no '\
+    "#{TEST_SPOT_USER_NAME}@#{@server_model.address} <<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
 
-  def execute_docker_command(command)
-    generate_ssh_command("docker rm -f $(docker ps -a -q); docker pull onlyofficetestingrobot/nct-at-testing-node; docker run --privileged=true --rm --shm-size=512m onlyofficetestingrobot/nct-at-testing-node bash -c \"bash /before-run.sh; #{command}\"")
+  def docker_command(command)
+    docker_keys = '--privileged=true '\
+                  '--rm '\
+                  '--shm-size=512m'
+    'docker rm -f $(docker ps -a -q); '\
+    'docker pull onlyofficetestingrobot/nct-at-testing-node; '\
+    "docker run #{docker_keys} onlyofficetestingrobot/nct-at-testing-node "\
+    "bash -c \"bash /before-run.sh; #{command}\""
+  end
+
+  def docker_ssh_command(command)
+    generate_ssh_command(docker_command(command))
   end
 
   def stop_test
@@ -41,7 +52,12 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    execute_docker_command("source ~/.rvm/scripts/rvm; #{options.create_options}; #{open_folder_with_project(test)} && #{env_variables_options(options)} && #{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; #{kill_all_browsers_on_server}")
+    docker_ssh_command('source ~/.rvm/scripts/rvm; '\
+                       "#{options.create_options}; "\
+                       "#{open_folder_with_project(test)} && "\
+                       "#{env_variables_options(options)} && "\
+                       "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; "\
+                       "#{kill_all_browsers_on_server}")
   end
 
   def open_folder_with_project(test_path)
