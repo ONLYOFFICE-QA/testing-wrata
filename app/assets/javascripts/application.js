@@ -896,10 +896,15 @@ function Runner() {
                 'project': project,
                 'branch': _self.getCurrentBranch()
             },
+            beforeSend: function () {
+                showSectionOverlay();
+            },
             success: function () {
                 var startIcon = $(".active .start-icon");
                 startIcon.parent().removeClass('with-start');
                 _self.showTestsView();
+                showInfoAlert('Branch or Tag was successful changed');
+                hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
@@ -909,9 +914,7 @@ function Runner() {
 
     this.setEventChangeBranch = function () {
         $('li select.branch').change(function () {
-            showSectionOverlay();
             _self.changeBranch();
-            showInfoAlert('Branch or Tag was successful changed');
         });
     };
 
