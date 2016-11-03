@@ -120,9 +120,3 @@ Style/MultilineIfModifier:
     - 'app/server/server_thread.rb'
     - 'app/workers/run_thread_manager.rb'
 
-# Offense count: 27
-# Cop supports --auto-correct.
-Style/MutableConstant:
-  Exclude:
-    - 'app/models/server.rb'
-    - 'config/initializers/constants.rb'

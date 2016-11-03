@@ -1,5 +1,5 @@
 class Server < ActiveRecord::Base
-  EXECUTOR_IMAGE_NAME = 'nct-at-docker'
+  EXECUTOR_IMAGE_NAME = 'nct-at-docker'.freeze
 
   has_many :histories
 
