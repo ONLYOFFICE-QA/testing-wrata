@@ -108,9 +108,5 @@ Style/ExtraSpacing:
 Style/GlobalVars:
   Enabled: false
 
-# Offense count: 1
-Style/IfInsideElse:
-  Exclude:
-    - 'app/helpers/servers_helper.rb'
 
 

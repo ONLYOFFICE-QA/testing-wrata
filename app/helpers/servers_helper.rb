@@ -9,12 +9,10 @@ module ServersHelper
   def test_fail?(total_result)
     if total_result.nil?
       true
+    elsif total_result.include? SUCCESS_TEST_STR
+      false
     else
-      if total_result.include? SUCCESS_TEST_STR
-        false
-      else
-        true
-      end
+      true
     end
   end
 
