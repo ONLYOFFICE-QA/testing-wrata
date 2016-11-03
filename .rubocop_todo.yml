@@ -126,9 +126,3 @@ Style/MutableConstant:
   Exclude:
     - 'app/models/server.rb'
     - 'config/initializers/constants.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/RedundantParentheses:
-  Exclude:
-    - 'app/client_queue/client_servers.rb'
