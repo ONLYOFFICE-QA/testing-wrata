@@ -28,9 +28,6 @@ module RunThreadManager
     manager = $run_managers.find_manager_by_client_login(run.client.login)
     return unless manager
     case run.f_type
-    when 'file'
-      # @test_list = run.client.test_lists.find_by_name()
-      # manager.add_test(tests, branch, location)
     when 'test_list'
       raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
       test_list = run.client.test_lists.find_by_name(run.name)
