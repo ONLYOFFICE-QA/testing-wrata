@@ -21,6 +21,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Fix fetching branch info for `TeamLab` project
 * Fix issue with new lin of Server list (#149)
 * Fix hanging page issue while pull branches of projects
+* Fix not hiding overlay for changing branches
 
 ## 1.8
 ### New features
