@@ -24,5 +24,7 @@ gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'overcommit'
+  gem 'rubocop'
   gem 'rspec-rails', '~> 3.5'
 end

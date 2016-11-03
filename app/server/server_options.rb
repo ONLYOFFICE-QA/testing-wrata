@@ -1,13 +1,16 @@
 class ServerOptions
   attr_accessor :portal_type, :portal_region, :docs_branch, :teamlab_branch, :teamlab_api_branch, :shared_branch
 
-  def initialize(docs_branch = 'develop', teamlab_branch = 'master', portal_type = 'info', portal_region = 'us', shared_branch = 'master', teamlab_api_branch = TM_API_DEFAULT)
+  def initialize(docs_branch = 'develop',
+                 teamlab_branch = 'master',
+                 portal_type = 'info',
+                 portal_region = 'us')
     @docs_branch = docs_branch
     @teamlab_branch = teamlab_branch
-    @shared_branch = shared_branch
-    @teamlab_api_branch = teamlab_api_branch
     @portal_type = portal_type
     @portal_region = portal_region
+    @shared_branch = 'master'
+    @teamlab_api_branch = 'develop'
   end
 
   def create_options

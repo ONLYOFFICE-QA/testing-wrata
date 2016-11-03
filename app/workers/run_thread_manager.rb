@@ -26,10 +26,8 @@ module RunThreadManager
   def add_to_queue(run)
     Rails.logger.info 'add_to_queue: start test'
     manager = $run_managers.find_manager_by_client_login(run.client.login)
+    return unless manager
     case run.f_type
-    when 'file'
-      # @test_list = run.client.test_lists.find_by_name()
-      # manager.add_test(tests, branch, location)
     when 'test_list'
       raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
       test_list = run.client.test_lists.find_by_name(run.name)
@@ -37,27 +35,26 @@ module RunThreadManager
         arr << test_file.name
       end
       manager.add_tests(names, test_list.branch, run.location, to_begin_of_queue: false)
-    end if manager
+    end
   end
 
   private
 
   def method_timing(run)
     method = run[:method]
-    case
-    when method.match(/once/)
+    if method =~ /once/
       if run.should_start_by_time?(run.start_time)
         add_to_queue run
         delete_from_db run
       end
-    when method.match(/hours/), method.match(/minutes/)
+    elsif method.match(/hours/) || method.match(/minutes/)
       if check_each_round run
         add_to_queue run
         hours, minutes = BullshitHelper.match_minutes_and_hours(method)
         move_next_start_on(run, hours, minutes)
       end
     else
-      fail "Don't know check_method: #{run.method}"
+      raise "Don't know check_method: #{run.method}"
     end
   end
 

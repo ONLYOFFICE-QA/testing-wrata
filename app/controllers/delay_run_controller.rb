@@ -25,7 +25,7 @@ class DelayRunController < ApplicationController
   end
 
   def add_delayed_row
-    fail 'You cannot add delay run if you have no test lists' if @client.test_lists.empty?
+    raise 'You cannot add delay run if you have no test lists' if @client.test_lists.empty?
     render layout: false
   end
 

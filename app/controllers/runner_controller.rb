@@ -2,6 +2,7 @@ require 'find'
 
 class RunnerController < ApplicationController
   include GitHelper
+
   def index
     @controller = :runner
   end
@@ -94,15 +95,14 @@ class RunnerController < ApplicationController
         test_file = TestFile.new(name: test_file_hash['file_name'])
         test_file.test_list = @test_list
         if test_file.save
-          if test_file_hash['strokes']
-            test_file_hash['strokes'].each do |_number, stroke_hash|
-              stroke = Stroke.new(name: stroke_hash['name'], number: stroke_hash['number'])
-              stroke.test_file = test_file
-              if stroke.save
-                'success'
-              else
-                puts stroke.errors.full_messages
-              end
+          next unless test_file_hash['strokes']
+          test_file_hash['strokes'].each do |_number, stroke_hash|
+            stroke = Stroke.new(name: stroke_hash['name'], number: stroke_hash['number'])
+            stroke.test_file = test_file
+            if stroke.save
+              'success'
+            else
+              puts stroke.errors.full_messages
             end
           end
         else

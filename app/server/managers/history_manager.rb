@@ -25,7 +25,7 @@ module HistoryManager
     history.total_result = final_results_from_html
     history.log = full_log
     if html_result_exist?
-      file = File.open(rspec_html_result_path, 'r') { |io| io.read }
+      file = File.open(rspec_html_result_path, 'r', &:read)
       history.data = file
     end
     $threads.lock.synchronize { history.save }
