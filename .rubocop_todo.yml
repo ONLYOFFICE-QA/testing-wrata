@@ -90,12 +90,6 @@ Style/ConditionalAssignment:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/EmptyCaseCondition:
-  Exclude:
-    - 'app/workers/run_thread_manager.rb'
-
 # Offense count: 56
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:

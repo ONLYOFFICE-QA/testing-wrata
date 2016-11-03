@@ -45,13 +45,12 @@ module RunThreadManager
 
   def method_timing(run)
     method = run[:method]
-    case
-    when method.match(/once/)
+    if method =~ /once/
       if run.should_start_by_time?(run.start_time)
         add_to_queue run
         delete_from_db run
       end
-    when method.match(/hours/), method.match(/minutes/)
+    elsif method.match(/hours/) || method.match(/minutes/)
       if check_each_round run
         add_to_queue run
         hours, minutes = BullshitHelper.match_minutes_and_hours(method)
