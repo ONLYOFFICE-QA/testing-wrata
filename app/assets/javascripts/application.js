@@ -409,12 +409,12 @@ function Runner() {
 
     this.showBookedClient = function(userIcon, userName) {
         userIcon.find('span').text(userName);
-        userIcon.show();
+        userIcon.css('visibility', 'visible');
     };
 
     this.hideBookedClient = function(userIcon) {
         userIcon.find('span').text('');
-        userIcon.hide();
+        userIcon.css('visibility', 'hidden');
     };
 
     this.setStatusToServerView = function (server, status) {
