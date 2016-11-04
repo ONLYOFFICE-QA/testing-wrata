@@ -415,7 +415,6 @@ hr.deliver {
     border: 1px solid rgb(140, 202, 17);
     border-radius: 3px;
     box-shadow: 0 1px 5px 0 #2f2f2f;
-    cursor: pointer;
 }
 
 .server-header .unbook-button, .server-header .book-button {
@@ -423,6 +422,7 @@ hr.deliver {
     width: 15%;
     text-align: center;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .server-header label{
@@ -572,6 +572,7 @@ hr.deliver {
     float: right;
     top: 3px;
     vertical-align: middle;
+    cursor: pointer;
 }
 .server-header .ui-progress {
     display: block;
@@ -614,6 +615,7 @@ hr.deliver {
     float: right;
     margin-top: 3px;
     margin-right: 3px;
+    cursor: help;
 }
 
 .glyphicon {
