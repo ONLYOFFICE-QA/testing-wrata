@@ -21,6 +21,15 @@ class RunnerManagers
     end
     manager
   end
+
+  class << self
+    attr_accessor :digital_ocean
+
+    # @return [DigitalOceanWrapper] wrapper for working with DO
+    def digital_ocean
+      @digital_ocean ||= OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new
+    end
+  end
 end
 
 Thread.abort_on_exception = true

@@ -9,7 +9,7 @@ module HistoryManager
     start_options.portal_type = options.portal_type
     start_options.portal_region = options.portal_region
     start_options.start_command = start_command
-    $threads.lock.synchronize { start_options.save }
+    Runner::Application.config.threads.lock.synchronize { start_options.save }
   end
 
   def add_data_to_history(test, options, start_command, client_line_db)
@@ -28,7 +28,7 @@ module HistoryManager
       file = File.open(rspec_html_result_path, 'r', &:read)
       history.data = file
     end
-    $threads.lock.synchronize { history.save }
+    Runner::Application.config.threads.lock.synchronize { history.save }
     history
   end
 end

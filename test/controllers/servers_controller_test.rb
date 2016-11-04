@@ -3,7 +3,7 @@ require 'test_helper'
 class ServersControllerTest < ActionController::TestCase
   setup do
     @server = servers(:one)
-    $threads = ServerThreads.new.init_threads
+    Runner::Application.config.threads = ServerThreads.new.init_threads
   end
 
   test 'should get index' do

@@ -29,11 +29,11 @@ module RunnerHelper
   end
 
   def server_booked?(server_name)
-    $threads.get_thread_by_name(server_name).booked?
+    Runner::Application.config.threads.get_thread_by_name(server_name).booked?
   end
 
   def client_booked?(server_name)
-    $threads.get_thread_by_name(server_name).client == current_client
+    Runner::Application.config.threads.get_thread_by_name(server_name).client == current_client
   end
 
   def check_active(project_name)

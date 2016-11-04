@@ -2,24 +2,24 @@ class DelayRunController < ApplicationController
   before_action :manager
 
   def index
-    @client_runs = $delayed_runs.get_client_runs(@client)
+    @client_runs = Runner::Application.config.delayed_runs.get_client_runs(@client)
     render layout: false
   end
 
   def add_run
-    @run = $delayed_runs.add_run(params, @client)
+    @run = Runner::Application.config.delayed_runs.add_run(params, @client)
 
     render layout: false
   end
 
   def change_run
-    $delayed_runs.change_run(params)
+    Runner::Application.config.delayed_runs.change_run(params)
 
     render nothing: true
   end
 
   def delete_run
-    $delayed_runs.delete_run(params['id'])
+    Runner::Application.config.delayed_runs.delete_run(params['id'])
 
     render nothing: true
   end
@@ -33,7 +33,7 @@ class DelayRunController < ApplicationController
     20.times do
       Thread.new(caller: method(__method__).owner.to_s) do
         history = History.new
-        $threads.lock.synchronize do
+        Runner::Application.config.threads.lock.synchronize do
           history.save
         end
       end
@@ -46,7 +46,7 @@ class DelayRunController < ApplicationController
 
   def manager
     if @client
-      @manager = $run_managers.find_manager_by_client_login(@client.login)
+      @manager = Runner::Application.config.run_manager.find_manager_by_client_login(@client.login)
     else
       flash[:empty_pages] = 'You need be authorized' # Not quite right!
       render signin_path
