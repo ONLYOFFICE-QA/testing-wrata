@@ -36,12 +36,18 @@ module TestManager
 
   def docker_command(command)
     docker_keys = '--privileged=true '\
+                  '-v /mnt/data_share:/mnt/data_share '\
                   '--rm '\
                   '--shm-size=512m'
     'docker rm -f $(docker ps -a -q); '\
     'docker pull onlyofficetestingrobot/nct-at-testing-node; '\
     "docker run #{docker_keys} onlyofficetestingrobot/nct-at-testing-node "\
-    "bash -c \"bash /before-run.sh; #{command}\""
+    "bash -c \"sudo service nginx start; #{command}\""
+    # TODO: Bring back old variant in previous line
+    # "bash -c \"bash /before-run.sh; #{command}\""
+    # After before-run file will not try to mound stuff
+    # mount command cause that `docker kill` crashed next run
+    # of docker container
   end
 
   def docker_ssh_command(command)
