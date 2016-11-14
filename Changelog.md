@@ -13,6 +13,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Remove all internal global variables
 * Do not try to mount `/mnt/data_share` inside docker. This cause error mentioned in #158 
 * Better logging of error in `HTMLResultManager`
+* Hide exceeding log output on production environment
 
 ## Changes
 * Add button for spec file now adds it to beginning of queue, instead of end. Behaviour not changed if add folder
