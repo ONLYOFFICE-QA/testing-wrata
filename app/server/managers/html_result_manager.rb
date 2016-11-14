@@ -35,8 +35,9 @@ module HTMLResultManager
         begin
           processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_processing_of_rspec_html(rspec_html_result_path)
           processing = processing_from_html unless processing_from_html == ''
-        rescue
-
+        rescue StandardError => e
+          Rails.logger.error e.message
+          Rails.logger.error e.backtrace.join("\n")
         end
       end
     end
@@ -50,8 +51,9 @@ module HTMLResultManager
         begin
           processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_failed_cases_count_from_html(rspec_html_result_path)
           processing = processing_from_html unless processing_from_html == ''
-        rescue
-
+        rescue StandardError => e
+          Rails.logger.error e.message
+          Rails.logger.error e.backtrace.join("\n")
         end
       end
     end
@@ -83,7 +85,9 @@ module HTMLResultManager
       if html_result_exist?
         begin
           results = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html(rspec_html_result_path)
-        rescue
+        rescue StandardError => e
+          Rails.logger.error e.message
+          Rails.logger.error e.backtrace.join("\n")
           results = nil
         end
       end
