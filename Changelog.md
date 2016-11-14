@@ -12,6 +12,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Add button to remove duplicates from Test Queue
 * Remove all internal global variables
 * Do not try to mount `/mnt/data_share` inside docker. This cause error mentioned in #158 
+* Better logging of error in `HTMLResultManager`
 
 ## Changes
 * Add button for spec file now adds it to beginning of queue, instead of end. Behaviour not changed if add folder
