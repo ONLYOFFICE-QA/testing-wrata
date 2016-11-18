@@ -38,7 +38,7 @@ module TestManager
     docker_keys = '--privileged=true '\
                   '-v /mnt/data_share:/mnt/data_share '\
                   '--rm '\
-                  '--shm-size=512m'
+                  '--shm-size=2g'
     'docker rm -f $(docker ps -a -q); '\
     'docker pull onlyofficetestingrobot/nct-at-testing-node; '\
     "docker run #{docker_keys} onlyofficetestingrobot/nct-at-testing-node "\
