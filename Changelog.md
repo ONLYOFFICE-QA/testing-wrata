@@ -1,7 +1,11 @@
 # Change log
 
+## 1.9.1
+### Fixes
+* Typo in DelayRun RunManager initialization
+
 ## 1.9
-## New features
+### New features
 * Use `--shm-size` option for `docker run` for increasing it. Remove old code for increase shm by runtime.
 Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pull/16168)
 * Increase `shm-size` to 2 gigabyte
@@ -16,12 +20,12 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Better logging of error in `HTMLResultManager`
 * Hide exceeding log output on production environment
 
-## Changes
+### Changes
 * Add button for spec file now adds it to beginning of queue, instead of end. Behaviour not changed if add folder
 * Remove setting `@create_portal` flag in `portal_data_docs`. It broke stuff if there is custom portal
 * Remove not-helpful logging of Thread events
 
-## Fixes
+### Fixes
 * Fix problem with checkout of tag and running `git pull` after that
 * Fix showing `Already up-to-date` in branches list
 * Fix fetching branch info for `TeamLab` project
