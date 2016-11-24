@@ -1,5 +1,11 @@
 # Change log
 
+## master (unreleased)
+
+### Bug fixes
+
+* [#157](https://github.com/ONLYOFFICE/testing-wrata/issues/157): Fix showing error if server was deleted
+
 ## 1.9.1
 ### Fixes
 * Typo in DelayRun RunManager initialization

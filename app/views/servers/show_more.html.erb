@@ -9,7 +9,7 @@
             <% end %>
           </td>
           <% if @controller == :client %>
-              <td class="center"><%= line.server.name %></td>
+              <td class="center"><%= line.server.name unless line.server.nil? %></td>
           <% end %>
           <td class="center">
             <div style="display: inline-block">
