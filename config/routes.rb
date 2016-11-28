@@ -8,6 +8,7 @@ Runner::Application.routes.draw do
   resources :test_files
   resources :test_lists
   get '/histories/show_html_results' # should always be on top of `resources :histories` for server_history rspec-result correctly shown
+  get '/histories/log_file' # should always be on top of `resources :histories` for server_history rspec-result correctly shown
   resources :histories
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'
