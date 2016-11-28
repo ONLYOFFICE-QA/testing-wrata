@@ -2,6 +2,9 @@
 
 ## master (unreleased)
 
+### New features
+* Ability to download log file from `server_history` page
+
 ### Bug fixes
 
 * [#157](https://github.com/ONLYOFFICE/testing-wrata/issues/157): Fix showing error if server was deleted

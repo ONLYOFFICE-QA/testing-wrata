@@ -1,5 +1,5 @@
 class HistoriesController < ApplicationController
-  before_action :set_history, only: [:show, :edit, :update, :destroy]
+  before_action :set_history, only: [:show, :edit, :update, :destroy, :log_file]
 
   # GET /histories
   # GET /histories.json
@@ -79,11 +79,15 @@ class HistoriesController < ApplicationController
     render layout: false
   end
 
+  def log_file
+    send_data @history.log, filename: "wrata-history-#{@history.id}.log"
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_history
-    @history = History.find(params[:id])
+    @history = History.find_by(id: params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
