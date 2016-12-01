@@ -4,6 +4,7 @@
 
 ### New features
 * Ability to download log file from `server_history` page
+* Tag all created servers with same tag, easy to find them
 
 ### Bug fixes
 

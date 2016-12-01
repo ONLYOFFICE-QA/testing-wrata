@@ -1,5 +1,6 @@
 class Server < ActiveRecord::Base
   EXECUTOR_IMAGE_NAME = 'nct-at-docker'.freeze
+  EXECUTOR_TAG = 'nct-at'.freeze
 
   has_many :histories
 
@@ -27,7 +28,7 @@ class Server < ActiveRecord::Base
   def cloud_server_create
     update_column(:_status, :creating)
     begin
-      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name)
+      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, tags: EXECUTOR_TAG)
     rescue => e
       update_column(:_status, :destroyed)
       raise e
