@@ -1,5 +1,0 @@
-sqlite3 db/production.sqlite3
-DELETE FROM histories;
-DELETE FROM start_options;
-VACUUM;
-
