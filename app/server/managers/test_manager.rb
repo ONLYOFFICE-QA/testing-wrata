@@ -37,6 +37,7 @@ module TestManager
   def docker_command(command)
     docker_keys = '--privileged=true '\
                   '-v /mnt/data_share:/mnt/data_share '\
+                  "-h docker-on-#{@server_model.name} "\
                   '--rm '\
                   '--shm-size=2g'
     'docker rm -f $(docker ps -a -q); '\
