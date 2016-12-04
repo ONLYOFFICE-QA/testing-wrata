@@ -12,6 +12,9 @@
 * [#157](https://github.com/ONLYOFFICE/testing-wrata/issues/157): Fix showing error if server was deleted
 * Fix showing `Already up-to-date` in refs list.
 
+### Refactor
+* Remove usage of `protected_attributes` in favor of stronger parameters
+
 ## 1.9.1
 ### Fixes
 * Typo in DelayRun RunManager initialization

@@ -90,8 +90,7 @@ class HistoriesController < ApplicationController
     @history = History.find_by(id: params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def history_params
-    params[:history]
+    params.require(:history).permit(:log, :file, :server_id, :client_id, :analysed, :total_result)
   end
 end

@@ -68,8 +68,7 @@ class TestFilesController < ApplicationController
     @test_file = TestFile.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def test_file_params
-    params[:test_file]
+    params.require(:test_file).permit(:name, :test_list_id)
   end
 end

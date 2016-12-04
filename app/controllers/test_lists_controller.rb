@@ -71,8 +71,7 @@ class TestListsController < ApplicationController
     @test_list = TestList.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def test_list_params
-    params[:test_list]
+    params.require(:test_list).permit(:name, :client_id)
   end
 end

@@ -36,7 +36,7 @@ class ServersControllerTest < ActionController::TestCase
   end
 
   test 'should update server' do
-    put :update, id: @server, user: { address: @server.address, description: @server.description, name: @server.name }
+    put :update, id: @server, server: { address: @server.address, description: @server.description, name: @server.name }
     assert_redirected_to server_path(assigns(:server))
   end
 

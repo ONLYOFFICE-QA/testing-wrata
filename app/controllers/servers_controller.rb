@@ -32,7 +32,7 @@ class ServersController < ApplicationController
   end
 
   def show_current_results
-    server_thread = Runner::Application.config.threads.get_thread_by_name(params[:server])
+    server_thread = Runner::Application.config.threads.get_thread_by_name(params['server'])
     @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
@@ -40,7 +40,7 @@ class ServersController < ApplicationController
   end
 
   def clear_history
-    server = Server.find_by_name(params[:server])
+    server = Server.find_by_name(params['server'])
     history = server.histories
     history.delete_all
 
@@ -59,7 +59,7 @@ class ServersController < ApplicationController
   end
 
   def reboot
-    Runner::Application.config.threads.get_thread_by_name(params['server']).reboot
+    Runner::Application.config.threads.get_thread_by_name(server_params).reboot
 
     render nothing: true
   end
@@ -76,7 +76,7 @@ class ServersController < ApplicationController
   end
 
   def create
-    @server = Server.new(params[:server])
+    @server = Server.new(server_params)
 
     if @server.save
       Runner::Application.config.threads.add_threads
@@ -92,7 +92,7 @@ class ServersController < ApplicationController
     @server = Server.find(params[:id])
 
     respond_to do |format|
-      if @server.update_attributes(params[:server])
+      if @server.update_attributes(server_params)
         Runner::Application.config.threads.update_models
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }
@@ -141,5 +141,9 @@ class ServersController < ApplicationController
   def update_server_ip(server_name, new_address)
     server = Server.where(name: server_name).first
     server.update_attribute(:address, new_address)
+  end
+
+  def server_params
+    params.require(:server).permit(:address, :description, :name, :comp_name, :_status, :book_client_id, :last_activity_date, :executing_command_now, :self_destruction)
   end
 end
