@@ -58,12 +58,6 @@ class ServersController < ApplicationController
     render layout: false
   end
 
-  def reboot
-    Runner::Application.config.threads.get_thread_by_name(server_params).reboot
-
-    render nothing: true
-  end
-
   def server_history
     server = Server.find_by_id(params[:id])
     @name = server.name

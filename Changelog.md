@@ -15,6 +15,9 @@
 ### Refactor
 * Remove usage of `protected_attributes` in favor of stronger parameters
 
+### Removal
+* Unused methods to reboot servers
+
 ## 1.9.1
 ### Fixes
 * Typo in DelayRun RunManager initialization
