@@ -36,7 +36,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(params[:client])
+    @client = Client.new(client_params)
 
     if params['security_password'] == SECURITY_PASSWORD
       if @client.save
@@ -64,7 +64,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     respond_to do |format|
-      if @client.update_attributes(params[:client])
+      if @client.update_attributes(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
@@ -84,7 +84,7 @@ class ClientsController < ApplicationController
   end
 
   def clear_history
-    client = Client.find_by_login(params[:client])
+    client = Client.find_by_login(client_params)
     history = client.histories
     history.delete_all
 
@@ -100,5 +100,11 @@ class ClientsController < ApplicationController
     @controller = :client
 
     render '/servers/show_more', layout: false
+  end
+
+  private
+
+  def client_params
+    params.require(:client).permit(:login, :password, :password_confirmation, :post, :first_name, :second_name, :project)
   end
 end

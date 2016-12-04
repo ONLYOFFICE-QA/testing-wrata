@@ -1,5 +1,4 @@
 class Client < ActiveRecord::Base
-  attr_accessible :login, :password, :password_confirmation, :post, :first_name, :second_name, :project
   has_many :test_lists
   has_many :histories
   has_many :delayed_runs
@@ -23,13 +22,4 @@ class Client < ActiveRecord::Base
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
   end
-  #
-  # validates :first_name, :presence => true,
-  #                       :length => {:minimum => 3, :maximum => 20}
-  #
-  # validates :second_name, :presence => true,
-  #                        :length => {:minimum => 3, :maximum => 20}
-  #
-  # validates :post, :presence => true,
-  #          :length => {:minimum => 3, :maximum => 20}
 end

@@ -10,7 +10,6 @@ gem 'onlyoffice_digitalocean_wrapper', '~> 0.1', git: 'https://github.com/onlyof
 gem 'onlyoffice_rspec_result_parser', git: 'https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser'
 gem 'pg'
 gem 'process_exists'
-gem 'protected_attributes'
 gem 'puma'
 gem 'rails', '~> 4.2.1'
 gem 'uglifier', '>= 1.3.0'

@@ -2,7 +2,6 @@ class DelayedRun < ActiveRecord::Base
   INFELICITY = 2 * 60 # 2 min update interval
 
   belongs_to :client
-  attr_accessible :name, :f_type, :method, :client_id, :start_time, :next_start
 
   # Check if current delayed run should start in specific time
   # @param time_to_run [ActiveSupport::TimeWithZone] time in which to check for start
