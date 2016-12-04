@@ -40,7 +40,7 @@ module GitHelper
   # @param project_path [String] path to project
   # @return [Array, String] list of tags
   def get_tags(project_path)
-    system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -qf; git tag -l`
+    system_message = `cd #{project_path}; git pull -q --prune; git checkout develop -qf; git tag -l`
     system_message.split("\n")
   end
 
@@ -48,7 +48,7 @@ module GitHelper
   # @param project_path [String] path to project
   # @return [Array, String] list of branches
   def get_branches(project_path)
-    system_message = `cd #{project_path}; git pull --prune -q; git checkout develop -qf; git branch -a`
+    system_message = `cd #{project_path}; git pull -q --prune; git checkout develop -qf; git branch -a`
     system_message.delete!('* ')
     system_message.split("\n")
   end
