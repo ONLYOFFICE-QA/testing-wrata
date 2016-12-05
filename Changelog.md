@@ -1,5 +1,10 @@
 # Change log
 
+## master (unreleased)
+
+### New features
+* Upgrade to rails 5
+
 ## 1.10
 ### New features
 * Ability to download log file from `server_history` page

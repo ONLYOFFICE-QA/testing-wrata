@@ -1,4 +1,4 @@
-Runner::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -17,9 +17,6 @@ Runner::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_files = true
 
-  # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
-
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
@@ -32,6 +29,10 @@ Runner::Application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
+  # config.assets.css_compressor = :sass
+
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.

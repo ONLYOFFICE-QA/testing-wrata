@@ -1,4 +1,4 @@
-Runner::Application.routes.draw do
+Rails.application.routes.draw do
   root to: 'runner#index', as: 'runner'
 
   resources :clients
