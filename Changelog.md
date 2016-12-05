@@ -1,7 +1,6 @@
 # Change log
 
-## master (unreleased)
-
+## 1.10
 ### New features
 * Ability to download log file from `server_history` page
 * Ability to specify host name for started docker container

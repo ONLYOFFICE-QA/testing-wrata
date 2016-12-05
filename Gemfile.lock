@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper
-  revision: 095a3b612386a87d9e34d77a791eefe26f353756
-  specs:
-    onlyoffice_digitalocean_wrapper (0.1.0)
-      activesupport (~> 4)
-      droplet_kit (~> 2.0.1)
-      onlyoffice_logger_helper (= 1.0.0)
-
-GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser
   revision: f159ac712dd1e76fa66f8a3224ba10e223ad4b0c
   specs:
@@ -115,17 +106,21 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
-    minitest (5.10.0)
+    minitest (5.10.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    onlyoffice_digitalocean_wrapper (0.1.0)
+      activesupport (~> 4)
+      droplet_kit (~> 2.0.1)
+      onlyoffice_logger_helper (= 1.0.0)
     onlyoffice_logger_helper (1.0.0)
     orm_adapter (0.5.0)
     overcommit (0.37.0)
       childprocess (~> 0.5.8)
       iniparse (~> 1.4)
-    parser (2.3.3.0)
+    parser (2.3.3.1)
       ast (~> 2.2)
     pg (0.19.0)
     powerpack (0.1.1)
@@ -222,7 +217,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails (~> 5)
-  onlyoffice_digitalocean_wrapper (~> 0.1)!
+  onlyoffice_digitalocean_wrapper (= 0.1)
   onlyoffice_rspec_result_parser!
   overcommit
   pg
