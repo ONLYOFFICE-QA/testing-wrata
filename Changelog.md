@@ -5,6 +5,9 @@
 ### New features
 * Upgrade to rails 5
 
+### Bug fixes
+* Deprecation warning for `config.serve_static_files`
+
 ## 1.10
 ### New features
 * Ability to download log file from `server_history` page
