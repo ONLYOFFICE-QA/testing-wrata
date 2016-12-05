@@ -59,7 +59,6 @@ Runner::Application.routes.draw do
   post 'runner/save_list'
 
   get '/server_history/show_more', to: 'servers#show_more'
-  get '/servers/reboot'
   get '/server_history/:id', to: 'servers#server_history', as: 'server_history'
   post '/servers/destroy'
   post '/servers/create'
