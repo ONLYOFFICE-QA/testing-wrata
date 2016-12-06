@@ -7,6 +7,7 @@
 
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`
+* Sorting list of booked servers
 
 ## 1.10
 ### New features

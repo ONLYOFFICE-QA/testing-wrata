@@ -174,8 +174,9 @@ function Runner() {
     };
 
     this.showBookedServers = function(servers) {
-        for(var i = 0; i < servers.length; i++) {
-            _self.appendServerOnQueue(servers[i]);
+        var sortedServers = servers.sort();
+        for(var i = 0; i < sortedServers.length; i++) {
+            _self.appendServerOnQueue(sortedServers[i]);
         }
     };
 
