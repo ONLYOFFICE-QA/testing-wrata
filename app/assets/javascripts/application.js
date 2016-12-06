@@ -569,8 +569,8 @@ function Runner() {
     };
 
     this.unbookServer = function(server_name, button, hide_button) {
-        button = typeof button !== 'undefined' ? button : null;
-        hide_button = typeof hide_button !== 'undefined' ? hide_button : null;
+        button = typeof button === 'undefined' ? null : button;
+        hide_button = typeof hide_button === 'undefined' ? null : hide_button;
         $.ajax({
             url: 'queue/unbook_server',
             context: this,
