@@ -350,8 +350,9 @@ function Runner() {
     this.eventForCreateAndDestroyServer = function(button) {
         button.on('click', function () {
             var result = confirm('Are you really want to ' + $(this).find('.hidden-tool').text() + ' this server?');
-            if (result)
+            if (result) {
                 _self.createAndDestroyServer($(this));
+            }
         });
     };
 
@@ -583,8 +584,9 @@ function Runner() {
                 if (button != null) {
                     button.unbind();
                     _self.changeUnbookButtonOnBook(button);
-                    if (hide_button)
+                    if (hide_button) {
                         button.hide();
+                    }
                     _self.eventToBookServer(button);
                     _self.toggleUnbookAllServersButton();
                     _self.getUpdatedDataFromServer();
@@ -1101,7 +1103,9 @@ function Runner() {
 
     this.eventToOpenServer = function(header) {
         header.on('click', function (e) {
-            if (!$(e.target).is("label")) return;
+            if (!$(e.target).is("label")) {
+                return;
+            }
             var server_content = $(this).next();
             server_content.slideToggle();
         });
