@@ -43,7 +43,7 @@ function saveDelayedRun(f_type, name, method, start_time, location) {
             trimmed_data.appendTo($('#added-test-lists')).fadeIn('slow');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
@@ -61,7 +61,7 @@ function saveChangedRun(run_id, method, start_time, location) {
         success: function (data) {
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
@@ -76,7 +76,7 @@ function deleteRun(run_id) {
         success: function (data) {
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
@@ -88,7 +88,7 @@ function testDB() {
         success: function () {
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
@@ -175,7 +175,7 @@ function addRow() {
             trimmed_data.appendTo($('#test-lists')).fadeIn('slow');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }

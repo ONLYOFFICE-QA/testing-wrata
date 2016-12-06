@@ -39,7 +39,7 @@ function showMoreHistoryForServer() {
             eventToRetest(trimmed_data.find('.retest'));
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
@@ -69,7 +69,7 @@ function showMoreHistoryForClient() {
             eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
@@ -87,7 +87,7 @@ function clearHistoryOnServer(server_name) {
             showOverlay('Deleting...');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         },
         complete: function() {
             location.reload();
@@ -149,7 +149,7 @@ function eventToDeleteHistoryLine(elem) {
                 });
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     });
@@ -172,7 +172,7 @@ function eventToRetest(elem) {
                 showInfoAlert('Test was added in your queue.');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     });
@@ -194,7 +194,7 @@ function eventToSetAnalysedToHistory(elem) {
                 el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
 
@@ -251,7 +251,7 @@ function eventToOpenRspecResults(elem) {
                 eventsForRspecPopup();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     });

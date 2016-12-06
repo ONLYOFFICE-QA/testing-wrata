@@ -42,7 +42,7 @@ window.onbeforeunload = function() {
 };
 
 function showInfoAlert(alertText){
-    var alert = $("#info-alert")
+    var alert = $("#info-alert");
     alertText = alertText || "Unknown Error";
     alert.text(alertText);
     alert.dialog({
@@ -168,9 +168,9 @@ function Runner() {
 
     this.setDataOnQueuePanel = function(queue_data) {
         _self.showBookedServers(queue_data.servers);
-        _self.setBookedServersCount(queue_data.servers.length)
+        _self.setBookedServersCount(queue_data.servers.length);
         _self.showTestsFromQueue(queue_data.tests);
-        _self.showTestsInQueueCount(queue_data.tests.length)
+        _self.showTestsInQueueCount(queue_data.tests.length);
     };
 
     this.showBookedServers = function(servers) {
@@ -204,13 +204,13 @@ function Runner() {
         $('#list-region option').each(function() {
             optionValues.push($(this).val());
         });
-        return optionValues
+        return optionValues;
     };
 
     this.generateRegionSelect = function() {
         regionSelector = '';
             this.getRegionList().forEach(function(entry) {
-                regionSelector += '<option>' + entry + '</option>'
+                regionSelector += '<option>' + entry + '</option>';
             });
         return regionSelector;
     };
@@ -218,7 +218,7 @@ function Runner() {
 
     this.appendTestsOnQueue = function(test) {
         if (typeof regionSelector === 'undefined') {
-            this.generateRegionSelect()
+            this.generateRegionSelect();
         }
         var select = '<select class="region form-control">' + regionSelector + '</select>';
         select = $(select);
@@ -300,7 +300,7 @@ function Runner() {
                 _self.hideServerSectionOverlay(server);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -320,7 +320,7 @@ function Runner() {
                 _self.hideServerSectionOverlay(server);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -376,7 +376,7 @@ function Runner() {
         ui_progress.css('width', progress + '%');
         ui_progress.removeClass('red-background');
         if (failed_count != 0) {
-            ui_progress.addClass('red-background')
+            ui_progress.addClass('red-background');
         }
         progress_elem.find('.value').text(progress + '% ' + time);
         progress_elem.show();
@@ -448,7 +448,7 @@ function Runner() {
                 showInfoAlert('Current test was stopped successfully!');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -468,7 +468,7 @@ function Runner() {
                 showInfoAlert('All test on all booked servers stop successfully!');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -488,7 +488,7 @@ function Runner() {
                 showInfoAlert('All unbooked servers destroyed');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -499,7 +499,7 @@ function Runner() {
             if (result) {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
-                _self.getUpdatedDataFromServer()
+                _self.getUpdatedDataFromServer();
             }
         });
     };
@@ -538,7 +538,7 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -591,7 +591,7 @@ function Runner() {
                 }
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -606,7 +606,7 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -633,7 +633,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -653,7 +653,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -724,7 +724,7 @@ function Runner() {
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -747,7 +747,7 @@ function Runner() {
                 _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -770,7 +770,7 @@ function Runner() {
                 _self.showTestsView();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -787,7 +787,7 @@ function Runner() {
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -806,7 +806,7 @@ function Runner() {
         for(var i = 0; i < tags.length; i++) {
             control.append($("<option>" + tags[i] + "</option>"));
         }
-    }
+    };
 
     this.saveTestList = function () {
         $.ajax({
@@ -833,7 +833,7 @@ function Runner() {
                 _self.appendListDropdownMenu(trimmed_data);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -875,7 +875,7 @@ function Runner() {
                 list_menu.remove();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -908,7 +908,7 @@ function Runner() {
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -934,7 +934,7 @@ function Runner() {
             context: this,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -978,7 +978,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1049,7 +1049,7 @@ function Runner() {
                 });
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1408,7 +1408,7 @@ function Runner() {
                 _self.toggleShuffleTestButton();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1420,7 +1420,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1431,7 +1431,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1442,7 +1442,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1537,7 +1537,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1896,7 +1896,7 @@ function clearHistoryOnClient(client) {
             showOverlay('Deleting...');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         },
         complete: function() {
             location.reload();
