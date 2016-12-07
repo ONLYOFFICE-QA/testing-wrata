@@ -76,11 +76,6 @@ function infoPopup(info_html) {
     popup.document.body.innerHTML = info_html.replace(/(?:\r\n|\r|\n)/g, '<br />');
 }
 
-function Client(login, file_lists) {
-    this.login = login;
-    this.file_lists = file_lists;
-}
-
 function trim_data(data) {
     return $($.trim(data));
 }
@@ -428,12 +423,8 @@ function Runner() {
     };
 
     this.setLogToServerView = function (server_el, log) {
-        // if ((currentLogOnServer(server_el) == '') && (currentTestOnServer(server_el) == 'nothing')) {
-//        if (log != '') {
-            var log_div = server_el.find('.log');
-            log_div.text(log);
-//        }
-        //  }
+        var log_div = server_el.find('.log');
+        log_div.text(log);
     };
 
     this.stopCurrent = function (server) {
@@ -1817,10 +1808,6 @@ function showOverlay(text) {
 function hideOverlay() {
     $('.overlay').fadeOut();
     return false;
-}
-
-function currentTestOnServer(server_el) {
-    return server_el.find('.running').text();
 }
 
 function eventsForRspecPopup() {

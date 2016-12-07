@@ -81,18 +81,6 @@ function deleteRun(run_id) {
     });
 }
 
-function testDB() {
-    $.ajax({
-        url: 'delay_run/history_shit',
-        type: 'POST',
-        success: function () {
-        },
-        error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-        }
-    });
-}
-
 function eventToChangeDelayedRun(elem) {
     elem.click(function(){
         var row = $(this).parent();

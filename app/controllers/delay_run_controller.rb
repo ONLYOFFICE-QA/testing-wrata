@@ -29,19 +29,6 @@ class DelayRunController < ApplicationController
     render layout: false
   end
 
-  def history_shit
-    20.times do
-      Thread.new(caller: method(__method__).owner.to_s) do
-        history = History.new
-        Runner::Application.config.threads.lock.synchronize do
-          history.save
-        end
-      end
-    end
-
-    render nothing: true
-  end
-
   private
 
   def manager
