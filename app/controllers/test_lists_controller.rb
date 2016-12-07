@@ -36,7 +36,7 @@ class TestListsController < ApplicationController
         format.html { redirect_to @test_list, notice: 'Test list was successfully created.' }
         format.json { render action: 'show', status: :created, location: @test_list }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @test_list.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +50,7 @@ class TestListsController < ApplicationController
         format.html { redirect_to @test_list, notice: 'Test list was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @test_list.errors, status: :unprocessable_entity }
       end
     end

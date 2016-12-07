@@ -91,7 +91,7 @@ class ServersController < ApplicationController
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @server.errors, status: :unprocessable_entity }
       end
     end
