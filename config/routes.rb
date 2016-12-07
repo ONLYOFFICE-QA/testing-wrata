@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   post '/servers/cloud_server_create'
   post '/servers/cloud_server_destroy'
 
-  post 'delay_run/history_shit'
-
   post 'histories/set_analysed'
 
   get 'runner/index'

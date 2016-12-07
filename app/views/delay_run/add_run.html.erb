@@ -27,7 +27,7 @@
   </div>
   <% unless @run.method.include?('once') %>
       <div class="each-time" style="display: inline-block; margin-left: 5px;">
-        <% hour, minute = BullshitHelper.match_minutes_and_hours(@run.method)%>
+        <% hour, minute = @run.extract_minutes_and_hours %>
         <input class="form-control" placeholder="Hour" style="width: 32px;" value="<%= hour %>">
         :
         <input class="form-control" placeholder="Min" style="width: 32px;" value="<%= minute %>">

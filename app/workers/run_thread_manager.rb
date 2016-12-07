@@ -50,7 +50,7 @@ module RunThreadManager
     elsif method.match(/hours/) || method.match(/minutes/)
       if check_each_round run
         add_to_queue run
-        hours, minutes = BullshitHelper.match_minutes_and_hours(method)
+        hours, minutes = run.extract_minutes_and_hours
         move_next_start_on(run, hours, minutes)
       end
     else

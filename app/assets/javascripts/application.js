@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //= require bootbox
 //= require bootstrap
-//= require jquery
 //= require jquery-ui
 //= require jquery_ujs
 //= require_tree
@@ -42,7 +41,7 @@ window.onbeforeunload = function() {
 };
 
 function showInfoAlert(alertText){
-    var alert = $("#info-alert")
+    var alert = $("#info-alert");
     alertText = alertText || "Unknown Error";
     alert.text(alertText);
     alert.dialog({
@@ -75,11 +74,6 @@ function ajaxErrorUnlessPageRefresh(xhr, type, errorThrown) {
 function infoPopup(info_html) {
     var popup = open("", "Info Popup", "width=800,height=400");
     popup.document.body.innerHTML = info_html.replace(/(?:\r\n|\r|\n)/g, '<br />');
-}
-
-function Client(login, file_lists) {
-    this.login = login;
-    this.file_lists = file_lists;
 }
 
 function trim_data(data) {
@@ -168,9 +162,9 @@ function Runner() {
 
     this.setDataOnQueuePanel = function(queue_data) {
         _self.showBookedServers(queue_data.servers);
-        _self.setBookedServersCount(queue_data.servers.length)
+        _self.setBookedServersCount(queue_data.servers.length);
         _self.showTestsFromQueue(queue_data.tests);
-        _self.showTestsInQueueCount(queue_data.tests.length)
+        _self.showTestsInQueueCount(queue_data.tests.length);
     };
 
     this.showBookedServers = function(servers) {
@@ -204,13 +198,13 @@ function Runner() {
         $('#list-region option').each(function() {
             optionValues.push($(this).val());
         });
-        return optionValues
+        return optionValues;
     };
 
     this.generateRegionSelect = function() {
         regionSelector = '';
             this.getRegionList().forEach(function(entry) {
-                regionSelector += '<option>' + entry + '</option>'
+                regionSelector += '<option>' + entry + '</option>';
             });
         return regionSelector;
     };
@@ -218,7 +212,7 @@ function Runner() {
 
     this.appendTestsOnQueue = function(test) {
         if (typeof regionSelector === 'undefined') {
-            this.generateRegionSelect()
+            this.generateRegionSelect();
         }
         var select = '<select class="region form-control">' + regionSelector + '</select>';
         select = $(select);
@@ -300,7 +294,7 @@ function Runner() {
                 _self.hideServerSectionOverlay(server);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -320,7 +314,7 @@ function Runner() {
                 _self.hideServerSectionOverlay(server);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -350,8 +344,9 @@ function Runner() {
     this.eventForCreateAndDestroyServer = function(button) {
         button.on('click', function () {
             var result = confirm('Are you really want to ' + $(this).find('.hidden-tool').text() + ' this server?');
-            if (result)
+            if (result) {
                 _self.createAndDestroyServer($(this));
+            }
         });
     };
 
@@ -376,7 +371,7 @@ function Runner() {
         ui_progress.css('width', progress + '%');
         ui_progress.removeClass('red-background');
         if (failed_count != 0) {
-            ui_progress.addClass('red-background')
+            ui_progress.addClass('red-background');
         }
         progress_elem.find('.value').text(progress + '% ' + time);
         progress_elem.show();
@@ -428,12 +423,8 @@ function Runner() {
     };
 
     this.setLogToServerView = function (server_el, log) {
-        // if ((currentLogOnServer(server_el) == '') && (currentTestOnServer(server_el) == 'nothing')) {
-//        if (log != '') {
-            var log_div = server_el.find('.log');
-            log_div.text(log);
-//        }
-        //  }
+        var log_div = server_el.find('.log');
+        log_div.text(log);
     };
 
     this.stopCurrent = function (server) {
@@ -448,7 +439,7 @@ function Runner() {
                 showInfoAlert('Current test was stopped successfully!');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -468,7 +459,7 @@ function Runner() {
                 showInfoAlert('All test on all booked servers stop successfully!');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -488,7 +479,7 @@ function Runner() {
                 showInfoAlert('All unbooked servers destroyed');
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -499,7 +490,7 @@ function Runner() {
             if (result) {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
-                _self.getUpdatedDataFromServer()
+                _self.getUpdatedDataFromServer();
             }
         });
     };
@@ -538,7 +529,7 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -561,16 +552,16 @@ function Runner() {
         }
     };
 
-    this.eventToBookServer = function(elems) {
-        offEventsOnElem(elems);
-        elems.on('click', function() {
+    this.eventToBookServer = function(elements) {
+        offEventsOnElem(elements);
+        elements.on('click', function() {
             _self.bookServer($(this), $(this).attr('data-server'));
         });
     };
 
     this.unbookServer = function(server_name, button, hide_button) {
-        button = typeof button !== 'undefined' ? button : null;
-        hide_button = typeof hide_button !== 'undefined' ? hide_button : null;
+        button = typeof button === 'undefined' ? null : button;
+        hide_button = typeof hide_button === 'undefined' ? null : hide_button;
         $.ajax({
             url: 'queue/unbook_server',
             context: this,
@@ -583,15 +574,16 @@ function Runner() {
                 if (button != null) {
                     button.unbind();
                     _self.changeUnbookButtonOnBook(button);
-                    if (hide_button)
+                    if (hide_button) {
                         button.hide();
+                    }
                     _self.eventToBookServer(button);
                     _self.toggleUnbookAllServersButton();
                     _self.getUpdatedDataFromServer();
                 }
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -606,14 +598,14 @@ function Runner() {
                 _self.getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
 
-    this.eventToUnbookServer = function(elems, hide_button) {
-        offEventsOnElem(elems);
-        elems.on('click', function() {
+    this.eventToUnbookServer = function(elements, hide_button) {
+        offEventsOnElem(elements);
+        elements.on('click', function() {
             _self.unbookServer($(this).attr('data-server'), $(this), hide_button);
         });
     };
@@ -633,7 +625,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -653,7 +645,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -724,7 +716,7 @@ function Runner() {
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -747,7 +739,7 @@ function Runner() {
                 _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -770,7 +762,7 @@ function Runner() {
                 _self.showTestsView();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -787,7 +779,7 @@ function Runner() {
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -806,7 +798,7 @@ function Runner() {
         for(var i = 0; i < tags.length; i++) {
             control.append($("<option>" + tags[i] + "</option>"));
         }
-    }
+    };
 
     this.saveTestList = function () {
         $.ajax({
@@ -833,7 +825,7 @@ function Runner() {
                 _self.appendListDropdownMenu(trimmed_data);
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -875,7 +867,7 @@ function Runner() {
                 list_menu.remove();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -908,7 +900,7 @@ function Runner() {
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -934,7 +926,7 @@ function Runner() {
             context: this,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -978,7 +970,7 @@ function Runner() {
 
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1049,7 +1041,7 @@ function Runner() {
                 });
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1101,7 +1093,9 @@ function Runner() {
 
     this.eventToOpenServer = function(header) {
         header.on('click', function (e) {
-            if (!$(e.target).is("label")) return;
+            if (!$(e.target).is("label")) {
+                return;
+            }
             var server_content = $(this).next();
             server_content.slideToggle();
         });
@@ -1408,7 +1402,7 @@ function Runner() {
                 _self.toggleShuffleTestButton();
             },
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1420,7 +1414,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1431,7 +1425,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1442,7 +1436,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1537,7 +1531,7 @@ function Runner() {
             async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
     };
@@ -1590,11 +1584,10 @@ $(function () {
 
     $('#save-new').on('click', function () {
         if (verifyListName($("#list-name").text())) {
-            if ($("#sidebar-test-list").children().size() !== 0) {
-                myRunner.saveTestList();
-            }
-            else {
+            if ($("#sidebar-test-list").children().size() === 0) {
                 showInfoAlert('Nothing to save! Add tests from tests sections.');
+            } else {
+                myRunner.saveTestList();
             }
         }
     });
@@ -1817,10 +1810,6 @@ function hideOverlay() {
     return false;
 }
 
-function currentTestOnServer(server_el) {
-    return server_el.find('.running').text();
-}
-
 function eventsForRspecPopup() {
     eventToOpenDescribe();
     evenToOpenFailDetails();
@@ -1896,7 +1885,7 @@ function clearHistoryOnClient(client) {
             showOverlay('Deleting...');
         },
         error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown)
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         },
         complete: function() {
             location.reload();
@@ -1931,11 +1920,3 @@ function hideSectionOverlay() {
 function imitateHover(elem) {
     $(elem).mouseenter().mouseleave();
 }
-//
-//$(document).ready(function() {
-//
-//    myRunner.showservers()
-//})
-
-
-//myRunner.startGovno();

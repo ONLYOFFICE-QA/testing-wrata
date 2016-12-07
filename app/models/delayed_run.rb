@@ -23,4 +23,12 @@ class DelayedRun < ActiveRecord::Base
   def to_s
     "Test List: #{name}, Location: #{location}, by #{method}"
   end
+
+  def extract_minutes_and_hours
+    hours = method.match(/_(\d*)_hours/)
+    hours = hours.captures.first if hours
+    minutes = method.match(/_(\d*)_minutes/)
+    minutes = minutes.captures.first if minutes
+    [hours, minutes]
+  end
 end

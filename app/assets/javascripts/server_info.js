@@ -20,8 +20,8 @@ fetch_server_ip = function (server) {
 
 update_ip_value = function(value) {
         $("#server_address").val(value);
-}
+};
 
 $("#fetch-ip").on("click", function(){
     fetch_server_ip($( "#server_name" ).val());
-})
+});

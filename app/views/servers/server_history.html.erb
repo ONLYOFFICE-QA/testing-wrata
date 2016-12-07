@@ -26,7 +26,7 @@
             $(document).ready(function () {
                 $('#show-more').click(function () {
                     <% if @controller == :client %>
-                        showMoreHistoryForClient()
+                        showMoreHistoryForClient();
                     <% elsif @controller == :server %>
                         showMoreHistoryForServer();
                     <% end %>
@@ -47,7 +47,7 @@
       <div class="popup-window"></div>
     </div>
     <h1>Runs on <label id="<%= @controller.to_s %>"><%= @name %></label>:</h1>
-    <button id="clear-history" class="btn btn-primary" style="position: absolute; right: 0px; top: 58px; right: 20px;">
+    <button id="clear-history" class="btn btn-primary" style="position: absolute; top: 58px; right: 20px;">
       <i class="glyphicon glyphicon-trash"></i>Clear history
     </button>
     <table class="table table-bordered table-hovers">

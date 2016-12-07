@@ -36,7 +36,7 @@
 Need to use docker v1.10.0 or newer for it (https://github.com/docker/docker/pull/16168)
 * Increase `shm-size` to 2 gigabyte
 * Docker rm executed containers after finish task
-* Add ability to send custom portal name to spec.  It use enviroment variable `SPEC_SERVER_IP`. 
+* Add ability to send custom portal name to spec.  It use environment variable `SPEC_SERVER_IP`. 
 You should implement parsing it in your tests, to correctly run tests on customs ip.
 * Add single button to destroy all unbooked servers
 * Add ability to run before spec any command from `/before-run.sh`, not only `sudo mount -a`
@@ -83,7 +83,7 @@ You should implement parsing it in your tests, to correctly run tests on customs
 * Add ability to disable self-destruction of servers
 
 ## 1.6
-* Fix problem with reruning test with last parameter #103
+* Fix problem with re-running test with last parameter #103
 * Add ability to show links, url and native html from parsed rspec results
 * Add more info on server view page
 * Add fetch ip button to server edit page
