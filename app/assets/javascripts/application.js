@@ -562,9 +562,9 @@ function Runner() {
         }
     };
 
-    this.eventToBookServer = function(elems) {
-        offEventsOnElem(elems);
-        elems.on('click', function() {
+    this.eventToBookServer = function(elements) {
+        offEventsOnElem(elements);
+        elements.on('click', function() {
             _self.bookServer($(this), $(this).attr('data-server'));
         });
     };
@@ -613,9 +613,9 @@ function Runner() {
         });
     };
 
-    this.eventToUnbookServer = function(elems, hide_button) {
-        offEventsOnElem(elems);
-        elems.on('click', function() {
+    this.eventToUnbookServer = function(elements, hide_button) {
+        offEventsOnElem(elements);
+        elements.on('click', function() {
             _self.unbookServer($(this).attr('data-server'), $(this), hide_button);
         });
     };
@@ -1934,11 +1934,3 @@ function hideSectionOverlay() {
 function imitateHover(elem) {
     $(elem).mouseenter().mouseleave();
 }
-//
-//$(document).ready(function() {
-//
-//    myRunner.showservers()
-//})
-
-
-//myRunner.startGovno();
