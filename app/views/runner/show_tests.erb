@@ -35,7 +35,7 @@
           <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
         </div>
         <div class="tab-pane" id="teamlab">
-          <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :tm) %>
+          <% show_file_tree(directory_hash(TEAMLAB_PROJECT_PATH)[:children], :tm) %>
         </div>
     <% end %>
     <% if @client.project == 'teamlab' %>
