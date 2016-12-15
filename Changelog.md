@@ -8,6 +8,7 @@
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`
 * Sorting list of booked servers
+* Fix problem with showing incorrect project file in tabs
 
 ## 1.10
 ### New features
