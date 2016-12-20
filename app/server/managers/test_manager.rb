@@ -58,6 +58,7 @@ module TestManager
   def stop_test
     system(generate_ssh_command('docker stop -t 0 $(docker ps -q)'))
     Process.kill('KILL', @ssh_pid) if Process.exists?(@ssh_pid)
+    File.open(server_log_path, 'a+') { |f| f << History::FORCE_STOP_LOG_ENTRY }
   end
 
   def generate_run_test_command(test, options)
