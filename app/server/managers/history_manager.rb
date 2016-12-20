@@ -29,6 +29,7 @@ module HistoryManager
       history.data = file
     end
     Runner::Application.config.threads.lock.synchronize { history.save }
+    history.notify_failure
     history
   end
 end

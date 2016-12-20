@@ -4,6 +4,7 @@
 
 ### New features
 * Upgrade to rails 5
+* Send notification to admin if test stopped without result
 
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`
