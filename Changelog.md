@@ -11,6 +11,9 @@
 * Fix problem with showing incorrect project file in tabs
 * Fix setting server status if it has name with dot
 
+### Refactor
+* Remove useless code for stopping browser before docker stop
+
 ## 1.10
 ### New features
 * Ability to download log file from `server_history` page
