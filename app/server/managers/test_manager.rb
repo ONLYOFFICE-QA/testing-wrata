@@ -65,8 +65,7 @@ module TestManager
                        "#{options.create_options}; "\
                        "#{open_folder_with_project(test)} && "\
                        "#{env_variables_options(options)} && "\
-                       "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; "\
-                       "#{kill_all_browsers_on_server}")
+                       "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1;")
   end
 
   def open_folder_with_project(test_path)
@@ -75,10 +74,6 @@ module TestManager
     elsif test_path.include? TEAMLAB_PROJECT_NAME
       "cd #{TEAMLAB_PATH_WITHOUT_HOME}"
     end
-  end
-
-  def kill_all_browsers_on_server
-    'killall chrome 2>&1; killall firefox 2>&1; killall opera 2>&1'
   end
 end
 
