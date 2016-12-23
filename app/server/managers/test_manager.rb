@@ -77,11 +77,3 @@ module TestManager
     end
   end
 end
-
-module Process
-  def self.alive?(pid)
-    Process.getpgid(pid)
-  rescue Errno::ESRCH
-    false
-  end
-end
