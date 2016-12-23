@@ -7,7 +7,7 @@
     <th>First name</th>
     <th>Second name</th>
     <th>Post</th>
-    <th></th>
+    <th>Verified</th>
     <th></th>
     <th></th>
   </tr>
@@ -19,6 +19,7 @@
     <td><%= client.first_name %></td>
     <td><%= client.second_name %></td>
     <td><%= client.post %></td>
+    <td><%= client.verified %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>

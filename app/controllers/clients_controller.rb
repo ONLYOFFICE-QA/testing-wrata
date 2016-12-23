@@ -31,6 +31,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    @client = Client.find(params[:id])
   end
 
   # POST /clients
@@ -38,16 +39,11 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
 
-    if params['security_password'] == SECURITY_PASSWORD
-      if @client.save
-        sign_in_ @client
-        flash[:success] = 'Welcome to the BEST RUNNER IN THE WORLD!'
-        redirect_to runner_path
-      else
-        render 'new'
-      end
+    if @client.save
+      sign_in_ @client
+      flash[:success] = 'Your account successfully created. Please wait for verification by admin'
+      redirect_to runner_path
     else
-      flash[:error] = 'WRONG SECURITY PASSWORD! TRY CALL TO g U M K A -LLI II U H r O JI E T!'
       render 'new'
     end
   end
@@ -105,6 +101,13 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:login, :password, :password_confirmation, :post, :first_name, :second_name, :project)
+    params.require(:client).permit(:login,
+                                   :password,
+                                   :password_confirmation,
+                                   :post,
+                                   :first_name,
+                                   :second_name,
+                                   :verified,
+                                   :project)
   end
 end

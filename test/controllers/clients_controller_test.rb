@@ -18,7 +18,7 @@ class ClientsControllerTest < ActionController::TestCase
 
   test 'should create client' do
     assert_difference('Client.count') do
-      post :create, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass' }, security_password: SECURITY_PASSWORD
+      post :create, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass' }
     end
 
     assert_redirected_to runner_path
@@ -35,7 +35,7 @@ class ClientsControllerTest < ActionController::TestCase
   end
 
   test 'should update client' do
-    put :update, id: @client, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass' }, security_password: SECURITY_PASSWORD
+    put :update, id: @client, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass' }
     assert_redirected_to client_path(assigns(:client))
   end
 

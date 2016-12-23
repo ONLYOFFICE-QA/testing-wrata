@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023085059) do
+ActiveRecord::Schema.define(version: 20161223120627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +26,9 @@ ActiveRecord::Schema.define(version: 20151023085059) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.string   "project"
+    t.boolean  "verified",        default: false
+    t.index ["remember_token"], name: "index_clients_on_remember_token", using: :btree
   end
-
-  add_index "clients", ["remember_token"], name: "index_clients_on_remember_token", using: :btree
 
   create_table "delayed_runs", force: :cascade do |t|
     t.string   "f_type"
