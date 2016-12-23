@@ -5,6 +5,7 @@
 ### New features
 * Upgrade to rails 5
 * Send notification to admin if test stopped without result
+* Admin should verify all new users, no need in secret password
 
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`

@@ -23,5 +23,4 @@ EMPTY_STRING = ''.freeze
 TIME_FOR_UPDATE = 15
 REGION_LIST = ['info us', 'info eu', 'info sg', 'com us', 'com eu', 'com sg', 'com org', 'default', 'custom'].freeze
 DEFAULT_REGION = 'default'.freeze
-SECURITY_PASSWORD = 'All love wheel'.freeze
 TIMEOUT_SERVER_SELFDESTROY = 60 * 60

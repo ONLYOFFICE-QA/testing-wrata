@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
-  def new
-  end
+  def new; end
 
   def create
     client = Client.find_by_login(params[:session][:login])
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in_ client
       redirect_to runner_path
     else
-      flash.now[:empty_pages] = 'Invalid login/password combination' # Not quite right!
+      flash[:error] = 'Invalid login/password combination. Or your account still not verified. Contact admin' # Not quite right!
       render 'new'
     end
   end
