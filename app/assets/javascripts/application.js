@@ -237,7 +237,8 @@ function Runner() {
 
     this.setDataOnServersView = function (data) {
         for (var i = 0; i < data.length; i++) {
-            var server = $(`div[id='${data[i].name}']`);
+            var selector = "div[id='" + data[i].name + "']";
+            var server = $(selector);
             _self.setStatusToServerView(server, data[i].status);
             _self.setServerIp(server, data[i].server_ip);
             if (data[i].status) {
