@@ -48,5 +48,11 @@ module Runner
       authentication:       'plain',
       enable_starttls_auto: true
     }
+    config.middleware.use ExceptionNotification::Rack,
+                          email: {
+                            email_prefix: '[wrata] ',
+                            sender_address: Rails.application.secrets.gmail_username,
+                            exception_recipients: [Rails.application.secrets.admin_email]
+                          }
   end
 end
