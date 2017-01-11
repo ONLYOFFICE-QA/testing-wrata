@@ -5,10 +5,14 @@ module PingManager
         if @server_model._status == :destroyed || @server_model.address.nil?
           @status = false
         else
-          command = "nc -w 1 -z #{@server_model.address} 22"
-          pid = spawn(command)
+          command = "ping -w1 -c1 #{@server_model.address}"
+          r, w = IO.pipe
+          pid = spawn(command, out: w)
           Process.wait pid
-          @status = ($CHILD_STATUS == 0)
+          w.close
+          Rails.logger.info "Executed '#{command}'"
+          status = r.read.include?('0 received')
+          @status = !status
         end
         sleep TIME_FOR_UPDATE
       end

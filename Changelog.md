@@ -7,7 +7,6 @@
 * Send notification to admin if test stopped without result
 * Send notification to admin if some exception is happened
 * Admin should verify all new users, no need in secret password
-* Test node appear online not after ping recieved, but only after ssh on node is running
 
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`
