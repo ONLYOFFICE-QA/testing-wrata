@@ -1048,21 +1048,6 @@ label#server, label#client {
     cursor: pointer;
 }
 
-.analyse-area {
-    width: 30px;
-    height: 16px;
-    display: inline-block;
-}
-
-.analyse-area i {
-    display: none;
-}
-
-.analyse-area:hover i {
-    display: inline-block;
-    opacity: 0.3;
-}
-
 .server .progress-bar {
     cursor: pointer;
 }

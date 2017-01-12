@@ -3,7 +3,6 @@ one:
   file: one_file.rb
   server_id: 1
   client_id: 1
-  analysed: true
   total_result: 1
 
 two:
@@ -11,5 +10,4 @@ two:
   file: two_file.rb
   server_id: 2
   client_id: 2
-  analysed: false
   total_result: 2
