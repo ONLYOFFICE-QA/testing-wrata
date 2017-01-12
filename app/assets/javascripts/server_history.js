@@ -17,7 +17,6 @@ function showMoreHistoryForServer() {
             var trimmed_data = trim_data(data);
             $('tbody').append(trimmed_data);
             eventToDeleteHistoryLine(trimmed_data.find('.delete-line'));
-            eventToSetAnalysedToHistory(trimmed_data.find('.analyse-area'));
             eventToOpenRspecResults(trimmed_data.find('.open-results'));
             eventToOpenMoreOptions(trimmed_data.find('.open-options'));
             eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
@@ -44,7 +43,6 @@ function showMoreHistoryForClient() {
             var trimmed_data = trim_data(data);
             $('tbody').append(trimmed_data);
             eventToDeleteHistoryLine(trimmed_data.find('.delete-line'));
-            eventToSetAnalysedToHistory(trimmed_data.find('.analyse-area'));
             eventToOpenRspecResults(trimmed_data.find('.open-results'));
             eventToOpenMoreOptions(trimmed_data.find('.open-options'));
             eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
@@ -116,29 +114,6 @@ function eventToRetest(elem) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
-    });
-}
-
-function eventToSetAnalysedToHistory(elem) {
-    elem.on('click', function () {
-        var clicked = $(this);
-        $.ajax({
-            url: '/histories/set_analysed',
-            async: false,
-            type: 'POST',
-            data: {
-                'id': clicked.attr('data-id')
-            },
-            success: function () {
-                var el = clicked.parent();
-                clearElementInside(el);
-                el.append($("<i class='glyphicon glyphicon-ok icon-green'></i>"));
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-
     });
 }
 

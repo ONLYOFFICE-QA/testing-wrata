@@ -60,13 +60,6 @@ class HistoriesController < ApplicationController
     render nothing: true
   end
 
-  def set_analysed
-    @history = History.find(params['id'])
-    @history.analysed = true
-    @history.save
-    render nothing: true
-  end
-
   def show_html_results
     history_line = History.find(params[:history_id])
     @rspec_result = nil
@@ -91,6 +84,6 @@ class HistoriesController < ApplicationController
   end
 
   def history_params
-    params.require(:history).permit(:log, :file, :server_id, :client_id, :analysed, :total_result)
+    params.require(:history).permit(:log, :file, :server_id, :client_id, :total_result)
   end
 end
