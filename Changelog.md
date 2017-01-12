@@ -7,6 +7,7 @@
 * Send notification to admin if test stopped without result
 * Send notification to admin if some exception is happened
 * Admin should verify all new users, no need in secret password
+* Remove log window in histories - make page open 3 times faster
 
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`

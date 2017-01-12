@@ -1,20 +1,11 @@
 <% content_for :head do %>
     <script type="text/javascript">
         $(document).ready(function () {
-            scrollLogEventToElem($('.log'));
-            logUpEventToElem( $('.log-up'));
-            logDownEventToElem( $('.log-up'));
-            openLogInHistoryEvent();
             eventToDeleteHistoryLine($('.delete-line'));
             eventToRetest($('.retest'));
             eventToSetAnalysedToHistory($('.analyse-area'));
             eventToOpenMoreOptions($('.open-options'));
             eventToShowFullStartOption($('.open-full-command'));
-            <% if @controller == :server %>
-                eventToClearHistoryOnServer($('#clear-history'));
-            <% elsif @controller == :client %>
-                eventToClearHistoryOnClient($('#clear-history'));
-            <% end %>
         });
     </script>
 <% end %>

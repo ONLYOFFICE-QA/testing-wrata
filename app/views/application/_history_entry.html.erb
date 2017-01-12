@@ -12,18 +12,8 @@
       <% end %>
       <td class="center">
         <div style="display: inline-block">
-          <div class="history-log pointer">
+          <div class="history-log">
             <%= line.file.gsub(RUBYMINE_PROJECTS_PATH, '') %>
-          </div>
-          <div class="log-window" style="display: block">
-            <div class="log">
-              <% if line.log %>
-                  <% line.log.split("\n").each do |l| %>
-                      <%= l %>
-                      <br>
-                  <% end %>
-              <% end %>
-            </div>
           </div>
         </div>
         <%= link_to 'Download', histories_log_file_url(id: line.id), class: 'btn btn-xs btn-info' %>
