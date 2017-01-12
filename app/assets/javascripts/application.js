@@ -176,7 +176,10 @@ function Runner() {
 
     this.appendServerOnQueue = function(server) {
         var button = $('<div class="unbook-button" data-server="'+ server + '">unbook</div>');
-        var node = $('<div class="server-node"><i class="glyphicon glyphicon-hdd"></i>' + server + '</div>');
+        var node = $('<div class="server-node"><i class="glyphicon glyphicon-hdd"></i></div>');
+        var label = $('<label>').text(server);
+        label.attr('title', server);
+        node.append(label);
         node.append(button);
         _self.eventToUnbookServer(button, true);
         $('#server-queue').append(node);
@@ -214,12 +217,10 @@ function Runner() {
         if (typeof regionSelector === 'undefined') {
             this.generateRegionSelect();
         }
-        var select = '<select class="region form-control">' + regionSelector + '</select>';
-        select = $(select);
-        _self.eventToChangeLocationForTest(select);
-        select.find(":contains('" + test.location + "')").prop('selected', true);
         var props = $('<div class="props"></div>');
-        props.append(select);
+        props.append($('<label>').text(test.tm_branch).attr('title', 'OnlyOffice branch:' + test.tm_branch))
+        props.append($('<label>').text(test.doc_branch).attr('title', 'Docs branch:' + test.doc_branch))
+        props.append($('<label>').text(test.location).attr('title', 'Region: ' + test.location))
         var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test.test_name + '</div>');
         var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '" title="' + test.test_path + '"></div>');
         testNode.append(name);
