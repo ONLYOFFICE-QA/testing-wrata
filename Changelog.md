@@ -13,6 +13,7 @@
 * Sorting list of booked servers
 * Fix problem with showing incorrect project file in tabs
 * Fix setting server status if it has name with dot
+* Fix server error if no start options in history after press `Show More`
 
 ### Refactor
 * Remove useless code for stopping browser before docker stop
