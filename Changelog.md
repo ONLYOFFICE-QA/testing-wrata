@@ -18,6 +18,7 @@
 * Fix problem with showing incorrect project file in tabs
 * Fix setting server status if it has name with dot
 * Fix server error if no start options in history after press `Show More`
+* Do not raise server error, while creating delay run if there is no lists
 
 ### Refactor
 * Remove useless code for stopping browser before docker stop
