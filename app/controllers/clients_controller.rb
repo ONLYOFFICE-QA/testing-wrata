@@ -95,6 +95,7 @@ class ClientsController < ApplicationController
     @history = client.histories.order('created_at DESC').limit(10).offset(showed.to_i)
     @controller = :client
 
+    return render nothing: true if @history.empty?
     render '/servers/show_more', layout: false
   end
 

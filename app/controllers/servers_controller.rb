@@ -55,6 +55,7 @@ class ServersController < ApplicationController
     @history = server.histories.order('created_at DESC').limit(10).offset(showed.to_i)
     @controller = :server
 
+    return render nothing: true if @history.empty?
     render layout: false
   end
 

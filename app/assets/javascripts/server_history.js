@@ -2,6 +2,20 @@
  * Created by lobashov-2 on 7/7/15.
  */
 
+function showMoreData(data) {
+    if (data.length === 0) {
+        $('#show-more').hide();
+    } else {
+        var trimmed_data = trim_data(data);
+        $('tbody').append(trimmed_data);
+        eventToDeleteHistoryLine(trimmed_data.find('.delete-line'));
+        eventToOpenRspecResults(trimmed_data.find('.open-results'));
+        eventToOpenMoreOptions(trimmed_data.find('.open-options'));
+        eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
+        eventToRetest(trimmed_data.find('.retest'));
+    }
+}
+
 function showMoreHistoryForServer() {
     var current_showed = $('tbody tr').length;
     var server = $('#server').text();
@@ -14,13 +28,7 @@ function showMoreHistoryForServer() {
             'server': server
         },
         success: function (data) {
-            var trimmed_data = trim_data(data);
-            $('tbody').append(trimmed_data);
-            eventToDeleteHistoryLine(trimmed_data.find('.delete-line'));
-            eventToOpenRspecResults(trimmed_data.find('.open-results'));
-            eventToOpenMoreOptions(trimmed_data.find('.open-options'));
-            eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
-            eventToRetest(trimmed_data.find('.retest'));
+            showMoreData(data);
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -40,12 +48,7 @@ function showMoreHistoryForClient() {
             'name': name
         },
         success: function (data) {
-            var trimmed_data = trim_data(data);
-            $('tbody').append(trimmed_data);
-            eventToDeleteHistoryLine(trimmed_data.find('.delete-line'));
-            eventToOpenRspecResults(trimmed_data.find('.open-results'));
-            eventToOpenMoreOptions(trimmed_data.find('.open-options'));
-            eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
+            showMoreData(data);
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);

@@ -11,6 +11,7 @@
 * Reorganize Test Queue column - show branches
 * Remove log window in histories - make page open 3 times faster
 * Remove `analyzed` flag from history, it wasn't used for a while
+* Hide `Show More` button if there is no more histories entries
 
 ### Bug fixes
 * Deprecation warning for `config.serve_static_files`
