@@ -155,12 +155,16 @@ function addRow() {
         url: 'delay_run/add_delayed_row',
         type: 'GET',
         success: function (data) {
-            var trimmed_data = trim_data(data);
-            eventToShowEachTimeInputs(trimmed_data.find('.run-method select'));
-            eventToSaveDelayedRun(trimmed_data.find('.save-delayed-run'));
-            eventForCalendar(trimmed_data.find('.date input'));
-            eventToDeleteRow(trimmed_data.find('.delete-row'));
-            trimmed_data.appendTo($('#test-lists')).fadeIn('slow');
+            if (data.errors === undefined) {
+                var trimmed_data = trim_data(data);
+                eventToShowEachTimeInputs(trimmed_data.find('.run-method select'));
+                eventToSaveDelayedRun(trimmed_data.find('.save-delayed-run'));
+                eventForCalendar(trimmed_data.find('.date input'));
+                eventToDeleteRow(trimmed_data.find('.delete-row'));
+                trimmed_data.appendTo($('#test-lists')).fadeIn('slow');
+            } else {
+                showInfoAlert(data.errors);
+            }
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
