@@ -46,7 +46,10 @@
         <% end %>
 
       </td>
-      <td class="center"><%= line.created_at.to_s.gsub(' +0400', '') %></td>
+      <td class="center">
+        <div><%= line.created_at.to_s.gsub(' +0400', '') %></div>
+        <div>Elapsed: <%= line.elapsed_time %></div>
+      </td>
       <td class="center">
         <i class="retest glyphicon glyphicon-repeat shower" data-path="<%= line.file %>" data-tm-branch="<%= start_option.teamlab_branch %>"  data-doc-branch="<%= start_option.docs_branch %>" data-location="<%= start_option.server_location %>">
           <span class="hidden-tool">Add this test in queue with current params</span>

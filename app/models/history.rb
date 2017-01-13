@@ -21,4 +21,10 @@ class History < ActiveRecord::Base
     return if spec_finished_correctly?
     TestResultMailer.spec_failed_email(self).deliver_now
   end
+
+  # @return [String] time of test execution in minutes
+  def elapsed_time
+    return 'Unknown' if start_time.nil? || created_at.nil?
+    "#{((created_at - start_time) / 60).round} Minutes"
+  end
 end
