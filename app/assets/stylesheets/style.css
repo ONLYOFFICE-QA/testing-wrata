@@ -479,6 +479,13 @@ hr.deliver {
     line-height: 10px;
 }
 
+.server-node label {
+    overflow: hidden;
+    vertical-align: top;
+    width: 55%;
+    white-space: nowrap;
+}
+
 .book-button {
     background: linear-gradient(to bottom, rgb(187, 211, 49) 15%, #B8CF30 100%);
     border: 1px solid #B8CF30;
@@ -1090,13 +1097,20 @@ a, a:link, a:visited  {
     height: 85vh;
 }
 
-.queue-list {
+.center-panel-list {
     height: 85vh;
-    width: 50%;
     background: rgba(255,255,255,0.97);
     box-shadow: inset 0 0 2px 1px rgba(0,0,0,0.4);
     display: inline-block;
     padding: 5px;
+}
+
+.server-list {
+    width: 25%;
+}
+
+.queue-list {
+    width: 75%;
 }
 
 .panel-header {
@@ -1105,13 +1119,11 @@ a, a:link, a:visited  {
 }
 
 .server-list-header {
-    width: 50%;
     float: left;
     position: absolute;
 }
 
 .test-queue-list-header {
-    width: 50%;
     float: right;
 }
 
@@ -1171,7 +1183,7 @@ a, a:link, a:visited  {
 
 .test-node .name{
     color: #5b5e5b;
-    width: 80%;
+    width: 50%;
     display: inline-block;
     overflow: hidden;
     font-weight: bold;
@@ -1204,21 +1216,28 @@ a, a:link, a:visited  {
 
 .test-node .props {
     float: right;
-    width: 20%;
+    width: 50%;
 }
 
-.test-node select.region.form-control{
+.test-node .props * {
     font-size: 9px;
     height: 17px;
-    display: block;
-    padding: 0;
+    display: inline-block;
     background: rgba(0, 51, 255, 0.24);
     color: #5b5e5b;
     border-radius: 3px;
     margin-top: 1px;
+    margin-left: 2px;
     font-weight: bold;
+    text-align: center;
+    overflow: hidden;
+    padding-left: 2px;
+    text-overflow: ellipsis;
+    width: 32%;
+}
+
+.test-node select.region.form-control{
     cursor: pointer;
-    width: 100%;
 }
 
 .test-node select.region.form-control:hover {
