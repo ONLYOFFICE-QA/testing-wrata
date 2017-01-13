@@ -54,18 +54,7 @@ footer {
     vertical-align: text-top;
 }
 
-.popup-overlay {
-    position: fixed;
-    z-index: 102;
-    top: 0;
-    vertical-align: middle;
-    height: 100%;
-    width: 100%;
-    display: none;
-    background: rgba(0,0,0,.7);
-}
-
-.overlay {
+.popup-overlay, .overlay {
     position: fixed;
     z-index: 102;
     top: 0;
@@ -1278,21 +1267,6 @@ a, a:link, a:visited  {
     display: inline-block;
     vertical-align: middle;
     margin-top: 0;
-}
-
-.retest-button {
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.81);
-    position: absolute;
-    text-shadow: 0 0 2px rgba(204, 204, 204, 0.4);
-    bottom: 10px;
-    background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 104, 150) 100%);
-    border: 1px solid #105bad;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);
-    border-radius: 3px;
-    padding: 4px 6px;
-    /*visibility: hidden;*/
-    font-size: 10px;
 }
 
 .ui-front {
