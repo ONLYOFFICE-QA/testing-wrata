@@ -26,7 +26,7 @@ class Server < ActiveRecord::Base
   def cloud_server_create
     update_column(:_status, :creating)
     begin
-      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, tags: EXECUTOR_TAG)
+      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc2', '1gb', tags: EXECUTOR_TAG)
     rescue => e
       update_column(:_status, :destroyed)
       raise e
