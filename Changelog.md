@@ -1,5 +1,9 @@
 # Change log
 
+## master (unreleased)
+### Bug Fixes
+* Fix server error while showing html result for spec with zero specs
+
 ## 1.11
 ### New features
 * Upgrade to rails 5

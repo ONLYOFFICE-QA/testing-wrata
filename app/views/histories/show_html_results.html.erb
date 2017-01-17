@@ -74,7 +74,7 @@
         <div class="totals-time"><span><%= @rspec_result.time %></span></div>
     </div>
     <div class="describe-content">
-        <% create_main_describe(@rspec_result.describe) %>
+        <% create_main_describe(@rspec_result.describe) if @rspec_result.describe %>
     </div>
 <% end %>
 
