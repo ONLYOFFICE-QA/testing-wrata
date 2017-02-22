@@ -1,6 +1,9 @@
 # Change log
 
 ## master (unreleased)
+### New features
+* Use bootbox alert instead of pure JS for changing branches
+
 ### Bug Fixes
 * Fix server error while showing html result for spec with zero specs
 
