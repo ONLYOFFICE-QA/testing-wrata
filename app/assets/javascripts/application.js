@@ -897,7 +897,10 @@ function Runner() {
                 var startIcon = $(".active .start-icon");
                 startIcon.parent().removeClass('with-start');
                 _self.showTestsView();
-                showInfoAlert('Branch or Tag was successful changed');
+                bootbox.alert({
+                    message: "Branch or Tag was successful changed",
+                    backdrop: true
+                });
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
