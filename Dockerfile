@@ -1,9 +1,18 @@
-# NOT WORKING
-cd ~/RubymineProjects/testing-wrata
-apt-get update
-apt-get install postgresql-common postgresql libpq-dev nodejs
-vim /etc/postgresql/9.3/main/pg_hba.conf
-service postgresql restart
-rake db:reset db:migrate
-iptables -t nat -I PREROUTING -p tcp --dport 8080 -j REDIRECT --to-ports 3000
-rails server -p 3000 -b 0.0.0.0
+FROM ruby:2.3
+
+MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
+
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+COPY ssh/ /root/.ssh/
+RUN chmod 600 /root/.ssh/*; ssh-keyscan github.com > /root/.ssh/known_hosts
+RUN mkdir -pv /root/.do && echo "393d5ed4c6182f2e77091ef00d25455a4a9e44440c06c80c7b02df08a6e4aaec" > /root/.do/access_token
+RUN mkdir ~/RubymineProjects
+RUN cd /root/RubymineProjects && git clone -b develop git@github.com:ONLYOFFICE/testing-onlyoffice.git TeamLab
+RUN cd /root/RubymineProjects && git clone -b develop git@github.com:ONLYOFFICE/testing-documentserver.git OnlineDocuments
+RUN mkdir /root/wrata
+WORKDIR /root/wrata
+COPY . /root/wrata
+RUN bundle install
+CMD RAILS_ENV=production rake db:create db:migrate && \
+    SECRET_KEY_BASE=82bac4f58c93c32288273e15afe2b91b171d9d7eb7c17e7f4ce15d7839143caabf9c7093b8b09c84172a1fffb3c2a9cb30c5f38c81c4623364e3915596e5c8c2 \
+    bundle exec rails s -p 3000 -b '0.0.0.0' --environment=production
