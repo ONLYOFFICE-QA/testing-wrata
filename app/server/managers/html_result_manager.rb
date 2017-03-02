@@ -1,6 +1,8 @@
 module HTMLResultManager
+  RSPEC_HTML_LOGS_FOLDER = '/mnt/data_share/RunnerLogs'.freeze
+
   def rspec_html_result_path
-    "/mnt/data_share/RunnerLogs/#{@server_model.name}.html"
+    "#{RSPEC_HTML_LOGS_FOLDER}/#{@server_model.name}.html"
   end
 
   def html_result_exist?
