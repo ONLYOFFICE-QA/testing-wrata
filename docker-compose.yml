@@ -1,0 +1,13 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    volumes:
+      - /mnt/data_share:/mnt/data_share
+    ports:
+      - "8080:3000"
+    depends_on:
+      - db
+    tty: true
