@@ -242,6 +242,8 @@ function Runner() {
             var server = $(selector);
             _self.setStatusToServerView(server, data[i].status);
             _self.setServerIp(server, data[i].server_ip);
+            disableSelectServerSize(data[i].name);
+            setServerSize(data[i].name, data[i].size);
             if (data[i].status) {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {
@@ -283,13 +285,14 @@ function Runner() {
         }
     };
 
-    this.createServer = function(server) {
+    this.createServer = function(server, size) {
         $.ajax({
             url: 'servers/cloud_server_create',
             type: 'POST',
             async: true,
             data: {
-                'server': server
+                'server': server,
+                'size': size
             },
             success: function () {
                 _self.hideServerSectionOverlay(server);
@@ -331,22 +334,26 @@ function Runner() {
         $(selector).hide();
     };
 
-    this.createAndDestroyServer = function(button) {
-      var serverName = button.attr('data-server');
-      if (button.hasClass('create')) {
+    this.createAndDestroyServer = function(action, serverName, serverSize) {
+      if (action == 'create') {
           _self.showServerSectionOverlay(serverName, 'Creating...');
-          _self.createServer(serverName);
-      } else if (button.hasClass('destroy')) {
+          _self.createServer(serverName, serverSize);
+      } else {
           _self.showServerSectionOverlay(serverName, 'Destroying...');
           _self.destroyServer(serverName);
       }
+      disableSelectServerSize(serverName);
     };
 
     this.eventForCreateAndDestroyServer = function(button) {
         button.on('click', function () {
-            var result = confirm('Are you really want to ' + $(this).find('.hidden-tool').text() + ' this server?');
+            var action = $(this).find('.hidden-tool').text()
+            var result = confirm('Are you really want to ' + action + ' this server?');
             if (result) {
-                _self.createAndDestroyServer($(this));
+                var buttonPanel = button.parent().parent().parent();
+                var serverName = buttonPanel.find('ul li i').attr('data-server')
+                var serverSize = buttonPanel.find('ul li select').val();
+                _self.createAndDestroyServer(action, serverName, serverSize);
             }
         });
     };

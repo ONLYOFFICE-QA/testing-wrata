@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper
-  revision: a4c92a07dabf37d2af2e72ccbace19fd14071525
+  revision: 516ac5fa7d3b2d58d6c8a1cf8ecdd2b8105d53b5
   specs:
     onlyoffice_digitalocean_wrapper (0.2.0)
       activesupport (~> 5)
@@ -74,7 +74,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.5)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.2.0)
@@ -101,7 +101,7 @@ GEM
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    i18n (0.7.0)
+    i18n (0.8.1)
     ice_nine (0.11.2)
     iniparse (1.4.2)
     jbuilder (2.6.1)
@@ -139,7 +139,7 @@ GEM
     pg (0.19.0)
     powerpack (0.1.1)
     process_exists (0.1.3)
-    public_suffix (2.0.4)
+    public_suffix (2.0.5)
     puma (3.6.2)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -210,7 +210,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (0.19.4)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.4)
