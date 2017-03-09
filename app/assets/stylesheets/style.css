@@ -991,6 +991,11 @@ li.active select.region {
     padding: 0;
 }
 
+.form-control.droplet-size-select {
+    height: auto;
+    padding: 0;
+}
+
 li select.branch {
     display: none;
 }
