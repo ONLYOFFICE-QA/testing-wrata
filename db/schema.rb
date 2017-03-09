@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309151736) do
+ActiveRecord::Schema.define(version: 20170309190312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170309151736) do
     t.datetime "last_activity_date"
     t.boolean  "executing_command_now", default: false
     t.boolean  "self_destruction",      default: true
-    t.string   "size"
+    t.string   "size",                  default: "1gb"
   end
 
   create_table "start_options", force: :cascade do |t|
