@@ -242,6 +242,7 @@ function Runner() {
             var server = $(selector);
             _self.setStatusToServerView(server, data[i].status);
             _self.setServerIp(server, data[i].server_ip);
+            disableSelectServerSize(data[i].name);
             if (data[i].status) {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {
@@ -340,6 +341,7 @@ function Runner() {
           _self.showServerSectionOverlay(serverName, 'Destroying...');
           _self.destroyServer(serverName);
       }
+      disableSelectServerSize(serverName);
     };
 
     this.eventForCreateAndDestroyServer = function(button) {
