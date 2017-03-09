@@ -1,6 +1,7 @@
 class Server < ActiveRecord::Base
   EXECUTOR_IMAGE_NAME = 'nct-at-docker'.freeze
   EXECUTOR_TAG = 'nct-at'.freeze
+  DEFAULT_SERVER_SIZE = '1gb'.freeze
 
   has_many :histories
 
@@ -23,10 +24,11 @@ class Server < ActiveRecord::Base
     save
   end
 
-  def cloud_server_create
+  def cloud_server_create(server_size)
+    server_size ||= DEFAULT_SERVER_SIZE
     update_column(:_status, :creating)
     begin
-      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc2', '1gb', tags: EXECUTOR_TAG)
+      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc2', server_size, tags: EXECUTOR_TAG)
     rescue => e
       update_column(:_status, :destroyed)
       raise e

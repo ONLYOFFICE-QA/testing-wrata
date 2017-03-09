@@ -100,7 +100,7 @@ class ServersController < ApplicationController
 
   def cloud_server_create
     server = Runner::Application.config.threads.get_thread_by_name(params['server'])
-    server.server_model.cloud_server_create
+    server.server_model.cloud_server_create(params['size'])
     Runner::Application.config.threads.update_models
     render nothing: true
   end
