@@ -40,7 +40,7 @@
               <li><i class="glyphicon glyphicon-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i></li>
               <li><%= select_tag :droplet_size,
                                  options_for_select(OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper::DROPLET_SIZES, '1gb'),
-                                 :class => 'form-control droplet-size-select' %></li>
+                                 :class => 'form-control server-size-select' %></li>
               <li><i class="glyphicon glyphicon-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i></li>
               <li>
                 <%= link_to server_history_path(server), :target => '_blank' do %>

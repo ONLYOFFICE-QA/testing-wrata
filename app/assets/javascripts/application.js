@@ -243,6 +243,7 @@ function Runner() {
             _self.setStatusToServerView(server, data[i].status);
             _self.setServerIp(server, data[i].server_ip);
             disableSelectServerSize(data[i].name);
+            setServerSize(data[i].name, data[i].size);
             if (data[i].status) {
                 _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
                 if('test' in data[i]) {

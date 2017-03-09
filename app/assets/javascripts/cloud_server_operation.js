@@ -3,15 +3,20 @@
  */
 
 
-function isServerCreated(droplet_name) {
-    var destroyButton = $("#" + droplet_name + ' .destroy');
+function isServerCreated(server_name) {
+    var destroyButton = $("#" + server_name + ' .destroy');
     return destroyButton.length == 1
 }
 
-function disableSelectServerSize(droplet_name) {
-    if (isServerCreated(droplet_name)) {
-        $("#" + droplet_name + ' .droplet-size-select').attr("disabled", true);
+function setServerSize(server_name, size) {
+    var serverSizeSelect = $("#" + server_name + ' .server-size-select');
+    serverSizeSelect.val(size);
+}
+
+function disableSelectServerSize(serverName) {
+    if (isServerCreated(serverName)) {
+        $("#" + serverName + ' .server-size-select').attr("disabled", true);
     } else {
-        $("#" + droplet_name + ' .droplet-size-select').removeAttr("disabled");
+        $("#" + serverName + ' .server-size-select').removeAttr("disabled");
     }
 }
