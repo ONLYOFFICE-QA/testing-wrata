@@ -119,31 +119,6 @@ function Runner() {
         });
     };
 
-    this.getUpdatedDataFromServer = function () {
-        $.ajax({
-            url: 'runner/updated_data',
-            type: 'GET',
-            async: false,
-            data: {
-                'servers': _self.getAllServers()
-            },
-            success: function (data) {
-                _self.setDataOnServersView(data.servers_data);
-                _self.clearServersQueue();
-                _self.clearTestsQueue();
-                _self.setDataOnQueuePanel(data.queue_data);
-                _self.toggleClearTestButton();
-                _self.toggleShuffleTestButton();
-                _self.toggleRemoveDuplicatesQueue();
-                _self.toggleUnbookAllServersButton();
-                _self.toggleStopAllBookedServers();
-            },
-            error: function (e) {
-                console.log(e.message);
-            }
-        });
-    };
-
     this.getAllServers = function() {
         var servers = [];
         $('.server').each(function () {
@@ -181,7 +156,7 @@ function Runner() {
         label.attr('title', server);
         node.append(label);
         node.append(button);
-        _self.eventToUnbookServer(button, true);
+        eventToUnbookServer(button, true);
         $('#server-queue').append(node);
     };
 
@@ -285,79 +260,6 @@ function Runner() {
         }
     };
 
-    this.createServer = function(server, size) {
-        $.ajax({
-            url: 'servers/cloud_server_create',
-            type: 'POST',
-            async: true,
-            data: {
-                'server': server,
-                'size': size
-            },
-            success: function () {
-                _self.hideServerSectionOverlay(server);
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.destroyServer = function(server) {
-        $.ajax({
-            url: 'servers/cloud_server_destroy',
-            type: 'POST',
-            async: true,
-            data: {
-                'server': server
-            },
-            beforeSend: function () {
-                _self.unbookServer(server);
-            },
-            success: function () {
-                _self.hideServerSectionOverlay(server);
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.showServerSectionOverlay = function(server,message) {
-        var selector = 'div#' + server + ' .section-overlay';
-        $(selector).find('.overlay-text').text(message);
-        $(selector).show();
-    };
-
-    this.hideServerSectionOverlay = function(server) {
-        var selector = 'div#' + server + ' .section-overlay';
-        $(selector).hide();
-    };
-
-    this.createAndDestroyServer = function(action, serverName, serverSize) {
-      if (action == 'create') {
-          _self.showServerSectionOverlay(serverName, 'Creating...');
-          _self.createServer(serverName, serverSize);
-      } else {
-          _self.showServerSectionOverlay(serverName, 'Destroying...');
-          _self.destroyServer(serverName);
-      }
-      disableSelectServerSize(serverName);
-    };
-
-    this.eventForCreateAndDestroyServer = function(button) {
-        button.on('click', function () {
-            var action = $(this).find('.hidden-tool').text()
-            var result = confirm('Are you really want to ' + action + ' this server?');
-            if (result) {
-                var buttonPanel = button.parent().parent().parent();
-                var serverName = buttonPanel.find('ul li i').attr('data-server')
-                var serverSize = buttonPanel.find('ul li select').val();
-                _self.createAndDestroyServer(action, serverName, serverSize);
-            }
-        });
-    };
-
     this.changeCreateOnDestroy = function(button) {
         if (button.hasClass('create')) {
             button.removeClass('create');
@@ -399,16 +301,16 @@ function Runner() {
     };
 
     this.showUnbookButton = function(button) {
-        _self.changeBookButtonOnUnbook(button);
+        changeBookButtonOnUnbook(button);
         button.show();
         button.css('visibility', 'visible');
-        _self.eventToUnbookServer(button, false);
+        eventToUnbookServer(button, false);
     };
 
     this.showBookButton = function(button) {
-        _self.changeUnbookButtonOnBook(button);
+        changeUnbookButtonOnBook(button);
         button.show();
-        _self.eventToBookServer(button);
+        eventToBookServer(button);
     };
 
     this.showBookedClient = function(userIcon, userName) {
@@ -521,81 +423,6 @@ function Runner() {
         });
     };
 
-    this.bookServer = function(button, server_name) {
-        $.ajax({
-            url: 'queue/book_server',
-            context: this,
-            async: false,
-            data: {
-                'server': server_name
-            },
-            type: 'POST',
-            success: function () {
-                button.unbind();
-                _self.changeBookButtonOnUnbook(button);
-                _self.eventToUnbookServer(button, false);
-                _self.getUpdatedDataFromServer();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.changeBookButtonOnUnbook = function(button) {
-        var className = button.attr('class');
-        if (className.indexOf('unbook') == -1) {
-            button.removeClass('book-button');
-            button.text('unbook');
-            button.addClass('unbook-button');
-        }
-    };
-
-    this.changeUnbookButtonOnBook = function(button) {
-        var className = button.attr('class');
-        if (className.indexOf('unbook') != -1) {
-            button.removeClass('unbook-button');
-            button.text('book');
-            button.addClass('book-button');
-        }
-    };
-
-    this.eventToBookServer = function(elements) {
-        offEventsOnElem(elements);
-        elements.on('click', function() {
-            _self.bookServer($(this), $(this).attr('data-server'));
-        });
-    };
-
-    this.unbookServer = function(server_name, button, hide_button) {
-        button = typeof button === 'undefined' ? null : button;
-        hide_button = typeof hide_button === 'undefined' ? null : hide_button;
-        $.ajax({
-            url: 'queue/unbook_server',
-            context: this,
-            async: false,
-            data: {
-                'server': server_name
-            },
-            type: 'POST',
-            success: function () {
-                if (button != null) {
-                    button.unbind();
-                    _self.changeUnbookButtonOnBook(button);
-                    if (hide_button) {
-                        button.hide();
-                    }
-                    _self.eventToBookServer(button);
-                    _self.toggleUnbookAllServersButton();
-                    _self.getUpdatedDataFromServer();
-                }
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
     this.unbookAllServers = function() {
         $.ajax({
             url: 'queue/unbook_all_servers',
@@ -608,13 +435,6 @@ function Runner() {
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
-        });
-    };
-
-    this.eventToUnbookServer = function(elements, hide_button) {
-        offEventsOnElem(elements);
-        elements.on('click', function() {
-            _self.unbookServer($(this).attr('data-server'), $(this), hide_button);
         });
     };
 
@@ -716,10 +536,10 @@ function Runner() {
                 _self.eventToOpenServer(trimmed_data.find('.server-header'));
                 _self.eventToOpenLogBySelector('.log-opener span');
                 _self.eventToSlimScrollLog(trimmed_data.find('.log'));
-                _self.eventToBookServer(trimmed_data.find('.book-button'));
-                _self.eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
+                eventToBookServer(trimmed_data.find('.book-button'));
+                eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
-                _self.eventForCreateAndDestroyServer(trimmed_data.find('.glyphicon-off'));
+                eventForCreateAndDestroyServer(data.name)
                 _self.eventToGetUpdatedDataFromServer();
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },
@@ -1503,14 +1323,6 @@ function Runner() {
             empty = false;
         }
         return empty;
-    };
-
-    this.toggleUnbookAllServersButton = function() {
-        if (this.checkAnyBookedServers()) {
-            $('#clear-servers').hide();
-        } else {
-            $('#clear-servers').show();
-        }
     };
 
     this.toggleStopAllBookedServers = function() {
