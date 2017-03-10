@@ -34,7 +34,7 @@ function showTestsFromQueue(tests) {
 }
 function appendTestsOnQueue(test) {
     if (typeof regionSelector === 'undefined') {
-        this.generateRegionSelect();
+        generateRegionSelect();
     }
     var props = $('<div class="props"></div>');
     props.append($('<label>').text(test.tm_branch).attr('title', 'OnlyOffice branch:' + test.tm_branch));
@@ -80,4 +80,21 @@ function toggleRemoveDuplicatesQueue() {
     } else {
         $('#remove-duplicates-tests').show();
     }
+}
+
+function generateRegionSelect() {
+    regionSelector = '';
+    getRegionList().forEach(function(entry) {
+        regionSelector += '<option>' + entry + '</option>';
+    });
+    return regionSelector;
+}
+
+function getRegionList() {
+    var optionValues = [];
+
+    $('#list-region option').each(function() {
+        optionValues.push($(this).val());
+    });
+    return optionValues;
 }
