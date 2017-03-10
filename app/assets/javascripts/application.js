@@ -338,7 +338,7 @@ function Runner() {
                 eventToBookServer(trimmed_data.find('.book-button'));
                 eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
-                eventForCreateAndDestroyServer(data.name)
+                initEventsForCreateDestroyButtons();
                 _self.eventToGetUpdatedDataFromServer();
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
             },

@@ -39,6 +39,13 @@ function eventForCreateAndDestroyServer(serverName) {
     });
 }
 
+function initEventsForCreateDestroyButtons() {
+    var servers = serverList();
+    servers.forEach(function(element) {
+        eventForCreateAndDestroyServer(element);
+    });
+}
+
 function createAndDestroyServer(action, serverName, serverSize) {
     if (action == 'create') {
         showServerSectionOverlay(serverName, 'Creating...');
@@ -93,4 +100,12 @@ function destroyServer(server) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
+}
+
+function serverList() {
+    var servers = [];
+    $("#servers div.server").each(function(index, element) {
+        servers.push(element.id);
+    });
+    return servers;
 }
