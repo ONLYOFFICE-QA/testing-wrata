@@ -119,23 +119,6 @@ function Runner() {
         });
     };
 
-    this.getRegionList = function() {
-        var optionValues = [];
-
-        $('#list-region option').each(function() {
-            optionValues.push($(this).val());
-        });
-        return optionValues;
-    };
-
-    this.generateRegionSelect = function() {
-        regionSelector = '';
-            this.getRegionList().forEach(function(entry) {
-                regionSelector += '<option>' + entry + '</option>';
-            });
-        return regionSelector;
-    };
-
     this.stopCurrent = function (server) {
         $.ajax({
             url: 'runner/stop_current',
