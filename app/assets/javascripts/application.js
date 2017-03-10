@@ -88,7 +88,7 @@ function Runner() {
     this.eventToGetUpdatedDataFromServer = function () {
         setInterval(function () {
             if (!testListUpdating) {
-                _self.getUpdatedDataFromServer();
+                getUpdatedDataFromServer();
             }
         }, STATUS.UPDATE_INTERVAL);
     };
@@ -119,57 +119,6 @@ function Runner() {
         });
     };
 
-    this.getAllServers = function() {
-        var servers = [];
-        $('.server').each(function () {
-            servers.push($(this).attr('id'));
-        });
-        return servers;
-    };
-
-    this.clearServersQueue = function() {
-        clearElementInside($('#server-queue'));
-    };
-
-    this.clearTestsQueue = function() {
-        clearElementInside($('#test-queue'));
-    };
-
-    this.setDataOnQueuePanel = function(queue_data) {
-        _self.showBookedServers(queue_data.servers);
-        _self.setBookedServersCount(queue_data.servers.length);
-        _self.showTestsFromQueue(queue_data.tests);
-        _self.showTestsInQueueCount(queue_data.tests.length);
-    };
-
-    this.showBookedServers = function(servers) {
-        var sortedServers = servers.sort();
-        for(var i = 0; i < sortedServers.length; i++) {
-            _self.appendServerOnQueue(sortedServers[i]);
-        }
-    };
-
-    this.appendServerOnQueue = function(server) {
-        var button = $('<div class="unbook-button" data-server="'+ server + '">unbook</div>');
-        var node = $('<div class="server-node"><i class="glyphicon glyphicon-hdd"></i></div>');
-        var label = $('<label>').text(server);
-        label.attr('title', server);
-        node.append(label);
-        node.append(button);
-        eventToUnbookServer(button, true);
-        $('#server-queue').append(node);
-    };
-
-    this.showTestsFromQueue = function(tests) {
-        for(var i = 0; i < tests.length; i++) {
-            _self.appendTestsOnQueue(tests[i]);
-        }
-    };
-
-    this.showTestsInQueueCount = function(testsCount) {
-        $('#test-queue-title').text('Tests (' + testsCount + ')');
-    };
-
     this.getRegionList = function() {
         var optionValues = [];
 
@@ -185,156 +134,6 @@ function Runner() {
                 regionSelector += '<option>' + entry + '</option>';
             });
         return regionSelector;
-    };
-
-
-    this.appendTestsOnQueue = function(test) {
-        if (typeof regionSelector === 'undefined') {
-            this.generateRegionSelect();
-        }
-        var props = $('<div class="props"></div>');
-        props.append($('<label>').text(test.tm_branch).attr('title', 'OnlyOffice branch:' + test.tm_branch))
-        props.append($('<label>').text(test.doc_branch).attr('title', 'Docs branch:' + test.doc_branch))
-        props.append($('<label>').text(test.location).attr('title', 'Region: ' + test.location))
-        var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test.test_name + '</div>');
-        var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '" title="' + test.test_path + '"></div>');
-        testNode.append(name);
-        testNode.append(props);
-        $('#test-queue').append(testNode);
-    };
-
-    this.setServerIp = function(server, ip) {
-        server.find('.server-ip span').text(ip);
-    };
-
-    this.setBookedServersCount = function(serversCount) {
-        $('#booked-servers-title').text('Servers (' + serversCount + ')');
-    };
-
-    this.setDataOnServersView = function (data) {
-        for (var i = 0; i < data.length; i++) {
-            var selector = "div[id='" + data[i].name + "']";
-            var server = $(selector);
-            _self.setStatusToServerView(server, data[i].status);
-            _self.setServerIp(server, data[i].server_ip);
-            disableSelectServerSize(data[i].name);
-            setServerSize(data[i].name, data[i].size);
-            if (data[i].status) {
-                _self.changeCreateOnDestroy(server.find('.glyphicon-off'));
-                if('test' in data[i]) {
-                    _self.showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
-                    _self.setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
-                    server.find('.glyphicon-stop').show();
-                    _self.setLogToServerView(server, data[i].log);
-                } else {
-                    server.find('.ui-progress-bar').hide();
-                    server.find('.glyphicon-stop').hide();
-                }
-                if('booked' in data[i]) {
-                    _self.showBookedClient(server.find('.user-icon'), data[i].booked.booked_client);
-                    if (data[i].booked.booked_by_client) {
-                        _self.showUnbookButton(server.find("div.button"));
-                    } else {
-                        _self.hideUnbookButton(server.find("div.button"));
-                    }
-                } else {
-                    _self.hideBookedClient(server.find('.user-icon'));
-                    _self.showBookButton(server.find("div.button"));
-                }
-            } else {
-                server.find('.ui-progress-bar').hide();
-                server.find('.glyphicon-stop').hide();
-                _self.hideUnbookButton(server.find("div.button"));
-                _self.hideBookedClient(server.find('.user-icon'));
-                _self.changeDestroyOnCreate(server.find('.glyphicon-off'));
-            }
-            if (data[i]._status  == 'destroying') {
-                server.find('.server-content').show();
-                _self.showServerSectionOverlay(data[i].name, 'Destroying...');
-            } else if (data[i]._status  == 'creating') {
-                server.find('.server-content').show();
-                _self.showServerSectionOverlay(data[i].name, 'Creating...');
-            } else {
-                _self.hideServerSectionOverlay(data[i].name);
-            }
-        }
-    };
-
-    this.changeCreateOnDestroy = function(button) {
-        if (button.hasClass('create')) {
-            button.removeClass('create');
-            button.addClass('destroy');
-            button.find('span').text('destroy');
-        }
-    };
-
-    this.changeDestroyOnCreate = function(button) {
-        if (button.hasClass('destroy')) {
-            button.removeClass('destroy');
-            button.addClass('create');
-            button.find('span').text('create');
-        }
-    };
-
-    this.showTestProgress = function(progress_elem, progress, time, failed_count) {
-        var ui_progress = progress_elem.find('.ui-progress');
-        ui_progress.css('width', progress + '%');
-        ui_progress.removeClass('red-background');
-        if (failed_count != 0) {
-            ui_progress.addClass('red-background');
-        }
-        progress_elem.find('.value').text(progress + '% ' + time);
-        progress_elem.show();
-    };
-
-    this.setTestNameAndOptions = function(hidden_elem, test) {
-        hidden_elem.find('.name').text(test.name);
-        hidden_elem.find('.location').text(test.location);
-        hidden_elem.find('.test-progress').text('progress ' + test.progress + '%');
-        hidden_elem.find('.time').text(test.time);
-        hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
-        hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
-    };
-
-    this.hideUnbookButton = function(button) {
-        button.hide();
-    };
-
-    this.showUnbookButton = function(button) {
-        changeBookButtonOnUnbook(button);
-        button.show();
-        button.css('visibility', 'visible');
-        eventToUnbookServer(button, false);
-    };
-
-    this.showBookButton = function(button) {
-        changeUnbookButtonOnBook(button);
-        button.show();
-        eventToBookServer(button);
-    };
-
-    this.showBookedClient = function(userIcon, userName) {
-        userIcon.find('span').text(userName);
-        userIcon.css('visibility', 'visible');
-    };
-
-    this.hideBookedClient = function(userIcon) {
-        userIcon.find('span').text('');
-        userIcon.css('visibility', 'hidden');
-    };
-
-    this.setStatusToServerView = function (server, status) {
-        if (status === true) {
-            server.removeClass('off');
-        }
-        else {
-            server.addClass('off');
-        }
-    };
-
-    this.setLogToServerView = function (server_el, log) {
-        var log_div = server_el.find('.log');
-        log_div.text(log);
     };
 
     this.stopCurrent = function (server) {
@@ -400,7 +199,7 @@ function Runner() {
             if (result) {
                 var server_name = $(this).attr('data-server');
                 _self.stopCurrent(server_name);
-                _self.getUpdatedDataFromServer();
+                getUpdatedDataFromServer();
             }
         });
     };
@@ -430,7 +229,7 @@ function Runner() {
             async: false,
             type: 'POST',
             success: function () {
-                _self.getUpdatedDataFromServer();
+                getUpdatedDataFromServer();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -484,7 +283,7 @@ function Runner() {
             var branch = _self.getBranch();
             var location = $('#list-region').val();
             _self.addTestsInQueue(tests, branch, location);
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         });
     };
 
@@ -499,7 +298,7 @@ function Runner() {
     this.eventToAddTestInQueue = function(elem) {
         elem.on('click', function(){
             _self.addTestInQueue($(this).attr('data-test'), _self.getBranch(), $('li.active .region').val());
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
             imitateHover($('.test-node :first'));
         });
     };
@@ -520,7 +319,7 @@ function Runner() {
     this.eventToAddFolderInQueue = function(folder_elem) {
         folder_elem.on('click', function(){
             _self.addFolderInQueue($(this).parent());
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         });
     };
 
@@ -1229,8 +1028,8 @@ function Runner() {
             async: false,
             type: 'POST',
             success: function() {
-                _self.toggleClearTestButton();
-                _self.toggleShuffleTestButton();
+                toggleClearTestButton();
+                toggleShuffleTestButton();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -1275,76 +1074,28 @@ function Runner() {
     this.eventToClearTestQueue = function(elem) {
         elem.on('click', function(){
             _self.clearTestQueue();
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         });
     };
 
     this.eventToShuffleTestQueue = function(elem) {
         elem.on('click', function(){
             _self.shuffleTestQueue();
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         });
     };
 
     this.eventToClearServerList = function(elem) {
         elem.on('click', function(){
             _self.unbookAllServers();
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         });
-    };
-
-    this.checkQueueEmpty = function() {
-        var empty = true;
-        if($('.test-node :visible').size() !== 0) {
-           empty = false;
-        }
-        return empty;
-    };
-
-    this.toggleClearTestButton = function() {
-        if (this.checkQueueEmpty()) {
-            $('#clear-tests').hide();
-        } else {
-            $('#clear-tests').show();
-        }
-    };
-
-    this.toggleShuffleTestButton = function() {
-        if (this.checkQueueEmpty()) {
-            $('#shuffle-tests').hide();
-        } else {
-            $('#shuffle-tests').show();
-        }
-    };
-
-    this.checkAnyBookedServers = function() {
-        var empty = true;
-        if($('.server-node :visible').size() !== 0) {
-            empty = false;
-        }
-        return empty;
-    };
-
-    this.toggleStopAllBookedServers = function() {
-        if (this.checkAnyBookedServers()) {
-            $('#stop-booked').hide();
-        } else {
-            $('#stop-booked').show();
-        }
-    };
-
-    this.toggleRemoveDuplicatesQueue = function() {
-        if (this.checkQueueEmpty()) {
-            $('#remove-duplicates-tests').hide();
-        } else {
-            $('#remove-duplicates-tests').show();
-        }
     };
 
     this.eventToRemoveDuplicatesFromQueue = function (elem) {
         elem.on('click', function () {
             _self.removeDuplicatesFromQueue();
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         });
     };
 

@@ -23,7 +23,7 @@ function unbookServer(server_name, button, hide_button) {
                 }
                 eventToBookServer(button);
                 toggleUnbookAllServersButton();
-                _self.getUpdatedDataFromServer();
+                getUpdatedDataFromServer();
             }
         },
         error: function (xhr, type, errorThrown) {
@@ -58,7 +58,7 @@ function eventToBookServer(elements) {
 }
 
 function toggleUnbookAllServersButton() {
-    if (this.checkAnyBookedServers()) {
+    if (checkAnyBookedServers()) {
         $('#clear-servers').hide();
     } else {
         $('#clear-servers').show();
@@ -78,7 +78,7 @@ function bookServer(button, server_name) {
             button.unbind();
             changeBookButtonOnUnbook(button);
             eventToUnbookServer(button, false);
-            _self.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -91,4 +91,20 @@ function eventToUnbookServer(elements, hide_button) {
     elements.on('click', function() {
         unbookServer($(this).attr('data-server'), $(this), hide_button);
     });
+}
+
+function checkAnyBookedServers() {
+    var empty = true;
+    if($('.server-node :visible').size() !== 0) {
+        empty = false;
+    }
+    return empty;
+}
+
+function toggleStopAllBookedServers() {
+    if (checkAnyBookedServers()) {
+        $('#stop-booked').hide();
+    } else {
+        $('#stop-booked').show();
+    }
 }

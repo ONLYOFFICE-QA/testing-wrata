@@ -5,7 +5,7 @@
             $("#test-queue").slimScroll({height: '84vh'});
             $("#server-queue").slimScroll({height: '84vh'});
             myRunner.eventToSortTestQueue();
-            myRunner.getUpdatedDataFromServer();
+            getUpdatedDataFromServer();
             myRunner.eventToStopAllBooked($('#stop-booked'));
             myRunner.eventToDestroyAllUnBooked($('#destroy-servers'));
             myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
