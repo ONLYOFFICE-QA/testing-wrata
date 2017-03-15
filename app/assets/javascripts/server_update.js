@@ -41,6 +41,7 @@ function setDataOnServersView(data) {
         var server = $(selector);
         setStatusToServerView(server, data[i].status);
         setServerIp(server, data[i].server_ip);
+        copyServerIpToClipboardEvent(data[i].name);
         disableSelectServerSize(data[i].name);
         setServerSize(data[i].name, data[i].size);
         if (data[i].status) {
@@ -171,4 +172,22 @@ function clearServersQueue() {
 
 function clearTestsQueue() {
     clearElementInside($('#test-queue'));
+}
+
+function copyServerIpToClipboardEvent(serverName) {
+    var copyTextareaBtn = $("#" + serverName + ' .server-ip span');
+
+    copyTextareaBtn.on('click', function () {
+        selectObjectForCopy(copyTextareaBtn);
+        document.execCommand('copy');
+        copyTextareaBtn.fadeOut('normal', function() {
+            copyTextareaBtn.delay(200).fadeIn();
+        });
+    });
+}
+
+function selectObjectForCopy(jqueryObject) {
+    var range = document.createRange();
+    range.selectNode(jqueryObject.get(0));
+    window.getSelection().addRange(range);
 }
