@@ -7,7 +7,7 @@ services:
     volumes:
       - /mnt/data_share:/mnt/data_share
     ports:
-      - "8080:3000"
+      - "80:3000"
     depends_on:
       - db
     tty: true
