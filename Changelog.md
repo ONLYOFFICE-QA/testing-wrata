@@ -1,6 +1,6 @@
 # Change log
 
-## master (unreleased)
+## 1.12
 ### New features
 * Use bootbox alert instead of pure JS for changing branches
 * Ability to set DO server size on server creation
