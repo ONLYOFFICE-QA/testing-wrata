@@ -4,6 +4,9 @@
 ### New features
 * Ability to mock actions with cloud server (good for development)
 
+### Fixes
+* Fix problem with manual destroying server, booked by other client
+
 ## 1.12
 ### New features
 * Use bootbox alert instead of pure JS for changing branches

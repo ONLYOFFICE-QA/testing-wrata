@@ -22,6 +22,14 @@ class RunnerManagers
     manager
   end
 
+  # @param server_name [String] remove server from managers
+  # @return [Nothing]
+  def remove_server(server_name)
+    @managers.each do |current_manager|
+      current_manager.delete_server(server_name)
+    end
+  end
+
   class << self
     attr_accessor :digital_ocean
 
