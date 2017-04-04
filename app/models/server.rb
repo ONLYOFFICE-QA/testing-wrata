@@ -27,15 +27,8 @@ class Server < ActiveRecord::Base
   def cloud_server_create(server_size)
     server_size ||= DEFAULT_SERVER_SIZE
     update_column(:_status, :creating)
-    begin
-      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc2', server_size, tags: EXECUTOR_TAG)
-    rescue => e
-      update_column(:_status, :destroyed)
-      raise e
-    end
-    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name)
-    new_address = RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
-    update_column(:address, new_address)
+    restore_image_and_wait(server_size)
+    set_ip_info
     update_column(:_status, :created)
     update_column(:size, server_size)
     update_column(:last_activity_date, Time.current)
@@ -44,12 +37,7 @@ class Server < ActiveRecord::Base
   def cloud_server_destroy
     unbook
     update_column(:_status, :destroying)
-    begin
-      RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
-    rescue => e
-      update_column(:_status, :created)
-      raise e
-    end
+    destroy_and_wait_for_it
     update_column(:_status, :destroyed)
     update_column(:executing_command_now, false)
   end
@@ -61,5 +49,40 @@ class Server < ActiveRecord::Base
   # @return [String] ip of current server.
   def fetch_ip
     RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
+  end
+
+  private
+
+  # Set ip info depending of mocking
+  def set_ip_info
+    new_address = if Rails.application.config.mock_cloud_server
+                    '127.0.0.1'
+                  else
+                    RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
+                  end
+    update_column(:address, new_address)
+  end
+
+  # Start creation and wait for it
+  def restore_image_and_wait(server_size)
+    return if Rails.application.config.mock_cloud_server
+    begin
+      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc2', server_size, tags: EXECUTOR_TAG)
+    rescue => e
+      update_column(:_status, :destroyed)
+      raise e
+    end
+    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name)
+  end
+
+  # Destroy server and wait for it
+  def destroy_and_wait_for_it
+    return if Rails.application.config.mock_cloud_server
+    begin
+      RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
+    rescue => e
+      update_column(:_status, :created)
+      raise e
+    end
   end
 end

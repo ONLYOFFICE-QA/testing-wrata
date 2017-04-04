@@ -1,5 +1,9 @@
 # Change log
 
+## master
+### New features
+* Ability to mock actions with cloud server (good for development)
+
 ## 1.12
 ### New features
 * Use bootbox alert instead of pure JS for changing branches

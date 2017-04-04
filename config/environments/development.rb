@@ -40,4 +40,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.allow_concurrency = true
+  config.mock_cloud_server = true
 end

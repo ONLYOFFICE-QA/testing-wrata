@@ -54,5 +54,6 @@ module Runner
                             sender_address: Rails.application.secrets.gmail_username,
                             exception_recipients: [Rails.application.secrets.admin_email]
                           }
+    config.mock_cloud_server = false
   end
 end
