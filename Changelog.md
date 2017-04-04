@@ -6,6 +6,7 @@
 
 ### Fixes
 * Fix problem with manual destroying server, booked by other client
+* Do not call `ensure_logs_folder_present` in test env
 
 ## 1.12
 ### New features
