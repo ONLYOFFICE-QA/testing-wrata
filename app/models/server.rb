@@ -38,6 +38,7 @@ class Server < ActiveRecord::Base
     unbook
     update_column(:_status, :destroying)
     destroy_and_wait_for_it
+    Runner::Application.config.run_manager.remove_server(name)
     update_column(:_status, :destroyed)
     update_column(:executing_command_now, false)
   end
