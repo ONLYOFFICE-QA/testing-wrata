@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spec_languages
   root to: 'runner#index', as: 'runner'
 
   resources :clients

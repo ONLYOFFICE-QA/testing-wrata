@@ -1,0 +1,2 @@
+module SpecLanguagesHelper
+end
