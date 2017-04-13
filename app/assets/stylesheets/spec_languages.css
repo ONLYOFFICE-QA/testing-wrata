@@ -2,3 +2,13 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.spec-language {
+    width: 65px;
+    font-size: 10px;
+    display: inline-block;
+    padding-left: 3px;
+    height: 25px;
+    position: absolute;
+    right: 30px;
+    top: 5px;
+}
