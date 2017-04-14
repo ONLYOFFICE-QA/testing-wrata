@@ -18,30 +18,30 @@ class HistoriesControllerTest < ActionController::TestCase
 
   test 'should create history' do
     assert_difference('History.count') do
-      post :create, history: {file: 'test_file'}
+      post :create, params: { history: { file: 'test_file' } }
     end
 
     assert_redirected_to history_path(assigns(:history))
   end
 
   test 'should show history' do
-    get :show, id: @history
+    get :show, params: { id: @history }
     assert_response :success
   end
 
   test 'should get edit' do
-    get :edit, id: @history
+    get :edit, params: { id: @history }
     assert_response :success
   end
 
   test 'should update history' do
-    patch :update, id: @history, history: {file: 'test_file'}
+    patch :update, params: { id: @history, history: { file: 'test_file' } }
     assert_redirected_to history_path(assigns(:history))
   end
 
   test 'should destroy history' do
     assert_difference('History.count', -1) do
-      delete :destroy, id: @history
+      delete :destroy, params: { id: @history }
     end
 
     assert_response :success
