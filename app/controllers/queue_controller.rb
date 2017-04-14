@@ -20,13 +20,13 @@ class QueueController < ApplicationController
   end
 
   def add_test
-    @manager.add_test(params['test_path'], params['branch'], params['location'])
+    @manager.add_test(params['test_path'], params['branch'], params['location'], params['spec_language'])
 
     render nothing: true
   end
 
   def add_tests
-    @manager.add_tests(params['tests_path'], params['branch'], params['location'])
+    @manager.add_tests(params['tests_path'], params['branch'], params['location'], params['spec_language'])
 
     render nothing: true
   end

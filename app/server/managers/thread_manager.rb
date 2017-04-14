@@ -7,7 +7,11 @@ module ThreadManager
         location = @test[:location]
         clear_log_file
         @server_model.update_column(:executing_command_now, true)
-        test_options = ServerOptions.new(@test[:doc_branch], @test[:tm_branch], location.split(' ')[0], location.split(' ')[1])
+        test_options = ServerOptions.new(@test[:doc_branch],
+                                         @test[:tm_branch],
+                                         location.split(' ')[0],
+                                         location.split(' ')[1],
+                                         spec_language: @test[:spec_language])
         start_time = DateTime.now
         full_start_command = start_test_on_server(test_path, test_options)
         add_data_to_history(test_path, test_options, full_start_command, @client, start_time: start_time)

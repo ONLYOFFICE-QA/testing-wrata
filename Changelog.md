@@ -3,6 +3,7 @@
 ## master
 ### New features
 * Ability to mock actions with cloud server (good for development)
+* Add ability to send custom language to spec.  It use environment variable `SPEC_LANGUAGE`
 
 ### Fixes
 * Fix problem with manual destroying server, booked by other client

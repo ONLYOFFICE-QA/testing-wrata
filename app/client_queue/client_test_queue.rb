@@ -7,12 +7,18 @@ class ClientTestQueue
     @id = 0
   end
 
-  def push_test(test_path, branch, location, to_begin_of_queue: true)
+  def push_test(test_path, branch, location, spec_language: 'en-us', to_begin_of_queue: true)
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
     doc_branch, tm_branch = branches(test_project, branch, location.split(' ')[0])
-    data_to_push = { test_path: reformat_path(test_path), id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
-                     location: location, test_name: test_name, project: test_project }
+    data_to_push = { test_path: reformat_path(test_path),
+                     id: @id,
+                     doc_branch: doc_branch,
+                     tm_branch: tm_branch,
+                     location: location,
+                     test_name: test_name,
+                     project: test_project,
+                     spec_language: spec_language }
     if to_begin_of_queue
       @tests.unshift(data_to_push)
     else

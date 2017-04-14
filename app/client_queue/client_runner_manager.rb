@@ -77,14 +77,14 @@ class ClientRunnerManager
     @tests.remove_duplicates
   end
 
-  def add_test(test, branch, location)
-    @tests.push_test(test, branch, location)
+  def add_test(test, branch, location, spec_language)
+    @tests.push_test(test, branch, location, spec_language: spec_language)
     start_client_runner_thread if ready_to_start?
   end
 
-  def add_tests(tests, branch, location, to_begin_of_queue: true)
+  def add_tests(tests, branch, location, spec_language, to_begin_of_queue: true)
     tests.reverse.each do |test|
-      @tests.push_test(test, branch, location, to_begin_of_queue: to_begin_of_queue)
+      @tests.push_test(test, branch, location, spec_language: spec_language, to_begin_of_queue: to_begin_of_queue)
     end
     start_client_runner_thread if ready_to_start?
   end
