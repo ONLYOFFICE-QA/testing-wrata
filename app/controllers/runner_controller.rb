@@ -11,7 +11,7 @@ class RunnerController < ApplicationController
     cleanup_project(DOCS_PROJECT_PATH)
     cleanup_project(TEAMLAB_PROJECT_PATH)
 
-    render nothing: true
+    render body: nil
   end
 
   def branches
@@ -41,7 +41,7 @@ class RunnerController < ApplicationController
       change_project_branch(TEAMLAB_PROJECT_PATH, branch)
     end
 
-    render nothing: true
+    render body: nil
   end
 
   def show_servers
@@ -159,7 +159,7 @@ class RunnerController < ApplicationController
   def rerun_thread
     Runner::Application.config.threads.get_thread_by_name(params['server']).rerun_thread
 
-    render nothing: true
+    render body: nil
   end
 
   def stop_current
@@ -167,18 +167,18 @@ class RunnerController < ApplicationController
 
     Runner::Application.config.threads.get_thread_by_name(server).stop_test
 
-    render nothing: true
+    render body: nil
   end
 
   def stop_all_booked
     Runner::Application.config.threads.get_threads_by_user(current_client).each(&:stop_test)
 
-    render nothing: true
+    render body: nil
   end
 
   def destroy_all_unbooked_servers
     Runner::Application.config.threads.destroy_unbooked_servers
 
-    render nothing: true
+    render body: nil
   end
 end

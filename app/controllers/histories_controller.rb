@@ -57,7 +57,7 @@ class HistoriesController < ApplicationController
     @history = History.find(params[:id])
     @history.destroy
 
-    render nothing: true
+    render body: nil
   end
 
   def show_html_results

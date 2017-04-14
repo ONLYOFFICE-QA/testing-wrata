@@ -44,7 +44,7 @@ class ServersController < ApplicationController
     history = server.histories
     history.delete_all
 
-    render nothing: true
+    render body: nil
   end
 
   def show_more
@@ -55,7 +55,7 @@ class ServersController < ApplicationController
     @history = server.histories.order('created_at DESC').limit(10).offset(showed.to_i)
     @controller = :server
 
-    return render nothing: true if @history.empty?
+    return render body: nil if @history.empty?
     render layout: false
   end
 
@@ -102,7 +102,7 @@ class ServersController < ApplicationController
     server = Runner::Application.config.threads.get_thread_by_name(params['server'])
     server.server_model.cloud_server_create(params['size'])
     Runner::Application.config.threads.update_models
-    render nothing: true
+    render body: nil
   end
 
   def cloud_server_fetch_ip
@@ -122,7 +122,7 @@ class ServersController < ApplicationController
     server = Runner::Application.config.threads.get_thread_by_name(params['server'])
     server.server_model.cloud_server_destroy
     Runner::Application.config.threads.update_models
-    render nothing: true
+    render body: nil
   end
 
   private
