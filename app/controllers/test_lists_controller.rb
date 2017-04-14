@@ -61,7 +61,7 @@ class TestListsController < ApplicationController
   def destroy
     delete_testlist_by_id(params[:id])
 
-    render nothing: true
+    render body: nil
   end
 
   private

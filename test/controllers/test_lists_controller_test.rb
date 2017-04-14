@@ -18,31 +18,31 @@ class TestListsControllerTest < ActionController::TestCase
 
   test 'should create test_list' do
     assert_difference('TestList.count') do
-      post :create, test_list: { client_id: @test_list.client_id, name: @test_list.name }
+      post :create, params: { test_list: { client_id: @test_list.client_id, name: @test_list.name } }
     end
 
     assert_redirected_to test_list_path(assigns(:test_list))
   end
 
   test 'should show test_list' do
-    get :show, id: @test_list
+    get :show, params: { id: @test_list }
     assert_response :success
   end
 
   test 'should get edit' do
-    get :edit, id: @test_list
+    get :edit, params: { id: @test_list }
     assert_response :success
   end
 
   test 'should update test_list' do
-    put :update, id: @test_list, test_list: { client_id: @test_list.client_id, name: @test_list.name }
+    put :update, params: { id: @test_list, test_list: { client_id: @test_list.client_id, name: @test_list.name } }
     assert_redirected_to test_list_path(assigns(:test_list))
   end
 
   test 'should destroy test_list' do
     skip('Not working for some reason in CircleCi') # TODO: Fix it
     assert_difference('TestList.count', -1) do
-      delete :destroy, id: @test_list
+      delete :destroy, params: { id: @test_list }
     end
 
     assert_response :success

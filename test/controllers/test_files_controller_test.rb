@@ -18,30 +18,30 @@ class TestFilesControllerTest < ActionController::TestCase
 
   test 'should create test_file' do
     assert_difference('TestFile.count') do
-      post :create, test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name }
+      post :create, params: { test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name } }
     end
 
     assert_redirected_to test_file_path(assigns(:test_file))
   end
 
   test 'should show test_file' do
-    get :show, id: @test_file
+    get :show, params: { id: @test_file }
     assert_response :success
   end
 
   test 'should get edit' do
-    get :edit, id: @test_file
+    get :edit, params: { id: @test_file }
     assert_response :success
   end
 
   test 'should update test_file' do
-    put :update, id: @test_file, test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name }
+    put :update, params: { id: @test_file, test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name } }
     assert_redirected_to test_file_path(assigns(:test_file))
   end
 
   test 'should destroy test_file' do
     assert_difference('TestFile.count', -1) do
-      delete :destroy, id: @test_file
+      delete :destroy, params: { id: @test_file }
     end
 
     assert_redirected_to test_files_path

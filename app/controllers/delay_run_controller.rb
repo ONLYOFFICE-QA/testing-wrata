@@ -15,13 +15,13 @@ class DelayRunController < ApplicationController
   def change_run
     Runner::Application.config.delayed_runs.change_run(params)
 
-    render nothing: true
+    render body: nil
   end
 
   def delete_run
     Runner::Application.config.delayed_runs.delete_run(params['id'])
 
-    render nothing: true
+    render body: nil
   end
 
   def add_delayed_row
