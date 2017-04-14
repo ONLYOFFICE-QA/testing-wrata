@@ -1,16 +1,20 @@
 class ServerOptions
   attr_accessor :portal_type, :portal_region, :docs_branch, :teamlab_branch, :teamlab_api_branch, :shared_branch
+  # @return [String] language of spec
+  attr_accessor :spec_language
 
   def initialize(docs_branch = 'develop',
                  teamlab_branch = 'master',
                  portal_type = 'info',
-                 portal_region = 'us')
+                 portal_region = 'us',
+                 spec_language: 'en-us')
     @docs_branch = docs_branch
     @teamlab_branch = teamlab_branch
     @portal_type = portal_type
     @portal_region = portal_region
     @shared_branch = 'master'
     @teamlab_api_branch = 'develop'
+    @spec_language = spec_language
   end
 
   def create_options

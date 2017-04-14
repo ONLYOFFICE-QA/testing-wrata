@@ -228,7 +228,8 @@ function Runner() {
             data: {
                 'test_path': test_path,
                 'branch': branch,
-                'location': location
+                'location': location,
+                'spec_language': getSpecLanguage()
             },
             type: 'POST',
             success: function () {
@@ -248,7 +249,8 @@ function Runner() {
             data: {
                 'tests_path': test_path_array,
                 'branch': branch,
-                'location': location
+                'location': location,
+                'spec_language': getSpecLanguage()
             },
             type: 'POST',
             success: function () {
