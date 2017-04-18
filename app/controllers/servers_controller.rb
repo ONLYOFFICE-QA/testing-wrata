@@ -33,6 +33,7 @@ class ServersController < ApplicationController
 
   def show_current_results
     server_thread = Runner::Application.config.threads.get_thread_by_name(params['server'])
+    return render plain: "No such server `#{params['server']}`" unless server_thread
     @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
