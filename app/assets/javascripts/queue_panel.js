@@ -40,6 +40,7 @@ function appendTestsOnQueue(test) {
     props.append($('<label>').text(test.tm_branch).attr('title', 'OnlyOffice branch:' + test.tm_branch));
     props.append($('<label>').text(test.doc_branch).attr('title', 'Docs branch:' + test.doc_branch));
     props.append($('<label>').text(test.location).attr('title', 'Region: ' + test.location));
+    props.append($('<label>').text(test.spec_language).attr('title', 'Spec Language: ' + test.spec_language));
     var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test.test_name + '</div>');
     var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '" title="' + test.test_path + '"></div>');
     testNode.append(name);
