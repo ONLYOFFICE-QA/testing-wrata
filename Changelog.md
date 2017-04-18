@@ -9,6 +9,7 @@
 * Fix problem with manual destroying server, booked by other client
 * Do not call `ensure_logs_folder_present` in test env
 * Fix server error while calling `servers/show_current_results` for server which not running tests
+* Fix server error while calling `servers/show_current_results` for non-existing server
 
 ## 1.12
 ### New features
