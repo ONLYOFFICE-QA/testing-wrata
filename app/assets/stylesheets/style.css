@@ -1240,7 +1240,7 @@ a, a:link, a:visited  {
     overflow: hidden;
     padding-left: 2px;
     text-overflow: ellipsis;
-    width: 32%;
+    width: 24%;
 }
 
 .test-node select.region.form-control{
