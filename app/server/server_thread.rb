@@ -116,6 +116,7 @@ class ServerThread
   end
 
   def test_name
+    return nil unless @test
     @test[:test_name]
   end
 end
