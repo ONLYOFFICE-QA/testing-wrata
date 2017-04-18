@@ -7,6 +7,9 @@ function add_portal_to_list(list_element) {
         {
             title: "Enter Portal name",
             callback: function (portal_name) {
+                if (portal_name === null) {
+                    return null;
+                }
                 list_element.get(0).add(new Option(portal_name));
                 list_element.val(portal_name);
             }
