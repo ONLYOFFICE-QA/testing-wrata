@@ -4,7 +4,7 @@
 
 function getUpdatedDataFromServer() {
     $.ajax({
-        url: 'runner/updated_data',
+        url: 'runner/updated_data.json',
         type: 'GET',
         async: false,
         data: {
