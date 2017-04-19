@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if signed_in?
+      return redirect_to signin_path unless current_client.actions_allowed?
       init_run_manager
-      redirect_to signin_path unless current_client.actions_allowed?
     else
       redirect_to signin_path
     end

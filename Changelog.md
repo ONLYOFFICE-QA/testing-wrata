@@ -13,6 +13,7 @@
 * Fix server error while calling `servers/show_current_results` for non-existing server
 * Fix null element while clicking cancel in custom portal field (fix #226)
 * Fix render `RunnderController#updated_data` in browser
+* Do not initilize `run_manager` if user is not confirmed
 
 ## 1.12
 ### New features
