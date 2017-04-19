@@ -60,10 +60,12 @@ function showServerSectionOverlay(server, message) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).find('.overlay-text').text(message);
     $(selector).show();
+    $("#" + server + ' .glyphicon-off').hide();
 }
 function hideServerSectionOverlay(server) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).hide();
+    $("#" + server + ' .glyphicon-off').show();
 }
 function createServer(server, size) {
     $.ajax({
