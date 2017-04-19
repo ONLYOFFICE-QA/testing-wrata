@@ -152,6 +152,7 @@ class RunnerController < ApplicationController
     output_json = output_json.to_json
 
     respond_to do |format|
+      format.html { render json: output_json }
       format.json { render json: output_json }
     end
   end
