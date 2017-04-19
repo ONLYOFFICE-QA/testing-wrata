@@ -138,7 +138,9 @@ class RunnerController < ApplicationController
     server_data = []
 
     servers.each do |server|
+      next unless server.is_a?(String)
       server_thread = Runner::Application.config.threads.get_thread_by_name(server)
+      next unless server_thread
       server_data << server_thread.get_info_from_server(client)
     end
 
