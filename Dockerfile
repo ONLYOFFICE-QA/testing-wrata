@@ -7,6 +7,8 @@ COPY ssh/ /root/.ssh/
 RUN chmod 600 /root/.ssh/*; ssh-keyscan github.com > /root/.ssh/known_hosts
 RUN mkdir -pv /root/.do && echo "393d5ed4c6182f2e77091ef00d25455a4a9e44440c06c80c7b02df08a6e4aaec" > /root/.do/access_token
 RUN mkdir ~/RubymineProjects
+RUN git config --global user.email "teamlab.ruby@gmail.com" && \
+    git config --global user.name "OnlyOffice Wrata"
 RUN cd /root/RubymineProjects && git clone -b develop git@github.com:ONLYOFFICE/testing-onlyoffice.git TeamLab
 RUN cd /root/RubymineProjects && git clone -b develop git@github.com:ONLYOFFICE/testing-documentserver.git OnlineDocuments
 RUN mkdir /root/wrata
