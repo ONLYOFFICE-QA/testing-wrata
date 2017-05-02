@@ -243,11 +243,11 @@ function Runner() {
 
     this.addTestsInQueue = function(test_path_array, branch, location) {
         $.ajax({
-            url: 'queue/add_tests',
+            url: 'queue/add_test',
             context: this,
             async: false,
             data: {
-                'tests_path': test_path_array,
+                'test_path': test_path_array,
                 'branch': branch,
                 'location': location,
                 'spec_language': getSpecLanguage()

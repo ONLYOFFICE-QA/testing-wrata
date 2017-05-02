@@ -34,7 +34,7 @@ module RunThreadManager
       names = test_list.test_files.inject([]) do |arr, test_file|
         arr << test_file.name
       end
-      manager.add_tests(names, test_list.branch, run.location, to_begin_of_queue: false)
+      manager.add_test(names, test_list.branch, run.location, to_begin_of_queue: false)
     end
   end
 
