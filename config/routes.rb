@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   post 'queue/unbook_server'
   post 'queue/unbook_all_servers'
   post 'queue/add_test'
-  post 'queue/add_tests'
   post 'queue/delete_test'
   post 'queue/remove_duplicates'
   post 'queue/shuffle_tests'

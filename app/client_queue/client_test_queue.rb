@@ -7,10 +7,14 @@ class ClientTestQueue
     @id = 0
   end
 
-  def push_test(test_path, branch, location, spec_language: 'en-us', to_begin_of_queue: true)
+  def push_test(test_path, branch, location,
+                spec_language: 'en-us',
+                to_begin_of_queue: true,
+                tm_branch: nil,
+                doc_branch: nil)
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
-    doc_branch, tm_branch = branches(test_project, branch, location.split(' ')[0])
+    doc_branch, tm_branch = branches(test_project, branch, location.split(' ')[0]) if doc_branch.nil? || tm_branch.nil?
     data_to_push = { test_path: reformat_path(test_path),
                      id: @id,
                      doc_branch: doc_branch,
@@ -29,14 +33,6 @@ class ClientTestQueue
 
   def reformat_path(test_path)
     test_path.include?(HOME_DIRECTORY) ? test_path.gsub(HOME_DIRECTORY, '~') : test_path
-  end
-
-  def push_test_with_branches(test_path, tm_branch, doc_branch, location)
-    test_name = get_name_from_path(test_path)
-    test_project = get_project(test_path)
-    @tests.unshift(test_path: test_path, id: @id, doc_branch: doc_branch, tm_branch: tm_branch,
-                   location: location, test_name: test_name, project: test_project)
-    @id += 1
   end
 
   def empty?
