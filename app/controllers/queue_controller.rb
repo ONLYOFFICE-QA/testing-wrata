@@ -26,7 +26,7 @@ class QueueController < ApplicationController
   end
 
   def retest
-    @manager.add_test_with_branches(params['test_path'], params['tm_branch'], params['doc_branch'], params['location'])
+    @manager.add_test(params['test_path'], params['branch'], params['location'], tm_branch: params['tm_branch'], doc_branch: params['doc_branch'])
 
     render body: nil
   end

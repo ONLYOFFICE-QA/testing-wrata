@@ -77,16 +77,19 @@ class ClientRunnerManager
     @tests.remove_duplicates
   end
 
-  def add_test(test, branch, location, spec_language = nil, to_begin_of_queue: true)
+  def add_test(test, branch, location,
+               spec_language = nil,
+               to_begin_of_queue: true,
+               tm_branch: nil,
+               doc_branch: nil)
     test = [test] unless test.is_a?(Array)
     test.reverse.each do |current_test|
-      @tests.push_test(current_test, branch, location, spec_language: spec_language, to_begin_of_queue: to_begin_of_queue)
+      @tests.push_test(current_test, branch, location,
+                       spec_language: spec_language,
+                       to_begin_of_queue: to_begin_of_queue,
+                       tm_branch: tm_branch,
+                       doc_branch: doc_branch)
     end
-    start_client_runner_thread if ready_to_start?
-  end
-
-  def add_test_with_branches(test, tm_branch, doc_branch, location)
-    @tests.push_test(test, tm_branch, location, tm_branch: tm_branch, doc_branch: doc_branch)
     start_client_runner_thread if ready_to_start?
   end
 
