@@ -90,7 +90,7 @@ class ClientRunnerManager
   end
 
   def add_test_with_branches(test, tm_branch, doc_branch, location)
-    @tests.push_test_with_branches(test, tm_branch, doc_branch, location)
+    @tests.push_test(test, tm_branch, location, tm_branch: tm_branch, doc_branch: doc_branch)
     start_client_runner_thread if ready_to_start?
   end
 
