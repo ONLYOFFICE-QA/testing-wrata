@@ -78,7 +78,7 @@ class ClientRunnerManager
   end
 
   def add_test(test, branch, location,
-               spec_language = nil,
+               spec_language = Rails.application.config.default_spec_language,
                to_begin_of_queue: true,
                tm_branch: nil,
                doc_branch: nil)
