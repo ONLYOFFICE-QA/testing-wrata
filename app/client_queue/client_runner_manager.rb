@@ -83,12 +83,20 @@ class ClientRunnerManager
                tm_branch: nil,
                doc_branch: nil)
     test = [test] unless test.is_a?(Array)
+    lang_list = if spec_language == 'All Languages'
+                  SpecLanguage.all.pluck(:name)
+                else
+                  [spec_language]
+                end
+
     test.reverse.each do |current_test|
-      @tests.push_test(current_test, branch, location,
-                       spec_language: spec_language,
-                       to_begin_of_queue: to_begin_of_queue,
-                       tm_branch: tm_branch,
-                       doc_branch: doc_branch)
+      lang_list.each do |current_lang|
+        @tests.push_test(current_test, branch, location,
+                         spec_language: current_lang,
+                         to_begin_of_queue: to_begin_of_queue,
+                         tm_branch: tm_branch,
+                         doc_branch: doc_branch)
+      end
     end
     start_client_runner_thread if ready_to_start?
   end
