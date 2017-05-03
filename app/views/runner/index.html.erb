@@ -14,6 +14,7 @@
             myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
+            addAllLanguagesToSelect();
         });
         window.onload = function () {
             myRunner.pullProjectsAndGetAllView();
