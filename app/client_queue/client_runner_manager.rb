@@ -84,7 +84,7 @@ class ClientRunnerManager
                doc_branch: nil)
     test = [test] unless test.is_a?(Array)
     lang_list = if spec_language == 'All Languages'
-                  SpecLanguage.all.pluck(:name)
+                  SpecLanguage.all.pluck(:name).reverse
                 else
                   [spec_language]
                 end
