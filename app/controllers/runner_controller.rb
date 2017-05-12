@@ -129,8 +129,9 @@ class RunnerController < ApplicationController
   end
 
   def updated_data
-    servers = params['servers']
-    servers ||= []
+    servers_json = params['servers']
+    servers_json ||= '[]'
+    servers = JSON.parse(servers_json)
 
     client = @client
 
@@ -138,10 +139,10 @@ class RunnerController < ApplicationController
     server_data = []
 
     servers.each do |server|
-      next unless server.is_a?(String)
-      server_thread = Runner::Application.config.threads.get_thread_by_name(server)
+      next unless server['name'].is_a?(String)
+      server_thread = Runner::Application.config.threads.get_thread_by_name(server['name'])
       next unless server_thread
-      server_data << server_thread.get_info_from_server(client)
+      server_data << server_thread.get_info_from_server(client, with_log: server['with_log'])
     end
 
     manager = Runner::Application.config.run_manager.find_manager_by_client_login(client.login)

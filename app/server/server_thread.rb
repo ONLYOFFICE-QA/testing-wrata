@@ -61,7 +61,7 @@ class ServerThread
     start_main_thread
   end
 
-  def get_info_from_server(current_client)
+  def get_info_from_server(current_client, with_log: false)
     server_info = {}
     server_info[:name] = @server_model.name
     if @test
@@ -84,7 +84,7 @@ class ServerThread
     server_info[:status] = @status
     server_info[:last_activity_date] = @server_model.last_activity_date.to_s
     server_info[:_status] = @server_model._status
-    server_info[:log] = @log
+    server_info[:log] = @log if with_log
     server_info[:server_ip] = @server_model.address
     server_info[:size] = @server_model.size
     server_info
