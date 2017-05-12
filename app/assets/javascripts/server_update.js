@@ -50,7 +50,6 @@ function setDataOnServersView(data) {
                 showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
                 setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
                 server.find('.glyphicon-stop').show();
-                setLogToServerView(server, data[i].log);
             } else {
                 server.find('.ui-progress-bar').hide();
                 server.find('.glyphicon-stop').hide();
@@ -124,11 +123,6 @@ function setTestNameAndOptions(hidden_elem, test) {
     hidden_elem.find('.time').text(test.time);
     hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
     hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
-}
-
-function setLogToServerView(server_el, log) {
-    var log_div = server_el.find('.log');
-    log_div.text(log);
 }
 
 function showBookedClient(userIcon, userName) {
