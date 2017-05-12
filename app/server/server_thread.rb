@@ -15,6 +15,7 @@ class ServerThread
 
   attr_accessor :server_model, :_status
   attr_accessor :ssh_pid
+  attr_accessor :log
 
   attr_reader :client
 

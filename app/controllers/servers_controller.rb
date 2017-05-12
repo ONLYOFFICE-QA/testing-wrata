@@ -126,6 +126,12 @@ class ServersController < ApplicationController
     render body: nil
   end
 
+  def log
+    server_thread = Runner::Application.config.threads.get_thread_by_name(params['server'])
+    return render body: nil, status: :bad_request if server_thread.nil?
+    render plain: server_thread.log
+  end
+
   private
 
   def set_server_status(server_name, status)
