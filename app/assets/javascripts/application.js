@@ -884,7 +884,7 @@ function Runner() {
             var opener_index = $(opener_selector).index($(this));
             var server_name = $(this).parent().parent().parent().get(0).id;
             if (server_log_visible(server_name)) {
-                empty_server_log(server_name)
+                empty_server_log(server_name);
             } else {
                 fetch_server_log(server_name);
             }

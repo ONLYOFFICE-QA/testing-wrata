@@ -9,7 +9,7 @@ function fetch_server_log(server_name) {
         async: false,
         type: 'GET',
         success: function(data) {
-            fill_server_log(server_name, data)
+            fill_server_log(server_name, data);
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -29,5 +29,5 @@ function empty_server_log(server_name) {
 
 function server_log_visible(server_name) {
     var log_div = $("#" + server_name + ' .log');
-    return log_div.is(':visible')
+    return log_div.is(':visible');
 }
