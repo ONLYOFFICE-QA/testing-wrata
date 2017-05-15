@@ -30,9 +30,11 @@ function getUpdatedDataFromServer() {
 function getAllServers() {
     var servers = [];
     $('.server').each(function () {
-        servers.push($(this).attr('id'));
+        var server_name = $(this).attr('id');
+        var is_log_displayed = server_log_visible(server_name);
+        servers.push({name: server_name, with_log: is_log_displayed});
     });
-    return servers;
+    return JSON.stringify(servers);
 }
 
 function setDataOnServersView(data) {
@@ -49,8 +51,8 @@ function setDataOnServersView(data) {
             if('test' in data[i]) {
                 showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
                 setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
+                fill_server_log(data[i].name, data[i].log);
                 server.find('.glyphicon-stop').show();
-                setLogToServerView(server, data[i].log);
             } else {
                 server.find('.ui-progress-bar').hide();
                 server.find('.glyphicon-stop').hide();
@@ -124,11 +126,6 @@ function setTestNameAndOptions(hidden_elem, test) {
     hidden_elem.find('.time').text(test.time);
     hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
     hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
-}
-
-function setLogToServerView(server_el, log) {
-    var log_div = server_el.find('.log');
-    log_div.text(log);
 }
 
 function showBookedClient(userIcon, userName) {

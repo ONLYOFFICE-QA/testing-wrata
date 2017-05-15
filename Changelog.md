@@ -6,6 +6,7 @@
 * Add ability to send custom language to spec.  It use environment variable `SPEC_LANGUAGE`
 * Show `spec_language` in queue (implement #231)
 * Hide create/destroy server button while operation in progress
+* `updated_data` return logs only if called for it
 
 ### Fixes
 * Fix problem with manual destroying server, booked by other client
