@@ -8,13 +8,6 @@ module GitHelper
     `cd #{dir}; git checkout -f #{branch}; git pull;`
   end
 
-  # Clean all stuff that may left by checkouts
-  # @param dir [String] directory to cleanup
-  # @return [String] result of cleanup
-  def cleanup_project(dir)
-    `cd #{dir}; git reset --hard; git clean -f; git pull --prune;`
-  end
-
   # List all branches in github repo
   # @param github_repo [String] repo to get branches
   # @return [Array, String] result of cleanup

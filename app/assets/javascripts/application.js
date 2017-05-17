@@ -364,19 +364,8 @@ function Runner() {
 
     this.pullProjectsAndFillTests = function() {
         showSectionOverlay();
-        $.ajax({
-            url: 'runner/pull_projects',
-            context: this,
-            async: true,
-            type: 'GET',
-            success: function() {
-                _self.showBranchesList();
-                _self.showTestsView();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
+        _self.showBranchesList();
+        _self.showTestsView();
     };
 
     this.showBranchesList = function() {

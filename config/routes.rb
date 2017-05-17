@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get 'runner/change_branch'
   get 'runner/updated_data'
   get 'runner/rerun_thread'
-  get 'runner/pull_projects'
   get 'runner/branches'
   post 'runner/stop_current'
   post 'runner/stop_all_booked'

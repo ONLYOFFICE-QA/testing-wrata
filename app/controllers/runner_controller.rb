@@ -7,13 +7,6 @@ class RunnerController < ApplicationController
     @controller = :runner
   end
 
-  def pull_projects
-    cleanup_project(DOCS_PROJECT_PATH)
-    cleanup_project(TEAMLAB_PROJECT_PATH)
-
-    render body: nil
-  end
-
   def branches
     tm_branches = get_list_branches(Rails.application.config.github_projects[0])
     tm_tags = get_tags(Rails.application.config.github_projects[0])

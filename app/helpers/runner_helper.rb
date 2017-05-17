@@ -1,18 +1,6 @@
 module RunnerHelper
-  def directory_hash(path, name = nil)
-    data = { data: (name || path) }
-    data[:children] = children = []
-    data[:path] = path
-    Dir.foreach(path).sort.each do |entry|
-      next if entry.start_with?('.')
-      full_path = File.join(path, entry)
-      children << if File.directory?(full_path)
-                    directory_hash(full_path, entry)
-                  else
-                    { name: entry, path: full_path }
-                  end
-    end
-    data
+  def directory_hash(project)
+    Rails.application.config.github_helper.file_tree(project)
   end
 
   def get_subtest_by_path(path_to_test)
