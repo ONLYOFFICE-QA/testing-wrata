@@ -25,6 +25,14 @@ class RunnerController < ApplicationController
     end
   end
 
+  def file_tree
+    project = params['project']
+    refs = params['refs']
+    return render body: nil, status: :bad_request if project.nil? || refs.nil?
+    file_tree = Rails.application.config.github_helper.file_tree(project, refs: refs)
+    render plain: file_tree.to_json
+  end
+
   def change_branch
     branch = params['branch']
     project = params['project'].to_sym

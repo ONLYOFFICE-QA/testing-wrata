@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'runner/updated_data'
   get 'runner/rerun_thread'
   get 'runner/branches'
+  get 'runner/file_tree'
   post 'runner/stop_current'
   post 'runner/stop_all_booked'
   post 'runner/destroy_all_unbooked_servers'
