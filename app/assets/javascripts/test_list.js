@@ -12,8 +12,21 @@ function fullPathForFile(file) {
     return full_path;
 }
 
-function addFullPaths(root_folder, project_name) {
-    root_folder.find('.add-button-file').each(function(){
-        $(this).attr('full-path', '~/RubymineProjects/' + project_name + '/' + fullPathForFile($(this)));
+function addFullPaths(root_folder) {
+    root_folder.find('.add-button-file').each(function () {
+        $(this).attr('full-path', '~/RubymineProjects/' + projectFolder($(this)) + '/' + fullPathForFile($(this)));
     });
+}
+
+function projectFolder(object) {
+    if (object.attr('project') == 'docs') {
+        return 'OnlineDocuments';
+    }
+    else if (object.attr('project') == 'tm') {
+        return 'TeamLab';
+    }
+    else {
+        return 'unknown';
+    }
+
 }

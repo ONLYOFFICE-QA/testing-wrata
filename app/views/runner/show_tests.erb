@@ -11,7 +11,7 @@
                     <% unless current_child.has_key?(:children) %>
                         <% child_name = current_child[:name] %>
                         <div class="file">
-                          <div class="add-button-file active" data-test="<%= current_child[:name] %>" style="">add</div>
+                          <div class="add-button-file active" data-test="<%= current_child[:name] %>" project="<%= project %>" style="">add</div>
                           <div class="file-name"><i class="glyphicon glyphicon-file"></i><%= child_name %>
                             <i class="add-file glyphicon glyphicon-plus-sign"></i></div>
                         </div>

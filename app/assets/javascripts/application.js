@@ -350,7 +350,7 @@ function Runner() {
                 _self.selectProject(project);
                 _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
                 _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
-                addFullPaths(fileTab, project)
+                addFullPaths(fileTab)
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
