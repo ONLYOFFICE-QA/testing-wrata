@@ -344,7 +344,7 @@ function Runner() {
                 var trimmed_data = trim_data(data);
                 var fileTab = $(".tests-block .tab-content")
                 fileTab.html(trimmed_data);
-                _self.setEventToOpenFolder();
+                setEventToOpenFolder();
                 _self.eventToOpenFileInclude();
                 _self.eventToAddFile();
                 _self.selectProject(project);
@@ -606,23 +606,6 @@ function Runner() {
             }
         });
 
-    };
-
-    this.setEventToOpenFolder = function () {
-        $(".folder-name").on('click', function () {
-            var currentDisplay = $(this).next(".folder-inside").css("display");
-            var icon = $(this).children("i");
-            if (currentDisplay == "none") {
-                $(this).next(".folder-inside").css("display", "block");
-                icon.addClass("glyphicon-folder-open");
-                icon.removeClass("glyphicon-folder-close");
-            }
-            else {
-                $(this).next(".folder-inside").css("display", "none");
-                icon.addClass("glyphicon-folder-close");
-                icon.removeClass("glyphicon-folder-open");
-            }
-        });
     };
 
     this.showIncludedTests = function (path) {
