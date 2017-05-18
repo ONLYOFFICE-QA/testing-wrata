@@ -366,11 +366,10 @@ function Runner() {
 
     this.pullProjectsAndFillTests = function() {
         showSectionOverlay();
-        _self.showBranchesList();
-        _self.showTestsView();
+        _self.fetchBranchesAndShowFiles();
     };
 
-    this.showBranchesList = function() {
+    this.fetchBranchesAndShowFiles = function() {
         $.ajax({
             url: 'runner/branches',
             context: this,
@@ -379,6 +378,7 @@ function Runner() {
             success: function (data) {
                 _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
                 _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
+                _self.showTestsView();
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
@@ -561,7 +561,6 @@ function Runner() {
                 _self.selectProject(data.project);
                 _self.selectBranch(data.branch);
                 _self.changeBranch();
-//                _self.showTestsView();
                 _self.setEventToOpenFile($('.file-folder'));
                 _self.setEventToDeleteFolderFromList();
                 _self.setEventToDeleteTestFromList();

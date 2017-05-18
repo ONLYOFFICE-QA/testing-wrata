@@ -1,8 +1,10 @@
 <% def show_file_tree(tree, project) %>
+    <% ignored = ['.idea'] %>
     <% if tree.class == Hash && tree.has_key?(:children) %>
+        <% return if ignored.include?(tree[:data]) %>
         <div class="folder">
-          <div class="add-button-folder active" data-test="<%= tree[:name] %>" style="">add</div>
-          <div class="folder-name"><i class="glyphicon glyphicon-folder-close"></i><%= tree[:name] %></div>
+          <div class="add-button-folder active" data-test="<%= tree[:path] %>" style="">add</div>
+          <div class="folder-name"><i class="glyphicon glyphicon-folder-close"></i><%= tree[:data] %></div>
           <div class="folder-inside" style="display: none">
             <% tree[:children].each do |current_child| %>
                 <% if current_child.class == Hash && current_child.has_key?(:children) %>
@@ -11,7 +13,7 @@
                     <% unless current_child.has_key?(:children) %>
                         <% child_name = current_child[:name] %>
                         <div class="file">
-                          <div class="add-button-file active" data-test="<%= current_child[:name] %>" project="<%= project %>" style="">add</div>
+                          <div class="add-button-file active" data-test="<%= current_child[:path] %>" style="">add</div>
                           <div class="file-name"><i class="glyphicon glyphicon-file"></i><%= child_name %>
                             <i class="add-file glyphicon glyphicon-plus-sign"></i></div>
                         </div>
@@ -30,26 +32,26 @@
 <% if @client %>
     <% if @client.project == 'docs' %>
         <div class="tab-pane active" id="docs">
-          <% show_file_tree(directory_hash(Rails.application.config.github_projects[1])[:children], :docs) %>
+          <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
         </div>
         <div class="tab-pane" id="teamlab">
-          <% show_file_tree(directory_hash(Rails.application.config.github_projects[0])[:children], :tm) %>
+          <% show_file_tree(directory_hash(TEAMLAB_PROJECT_PATH)[:children], :tm) %>
         </div>
     <% end %>
     <% if @client.project == 'teamlab' %>
         <div class="tab-pane" id="docs">
-          <% show_file_tree(directory_hash(Rails.application.config.github_projects[1])[:children], :docs) %>
+          <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
         </div>
         <div class="tab-pane active" id="teamlab">
-          <% show_file_tree(directory_hash(Rails.application.config.github_projects[0])[:children], :tm) %>
+          <% show_file_tree(directory_hash(TEAMLAB_PROJECT_PATH)[:children], :tm) %>
         </div>
     <% end %>
 
 <% else %>
     <div class="tab-pane <%= check_active('docs') %>" id="docs">
-      <% show_file_tree(directory_hash(Rails.application.config.github_projects[1])[:children], :docs) %>
+      <% show_file_tree(directory_hash(DOCS_PROJECT_PATH)[:children], :docs) %>
     </div>
     <div class="tab-pane <%= check_active('teamlab') %>" id="teamlab">
-      <% show_file_tree(directory_hash(Rails.application.config.github_projects[0])[:children], :tm) %>
+      <% show_file_tree(directory_hash(TEAMLAB_PROJECT_PATH)[:children], :tm) %>
     </div>
 <% end %>
