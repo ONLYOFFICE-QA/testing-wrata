@@ -282,7 +282,7 @@ function Runner() {
 
     this.eventToAddTestInQueue = function(elem) {
         elem.on('click', function(){
-            _self.addTestInQueue($(this).attr('data-test'), _self.getBranch(), $('li.active .region').val());
+            _self.addTestInQueue($(this).attr('full-path'), _self.getBranch(), $('li.active .region').val());
             getUpdatedDataFromServer();
             imitateHover($('.test-node :first'));
         });
@@ -291,7 +291,7 @@ function Runner() {
     this.addFolderInQueue = function(folder_elem) {
         var tests = [];
         folder_elem.find('.add-button-file').each(function(){
-            tests.push($(this).attr('data-test'));
+            tests.push($(this).attr('full-path'));
         });
         if (tests.length !== 0) {
             var branch = _self.getBranch();
@@ -342,13 +342,15 @@ function Runner() {
             type: 'GET',
             success: function (data) {
                 var trimmed_data = trim_data(data);
-                $(".tests-block .tab-content").html(trimmed_data);
+                var fileTab = $(".tests-block .tab-content")
+                fileTab.html(trimmed_data);
                 _self.setEventToOpenFolder();
                 _self.eventToOpenFileInclude();
                 _self.eventToAddFile();
                 _self.selectProject(project);
                 _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
                 _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
+                addFullPaths(fileTab, project)
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -652,11 +654,11 @@ function Runner() {
 
     this.eventToOpenFileInclude = function () {
         $(".folder .glyphicon-file").on('click', function () {
-            if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('data-test'))) {
+            if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('full-path'))) {
                 showInfoAlert('File already added to sidebar! Delete him or choose another!');
             }
             else {
-                var path = $(this).parent().parent().find('.add-button-file').attr('data-test');
+                var path = $(this).parent().parent().find('.add-button-file').attr('full-path');
                 myRunner.showIncludedTests(path);
             }
         });
@@ -674,7 +676,7 @@ function Runner() {
         _self.makeAllAddButtonsVisible();
         var added_files = _self.getListSidebarFiles();
         $(".tab-content .file-name").each(function () {
-            var cur_file = $(this).parent().find('.add-button-file').attr('data-test');
+            var cur_file = $(this).parent().find('.add-button-file').attr('full-path');
             if (jQuery.inArray(cur_file, added_files) != -1) {
                 $(this).find('i.add-file').css('display', 'none');
             }
@@ -771,7 +773,7 @@ function Runner() {
             $("#sidebar-test-list").append(folder);
             _self.setEventToOpenFile(folder);
             _self.setEventToDeleteFolderFromList();
-            $('*[data-test="' + file_path + '"]').parent().find('i.add-file').hide();
+            $('*[full-path="' + file_path + '"]').parent().find('i.add-file').hide();
             addSortableToElem(folder.find('.stroke-list'));
         }
         _self.setEventToDeleteTestFromList();
@@ -785,7 +787,7 @@ function Runner() {
     this.addFileToSidebar = function (icon) {
         var file_name = icon.parent();
         var text = file_name.text();
-        var path = file_name.parent().find('.add-button-file').attr('data-test');
+        var path = file_name.parent().find('.add-button-file').attr('full-path');
         var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + text + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + text + "</span></div>";
         var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
         $("#sidebar-test-list").append(folder);
@@ -852,7 +854,7 @@ function Runner() {
                 var folder = stroke_elem.parent().parent().parent();
                 var path = folder.find('.file-name').attr('data-qtip');
                 $('.tab-pane .add-button-file').each(function () {
-                    var current_path = $(this).attr('data-test');
+                    var current_path = $(this).attr('full-path');
                     if (current_path == path) {
                         $(this).parent().find('i.add-file').css('display', 'inline-block');
                     }
@@ -901,7 +903,7 @@ function Runner() {
                 $('.tab-content i.add-file').each(function () {
                     var display = $(this).css('display');
                     if (display == 'none') {
-                        var current_path = $(this).parent().parent().find('.add-button-file').attr('data-test');
+                        var current_path = $(this).parent().parent().find('.add-button-file').attr('full-path');
                         if (current_path == path) {
                             $(this).css('display', 'inline-block');
                         }
