@@ -45,7 +45,7 @@ function renderFileTree(project, ref) {
         success: function (data) {
             var dataJson = JSON.parse(data);
             var html_data = htmlFileTree(dataJson);
-            var fileTab = $(".tests-block .tab-content .tab-pane");
+            var fileTab = $(".tests-block .tab-content")
             fileTab.html(html_data);
             setEventToOpenFolder();
         },
