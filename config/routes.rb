@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get 'runner/start_list'
   get 'runner/show_servers'
   get 'runner/show_tests'
-  get 'runner/show_subtests'
   get 'runner/load_test_list'
   get 'runner/change_branch'
   get 'runner/updated_data'

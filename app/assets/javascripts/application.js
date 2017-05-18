@@ -345,7 +345,6 @@ function Runner() {
                 var fileTab = $(".tests-block .tab-content")
                 fileTab.html(trimmed_data);
                 setEventToOpenFolder();
-                _self.eventToOpenFileInclude();
                 _self.eventToAddFile();
                 _self.selectProject(project);
                 _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
@@ -608,52 +607,6 @@ function Runner() {
 
     };
 
-    this.showIncludedTests = function (path) {
-        $.ajax({
-            url: 'runner/show_subtests',
-            data: { filePath: path },
-            context: this,
-            type: 'GET',
-            success: function (data) {
-                $('.popup-overlay').css("display", "block");
-                $("#popup").find(".wrap").html(data);
-                stopPropagation($('.viewer'));
-                _self.setEventToCloseTestsList();
-                $("#tests-list").slimScroll({
-                    height: '100%',
-                    width: '780px'
-                });
-                _self.setEventToAddToList($(".add-test"));
-                $('#add-all').on('click', function () {
-                    _self.addAllTests();
-                });
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.eventToOpenFileInclude = function () {
-        $(".folder .glyphicon-file").on('click', function () {
-            if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('full-path'))) {
-                showInfoAlert('File already added to sidebar! Delete him or choose another!');
-            }
-            else {
-                var path = $(this).parent().parent().find('.add-button-file').attr('full-path');
-                myRunner.showIncludedTests(path);
-            }
-        });
-    };
-
-    this.checkAddedOnSidebar = function (file_path) {
-        var already_add = false;
-        if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() !== 0) {
-            already_add = true;
-        }
-        return already_add;
-    };
-
     this.checkAllAddedOnSidebar = function () {
         _self.makeAllAddButtonsVisible();
         var added_files = _self.getListSidebarFiles();
@@ -702,22 +655,6 @@ function Runner() {
         elem.removeClass('added-test');
         elem.addClass('glyphicon glyphicon-plus-sign');
 //        elem.removeClass('icon-minus-sign');
-    };
-
-    this.setEventToCloseTestsList = function () {
-        $(".close-list-button").on('click', function () {
-            $('.popup-overlay').fadeOut();
-        });
-        $('.popup-overlay').on('click', function () {
-            $(this).fadeOut();
-        });
-    };
-
-    this.addAllTests = function () {
-        $('.subtest-row i.add-test').each(function () {
-            _self.addTestToList($(this));
-        });
-        openSidebar();
     };
 
     this.addTestToList = function (icon_add) {

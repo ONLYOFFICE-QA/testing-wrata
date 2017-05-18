@@ -55,12 +55,6 @@ class RunnerController < ApplicationController
     render layout: false
   end
 
-  def show_subtests
-    @file_path = params['filePath']
-
-    render layout: false
-  end
-
   def save_list
     test_list_hash = params['test_list']
     branch = params['branch']
