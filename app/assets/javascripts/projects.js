@@ -4,6 +4,8 @@
 
 function eventOnChangeProject() {
     $('.nav.nav-tabs li').on('click', function () {
-        renderFileTree();
+        setTimeout(function() {
+            renderFileTree();
+        }, 100);
     });
 }
