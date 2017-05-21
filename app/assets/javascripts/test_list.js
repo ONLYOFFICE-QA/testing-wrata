@@ -13,16 +13,18 @@ function fullPathForFile(file) {
 }
 
 function addFullPaths(root_folder) {
+    var project_folder = projectFolder();
     root_folder.find('.add-button-file').each(function () {
-        $(this).attr('full-path', '~/RubymineProjects/' + projectFolder($(this)) + '/' + fullPathForFile($(this)));
+        $(this).attr('full-path', '~/RubymineProjects/' + project_folder + '/' + fullPathForFile($(this)));
     });
 }
 
-function projectFolder(object) {
-    if (object.attr('project') == 'docs') {
+function projectFolder() {
+    var project = activeProject();
+    if (project == 'ONLYOFFICE/testing-documentserver') {
         return 'OnlineDocuments';
     }
-    else if (object.attr('project') == 'tm') {
+    if (project == 'ONLYOFFICE/testing-onlyoffice') {
         return 'TeamLab';
     }
     else {
