@@ -237,34 +237,6 @@ function Runner() {
         return tests;
     };
 
-    this.eventToAddTestInQueue = function(elem) {
-        elem.on('click', function(){
-            addTestInQueue($(this).attr('full-path'), _self.getBranch(), $('li.active .region').val());
-            getUpdatedDataFromServer();
-            imitateHover($('.test-node :first'));
-        });
-    };
-
-    this.addFolderInQueue = function(folder_elem) {
-        var tests = [];
-        folder_elem.find('.add-button-file').each(function(){
-            tests.push($(this).attr('full-path'));
-        });
-        if (tests.length !== 0) {
-            var branch = _self.getBranch();
-            var location = $('li.active .region').val();
-            addTestsInQueue(tests, branch, location);
-        }
-
-    };
-
-    this.eventToAddFolderInQueue = function(folder_elem) {
-        folder_elem.on('click', function(){
-            _self.addFolderInQueue($(this).parent());
-            getUpdatedDataFromServer();
-        });
-    };
-
     this.showServers = function () {
         $.ajax({
             url: 'runner/show_servers',
@@ -304,8 +276,8 @@ function Runner() {
                 setEventToOpenFolder();
                 eventToAddFile();
                 selectProject(project);
-                _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
-                _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
+                eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
+                eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
                 addFullPaths(fileTab)
             },
             error: function (xhr, type, errorThrown) {
