@@ -33,18 +33,6 @@ class RunnerController < ApplicationController
     render plain: file_tree.to_json
   end
 
-  def change_branch
-    branch = params['branch']
-    project = params['project'].to_sym
-    if project == :docs
-      change_project_branch(DOCS_PROJECT_PATH, branch)
-    elsif project == :teamlab
-      change_project_branch(TEAMLAB_PROJECT_PATH, branch)
-    end
-
-    render body: nil
-  end
-
   def show_servers
     @servers = Runner::Application.config.threads.all_servers_from_threads
 

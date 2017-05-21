@@ -1,13 +1,5 @@
 # Stuff for working with git
 module GitHelper
-  # Change branch in directory
-  # @param dir [String] directory with repo
-  # @param branch [String] branch to set
-  # @return [String] result of command
-  def change_project_branch(dir, branch)
-    `cd #{dir}; git checkout -f #{branch}; git pull;`
-  end
-
   # List all branches in github repo
   # @param github_repo [String] repo to get branches
   # @return [Array, String] result of cleanup
@@ -22,15 +14,6 @@ module GitHelper
   # @return [Array, String] list of tags
   def get_tags(github_repo)
     Rails.application.config.github_helper.tags(github_repo)
-  end
-
-  # Get list of branches in project
-  # @param project_path [String] path to project
-  # @return [Array, String] list of branches
-  def get_branches(project_path)
-    system_message = `cd #{project_path}; git pull -q --prune; git checkout develop -qf; git branch -a`
-    system_message.delete!('* ')
-    system_message.split("\n")
   end
 
   private
