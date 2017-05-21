@@ -292,7 +292,7 @@ function Runner() {
     };
 
     this.showTestsView = function () {
-        var project = _self.getCurrentProject();
+        var project = getCurrentProject();
         $.ajax({
             url: 'runner/show_tests',
             context: this,
@@ -366,9 +366,9 @@ function Runner() {
             context: this,
             type: 'POST',
             data: {
-                'test_list': this.getTestList(),
-                'branch': this.getCurrentBranch(),
-                'project': this.getCurrentProject()
+                'test_list': getTestList(),
+                'branch': getCurrentBranch(),
+                'project': getCurrentProject()
             },
             beforeSend: function () {
                 showOverlay('Saving...');
@@ -388,14 +388,6 @@ function Runner() {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
-    };
-
-    this.getCurrentBranch = function () {
-        return $('.active select.branch option:selected').val();
-    };
-
-    this.getCurrentProject = function () {
-        return $('.tab-pane.active').attr('id');
     };
 
     this.appendListDropdownMenu = function (list_menu) {
@@ -439,7 +431,7 @@ function Runner() {
     };
 
     this.changeBranch = function () {
-        var project = _self.getCurrentProject();
+        var project = getCurrentProject();
         $.ajax({
             url: 'runner/change_branch',
             context: this,
@@ -447,7 +439,7 @@ function Runner() {
             type: 'GET',
             data: {
                 'project': project,
-                'branch': _self.getCurrentBranch()
+                'branch': getCurrentBranch()
             },
             beforeSend: function () {
                 showSectionOverlay();
@@ -566,19 +558,13 @@ function Runner() {
     };
 
     this.checkAllAddedOnSidebar = function () {
-        _self.makeAllAddButtonsVisible();
+        makeAllAddButtonsVisible();
         var added_files = _self.getListSidebarFiles();
         $(".tab-content .file-name").each(function () {
             var cur_file = $(this).parent().find('.add-button-file').attr('full-path');
             if (jQuery.inArray(cur_file, added_files) != -1) {
                 $(this).find('i.add-file').css('display', 'none');
             }
-        });
-    };
-
-    this.makeAllAddButtonsVisible = function () {
-        $('.tab-content i.add-file').each(function () {
-            $(this).css('display', 'inline-block');
         });
     };
 
@@ -780,25 +766,6 @@ function Runner() {
         });
     };
 
-    this.getTestList = function () {
-        var name = $('#list-name').text();
-        var file_selectors = $('.file-folder');
-        var file_tests = getTestFiles(file_selectors);
-        var file_list = {};                        //
-        file_list.name = name;             //LIKE
-        file_list.file_tests = file_tests;      //HASH
-        return file_list;                          //
-    };
-
-    this.createNewList = function () {
-        $("#sidebar-test-list").html("");
-        $("#list-name").text("New Test List");
-        hideStartPanel();
-        unlockInactiveTab();
-        unlockActiveBranchSelect();
-        _self.makeAllAddButtonsVisible();
-    };
-
     this.eventToSlimScrollLog = function (log) {
         log.slimScroll({
             height:'80px'
@@ -991,7 +958,7 @@ $(function () {
         }
         else {
             openSidebar();
-            myRunner.createNewList();
+            createNewList();
         }
     });
 
