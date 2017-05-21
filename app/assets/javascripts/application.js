@@ -302,7 +302,7 @@ function Runner() {
             success: function (data) {
                 _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
                 _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
-                _self.showTestsView();
+                renderFileTree();
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
@@ -397,39 +397,9 @@ function Runner() {
         });
     };
 
-    this.changeBranch = function () {
-        var project = getCurrentProject();
-        $.ajax({
-            url: 'runner/change_branch',
-            context: this,
-            async: true,
-            type: 'GET',
-            data: {
-                'project': project,
-                'branch': getCurrentBranch()
-            },
-            beforeSend: function () {
-                showSectionOverlay();
-            },
-            success: function () {
-                var startIcon = $(".active .start-icon");
-                startIcon.parent().removeClass('with-start');
-                _self.showTestsView();
-                bootbox.alert({
-                    message: "Branch or Tag was successful changed",
-                    backdrop: true
-                });
-                hideSectionOverlay();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
     this.setEventChangeBranch = function () {
         $('li select.branch').change(function () {
-            _self.changeBranch();
+            renderFileTree();
         });
     };
 
@@ -476,7 +446,7 @@ function Runner() {
                 $("#sidebar-test-list").html(data.html);
                 selectProject(data.project);
                 _self.selectBranch(data.branch);
-                _self.changeBranch();
+                renderFileTree();
                 setEventToOpenFile($('.file-folder'));
                 setEventToDeleteFolderFromList();
                 setEventToDeleteTestFromList();

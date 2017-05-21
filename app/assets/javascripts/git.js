@@ -28,5 +28,4 @@ function selectProject(project) {
             docsTab.removeClass('active');
         }
     });
-
-};
+}

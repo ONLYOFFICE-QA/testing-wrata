@@ -29,6 +29,12 @@ function htmlFileTree(treeNode) {
 }
 
 function renderFileTree(project, ref) {
+    if (project === undefined) {
+        project = activeProject();
+    }
+    if (ref === undefined) {
+        ref = getCurrentBranch();
+    }
     $.ajax({
         url: 'runner/file_tree',
         type: 'GET',
@@ -45,17 +51,27 @@ function renderFileTree(project, ref) {
         success: function (data) {
             var dataJson = JSON.parse(data);
             var html_data = htmlFileTree(dataJson);
-            var fileTab = $(".tests-block .tab-content")
+            var fileTab = $(".tests-block .tab-content .tab-pane.active")
             fileTab.html(html_data);
             setEventToOpenFolder();
             eventToAddFile();
             selectProject(project);
-            eventToAddTestInQueue(html_data.find('.add-button-file'));
-            eventToAddFolderInQueue(html_data.find('.add-button-folder'));
+            eventToAddTestInQueue(fileTab.find('.add-button-file'));
+            eventToAddFolderInQueue(fileTab.find('.add-button-folder'));
             addFullPaths(fileTab);
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
+}
+
+function activeProject() {
+    var tab_id = getCurrentProject()
+    if (tab_id == 'docs') {
+        return 'ONLYOFFICE/testing-documentserver'
+    }
+    if (tab_id == 'teamalb') {
+        return 'ONLYOFFICE/testing-onlyoffice'
+    }
 }
