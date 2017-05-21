@@ -302,8 +302,8 @@ function Runner() {
                 var fileTab = $(".tests-block .tab-content")
                 fileTab.html(trimmed_data);
                 setEventToOpenFolder();
-                _self.eventToAddFile();
-                _self.selectProject(project);
+                eventToAddFile();
+                selectProject(project);
                 _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
                 _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
                 addFullPaths(fileTab)
@@ -506,7 +506,7 @@ function Runner() {
             },
             success: function (data) {
                 $("#sidebar-test-list").html(data.html);
-                _self.selectProject(data.project);
+                selectProject(data.project);
                 _self.selectBranch(data.branch);
                 _self.changeBranch();
                 setEventToOpenFile($('.file-folder'));
@@ -533,27 +533,6 @@ function Runner() {
             return $(this).html() == branch;
         }).prop('selected', true);
 //        $("li.active select.branch :contains('" + branch + "')").prop('selected', true);      jg
-    };
-
-    this.selectProject = function (project) {
-        var docsTab = $('div#docs');
-        var tmTab = $('div#teamlab');
-        var currentActive = $('.nav-tabs li.active');
-        $('.nav.nav-tabs a').each(function () {
-            if ((project == 'docs') && ($(this).attr('href') == '#docs')) {
-                currentActive.removeClass('active');
-                $(this).parent().addClass('active');
-                docsTab.addClass('active');
-                tmTab.removeClass('active');
-            }
-            if ((project == 'teamlab') && ($(this).attr('href') == '#teamlab')) {
-                currentActive.removeClass('active');
-                $(this).parent().addClass('active');
-                tmTab.addClass('active');
-                docsTab.removeClass('active');
-            }
-        });
-
     };
 
     this.checkAllAddedOnSidebar = function () {
@@ -584,29 +563,6 @@ function Runner() {
             server_content.slideToggle();
         });
         stopPropagation(header.find('div.button'));
-    };
-
-    this.addFileToSidebar = function (icon) {
-        var file_name = icon.parent();
-        var text = file_name.text();
-        var path = file_name.parent().find('.add-button-file').attr('full-path');
-        var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + text + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + text + "</span></div>";
-        var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
-        $("#sidebar-test-list").append(folder);
-        setEventToDeleteFolderFromList();
-        icon.css('display', 'none');
-        showStartPanel();
-        openSidebar();
-        lockInactiveTab();
-        lockActiveBranchSelect();
-    };
-
-    this.eventToAddFile = function () {
-        var icons = $('.tab-content i.add-file');
-        offEventsOnElem(icons);
-        icons.on('click', function () {
-            _self.addFileToSidebar($(this));
-        });
     };
 
     this.eventToOpenLogBySelector = function (opener_selector) {

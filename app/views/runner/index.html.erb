@@ -22,9 +22,9 @@
             myRunner.eventToAddTestsFromSidebar($('#add-list'));
             <% client = current_client %>
             <% if client %>
-            myRunner.selectProject('<%= client.project %>');
+            selectProject('<%= client.project %>');
             <% else %>
-            myRunner.selectProject('docs');
+            selectProject('docs');
             <% end %>
         };
     </script>
