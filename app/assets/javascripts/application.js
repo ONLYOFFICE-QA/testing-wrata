@@ -81,7 +81,6 @@ function trim_data(data) {
 }
 
 function Runner() {
-    const SIDE_MAX_TEST_LENGTH = 40;
     var _self = this;
     var testListUpdating = false;
 
@@ -510,9 +509,9 @@ function Runner() {
                 _self.selectProject(data.project);
                 _self.selectBranch(data.branch);
                 _self.changeBranch();
-                _self.setEventToOpenFile($('.file-folder'));
-                _self.setEventToDeleteFolderFromList();
-                _self.setEventToDeleteTestFromList();
+                setEventToOpenFile($('.file-folder'));
+                setEventToDeleteFolderFromList();
+                setEventToDeleteTestFromList();
                 _self.checkAllAddedOnSidebar();
                 addSortableToElem($('.stroke-list'));
                 openSidebar();
@@ -587,52 +586,6 @@ function Runner() {
         stopPropagation(header.find('div.button'));
     };
 
-    this.addTestToList = function (icon_add) {
-        var file_name = $("#test_file_name").text();
-        var file_path = $("#test_file_name").attr('data-qtip');
-        var it_name = icon_add.next(".test-name").text();
-        var file_added = false;
-        var cut_it_name = HtmlEncode(it_name);
-        var textSize = it_name.length;
-        var stroke_number = icon_add.next(".test-name").attr('data-role');
-
-        if (textSize > SIDE_MAX_TEST_LENGTH) {
-            cut_it_name = it_name.substr(0, SIDE_MAX_TEST_LENGTH) + '...';
-        }
-
-        var stroke = "<div class='name shower' data-qtip=\"" + it_name + "\" data-role='" + stroke_number + "'>" +
-            "<div class='text-name'>" + cut_it_name + "</div>" +
-            "<i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + HtmlDecode(it_name) + "</span>" +
-            "</div>";
-
-        $('#sidebar-test-list').find('.file-name').each(function () {
-            if ($(this).attr('data-qtip') == file_path) {
-                file_added = true;
-                $(this).next().children('.stroke-list').
-                    css('display', 'block').
-                    append(stroke);
-            }
-        });
-        if (file_added === false) {
-            var stroke_list = "<div class='stroke-list'>" + stroke + "</div>";
-            var file_inside = "<div class='file-inside'>" + stroke_list + "</div>";
-            var file_name_elem = "<div class='file-name shower' data-qtip='" + file_path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + file_name + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + file_name + "</span></div>";
-            var folder = $("<div class='file-folder'>" + file_name_elem + file_inside + "</div>");
-
-            $("#sidebar-test-list").append(folder);
-            _self.setEventToOpenFile(folder);
-            _self.setEventToDeleteFolderFromList();
-            $('*[full-path="' + file_path + '"]').parent().find('i.add-file').hide();
-            addSortableToElem(folder.find('.stroke-list'));
-        }
-        _self.setEventToDeleteTestFromList();
-        setIconToAdded(icon_add);
-        showStartPanel();
-        icon_add.off("click");
-        lockInactiveTab();
-        lockActiveBranchSelect();
-    };
-
     this.addFileToSidebar = function (icon) {
         var file_name = icon.parent();
         var text = file_name.text();
@@ -640,7 +593,7 @@ function Runner() {
         var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + text + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + text + "</span></div>";
         var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
         $("#sidebar-test-list").append(folder);
-        _self.setEventToDeleteFolderFromList();
+        setEventToDeleteFolderFromList();
         icon.css('display', 'none');
         showStartPanel();
         openSidebar();
@@ -656,69 +609,6 @@ function Runner() {
         });
     };
 
-    this.setEventToAddToList = function (element) {
-        $(element).on('click', function () {
-            _self.addTestToList($(this));
-            openSidebar();
-            var path = $('#test_file_name').attr('data-qtip');
-            $('.tab-pane.active input').each(function () {
-                var current_path = $(this).attr('id');
-                if (current_path == path) {
-                    $(this).parent().find('i.add-file').css('display', 'none');
-                }
-            });
-        });
-    };
-
-    this.setEventToOpenFile = function (element) {
-        element.find(".glyphicon glyphicon-chevron-down").on('click', function () {
-            // var elem = $(this).next(); //$('#idtest').is(':visible')
-            var inside = element.find(".file-inside");
-            var currentDisplay = inside.css("display");
-            if (currentDisplay == "none") {
-                inside.slideDown();
-            }
-            else {
-                inside.slideUp();
-            }
-        });
-    };
-
-    this.setEventToDeleteTestFromList = function () {
-        var text = "";
-        var stroke = "";
-        $(".name .glyphicon-remove").on('click', function () {
-            var stroke_elem = $(this).parent();
-            text = stroke_elem.attr('data-qtip');
-            stroke = stroke_elem.attr('data-role');
-            $(".subtest-row .test-name").each(function () {
-                if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
-                    var icon = $(this).prev('.added-test');
-                    setIconToAdd(icon);
-                    _self.setEventToAddToList(icon);
-                }
-            });
-            var stroke_size = stroke_elem.parent().children().length;
-            if (stroke_size == 1) {
-                var folder = stroke_elem.parent().parent().parent();
-                var path = folder.find('.file-name').attr('data-qtip');
-                $('.tab-pane .add-button-file').each(function () {
-                    var current_path = $(this).attr('full-path');
-                    if (current_path == path) {
-                        $(this).parent().find('i.add-file').css('display', 'inline-block');
-                    }
-                });
-                folder.remove();
-            }
-            else {
-                stroke_elem.remove();
-            }
-            hideStartPanel();
-            unlockInactiveTab();
-            unlockActiveBranchSelect();
-        });
-    };
-
     this.eventToOpenLogBySelector = function (opener_selector) {
         $(opener_selector).on('click', function () {
             var opener_index = $(opener_selector).index($(this));
@@ -729,40 +619,6 @@ function Runner() {
                 fetch_server_log(server_name);
             }
             $('.log-window').eq(opener_index).slideToggle();
-        });
-    };
-
-    this.setEventToDeleteFolderFromList = function () {
-        $(".file-name .glyphicon-remove").on('click', function () {
-            if ($('#popup').is(':visible')) {
-                $(this).parent().next().children().children().each(function () {
-                    var text = $(this).attr('data-qtip');
-                    var stroke = $(this).attr('data-role');
-                    $(".subtest-row .test-name").each(function () {
-                        if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
-                            var icon = $(this).prev('.added-test');
-                            setIconToAdd(icon);
-                            _self.setEventToAddToList(icon);
-                        }
-                    });
-                });
-            }
-            else {
-                var path = $(this).parent().attr('data-qtip');
-                $('.tab-content i.add-file').each(function () {
-                    var display = $(this).css('display');
-                    if (display == 'none') {
-                        var current_path = $(this).parent().parent().find('.add-button-file').attr('full-path');
-                        if (current_path == path) {
-                            $(this).css('display', 'inline-block');
-                        }
-                    }
-                });
-            }
-            $(this).parent().parent().remove();
-            hideStartPanel();
-            unlockInactiveTab();
-            unlockActiveBranchSelect();
         });
     };
 
