@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_github_helper
-  revision: c93bc9792dfccef846cb82eeee39a3960b5378af
+  revision: e74183c68ab84e4e5c9a6cca273cb59d65748e49
   specs:
     onlyoffice_github_helper (0.0.1)
       octokit (~> 4)
