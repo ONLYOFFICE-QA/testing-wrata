@@ -16,7 +16,12 @@ function htmlFileTree(treeNode) {
         }
         resultHtml += '</div>';
         resultHtml += '</div>';
-    } else {
+    } else if (treeNode.constructor === Array) {
+        for (var i = 0, len = treeNode.length; i < len; i++) {
+            resultHtml += htmlFileTree(treeNode[i]);
+        }
+    }
+    else {
         resultHtml += '<div class="file">';
         resultHtml += '<div class="add-button-file active" data-test="' + name + '" style="">add</div>';
         resultHtml += '<div class="file-name">';
@@ -50,7 +55,7 @@ function renderFileTree(project, ref) {
         },
         success: function (data) {
             var dataJson = JSON.parse(data);
-            var html_data = htmlFileTree(dataJson);
+            var html_data = htmlFileTree(dataJson.children);
             var fileTab = $(".tests-block .tab-content .tab-pane.active")
             fileTab.html(html_data);
             setEventToOpenFolder();
@@ -64,6 +69,11 @@ function renderFileTree(project, ref) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
+}
+
+function removeRootFolder(fileTab) {
+    var objectsToMove = fileTab.find('.folder-inside')[0];
+    objectsToMove.insertAfter('#div3');
 }
 
 function activeProject() {
