@@ -8,7 +8,7 @@ function htmlFileTree(treeNode) {
     if ('children' in treeNode) {
         var children = treeNode.children;
         resultHtml += '<div class="folder">';
-        resultHtml += '<div class="add-button-folder active" data-test="' + name + ' style="">add</div>';
+        resultHtml += '<div class="add-button-folder active" data-test="' + name + '" style="">add</div>';
         resultHtml += '<div class="folder-name"><i class="glyphicon glyphicon-folder-close"></i>' + name + "</div>";
         resultHtml += '<div class="folder-inside" style="display: none">';
         for (var i = 0, len = children.length; i < len; i++) {
