@@ -220,54 +220,12 @@ function Runner() {
         });
     };
 
-    this.addTestInQueue = function(test_path, branch, location) {
-        $.ajax({
-            url: 'queue/add_test',
-            context: this,
-            async: false,
-            data: {
-                'test_path': test_path,
-                'branch': branch,
-                'location': location,
-                'spec_language': getSpecLanguage()
-            },
-            type: 'POST',
-            success: function () {
-
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.addTestsInQueue = function(test_path_array, branch, location) {
-        $.ajax({
-            url: 'queue/add_test',
-            context: this,
-            async: false,
-            data: {
-                'test_path': test_path_array,
-                'branch': branch,
-                'location': location,
-                'spec_language': getSpecLanguage()
-            },
-            type: 'POST',
-            success: function () {
-
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
     this.eventToAddTestsFromSidebar = function(elem) {
         elem.on('click', function(){
             var tests = _self.getTestPathsFromSidebar();
             var branch = _self.getBranch();
             var location = $('#list-region').val();
-            _self.addTestsInQueue(tests, branch, location);
+            addTestsInQueue(tests, branch, location);
             getUpdatedDataFromServer();
         });
     };
@@ -282,7 +240,7 @@ function Runner() {
 
     this.eventToAddTestInQueue = function(elem) {
         elem.on('click', function(){
-            _self.addTestInQueue($(this).attr('full-path'), _self.getBranch(), $('li.active .region').val());
+            addTestInQueue($(this).attr('full-path'), _self.getBranch(), $('li.active .region').val());
             getUpdatedDataFromServer();
             imitateHover($('.test-node :first'));
         });
@@ -296,7 +254,7 @@ function Runner() {
         if (tests.length !== 0) {
             var branch = _self.getBranch();
             var location = $('li.active .region').val();
-            _self.addTestsInQueue(tests, branch, location);
+            addTestsInQueue(tests, branch, location);
         }
 
     };
