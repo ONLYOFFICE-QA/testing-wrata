@@ -15,6 +15,7 @@
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
             addAllLanguagesToSelect();
+            eventOnChangeProject();
         });
         window.onload = function () {
             myRunner.pullProjectsAndGetAllView();

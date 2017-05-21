@@ -65,17 +65,12 @@ function renderFileTree(project, ref) {
     });
 }
 
-function removeRootFolder(fileTab) {
-    var objectsToMove = fileTab.find('.folder-inside')[0];
-    objectsToMove.insertAfter('#div3');
-}
-
 function activeProject() {
     var tab_id = getCurrentProject()
     if (tab_id == 'docs') {
         return 'ONLYOFFICE/testing-documentserver'
     }
-    if (tab_id == 'teamalb') {
+    if (tab_id == 'teamlab') {
         return 'ONLYOFFICE/testing-onlyoffice'
     }
 }
