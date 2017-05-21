@@ -48,6 +48,11 @@ function renderFileTree(project, ref) {
             var fileTab = $(".tests-block .tab-content")
             fileTab.html(html_data);
             setEventToOpenFolder();
+            eventToAddFile();
+            selectProject(project);
+            eventToAddTestInQueue(html_data.find('.add-button-file'));
+            eventToAddFolderInQueue(html_data.find('.add-button-folder'));
+            addFullPaths(fileTab);
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
