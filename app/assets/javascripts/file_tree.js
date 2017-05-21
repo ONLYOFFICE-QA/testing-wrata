@@ -47,6 +47,12 @@ function renderFileTree(project, ref) {
             'project': project,
             'refs': ref
         },
+        beforeSend: function () {
+            showSectionOverlay();
+        },
+        complete: function () {
+            hideSectionOverlay();
+        },
         success: function (data) {
             var dataJson = JSON.parse(data);
             var html_data = htmlFileTree(dataJson.children);
