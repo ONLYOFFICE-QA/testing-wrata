@@ -92,10 +92,6 @@ function Runner() {
         }, STATUS.UPDATE_INTERVAL);
     };
 
-    this.getBranch = function () {
-        return $('li.active .branch').val();
-    };
-
     this.showCurrentRspecResult = function (server_name) {
         $.ajax({
             url: 'servers/show_current_results',
@@ -222,7 +218,7 @@ function Runner() {
     this.eventToAddTestsFromSidebar = function(elem) {
         elem.on('click', function(){
             var tests = _self.getTestPathsFromSidebar();
-            var branch = _self.getBranch();
+            var branch = getCurrentBranch();
             var location = $('#list-region').val();
             addTestsInQueue(tests, branch, location);
             getUpdatedDataFromServer();

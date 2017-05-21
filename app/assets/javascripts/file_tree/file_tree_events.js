@@ -21,7 +21,7 @@ function setEventToOpenFolder() {
 
 function eventToAddTestInQueue(elem) {
     elem.on('click', function(){
-        addTestInQueue($(this).attr('full-path'), _self.getBranch(), $('li.active .region').val());
+        addTestInQueue($(this).attr('full-path'), getCurrentBranch(), $('li.active .region').val());
         getUpdatedDataFromServer();
         imitateHover($('.test-node :first'));
     });
@@ -33,7 +33,7 @@ function addFolderInQueue(folder_elem) {
         tests.push($(this).attr('full-path'));
     });
     if (tests.length !== 0) {
-        var branch = _self.getBranch();
+        var branch = getCurrentBranch();
         var location = $('li.active .region').val();
         addTestsInQueue(tests, branch, location);
     }
