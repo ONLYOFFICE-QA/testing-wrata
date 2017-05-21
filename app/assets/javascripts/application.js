@@ -601,20 +601,6 @@ function Runner() {
         stopPropagation(header.find('div.button'));
     };
 
-    this.setIconToAdded = function (elem) {
-        elem.addClass('added-test');
-        elem.removeClass('add-test');
-//        elem.addClass('icon-minus-sign');
-        elem.removeClass('glyphicon glyphicon-plus-sign');
-    };
-
-    this.setIconToAdd = function (elem) {
-        elem.addClass('add-test');
-        elem.removeClass('added-test');
-        elem.addClass('glyphicon glyphicon-plus-sign');
-//        elem.removeClass('icon-minus-sign');
-    };
-
     this.addTestToList = function (icon_add) {
         var file_name = $("#test_file_name").text();
         var file_path = $("#test_file_name").attr('data-qtip');
@@ -654,7 +640,7 @@ function Runner() {
             addSortableToElem(folder.find('.stroke-list'));
         }
         _self.setEventToDeleteTestFromList();
-        _self.setIconToAdded(icon_add);
+        setIconToAdded(icon_add);
         showStartPanel();
         icon_add.off("click");
         lockInactiveTab();
@@ -722,7 +708,7 @@ function Runner() {
             $(".subtest-row .test-name").each(function () {
                 if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
                     var icon = $(this).prev('.added-test');
-                    _self.setIconToAdd(icon);
+                    setIconToAdd(icon);
                     _self.setEventToAddToList(icon);
                 }
             });
@@ -769,7 +755,7 @@ function Runner() {
                     $(".subtest-row .test-name").each(function () {
                         if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
                             var icon = $(this).prev('.added-test');
-                            _self.setIconToAdd(icon);
+                            setIconToAdd(icon);
                             _self.setEventToAddToList(icon);
                         }
                     });
