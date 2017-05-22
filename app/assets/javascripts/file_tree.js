@@ -56,7 +56,7 @@ function renderFileTree(project, ref) {
         success: function (data) {
             var dataJson = JSON.parse(data);
             var html_data = htmlFileTree(dataJson.children);
-            var fileTab = $(".tests-block .tab-content .tab-pane.active")
+            var fileTab = $(".tests-block .tab-content .tab-pane.active");
             fileTab.html(html_data);
             setEventToOpenFolder();
             eventToAddFile();
@@ -72,11 +72,11 @@ function renderFileTree(project, ref) {
 }
 
 function activeProject() {
-    var tab_id = getCurrentProject()
-    if (tab_id == 'docs') {
-        return 'ONLYOFFICE/testing-documentserver'
+    var tabId = getCurrentProject();
+    if (tabId == 'docs') {
+        return 'ONLYOFFICE/testing-documentserver';
     }
-    if (tab_id == 'teamlab') {
-        return 'ONLYOFFICE/testing-onlyoffice'
+    if (tabId == 'teamlab') {
+        return 'ONLYOFFICE/testing-onlyoffice';
     }
 }

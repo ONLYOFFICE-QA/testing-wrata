@@ -45,4 +45,4 @@ function eventToAddFolderInQueue(folder_elem) {
         addFolderInQueue($(this).parent());
         getUpdatedDataFromServer();
     });
-};
+}
