@@ -15,19 +15,6 @@ module RunnerHelper
     data
   end
 
-  def get_subtest_by_path(path_to_test)
-    test_file = File.new(path_to_test)
-    file_tests = []
-    test_file.each_with_index do |line, index|
-      if line =~ /it [\'\"](.*)?[\'\"] do/
-        test_name = line.scan(/it [\'\"](.*?)[\'\"] do/)
-        file_tests << { name: test_name.first.first, stroke: (index + 1) }
-      end
-    end
-    test_file.close
-    file_tests
-  end
-
   def server_booked?(server_name)
     Runner::Application.config.threads.get_thread_by_name(server_name).booked?
   end

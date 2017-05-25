@@ -81,7 +81,6 @@ function trim_data(data) {
 }
 
 function Runner() {
-    const SIDE_MAX_TEST_LENGTH = 40;
     var _self = this;
     var testListUpdating = false;
 
@@ -91,10 +90,6 @@ function Runner() {
                 getUpdatedDataFromServer();
             }
         }, STATUS.UPDATE_INTERVAL);
-    };
-
-    this.getBranch = function () {
-        return $('li.active .branch').val();
     };
 
     this.showCurrentRspecResult = function (server_name) {
@@ -220,54 +215,12 @@ function Runner() {
         });
     };
 
-    this.addTestInQueue = function(test_path, branch, location) {
-        $.ajax({
-            url: 'queue/add_test',
-            context: this,
-            async: false,
-            data: {
-                'test_path': test_path,
-                'branch': branch,
-                'location': location,
-                'spec_language': getSpecLanguage()
-            },
-            type: 'POST',
-            success: function () {
-
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.addTestsInQueue = function(test_path_array, branch, location) {
-        $.ajax({
-            url: 'queue/add_test',
-            context: this,
-            async: false,
-            data: {
-                'test_path': test_path_array,
-                'branch': branch,
-                'location': location,
-                'spec_language': getSpecLanguage()
-            },
-            type: 'POST',
-            success: function () {
-
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
     this.eventToAddTestsFromSidebar = function(elem) {
         elem.on('click', function(){
             var tests = _self.getTestPathsFromSidebar();
-            var branch = _self.getBranch();
+            var branch = getCurrentBranch();
             var location = $('#list-region').val();
-            _self.addTestsInQueue(tests, branch, location);
+            addTestsInQueue(tests, branch, location);
             getUpdatedDataFromServer();
         });
     };
@@ -278,34 +231,6 @@ function Runner() {
                  tests.push($(this).attr('data-qtip'));
         });
         return tests;
-    };
-
-    this.eventToAddTestInQueue = function(elem) {
-        elem.on('click', function(){
-            _self.addTestInQueue($(this).attr('data-test'), _self.getBranch(), $('li.active .region').val());
-            getUpdatedDataFromServer();
-            imitateHover($('.test-node :first'));
-        });
-    };
-
-    this.addFolderInQueue = function(folder_elem) {
-        var tests = [];
-        folder_elem.find('.add-button-file').each(function(){
-            tests.push($(this).attr('data-test'));
-        });
-        if (tests.length !== 0) {
-            var branch = _self.getBranch();
-            var location = $('li.active .region').val();
-            _self.addTestsInQueue(tests, branch, location);
-        }
-
-    };
-
-    this.eventToAddFolderInQueue = function(folder_elem) {
-        folder_elem.on('click', function(){
-            _self.addFolderInQueue($(this).parent());
-            getUpdatedDataFromServer();
-        });
     };
 
     this.showServers = function () {
@@ -334,7 +259,7 @@ function Runner() {
     };
 
     this.showTestsView = function () {
-        var project = _self.getCurrentProject();
+        var project = getCurrentProject();
         $.ajax({
             url: 'runner/show_tests',
             context: this,
@@ -342,13 +267,14 @@ function Runner() {
             type: 'GET',
             success: function (data) {
                 var trimmed_data = trim_data(data);
-                $(".tests-block .tab-content").html(trimmed_data);
-                _self.setEventToOpenFolder();
-                _self.eventToOpenFileInclude();
-                _self.eventToAddFile();
-                _self.selectProject(project);
-                _self.eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
-                _self.eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
+                var fileTab = $(".tests-block .tab-content")
+                fileTab.html(trimmed_data);
+                setEventToOpenFolder();
+                eventToAddFile();
+                selectProject(project);
+                eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
+                eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
+                addFullPaths(fileTab)
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -364,22 +290,10 @@ function Runner() {
 
     this.pullProjectsAndFillTests = function() {
         showSectionOverlay();
-        $.ajax({
-            url: 'runner/pull_projects',
-            context: this,
-            async: true,
-            type: 'GET',
-            success: function() {
-                _self.showBranchesList();
-                _self.showTestsView();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
+        _self.fetchBranchesAndShowFiles();
     };
 
-    this.showBranchesList = function() {
+    this.fetchBranchesAndShowFiles = function() {
         $.ajax({
             url: 'runner/branches',
             context: this,
@@ -388,6 +302,7 @@ function Runner() {
             success: function (data) {
                 _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
                 _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
+                renderFileTree();
                 hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
@@ -418,9 +333,9 @@ function Runner() {
             context: this,
             type: 'POST',
             data: {
-                'test_list': this.getTestList(),
-                'branch': this.getCurrentBranch(),
-                'project': this.getCurrentProject()
+                'test_list': getTestList(),
+                'branch': getCurrentBranch(),
+                'project': getCurrentProject()
             },
             beforeSend: function () {
                 showOverlay('Saving...');
@@ -440,14 +355,6 @@ function Runner() {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
-    };
-
-    this.getCurrentBranch = function () {
-        return $('.active select.branch option:selected').val();
-    };
-
-    this.getCurrentProject = function () {
-        return $('.tab-pane.active').attr('id');
     };
 
     this.appendListDropdownMenu = function (list_menu) {
@@ -490,39 +397,9 @@ function Runner() {
         });
     };
 
-    this.changeBranch = function () {
-        var project = _self.getCurrentProject();
-        $.ajax({
-            url: 'runner/change_branch',
-            context: this,
-            async: true,
-            type: 'GET',
-            data: {
-                'project': project,
-                'branch': _self.getCurrentBranch()
-            },
-            beforeSend: function () {
-                showSectionOverlay();
-            },
-            success: function () {
-                var startIcon = $(".active .start-icon");
-                startIcon.parent().removeClass('with-start');
-                _self.showTestsView();
-                bootbox.alert({
-                    message: "Branch or Tag was successful changed",
-                    backdrop: true
-                });
-                hideSectionOverlay();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
     this.setEventChangeBranch = function () {
         $('li select.branch').change(function () {
-            _self.changeBranch();
+            renderFileTree();
         });
     };
 
@@ -567,13 +444,12 @@ function Runner() {
             },
             success: function (data) {
                 $("#sidebar-test-list").html(data.html);
-                _self.selectProject(data.project);
+                selectProject(data.project);
                 _self.selectBranch(data.branch);
-                _self.changeBranch();
-//                _self.showTestsView();
-                _self.setEventToOpenFile($('.file-folder'));
-                _self.setEventToDeleteFolderFromList();
-                _self.setEventToDeleteTestFromList();
+                renderFileTree();
+                setEventToOpenFile($('.file-folder'));
+                setEventToDeleteFolderFromList();
+                setEventToDeleteTestFromList();
                 _self.checkAllAddedOnSidebar();
                 addSortableToElem($('.stroke-list'));
                 openSidebar();
@@ -597,104 +473,14 @@ function Runner() {
 //        $("li.active select.branch :contains('" + branch + "')").prop('selected', true);      jg
     };
 
-    this.selectProject = function (project) {
-        var docsTab = $('div#docs');
-        var tmTab = $('div#teamlab');
-        var currentActive = $('.nav-tabs li.active');
-        $('.nav.nav-tabs a').each(function () {
-            if ((project == 'docs') && ($(this).attr('href') == '#docs')) {
-                currentActive.removeClass('active');
-                $(this).parent().addClass('active');
-                docsTab.addClass('active');
-                tmTab.removeClass('active');
-            }
-            if ((project == 'teamlab') && ($(this).attr('href') == '#teamlab')) {
-                currentActive.removeClass('active');
-                $(this).parent().addClass('active');
-                tmTab.addClass('active');
-                docsTab.removeClass('active');
-            }
-        });
-
-    };
-
-    this.setEventToOpenFolder = function () {
-        $(".folder-name").on('click', function () {
-            var currentDisplay = $(this).next(".folder-inside").css("display");
-            var icon = $(this).children("i");
-            if (currentDisplay == "none") {
-                $(this).next(".folder-inside").css("display", "block");
-                icon.addClass("glyphicon-folder-open");
-                icon.removeClass("glyphicon-folder-close");
-            }
-            else {
-                $(this).next(".folder-inside").css("display", "none");
-                icon.addClass("glyphicon-folder-close");
-                icon.removeClass("glyphicon-folder-open");
-            }
-        });
-    };
-
-    this.showIncludedTests = function (path) {
-        $.ajax({
-            url: 'runner/show_subtests',
-            data: { filePath: path },
-            context: this,
-            type: 'GET',
-            success: function (data) {
-                $('.popup-overlay').css("display", "block");
-                $("#popup").find(".wrap").html(data);
-                stopPropagation($('.viewer'));
-                _self.setEventToCloseTestsList();
-                $("#tests-list").slimScroll({
-                    height: '100%',
-                    width: '780px'
-                });
-                _self.setEventToAddToList($(".add-test"));
-                $('#add-all').on('click', function () {
-                    _self.addAllTests();
-                });
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
-    this.eventToOpenFileInclude = function () {
-        $(".folder .glyphicon-file").on('click', function () {
-            if (_self.checkAddedOnSidebar($(this).parent().parent().find('.add-button-file').attr('data-test'))) {
-                showInfoAlert('File already added to sidebar! Delete him or choose another!');
-            }
-            else {
-                var path = $(this).parent().parent().find('.add-button-file').attr('data-test');
-                myRunner.showIncludedTests(path);
-            }
-        });
-    };
-
-    this.checkAddedOnSidebar = function (file_path) {
-        var already_add = false;
-        if ($('#sidebar-test-list').find('*[data-qtip="' + file_path + '"]').size() !== 0) {
-            already_add = true;
-        }
-        return already_add;
-    };
-
     this.checkAllAddedOnSidebar = function () {
-        _self.makeAllAddButtonsVisible();
+        makeAllAddButtonsVisible();
         var added_files = _self.getListSidebarFiles();
         $(".tab-content .file-name").each(function () {
-            var cur_file = $(this).parent().find('.add-button-file').attr('data-test');
+            var cur_file = $(this).parent().find('.add-button-file').attr('full-path');
             if (jQuery.inArray(cur_file, added_files) != -1) {
                 $(this).find('i.add-file').css('display', 'none');
             }
-        });
-    };
-
-    this.makeAllAddButtonsVisible = function () {
-        $('.tab-content i.add-file').each(function () {
-            $(this).css('display', 'inline-block');
         });
     };
 
@@ -717,168 +503,6 @@ function Runner() {
         stopPropagation(header.find('div.button'));
     };
 
-    this.setIconToAdded = function (elem) {
-        elem.addClass('added-test');
-        elem.removeClass('add-test');
-//        elem.addClass('icon-minus-sign');
-        elem.removeClass('glyphicon glyphicon-plus-sign');
-    };
-
-    this.setIconToAdd = function (elem) {
-        elem.addClass('add-test');
-        elem.removeClass('added-test');
-        elem.addClass('glyphicon glyphicon-plus-sign');
-//        elem.removeClass('icon-minus-sign');
-    };
-
-    this.setEventToCloseTestsList = function () {
-        $(".close-list-button").on('click', function () {
-            $('.popup-overlay').fadeOut();
-        });
-        $('.popup-overlay').on('click', function () {
-            $(this).fadeOut();
-        });
-    };
-
-    this.addAllTests = function () {
-        $('.subtest-row i.add-test').each(function () {
-            _self.addTestToList($(this));
-        });
-        openSidebar();
-    };
-
-    this.addTestToList = function (icon_add) {
-        var file_name = $("#test_file_name").text();
-        var file_path = $("#test_file_name").attr('data-qtip');
-        var it_name = icon_add.next(".test-name").text();
-        var file_added = false;
-        var cut_it_name = HtmlEncode(it_name);
-        var textSize = it_name.length;
-        var stroke_number = icon_add.next(".test-name").attr('data-role');
-
-        if (textSize > SIDE_MAX_TEST_LENGTH) {
-            cut_it_name = it_name.substr(0, SIDE_MAX_TEST_LENGTH) + '...';
-        }
-
-        var stroke = "<div class='name shower' data-qtip=\"" + it_name + "\" data-role='" + stroke_number + "'>" +
-            "<div class='text-name'>" + cut_it_name + "</div>" +
-            "<i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + HtmlDecode(it_name) + "</span>" +
-            "</div>";
-
-        $('#sidebar-test-list').find('.file-name').each(function () {
-            if ($(this).attr('data-qtip') == file_path) {
-                file_added = true;
-                $(this).next().children('.stroke-list').
-                    css('display', 'block').
-                    append(stroke);
-            }
-        });
-        if (file_added === false) {
-            var stroke_list = "<div class='stroke-list'>" + stroke + "</div>";
-            var file_inside = "<div class='file-inside'>" + stroke_list + "</div>";
-            var file_name_elem = "<div class='file-name shower' data-qtip='" + file_path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + file_name + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + file_name + "</span></div>";
-            var folder = $("<div class='file-folder'>" + file_name_elem + file_inside + "</div>");
-
-            $("#sidebar-test-list").append(folder);
-            _self.setEventToOpenFile(folder);
-            _self.setEventToDeleteFolderFromList();
-            $('*[data-test="' + file_path + '"]').parent().find('i.add-file').hide();
-            addSortableToElem(folder.find('.stroke-list'));
-        }
-        _self.setEventToDeleteTestFromList();
-        _self.setIconToAdded(icon_add);
-        showStartPanel();
-        icon_add.off("click");
-        lockInactiveTab();
-        lockActiveBranchSelect();
-    };
-
-    this.addFileToSidebar = function (icon) {
-        var file_name = icon.parent();
-        var text = file_name.text();
-        var path = file_name.parent().find('.add-button-file').attr('data-test');
-        var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + text + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + text + "</span></div>";
-        var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
-        $("#sidebar-test-list").append(folder);
-        _self.setEventToDeleteFolderFromList();
-        icon.css('display', 'none');
-        showStartPanel();
-        openSidebar();
-        lockInactiveTab();
-        lockActiveBranchSelect();
-    };
-
-    this.eventToAddFile = function () {
-        var icons = $('.tab-content i.add-file');
-        offEventsOnElem(icons);
-        icons.on('click', function () {
-            _self.addFileToSidebar($(this));
-        });
-    };
-
-    this.setEventToAddToList = function (element) {
-        $(element).on('click', function () {
-            _self.addTestToList($(this));
-            openSidebar();
-            var path = $('#test_file_name').attr('data-qtip');
-            $('.tab-pane.active input').each(function () {
-                var current_path = $(this).attr('id');
-                if (current_path == path) {
-                    $(this).parent().find('i.add-file').css('display', 'none');
-                }
-            });
-        });
-    };
-
-    this.setEventToOpenFile = function (element) {
-        element.find(".glyphicon glyphicon-chevron-down").on('click', function () {
-            // var elem = $(this).next(); //$('#idtest').is(':visible')
-            var inside = element.find(".file-inside");
-            var currentDisplay = inside.css("display");
-            if (currentDisplay == "none") {
-                inside.slideDown();
-            }
-            else {
-                inside.slideUp();
-            }
-        });
-    };
-
-    this.setEventToDeleteTestFromList = function () {
-        var text = "";
-        var stroke = "";
-        $(".name .glyphicon-remove").on('click', function () {
-            var stroke_elem = $(this).parent();
-            text = stroke_elem.attr('data-qtip');
-            stroke = stroke_elem.attr('data-role');
-            $(".subtest-row .test-name").each(function () {
-                if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
-                    var icon = $(this).prev('.added-test');
-                    _self.setIconToAdd(icon);
-                    _self.setEventToAddToList(icon);
-                }
-            });
-            var stroke_size = stroke_elem.parent().children().length;
-            if (stroke_size == 1) {
-                var folder = stroke_elem.parent().parent().parent();
-                var path = folder.find('.file-name').attr('data-qtip');
-                $('.tab-pane .add-button-file').each(function () {
-                    var current_path = $(this).attr('data-test');
-                    if (current_path == path) {
-                        $(this).parent().find('i.add-file').css('display', 'inline-block');
-                    }
-                });
-                folder.remove();
-            }
-            else {
-                stroke_elem.remove();
-            }
-            hideStartPanel();
-            unlockInactiveTab();
-            unlockActiveBranchSelect();
-        });
-    };
-
     this.eventToOpenLogBySelector = function (opener_selector) {
         $(opener_selector).on('click', function () {
             var opener_index = $(opener_selector).index($(this));
@@ -890,85 +514,6 @@ function Runner() {
             }
             $('.log-window').eq(opener_index).slideToggle();
         });
-    };
-
-    this.setEventToDeleteFolderFromList = function () {
-        $(".file-name .glyphicon-remove").on('click', function () {
-            if ($('#popup').is(':visible')) {
-                $(this).parent().next().children().children().each(function () {
-                    var text = $(this).attr('data-qtip');
-                    var stroke = $(this).attr('data-role');
-                    $(".subtest-row .test-name").each(function () {
-                        if (($(this).text() == text) && ($(this).attr('data-role') == stroke)) {
-                            var icon = $(this).prev('.added-test');
-                            _self.setIconToAdd(icon);
-                            _self.setEventToAddToList(icon);
-                        }
-                    });
-                });
-            }
-            else {
-                var path = $(this).parent().attr('data-qtip');
-                $('.tab-content i.add-file').each(function () {
-                    var display = $(this).css('display');
-                    if (display == 'none') {
-                        var current_path = $(this).parent().parent().find('.add-button-file').attr('data-test');
-                        if (current_path == path) {
-                            $(this).css('display', 'inline-block');
-                        }
-                    }
-                });
-            }
-            $(this).parent().parent().remove();
-            hideStartPanel();
-            unlockInactiveTab();
-            unlockActiveBranchSelect();
-        });
-    };
-
-    this.getSidebarFileTest = function (file_folder) {
-        var file_name = file_folder.find('.file-name').attr('data-qtip');
-        var file_test = {};
-        file_test.file_name = file_name;
-        if (file_folder.children().size() > 1) {
-            var strokes = [];
-            file_folder.find('.name').each(function () {
-                var stroke = {};
-                stroke.name = $(this).attr('data-qtip');
-                stroke.number = $(this).attr('data-role');
-                strokes.push(stroke);
-            });
-            file_test.strokes = strokes;
-        }
-        return file_test;
-    };
-
-    this.getTestFiles = function (server_tests_list) {
-        var file_tests = [];
-        server_tests_list.each(function () {
-            var file_test = _self.getSidebarFileTest($(this));
-            file_tests.push(file_test);
-        });
-        return file_tests;
-    };
-
-    this.getTestList = function () {
-        var name = $('#list-name').text();
-        var file_selectors = $('.file-folder');
-        var file_tests = _self.getTestFiles(file_selectors);
-        var file_list = {};                        //
-        file_list.name = name;             //LIKE
-        file_list.file_tests = file_tests;      //HASH
-        return file_list;                          //
-    };
-
-    this.createNewList = function () {
-        $("#sidebar-test-list").html("");
-        $("#list-name").text("New Test List");
-        hideStartPanel();
-        unlockInactiveTab();
-        unlockActiveBranchSelect();
-        _self.makeAllAddButtonsVisible();
     };
 
     this.eventToSlimScrollLog = function (log) {
@@ -1163,7 +708,7 @@ $(function () {
         }
         else {
             openSidebar();
-            myRunner.createNewList();
+            createNewList();
         }
     });
 

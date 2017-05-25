@@ -7,18 +7,11 @@ class RunnerController < ApplicationController
     @controller = :runner
   end
 
-  def pull_projects
-    cleanup_project(DOCS_PROJECT_PATH)
-    cleanup_project(TEAMLAB_PROJECT_PATH)
-
-    render body: nil
-  end
-
   def branches
-    tm_branches = get_list_branches(TEAMLAB_PROJECT_PATH)
-    tm_tags = get_tags(TEAMLAB_PROJECT_PATH)
-    doc_branches = get_list_branches(DOCS_PROJECT_PATH)
-    doc_tags = get_tags(DOCS_PROJECT_PATH)
+    tm_branches = get_list_branches(Rails.application.config.github_projects[0])
+    tm_tags = get_tags(Rails.application.config.github_projects[0])
+    doc_branches = get_list_branches(Rails.application.config.github_projects[1])
+    doc_tags = get_tags(Rails.application.config.github_projects[1])
     respond_to do |format|
       format.json do
         render json: {
@@ -32,16 +25,12 @@ class RunnerController < ApplicationController
     end
   end
 
-  def change_branch
-    branch = params['branch']
-    project = params['project'].to_sym
-    if project == :docs
-      change_project_branch(DOCS_PROJECT_PATH, branch)
-    elsif project == :teamlab
-      change_project_branch(TEAMLAB_PROJECT_PATH, branch)
-    end
-
-    render body: nil
+  def file_tree
+    project = params['project']
+    refs = params['refs']
+    return render body: nil, status: :bad_request if project.nil? || refs.nil?
+    file_tree = Rails.application.config.github_helper.file_tree(project, refs: refs)
+    render plain: file_tree.to_json
   end
 
   def show_servers
@@ -51,12 +40,6 @@ class RunnerController < ApplicationController
   end
 
   def show_tests
-    render layout: false
-  end
-
-  def show_subtests
-    @file_path = params['filePath']
-
     render layout: false
   end
 

@@ -9,8 +9,6 @@ RUN mkdir -pv /root/.do && echo "393d5ed4c6182f2e77091ef00d25455a4a9e44440c06c80
 RUN mkdir ~/RubymineProjects
 RUN git config --global user.email "teamlab.ruby@gmail.com" && \
     git config --global user.name "OnlyOffice Wrata"
-RUN cd /root/RubymineProjects && git clone -b develop git@github.com:ONLYOFFICE/testing-onlyoffice.git TeamLab
-RUN cd /root/RubymineProjects && git clone -b develop git@github.com:ONLYOFFICE/testing-documentserver.git OnlineDocuments
 RUN mkdir /root/wrata
 WORKDIR /root/wrata
 COPY . /root/wrata
