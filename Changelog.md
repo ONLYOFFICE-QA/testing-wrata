@@ -17,6 +17,7 @@
 * Fix null element while clicking cancel in custom portal field (fix #226)
 * Fix render `RunnderController#updated_data` in browser
 * Do not initilize `run_manager` if user is not confirmed
+* Speed-up of FrontEnd
 
 ## 1.12
 ### New features
