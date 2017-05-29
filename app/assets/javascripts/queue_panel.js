@@ -52,11 +52,7 @@ function showTestsInQueueCount(testsCount) {
 }
 
 function checkQueueEmpty() {
-    var empty = true;
-    if($('.test-node :visible').size() !== 0) {
-        empty = false;
-    }
-    return empty;
+    return !document.getElementById('test-queue').hasChildNodes();
 }
 
 function toggleClearTestButton() {
