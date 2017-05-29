@@ -846,13 +846,13 @@ function HtmlDecode(val) {
 }
 
 function showStartPanel() {
-    if (checkEmptyList() === false) {
+    if (isCurrentTestListEmpty() === false) {
         $('.start-panel').show();
     }
 }
 
 function lockInactiveTab() {
-    if (checkEmptyList() === false) {
+    if (isCurrentTestListEmpty() === false) {
         var tab = $('.nav-tabs li:not(.active) a');
         tab.attr("data-toggle", "");
         tab.css('background-color', '#eee');
@@ -860,13 +860,13 @@ function lockInactiveTab() {
 }
 
 function lockActiveBranchSelect() {
-    if (checkEmptyList() === false) {
+    if (isCurrentTestListEmpty() === false) {
         $('.nav-tabs li.active select.branch').attr('disabled', 'disabled');
     }
 }
 
 function unlockActiveBranchSelect() {
-    if (checkEmptyList() === true) {
+    if (isCurrentTestListEmpty() === true) {
         $('.nav-tabs li.active select.branch').removeAttr('disabled');
     }
 }
@@ -882,7 +882,7 @@ function unlockAllBranchSelect() {
 }
 
 function unlockInactiveTab() {
-    if (checkEmptyList() === true) {
+    if (isCurrentTestListEmpty() === true) {
         var tab = $('.nav-tabs li:not(.active) a');
         tab.attr("data-toggle", "tab");
         tab.css('background-color', '');
@@ -890,13 +890,13 @@ function unlockInactiveTab() {
 }
 
 function hideStartPanel() {
-    if (checkEmptyList()) {
+    if (isCurrentTestListEmpty()) {
         $('.start-panel').hide();
     }
 }
 
-function checkEmptyList() {
-    return $('#sidebar-test-list').children().size() === 0;
+function isCurrentTestListEmpty() {
+    return !document.getElementById('sidebar-test-list').hasChildNodes();
 }
 
 function addSortableToElem(elem) {

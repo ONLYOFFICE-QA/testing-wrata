@@ -59,9 +59,9 @@ function eventToBookServer(elements) {
 
 function toggleUnbookAllServersButton() {
     if (checkAnyBookedServers()) {
-        $('#clear-servers').hide();
-    } else {
         $('#clear-servers').show();
+    } else {
+        $('#clear-servers').hide();
     }
 }
 
@@ -94,17 +94,13 @@ function eventToUnbookServer(elements, hide_button) {
 }
 
 function checkAnyBookedServers() {
-    var empty = true;
-    if($('.server-node :visible').size() !== 0) {
-        empty = false;
-    }
-    return empty;
+    return document.getElementById('server-queue').hasChildNodes();
 }
 
 function toggleStopAllBookedServers() {
     if (checkAnyBookedServers()) {
-        $('#stop-booked').hide();
-    } else {
         $('#stop-booked').show();
+    } else {
+        $('#stop-booked').hide();
     }
 }
