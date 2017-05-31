@@ -132,12 +132,6 @@ footer {
     width: 33px;
 }
 
-.update-tests {
-    position: absolute;
-    right: 5px;
-    top: 10px;
-}
-
 .big-loader {
     background: url('ajax_loader_gray_128.gif');
     width: 128px;
@@ -862,7 +856,7 @@ input[type="checkbox"].folder-input + label{
 
 .tab-content {
     border: 1px solid #ddd;
-    margin-top: -1px;
+    margin-top: -11px;
     padding: 12px;
 }
 

@@ -117,8 +117,9 @@
   </div>
   <div id="file-tree">
     <div class="tests-block">
-      <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-tabs">
+      <div class="tabbable">
+        <div id="project-tab-header">
+          <ul class="nav nav-tabs">
           <% if client && client.project == "docs" %>
               <li class="active">
           <% end %>
@@ -161,6 +162,11 @@
           </a>
           </li>
         </ul>
+          <div id="file-list-tools">
+            <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language') %>
+            <i class="update-tests glyphicon glyphicon-repeat"></i>
+          </div>
+        </div>
         <div class="tab-content">
           <div class="tab-pane" id="docs">
             loading test...
@@ -170,9 +176,8 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
-    <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language') %>
-    <i class="update-tests glyphicon glyphicon-repeat"></i>
     <div class="section-overlay">
       <div class="overlay-window">
         <div class="overlay-content">
