@@ -356,15 +356,6 @@ hr.deliver {
     margin-top: 0;
 }
 
-.content {
-    margin: auto;
-    min-height: 750px;
-}
-
-.block {
-    width: 50%;
-}
-
 #servers {
     padding: 0 10px;
 }
@@ -848,10 +839,6 @@ table {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-}
-
-#file-tree {
-    height: 600px;
 }
 
 input[type="checkbox"].server-input, input[type="checkbox"].folder-input{
