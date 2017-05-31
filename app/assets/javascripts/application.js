@@ -289,7 +289,7 @@ function Runner() {
     };
 
     this.pullProjectsAndFillTests = function() {
-        showSectionOverlay();
+        showFileTreeOverlay();
         _self.fetchBranchesAndShowFiles();
     };
 
@@ -303,7 +303,6 @@ function Runner() {
                 _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
                 _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
                 renderFileTree();
-                hideSectionOverlay();
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -425,7 +424,7 @@ function Runner() {
 
     this.eventToLoadTestList = function (elem) {
         $("#list-name").text(elem.text());
-        showSectionOverlay();
+        showFileTreeOverlay();
         $.ajax({
             url: 'runner/load_test_list',
             context: this,
@@ -1017,14 +1016,6 @@ function clearElementInside(elem) {
 
 function stopPropagation(elem) {
     elem.click(function(e){ e.stopPropagation();});
-}
-
-function showSectionOverlay() {
-    $(".block:last() .section-overlay").show();
-}
-
-function hideSectionOverlay() {
-    $(".block:last() .section-overlay").hide();
 }
 
 function imitateHover(elem) {
