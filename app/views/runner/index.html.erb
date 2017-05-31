@@ -79,112 +79,107 @@
 </div>
 
 <div id="main">
-  <div class="content">
-    <div class="block" style="float: left; width: 23%">
-      <div id="servers">
+  <div id="servers">
+  </div>
+  <div id="queue-panel">
+    <div class="panel-header">
+      <div class="server-list server-list-header">
+        <i id="destroy-servers" class="glyphicon glyphicon-off" title="Destroy all unbooked servers"></i>
+        <div class="list-header">
+          <i class="glyphicon glyphicon-list-alt"></i>
+          <span id="booked-servers-title">servers</span>
+        </div>
+        <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
+        <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
+      </div>
+      <div class="queue-list test-queue-list-header">
+        <div class="list-header">
+          <i class="glyphicon glyphicon-list-alt"></i>
+          <span id="test-queue-title">tests</span>
+        </div>
+        <i id="remove-duplicates-tests" class="glyphicon glyphicon-indent-left" title="Remove duplicates in queue"></i>
+        <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
+        <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
       </div>
     </div>
-    <div class="block" style="width: 37%; float: left;padding-right: 12px;">
-      <div id="queue-panel">
-        <div class="panel-header">
-          <div class="server-list server-list-header">
-            <i id="destroy-servers" class="glyphicon glyphicon-off" title="Destroy all unbooked servers"></i>
-            <div class="list-header">
-              <i class="glyphicon glyphicon-list-alt"></i>
-              <span id="booked-servers-title">servers</span>
-            </div>
-            <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
-            <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
-          </div>
-          <div class="queue-list test-queue-list-header">
-            <div class="list-header">
-              <i class="glyphicon glyphicon-list-alt"></i>
-              <span id="test-queue-title">tests</span>
-            </div>
-            <i id="remove-duplicates-tests" class="glyphicon glyphicon-indent-left" title="Remove duplicates in queue"></i>
-            <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
-            <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
-          </div>
+    <div class="queues">
+      <div style="float: left" class="center-panel-list server-list">
+        <div id="server-queue">
+          <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server1</div>
+          <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server2</div>
         </div>
-        <div class="queues">
-          <div style="float: left" class="center-panel-list server-list">
-            <div id="server-queue">
-              <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server1</div>
-              <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server2</div>
-            </div>
-          </div>
-          <div class="center-panel-list queue-list">
-            <div id="test-queue"></div>
-          </div>
-        </div>
-        <div class="options-panel"></div>
+      </div>
+      <div class="center-panel-list queue-list">
+        <div id="test-queue"></div>
       </div>
     </div>
-    <div class="block" style="float: right; margin-bottom: 25px;  width: 40%; position: relative;">
-      <div class="tests-block">
-        <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <div class="options-panel"></div>
+  </div>
+  <div id="file-tree">
+    <div class="tests-block">
+      <div class="tabbable">
+        <div id="project-tab-header">
           <ul class="nav nav-tabs">
-            <% if client && client.project == "docs" %>
-                <li class="active">
-            <% end %>
-            <% if client && client.project == "teamlab" %>
-                <li>
-            <% end %>
-            <% unless client %>
-                <li class="active">
-            <% end %>
-            <a href="#docs" data-toggle="tab">Online Document
-              <select id="docs-branches" class="branch form-control">
-              </select>
-              <i class="start-icon"></i>
-              <select id='portal-list-docs' class="region form-control">
-                <% REGION_LIST.each do |region| %>
-                    <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
-                <% end %>
-              </select>
-            </a>
+          <% if client && client.project == "docs" %>
+              <li class="active">
+          <% end %>
+          <% if client && client.project == "teamlab" %>
+              <li>
+          <% end %>
+          <% unless client %>
+              <li class="active">
+          <% end %>
+          <a href="#docs" data-toggle="tab">Online Document
+            <select id="docs-branches" class="branch form-control">
+            </select>
+            <i class="start-icon"></i>
+            <select id='portal-list-docs' class="region form-control">
+              <% REGION_LIST.each do |region| %>
+                  <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
+              <% end %>
+            </select>
+          </a>
 
-            </li>
-            <% if client && client.project == "teamlab" %>
-                <li class="active">
-            <% end %>
-            <% if client && client.project == "docs" %>
-                <li>
-            <% end %>
-            <% unless client %>
-                <li>
-            <% end %>
-            <a href="#teamlab" data-toggle="tab">Teamlab
-              <select id="teamlab-branches" class="branch form-control">
-              </select>
-              <i class="start-icon"></i>
-              <select id='portal-list-onlyoffice' class="region form-control">
-                <% REGION_LIST.each do |region| %>
-                    <option><%= region %></option>
-                <% end %>
-              </select>
-            </a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane" id="docs">
-              loading test...
-            </div>
-            <div class="tab-pane" id="teamlab">
-              loading test...
+          </li>
+          <% if client && client.project == "teamlab" %>
+              <li class="active">
+          <% end %>
+          <% if client && client.project == "docs" %>
+              <li>
+          <% end %>
+          <% unless client %>
+              <li>
+          <% end %>
+          <a href="#teamlab" data-toggle="tab">Teamlab
+            <select id="teamlab-branches" class="branch form-control">
+            </select>
+            <i class="start-icon"></i>
+            <select id='portal-list-onlyoffice' class="region form-control">
+              <% REGION_LIST.each do |region| %>
+                  <option><%= region %></option>
+              <% end %>
+            </select>
+          </a>
+          </li>
+        </ul>
+          <div id="file-list-tools">
+            <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language') %>
+            <i class="update-tests glyphicon glyphicon-repeat"></i>
+          </div>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane" id="docs"></div>
+          <div class="tab-pane" id="teamlab"></div>
+          <div class="section-overlay file-tree-overlay">
+            <div class="overlay-window">
+              <div class="overlay-content">
+                <div class="overlay-text">Pulling...</div>
+                <img src="assets/ajax_loader_gray_128.gif">
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language') %>
-      <i class="update-tests glyphicon glyphicon-repeat"></i>
-      <div class="section-overlay">
-        <div class="overlay-window">
-          <div class="overlay-content">
-            <div class="overlay-text">Pulling...</div>
-            <img src="assets/ajax_loader_gray_128.gif">
-          </div>
-        </div>
       </div>
     </div>
   </div>

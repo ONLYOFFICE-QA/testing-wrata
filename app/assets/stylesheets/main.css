@@ -1,0 +1,23 @@
+#main > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#servers {
+    width: 23%;
+}
+
+#queue-panel {
+    width: 37%
+}
+
+#file-tree {
+    width: 39%;
+}
+
+@media (max-width: 800px) {
+    #main > div {
+        display: block;
+        width: 100%;
+    }
+}

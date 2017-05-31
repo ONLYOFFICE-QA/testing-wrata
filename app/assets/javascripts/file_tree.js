@@ -48,10 +48,10 @@ function renderFileTree(project, ref) {
             'refs': ref
         },
         beforeSend: function () {
-            showSectionOverlay();
+            showFileTreeOverlay();
         },
         complete: function () {
-            hideSectionOverlay();
+            hideFileTreeOverlay();
         },
         success: function (data) {
             var dataJson = JSON.parse(data);
@@ -79,4 +79,12 @@ function activeProject() {
     if (tabId == 'teamlab') {
         return 'ONLYOFFICE/testing-onlyoffice';
     }
+}
+
+function showFileTreeOverlay() {
+    $(".section-overlay.file-tree-overlay").show();
+}
+
+function hideFileTreeOverlay() {
+    $(".section-overlay.file-tree-overlay").hide();
 }
