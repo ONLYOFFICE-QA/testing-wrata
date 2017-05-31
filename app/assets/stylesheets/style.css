@@ -65,73 +65,6 @@ footer {
     background: rgba(0,0,0,.7);
 }
 
-.overlay-window {
-    text-align: center;
-    border-radius: 49px;
-    height: 300px;
-    width: 300px;
-    overflow: auto;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgb(243, 243, 243);
-    cursor: wait;
-}
-
-.overlay-content {
-    overflow: auto;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.overlay-text {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.overlay .overlay-window img {
-    width: 110px;
-}
-
-.section-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background: rgba(0,0,0,0.4);
-    border-radius: 5px;
-}
-
-.section-overlay .overlay-window {
-    border-radius: 20px;
-    height: 60px;
-    width: 170px;
-    color: rgba(221, 221, 221, 1);
-}
-
-.section-overlay .overlay-content {
-    height: 100%;
-    width: 100%;
-}
-
-.section-overlay .overlay-text {
-    color: grey;
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.section-overlay img {
-    width: 33px;
-}
-
 .big-loader {
     background: url('ajax_loader_gray_128.gif');
     width: 128px;
@@ -857,7 +790,9 @@ input[type="checkbox"].folder-input + label{
 .tab-content {
     border: 1px solid #ddd;
     margin-top: -11px;
+    min-height: 60px;
     padding: 12px;
+    position: relative;
 }
 
 label {

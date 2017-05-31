@@ -1,0 +1,68 @@
+
+.section-overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    position: absolute;
+}
+
+.section-overlay .overlay-window {
+    border-radius: 20px;
+    height: 60px;
+    width: 170px;
+    color: rgba(221, 221, 221, 1);
+}
+
+.section-overlay .overlay-content {
+    height: 100%;
+    width: 100%;
+}
+
+.section-overlay .overlay-text {
+    color: grey;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.section-overlay img {
+    width: 33px;
+}
+
+
+.overlay-window {
+    text-align: center;
+    border-radius: 49px;
+    height: 300px;
+    width: 300px;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(243, 243, 243);
+    cursor: wait;
+}
+
+.overlay-content {
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.overlay-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.overlay .overlay-window img {
+    width: 110px;
+}
