@@ -9,6 +9,7 @@
 * `updated_data` return logs only if called for it
 * Use `onlyoffice_github_helper` for file list
 * Show web page in single column if width < 1680px
+* Use `net-ping` gem instead of sluggish native Linux exec
 
 ### Fixes
 * Fix problem with manual destroying server, booked by other client
