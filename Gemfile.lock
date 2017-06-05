@@ -133,6 +133,7 @@ GEM
     minitest (5.10.2)
     multi_json (1.12.1)
     multipart-post (2.0.0)
+    net-ping (2.0.1)
     nio4r (2.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
@@ -254,6 +255,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   jquery-ui-rails
+  net-ping
   onlyoffice_digitalocean_wrapper (~> 0.2)!
   onlyoffice_github_helper!
   onlyoffice_rspec_result_parser!
