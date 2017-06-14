@@ -853,7 +853,7 @@ label {
     margin-left: 10px;
     width: 20px;
     height: 20px;
-    background: url(start.png) no-repeat;
+    background: image-url('start.png') no-repeat;
     background-size: contain;
     display: none;
     cursor: pointer;
@@ -939,7 +939,7 @@ a.with-start select.region{
     vertical-align: middle;
     width: 14px;
     height: 18px;
-    background: url(cat-icon.png) no-repeat;
+    background: image-url('cat-icon.png') no-repeat;
     background-size: contain;
     cursor: pointer;
 }
