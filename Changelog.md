@@ -1,6 +1,8 @@
 # Change log
 
 ## master
+### New features
+* Precompile assets in production
 
 ## 1.13
 ### New features
