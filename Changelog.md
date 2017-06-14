@@ -3,6 +3,7 @@
 ## master
 ### New features
 * Precompile assets in production
+* Use `jQuery` version 3, instead of first one
 
 ## 1.13
 ### New features
