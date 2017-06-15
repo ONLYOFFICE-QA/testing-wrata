@@ -3,6 +3,7 @@ require 'test_helper'
 class TestFilesControllerTest < ActionController::TestCase
   setup do
     @test_file = test_files(:one)
+    @test_list = test_lists(:one)
   end
 
   test 'should get index' do
@@ -18,7 +19,7 @@ class TestFilesControllerTest < ActionController::TestCase
 
   test 'should create test_file' do
     assert_difference('TestFile.count') do
-      post :create, params: { test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name } }
+      post :create, params: { test_file: { test_list_id: @test_list.id, name: @test_file.name } }
     end
 
     assert_redirected_to test_file_path(assigns(:test_file))
@@ -35,7 +36,7 @@ class TestFilesControllerTest < ActionController::TestCase
   end
 
   test 'should update test_file' do
-    put :update, params: { id: @test_file, test_file: { test_list_id: @test_file.test_list_id, name: @test_file.name } }
+    put :update, params: { id: @test_file, test_file: { test_list_id: @test_list.id, name: @test_file.name } }
     assert_redirected_to test_file_path(assigns(:test_file))
   end
 

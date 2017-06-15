@@ -1,4 +1,4 @@
-class CreateStartOptions < ActiveRecord::Migration
+class CreateStartOptions < ActiveRecord::Migration[4.2]
   def change
     create_table :start_options do |t|
       t.string :docs_branch

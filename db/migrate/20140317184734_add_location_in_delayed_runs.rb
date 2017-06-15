@@ -1,4 +1,4 @@
-class AddLocationInDelayedRuns < ActiveRecord::Migration
+class AddLocationInDelayedRuns < ActiveRecord::Migration[4.2]
   def change
     add_column :delayed_runs, :location, :string
   end

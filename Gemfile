@@ -15,10 +15,11 @@ gem 'onlyoffice_rspec_result_parser', git: 'https://github.com/onlyoffice-testin
 gem 'pg'
 gem 'process_exists'
 gem 'puma'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.1'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'listen'
   gem 'overcommit'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
