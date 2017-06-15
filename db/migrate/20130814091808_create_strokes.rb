@@ -1,4 +1,4 @@
-class CreateStrokes < ActiveRecord::Migration
+class CreateStrokes < ActiveRecord::Migration[4.2]
   def change
     create_table :strokes do |t|
       t.string :name

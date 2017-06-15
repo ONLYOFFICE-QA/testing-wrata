@@ -1,4 +1,4 @@
-class CreateDelayedRuns < ActiveRecord::Migration
+class CreateDelayedRuns < ActiveRecord::Migration[4.2]
   def change
     create_table :delayed_runs do |t|
       t.string :type
