@@ -3,6 +3,8 @@ require 'test_helper'
 class HistoriesControllerTest < ActionController::TestCase
   setup do
     @history = histories(:one)
+    @server = servers(:one)
+    @client = clients(:one)
   end
 
   test 'should get index' do
@@ -18,7 +20,7 @@ class HistoriesControllerTest < ActionController::TestCase
 
   test 'should create history' do
     assert_difference('History.count') do
-      post :create, params: { history: { file: 'test_file' } }
+      post :create, params: { history: { file: 'test_file', server_id: @server.id, client_id: @client.id } }
     end
 
     assert_redirected_to history_path(assigns(:history))
@@ -35,7 +37,7 @@ class HistoriesControllerTest < ActionController::TestCase
   end
 
   test 'should update history' do
-    patch :update, params: { id: @history, history: { file: 'test_file' } }
+    patch :update, params: { id: @history, history: { file: 'test_file', server_id: @server.id } }
     assert_redirected_to history_path(assigns(:history))
   end
 
