@@ -19,6 +19,7 @@ gem 'rails', '~> 5.1'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'listen'
   gem 'overcommit'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
