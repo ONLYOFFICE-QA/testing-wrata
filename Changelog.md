@@ -7,6 +7,9 @@
 * Update to Rails 5.1
 * Increase puma threads count
 
+### Refactor
+* Remove unused `start-icon`
+
 ## 1.13
 ### New features
 * Ability to mock actions with cloud server (good for development)

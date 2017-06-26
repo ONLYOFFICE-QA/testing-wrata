@@ -846,36 +846,12 @@ label {
     top: 46px;
 }
 
-.start-icon {
-    position: absolute;
-    top: 9px;
-    right: 89px;
-    margin-left: 10px;
-    width: 20px;
-    height: 20px;
-    background: image-url('start.png') no-repeat;
-    background-size: contain;
-    display: none;
-    cursor: pointer;
-}
-
-.start-icon:hover {
-    top: 7px;
-    right: 86px;
-    width: 23px;
-    height: 23px;
-}
-
 li:not(.active) a.with-start i{
     display: none;
 }
 
 li:not(.active) a.with-start select.region{
     display: none;
-}
-
-#docs input[type="checkbox"]:checked + #docs .start-icon{
-  display: inline-block;
 }
 
 #sidebar .icon-file {
