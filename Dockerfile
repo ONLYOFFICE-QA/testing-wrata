@@ -6,7 +6,11 @@ RUN apt-get update -qq && apt-get install -y libpq-dev nodejs
 COPY ssh/ /root/.ssh/
 RUN chmod 600 /root/.ssh/*
 RUN mkdir -pv /root/.do && echo "393d5ed4c6182f2e77091ef00d25455a4a9e44440c06c80c7b02df08a6e4aaec" > /root/.do/access_token
-RUN mkdir ~/RubymineProjects
+
+WORKDIR /tmp
+COPY Gemfile* /tmp/
+RUN bundle install
+
 RUN mkdir /root/wrata
 WORKDIR /root/wrata
 COPY . /root/wrata
