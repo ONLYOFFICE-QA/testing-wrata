@@ -8,17 +8,13 @@ class RunnerController < ApplicationController
   end
 
   def branches
-    tm_branches = get_list_branches(Rails.application.config.github_projects[0])
-    tm_tags = get_tags(Rails.application.config.github_projects[0])
-    doc_branches = get_list_branches(Rails.application.config.github_projects[1])
-    doc_tags = get_tags(Rails.application.config.github_projects[1])
+    branches = get_list_branches(params['project'])
+    tags = get_tags(params['project'])
     respond_to do |format|
       format.json do
         render json: {
-          tm_branches: tm_branches,
-          tm_tags: tm_tags,
-          doc_branches: doc_branches,
-          doc_tags: doc_tags
+          branches: branches,
+          tags: tags
         }.to_json
       end
       format.html

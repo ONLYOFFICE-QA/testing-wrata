@@ -2,22 +2,3 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
-#file-list-tools {
-    bottom: 15px;
-    display: inline-block;
-    position: relative;
-}
-
-.spec-language {
-    display: inline-block;
-    width: 65px;
-    font-size: 10px;
-    padding-left: 3px;
-    height: 25px;
-    /*position: absolute;*/
-    vertical-align: middle;
-}
-
-.update-tests {
-    display: inline-block;
-}

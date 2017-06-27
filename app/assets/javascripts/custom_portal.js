@@ -25,8 +25,3 @@ function eventForAddNewPortal(elem) {
         }
     });
 }
-
-$(document).ready(function () {
-    eventForAddNewPortal($("#portal-list-docs"));
-    eventForAddNewPortal($("#portal-list-onlyoffice"));
-});

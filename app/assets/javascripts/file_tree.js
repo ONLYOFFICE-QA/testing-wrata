@@ -73,10 +73,10 @@ function renderFileTree(project, ref) {
 
 function activeProject() {
     var tabId = getCurrentProject();
-    if (tabId == 'docs') {
+    if (tabId == '#docs') {
         return 'ONLYOFFICE/testing-documentserver';
     }
-    if (tabId == 'teamlab') {
+    if (tabId == '#teamlab') {
         return 'ONLYOFFICE/testing-onlyoffice';
     }
 }
@@ -87,4 +87,38 @@ function showFileTreeOverlay() {
 
 function hideFileTreeOverlay() {
     $(".section-overlay.file-tree-overlay").hide();
+}
+
+function fetchBranchesAndShowFiles() {
+    $.ajax({
+        url: 'runner/branches',
+        context: this,
+        async: true,
+        type: 'GET',
+        data: {
+            project: activeProject()
+        },
+        beforeSend: function () {
+            showFileTreeOverlay();
+        },
+        success: function (data) {
+            setGitReferences($('#branches'), data.branches, data.tags);
+            renderFileTree();
+        },
+        error: function (xhr, type, errorThrown) {
+            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
+        }
+    });
+}
+
+function setGitReferences(control, branches, tags) {
+    clearElementInside(control);
+    control.append($("<option disabled>Branches</option>"));
+    for(var i = 0; i < branches.length; i++) {
+        control.append($("<option>" + branches[i] + "</option>"));
+    }
+    control.append($("<option disabled>Tags</option>"));
+    for(var i = 0; i < tags.length; i++) {
+        control.append($("<option>" + tags[i] + "</option>"));
+    }
 }

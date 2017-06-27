@@ -16,6 +16,7 @@
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
             addAllLanguagesToSelect();
             eventOnChangeProject();
+            eventForAddNewPortal();
         });
         window.onload = function () {
             myRunner.pullProjectsAndGetAllView();
@@ -129,16 +130,7 @@
           <% unless client %>
               <li class="active">
           <% end %>
-          <a href="#docs" data-toggle="tab">Online Document
-            <select id="docs-branches" class="branch form-control">
-            </select>
-            <select id='portal-list-docs' class="region form-control">
-              <% REGION_LIST.each do |region| %>
-                  <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
-              <% end %>
-            </select>
-          </a>
-
+            <a href="#docs" data-toggle="tab">Online Document</a>
           </li>
           <% if client && client.project == "teamlab" %>
               <li class="active">
@@ -149,18 +141,16 @@
           <% unless client %>
               <li>
           <% end %>
-          <a href="#teamlab" data-toggle="tab">Teamlab
-            <select id="teamlab-branches" class="branch form-control">
-            </select>
-            <select id='portal-list-onlyoffice' class="region form-control">
-              <% REGION_LIST.each do |region| %>
-                  <option><%= region %></option>
-              <% end %>
-            </select>
-          </a>
+          <a href="#teamlab" data-toggle="tab">Teamlab</a>
           </li>
         </ul>
           <div id="file-list-tools">
+            <select id="branches" class="branch form-control"></select>
+            <select id='portal-list' class="region form-control">
+              <% REGION_LIST.each do |region| %>
+                  <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
+              <% end %>
+            </select>
             <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language') %>
             <i class="update-tests glyphicon glyphicon-repeat"></i>
           </div>

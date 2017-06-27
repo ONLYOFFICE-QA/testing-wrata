@@ -789,7 +789,7 @@ input[type="checkbox"].folder-input + label{
 
 .tab-content {
     border: 1px solid #ddd;
-    margin-top: -11px;
+    margin-top: -8px;
     min-height: 60px;
     padding: 12px;
     position: relative;
@@ -871,14 +871,6 @@ li.active select.branch {
     height: 20px;
 }
 
-/*.nav>li>a {*/
-    /*padding: 5px 8px;*/
-/*}*/
-
-li.active select.region {
-    display: inline;
-}
-
 .tests-block select.form-control {
     padding: 0;
 }
@@ -888,23 +880,12 @@ li.active select.region {
     padding: 0;
 }
 
-li select.branch {
-    display: none;
-}
-
 ul.nav-tabs li{
     position: relative;
 }
 
 a.with-start i{
     display: block;
-}
-
-select.region {
-    width: 56px;
-    font-size: 10px;
-    height: 20px;
-    display: none;
 }
 
 a.with-start select.region{

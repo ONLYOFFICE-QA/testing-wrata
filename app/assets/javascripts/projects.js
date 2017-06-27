@@ -3,9 +3,9 @@
  */
 
 function eventOnChangeProject() {
-    $('.nav.nav-tabs li').on('click', function () {
+    $('.nav.nav-tabs li a').on('click', function () {
         setTimeout(function() {
-            renderFileTree();
+            fetchBranchesAndShowFiles();
         }, 100);
     });
 }
