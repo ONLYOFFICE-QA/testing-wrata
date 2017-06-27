@@ -1,4 +1,16 @@
 .nav-tabs {
-    width: 85%;
     display: inline-block;
+}
+
+#file-list-tools {
+    bottom: 17px;
+    display: inline-block;
+    position: relative;
+}
+
+#file-list-tools select {
+    display: inline-block;
+    font-size: 10px;
+    height: 20px;
+    width: 65px;
 }

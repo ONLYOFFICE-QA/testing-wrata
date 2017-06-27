@@ -3,11 +3,15 @@
  */
 
 function getCurrentBranch() {
-    return $('.active select.branch option:selected').val();
+    return $('#branches option:selected').val();
+}
+
+function getSelectedPortalUrl() {
+    return $('#portal-list option:selected').val();
 }
 
 function getCurrentProject() {
-    return $('.tab-pane.active').attr('id');
+    return $('#project-tab-header li.active a').attr('href');
 }
 
 function selectProject(project) {

@@ -291,40 +291,11 @@ function Runner() {
 
     this.pullProjectsAndFillTests = function() {
         showFileTreeOverlay();
-        _self.fetchBranchesAndShowFiles();
-    };
-
-    this.fetchBranchesAndShowFiles = function() {
-        $.ajax({
-            url: 'runner/branches',
-            context: this,
-            async: true,
-            type: 'GET',
-            success: function (data) {
-                _self.setGitReferences($('#docs-branches'), data.doc_branches, data.doc_tags);
-                _self.setGitReferences($('#teamlab-branches'), data.tm_branches, data.tm_tags);
-                renderFileTree();
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
+        fetchBranchesAndShowFiles();
     };
 
     this.pullProjectsAndGetAllView = function(){
         _self.pullProjectsAndFillTests();
-    };
-
-    this.setGitReferences = function(control, branches, tags) {
-        clearElementInside(control);
-        control.append($("<option disabled>Branches</option>"));
-        for(var i = 0; i < branches.length; i++) {
-            control.append($("<option>" + branches[i] + "</option>"));
-        }
-        control.append($("<option disabled>Tags</option>"));
-        for(var i = 0; i < tags.length; i++) {
-            control.append($("<option>" + tags[i] + "</option>"));
-        }
     };
 
     this.saveTestList = function () {
@@ -398,7 +369,7 @@ function Runner() {
     };
 
     this.setEventChangeBranch = function () {
-        $('li select.branch').change(function () {
+        $('#branches').change(function () {
             renderFileTree();
         });
     };

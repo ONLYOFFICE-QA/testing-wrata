@@ -9,6 +9,7 @@
 
 ### Refactor
 * Remove unused `start-icon`
+* Reorganize a whole lot managing branches
 
 ## 1.13
 ### New features
