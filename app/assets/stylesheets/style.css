@@ -249,7 +249,9 @@ hr.deliver {
     font-size: 11px;
     cursor: pointer;
 }
-
+.file-name:hover, .folder-name:hover {
+    background-color: #a7aeb9;
+}
 .stroke-list {
     margin-left: 20px;
 }
@@ -345,6 +347,7 @@ hr.deliver {
 }
 
 .add-button-file, .add-button-folder {
+    margin-right: 3px;
     background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 104, 150) 100%);
     border: 1px solid #105bad;
     color: rgb(234, 250, 238);
