@@ -10,8 +10,10 @@ development: &default
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: wrata_test
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 50
+  timeout: 5000
 
 production:
   <<: *default
