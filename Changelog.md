@@ -15,6 +15,7 @@
 
 ### Fix
 * Use `seeds.rb` to set default `SpecLanguage` to `en-US`
+* Fix problems with precompiled image backgrounds
 
 ## 1.13
 ### New features
