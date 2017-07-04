@@ -13,6 +13,9 @@
 * Remove unused `start-icon`
 * Reorganize a whole lot managing branches
 
+### Fix
+* Use `seeds.rb` to set default `SpecLanguage` to `en-US`
+
 ## 1.13
 ### New features
 * Ability to mock actions with cloud server (good for development)
