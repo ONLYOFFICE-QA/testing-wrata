@@ -6,6 +6,8 @@
 * Use `jQuery` version 3, instead of first one
 * Update to Rails 5.1
 * Increase puma threads count
+* Add highlight for files in file-tree
+* Add margin between add-button-file and filename
 
 ### Refactor
 * Remove unused `start-icon`
