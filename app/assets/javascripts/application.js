@@ -742,10 +742,10 @@ function changeBgZooey() {
     var body = $('body');
     var bg = body.css('background-image');
     if (bg == 'none') {
-        body.css("background-image", "url(/assets/zooey.jpg)");
+        body.addClass('zooey-background');
     }
     else {
-        body.css('background-image', 'none');
+        body.removeClass('zooey-background');
     }
 }
 
@@ -753,10 +753,10 @@ function changeBgCat() {
     var body = $('body');
     var bg = body.css('background-image');
     if (bg == 'none') {
-        body.css("background-image", "url(/assets/cat-box.jpg)");
+        body.addClass('cat-background');
     }
     else {
-        body.css('background-image', 'none');
+        body.removeClass('cat-background');
     }
 }
 
