@@ -7,3 +7,9 @@ linters:
         enabled: false
     SelectorFormat:
         enabled: false
+    VendorPrefix:
+        enabled: false
+    IdSelector:
+        enabled: false
+    ImportantRule:
+        enabled: false
