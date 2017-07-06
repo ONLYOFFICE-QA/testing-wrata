@@ -21,13 +21,16 @@ module TestManager
     env_variables
   end
 
-  def start_test_on_server(test_path, options)
-    full_start_command = generate_run_test_command(test_path.gsub('~', '$HOME'), options)
-    @ssh_pid = Process.spawn(full_start_command,
+  def generate_full_start_command(test_path, options)
+    generate_run_test_command(test_path.gsub('~', '$HOME'), options)
+  end
+
+  def execute_command(command)
+    @ssh_pid = Process.spawn(command,
                              out: [server_log_path, 'w'],
                              err: [server_log_path, 'w'])
-    Process.wait(@ssh_pid)
-    full_start_command
+    _id, status = Process.wait2(@ssh_pid)
+    status.exitstatus
   end
 
   def generate_ssh_command(command)

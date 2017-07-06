@@ -18,6 +18,7 @@
 * Add `SpecLanguage` to `ServerHistory` page
 * Do not hide start options on `ServerHistory` page
 * Use `bootbox.confirm` instead of JS native `confirm`
+* Store spec exit status and send notification only if failed
 
 ### Refactor
 * Remove unused `start-icon`
