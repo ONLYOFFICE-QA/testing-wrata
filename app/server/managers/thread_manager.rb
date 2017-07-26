@@ -20,6 +20,7 @@ module ThreadManager
         init_last_log
         delete_log_file
         delete_html_result
+        ActiveRecord::Base.clear_active_connections!
         @last_log_end = 0
         @test = nil
       end

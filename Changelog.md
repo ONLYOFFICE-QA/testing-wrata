@@ -16,6 +16,7 @@
 ### Fix
 * Use `seeds.rb` to set default `SpecLanguage` to `en-US`
 * Fix problems with precompiled image backgrounds
+* Possible fix of Connection Pool exceeded
 
 ## 1.13
 ### New features
