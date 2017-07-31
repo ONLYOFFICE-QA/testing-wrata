@@ -9,6 +9,7 @@
 * Add highlight for files in file-tree
 * Add margin between add-button-file and filename
 * Show `spec_language` in current running test tooltip (fix [#286](https://github.com/ONLYOFFICE/testing-wrata/issues/286))
+* Add default value to `http://` to custom portal (fix [#283](https://github.com/ONLYOFFICE/testing-wrata/issues/283))
 
 ### Refactor
 * Remove unused `start-icon`
@@ -19,6 +20,7 @@
 * Fix problems with precompiled image backgrounds
 * Possible fix of Connection Pool exceeded
 * Redirect from `/singin` if already sign-in (fix [#287](https://github.com/ONLYOFFICE/testing-wrata/issues/287)) 
+* Do not insert empty string as custom portal
 
 ## 1.13
 ### New features
