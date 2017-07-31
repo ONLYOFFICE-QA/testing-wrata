@@ -18,6 +18,7 @@
 * Use `seeds.rb` to set default `SpecLanguage` to `en-US`
 * Fix problems with precompiled image backgrounds
 * Possible fix of Connection Pool exceeded
+* Redirect from `/singin` if already sign-in (fix [#287](https://github.com/ONLYOFFICE/testing-wrata/issues/287)) 
 
 ## 1.13
 ### New features
