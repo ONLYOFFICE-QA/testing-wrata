@@ -8,6 +8,7 @@
 * Increase puma threads count
 * Add highlight for files in file-tree
 * Add margin between add-button-file and filename
+* Show `spec_language` in current running test tooltip (fix [#286](https://github.com/ONLYOFFICE/testing-wrata/issues/286))
 
 ### Refactor
 * Remove unused `start-icon`

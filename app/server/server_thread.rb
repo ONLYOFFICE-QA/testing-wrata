@@ -72,7 +72,8 @@ class ServerThread
         failed_count: @test_failed_count,
         time: testing_time,
         doc_branch: @test[:doc_branch],
-        tm_branch: @test[:tm_branch]
+        tm_branch: @test[:tm_branch],
+        spec_language: @test[:spec_language]
       }
     end
     if @client && !@server_model.book_client_id.nil?
