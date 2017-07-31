@@ -10,7 +10,8 @@ function add_portal_to_list(list_element) {
             value: defaultValue,
             callback: function (portal_name) {
                 if (portal_name === null ||
-                    portal_name === defaultValue) {
+                    portal_name === defaultValue ||
+                    portal_name === '') {
                     return null;
                 }
                 list_element.get(0).add(new Option(portal_name));
