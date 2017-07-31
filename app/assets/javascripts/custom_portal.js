@@ -3,11 +3,14 @@
  */
 
 function add_portal_to_list(list_element) {
+    var defaultValue = "http://"
     bootbox.prompt(
         {
             title: "Enter Portal name",
+            value: defaultValue,
             callback: function (portal_name) {
-                if (portal_name === null) {
+                if (portal_name === null ||
+                    portal_name === defaultValue) {
                     return null;
                 }
                 list_element.get(0).add(new Option(portal_name));
