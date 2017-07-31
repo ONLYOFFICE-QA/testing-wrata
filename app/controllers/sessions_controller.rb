@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
-  def new; end
+  def new
+    redirect_to runner_path if current_client
+  end
 
   def create
     client = Client.find_by_login(params[:session][:login])
