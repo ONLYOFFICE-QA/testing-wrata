@@ -665,7 +665,7 @@ $(function () {
 
     $('#save-new').on('click', function () {
         if (verifyListName($("#list-name").text())) {
-            if ($("#sidebar-test-list").children().size() === 0) {
+            if ($("#sidebar-test-list").children().length === 0) {
                 showInfoAlert('Nothing to save! Add tests from tests sections.');
             } else {
                 myRunner.saveTestList();
