@@ -1,10 +1,7 @@
 <%= yield :head %>
 <% if signed_in? %>
     <div id="topnavbar" class="navbar navbar-inverse">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home"></i>TestRunner</a>
-      </div>
-      <div class="navbar-collapse">
+      <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home"></i>TestRunner</a>
         <ul class="nav navbar-nav navbar-right" style="line-height: 36px;">
           <% if @controller == :runner %>
               <li>
@@ -36,30 +33,12 @@
             </ul>
           </li>
         </ul>
-      </div>
     </div>
-      <!--<div class="navbar-inner" style="border-radius: 0">-->
-        <!--<ul class="nav">-->
-          <!--<li></li>-->
-        <!--</ul>-->
-
-      <!--</div>-->
-
 <% else %>
-    <div id="topnavbar" class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home"></i>TestRunner</a>
-      </div>
+    <div id="topnavbar" class="navbar navbar-inverse">
       <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-home"></i>TestRunner</a>
         <ul class="nav navbar-nav navbar-right navbar-form">
-          <li>
-            <%= form_for(:session, url: sessions_path, :html => {:class => 'form-group'} ) do |f| %>
-              <%= f.text_field :login, class: 'form-control', style: 'width: 100px', placeHolder: 'login' %>
-              <%= f.password_field :password, class: 'form-control', style: 'width: 100px', placeHolder: 'password' %>
-              <%= f.button 'log in', class: 'btn btn-default', type: 'submit', name: 'commit' %>
-                <a href="/signup" class="blue">sign up</a></li>
-            <% end %>
-          </li>
         </ul>
       </div>
     </div>
