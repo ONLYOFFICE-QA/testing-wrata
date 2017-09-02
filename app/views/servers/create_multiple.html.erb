@@ -1,0 +1,14 @@
+<%= form_tag({action: :create_multiple}, multipart: true) do %>
+
+    <div class="field">
+      <%= label_tag 'Server name pattern' %><br/>
+      <%= text_field_tag :server_name_pattern %>
+    </div>
+    <div class="field">
+      <%= label_tag 'Servers count' %><br/>
+      <%= text_field_tag :count %>
+    </div>
+    <div class="actions">
+      <div><%= submit_tag 'Save', class: 'btn btn-success' %></div>
+    </div>
+<% end %>

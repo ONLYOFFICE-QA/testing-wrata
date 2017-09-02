@@ -82,6 +82,18 @@ class ServersController < ApplicationController
     end
   end
 
+  def create_multiple
+  end
+
+  def create_servers_multiple
+    milty_servers_params['count'].to_i.times do |_current_pattern_prefix|
+      milty_servers_params['server_name_pattern']
+      Server.create(name: "#{milty_servers_params['server_name_pattern']}-#{_current_pattern_prefix}")
+      Runner::Application.config.threads.add_threads
+    end
+    redirect_to servers_url
+  end
+
   # PUT /clients/1
   # PUT /clients/1.json
   def update
@@ -147,5 +159,9 @@ class ServersController < ApplicationController
 
   def server_params
     params.require(:server).permit(:address, :description, :name, :comp_name, :_status, :book_client_id, :last_activity_date, :executing_command_now, :self_destruction)
+  end
+
+  def milty_servers_params
+    params.permit(:server_name_pattern, :count)
   end
 end
