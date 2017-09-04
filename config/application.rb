@@ -28,7 +28,7 @@ module Runner
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.precompile += %w(bootstrap-responsive-custom.css)
+    config.assets.precompile += %w(bootstrap-responsive-custom.css servers.css)
 
     config.i18n.enforce_available_locales = true
     config.middleware.use Rack::Deflater

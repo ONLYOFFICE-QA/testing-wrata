@@ -86,13 +86,27 @@ class ServersController < ApplicationController
   end
 
   def create_servers_multiple
-    milty_servers_params['count'].to_i.times do |_current_pattern_prefix|
-      milty_servers_params['server_name_pattern']
-      Server.create(name: "#{milty_servers_params['server_name_pattern']}-#{_current_pattern_prefix}")
+    errors = multiple_data_correct?
+    if errors.empty?
+    multi_servers_params['count'].to_i.times do |_current_pattern_prefix|
+      break if _current_pattern_prefix > 100
+      multi_servers_params['server_name_pattern']
+      Server.find_or_create_by(name: "#{multi_servers_params['server_name_pattern']}-#{_current_pattern_prefix}")
       Runner::Application.config.threads.add_threads
     end
     redirect_to servers_url
+    else
+      flash[:error] = errors
+      render :action => "create_multiple"
+    end
   end
+
+   def multiple_data_correct?
+     errors = {}
+     errors[:server_name_pattern] = "Server name can't be empty" if multi_servers_params['server_name_pattern'] == ''
+     errors[:count] = "Server count cant be empty" if multi_servers_params['count'] == ''
+     errors
+   end
 
   # PUT /clients/1
   # PUT /clients/1.json
@@ -161,7 +175,7 @@ class ServersController < ApplicationController
     params.require(:server).permit(:address, :description, :name, :comp_name, :_status, :book_client_id, :last_activity_date, :executing_command_now, :self_destruction)
   end
 
-  def milty_servers_params
+  def multi_servers_params
     params.permit(:server_name_pattern, :count)
   end
 end

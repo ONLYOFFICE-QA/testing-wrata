@@ -1,14 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
 <%= form_tag({action: :create_multiple}, multipart: true) do %>
 
-    <div class="field">
+    <div class="field name_pattern_field">
       <%= label_tag 'Server name pattern' %><br/>
-      <%= text_field_tag :server_name_pattern %>
+      <%= text_field_tag 'server_name_pattern', nil, class: 'pattern_name_input' %>
     </div>
     <div class="field">
       <%= label_tag 'Servers count' %><br/>
-      <%= text_field_tag :count %>
+      <%= text_field_tag :count, nil,  maxlength: 2 %>
     </div>
-    <div class="actions">
-      <div><%= submit_tag 'Save', class: 'btn btn-success' %></div>
+          <div class="actions">
+      <div><%= submit_tag 'Save', class: 'btn btn-success'  %></div>
     </div>
 <% end %>
+</div>
+    <div class="col-md-4">
+      <div class="alert alert-info" role="alert">
+        <p>Set <b>name pattern</b> for creating some servers by one click.</p>
+        <p>Set <b>count</b> of servers for creating</p>
+        <p>Servers will be created with <b>pattern name</b> "pattern-0", "pattern-1", "pattern-2" and etc.</p>
+        <p>If server with this <b>pattern name</b> is already created - server will not created. </p>
+        <p>Max count of servers is 100. You really need to create more?</p>
+      </div>
+    </div>
+</div>
+</div>
