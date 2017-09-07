@@ -4,3 +4,12 @@
 .field{
     padding-bottom: 10px;
 }
+.delete-server{
+    color: red;
+}
+.delete-server:hover{
+    color: #910000;
+}
+.server_create {
+    color: green;
+}
