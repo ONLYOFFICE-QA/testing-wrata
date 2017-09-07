@@ -13,4 +13,7 @@
  *= require jquery-ui
  */
 
-
+@font-face {
+    font-family: "OpenSans";
+    url("/assets/OpenSans-Light.ttf") format("ttf"),
+}

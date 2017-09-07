@@ -29,7 +29,8 @@ module Runner
     config.assets.version = '1.0'
 
     config.assets.precompile += %w(bootstrap-responsive-custom.css servers.css)
-
+    config.assets.enabled = true
+    config.assets.paths << Rails.root.join('/app/assets/fonts')
     config.i18n.enforce_available_locales = true
     config.middleware.use Rack::Deflater
     config.delayed_runs = nil
@@ -56,7 +57,7 @@ module Runner
                             sender_address: Rails.application.secrets.gmail_username,
                             exception_recipients: [Rails.application.secrets.admin_email]
                           }
-    config.mock_cloud_server = false
+    config.mock_cloud_server = true
     config.default_spec_language = 'en-US'
   end
 end
