@@ -29,6 +29,7 @@
               <i class="glyphicon glyphicon-user icon-white"></i>
               <%= current_client.login  %><b class="caret"></b></a>
             <ul class="user-dropdown dropdown-menu">
+              <li><%= link_to 'Servers', servers_url %></li>
               <li><%= link_to 'Run history', client_history_path(current_client) %></li>
               <li><%= link_to 'Edit', edit_client_path(current_client) %></li>
               <li class="divider"></li>
