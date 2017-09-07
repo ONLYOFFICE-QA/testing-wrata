@@ -1,37 +1,51 @@
-<%= form_for(@server) do |f| %>
-    <% if @server.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "empty_pages") %> prohibited this user from being saved:</h2>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
 
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#">One server</a>
+    </li>
+    <li>
+      <%= link_to 'Many server', servers_create_multiple_path %>
+    </li>
+  </ul>
+    <%= form_for(@server) do |f| %>
+        <% if @server.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "empty_pages") %> prohibited this user from being saved:</h2>
+
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :name %><br/>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :description %><br/>
+          <%= f.text_area :description %>
+        </div>
+        <div class="field">
+          <%= f.label :address %><br/>
+          <%= f.text_field :address %>
+        </div>
+        <div class="field">
+          <%= f.label :_status %><br/>
+          <%= f.text_field :_status %>
+        </div>
+        <div class="field">
+          <%= f.label :self_destruction %><br/>
+          <%= f.check_box :self_destruction %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
         </div>
     <% end %>
-
-    <div class="field">
-      <%= f.label :name %><br/>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :description %><br/>
-      <%= f.text_area :description %>
-    </div>
-    <div class="field">
-      <%= f.label :address %><br/>
-      <%= f.text_field :address %>
-    </div>
-    <div class="field">
-      <%= f.label :_status %><br/>
-      <%= f.text_field :_status %>
-    </div>
-    <div class="field">
-      <%= f.label :self_destruction %><br/>
-      <%= f.check_box :self_destruction %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+</div>
+</div>
+</div>

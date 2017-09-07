@@ -1,8 +1,15 @@
 <div class="container">
-  <div class="row">
+<div class="row">
     <div class="col-md-4 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li>
+          <%= link_to 'One server', new_server_path %>
+        </li>
+        <li class="active">
+          <%= link_to 'Many server', servers_create_multiple_path %>
+        </li>
+      </ul>
 <%= form_tag({action: :create_multiple}, multipart: true) do %>
-
     <div class="field name_pattern_field">
       <%= label_tag 'Server name pattern' %><br/>
       <%= text_field_tag 'server_name_pattern', nil, class: 'pattern_name_input' %>
@@ -25,5 +32,6 @@
         <p>Max count of servers is 100. You really need to create more?</p>
       </div>
     </div>
+</div>
 </div>
 </div>
