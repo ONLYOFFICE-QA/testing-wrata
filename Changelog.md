@@ -12,6 +12,7 @@
 * Add default value to `http://` to custom portal (fix [#283](https://github.com/ONLYOFFICE/testing-wrata/issues/283))
 * Add new features - creating servers multiple by name pattern
 * Add link to servers page in top toolbar dropdown
+* Restyling: change all colors
 
 ### Refactor
 * Remove unused `start-icon`
