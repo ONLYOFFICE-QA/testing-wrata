@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   post '/servers/create'
   post '/servers/clear_history'
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: %i[new create destroy]
 
   get '/signup',  to: 'clients#new'
   get '/signin',  to: 'sessions#new'
