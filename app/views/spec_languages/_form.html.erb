@@ -1,22 +1,22 @@
 <%= form_for(spec_language) do |f| %>
-  <% if spec_language.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(spec_language.errors.count, "error") %> prohibited this spec_language from being saved:</h2>
+    <% if spec_language.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(spec_language.errors.count, "error") %> prohibited this spec_language from being saved:</h2>
 
-      <ul>
-      <% spec_language.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% spec_language.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

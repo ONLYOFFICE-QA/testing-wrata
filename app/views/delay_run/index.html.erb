@@ -21,13 +21,13 @@
             <label>Location:</label>
             <select class="form-control" style="width: 110px;">
               <% REGION_LIST.each do |location| %>
-                <option <%= 'selected' if run.location == location %>><%= location %></option>
+                  <option <%= 'selected' if run.location == location %>><%= location %></option>
               <% end %>
             </select>
           </div>
           <div class="run-method" style="display: inline-block; margin-left: 5px;">
             <label>Method:</label>
-            <input class="form-control" style="width: 110px;" disabled value="<%= run.method.include?('once') ? 'once': 'each time' %>">
+            <input class="form-control" style="width: 110px;" disabled value="<%= run.method.include?('once') ? 'once' : 'each time' %>">
           </div>
           <% unless run.method.include?('once') %>
               <div class="each-time" style="display: inline-block; margin-left: 5px;">
@@ -45,13 +45,13 @@
           </div>
         </div>
     <% end %>
-    </div>
+  </div>
 
-    <div id="test-lists"></div>
+  <div id="test-lists"></div>
 
-    <div class="add-run-button">
-      <i class="glyphicon glyphicon-plus-sign" style="font-size: 14px;"></i>
-      <span>Add run</span>
-    </div>
+  <div class="add-run-button">
+    <i class="glyphicon glyphicon-plus-sign" style="font-size: 14px;"></i>
+    <span>Add run</span>
+  </div>
 
 </div>

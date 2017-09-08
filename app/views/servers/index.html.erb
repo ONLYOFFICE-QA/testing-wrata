@@ -1,5 +1,5 @@
 <div class="container">
-      <h3>Listing servers <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_server_path %></h3>
+  <h3>Listing servers <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_server_path %></h3>
 
   <table class='table table-striped table-hover'>
     <tr>
@@ -26,7 +26,7 @@
                 <i class="glyphicon glyphicon-ok"></i>
             <% else %>
                 <i class="glyphicon glyphicon-remove"></i>
-          <% end %>
+            <% end %>
           </td>
           <td align="center">
             <% if server.self_destruction %>
@@ -34,7 +34,7 @@
             <% else %>
                 <i class="glyphicon glyphicon-remove"></i>
             <% end %>
-           </td>
+          </td>
           <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_server_path(server) %></td>
           <td>
             <%= link_to '<i class="glyphicon glyphicon-trash delete-server"></i>'.html_safe, server, method: :delete, data: {confirm: 'Are you sure?'} %>

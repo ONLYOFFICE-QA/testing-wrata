@@ -1,25 +1,25 @@
 <%= form_for(@test_list) do |f| %>
-  <% if @test_list.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@test_list.errors.count, "empty_pages") %> prohibited this test_list from being saved:</h2>
+    <% if @test_list.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@test_list.errors.count, "empty_pages") %> prohibited this test_list from being saved:</h2>
 
-      <ul>
-      <% @test_list.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @test_list.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :client_id %><br />
-    <%= f.number_field :client_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :client_id %><br/>
+      <%= f.number_field :client_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
