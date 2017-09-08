@@ -191,7 +191,6 @@ hr.deliver {
   top: 37px;
   bottom: 46px;
   background: rgba(255, 255, 255, .97);
-  //box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .2);
   height: 85%;
   border-radius: 3px;
   padding: 5px;
@@ -300,7 +299,6 @@ hr.deliver {
   margin: 0 auto 10px;
   border: 1px solid rgb(55, 56, 56);
   border-radius: 4px;
-  //box-shadow: 0 0 2px 0 rgb(131, 131, 131);
   background: #ffffff; /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3a85de', endColorstr='#215aa0', GradientType=0); /* IE6-9 */
   user-select: none;
@@ -314,24 +312,14 @@ hr.deliver {
 
 .server.off .server-header, .ui-dialog > .ui-widget-header {
   background: #eeeeee;
-  //background: #FF5252;
-  //border: 1px solid rgb(202, 17, 17);
 }
 
 .server-header {
   background: #00C853; /* Old browsers */
-  //background: -moz-linear-gradient(top, rgb(140, 202, 17) 15%, rgb(105, 154, 13) 100%); /* FF3.6+ */
-  //background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, rgb(140, 202, 17)), color-stop(100%, rgb(105, 154, 13))); /* Chrome,Safari4+ */
-  //background: -webkit-linear-gradient(top, rgb(140, 202, 17) 15%, rgb(105, 154, 13) 100%); /* Chrome10+,Safari5.1+ */
-  //background: -o-linear-gradient(top, rgb(140, 202, 17) 15%, rgb(105, 154, 13) 100%); /* Opera 11.10+ */
-  //background: -ms-linear-gradient(top, rgb(140, 202, 17) 15%, rgb(105, 154, 13) 100%); /* IE10+ */
-  //background: linear-gradient(to bottom, rgb(142, 194, 38) 15%, rgb(123, 175, 24) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8cca11', endColorstr='#699a0d', GradientType=0); /* IE6-9 */
   font-size: 14px;
   padding: 5px;
-  //border: 1px solid rgb(140, 202, 17);
   border-radius: 3px;
-  //box-shadow: 0 1px 5px 0 #2f2f2f;
 }
 
 .server-header .unbook-button, .server-header .book-button {
@@ -344,7 +332,6 @@ hr.deliver {
 
 .server-header label {
   font-weight: bold;
-  //text-shadow: 0 0 2px #ccc;
   color: #24292e;
   overflow: hidden;
   height: 20px;
@@ -359,10 +346,8 @@ hr.deliver {
   background: rgba(3, 200, 84, 0.3);
   border: 1px solid #ddd;
   color: rgb(39, 39, 39);
-  //text-shadow: 0 0 2px rgba(0, 0, 0, .1);
   font-size: 9px;
   display: inline-block;
-  //box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
   line-height: 11px;
   padding: 1px;
   margin-top: -4px;
@@ -974,12 +959,6 @@ a, a:link, a:visited {
   height: 90vh;
   padding: 5px;
   background: #00C853;
-  //background: -moz-linear-gradient(top, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%); /* FF3.6+ */
-  //background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, rgb(128, 184, 19)), color-stop(100%, rgb(105, 154, 13))); /* Chrome,Safari4+ */
-  //background: -webkit-linear-gradient(top, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%); /* Chrome10+,Safari5.1+ */
-  //background: -o-linear-gradient(top, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%); /* Opera 11.10+ */
-  //background: -ms-linear-gradient(top, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%); /* IE10+ */
-  //background: linear-gradient(to bottom, rgb(128, 184, 19) 15%, rgb(105, 154, 13) 100%); /* W3C */
   border: 1px solid rgba(0, 0, 0, .7);
   border-radius: 3px;
   box-shadow: 0 1px 3px 0 #2f2f2f;
@@ -992,7 +971,6 @@ a, a:link, a:visited {
 .center-panel-list {
   height: 85vh;
   background: rgba(255, 255, 255, .97);
-  //box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .4);
   display: inline-block;
   padding: 5px;
   border-radius: 3px;
