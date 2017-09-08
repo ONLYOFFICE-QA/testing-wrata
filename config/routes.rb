@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/servers/show_current_results' # should always be on top of `resources :servers` for correctly shown current status
   get '/servers/cloud_server_fetch_ip'
   get '/servers/log'
+  get '/servers/create_multiple' => 'servers#create_multiple'
+  post '/servers/create_multiple' => 'servers#create_servers_multiple'
   resources :servers
   resources :test_files
   resources :test_lists
@@ -60,7 +62,7 @@ Rails.application.routes.draw do
   post '/servers/create'
   post '/servers/clear_history'
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: %i[new create destroy]
 
   get '/signup',  to: 'clients#new'
   get '/signin',  to: 'sessions#new'

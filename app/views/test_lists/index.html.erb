@@ -1,13 +1,13 @@
 <h1>Your Test Lists:</h1>
 <div class="row">
-    <div class="span5 offset1">
-      <% @test_lists.each do |test_list| %>
-          <div>
-            <div class="list_name inline"><%= test_list.name %></div>
-            <%= link_to 'Delete', test_list, method: :delete, data: {confirm: 'Are you sure?'}, class: 'inline btn btn-mini btn-inverse' %>
-          </div>
-      <% end %>
-    </div>
+  <div class="span5 offset1">
+    <% @test_lists.each do |test_list| %>
+        <div>
+          <div class="list_name inline"><%= test_list.name %></div>
+          <%= link_to 'Delete', test_list, method: :delete, data: {confirm: 'Are you sure?'}, class: 'inline btn btn-mini btn-inverse' %>
+        </div>
+    <% end %>
+  </div>
 </div>
 
 

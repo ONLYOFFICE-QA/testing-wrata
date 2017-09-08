@@ -1,35 +1,46 @@
-<h1>Listing servers</h1>
+<div class="container">
+  <h3>Listing servers <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_server_path %></h3>
 
-<table class='hoverTable'>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Address</th>
-    <th>Status</th>
-    <th>Last Activity</th>
-    <th>Is executing command now</th>
-    <th>Self-Destruction enabled?</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @servers.each do |server| %>
-  <tr>
-    <td><%= server.name %></td>
-    <td><%= server.description %></td>
-    <td><%= server.address %></td>
-    <td><%= server._status %></td>
-    <td><%= server.last_activity_date %></td>
-    <td><%= server.executing_command_now %></td>
-    <td><%= server.self_destruction %></td>
-    <td><%= link_to 'Show', server %></td>
-    <td><%= link_to 'Edit', edit_server_path(server) %></td>
-    <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Server', new_server_path%>
+  <table class='table table-striped table-hover'>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th>Last Activity</th>
+      <th>Is executing command now</th>
+      <th>Self-Destruction enabled?</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @servers.each do |server| %>
+        <tr>
+          <td><%= link_to server.name, server %></td>
+          <td><%= server.description %></td>
+          <td><%= server.address %></td>
+          <td><%= server._status %></td>
+          <td><%= server.last_activity_date %></td>
+          <td align="center">
+            <% if server.executing_command_now %>
+                <i class="glyphicon glyphicon-ok"></i>
+            <% else %>
+                <i class="glyphicon glyphicon-remove"></i>
+            <% end %>
+          </td>
+          <td align="center">
+            <% if server.self_destruction %>
+                <i class="glyphicon glyphicon-ok"></i>
+            <% else %>
+                <i class="glyphicon glyphicon-remove"></i>
+            <% end %>
+          </td>
+          <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_server_path(server) %></td>
+          <td>
+            <%= link_to '<i class="glyphicon glyphicon-trash delete-server"></i>'.html_safe, server, method: :delete, data: {confirm: 'Are you sure?'} %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+  <p><%= link_to 'Create servers multiple', servers_create_multiple_path %></p>
+</div>

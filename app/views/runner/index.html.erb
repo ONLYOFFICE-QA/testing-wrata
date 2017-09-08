@@ -121,29 +121,29 @@
       <div class="tabbable">
         <div id="project-tab-header">
           <ul class="nav nav-tabs">
-          <% if client && client.project == "docs" %>
-              <li class="active">
-          <% end %>
-          <% if client && client.project == "teamlab" %>
-              <li>
-          <% end %>
-          <% unless client %>
-              <li class="active">
-          <% end %>
+            <% if client && client.project == "docs" %>
+                <li class="active">
+            <% end %>
+            <% if client && client.project == "teamlab" %>
+                <li>
+            <% end %>
+            <% unless client %>
+                <li class="active">
+            <% end %>
             <a href="#docs" data-toggle="tab">Online Document</a>
-          </li>
-          <% if client && client.project == "teamlab" %>
-              <li class="active">
-          <% end %>
-          <% if client && client.project == "docs" %>
-              <li>
-          <% end %>
-          <% unless client %>
-              <li>
-          <% end %>
-          <a href="#teamlab" data-toggle="tab">Teamlab</a>
-          </li>
-        </ul>
+            </li>
+            <% if client && client.project == "teamlab" %>
+                <li class="active">
+            <% end %>
+            <% if client && client.project == "docs" %>
+                <li>
+            <% end %>
+            <% unless client %>
+                <li>
+            <% end %>
+            <a href="#teamlab" data-toggle="tab">Teamlab</a>
+            </li>
+          </ul>
           <div id="file-list-tools">
             <select id="branches" class="branch form-control"></select>
             <select id='portal-list' class="region form-control">
@@ -168,7 +168,7 @@
           </div>
         </div>
       </div>
-      </div>
     </div>
   </div>
+</div>
 </div>

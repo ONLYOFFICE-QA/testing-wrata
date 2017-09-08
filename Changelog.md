@@ -10,6 +10,9 @@
 * Add margin between add-button-file and filename
 * Show `spec_language` in current running test tooltip (fix [#286](https://github.com/ONLYOFFICE/testing-wrata/issues/286))
 * Add default value to `http://` to custom portal (fix [#283](https://github.com/ONLYOFFICE/testing-wrata/issues/283))
+* Add new features - creating servers multiple by name pattern
+* Add link to servers page in top toolbar dropdown
+* Restyling: change all colors
 
 ### Refactor
 * Remove unused `start-icon`

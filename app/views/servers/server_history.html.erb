@@ -16,9 +16,9 @@
             $(document).ready(function () {
                 $('#show-more').click(function () {
                     <% if @controller == :client %>
-                        showMoreHistoryForClient();
+                    showMoreHistoryForClient();
                     <% elsif @controller == :server %>
-                        showMoreHistoryForServer();
+                    showMoreHistoryForServer();
                     <% end %>
                 });
                 eventToOpenRspecResults($('.open-results'))
