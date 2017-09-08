@@ -253,11 +253,10 @@ hr.deliver {
 
 .file-name {
   font-size: 11px;
-  cursor: pointer;
 }
 
-.file-name:hover, .folder-name:hover {
-  background-color: #a7aeb9;
+.file:hover{
+  background-color: #efefef;
 }
 
 .stroke-list {
@@ -357,13 +356,13 @@ hr.deliver {
 
 .add-button-file, .add-button-folder {
   margin-right: 3px;
-  background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 104, 150) 100%);
-  border: 1px solid #105bad;
-  color: rgb(234, 250, 238);
-  text-shadow: 0 0 2px rgba(0, 0, 0, .1);
+  background: rgba(3, 200, 84, 0.3);
+  border: 1px solid #ddd;
+  color: rgb(39, 39, 39);
+  //text-shadow: 0 0 2px rgba(0, 0, 0, .1);
   font-size: 9px;
   display: inline-block;
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
+  //box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
   line-height: 11px;
   padding: 1px;
   margin-top: -4px;
@@ -372,9 +371,12 @@ hr.deliver {
   vertical-align: middle;
   cursor: pointer;
 }
+.add-button-file:hover, .add-button-folder:hover {
+  background: rgba(3, 200, 84, 0.6);
+}
 
 .add-button-file:active, .add-button-folder:active {
-  background: linear-gradient(to bottom, rgb(0, 117, 192) 15%, rgb(0, 117, 192) 100%);
+  background: rgba(3, 200, 84, 1);
 }
 
 .book-button, .unbook-button {
@@ -826,10 +828,10 @@ label {
 
 .folder-name {
   font-size: 14px;
+  cursor: pointer;
 }
 
 .folder-name, .file-name {
-  cursor: pointer;
   display: inline-block;
   color: rgba(0, 12, 53, .84);
 }
@@ -920,6 +922,9 @@ label#server, label#client {
 
 .add-file {
   margin-left: 5px;
+}
+.add-file:hover {
+  color: rgba(3, 200, 84, 0.8);
 }
 
 #list-name {
