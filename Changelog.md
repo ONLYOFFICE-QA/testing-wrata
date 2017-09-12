@@ -24,6 +24,7 @@
 * Possible fix of Connection Pool exceeded
 * Redirect from `/singin` if already sign-in (fix [#287](https://github.com/ONLYOFFICE/testing-wrata/issues/287)) 
 * Do not insert empty string as custom portal
+* Fix cleaning server and client history
 
 ## 1.13
 ### New features
