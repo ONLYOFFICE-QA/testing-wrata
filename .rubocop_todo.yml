@@ -8,14 +8,6 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentOneStep, IndentationWidth.
-# SupportedStyles: case, end
-Layout/CaseIndentation:
-  Exclude:
-    - 'app/workers/run_thread_manager.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
     - 'bin/setup'

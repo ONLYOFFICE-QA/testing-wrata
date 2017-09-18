@@ -28,13 +28,13 @@ module RunThreadManager
     manager = Runner::Application.config.run_manager.find_manager_by_client_login(run.client.login)
     return unless manager
     case run.f_type
-      when 'test_list'
-        raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
-        test_list = run.client.test_lists.find_by_name(run.name)
-        names = test_list.test_files.inject([]) do |arr, test_file|
-          arr << test_file.name
-        end
-        manager.add_test(names, test_list.branch, run.location, to_begin_of_queue: false)
+    when 'test_list'
+      raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
+      test_list = run.client.test_lists.find_by_name(run.name)
+      names = test_list.test_files.inject([]) do |arr, test_file|
+        arr << test_file.name
+      end
+      manager.add_test(names, test_list.branch, run.location, to_begin_of_queue: false)
     end
   end
 
