@@ -9,8 +9,7 @@ class HistoriesController < ApplicationController
 
   # GET /histories/1
   # GET /histories/1.json
-  def show
-  end
+  def show; end
 
   # GET /histories/new
   def new
@@ -18,8 +17,7 @@ class HistoriesController < ApplicationController
   end
 
   # GET /histories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /histories
   # POST /histories.json

@@ -120,13 +120,3 @@ Style/ConditionalAssignment:
 # Offense count: 83
 Style/Documentation:
   Enabled: false
-
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/histories_controller.rb'
-    - 'app/controllers/test_files_controller.rb'
-    - 'app/controllers/test_lists_controller.rb'

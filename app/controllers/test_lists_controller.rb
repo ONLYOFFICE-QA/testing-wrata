@@ -14,8 +14,7 @@ class TestListsController < ApplicationController
 
   # GET /test_lists/1
   # GET /test_lists/1.json
-  def show
-  end
+  def show; end
 
   # GET /test_lists/new
   def new
@@ -23,8 +22,7 @@ class TestListsController < ApplicationController
   end
 
   # GET /test_lists/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /test_lists
   # POST /test_lists.json
