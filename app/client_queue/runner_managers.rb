@@ -31,7 +31,7 @@ class RunnerManagers
   end
 
   class << self
-    attr_accessor :digital_ocean
+    attr_writer :digital_ocean
 
     # @return [DigitalOceanWrapper] wrapper for working with DO
     def digital_ocean
