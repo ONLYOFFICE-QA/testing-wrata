@@ -1,5 +1,5 @@
 class TestListsController < ApplicationController
-  before_action :set_test_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_list, only: %i[show edit update destroy]
 
   # GET /test_lists
   # GET /test_lists.json

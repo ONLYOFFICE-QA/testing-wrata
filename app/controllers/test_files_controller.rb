@@ -1,5 +1,5 @@
 class TestFilesController < ApplicationController
-  before_action :set_test_file, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_file, only: %i[show edit update destroy]
 
   # GET /test_files
   # GET /test_files.json

@@ -1,5 +1,5 @@
 class SpecLanguagesController < ApplicationController
-  before_action :set_spec_language, only: [:show, :edit, :update, :destroy]
+  before_action :set_spec_language, only: %i[show edit update destroy]
 
   # GET /spec_languages
   # GET /spec_languages.json
