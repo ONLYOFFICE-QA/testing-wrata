@@ -1,5 +1,5 @@
 class TestFilesController < ApplicationController
-  before_action :set_test_file, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_file, only: %i[show edit update destroy]
 
   # GET /test_files
   # GET /test_files.json
@@ -9,8 +9,7 @@ class TestFilesController < ApplicationController
 
   # GET /test_files/1
   # GET /test_files/1.json
-  def show
-  end
+  def show; end
 
   # GET /test_files/new
   def new
@@ -18,8 +17,7 @@ class TestFilesController < ApplicationController
   end
 
   # GET /test_files/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /test_files
   # POST /test_files.json
