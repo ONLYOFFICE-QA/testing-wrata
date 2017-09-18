@@ -137,13 +137,3 @@ Style/EmptyMethod:
 Style/PercentLiteralDelimiters:
   Exclude:
     - 'config/spring.rb'
-
-# Offense count: 7
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'bin/yarn'
-    - 'config/environments/production.rb'
-    - 'config/puma.rb'
