@@ -87,10 +87,10 @@ class ServersController < ApplicationController
   def create_servers_multiple
     errors = multiple_data_correct?
     if errors.empty?
-      multi_servers_params['count'].to_i.times do |_current_pattern_prefix|
-        break if _current_pattern_prefix > 100
+      multi_servers_params['count'].to_i.times do |current_pattern_prefix|
+        break if current_pattern_prefix > 100
         multi_servers_params['server_name_pattern']
-        Server.find_or_create_by(name: "#{multi_servers_params['server_name_pattern']}-#{_current_pattern_prefix}")
+        Server.find_or_create_by(name: "#{multi_servers_params['server_name_pattern']}-#{current_pattern_prefix}")
         Runner::Application.config.threads.add_threads
       end
       redirect_to servers_url

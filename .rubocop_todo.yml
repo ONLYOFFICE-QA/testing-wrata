@@ -52,11 +52,6 @@ Lint/ScriptPermission:
   Exclude:
     - 'Rakefile'
 
-# Offense count: 1
-Lint/UnderscorePrefixedVariableName:
-  Exclude:
-    - 'app/controllers/servers_controller.rb'
-
 # Offense count: 13
 Metrics/AbcSize:
   Max: 38
