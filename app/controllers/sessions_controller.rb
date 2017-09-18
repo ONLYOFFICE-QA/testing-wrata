@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
   def new
-    redirect_to runner_path if current_client
+    redirect_to runner_path if current_client && current_client.verified
   end
 
   def create
