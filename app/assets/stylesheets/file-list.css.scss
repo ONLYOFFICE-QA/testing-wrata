@@ -1,0 +1,16 @@
+#project-tab-header ul li {
+  border: 1px solid #ddd;
+  border-radius: 4px 4px 0 0;
+}
+
+#project-tab-header ul a {
+  border: 0;
+}
+
+#project-tab-header ul select {
+  margin-right: 5px;
+}
+
+#project-tab-header li * {
+  display: inline-block;
+}

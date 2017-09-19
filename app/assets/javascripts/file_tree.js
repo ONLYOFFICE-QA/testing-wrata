@@ -90,26 +90,34 @@ function hideFileTreeOverlay() {
 }
 
 function fetchBranchesAndShowFiles() {
+    fetchBranches('ONLYOFFICE/testing-documentserver', $('#docs-branches'));
+    fetchBranches('ONLYOFFICE/testing-onlyoffice', $('#teamlab-branches'));
+}
+
+function fetchBranches(project, control) {
     $.ajax({
         url: 'runner/branches',
         context: this,
         async: true,
         type: 'GET',
         data: {
-            project: activeProject()
+            project: project
         },
         beforeSend: function () {
             showFileTreeOverlay();
         },
         success: function (data) {
-            setGitReferences($('#branches'), data.branches, data.tags);
-            renderFileTree();
+            setGitReferences(control, data.branches, data.tags);
+            if (project === activeProject()) {
+                renderFileTree(project, getCurrentBranch());
+            }
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
 }
+
 
 function setGitReferences(control, branches, tags) {
     clearElementInside(control);

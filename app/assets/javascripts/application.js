@@ -369,8 +369,10 @@ function Runner() {
     };
 
     this.setEventChangeBranch = function () {
-        $('#branches').change(function () {
-            renderFileTree();
+        $('#project-tab-header li select').change(function () {
+            if ($(this).parent().hasClass('active')) {
+                renderFileTree();
+            }
         });
     };
 

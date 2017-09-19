@@ -3,7 +3,15 @@
  */
 
 function getCurrentBranch() {
-    return $('#branches option:selected').val();
+    return $('#project-tab-header li.active option:selected').val();
+}
+
+function getDocBranch() {
+    return $('#docs-branches').val();
+}
+
+function getTmBranch() {
+    return $('#teamlab-branches').val();
 }
 
 function getSelectedPortalUrl() {

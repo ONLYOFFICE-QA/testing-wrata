@@ -131,6 +131,7 @@
                 <li class="active">
             <% end %>
             <a href="#docs" data-toggle="tab">Online Document</a>
+            <select id="docs-branches" class="branch form-control"></select>
             </li>
             <% if client && client.project == "teamlab" %>
                 <li class="active">
@@ -142,10 +143,10 @@
                 <li>
             <% end %>
             <a href="#teamlab" data-toggle="tab">Teamlab</a>
+            <select id="teamlab-branches" class="branch form-control"></select>
             </li>
           </ul>
           <div id="file-list-tools">
-            <select id="branches" class="branch form-control"></select>
             <select id='portal-list' class="region form-control">
               <% REGION_LIST.each do |region| %>
                   <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
