@@ -105,7 +105,9 @@ function addTestInQueue(test_path, branch, location) {
             'test_path': test_path,
             'branch': branch,
             'location': location,
-            'spec_language': getSpecLanguage()
+            'spec_language': getSpecLanguage(),
+            'teamlab_branch': getTmBranch(),
+            'doc_branch': getDocBranch()
         },
         type: 'POST',
         success: function () {

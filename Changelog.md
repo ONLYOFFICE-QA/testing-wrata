@@ -13,6 +13,7 @@
 * Add new features - creating servers multiple by name pattern
 * Add link to servers page in top toolbar dropdown
 * Restyling: change all colors
+* Ability to run projects on different branches
 
 ### Refactor
 * Remove unused `start-icon`
