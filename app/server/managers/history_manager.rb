@@ -9,6 +9,7 @@ module HistoryManager
     start_options.portal_type = options.portal_type
     start_options.portal_region = options.portal_region
     start_options.start_command = start_command
+    start_options.spec_language = options.spec_language
     Runner::Application.config.threads.lock.synchronize { start_options.save }
   end
 
