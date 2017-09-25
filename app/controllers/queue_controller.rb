@@ -20,7 +20,8 @@ class QueueController < ApplicationController
   end
 
   def add_test
-    @manager.add_test(params['test_path'], params['branch'], params['location'], params['spec_language'],
+    @manager.add_test(params['test_path'], params['branch'], params['location'],
+                      spec_language: params['spec_language'],
                       tm_branch: params['teamlab_branch'],
                       doc_branch: params['doc_branch'])
 
@@ -28,7 +29,10 @@ class QueueController < ApplicationController
   end
 
   def retest
-    @manager.add_test(params['test_path'], params['branch'], params['location'], tm_branch: params['tm_branch'], doc_branch: params['doc_branch'])
+    @manager.add_test(params['test_path'], params['branch'], params['location'],
+                      spec_language: params['spec_language'],
+                      tm_branch: params['tm_branch'],
+                      doc_branch: params['doc_branch'])
 
     render body: nil
   end

@@ -78,19 +78,14 @@ class ClientRunnerManager
   end
 
   def add_test(test, branch, location,
-               spec_language = Rails.application.config.default_spec_language,
+               spec_language: nil,
                to_begin_of_queue: true,
                tm_branch: nil,
                doc_branch: nil)
+    spec_language ||= Rails.application.config.default_spec_language
     test = [test] unless test.is_a?(Array)
-    lang_list = if spec_language == 'All Languages'
-                  SpecLanguage.all.pluck(:name).reverse
-                else
-                  [spec_language]
-                end
-
     test.reverse.each do |current_test|
-      lang_list.each do |current_lang|
+      spec_language.each do |current_lang|
         @tests.push_test(current_test, branch, location,
                          spec_language: current_lang,
                          to_begin_of_queue: to_begin_of_queue,

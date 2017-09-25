@@ -14,6 +14,7 @@
 * Add link to servers page in top toolbar dropdown
 * Restyling: change all colors
 * Ability to run projects on different branches
+* Ability to select multiple `SpecLanguage` at once
 
 ### Refactor
 * Remove unused `start-icon`
