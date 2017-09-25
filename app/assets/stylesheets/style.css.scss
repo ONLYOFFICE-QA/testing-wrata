@@ -783,10 +783,12 @@ input[type="checkbox"].folder-input + label {
 
 .tab-content {
   border: 1px solid #ddd;
+  display: inline-block;
   margin-top: -8px;
   min-height: 60px;
   padding: 12px;
   position: relative;
+  width: 80%;
 }
 
 label {

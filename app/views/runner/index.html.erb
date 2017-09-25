@@ -14,7 +14,6 @@
             myRunner.eventToClearServerList($('#clear-servers'));
             addSortableToElem($('#sidebar-test-list'));
             myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
-            addAllLanguagesToSelect();
             eventOnChangeProject();
             eventForAddNewPortal();
         });
@@ -152,7 +151,6 @@
                   <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
               <% end %>
             </select>
-            <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language') %>
             <i class="update-tests glyphicon glyphicon-repeat"></i>
           </div>
         </div>
@@ -168,6 +166,7 @@
             </div>
           </div>
         </div>
+        <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language', multiple: true ) %>
       </div>
     </div>
   </div>

@@ -57,6 +57,6 @@ module Runner
                             exception_recipients: [Rails.application.secrets.admin_email]
                           }
     config.mock_cloud_server = false
-    config.default_spec_language = 'en-US'
+    config.default_spec_language = ['en-US']
   end
 end
