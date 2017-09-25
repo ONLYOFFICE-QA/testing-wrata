@@ -3,7 +3,6 @@
         $(document).ready(function () {
             eventToDeleteHistoryLine($('.delete-line'));
             eventToRetest($('.retest'));
-            eventToOpenMoreOptions($('.open-options'));
             eventToShowFullStartOption($('.open-full-command'));
             <% if @controller == :server %>
               eventToClearHistoryOnServer($('#clear-history'));

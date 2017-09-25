@@ -672,16 +672,6 @@ table .center {
   color: rgb(5, 5, 5);
 }
 
-/*.full-command.showed {*/
-/*display: block;*/
-/*}*/
-
-.open-options {
-  font-weight: bold;
-  /*opacity: 0;*/
-  cursor: pointer;
-}
-
 .more-options {
   border: solid 1px rgb(228, 228, 228);
   text-align: left;
@@ -940,10 +930,6 @@ label#server, label#client {
 
 .server .log {
   white-space: pre-wrap;
-}
-
-.more-options {
-  display: none;
 }
 
 .file-td {
