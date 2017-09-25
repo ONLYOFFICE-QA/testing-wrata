@@ -16,6 +16,7 @@
 * Ability to run projects on different branches
 * Ability to select multiple `SpecLanguage` at once
 * Add `SpecLanguage` to `ServerHistory` page
+* Do not hide start options on `ServerHistory` page
 
 ### Refactor
 * Remove unused `start-icon`

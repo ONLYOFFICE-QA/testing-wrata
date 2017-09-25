@@ -10,7 +10,6 @@ function showMoreData(data) {
         $('tbody').append(trimmed_data);
         eventToDeleteHistoryLine(trimmed_data.find('.delete-line'));
         eventToOpenRspecResults(trimmed_data.find('.open-results'));
-        eventToOpenMoreOptions(trimmed_data.find('.open-options'));
         eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
         eventToRetest(trimmed_data.find('.retest'));
     }
@@ -117,18 +116,6 @@ function eventToRetest(elem) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
             }
         });
-    });
-}
-
-function eventToOpenMoreOptions(elem) {
-    elem.on('click', function () {
-        var more_options = $(this).next('.more-options');
-        var cur_display = more_options.css('display');
-        if (cur_display == 'none') {
-            more_options.slideDown();
-        } else {
-            more_options.slideUp();
-        }
     });
 }
 
