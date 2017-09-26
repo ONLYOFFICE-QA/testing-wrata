@@ -166,7 +166,15 @@
             </div>
           </div>
         </div>
-        <%= collection_select(:language, 0, SpecLanguage.all, :name, :name, {}, class: 'form-control spec-language', multiple: true ) %>
+        <%= collection_select(:language,
+                              0,
+                              SpecLanguage.all.sort_by(&:name),
+                              :name,
+                              :name,
+                              {},
+                              class: 'form-control spec-language',
+                              multiple: true,
+                              size: SpecLanguage.all.length ) %>
       </div>
     </div>
   </div>
