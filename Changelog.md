@@ -17,6 +17,7 @@
 * Ability to select multiple `SpecLanguage` at once
 * Add `SpecLanguage` to `ServerHistory` page
 * Do not hide start options on `ServerHistory` page
+* Use `bootbox.confirm` instead of JS native `confirm`
 
 ### Refactor
 * Remove unused `start-icon`
