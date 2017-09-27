@@ -174,30 +174,33 @@ function Runner() {
 
     this.eventToStopTest = function (elem) {
         elem.on('click', function () {
-            var result = confirm('Are you really want to stop this test?');
-            if (result) {
-                var server_name = $(this).attr('data-server');
-                _self.stopCurrent(server_name);
-                getUpdatedDataFromServer();
-            }
+            bootbox.confirm('Are you really want to stop this test?', function(confirmed) {
+                if(confirmed) {
+                    var server_name = $(this).attr('data-server');
+                    _self.stopCurrent(server_name);
+                    getUpdatedDataFromServer();
+                }
+            });
         });
     };
 
     this.eventToStopAllBooked = function (elem) {
         elem.on('click', function () {
-            var result = confirm('Are you really want to stop all test on booked servers?');
-            if (result) {
-                _self.stopAllBooked();
-            }
+            bootbox.confirm('Are you really want to stop all test on booked servers?', function(confirmed) {
+                if(confirmed) {
+                    _self.stopAllBooked();
+                }
+            });
         });
     };
     
     this.eventToDestroyAllUnBooked = function (elem) {
         elem.on('click', function () {
-            var result = confirm('Are you really want to destroy all unbooked servers?');
-            if (result) {
-                _self.destroyAllUnbooked();
-            }
+            bootbox.confirm('Are you really want to destroy all unbooked servers?', function(confirmed) {
+                if(confirmed) {
+                    _self.destroyAllUnbooked();
+                }
+            });
         });
     };
 
@@ -804,7 +807,11 @@ function verifyListName(listName) {
     var result = true;
     $('#test_list_menu').find('a').each(function () {
         if ($(this).text() == listName) {
-            result = confirm('Current list name already exist. Test list will be overwrite!');
+            bootbox.confirm('Current list name already exist. Test list will be overwrite!', function(confirmed) {
+                if(confirmed) {
+                    result = true;
+                }
+            });
         }
     });
     return result;

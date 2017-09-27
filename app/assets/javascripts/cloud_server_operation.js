@@ -31,11 +31,12 @@ function eventForCreateAndDestroyServer(serverName) {
     var actionButton = $("#" + serverName + ' .glyphicon-off');
     actionButton.on('click', function () {
         var action = actionButton.find('.hidden-tool').text();
-        var result = confirm('Are you really want to ' + action + ' this server?');
-        if (result) {
-            var serverSize = getSelectedServerSize(serverName);
-            createAndDestroyServer(action, serverName, serverSize);
-        }
+        bootbox.confirm('Are you really want to ' + action + ' this server?', function(confirmed) {
+            if(confirmed) {
+                var serverSize = getSelectedServerSize(serverName);
+                createAndDestroyServer(action, serverName, serverSize);
+            }
+        });
     });
 }
 
