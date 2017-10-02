@@ -32,6 +32,7 @@
 * Do not insert empty string as custom portal
 * Fix cleaning server and client history
 * Fix redirect loop for non-verified clients
+* Fix copy server IP by click
 
 ## 1.13
 ### New features

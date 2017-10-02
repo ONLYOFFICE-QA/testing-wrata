@@ -187,5 +187,6 @@ function copyServerIpToClipboardEvent(serverName) {
 function selectObjectForCopy(jqueryObject) {
     var range = document.createRange();
     range.selectNode(jqueryObject.get(0));
+    window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
 }
