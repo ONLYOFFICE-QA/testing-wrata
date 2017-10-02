@@ -173,10 +173,10 @@ function Runner() {
     };
 
     this.eventToStopTest = function (elem) {
+        var server_name = elem.attr('data-server');
         elem.on('click', function () {
             bootbox.confirm('Are you really want to stop this test?', function(confirmed) {
                 if(confirmed) {
-                    var server_name = $(this).attr('data-server');
                     _self.stopCurrent(server_name);
                     getUpdatedDataFromServer();
                 }
