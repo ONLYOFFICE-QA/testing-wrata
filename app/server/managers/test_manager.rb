@@ -45,8 +45,8 @@ module TestManager
                   '--rm '\
                   '--shm-size=2g'
     'docker rm -f $(docker ps -a -q); '\
-    'docker pull onlyofficetestingrobot/nct-at-testing-node; '\
-    "docker run #{docker_keys} onlyofficetestingrobot/nct-at-testing-node "\
+    "docker pull #{Rails.application.config.node_docker_image}; "\
+    "docker run #{docker_keys} #{Rails.application.config.node_docker_image} "\
     "bash -c \"bash /before-run.sh; #{command}\""
   end
 

@@ -58,5 +58,6 @@ module Runner
                           }
     config.mock_cloud_server = false
     config.default_spec_language = ['en-US']
+    config.node_docker_image = 'onlyofficetestingrobot/nct-at-testing-node:latest'
   end
 end
