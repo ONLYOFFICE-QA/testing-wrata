@@ -35,6 +35,7 @@
 * Fix redirect loop for non-verified clients
 * Fix copy server IP by click
 * Fix using custom branches while adding folder
+* Fix scroll lags by deleting slimscroll plugin
 
 ## 1.13
 ### New features

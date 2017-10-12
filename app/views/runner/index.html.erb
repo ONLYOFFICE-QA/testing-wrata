@@ -2,8 +2,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             myRunner.showServers();
-            $("#test-queue").slimScroll({height: '84vh'});
-            $("#server-queue").slimScroll({height: '84vh'});
             myRunner.eventToSortTestQueue();
             getUpdatedDataFromServer();
             myRunner.eventToStopAllBooked($('#stop-booked'));

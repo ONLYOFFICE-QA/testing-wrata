@@ -194,6 +194,7 @@ hr.deliver {
   height: 85%;
   border-radius: 3px;
   padding: 5px;
+  overflow: auto;
 }
 
 #save-new, #add-list {
@@ -615,7 +616,7 @@ hr.deliver {
   padding: 3px;
   color: rgba(0, 0, 0, .7);
   height: 85px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .log-opener {
@@ -967,6 +968,7 @@ a, a:link, a:visited {
 
 .server-list {
   width: 25%;
+  overflow: auto;
 }
 
 .queue-list {
@@ -1051,7 +1053,9 @@ a, a:link, a:visited {
 }
 
 #test-queue {
-  width: 202px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .server-node {
