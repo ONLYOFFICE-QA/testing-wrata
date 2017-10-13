@@ -33,6 +33,7 @@
 * Fix cleaning server and client history
 * Fix redirect loop for non-verified clients
 * Fix copy server IP by click
+* Fix using custom branches while adding folder
 
 ## 1.13
 ### New features

@@ -118,24 +118,3 @@ function addTestInQueue(test_path, branch, location) {
         }
     });
 }
-
-function addTestsInQueue(test_path_array, branch, location) {
-    $.ajax({
-        url: 'queue/add_test',
-        context: this,
-        async: false,
-        data: {
-            'test_path': test_path_array,
-            'branch': branch,
-            'location': location,
-            'spec_language': getSpecLanguage()
-        },
-        type: 'POST',
-        success: function () {
-
-        },
-        error: function (xhr, type, errorThrown) {
-            ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-        }
-    });
-}

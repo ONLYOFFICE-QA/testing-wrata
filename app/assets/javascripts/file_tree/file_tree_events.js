@@ -35,7 +35,7 @@ function addFolderInQueue(folder_elem) {
     if (tests.length !== 0) {
         var branch = getCurrentBranch();
         var location = getSelectedPortalUrl();
-        addTestsInQueue(tests, branch, location);
+        addTestInQueue(tests, branch, location);
     }
 
 }

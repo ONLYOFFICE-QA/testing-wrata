@@ -224,7 +224,7 @@ function Runner() {
             var tests = _self.getTestPathsFromSidebar();
             var branch = getCurrentBranch();
             var location = $('#list-region').val();
-            addTestsInQueue(tests, branch, location);
+            addTestInQueue(tests, branch, location);
             getUpdatedDataFromServer();
         });
     };
