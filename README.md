@@ -4,6 +4,5 @@
 
 ```
 git pull --prune
-docker-compose up -d --no-deps --build web
-
+docker-compose up -d --no-deps --build app
 ```
