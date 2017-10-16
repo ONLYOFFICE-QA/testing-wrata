@@ -20,6 +20,7 @@
 * Use `bootbox.confirm` instead of JS native `confirm`
 * Store spec exit status and send notification only if failed
 * Use nginx in `docker-compose`
+* Add `api_keys` page for gettin api access keys
 
 ### Refactor
 * Remove unused `start-icon`
