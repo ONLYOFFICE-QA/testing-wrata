@@ -248,7 +248,6 @@ function Runner() {
                 $("div#servers").html(trimmed_data);
                 _self.eventToOpenServer(trimmed_data.find('.server-header'));
                 _self.eventToOpenLogBySelector('.log-opener span');
-                _self.eventToSlimScrollLog(trimmed_data.find('.log'));
                 eventToBookServer(trimmed_data.find('.book-button'));
                 eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
                 _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
@@ -492,12 +491,6 @@ function Runner() {
         });
     };
 
-    this.eventToSlimScrollLog = function (log) {
-        log.slimScroll({
-            height:'80px'
-        });
-    };
-
     this.eventToSortTestQueue = function (){
         var removeIntent = false;
         $('#test-queue').sortable({
@@ -657,11 +650,6 @@ $(function () {
         changeDivToInput();
         $(this).css('visibility', 'hidden');
         eventsEditInput();
-    });
-
-    $("#sidebar-test-list").slimScroll({
-        height: '100%',
-        width: '100%'
     });
 
     $(window).resize(function () {
@@ -903,7 +891,6 @@ function hideOverlay() {
 function eventsForRspecPopup() {
     eventToOpenDescribe();
     evenToOpenFailDetails();
-    setScrollOnMainDescribe();
     setFailedToFailedDescribes();
     eventToClosePopup();
 }
@@ -948,10 +935,6 @@ function eventToClosePopup() {
         closePopup();
     });
     stopPropagation($('.popup-window'));
-}
-
-function setScrollOnMainDescribe() {
-    $('.main-describe').slimScroll({ width: 'auto', height: '100%', size: '3px'});
 }
 
 function setFailedToFailedDescribes() {
