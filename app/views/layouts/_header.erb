@@ -33,6 +33,7 @@
               <li><%= link_to 'Servers', servers_url %></li>
               <li><%= link_to 'Run history', client_history_path(current_client) %></li>
               <li><%= link_to 'Edit', edit_client_path(current_client) %></li>
+              <li><%= link_to 'API Keys', clients_api_keys_path %></li>
               <li class="divider"></li>
               <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
             </ul>

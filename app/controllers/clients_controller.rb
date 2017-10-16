@@ -99,6 +99,10 @@ class ClientsController < ApplicationController
     render '/servers/show_more', layout: false
   end
 
+  def api_keys
+    render '/clients/api_keys'
+  end
+
   private
 
   def client_params

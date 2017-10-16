@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :spec_languages
   root to: 'runner#index', as: 'runner'
 
+  get '/clients/api_keys'
   resources :clients
   get '/servers/show_current_results' # should always be on top of `resources :servers` for correctly shown current status
   get '/servers/cloud_server_fetch_ip'
