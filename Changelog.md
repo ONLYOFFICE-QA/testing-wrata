@@ -26,6 +26,7 @@
 ### Refactor
 * Remove unused `start-icon`
 * Reorganize a whole lot managing branches
+* Remove forced rvm sourced command from starting test
 
 ### Fix
 * Use `seeds.rb` to set default `SpecLanguage` to `en-US`
