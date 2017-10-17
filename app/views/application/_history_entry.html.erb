@@ -41,8 +41,9 @@
           <div class="full-command"><%= start_option.start_command %></div>
         </div>
       </td>
-      <td class="center">
-        <div><%= line.created_at.to_s.gsub(' +0400', '') %></div>
+      <td class="right">
+        <div>Started at: <%= line.start_time %></div>
+        <div>Ended at: <%= line.created_at %></div>
         <div>Elapsed: <%= line.elapsed_time %></div>
       </td>
       <td class="center">
