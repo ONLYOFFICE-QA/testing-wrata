@@ -21,6 +21,7 @@
 * Store spec exit status and send notification only if failed
 * Use nginx in `docker-compose`
 * Add `api_keys` page for gettin api access keys
+* Add start time to `ServerHistory` page (fix [#325](https://github.com/ONLYOFFICE/testing-wrata/issues/325))
 
 ### Refactor
 * Remove unused `start-icon`
