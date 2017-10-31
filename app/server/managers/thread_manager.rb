@@ -7,11 +7,11 @@ module ThreadManager
         location = @test[:location]
         clear_log_file
         @server_model.update_column(:executing_command_now, true)
-        test_options = ServerOptions.new(@test[:doc_branch],
-                                         @test[:tm_branch],
-                                         location.split(' ')[0],
-                                         location.split(' ')[1],
-                                         spec_language: @test[:spec_language])
+        test_options = StartOption.new(docs_branch: @test[:doc_branch],
+                                       teamlab_branch: @test[:tm_branch],
+                                       portal_type: location.split(' ')[0],
+                                       portal_region: location.split(' ')[1],
+                                       spec_language: @test[:spec_language])
         start_time = DateTime.now
         full_start_command = generate_full_start_command(test_path, test_options)
         exit_status = execute_command(full_start_command)
