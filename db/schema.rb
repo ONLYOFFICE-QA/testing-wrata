@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929141116) do
+ActiveRecord::Schema.define(version: 20171030160221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,15 +77,15 @@ ActiveRecord::Schema.define(version: 20170929141116) do
   end
 
   create_table "start_options", id: :serial, force: :cascade do |t|
-    t.string "docs_branch"
-    t.string "teamlab_branch"
-    t.string "shared_branch"
-    t.string "teamlab_api_branch"
-    t.string "portal_type"
-    t.string "portal_region"
+    t.string "docs_branch", default: "develop"
+    t.string "teamlab_branch", default: "master"
+    t.string "shared_branch", default: "master"
+    t.string "teamlab_api_branch", default: "develop"
+    t.string "portal_type", default: "info"
+    t.string "portal_region", default: "us"
     t.text "start_command"
     t.integer "history_id"
-    t.string "spec_language"
+    t.string "spec_language", default: "en-us"
   end
 
   create_table "strokes", id: :serial, force: :cascade do |t|
