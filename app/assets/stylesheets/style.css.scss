@@ -338,7 +338,8 @@ hr.deliver {
   height: 20px;
   display: inline-block;
   vertical-align: middle;
-  width: 45%;
+  width: 70%;
+  text-overflow: ellipsis;
   white-space: nowrap
 }
 

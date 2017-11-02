@@ -42,6 +42,7 @@
 * Fix copy server IP by click
 * Fix using custom branches while adding folder
 * Fix scroll lags by deleting slimscroll plugin
+* Fix long machine name undercutting in DO (fix [#294](https://github.com/ONLYOFFICE/testing-wrata/issues/294))
 
 ## 1.13
 ### New features
