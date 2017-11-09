@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-  <% @spec_languages.each do |spec_language| %>
+  <% @spec_languages.sort_by(&:name).each do |spec_language| %>
       <tr>
         <td><%= spec_language.name %></td>
         <td><%= link_to 'Show', spec_language %></td>
