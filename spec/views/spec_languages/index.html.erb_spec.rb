@@ -4,16 +4,16 @@ RSpec.describe 'spec_languages/index', type: :view do
   before(:each) do
     assign(:spec_languages, [
              SpecLanguage.create!(
-               name: 'Name'
+               name: 'Name1'
              ),
              SpecLanguage.create!(
-               name: 'Name'
+               name: 'Name2'
              )
            ])
   end
 
   it 'renders a list of spec_languages' do
     render
-    assert_select 'tr>td', text: 'Name'.to_s, count: 2
+    assert_select 'tr>td', text: /Name./, count: 2
   end
 end

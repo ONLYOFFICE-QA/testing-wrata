@@ -1,6 +1,8 @@
 # Change log
 
 ## master
+### New features
+* `SpecLanguage#name` should be uniq
 
 ## 1.14.0
 ### New features
