@@ -3,6 +3,7 @@
 ## master
 ### New features
 * `SpecLanguage#name` should be uniq
+* `SpecLanguage` view show sorted items
 
 ## 1.14.0
 ### New features
