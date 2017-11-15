@@ -316,6 +316,7 @@ hr.deliver {
 }
 
 .server-header {
+  display: flex;
   background: #00C853; /* Old browsers */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8cca11', endColorstr='#699a0d', GradientType=0); /* IE6-9 */
   font-size: 14px;
@@ -324,21 +325,19 @@ hr.deliver {
 }
 
 .server-header .unbook-button, .server-header .book-button {
-  margin-top: -2px;
-  width: 15%;
   text-align: center;
   overflow: hidden;
   cursor: pointer;
 }
 
 .server-header label {
+  flex: 4;
   font-weight: bold;
   color: #24292e;
   overflow: hidden;
   height: 20px;
   display: inline-block;
   vertical-align: middle;
-  width: 70%;
   text-overflow: ellipsis;
   white-space: nowrap
 }
@@ -367,17 +366,16 @@ hr.deliver {
 }
 
 .book-button, .unbook-button {
+  margin-right: 2px;
   font-size: 10px;
   display: inline-block;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
   line-height: 15px;
   padding: 1px 2px;
-  margin-top: 2px;
   border-radius: 2px;
   font-weight: bold;
   vertical-align: middle;
   color: rgba(0, 0, 0, .5);
-  text-shadow: 0 0 2px rgba(0, 0, 0, .1);
 }
 
 .server-node .unbook-button {
@@ -469,9 +467,9 @@ hr.deliver {
 
 .server-header .ui-progress-bar {
   /* Usual setup stuff */
+  flex: 1;
   position: relative;
   height: 14px;
-  width: 20%;
   margin-bottom: 3px;
   background-color: #abb2bc;
   border-radius: 3px;
@@ -486,7 +484,6 @@ hr.deliver {
   display: inline-block;
   margin-right: 5px;
   text-align: center;
-  float: right;
   top: 3px;
   vertical-align: middle;
   cursor: pointer;
