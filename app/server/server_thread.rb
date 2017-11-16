@@ -27,7 +27,6 @@ class ServerThread
     @test = nil
     @_status = :normal
     @ssh_pid = nil
-    delete_html_result
     create_main_thread
     start_pinging_server
     create_progress_scan_thread

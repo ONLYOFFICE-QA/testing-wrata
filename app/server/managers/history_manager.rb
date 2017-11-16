@@ -23,14 +23,11 @@ module HistoryManager
     history.file = last_test
     history.client = client_line_db unless client_line_db.nil?
     history.server = @server_model
-    history.total_result = final_results_from_html
+    history.data = @server_model.final_result_html
+    history.total_result = OnlyofficeRspecResultParser::ResultParser.get_total_result_of_rspec_html(history.data)
     history.log = full_log
     history.start_time = options[:start_time]
     history.exit_code = options[:exit_code]
-    if html_result_exist?
-      file = File.open(rspec_html_result_path, 'r', &:read)
-      history.data = file
-    end
     Runner::Application.config.threads.lock.synchronize { history.save }
     history.notify_failure
     history

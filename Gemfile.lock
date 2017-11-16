@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser
-  revision: f159ac712dd1e76fa66f8a3224ba10e223ad4b0c
+  revision: 357de33c45b0167c469859a867f307a96221ab3f
   specs:
     onlyoffice_rspec_result_parser (0.0.1)
       nokogiri (~> 1.6)
