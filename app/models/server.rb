@@ -1,4 +1,5 @@
 class Server < ActiveRecord::Base
+  include ServerTestOut
   EXECUTOR_IMAGE_NAME = 'nct-at-docker'.freeze
   EXECUTOR_TAG = 'nct-at'.freeze
   DEFAULT_SERVER_SIZE = '1gb'.freeze

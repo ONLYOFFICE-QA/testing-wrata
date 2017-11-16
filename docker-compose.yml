@@ -4,8 +4,6 @@ services:
     image: postgres
   app:
     build: .
-    volumes:
-      - /mnt/data_share:/mnt/data_share
     depends_on:
       - db
     tty: true

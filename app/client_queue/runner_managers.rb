@@ -37,13 +37,6 @@ class RunnerManagers
     def digital_ocean
       @digital_ocean ||= OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new
     end
-
-    # Check if runner logs folder are mounted. Without it - no working.
-    def ensure_logs_folder_present
-      return if Rails.env.test?
-      return if Dir.exist?(HTMLResultManager::RSPEC_HTML_LOGS_FOLDER)
-      raise "No runner logs folder present: #{HTMLResultManager::RSPEC_HTML_LOGS_FOLDER}. Mount it"
-    end
   end
 end
 

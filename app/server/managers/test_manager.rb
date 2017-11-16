@@ -27,8 +27,8 @@ module TestManager
 
   def execute_command(command)
     @ssh_pid = Process.spawn(command,
-                             out: [server_log_path, 'w'],
-                             err: [server_log_path, 'w'])
+                             out: [@server_model.log_path, 'w'],
+                             err: [@server_model.log_path, 'w'])
     _id, status = Process.wait2(@ssh_pid)
     status.exitstatus
   end
@@ -40,14 +40,14 @@ module TestManager
 
   def docker_command(command)
     docker_keys = '--privileged=true '\
-                  '-v /mnt/data_share:/mnt/data_share '\
                   "-h docker-on-#{@server_model.name} "\
                   '--rm '\
+                  '-p 80:80 '\
                   '--shm-size=2g'
     'docker rm -f $(docker ps -a -q); '\
     "docker pull #{Rails.application.config.node_docker_image}; "\
     "docker run #{docker_keys} #{Rails.application.config.node_docker_image} "\
-    "bash -c \"bash /before-run.sh; #{command}\""
+    "bash -c \"bash /before-run.sh; sudo chmod 777 /var/www/html/; #{command}\" " \
   end
 
   def docker_ssh_command(command)
@@ -55,16 +55,18 @@ module TestManager
   end
 
   def stop_test
+    current_result = read_progress
     system(generate_ssh_command('docker stop -t 0 $(docker ps -q)'))
     Process.kill('KILL', @ssh_pid) if Process.exists?(@ssh_pid)
-    File.open(server_log_path, 'a+') { |f| f << History::FORCE_STOP_LOG_ENTRY }
+    @server_model.force_stop_log_append(current_result)
   end
 
   def generate_run_test_command(test, options)
     docker_ssh_command("#{options.create_options}; "\
                        "#{open_folder_with_project(test)} && "\
                        "#{env_variables_options(options)} && "\
-                       "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1;")
+                       "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; "\
+                       "#{@server_model.output_result}")
   end
 
   def open_folder_with_project(test_path)

@@ -27,7 +27,6 @@ class ServerThread
     @test = nil
     @_status = :normal
     @ssh_pid = nil
-    delete_html_result
     create_main_thread
     start_pinging_server
     create_progress_scan_thread
@@ -68,7 +67,7 @@ class ServerThread
       server_info[:test] = {
         name: slice_project_path(@test[:test_path]),
         location: @test[:location],
-        progress: @test_progress,
+        progress: @test_progress || 0,
         failed_count: @test_failed_count,
         time: testing_time,
         doc_branch: @test[:doc_branch],
