@@ -17,7 +17,7 @@ module HTMLResultManager
   end
 
   def read_progress
-    open(result_url).read
+    open(result_url).read if html_progress_exist?
   end
 
   def test_progress
