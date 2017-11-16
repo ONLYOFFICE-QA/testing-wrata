@@ -331,7 +331,8 @@ hr.deliver {
 }
 
 .server-header label {
-  flex: 4;
+  flex: 7;
+  margin-left: 2px;
   font-weight: bold;
   color: #24292e;
   overflow: hidden;
@@ -365,19 +366,6 @@ hr.deliver {
   background: rgba(3, 200, 84, 1);
 }
 
-.book-button, .unbook-button {
-  margin-right: 2px;
-  font-size: 10px;
-  display: inline-block;
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
-  line-height: 15px;
-  padding: 1px 2px;
-  border-radius: 2px;
-  font-weight: bold;
-  vertical-align: middle;
-  color: rgba(0, 0, 0, .5);
-}
-
 .server-node .unbook-button {
   float: right;
   margin-right: 2px;
@@ -392,32 +380,28 @@ hr.deliver {
   white-space: nowrap;
 }
 
-.book-button {
-  background: linear-gradient(to bottom, rgb(187, 211, 49) 15%, #B8CF30 100%);
-  border: 1px solid #B8CF30;
+.book-button, .unbook-button {
+  padding-top: 2px;
+  width: 40px;
+  font-size: 10px;
+  display: inline-block;
+  line-height: 15px;
+  border-radius: 2px;
+  font-weight: bold;
+  vertical-align: middle;
   color: rgba(0, 0, 0, .5);
-  text-shadow: 0 0 2px rgba(0, 0, 0, .1);
 }
 
-.book-button:hover {
-  color: rgba(255, 255, 255, .5);
-}
-
-.book-button:active {
-  background: linear-gradient(to bottom, rgb(187, 211, 49) 15%, rgb(187, 211, 49) 100%)
+.book-button {
+  background: #b0e200;
 }
 
 .unbook-button {
-  background: linear-gradient(to bottom, rgb(226, 207, 0) 15%, rgb(213, 230, 29) 100%);
-  border: 1px solid rgb(226, 207, 0)
+  background: #deef2a;
 }
 
-.unbook-button:hover {
-  color: rgba(255, 255, 255, .5);
-}
-
-.unbook-button:active {
-  background: linear-gradient(to bottom, rgb(238, 218, 0) 15%, rgb(226, 207, 0) 100%)
+.book-button:hover, .unbook-button:active, .unbook-button:hover, .book-button:active  {
+  color: rgb(0, 0, 0);
 }
 
 .server-name {
