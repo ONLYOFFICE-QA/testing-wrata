@@ -27,7 +27,9 @@ module ServerTestOut
   # @return [String] get final result of test
   def final_result_html
     full_log = File.read(log_path)
-    full_log.match(/#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m)[1]
+    match = full_log.match(/#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m)
+    return '' unless match
+    match[1]
   end
 
   # Add data to log if force stopped
