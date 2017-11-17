@@ -1,5 +1,5 @@
 class History < ActiveRecord::Base
-  FORCE_STOP_LOG_ENTRY = 'Test on server was stopped by command'.freeze
+  FORCE_STOP_LOG_ENTRY = '-----TEST FORCE STOP-----'.freeze
   belongs_to :server
   belongs_to :client
   has_one :start_option
