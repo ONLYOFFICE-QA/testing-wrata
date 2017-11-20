@@ -46,6 +46,9 @@
         </div>
         <% if example.passed == 'failed' %>
             <div class="fail-details">
+                <div class="fail-text">
+                  <div>Page Url: <%= link_to(example.page_url) %></div>
+                </div>
                 <div class="fail-text"><div><%= example.message.html_safe %></div></div>
                 <div class="fail-code-path"><%=  example.backtrace %></div>
                 <div class="fail-code"><%=raw example.code %></div>

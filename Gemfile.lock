@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser
-  revision: 357de33c45b0167c469859a867f307a96221ab3f
+  revision: 991f27ebf327abb3507fff48c57b3e29c56ae20f
   specs:
     onlyoffice_rspec_result_parser (0.0.1)
       nokogiri (~> 1.6)
@@ -288,4 +288,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.15.4
+   1.16.0

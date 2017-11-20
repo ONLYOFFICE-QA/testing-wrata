@@ -5,6 +5,7 @@
 * `SpecLanguage#name` should be uniq
 * `SpecLanguage` view show sorted items
 * Remove usage of `/mnt/data_share`
+* Show `HtmlResult#page_url` in separate diff from `message`
 
 ## 1.14.0
 ### New features
