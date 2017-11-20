@@ -56,7 +56,7 @@
                     <div><%= link_to(image_tag(example.screenshot), example.screenshot, target: :_blank) %></div>
                   </div>
                 <% end %>
-                <div class="fail-text"><div><%= example.message.html_safe %></div></div>
+                <div class="fail-text"><div><%= html_escape(example.message) %></div></div>
                 <div class="fail-code-path"><%=  example.backtrace %></div>
                 <div class="fail-code"><%=raw example.code %></div>
             </div>
