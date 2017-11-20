@@ -8,7 +8,7 @@ module HTMLResultManager
     req = Net::HTTP.new(url.host, url.port)
     res = req.request_head(url.path)
     res.code == '200'
-  rescue Errno::ECONNREFUSED
+  rescue Errno::ECONNREFUSED, Net::OpenTimeout
     false
   end
 
