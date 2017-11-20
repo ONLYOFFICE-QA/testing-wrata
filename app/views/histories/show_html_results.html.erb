@@ -46,9 +46,16 @@
         </div>
         <% if example.passed == 'failed' %>
             <div class="fail-details">
-                <div class="fail-text">
-                  <div>Page Url: <%= link_to(example.page_url) %></div>
-                </div>
+                <% if example.page_url %>
+                  <div class="fail-text">
+                    <div>Page Url: <%= link_to(example.page_url) %></div>
+                  </div>
+                <% end %>
+                <% if example.screenshot %>
+                  <div class="fail-screenshot">
+                    <div><%= link_to(image_tag(example.screenshot), example.screenshot, target: :_blank) %></div>
+                  </div>
+                <% end %>
                 <div class="fail-text"><div><%= example.message.html_safe %></div></div>
                 <div class="fail-code-path"><%=  example.backtrace %></div>
                 <div class="fail-code"><%=raw example.code %></div>
