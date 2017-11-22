@@ -1,3 +1,4 @@
+require 'open-uri'
 module HTMLResultManager
   def result_url
     "http://#{@server_model.address}/#{@server_model.name}.html"
