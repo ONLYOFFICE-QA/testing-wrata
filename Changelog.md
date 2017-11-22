@@ -6,7 +6,10 @@
 * `SpecLanguage` view show sorted items
 * Remove usage of `/mnt/data_share`
 * Show `HtmlResult#page_url`, `HtmlResult#screenshot` in separate div from `message`
+
+### Fixes
 * Fix XSS on `show_html_results.html`
+* Fix determining is server is started [@JohnS42](https://github.com/JohnS42)
 
 ## 1.14.0
 ### New features

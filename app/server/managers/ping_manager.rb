@@ -16,6 +16,10 @@ module PingManager
   end
 
   def server_ssh_pinged?(address)
-    Net::Ping::External.new(address, SSH_PORT, PING_TIMEOUT).ping?
+    command = 'ssh -q -o StrictHostKeyChecking=no'\
+              ' -o UserKnownHostsFile=/dev/null '\
+              ' -o ConnectTimeout=1 '\
+              "#{TestManager::TEST_SPOT_USER_NAME}@#{address} exit"
+    system(command)
   end
 end
