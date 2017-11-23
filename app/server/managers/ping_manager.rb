@@ -19,6 +19,7 @@ module PingManager
     command = 'ssh -q -o StrictHostKeyChecking=no'\
               ' -o UserKnownHostsFile=/dev/null '\
               ' -o ConnectTimeout=1 '\
+              ' -o BatchMode=yes '\
               "#{TestManager::TEST_SPOT_USER_NAME}@#{address} exit"
     system(command)
   end
