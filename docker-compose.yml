@@ -7,6 +7,8 @@ services:
     depends_on:
       - db
     tty: true
+    environment:
+      RAILS_LOG_TO_STDOUT: "true"
   web:
     image: nginx
     volumes:
