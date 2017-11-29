@@ -77,9 +77,3 @@ Style/DateTime:
 # Offense count: 87
 Style/Documentation:
   Enabled: false
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/StderrPuts:
-  Exclude:
-    - 'bin/yarn'
