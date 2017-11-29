@@ -15,7 +15,7 @@ function getTmBranch() {
 }
 
 function getSelectedPortalUrl() {
-    return $('#portal-list option:selected').val();
+    return $('#portal_list_0 option:selected').val();
 }
 
 function getCurrentProject() {
