@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tested Servers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tested_servers.each do |tested_server| %>
+      <tr>
+        <td><%= tested_server.url %></td>
+        <td><%= link_to 'Show', tested_server %></td>
+        <td><%= link_to 'Edit', edit_tested_server_path(tested_server) %></td>
+        <td><%= link_to 'Destroy', tested_server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tested Server', new_tested_server_path %>
