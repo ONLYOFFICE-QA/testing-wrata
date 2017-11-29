@@ -66,11 +66,13 @@
           <i class="glyphicon glyphicon-floppy-save"></i>Save
         </div>
         <div id='add-list'>Add in queue</div>
-        <select id='list-region' class="region form-control">
-          <% REGION_LIST.each do |region| %>
-              <option><%= region %></option>
-          <% end %>
-        </select>
+        <%= collection_select(:list_region,
+                              0,
+                              TestedServer.all,
+                              :url,
+                              :url,
+                              {},
+                              class: 'region form-control') %>
       </div>
     </div>
   </div>
@@ -144,11 +146,13 @@
             </li>
           </ul>
           <div id="file-list-tools">
-            <select id='portal-list' class="region form-control">
-              <% REGION_LIST.each do |region| %>
-                  <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
-              <% end %>
-            </select>
+            <%= collection_select(:portal_list,
+                                  0,
+                                  TestedServer.all,
+                                  :url,
+                                  :url,
+                                  {},
+                                  class: 'region form-control' ) %>
             <i class="update-tests glyphicon glyphicon-repeat"></i>
           </div>
         </div>

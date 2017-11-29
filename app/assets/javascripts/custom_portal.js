@@ -3,7 +3,7 @@
  */
 
 function add_portal_to_list(list_element) {
-    var defaultValue = "http://"
+    var defaultValue = "http://";
     bootbox.prompt(
         {
             title: "Enter Portal name",
@@ -14,15 +14,30 @@ function add_portal_to_list(list_element) {
                     portal_name === '') {
                     return null;
                 }
-                list_element.get(0).add(new Option(portal_name));
-                list_element.val(portal_name);
+                $.ajax({
+                    url: 'tested_servers',
+                    type: 'POST',
+                    data: {
+                        'tested_server': {
+                            url: portal_name
+                        }
+                    },
+                    success: function (data) {
+                        list_element.get(0).add(new Option(portal_name));
+                        list_element.val(portal_name);
+                    },
+                    error: function (xhr, type, errorThrown) {
+                        ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
+                    }
+                });
+
             }
         });
 
 }
 
 function eventForAddNewPortal(elem) {
-    elem = elem || $("#portal-list");
+    elem = elem || $("#portal_list_0");
     $(elem).change(function () {
         if (elem.val() == 'custom') {
             add_portal_to_list(elem);
