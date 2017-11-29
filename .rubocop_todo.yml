@@ -65,11 +65,6 @@ Style/ClassAndModuleChildren:
     - 'test/test_helper.rb'
 
 # Offense count: 1
-Style/CommentedKeyword:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-
-# Offense count: 1
 Style/DateTime:
   Exclude:
     - 'app/server/managers/thread_manager.rb'

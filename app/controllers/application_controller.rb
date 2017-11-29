@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
         test_file.destroy
       end
       @test_list.destroy
-    end #
+    end
     Runner::Application.config.delayed_runs.delete_runs_by_testlist_name(@client, name) unless Runner::Application.config.delayed_runs.nil?
   end
 
