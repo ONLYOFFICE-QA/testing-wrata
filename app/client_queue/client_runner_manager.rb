@@ -3,10 +3,10 @@ class ClientRunnerManager
 
   attr_reader :client
 
-  def initialize(client = nil, tests = [], servers = [])
+  def initialize(client = nil)
     @client = client
-    init_tests(tests)
-    init_servers(servers)
+    init_tests
+    init_servers
     create_client_runner_thread
   end
 
@@ -32,11 +32,11 @@ class ClientRunnerManager
     end
   end
 
-  def init_tests(tests)
-    @tests = ClientTestQueue.new(tests)
+  def init_tests
+    @tests = ClientTestQueue.new
   end
 
-  def init_servers(servers)
+  def init_servers
     servers = Server.where(book_client_id: client.id).to_a
     client_servers = []
     servers.each do |server|

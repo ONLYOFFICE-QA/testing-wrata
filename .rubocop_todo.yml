@@ -12,13 +12,6 @@ Lint/RescueWithoutErrorClass:
     - 'app/models/server.rb'
     - 'app/server/server_threads.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
-Lint/UnusedMethodArgument:
-  Exclude:
-    - 'app/client_queue/client_runner_manager.rb'
-
 # Offense count: 14
 Metrics/AbcSize:
   Max: 40
