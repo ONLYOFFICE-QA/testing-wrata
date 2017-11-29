@@ -52,7 +52,7 @@ RSpec.describe TestedServersController, type: :controller do
     it 'returns a success response' do
       tested_server = TestedServer.create! valid_attributes
       get :show, params: { id: tested_server.to_param }, session: valid_session
-      expect(response).to be_success
+      expect(response).to be_redirect
     end
   end
 
