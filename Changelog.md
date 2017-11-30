@@ -1,11 +1,14 @@
 # Change log
 
 ## master
+
+## 1.15.0
 ### New features
 * `SpecLanguage#name` should be uniq
 * `SpecLanguage` view show sorted items
 * Remove usage of `/mnt/data_share`
 * Show `HtmlResult#page_url`, `HtmlResult#screenshot` in separate div from `message`
+* Store 'TestedServer' in DB (like portal region)
 
 ### Fixes
 * Fix XSS on `show_html_results.html`
