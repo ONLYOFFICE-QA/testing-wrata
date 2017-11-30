@@ -5,7 +5,7 @@ MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
 RUN apt-get update -qq && apt-get install -y libpq-dev nodejs
 COPY ssh/ /root/.ssh/
 RUN chmod 600 /root/.ssh/*
-RUN mkdir -pv /root/.do && echo "393d5ed4c6182f2e77091ef00d25455a4a9e44440c06c80c7b02df08a6e4aaec" > /root/.do/access_token
+RUN mkdir -pv /root/.do && echo "66c744a9196f3b5f45b8aa6d460567c8d9585cf58b644ae33dd4b5814b90723d" > /root/.do/access_token
 
 WORKDIR /tmp
 COPY Gemfile* /tmp/
