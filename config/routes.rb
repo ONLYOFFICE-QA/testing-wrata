@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tested_servers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :spec_languages
   root to: 'runner#index', as: 'runner'

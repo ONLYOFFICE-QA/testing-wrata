@@ -1,2 +1,0 @@
-class TestedServer < ApplicationRecord
-end

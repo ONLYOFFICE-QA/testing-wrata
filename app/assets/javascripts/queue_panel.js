@@ -90,7 +90,7 @@ function generateRegionSelect() {
 function getRegionList() {
     var optionValues = [];
 
-    $('#list_region_0 option').each(function() {
+    $('#list-region option').each(function() {
         optionValues.push($(this).val());
     });
     return optionValues;
