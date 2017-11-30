@@ -223,7 +223,7 @@ function Runner() {
         elem.on('click', function(){
             var tests = _self.getTestPathsFromSidebar();
             var branch = getCurrentBranch();
-            var location = $('#list_region_0').val();
+            var location = $('#list-region').val();
             addTestInQueue(tests, branch, location);
             getUpdatedDataFromServer();
         });
