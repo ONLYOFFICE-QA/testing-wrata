@@ -9,6 +9,7 @@ services:
     tty: true
     environment:
       RAILS_LOG_TO_STDOUT: "true"
+      DO_ACCESS_TOKEN: ${DO_ACCESS_TOKEN}
   web:
     image: nginx
     volumes:
