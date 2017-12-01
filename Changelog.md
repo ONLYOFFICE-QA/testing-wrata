@@ -1,6 +1,8 @@
 # Change log
 
 ## master
+### New features
+* Add several new lags to SpecLanguage
 
 ## 1.15.0
 ### New features
