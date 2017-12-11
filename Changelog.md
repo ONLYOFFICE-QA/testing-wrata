@@ -3,6 +3,7 @@
 ## master
 ### New features
 * Add several new lags to SpecLanguage
+* Destroy only droplet with specified tag
 
 ## 1.15.0
 ### New features
