@@ -81,10 +81,19 @@ class Server < ActiveRecord::Base
   def destroy_and_wait_for_it
     return if Rails.application.config.mock_cloud_server
     begin
+      check_ability_to_destroy(name)
       RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
     rescue => e
       update_column(:_status, :created)
       raise e
     end
+  end
+
+  # Check if droplet can be destroyed
+  # @param name [String] name of droplet
+  # @return [True, False]
+  def check_ability_to_destroy(name)
+    info = RunnerManagers.digital_ocean.droplet_by_name(name)
+    raise "Cannot destroy #{name}, because have no tag #{EXECUTOR_TAG}" unless info.tags.include?(EXECUTOR_TAG)
   end
 end
