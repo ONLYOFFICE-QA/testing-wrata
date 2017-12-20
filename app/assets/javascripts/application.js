@@ -119,12 +119,18 @@ function Runner() {
         $.ajax({
             url: 'runner/stop_current',
             type: 'POST',
-            async: false,
             data: {
                 'server': server
             },
+            beforeSend: function () {
+                showOverlay('Stopping tests on "' + server + '" servers');
+            },
+            complete: function () {
+                getUpdatedDataFromServer();
+                hideOverlay();
+            },
             success: function () {
-                showInfoAlert('Current test was stopped successfully!');
+                showInfoAlert('Current test on "' + server + '" was stopped!');
             },
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -141,6 +147,7 @@ function Runner() {
                 showOverlay('Stopping tests on all booked servers');
             },
             complete: function () {
+                getUpdatedDataFromServer();
                 hideOverlay();
             },
             success: function () {

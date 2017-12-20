@@ -4,6 +4,7 @@
 ### New features
 * Add several new lags to SpecLanguage
 * Destroy only droplet with specified tag
+* Show progress overlay for `runner/stop_current`
 
 ## 1.15.0
 ### New features
