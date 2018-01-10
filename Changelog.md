@@ -5,7 +5,6 @@
 * Add several new lags to SpecLanguage
 * Destroy only droplet with specified tag
 * Show progress overlay for `runner/stop_current`
-* Update app to Ruby 2.5.0
 
 ## 1.15.0
 ### New features
