@@ -15,7 +15,6 @@
 * Show `HtmlResult#page_url`, `HtmlResult#screenshot` in separate div from `message`
 
 ### Fixes
-=======
 * Fix XSS on `show_html_results.html`
 
 ## 1.14.0
