@@ -15,6 +15,7 @@ gem 'pg'
 gem 'process_exists'
 gem 'puma'
 gem 'rails', '~> 5.1'
+gem 'whenever', :require => false
 gem 'uglifier'
 
 group :development, :test do

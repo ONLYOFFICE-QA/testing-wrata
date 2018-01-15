@@ -6,6 +6,7 @@
 * Destroy only droplet with specified tag
 * Show progress overlay for `runner/stop_current`
 * Update app to Ruby 2.5.0
+* Replace `Server_destroyer_worker` by `whenever` gem task
 
 ## 1.15.0
 ### New features
