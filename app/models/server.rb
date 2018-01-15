@@ -70,7 +70,7 @@ class Server < ActiveRecord::Base
     return if Rails.application.config.mock_cloud_server
     begin
       RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc3', server_size, tags: EXECUTOR_TAG)
-    rescue => e
+    rescue StandardError => e
       update_column(:_status, :destroyed)
       raise e
     end
@@ -83,7 +83,7 @@ class Server < ActiveRecord::Base
     begin
       check_ability_to_destroy(name)
       RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
-    rescue => e
+    rescue StandardError => e
       update_column(:_status, :created)
       raise e
     end

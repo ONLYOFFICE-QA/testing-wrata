@@ -61,7 +61,7 @@ class ServerThreads < ActionController::Base
       next unless server_thread.server_model._status == :created
       begin
         server_thread.server_model.cloud_server_destroy
-      rescue => e
+      rescue StandardError => e
         Rails.logger.error("Server: #{server_thread.server_model.name}, cannot be destroyed because of: #{e}")
       end
     end
@@ -73,7 +73,7 @@ class ServerThreads < ActionController::Base
       Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
       begin
         server_thread.server_model.cloud_server_destroy
-      rescue => e
+      rescue StandardError => e
         Rails.logger.error("Server: #{server_thread.server_model.name}, cannot be destroyed because of: #{e}")
       end
     end
