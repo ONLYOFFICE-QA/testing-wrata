@@ -55,12 +55,6 @@ Style/DateTime:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'app/controllers/histories_controller.rb'
-
 # Offense count: 2
 Style/MixinUsage:
   Exclude:
