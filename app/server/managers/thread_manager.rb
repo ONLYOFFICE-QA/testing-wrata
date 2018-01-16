@@ -18,10 +18,9 @@ module ThreadManager
         add_data_to_history(test_path, test_options, full_start_command, @client, start_time: start_time, exit_code: exit_status)
         @server_model.update_column(:executing_command_now, false)
         @server_model.update_column(:last_activity_date, Time.current)
-        init_last_log
+        last_log_data
         delete_log_file
         ActiveRecord::Base.clear_active_connections!
-        @last_log_end = 0
         @test = nil
       end
     end

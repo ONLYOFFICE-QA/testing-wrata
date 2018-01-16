@@ -1,6 +1,8 @@
 module LogManager
+  # @return [Integer] show how much of last log shown
+  LAST_LINES_COUNT = 60
+
   def set_default_props
-    @last_log_end = 0
     @log = EMPTY_STRING
     clear_log_file
   end
@@ -35,7 +37,7 @@ module LogManager
         unless @test # Stop Thread if test was ended
           Thread.stop                                 #
         end
-        init_last_log                                 # check each TIME_FOR_UPDATE new log
+        last_log_data                                 # check each TIME_FOR_UPDATE new log
         sleep TIME_FOR_UPDATE                         #
       end
     end
@@ -49,18 +51,15 @@ module LogManager
     end
   end
 
-  def init_last_log
+  def last_log_data
     if !log_file_empty?
       lines = IO.readlines(@server_model.log_path)
-      full_size = lines.size
-      return if @last_log_end == full_size || full_size < @last_log_end # return if we don't get new lines in log file
       @log = EMPTY_STRING                             # clear before init new log
-      lines[@last_log_end..-1].each do |line|
-        unless empty_line?(line)                      # check if line don't 'empty', like 'testpc-9  '
-          @log += delete_comp_name_from_line line     # delete testpc-9(and etc.) from log line
-        end
+      last_lines = lines.last(LAST_LINES_COUNT)
+      last_lines.each do |line|
+        next if empty_line?(line)
+        @log += delete_comp_name_from_line(line)
       end
-      @last_log_end = full_size # init new end of log
     else
       @log = EMPTY_STRING
     end
