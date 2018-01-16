@@ -11,6 +11,9 @@
 ### Refactor
 * Simplify logic of showing current log in Server window
 
+### Fixes
+* Fix null symbols in server logs
+
 ## 1.15.0
 ### New features
 * `SpecLanguage#name` should be uniq
