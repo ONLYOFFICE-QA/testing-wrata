@@ -53,7 +53,7 @@ module LogManager
 
   def last_log_data
     if !log_file_empty?
-      lines = IO.readlines(@server_model.log_path)
+      lines = read_log
       @log = EMPTY_STRING                             # clear before init new log
       last_lines = lines.last(LAST_LINES_COUNT)
       last_lines.each do |line|
@@ -67,7 +67,7 @@ module LogManager
 
   def full_log
     if log_file_exist?
-      lines = IO.readlines(@server_model.log_path)
+      lines = read_log
       log = EMPTY_STRING
       lines.each do |line|
         log += delete_comp_name_from_line line unless empty_line?(line)
@@ -83,5 +83,14 @@ module LogManager
 
   def delete_comp_name_from_line(line)
     line.gsub("#{@server_model.name} ", '')
+  end
+
+  private
+
+  # @return [Array<String>] server log for current thread
+  def read_log
+    raw = File.open(@server_model.log_path).read
+    without_zeros = raw.delete("\u0000")
+    without_zeros.lines
   end
 end
