@@ -29,14 +29,8 @@
             });
         </script>
     <% end %>
-    <div class="overlay">
-      <div class="overlay-window">
-        <div class="overlay-content">
-          <div class="overlay-text">Loading...</div>
-          <%= image_tag 'ajax_loader_gray_128.gif' %>
-        </div>
-      </div>
-    </div>
+    <%= render 'shared/loading_overlay' %>
+
     <div class="popup-overlay" style="display: none">
       <div class="popup-window"></div>
     </div>
