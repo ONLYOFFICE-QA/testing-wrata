@@ -10,6 +10,7 @@
 
 ### Refactor
 * Simplify logic of showing current log in Server window
+* Use partial for `loading_overlay`
 
 ### Fixes
 * Fix null symbols in server logs
