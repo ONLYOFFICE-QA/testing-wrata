@@ -1,7 +1,8 @@
 <h1>Editing user</h1>
 
 <%= render 'form' %>
+<%= render 'shared/loading_overlay' %>
 
 <%= link_to 'Show', @server %> |
 <%= link_to 'Back', servers_path %>
-<button type="button" class="btn" id="fetch-ip">Fetch IP</button>
+<button type="button" class="btn" id="fetch-ip" onclick="fetchCurrentServerIp()">Fetch IP</button>
