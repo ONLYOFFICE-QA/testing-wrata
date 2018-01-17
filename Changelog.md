@@ -14,6 +14,7 @@
 
 ### Fixes
 * Fix null symbols in server logs
+* Fix broken `fetch-ip` button in server details
 
 ## 1.15.0
 ### New features
