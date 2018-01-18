@@ -2,11 +2,6 @@ module LogManager
   # @return [Integer] show how much of last log shown
   LAST_LINES_COUNT = 60
 
-  def set_default_props
-    @log = EMPTY_STRING
-    clear_log_file
-  end
-
   def log_file_empty?
     if log_file_exist?
       File.zero?(@server_model.log_path)
@@ -24,6 +19,7 @@ module LogManager
   end
 
   def clear_log_file
+    @log = EMPTY_STRING
     File.open(@server_model.log_path, 'w') { |f| f.write('') } if log_file_exist?
   end
 
@@ -89,8 +85,6 @@ module LogManager
 
   # @return [Array<String>] server log for current thread
   def read_log
-    raw = File.open(@server_model.log_path).read
-    without_zeros = raw.delete("\u0000")
-    without_zeros.lines
+    File.open(@server_model.log_path).read.lines
   end
 end
