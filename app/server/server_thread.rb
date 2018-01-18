@@ -31,7 +31,6 @@ class ServerThread
     start_pinging_server
     create_progress_scan_thread
     create_log_scan_thread
-    set_default_props
   end
 
   def free?

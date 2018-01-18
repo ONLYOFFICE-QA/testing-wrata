@@ -13,8 +13,8 @@
 * Use partial for `loading_overlay`
 
 ### Fixes
-* Fix null symbols in server logs
 * Fix broken `fetch-ip` button in server details
+* Fix empty logs caused by `Server_destroyer_worker` 
 
 ## 1.15.0
 ### New features
