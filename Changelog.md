@@ -6,7 +6,6 @@
 * Destroy only droplet with specified tag
 * Show progress overlay for `runner/stop_current`
 * Update app to Ruby 2.5.0
-* Replace `Server_destroyer_worker` by `whenever` gem task
 
 ### Refactor
 * Simplify logic of showing current log in Server window
