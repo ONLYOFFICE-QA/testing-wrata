@@ -16,7 +16,6 @@ gem 'process_exists'
 gem 'puma'
 gem 'rails', '~> 5.1'
 gem 'uglifier'
-gem 'whenever', require: false
 
 group :development, :test do
   gem 'listen'
