@@ -214,9 +214,13 @@ function Runner() {
     this.unbookAllServers = function() {
         $.ajax({
             url: 'queue/unbook_all_servers',
-            context: this,
-            async: false,
             type: 'POST',
+            beforeSend: function () {
+                showOverlay('Unbooking all servers');
+            },
+            complete: function () {
+                hideOverlay();
+            },
             success: function () {
                 getUpdatedDataFromServer();
             },
@@ -600,7 +604,6 @@ function Runner() {
     this.eventToClearServerList = function(elem) {
         elem.on('click', function(){
             _self.unbookAllServers();
-            getUpdatedDataFromServer();
         });
     };
 
