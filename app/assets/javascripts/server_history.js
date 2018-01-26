@@ -58,14 +58,15 @@ function showMoreHistoryForClient() {
 function clearHistoryOnServer(server_name) {
     $.ajax({
         url: '/servers/clear_history',
-        async: false,
         type: 'POST',
         data: {
             'server': server_name
         },
         beforeSend: function () {
-            disableClearHistoryButton();
-            showOverlay('Deleting...');
+            showOverlay('Deleting history for server');
+        },
+        complete: function () {
+            hideOverlay();
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);

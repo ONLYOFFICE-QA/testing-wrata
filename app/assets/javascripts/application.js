@@ -958,14 +958,15 @@ function setFailedToFailedDescribes() {
 function clearHistoryOnClient(client) {
     $.ajax({
         url: '/clients/clear_history',
-        async: false,
         type: 'POST',
         data: {
             'client': client
         },
         beforeSend: function () {
-            disableClearHistoryButton();
-            showOverlay('Deleting...');
+            showOverlay('Deleting history for client');
+        },
+        complete: function () {
+            hideOverlay();
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -974,10 +975,6 @@ function clearHistoryOnClient(client) {
             location.reload();
         }
     });
-}
-
-function disableClearHistoryButton() {
-    $('#clear-history').prop('disabled', true);
 }
 
 function offEventsOnElem(elem) {
