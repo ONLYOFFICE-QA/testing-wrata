@@ -11,6 +11,7 @@
 * Simplify logic of showing current log in Server window
 * Use partial for `loading_overlay`
 * Make `unbookAllServers` async
+* Make `clearHistory` for client and server async
 
 ### Fixes
 * Fix broken `fetch-ip` button in server details
