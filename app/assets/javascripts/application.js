@@ -568,7 +568,6 @@ function Runner() {
     this.clearTestQueue = function() {
         $.ajax({
             url: 'queue/clear_tests',
-            async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -579,7 +578,6 @@ function Runner() {
     this.shuffleTestQueue = function() {
         $.ajax({
             url: 'queue/shuffle_tests',
-            async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
@@ -617,7 +615,6 @@ function Runner() {
     this.removeDuplicatesFromQueue = function() {
         $.ajax({
             url: 'queue/remove_duplicates',
-            async: false,
             type: 'POST',
             error: function (xhr, type, errorThrown) {
                 ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);

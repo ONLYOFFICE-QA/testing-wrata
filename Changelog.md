@@ -12,6 +12,7 @@
 * Use partial for `loading_overlay`
 * Make `unbookAllServers` async
 * Make `clearHistory` for client and server async
+* Make `remove_duplicates`, `clear_tests`, `remove_duplicates` for queue async
 
 ### Fixes
 * Fix broken `fetch-ip` button in server details
