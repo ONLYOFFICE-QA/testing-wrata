@@ -19,7 +19,7 @@ module HTMLResultManager
 
   def read_progress
     return '' unless html_progress_exist?
-    open(result_url).read
+    open(result_url, &:read)
   end
 
   def test_progress
