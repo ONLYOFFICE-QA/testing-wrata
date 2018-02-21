@@ -14,10 +14,6 @@ module LogManager
     File.exist? @server_model.log_path
   end
 
-  def create_log_file
-    File.new(@server_model.log_path, 'w') if log_file_exist?
-  end
-
   def clear_log_file
     @log = EMPTY_STRING
     File.open(@server_model.log_path, 'w') { |f| f.write('') } if log_file_exist?
@@ -85,6 +81,6 @@ module LogManager
 
   # @return [Array<String>] server log for current thread
   def read_log
-    File.open(@server_model.log_path).read.lines
+    File.read(@server_model.log_path).lines
   end
 end
