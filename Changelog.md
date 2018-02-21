@@ -20,6 +20,7 @@
 * Fix broken `fetch-ip` button in server details
 * Fix empty logs caused by `Server_destroyer_worker` 
 * Fix connection leak in `HTMLResultManager#read_progress`
+* Fix not closing file in `LogManager#read_log`
 
 ## 1.15.0
 ### New features
