@@ -1,12 +1,11 @@
 class RunnerManagers
   attr_accessor :managers
 
-  def initialize(managers = [])
-    @managers = managers
-  end
-
-  def add_manager(manager)
-    @managers << manager
+  def initialize
+    @managers = []
+    Client.all.each do |client|
+      @managers << ClientRunnerManager.new(client)
+    end
   end
 
   def find_manager_by_client_login(client_login)

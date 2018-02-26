@@ -46,16 +46,16 @@ class RunnerController < ApplicationController
 
     test_list_name = test_list_hash['name']
 
-    if @client.nil?
+    if current_client.nil?
       render layout: false
       return
     end
 
-    old_test_list = @client.test_lists.find_by_name(test_list_name)
+    old_test_list = current_client.test_lists.find_by_name(test_list_name)
     delete_testlist_by_id(old_test_list.id) if old_test_list
 
     @test_list = TestList.new(name: test_list_name)
-    @test_list.client = @client
+    @test_list.client = current_client
     @test_list.branch = branch
     @test_list.project = project
     if @test_list.save
@@ -88,7 +88,7 @@ class RunnerController < ApplicationController
   def load_test_list
     list_name = params['listName']
 
-    @test_list = @client.test_lists.find_by_name(list_name)
+    @test_list = current_client.test_lists.find_by_name(list_name)
 
     respond_to do |format|
       format.json do
@@ -112,8 +112,6 @@ class RunnerController < ApplicationController
     servers_json ||= '[]'
     servers = JSON.parse(servers_json)
 
-    client = @client
-
     output_json = {}
     server_data = []
 
@@ -121,10 +119,10 @@ class RunnerController < ApplicationController
       next unless server['name'].is_a?(String)
       server_thread = Runner::Application.config.threads.get_thread_by_name(server['name'])
       next unless server_thread
-      server_data << server_thread.get_info_from_server(client, with_log: server['with_log'])
+      server_data << server_thread.get_info_from_server(current_client, with_log: server['with_log'])
     end
 
-    manager = Runner::Application.config.run_manager.find_manager_by_client_login(client.login)
+    manager = Runner::Application.config.run_manager.find_manager_by_client_login(current_client.login)
 
     output_json[:servers_data] = server_data
     output_json[:queue_data] = {}
