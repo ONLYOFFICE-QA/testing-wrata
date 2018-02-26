@@ -8,4 +8,5 @@ if db_initialized?
   Rails.application.config.delayed_runs = DelayedRunManager.new
   Rails.application.config.run_manager = RunnerManagers.new
   Rails.application.config.server_destroyer = ServerDestroyerWorker.new.start_thread
+  Rails.application.config.queue_checker = QueueCheckerWorker.new.start_thread
 end

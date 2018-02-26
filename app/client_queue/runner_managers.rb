@@ -1,4 +1,6 @@
 class RunnerManagers
+  TIME_FOR_SCAN = 15
+
   attr_accessor :managers
 
   def initialize
@@ -27,6 +29,10 @@ class RunnerManagers
     @managers.each do |current_manager|
       current_manager.delete_server(server_name)
     end
+  end
+
+  def check_for_start
+    @managers.each(&:check_client_for_start)
   end
 
   class << self
