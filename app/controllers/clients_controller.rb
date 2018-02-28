@@ -42,6 +42,7 @@ class ClientsController < ApplicationController
     if @client.save
       sign_in_ @client
       flash[:success] = 'Your account successfully created. Please wait for verification by admin'
+      Rails.application.config.run_manager.add_user(@client)
       redirect_to runner_path
     else
       render 'new'
@@ -49,7 +50,9 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    Client.find(params[:id]).destroy
+    client = Client.find(params[:id])
+    Rails.application.config.run_manager.remove_user(client)
+    client.destroy
     flash[:success] = 'User deleted'
     redirect_to clients_url
   end

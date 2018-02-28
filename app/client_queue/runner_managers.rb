@@ -10,6 +10,19 @@ class RunnerManagers
     end
   end
 
+  # @param user [Client] user to add
+  # @return [Void]
+  def add_user(user)
+    @managers << ClientRunnerManager.new(user)
+  end
+
+  # @param user [Client] user to add
+  # @return [Void]
+  def remove_user(user)
+    manager = find_manager_by_client_login(user.login)
+    @managers.delete(manager)
+  end
+
   def find_manager_by_client_login(client_login)
     manager = nil
     unless @managers.empty?
