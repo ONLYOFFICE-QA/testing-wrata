@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+     - image: circleci/ruby:2.4-node
+       environment:
+         BUNDLE_JOBS: 3
+         BUNDLE_RETRY: 3
+         BUNDLE_PATH: vendor/bundle
+         PGHOST: 127.0.0.1
+         PGUSER: postgres
+         RAILS_ENV: test
+     - image: circleci/postgres:9.5-alpine
+       environment:
+         POSTGRES_USER: postgres
+         POSTGRES_DB: test
+         POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+      - run:
+          name: Bundle Install
+          command: bundle install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: RAILS_ENV=test rake db:create db:migrate db:seed
+      - run:
+          name: tests
+          command: bundle exec rake
