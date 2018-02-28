@@ -28,4 +28,4 @@ jobs:
           command: RAILS_ENV=test rake db:create db:migrate db:seed
       - run:
           name: tests
-          command: bundle exec rake test
+          command: bundle exec rake
