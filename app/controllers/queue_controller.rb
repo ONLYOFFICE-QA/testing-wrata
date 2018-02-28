@@ -2,6 +2,7 @@ class QueueController < ApplicationController
   before_action :manager
 
   def book_server
+    return head(:forbidden) unless able_to_be_booked?
     @manager.add_server(params['server'])
 
     render body: nil
@@ -88,5 +89,11 @@ class QueueController < ApplicationController
       flash[:empty_pages] = 'You need be authorized' # Not quite right!
       render signin_path
     end
+  end
+
+  # @return [true, false] is server able to be booked
+  def able_to_be_booked?
+    server = Server.find_by_name(params['server'])
+    server.book_client_id.nil?
   end
 end
