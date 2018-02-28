@@ -1,12 +1,28 @@
 class RunnerManagers
+  TIME_FOR_SCAN = 15
+
   attr_accessor :managers
 
-  def initialize(managers = [])
-    @managers = managers
+  def initialize
+    @managers = []
+    Client.all.each do |client|
+      @managers << ClientRunnerManager.new(client)
+    end
   end
 
-  def add_manager(manager)
-    @managers << manager
+  # @param user [Client] user to add
+  # @return [Void]
+  def add_user(user)
+    @managers << ClientRunnerManager.new(user)
+  end
+
+  # @param user [Client] user to add
+  # @return [Void]
+  def remove_user(user)
+    manager = find_manager_by_client_login(user.login)
+    return unless manager
+    manager.delete_all_servers
+    @managers.delete(manager)
   end
 
   def find_manager_by_client_login(client_login)
@@ -28,6 +44,10 @@ class RunnerManagers
     @managers.each do |current_manager|
       current_manager.delete_server(server_name)
     end
+  end
+
+  def check_for_start
+    @managers.each(&:check_client_for_start)
   end
 
   class << self
