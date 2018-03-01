@@ -2,6 +2,7 @@ version: '2'
 services:
   db:
     image: postgres
+    restart: always
   app:
     build: .
     depends_on:
@@ -10,6 +11,7 @@ services:
     environment:
       RAILS_LOG_TO_STDOUT: "true"
       DO_ACCESS_TOKEN: ${DO_ACCESS_TOKEN}
+    restart: always
   web:
     image: nginx
     volumes:
@@ -18,3 +20,4 @@ services:
       - app
     ports:
       - 80:80
+    restart: always
