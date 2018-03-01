@@ -7,6 +7,7 @@
 * Show progress overlay for `runner/stop_current`
 * Update app to Ruby 2.5.0
 * Add autocomplete login description
+* Add restart of docker services
 
 ### Refactor
 * Simplify logic of showing current log in Server window
