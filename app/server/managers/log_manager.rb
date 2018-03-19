@@ -46,35 +46,15 @@ module LogManager
   def last_log_data
     if !log_file_empty?
       lines = read_log
-      @log = EMPTY_STRING                             # clear before init new log
-      last_lines = lines.last(LAST_LINES_COUNT)
-      last_lines.each do |line|
-        next if empty_line?(line)
-        @log += delete_comp_name_from_line(line)
-      end
+      @log = lines.last(LAST_LINES_COUNT).join('')
     else
       @log = EMPTY_STRING
     end
   end
 
   def full_log
-    if log_file_exist?
-      lines = read_log
-      log = EMPTY_STRING
-      lines.each do |line|
-        log += delete_comp_name_from_line line unless empty_line?(line)
-      end
-      return log
-    end
+    return read_log.join('') if log_file_exist?
     EMPTY_STRING
-  end
-
-  def empty_line?(line)
-    line == "#{@server_model.name} \r\n"
-  end
-
-  def delete_comp_name_from_line(line)
-    line.gsub("#{@server_model.name} ", '')
   end
 
   private
