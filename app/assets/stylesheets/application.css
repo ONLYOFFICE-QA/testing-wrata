@@ -15,5 +15,5 @@
 
 @font-face {
     font-family: "OpenSans";
-    url("/assets/OpenSans-Light.ttf") format("ttf"),
+    src: url("/assets/OpenSans-Light.ttf") format("ttf");
 }
