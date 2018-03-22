@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       end
       @test_list.destroy
     end
-    Runner::Application.config.delayed_runs.delete_runs_by_testlist_name(current_client, name) unless Runner::Application.config.delayed_runs.nil?
+    Runner::Application.config.delayed_runs.delete_runs_by_testlist_name(@client, name) unless Runner::Application.config.delayed_runs.nil?
   end
 
   private
@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
   def require_login
     if signed_in?
       return redirect_to signin_path unless current_client.actions_allowed?
+      init_run_manager
     else
       redirect_to signin_path
     end

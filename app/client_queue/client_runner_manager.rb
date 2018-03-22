@@ -3,18 +3,32 @@ class ClientRunnerManager
 
   attr_reader :client
 
-  def initialize(client)
+  def initialize(client = nil)
     @client = client
     init_tests
     init_servers
+    create_client_runner_thread
   end
 
-  def check_client_for_start
-    return unless ready_to_start?
-    @client_servers.servers_threads.each do |server|
-      next unless server[:server_thread].free?
-      next_test = @tests.shift_test
-      server[:server_thread].start_test(next_test) if next_test
+  def create_client_runner_thread
+    @client_runner_thread = Thread.new(caller: method(__method__).owner.to_s) do
+      loop do
+        Thread.stop unless ready_to_start?
+        @client_servers.servers_threads.each do |server|
+          next unless server[:server_thread].free?
+          next_test = @tests.shift_test
+          server[:server_thread].start_test(next_test) if next_test
+        end
+        sleep TIME_FOR_SCAN
+      end
+    end
+  end
+
+  def start_client_runner_thread
+    if @client_runner_thread.alive?
+      @client_runner_thread.run if @client_runner_thread.stop?
+    else
+      create_client_runner_thread
     end
   end
 
@@ -79,10 +93,12 @@ class ClientRunnerManager
                          doc_branch: doc_branch)
       end
     end
+    start_client_runner_thread if ready_to_start?
   end
 
   def add_server(server_name)
     @client_servers.add_server(server_name, client)
+    start_client_runner_thread if ready_to_start?
   end
 
   def delete_test(test_id)
