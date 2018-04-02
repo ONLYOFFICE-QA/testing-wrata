@@ -8,6 +8,7 @@
 * Update app to Ruby 2.5.0
 * Add autocomplete login description
 * Add restart of docker services
+* Set production log level as `:info`
 
 ### Refactor
 * Simplify logic of showing current log in Server window
