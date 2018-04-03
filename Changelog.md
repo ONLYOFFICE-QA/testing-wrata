@@ -9,6 +9,7 @@
 * Add autocomplete login description
 * Add restart of docker services
 * Set production log level as `:info`
+* Use default logger formatter
 
 ### Refactor
 * Simplify logic of showing current log in Server window
