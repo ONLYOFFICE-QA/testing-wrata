@@ -2,7 +2,7 @@
 def db_initialized?
   ActiveRecord::Base.connection.table_exists?(:servers)
 rescue PG::ConnectionBad
-  return false
+  false
 end
 
 if db_initialized?

@@ -78,13 +78,6 @@ Style/MixinUsage:
     - 'bin/setup'
     - 'bin/update'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowMultipleReturnValues.
-Style/RedundantReturn:
-  Exclude:
-    - 'config/initializers/managers.rb'
-
 # Offense count: 213
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
