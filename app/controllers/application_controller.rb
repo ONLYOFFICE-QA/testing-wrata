@@ -19,10 +19,7 @@ class ApplicationController < ActionController::Base
     @test_list = TestList.find(id)
     name = @test_list.name
     if current_client.test_lists.find_by_id(id) == @test_list
-      @test_list.test_files.each do |test_file|
-        test_file.strokes.each(&:destroy)
-        test_file.destroy
-      end
+      @test_list.test_files.each(&:destroy)
       @test_list.destroy
     end
     Runner::Application.config.delayed_runs.delete_runs_by_testlist_name(current_client, name) unless Runner::Application.config.delayed_runs.nil?

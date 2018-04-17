@@ -259,26 +259,6 @@ hr.deliver {
   background-color: #efefef;
 }
 
-.stroke-list {
-  margin-left: 20px;
-}
-
-.stroke-list .name {
-  font-size: 11px;
-  position: relative;
-  cursor: pointer;
-}
-
-.stroke-list .glyphicon-remove {
-  zoom: .75;
-  margin-left: 3px;
-  display: none;
-}
-
-.stroke-list .name:hover i.glyphicon-remove {
-  display: inline-block;
-}
-
 .file-name .glyphicon-remove {
   margin-left: 3px;
   display: none;

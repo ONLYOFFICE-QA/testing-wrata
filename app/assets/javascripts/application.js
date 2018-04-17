@@ -437,7 +437,6 @@ function Runner() {
                 setEventToDeleteFolderFromList();
                 setEventToDeleteTestFromList();
                 _self.checkAllAddedOnSidebar();
-                addSortableToElem($('.stroke-list'));
                 openSidebar();
                 showStartPanel();
                 unlockAllTab();

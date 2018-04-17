@@ -6,16 +6,6 @@ function getSidebarFileTest(file_folder) {
     var file_name = file_folder.find('.file-name').attr('data-qtip');
     var file_test = {};
     file_test.file_name = file_name;
-    if (file_folder.children().length > 1) {
-        var strokes = [];
-        file_folder.find('.name').each(function () {
-            var stroke = {};
-            stroke.name = $(this).attr('data-qtip');
-            stroke.number = $(this).attr('data-role');
-            strokes.push(stroke);
-        });
-        file_test.strokes = strokes;
-    }
     return file_test;
 }
 

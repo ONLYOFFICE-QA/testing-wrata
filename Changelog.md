@@ -18,6 +18,7 @@
 * Make `clearHistory` for client and server async
 * Make `remove_duplicates`, `clear_tests`, `remove_duplicates` for queue async
 * Remove login form from header (it was duplicated in main window)
+* Remove support of `Strokes` (single test cases in Spec)
 
 ### Fixes
 * Fix broken `fetch-ip` button in server details
