@@ -44,9 +44,7 @@ function setEventToOpenFile(element) {
 
 function setEventToDeleteFolderFromList() {
     $(".file-name .glyphicon-remove").on('click', function () {
-        if ($('#popup').is(':visible')) {
-        }
-        else {
+        if ($('#popup').is(':hidden')) {
             var path = $(this).parent().attr('data-qtip');
             $('.tab-content i.add-file').each(function () {
                 var display = $(this).css('display');
