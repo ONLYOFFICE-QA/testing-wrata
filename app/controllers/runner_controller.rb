@@ -62,12 +62,12 @@ class RunnerController < ApplicationController
 
       test_files_hash = test_list_hash['file_tests']
 
-      test_files_hash.values.each do |test_file_hash| # rubocop:disable Performance/HashEachMethods
+      test_files_hash.values.each do |test_file_hash|
         test_file = TestFile.new(name: test_file_hash['file_name'])
         test_file.test_list = @test_list
         if test_file.save
           next unless test_file_hash['strokes']
-          test_file_hash['strokes'].values.each do |stroke_hash| # rubocop:disable Performance/HashEachMethods
+          test_file_hash['strokes'].values.each do |stroke_hash|
             stroke = Stroke.new(name: stroke_hash['name'], number: stroke_hash['number'])
             stroke.test_file = test_file
             if stroke.save
