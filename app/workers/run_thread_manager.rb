@@ -86,7 +86,6 @@ module RunThreadManager
     Rails.logger.info "move_next_start_on: old time: #{old_time}, new time: #{time}"
     run.update_attributes(next_start: time)
     false
-    #
   end
 
   def time_to_sec(hours, minute)
