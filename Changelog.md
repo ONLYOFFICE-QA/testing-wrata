@@ -1,6 +1,8 @@
 # Change log
 
 ## master
+
+## 1.16.0 (2018-05-30)
 ### New features
 * Add several new lags to SpecLanguage
 * Destroy only droplet with specified tag
