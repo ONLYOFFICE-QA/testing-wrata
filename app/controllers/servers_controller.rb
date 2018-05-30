@@ -43,7 +43,7 @@ class ServersController < ApplicationController
   def clear_history
     server = Server.find_by_name(params['server'])
     history = server.histories
-    history.delete_all
+    history.destroy_all
 
     render body: nil
   end

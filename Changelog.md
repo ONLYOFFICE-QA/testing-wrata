@@ -26,6 +26,7 @@
 * Fix connection leak in `HTMLResultManager#read_progress`
 * Fix not closing file in `LogManager#read_log`
 * Fix booking already booked server by someone
+* Fix leftovers of Histories after deleting them
 
 ## 1.15.0
 ### New features
