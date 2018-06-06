@@ -12,6 +12,7 @@
 * Add restart of docker services
 * Set production log level as `:info`
 * Use default logger formatter
+* Set server status as `select`
 
 ### Refactor
 * Simplify logic of showing current log in Server window

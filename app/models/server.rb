@@ -3,6 +3,7 @@ class Server < ActiveRecord::Base
   EXECUTOR_IMAGE_NAME = 'nct-at-docker'.freeze
   EXECUTOR_TAG = 'nct-at'.freeze
   DEFAULT_SERVER_SIZE = '1gb'.freeze
+  STATUSES_TO_MANUAL_SET = %i[destroyed created].freeze
 
   has_many :histories
 
