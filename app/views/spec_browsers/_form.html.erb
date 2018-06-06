@@ -1,0 +1,22 @@
+<%= form_with(model: spec_browser, local: true) do |form| %>
+  <% if spec_browser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spec_browser.errors.count, "error") %> prohibited this spec_browser from being saved:</h2>
+
+      <ul>
+      <% spec_browser.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :spec_browser_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

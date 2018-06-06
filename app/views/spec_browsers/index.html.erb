@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spec Browsers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spec_browsers.each do |spec_browser| %>
+      <tr>
+        <td><%= spec_browser.name %></td>
+        <td><%= link_to 'Show', spec_browser %></td>
+        <td><%= link_to 'Edit', edit_spec_browser_path(spec_browser) %></td>
+        <td><%= link_to 'Destroy', spec_browser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spec Browser', new_spec_browser_path %>
