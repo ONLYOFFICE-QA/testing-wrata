@@ -5,5 +5,7 @@ class CreateSpecBrowsers < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_column :start_options, :spec_browser, :string
   end
 end
