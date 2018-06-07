@@ -7,23 +7,20 @@ class ClientTestQueue
     @id = 0
   end
 
-  def push_test(test_path, branch, location,
-                spec_language: 'en-us',
-                to_begin_of_queue: true,
-                tm_branch: nil,
-                doc_branch: nil)
+  def push_test(test_path, branch, location, params = {})
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
-    doc_branch, tm_branch = branches(test_project, branch, location.split(' ')[0]) if doc_branch.nil? || tm_branch.nil?
+    params[:doc_branch], params[:tm_branch] = branches(test_project, branch, location.split(' ')[0]) if params[:doc_branch].nil? || params[:tm_branch].nil?
     data_to_push = { test_path: reformat_path(test_path),
                      id: @id,
-                     doc_branch: doc_branch,
-                     tm_branch: tm_branch,
+                     doc_branch: params[:doc_branch],
+                     tm_branch: params[:tm_branch],
                      location: location,
                      test_name: test_name,
                      project: test_project,
-                     spec_language: spec_language }
-    if to_begin_of_queue
+                     spec_browser: params[:spec_browser],
+                     spec_language: params.fetch(:spec_language, 'en-us') }
+    if params.fetch(:to_begin_of_queue, true)
       @tests.unshift(data_to_push)
     else
       @tests << data_to_push
