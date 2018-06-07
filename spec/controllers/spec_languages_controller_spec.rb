@@ -54,7 +54,7 @@ RSpec.describe SpecLanguagesController, type: :controller do
   describe 'GET #new' do
     it 'assigns a new spec_language as @spec_language' do
       get :new, params: {}, session: valid_session
-      expect(assigns(:spec_language)).to be_a(SpecLanguage)
+      expect(assigns(:spec_language)).to be_nil
     end
   end
 
