@@ -142,6 +142,15 @@
                   <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
               <% end %>
             </select>
+            <%= collection_select(:browser,
+                                  0,
+                                  SpecBrowser.all,
+                                  :name,
+                                  :name,
+                                  {},
+                                  class: 'region form-control spec-language',
+                                  'data-tooltip': true,
+                                  title: 'Browser' ) %>
             <i class="update-tests glyphicon glyphicon-repeat"></i>
           </div>
         </div>

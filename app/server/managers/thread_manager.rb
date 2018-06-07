@@ -11,6 +11,7 @@ module ThreadManager
                                        teamlab_branch: @test[:tm_branch],
                                        portal_type: location.split(' ')[0],
                                        portal_region: location.split(' ')[1],
+                                       spec_browser: @test[:spec_browser],
                                        spec_language: @test[:spec_language])
         start_time = DateTime.now
         full_start_command = generate_full_start_command(test_path, test_options)

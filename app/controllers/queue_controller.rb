@@ -22,6 +22,8 @@ class QueueController < ApplicationController
 
   def add_test
     @manager.add_test(params['test_path'], params['branch'], params['location'],
+                      to_begin_of_queue: true,
+                      spec_browser: params['spec_browser'],
                       spec_language: params['spec_language'],
                       tm_branch: params['teamlab_branch'],
                       doc_branch: params['doc_branch'])
@@ -31,6 +33,8 @@ class QueueController < ApplicationController
 
   def retest
     @manager.add_test(params['test_path'], params['branch'], params['location'],
+                      to_begin_of_queue: true,
+                      spec_browser: params['spec_browser'],
                       spec_language: params['spec_language'],
                       tm_branch: params['tm_branch'],
                       doc_branch: params['doc_branch'])

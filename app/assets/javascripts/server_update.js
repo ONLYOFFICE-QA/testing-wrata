@@ -126,6 +126,7 @@ function setTestNameAndOptions(hidden_elem, test) {
     hidden_elem.find('.time').text(test.time);
     hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
     hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
+    hidden_elem.find('.spec_browser').text('Spec Browser: ' + test.spec_browser);
     hidden_elem.find('.spec_language').text('Spec Language: ' + test.spec_language);
 }
 

@@ -1,6 +1,8 @@
 # Change log
 
 ## master
+### New features
+* Ability to set `SPEC_BROWSER` to tests via env variables
 
 ## 1.16.0 (2018-05-30)
 ### New features

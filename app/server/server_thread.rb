@@ -71,6 +71,7 @@ class ServerThread
         time: testing_time,
         doc_branch: @test[:doc_branch],
         tm_branch: @test[:tm_branch],
+        spec_browser: @test[:spec_browser],
         spec_language: @test[:spec_language]
       }
     end

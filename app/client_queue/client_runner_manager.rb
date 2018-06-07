@@ -64,19 +64,17 @@ class ClientRunnerManager
   end
 
   def add_test(test, branch, location,
-               spec_language: nil,
-               to_begin_of_queue: true,
-               tm_branch: nil,
-               doc_branch: nil)
-    spec_language ||= Rails.application.config.default_spec_language
+               params = {})
+    spec_language = params[:spec_language] || Rails.application.config.default_spec_language
     test = [test] unless test.is_a?(Array)
     test.reverse.each do |current_test|
       spec_language.each do |current_lang|
         @tests.push_test(current_test, branch, location,
+                         spec_browser: params[:spec_browser],
                          spec_language: current_lang,
-                         to_begin_of_queue: to_begin_of_queue,
-                         tm_branch: tm_branch,
-                         doc_branch: doc_branch)
+                         to_begin_of_queue: params.fetch(:to_begin_of_queue, true),
+                         tm_branch: params[:tm_branch],
+                         doc_branch: params[:doc_branch])
       end
     end
   end
