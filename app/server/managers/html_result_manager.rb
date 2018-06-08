@@ -43,29 +43,12 @@ module HTMLResultManager
     processing
   end
 
-  def test_failed_count
-    processing = '0'
-    if @test
-      if html_progress_exist?
-        begin
-          processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_failed_cases_count_from_html(read_progress)
-          processing = processing_from_html unless processing_from_html == ''
-        rescue StandardError => e
-          Rails.logger.error e.message
-          Rails.logger.error e.backtrace.join("\n")
-        end
-      end
-    end
-    processing
-  end
-
   def create_progress_scan_thread
     @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         Thread.stop unless @test
         @test_progress = test_progress
         @test_metadata = test_metadata
-        @test_failed_count = test_failed_count
         sleep TIME_FOR_UPDATE
       end
     end

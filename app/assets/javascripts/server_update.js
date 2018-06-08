@@ -49,7 +49,7 @@ function setDataOnServersView(data) {
         if (data[i].status) {
             changeCreateOnDestroy(server.find('.glyphicon-off'));
             if('test' in data[i]) {
-                showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
+                showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.metadata);
                 setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
                 fill_server_log(data[i].name, data[i].log);
                 server.find('.glyphicon-stop').show();
@@ -108,11 +108,11 @@ function changeCreateOnDestroy(button) {
     }
 }
 
-function showTestProgress(progress_elem, progress, time, failed_count) {
+function showTestProgress(progress_elem, progress, time, metadata) {
     var ui_progress = progress_elem.find('.ui-progress');
     ui_progress.css('width', progress + '%');
     ui_progress.removeClass('red-background');
-    if (failed_count != 0) {
+    if (metadata != null && metadata.failed_count != 0) {
         ui_progress.addClass('red-background');
     }
     progress_elem.find('.value').text(progress + '% ' + time);
