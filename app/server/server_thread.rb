@@ -67,6 +67,7 @@ class ServerThread
         name: slice_project_path(@test[:test_path]),
         location: @test[:location],
         progress: @test_progress || 0,
+        metadata: @test_metadata,
         failed_count: @test_failed_count,
         time: testing_time,
         doc_branch: @test[:doc_branch],

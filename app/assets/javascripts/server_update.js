@@ -122,7 +122,7 @@ function showTestProgress(progress_elem, progress, time, failed_count) {
 function setTestNameAndOptions(hidden_elem, test) {
     hidden_elem.find('.name').text(test.name);
     hidden_elem.find('.location').text(test.location);
-    hidden_elem.find('.test-progress').text('progress ' + test.progress + '%');
+    hidden_elem.find('.test-progress').text(testProgressLine(test));
     hidden_elem.find('.time').text(test.time);
     hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
     hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
@@ -190,4 +190,18 @@ function selectObjectForCopy(jqueryObject) {
     range.selectNode(jqueryObject.get(0));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
+}
+
+function testProgressLine(test) {
+    var line = 'Progress ' + test.progress + '%';
+    if (test.metadata == null) {
+        return line;
+    }
+    if (typeof test.metadata.passed_count !== 'undefined') {
+        line += ', Passed: ' + test.metadata.passed_count;
+    }
+    if (typeof test.metadata.failed_count !== 'undefined') {
+        line += ', Failed: ' + test.metadata.failed_count;
+    }
+    return line;
 }

@@ -22,6 +22,11 @@ module HTMLResultManager
     open(result_url, &:read)
   end
 
+  # @return [OnlyofficeRspecResultParser::RspecResult] metadata of test
+  def test_metadata
+    OnlyofficeRspecResultParser::ResultParser.parse_metadata(read_progress) if @test && html_progress_exist?
+  end
+
   def test_progress
     processing = '0'
     if @test
@@ -59,6 +64,7 @@ module HTMLResultManager
       loop do
         Thread.stop unless @test
         @test_progress = test_progress
+        @test_metadata = test_metadata
         @test_failed_count = test_failed_count
         sleep TIME_FOR_UPDATE
       end
