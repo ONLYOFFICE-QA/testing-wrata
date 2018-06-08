@@ -66,7 +66,6 @@ class ServerThread
       server_info[:test] = {
         name: slice_project_path(@test[:test_path]),
         location: @test[:location],
-        progress: @test_progress || 0,
         metadata: @test_metadata,
         time: testing_time,
         doc_branch: @test[:doc_branch],

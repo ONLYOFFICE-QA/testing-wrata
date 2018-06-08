@@ -49,7 +49,7 @@ function setDataOnServersView(data) {
         if (data[i].status) {
             changeCreateOnDestroy(server.find('.glyphicon-off'));
             if('test' in data[i]) {
-                showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.metadata);
+                showTestProgress(server.find('.ui-progress-bar'), data[i].test.time, data[i].test.metadata);
                 setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
                 fill_server_log(data[i].name, data[i].log);
                 server.find('.glyphicon-stop').show();
@@ -108,7 +108,11 @@ function changeCreateOnDestroy(button) {
     }
 }
 
-function showTestProgress(progress_elem, progress, time, metadata) {
+function showTestProgress(progress_elem, time, metadata) {
+    var progress = 0;
+    if (metadata != null) {
+        progress = metadata.processing;
+    }
     var ui_progress = progress_elem.find('.ui-progress');
     ui_progress.css('width', progress + '%');
     ui_progress.removeClass('red-background');
@@ -193,10 +197,10 @@ function selectObjectForCopy(jqueryObject) {
 }
 
 function testProgressLine(test) {
-    var line = 'Progress ' + test.progress + '%';
     if (test.metadata == null) {
-        return line;
+        return 'Progress is not available';
     }
+    var line = 'Progress ' + test.metadata.processing + '%';
     if (typeof test.metadata.passed_count !== 'undefined') {
         line += ', Passed: ' + test.metadata.passed_count;
     }
