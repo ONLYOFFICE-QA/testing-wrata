@@ -115,9 +115,10 @@ function showTestProgress(progress_elem, time, metadata) {
     }
     var ui_progress = progress_elem.find('.ui-progress');
     ui_progress.css('width', progress + '%');
-    ui_progress.removeClass('red-background');
-    if (metadata != null && metadata.failed_count != 0) {
-        ui_progress.addClass('red-background');
+    if (metadata != null) {
+        var passedRatio = metadata.passed_count / (metadata.failed_count + metadata.passed_count);
+        progress_elem.find('.ui-progress-passed').css('width', passedRatio * 100 + '%');
+        progress_elem.find('.ui-progress-failed').css('width', (100 - passedRatio * 100) + '%');
     }
     progress_elem.find('.value').text(progress + '% ' + time);
     progress_elem.show();

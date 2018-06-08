@@ -13,3 +13,13 @@
 .server_create {
     color: green;
 }
+
+.ui-progress-passed {
+    background-color: #74d04c;
+    display: inline-block;
+}
+
+.ui-progress-failed {
+    background: linear-gradient(to bottom, rgb(202, 17, 17) 15%, rgb(154, 13, 13) 100%) !important;
+    display: inline-block;
+}
