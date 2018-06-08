@@ -22,44 +22,16 @@ module HTMLResultManager
     open(result_url, &:read)
   end
 
-  def test_progress
-    processing = '0'
-    if @test
-      if html_progress_exist?
-        begin
-          processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_processing_of_rspec_html(read_progress)
-          processing = processing_from_html unless processing_from_html == ''
-        rescue StandardError => e
-          Rails.logger.error e.message
-          Rails.logger.error e.backtrace.join("\n")
-        end
-      end
-    end
-    processing
-  end
-
-  def test_failed_count
-    processing = '0'
-    if @test
-      if html_progress_exist?
-        begin
-          processing_from_html = OnlyofficeRspecResultParser::ResultParser.get_failed_cases_count_from_html(read_progress)
-          processing = processing_from_html unless processing_from_html == ''
-        rescue StandardError => e
-          Rails.logger.error e.message
-          Rails.logger.error e.backtrace.join("\n")
-        end
-      end
-    end
-    processing
+  # @return [OnlyofficeRspecResultParser::RspecResult] metadata of test
+  def test_metadata
+    OnlyofficeRspecResultParser::ResultParser.parse_metadata(read_progress) if @test && html_progress_exist?
   end
 
   def create_progress_scan_thread
     @progress_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
         Thread.stop unless @test
-        @test_progress = test_progress
-        @test_failed_count = test_failed_count
+        @test_metadata = test_metadata
         sleep TIME_FOR_UPDATE
       end
     end

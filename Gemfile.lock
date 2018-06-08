@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser
-  revision: e2e7ab19cbbb07748ad41f153c0c515b35bc48f0
+  revision: f016324d4b3f09cd483ddb034c0f989a12b017e5
   specs:
     onlyoffice_rspec_result_parser (0.0.1)
       nokogiri (~> 1.6)
@@ -287,4 +287,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

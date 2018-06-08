@@ -20,7 +20,10 @@
         <% end %>
         <label title=<%= server.name %>><%= server.name %></label>
         <div class="ui-progress-bar ui-container" data-server="<%= server.name %>">
-          <div class="ui-progress" style="width: 26.8%; display: block;"></div>
+          <div class="ui-progress" style="width: 26.8%">
+            <span class="ui-progress-passed" style="width: 50%;"></span>
+            <span class="ui-progress-failed" style="width: 50%;"></span>
+          </div>
           <!-- .ui-progress -->
           <span class="value ui-label">26.8%</span><!-- progress value -->
           <span class="test hidden-tool">

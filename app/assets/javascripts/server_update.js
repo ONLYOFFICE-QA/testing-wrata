@@ -49,7 +49,7 @@ function setDataOnServersView(data) {
         if (data[i].status) {
             changeCreateOnDestroy(server.find('.glyphicon-off'));
             if('test' in data[i]) {
-                showTestProgress(server.find('.ui-progress-bar'), data[i].test.progress, data[i].test.time, data[i].test.failed_count);
+                showTestProgress(server.find('.ui-progress-bar'), data[i].test.time, data[i].test.metadata);
                 setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
                 fill_server_log(data[i].name, data[i].log);
                 server.find('.glyphicon-stop').show();
@@ -108,12 +108,17 @@ function changeCreateOnDestroy(button) {
     }
 }
 
-function showTestProgress(progress_elem, progress, time, failed_count) {
+function showTestProgress(progress_elem, time, metadata) {
+    var progress = 0;
+    if (metadata != null) {
+        progress = metadata.processing;
+    }
     var ui_progress = progress_elem.find('.ui-progress');
     ui_progress.css('width', progress + '%');
-    ui_progress.removeClass('red-background');
-    if (failed_count != 0) {
-        ui_progress.addClass('red-background');
+    if (metadata != null) {
+        var passedRatio = metadata.passed_count / (metadata.failed_count + metadata.passed_count);
+        progress_elem.find('.ui-progress-passed').css('width', passedRatio * 100 + '%');
+        progress_elem.find('.ui-progress-failed').css('width', (100 - passedRatio * 100) + '%');
     }
     progress_elem.find('.value').text(progress + '% ' + time);
     progress_elem.show();
@@ -122,7 +127,7 @@ function showTestProgress(progress_elem, progress, time, failed_count) {
 function setTestNameAndOptions(hidden_elem, test) {
     hidden_elem.find('.name').text(test.name);
     hidden_elem.find('.location').text(test.location);
-    hidden_elem.find('.test-progress').text('progress ' + test.progress + '%');
+    hidden_elem.find('.test-progress').text(testProgressLine(test));
     hidden_elem.find('.time').text(test.time);
     hidden_elem.find('.docs_branch').text('Docs Branch: ' + test.doc_branch);
     hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
@@ -190,4 +195,18 @@ function selectObjectForCopy(jqueryObject) {
     range.selectNode(jqueryObject.get(0));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
+}
+
+function testProgressLine(test) {
+    if (test.metadata == null) {
+        return 'Progress is not available';
+    }
+    var line = 'Progress ' + test.metadata.processing + '%';
+    if (typeof test.metadata.passed_count !== 'undefined') {
+        line += ', Passed: ' + test.metadata.passed_count;
+    }
+    if (typeof test.metadata.failed_count !== 'undefined') {
+        line += ', Failed: ' + test.metadata.failed_count;
+    }
+    return line;
 }
