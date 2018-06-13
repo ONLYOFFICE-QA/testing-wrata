@@ -20,6 +20,9 @@ module HTMLResultManager
   def read_progress
     return '' unless html_progress_exist?
     open(result_url, &:read)
+  rescue Errno::ECONNRESET => e
+    Rails.logger.warn("read_progress of #{@server_model.name} is failed with #{e}")
+    ''
   end
 
   # @return [OnlyofficeRspecResultParser::RspecResult] metadata of test
