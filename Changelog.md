@@ -33,7 +33,7 @@
 * Fix not closing file in `LogManager#read_log`
 * Fix booking already booked server by someone
 * Fix leftovers of Histories after deleting them
-* Fix critical stop on `read_progress` `Errno::ECONNRESET` exception
+* Fix critical stop on `read_progress` `Errno::ECONNRESET`, `Errno::ECONNREFUSED` exception
 
 ## 1.15.0
 ### New features
