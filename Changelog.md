@@ -34,6 +34,7 @@
 * Fix booking already booked server by someone
 * Fix leftovers of Histories after deleting them
 * Fix critical stop on `read_progress` `Errno::ECONNRESET`, `Errno::ECONNREFUSED` exception
+* Fix critical crash if log file for server is lost
 
 ## 1.15.0
 ### New features
