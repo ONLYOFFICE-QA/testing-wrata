@@ -15,13 +15,10 @@ function showBookedServers(servers) {
     }
 }
 function appendServerOnQueue(server) {
-    var button = $('<div class="unbook-button" data-server="'+ server + '">unbook</div>');
     var node = $('<div class="server-node"><i class="glyphicon glyphicon-hdd"></i></div>');
     var label = $('<label>').text(server);
     label.attr('title', server);
     node.append(label);
-    node.append(button);
-    eventToUnbookServer(button, true);
     $('#server-queue').append(node);
 }
 function setBookedServersCount(serversCount) {
