@@ -342,17 +342,8 @@ hr.deliver {
   background: rgba(3, 200, 84, 1);
 }
 
-.server-node .unbook-button {
-  float: right;
-  margin-right: 2px;
-  height: 15px;
-  line-height: 10px;
-}
-
 .server-node label {
-  overflow: hidden;
-  vertical-align: top;
-  width: 55%;
+  margin-left: 0.5em;
   white-space: nowrap;
 }
 
@@ -1015,21 +1006,16 @@ a, a:link, a:visited {
 }
 
 .server-node {
-  line-height: 19px;
-  vertical-align: middle;
-  height: 20px;
-  overflow: hidden;
-  font-weight: bold;
+  display: flex;
   margin-bottom: 3px;
-  cursor: pointer;
   color: #5b5e5b;
   border: 1px solid rgba(106, 155, 15, .1);
   border-radius: 3px;
-  word-break: break-all;
 }
 
 .server-node i, .test-node i {
   margin-left: 5px;
+  margin-top: 3px;
   font-size: 10px;
 }
 
