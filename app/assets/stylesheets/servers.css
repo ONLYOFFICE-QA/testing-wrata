@@ -19,6 +19,11 @@
     display: inline-block;
 }
 
+.ui-progress-pending {
+    background-color: yellow;
+    display: inline-block;
+}
+
 .ui-progress-failed {
     background: linear-gradient(to bottom, rgb(202, 17, 17) 15%, rgb(154, 13, 13) 100%) !important;
     display: inline-block;

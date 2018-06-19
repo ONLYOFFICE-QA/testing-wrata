@@ -116,9 +116,10 @@ function showTestProgress(progress_elem, time, metadata) {
     var ui_progress = progress_elem.find('.ui-progress');
     ui_progress.css('width', progress + '%');
     if (metadata != null) {
-        var passedRatio = metadata.passed_count / (metadata.failed_count + metadata.passed_count);
-        progress_elem.find('.ui-progress-passed').css('width', passedRatio * 100 + '%');
-        progress_elem.find('.ui-progress-failed').css('width', (100 - passedRatio * 100) + '%');
+        var totalCases = metadata.failed_count + metadata.passed_count + metadata.pending_count;
+        progress_elem.find('.ui-progress-passed').css('width', (metadata.passed_count / totalCases) * 100 + '%');
+        progress_elem.find('.ui-progress-pending').css('width', (metadata.pending_count / totalCases) * 100 + '%');
+        progress_elem.find('.ui-progress-failed').css('width', (metadata.failed_count / totalCases) * 100 + '%');
     }
     progress_elem.find('.value').text(progress + '% ' + time);
     progress_elem.show();
@@ -204,6 +205,9 @@ function testProgressLine(test) {
     var line = 'Progress ' + test.metadata.processing + '%';
     if (typeof test.metadata.passed_count !== 'undefined') {
         line += ', Passed: ' + test.metadata.passed_count;
+    }
+    if (typeof test.metadata.pending_count !== 'undefined') {
+        line += ', Pending: ' + test.metadata.pending_count;
     }
     if (typeof test.metadata.failed_count !== 'undefined') {
         line += ', Failed: ' + test.metadata.failed_count;
