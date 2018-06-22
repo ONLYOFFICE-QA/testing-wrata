@@ -5,6 +5,9 @@
 * Ability to set `SPEC_BROWSER` to tests via env variables
 * Ability to set progress color according to test results (including Pending status)
 
+### Fixes
+* Fix silent fail if timeout while restoring image
+
 ## 1.16.0 (2018-05-30)
 ### New features
 * Add several new lags to SpecLanguage

@@ -75,7 +75,7 @@ class Server < ActiveRecord::Base
       update_column(:_status, :destroyed)
       raise e
     end
-    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name)
+    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name, 'active', timeout: 60 * 15)
   end
 
   # Destroy server and wait for it
