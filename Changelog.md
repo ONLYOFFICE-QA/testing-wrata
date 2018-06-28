@@ -4,6 +4,7 @@
 ### New features
 * Ability to set `SPEC_BROWSER` to tests via env variables
 * Ability to set progress color according to test results (including Pending status)
+* Ability to send environment variables to docker run command
 
 ### Fixes
 * Fix silent fail if timeout while restoring image

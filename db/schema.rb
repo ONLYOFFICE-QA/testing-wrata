@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180607135515) do
+ActiveRecord::Schema.define(version: 20180628095746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180607135515) do
     t.string "remember_token"
     t.string "project"
     t.boolean "verified", default: false
+    t.string "env_file", default: ""
     t.index ["remember_token"], name: "index_clients_on_remember_token"
   end
 
