@@ -44,6 +44,7 @@ module TestManager
                   "-h docker-on-#{@server_model.name} "\
                   '--rm '\
                   '-p 80:80 '\
+                  "#{docker_run_environments}"\
                   '--shm-size=2g'
     'docker rm -f $(docker ps -a -q); '\
     "docker pull #{Rails.application.config.node_docker_image}; "\
@@ -76,5 +77,16 @@ module TestManager
     elsif test_path.include? TEAMLAB_PROJECT_NAME
       "cd #{TEAMLAB_PATH_WITHOUT_HOME}"
     end
+  end
+
+  private
+
+  def docker_run_environments
+    run_param = ''
+    env_file_content = Client.find(client.id).env_file
+    env_file_content.each_line do |current_env|
+      run_param += "--env #{current_env.strip} "
+    end
+    run_param
   end
 end

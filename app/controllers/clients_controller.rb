@@ -116,6 +116,7 @@ class ClientsController < ApplicationController
                                    :first_name,
                                    :second_name,
                                    :verified,
+                                   :env_file,
                                    :project)
   end
 end
