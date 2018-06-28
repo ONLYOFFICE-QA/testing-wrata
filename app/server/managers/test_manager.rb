@@ -83,7 +83,7 @@ module TestManager
 
   def docker_run_environments
     run_param = ''
-    env_file_content = client.env_file
+    env_file_content = Client.find(client.id).env_file
     env_file_content.each_line do |current_env|
       run_param += "--env #{current_env.strip} "
     end
