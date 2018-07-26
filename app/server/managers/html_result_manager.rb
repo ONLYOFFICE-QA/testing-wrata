@@ -9,7 +9,7 @@ module HTMLResultManager
     req = Net::HTTP.new(url.host, url.port)
     res = req.request_head(url.path)
     res.code == '200'
-  rescue Errno::ECONNREFUSED, Net::OpenTimeout
+  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Net::OpenTimeout
     false
   end
 
@@ -20,7 +20,7 @@ module HTMLResultManager
   def read_progress
     return '' unless html_progress_exist?
     open(result_url, &:read)
-  rescue Errno::ECONNRESET, Errno::ECONNREFUSED => e
+  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Net::OpenTimeout => e
     Rails.logger.warn("read_progress of #{@server_model.name} is failed with #{e}")
     ''
   end

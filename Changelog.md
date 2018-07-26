@@ -8,6 +8,7 @@
 
 ### Fixes
 * Fix silent fail if timeout while restoring image
+* Catch some more errors while reading test progress
 
 ## 1.16.0 (2018-05-30)
 ### New features
