@@ -64,6 +64,6 @@ module LogManager
     File.read(@server_model.log_path).lines
   rescue Errno::ENOENT => e
     Rails.logger.warn("Read file #{@server_model.log_path} is failed with #{e}")
-    ''
+    ['']
   end
 end
