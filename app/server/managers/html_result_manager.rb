@@ -1,5 +1,11 @@
 require 'open-uri'
 module HTMLResultManager
+  # @return [Array, Exception] exceptions which may occur if something wrong with reading status
+  READ_STATUS_EXCEPTIONS = [Errno::ECONNREFUSED,
+                            Errno::ECONNRESET,
+                            Errno::EHOSTUNREACH,
+                            Net::OpenTimeout].freeze
+
   def result_url
     "http://#{@server_model.address}/#{@server_model.name}.html"
   end
@@ -9,7 +15,7 @@ module HTMLResultManager
     req = Net::HTTP.new(url.host, url.port)
     res = req.request_head(url.path)
     res.code == '200'
-  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Net::OpenTimeout
+  rescue *READ_STATUS_EXCEPTIONS
     false
   end
 
@@ -20,7 +26,7 @@ module HTMLResultManager
   def read_progress
     return '' unless html_progress_exist?
     open(result_url, &:read)
-  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Net::OpenTimeout => e
+  rescue *READ_STATUS_EXCEPTIONS => e
     Rails.logger.warn("read_progress of #{@server_model.name} is failed with #{e}")
     ''
   end
