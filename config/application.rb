@@ -34,7 +34,7 @@ module Runner
     config.middleware.use Rack::Deflater
     config.delayed_runs = nil
     config.github_helper = OnlyofficeGithubHelper::GithubClient.new
-    config.github_projects = ['ONLYOFFICE/testing-onlyoffice', 'ONLYOFFICE/testing-documentserver']
+    config.github_projects = ['ONLYOFFICE/testing-onlyoffice', 'ONLYOFFICE/testing-documentserver', 'ONLYOFFICE/ooxml_parser']
     config.run_manager = nil
     config.threads = nil
     config.server_destroyer = nil
