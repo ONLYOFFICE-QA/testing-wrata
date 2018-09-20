@@ -233,7 +233,7 @@ function Runner() {
     this.eventToAddTestsFromSidebar = function(elem) {
         elem.on('click', function(){
             var tests = _self.getTestPathsFromSidebar();
-            var branch = getCurrentBranch();
+            var branch = getDocBranch();
             var location = $('#list-region').val();
             addTestInQueue(tests, branch, location);
             getUpdatedDataFromServer();
@@ -318,7 +318,7 @@ function Runner() {
             type: 'POST',
             data: {
                 'test_list': getTestList(),
-                'branch': getCurrentBranch(),
+                'branch': getDocBranch(),
                 'project': getCurrentProject()
             },
             beforeSend: function () {
