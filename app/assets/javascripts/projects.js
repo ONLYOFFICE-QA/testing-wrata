@@ -9,3 +9,9 @@ function eventOnChangeProject() {
         }, 100);
     });
 }
+
+function eventOnChangeBranch() {
+    $('#docs-branches').change(function () {
+        renderFileTree();
+    });
+}

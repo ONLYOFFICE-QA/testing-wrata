@@ -13,11 +13,11 @@
           addSortableToElem($('#sidebar-test-list'));
           myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
           eventOnChangeProject();
+          eventOnChangeBranch();
           eventForAddNewPortal();
       });
       window.onload = function () {
           myRunner.pullProjectsAndGetAllView();
-          myRunner.setEventChangeBranch();
           myRunner.eventToAddTestsFromSidebar($('#add-list'));
           <% client = current_client %>
           <% if client %>

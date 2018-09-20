@@ -38,7 +38,7 @@ function renderFileTree(project, ref) {
         project = activeProject();
     }
     if (ref === undefined) {
-        ref = getCurrentBranch();
+        ref = getDocBranch();
     }
     $.ajax({
         url: 'runner/file_tree',

@@ -381,14 +381,6 @@ function Runner() {
         });
     };
 
-    this.setEventChangeBranch = function () {
-        $('#project-tab-header li select').change(function () {
-            if ($(this).parent().hasClass('active')) {
-                renderFileTree();
-            }
-        });
-    };
-
     this.eventToChangeLocationForTest = function(elem) {
         elem.change(function(){
             var test_id = elem.parent().parent().attr('data-id');
