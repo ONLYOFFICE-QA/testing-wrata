@@ -10,6 +10,12 @@ function eventOnChangeProject() {
     });
 }
 
+function selectProject(project) {
+    $("#projects_0'").filter(function () {
+        return $(this).html() == project;
+    }).prop('selected', true);
+}
+
 function eventOnChangeBranch() {
     $('#docs-branches').change(function () {
         renderFileTree();
