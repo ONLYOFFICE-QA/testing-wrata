@@ -273,7 +273,7 @@ function Runner() {
     };
 
     this.showTestsView = function () {
-        var project = getCurrentProject();
+        var project = activeProject();
         $.ajax({
             url: 'runner/show_tests',
             context: this,
@@ -319,7 +319,7 @@ function Runner() {
             data: {
                 'test_list': getTestList(),
                 'branch': getDocBranch(),
-                'project': getCurrentProject()
+                'project': activeProject()
             },
             beforeSend: function () {
                 showOverlay('Saving...');

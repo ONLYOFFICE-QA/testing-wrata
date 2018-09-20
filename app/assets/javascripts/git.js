@@ -2,24 +2,12 @@
  * Created by lobashov-2 on 21.05.17.
  */
 
-function getCurrentBranch() {
-    return $('#project-tab-header li.active option:selected').val();
-}
-
 function getDocBranch() {
     return $('#docs-branches').val();
 }
 
-function getTmBranch() {
-    return $('#teamlab-branches').val();
-}
-
 function getSelectedPortalUrl() {
     return $('#portal-list option:selected').val();
-}
-
-function getCurrentProject() {
-    return $('#project-tab-header li.active a').attr('href');
 }
 
 function selectProject(project) {
