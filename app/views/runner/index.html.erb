@@ -1,32 +1,32 @@
 <% content_for :head do %>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            myRunner.showServers();
-            myRunner.eventToSortTestQueue();
-            getUpdatedDataFromServer();
-            myRunner.eventToStopAllBooked($('#stop-booked'));
-            myRunner.eventToDestroyAllUnBooked($('#destroy-servers'));
-            myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
-            myRunner.eventToRemoveDuplicatesFromQueue($('#remove-duplicates-tests'));
-            myRunner.eventToClearTestQueue($('#clear-tests'));
-            myRunner.eventToClearServerList($('#clear-servers'));
-            addSortableToElem($('#sidebar-test-list'));
-            myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
-            eventOnChangeProject();
-            eventForAddNewPortal();
-        });
-        window.onload = function () {
-            myRunner.pullProjectsAndGetAllView();
-            myRunner.setEventChangeBranch();
-            myRunner.eventToAddTestsFromSidebar($('#add-list'));
-            <% client = current_client %>
-            <% if client %>
-            selectProject('<%= client.project %>');
-            <% else %>
-            selectProject('docs');
-            <% end %>
-        };
-    </script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          myRunner.showServers();
+          myRunner.eventToSortTestQueue();
+          getUpdatedDataFromServer();
+          myRunner.eventToStopAllBooked($('#stop-booked'));
+          myRunner.eventToDestroyAllUnBooked($('#destroy-servers'));
+          myRunner.eventToShuffleTestQueue($('#shuffle-tests'));
+          myRunner.eventToRemoveDuplicatesFromQueue($('#remove-duplicates-tests'));
+          myRunner.eventToClearTestQueue($('#clear-tests'));
+          myRunner.eventToClearServerList($('#clear-servers'));
+          addSortableToElem($('#sidebar-test-list'));
+          myRunner.eventForPullProjectsAndFillTests($('.update-tests'));
+          eventOnChangeProject();
+          eventForAddNewPortal();
+      });
+      window.onload = function () {
+          myRunner.pullProjectsAndGetAllView();
+          myRunner.setEventChangeBranch();
+          myRunner.eventToAddTestsFromSidebar($('#add-list'));
+          <% client = current_client %>
+          <% if client %>
+          selectProject('<%= client.project %>');
+          <% else %>
+          selectProject('docs');
+          <% end %>
+      };
+  </script>
 <% end %>
 
 <% client = current_client %>
@@ -61,7 +61,7 @@
         <div id='add-list'>Add in queue</div>
         <select id='list-region' class="region form-control">
           <% REGION_LIST.each do |region| %>
-              <option><%= region %></option>
+            <option><%= region %></option>
           <% end %>
         </select>
       </div>
@@ -110,36 +110,20 @@
     <div class="tests-block">
       <div class="tabbable">
         <div id="project-tab-header">
-          <ul class="nav nav-tabs">
-            <% if client && client.project == "docs" %>
-                <li class="active">
-            <% end %>
-            <% if client && client.project == "teamlab" %>
-                <li>
-            <% end %>
-            <% unless client %>
-                <li class="active">
-            <% end %>
-            <a href="#docs" data-toggle="tab">Online Document</a>
-            <select id="docs-branches" class="branch form-control"></select>
-            </li>
-            <% if client && client.project == "teamlab" %>
-                <li class="active">
-            <% end %>
-            <% if client && client.project == "docs" %>
-                <li>
-            <% end %>
-            <% unless client %>
-                <li>
-            <% end %>
-            <a href="#teamlab" data-toggle="tab">Teamlab</a>
-            <select id="teamlab-branches" class="branch form-control"></select>
-            </li>
-          </ul>
           <div id="file-list-tools">
+            <%= collection_select(:projects,
+                                  0,
+                                  Rails.application.config.github_projects.sort,
+                                  :to_s,
+                                  :to_s,
+                                  {},
+                                  class: 'project-list form-control',
+                                  'data-tooltip': true,
+                                  title: 'Project') %>
+            <select id="docs-branches" class="branch form-control"></select>
             <select id='portal-list' class="region form-control">
               <% REGION_LIST.each do |region| %>
-                  <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
+                <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
               <% end %>
             </select>
             <%= collection_select(:browser,
@@ -150,7 +134,7 @@
                                   {},
                                   class: 'region form-control spec-language',
                                   'data-tooltip': true,
-                                  title: 'Browser' ) %>
+                                  title: 'Browser') %>
             <i class="update-tests glyphicon glyphicon-repeat"></i>
           </div>
         </div>
@@ -174,7 +158,7 @@
                               {},
                               class: 'form-control spec-language',
                               multiple: true,
-                              size: SpecLanguage.all.length ) %>
+                              size: SpecLanguage.all.length) %>
       </div>
     </div>
   </div>
