@@ -233,7 +233,7 @@ function Runner() {
     this.eventToAddTestsFromSidebar = function(elem) {
         elem.on('click', function(){
             var tests = _self.getTestPathsFromSidebar();
-            var branch = getCurrentBranch();
+            var branch = getDocBranch();
             var location = $('#list-region').val();
             addTestInQueue(tests, branch, location);
             getUpdatedDataFromServer();
@@ -273,7 +273,7 @@ function Runner() {
     };
 
     this.showTestsView = function () {
-        var project = getCurrentProject();
+        var project = activeProject();
         $.ajax({
             url: 'runner/show_tests',
             context: this,
@@ -318,8 +318,8 @@ function Runner() {
             type: 'POST',
             data: {
                 'test_list': getTestList(),
-                'branch': getCurrentBranch(),
-                'project': getCurrentProject()
+                'branch': getDocBranch(),
+                'project': activeProject()
             },
             beforeSend: function () {
                 showOverlay('Saving...');
@@ -378,14 +378,6 @@ function Runner() {
     this.setEventToDeleteTestList = function (list_menu) {
         list_menu.find('i.delete-test-list').on('click', function () {
             _self.EventToDeleteTestList($(this).parent());
-        });
-    };
-
-    this.setEventChangeBranch = function () {
-        $('#project-tab-header li select').change(function () {
-            if ($(this).parent().hasClass('active')) {
-                renderFileTree();
-            }
         });
     };
 

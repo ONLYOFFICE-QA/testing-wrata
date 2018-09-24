@@ -3,9 +3,21 @@
  */
 
 function eventOnChangeProject() {
-    $('.nav.nav-tabs li a').on('click', function () {
+    $('#projects_0').change(function () {
         setTimeout(function() {
             fetchBranchesAndShowFiles();
         }, 100);
+    });
+}
+
+function selectProject(project) {
+    $("#projects_0").filter(function () {
+        return $(this).html() == project;
+    }).prop('selected', true);
+}
+
+function eventOnChangeBranch() {
+    $('#docs-branches').change(function () {
+        renderFileTree();
     });
 }

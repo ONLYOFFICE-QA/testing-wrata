@@ -38,7 +38,7 @@ function renderFileTree(project, ref) {
         project = activeProject();
     }
     if (ref === undefined) {
-        ref = getCurrentBranch();
+        ref = getDocBranch();
     }
     $.ajax({
         url: 'runner/file_tree',
@@ -56,7 +56,7 @@ function renderFileTree(project, ref) {
         success: function (data) {
             var dataJson = JSON.parse(data);
             var html_data = htmlFileTree(dataJson.children);
-            var fileTab = $(".tests-block .tab-content .tab-pane.active");
+            var fileTab = $(".tests-block .tab-content .tab-pane");
             fileTab.html(html_data);
             setEventToOpenFolder();
             eventToAddFile();
@@ -72,13 +72,7 @@ function renderFileTree(project, ref) {
 }
 
 function activeProject() {
-    var tabId = getCurrentProject();
-    if (tabId == '#docs') {
-        return 'ONLYOFFICE/testing-documentserver';
-    }
-    if (tabId == '#teamlab') {
-        return 'ONLYOFFICE/testing-onlyoffice';
-    }
+    return $('#projects_0 option:selected').val();
 }
 
 function showFileTreeOverlay() {
@@ -90,8 +84,7 @@ function hideFileTreeOverlay() {
 }
 
 function fetchBranchesAndShowFiles() {
-    fetchBranches('ONLYOFFICE/testing-documentserver', $('#docs-branches'));
-    fetchBranches('ONLYOFFICE/testing-onlyoffice', $('#teamlab-branches'));
+    fetchBranches(activeProject(), $('#docs-branches'));
 }
 
 function fetchBranches(project, control) {
@@ -108,9 +101,7 @@ function fetchBranches(project, control) {
         },
         success: function (data) {
             setGitReferences(control, data.branches, data.tags);
-            if (project === activeProject()) {
-                renderFileTree(project, getCurrentBranch());
-            }
+            renderFileTree(project, getDocBranch());
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
