@@ -14,9 +14,10 @@ module ThreadManager
                                        spec_browser: @test[:spec_browser],
                                        spec_language: @test[:spec_language])
         start_time = DateTime.now
+        client = server_model.booked_client
         full_start_command = generate_full_start_command(test_path, test_options)
         exit_status = execute_command(full_start_command)
-        add_data_to_history(test_path, test_options, full_start_command, @client, start_time: start_time, exit_code: exit_status)
+        add_data_to_history(test_path, test_options, full_start_command, client, start_time: start_time, exit_code: exit_status)
         @server_model.update_column(:executing_command_now, false)
         @server_model.update_column(:last_activity_date, Time.current)
         last_log_data
