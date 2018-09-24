@@ -19,12 +19,6 @@
       window.onload = function () {
           myRunner.pullProjectsAndGetAllView();
           myRunner.eventToAddTestsFromSidebar($('#add-list'));
-          <% client = current_client %>
-          <% if client %>
-          selectProject('<%= client.project %>');
-          <% else %>
-          selectProject('docs');
-          <% end %>
       };
   </script>
 <% end %>
