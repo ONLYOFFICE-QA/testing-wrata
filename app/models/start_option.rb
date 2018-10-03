@@ -8,9 +8,9 @@ class StartOption < ActiveRecord::Base
   end
 
   def create_options
-    command = "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull --all --prune && git checkout #{shared_branch} && bundle install && " \
-        "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull --all --prune && git checkout #{docs_branch} && bundle install && " \
-        "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull --all --prune && git checkout #{teamlab_branch} && bundle install && " \
+    command = "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull --all --prune && git checkout #{shared_branch} && bundle install; " \
+        "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull --all --prune && git checkout #{docs_branch} && bundle install; " \
+        "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull --all --prune && git checkout #{teamlab_branch} && bundle install; " \
         "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull --all --prune && git checkout #{teamlab_api_branch}" \
         "#{generate_region_command}"
     command
