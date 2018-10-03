@@ -6,6 +6,7 @@
 * Ability to set progress color according to test results (including Pending status)
 * Ability to send environment variables to docker run command
 * Support any number of projects to run tests
+* Do not stop change branches if any branch non exists
 
 ### Fixes
 * Fix silent fail if timeout while restoring image
