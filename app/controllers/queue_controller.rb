@@ -3,6 +3,7 @@ class QueueController < ApplicationController
 
   def book_server
     return head(:forbidden) unless able_to_be_booked?
+
     @manager.add_server(params['server'])
 
     render body: nil

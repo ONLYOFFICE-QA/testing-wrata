@@ -106,6 +106,7 @@ class ServerThread
     return false unless @server_model.self_destruction
     return false if @server_model.executing_command_now
     return false if @server_model.last_activity_date.nil? # do not destroy if there is no data about last run
+
     inactive_time > TIMEOUT_SERVER_SELFDESTROY
   end
 
@@ -117,6 +118,7 @@ class ServerThread
 
   def test_name
     return nil unless @test
+
     @test[:test_name]
   end
 end

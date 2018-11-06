@@ -8,6 +8,7 @@ module TestManager
   def command_executioner(test)
     return 'rspec' if test.end_with?('_spec.rb')
     return 'ruby' if test.end_with?('rb')
+
     ''
   end
 

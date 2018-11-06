@@ -34,6 +34,7 @@ class ServersController < ApplicationController
   def show_current_results
     server_thread = Runner::Application.config.threads.get_thread_by_name(params['server'])
     return render plain: "No such server `#{params['server']}`" unless server_thread
+
     @rspec_result = server_thread.full_results_of_test
     @file_name = server_thread.test_name
 
@@ -57,6 +58,7 @@ class ServersController < ApplicationController
     @controller = :server
 
     return render body: nil if @history.empty?
+
     render layout: false
   end
 
@@ -89,6 +91,7 @@ class ServersController < ApplicationController
     if errors.empty?
       multi_servers_params['count'].to_i.times do |current_pattern_prefix|
         break if current_pattern_prefix > 100
+
         multi_servers_params['server_name_pattern']
         Server.find_or_create_by(name: "#{multi_servers_params['server_name_pattern']}-#{current_pattern_prefix}")
         Runner::Application.config.threads.add_threads
@@ -154,6 +157,7 @@ class ServersController < ApplicationController
   def log
     server_thread = Runner::Application.config.threads.get_thread_by_name(params['server'])
     return render body: nil, status: :bad_request if server_thread.nil?
+
     render plain: server_thread.log
   end
 

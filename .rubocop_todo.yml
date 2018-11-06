@@ -27,11 +27,6 @@ Layout/ClosingParenthesisIndentation:
     - 'spec/views/spec_languages/new.html.erb_spec.rb'
     - 'spec/views/spec_languages/show.html.erb_spec.rb'
 
-# Offense count: 34
-# Cop supports --auto-correct.
-Layout/EmptyLineAfterGuardClause:
-  Enabled: false
-
 # Offense count: 16
 Metrics/AbcSize:
   Max: 34

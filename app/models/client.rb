@@ -24,6 +24,7 @@ class Client < ActiveRecord::Base
   def actions_allowed?
     return true if Rails.env.test?
     return true if admin?
+
     verified?
   end
 

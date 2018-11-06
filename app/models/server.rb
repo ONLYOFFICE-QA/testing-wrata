@@ -69,6 +69,7 @@ class Server < ActiveRecord::Base
   # Start creation and wait for it
   def restore_image_and_wait(server_size)
     return if Rails.application.config.mock_cloud_server
+
     begin
       RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc3', server_size, tags: EXECUTOR_TAG)
     rescue StandardError => e
@@ -81,6 +82,7 @@ class Server < ActiveRecord::Base
   # Destroy server and wait for it
   def destroy_and_wait_for_it
     return if Rails.application.config.mock_cloud_server
+
     begin
       check_ability_to_destroy(name)
       RunnerManagers.digital_ocean.destroy_droplet_by_name(name)

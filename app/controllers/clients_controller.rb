@@ -99,6 +99,7 @@ class ClientsController < ApplicationController
     @controller = :client
 
     return render body: nil if @history.empty?
+
     render '/servers/show_more', layout: false
   end
 

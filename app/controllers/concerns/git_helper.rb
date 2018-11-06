@@ -24,6 +24,7 @@ module GitHelper
   # @return [Array] with promoted
   def promote_branch(branches, branch)
     return branches unless branches.include?(branch)
+
     branches.delete branch
     branches.unshift branch
     branches

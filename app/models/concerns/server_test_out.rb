@@ -29,6 +29,7 @@ module ServerTestOut
     full_log = File.read(log_path)
     match = full_log.match(/#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m)
     return '' unless match
+
     match[1]
   rescue Errno::ENOENT => e
     Rails.logger.error("Could not read full log: #{e}")

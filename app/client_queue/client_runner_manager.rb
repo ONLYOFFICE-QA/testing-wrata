@@ -11,8 +11,10 @@ class ClientRunnerManager
 
   def check_client_for_start
     return unless ready_to_start?
+
     @client_servers.servers_threads.each do |server|
       next unless server[:server_thread].free?
+
       next_test = @tests.shift_test
       server[:server_thread].start_test(next_test) if next_test
     end

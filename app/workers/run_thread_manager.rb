@@ -27,9 +27,11 @@ module RunThreadManager
     Rails.logger.info 'add_to_queue: start test'
     manager = Runner::Application.config.run_manager.find_manager_by_client_login(run.client.login)
     return unless manager
+
     case run.f_type
     when 'test_list'
       raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
+
       test_list = run.client.test_lists.find_by_name(run.name)
       names = test_list.test_files.inject([]) do |arr, test_file|
         arr << test_file.name
