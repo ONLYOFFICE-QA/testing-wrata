@@ -30,6 +30,7 @@ class ServerThreads < ActionController::Base
     servers.each do |current_server|
       @server_threads.each do |current_thread|
         next unless current_server.id == current_thread.server_model.id
+
         current_thread.server_model = current_server
       end
     end
@@ -59,6 +60,7 @@ class ServerThreads < ActionController::Base
     @server_threads.each do |server_thread|
       next unless server_thread.server_model.book_client_id.nil?
       next unless server_thread.server_model._status == :created
+
       begin
         server_thread.server_model.cloud_server_destroy
       rescue StandardError => e
@@ -70,6 +72,7 @@ class ServerThreads < ActionController::Base
   def destroy_inactive_servers
     @server_threads.each do |server_thread|
       next unless server_thread.should_be_destroyed?
+
       Rails.logger.info("Server: #{server_thread.server_model.name}, doomed to be destroyed")
       begin
         server_thread.server_model.cloud_server_destroy

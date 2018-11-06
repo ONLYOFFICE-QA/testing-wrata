@@ -54,6 +54,7 @@ module LogManager
 
   def full_log
     return read_log.join('') if log_file_exist?
+
     EMPTY_STRING
   end
 

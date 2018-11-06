@@ -25,6 +25,7 @@ class RunnerController < ApplicationController
     project = params['project']
     refs = params['refs']
     return render body: nil, status: :bad_request if project.nil? || refs.nil?
+
     file_tree = Rails.application.config.github_helper.file_tree(project, refs: refs)
     render plain: file_tree.to_json
   end
@@ -104,8 +105,10 @@ class RunnerController < ApplicationController
 
     servers.each do |server|
       next unless server['name'].is_a?(String)
+
       server_thread = Runner::Application.config.threads.get_thread_by_name(server['name'])
       next unless server_thread
+
       server_data << server_thread.get_info_from_server(current_client, with_log: server['with_log'])
     end
 

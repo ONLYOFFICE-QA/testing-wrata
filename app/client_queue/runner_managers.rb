@@ -21,6 +21,7 @@ class RunnerManagers
   def remove_user(user)
     manager = find_manager_by_client_login(user.login)
     return unless manager
+
     manager.delete_all_servers
     @managers.delete(manager)
   end

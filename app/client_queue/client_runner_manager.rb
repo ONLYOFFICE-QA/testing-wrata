@@ -11,8 +11,10 @@ class ClientRunnerManager
 
   def check_client_for_start
     return unless ready_to_start?
+
     @client_servers.servers_threads.each do |server|
       next unless server[:server_thread].free?
+
       next_test = @tests.shift_test
       server[:server_thread].start_test(next_test) if next_test
     end
@@ -67,7 +69,7 @@ class ClientRunnerManager
                params = {})
     spec_language = params[:spec_language] || Rails.application.config.default_spec_language
     test = [test] unless test.is_a?(Array)
-    test.reverse.each do |current_test|
+    test.reverse_each do |current_test|
       spec_language.each do |current_lang|
         @tests.push_test(current_test, branch, location,
                          spec_browser: params[:spec_browser],

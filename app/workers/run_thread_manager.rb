@@ -27,9 +27,11 @@ module RunThreadManager
     Rails.logger.info 'add_to_queue: start test'
     manager = Runner::Application.config.run_manager.find_manager_by_client_login(run.client.login)
     return unless manager
+
     case run.f_type
     when 'test_list'
       raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
+
       test_list = run.client.test_lists.find_by_name(run.name)
       names = test_list.test_files.inject([]) do |arr, test_file|
         arr << test_file.name
@@ -75,11 +77,7 @@ module RunThreadManager
   def move_next_start_on(run, hour, minute)
     hour ||= 0
     minute ||= 0
-    old_time = if run.next_start
-                 run.next_start
-               else
-                 run.start_time
-               end
+    old_time = run.next_start || run.start_time
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
     time += time_to_sec(hour.to_i, minute.to_i) while Time.now > time
     Rails.logger.info 'move_next_start_on: update run info'

@@ -4,6 +4,7 @@ class StartOption < ActiveRecord::Base
   # @return [String] full server region with server type
   def server_location
     return portal_type if portal_region.nil?
+
     "#{portal_type} #{portal_region}"
   end
 
@@ -18,6 +19,7 @@ class StartOption < ActiveRecord::Base
 
   def generate_region_command
     return '' if portal_type == 'default'
+
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
     region_command = ' && '

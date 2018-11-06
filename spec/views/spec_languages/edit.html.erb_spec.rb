@@ -4,7 +4,7 @@ RSpec.describe 'spec_languages/edit', type: :view do
   before(:each) do
     @spec_language = assign(:spec_language, SpecLanguage.create!(
                                               name: 'MyString'
-    ))
+                                            ))
   end
 
   it 'renders the edit spec_language form' do

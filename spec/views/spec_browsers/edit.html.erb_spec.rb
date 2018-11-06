@@ -4,7 +4,7 @@ RSpec.describe 'spec_browsers/edit', type: :view do
   before(:each) do
     @spec_browser = assign(:spec_browser, SpecBrowser.create!(
                                             name: 'MyString'
-    ))
+                                          ))
   end
 
   it 'renders the edit spec_browser form' do

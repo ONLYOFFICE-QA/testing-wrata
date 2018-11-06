@@ -4,7 +4,7 @@ RSpec.describe 'spec_browsers/new', type: :view do
   before(:each) do
     assign(:spec_browser, SpecBrowser.new(
                             name: 'MyString'
-    ))
+                          ))
   end
 
   it 'renders new spec_browser form' do

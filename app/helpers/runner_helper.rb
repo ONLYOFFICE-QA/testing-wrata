@@ -5,6 +5,7 @@ module RunnerHelper
     data[:path] = path
     Dir.foreach(path).sort.each do |entry|
       next if entry.start_with?('.')
+
       full_path = File.join(path, entry)
       children << if File.directory?(full_path)
                     directory_hash(full_path, entry)
