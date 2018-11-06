@@ -4,7 +4,7 @@ RSpec.describe 'spec_languages/new', type: :view do
   before(:each) do
     assign(:spec_language, SpecLanguage.new(
                              name: 'MyString'
-    ))
+                           ))
   end
 
   it 'renders new spec_language form' do

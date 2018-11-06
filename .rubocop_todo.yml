@@ -16,17 +16,6 @@ Layout/AlignHash:
   Exclude:
     - 'config/application.rb'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - 'spec/views/spec_browsers/edit.html.erb_spec.rb'
-    - 'spec/views/spec_browsers/new.html.erb_spec.rb'
-    - 'spec/views/spec_browsers/show.html.erb_spec.rb'
-    - 'spec/views/spec_languages/edit.html.erb_spec.rb'
-    - 'spec/views/spec_languages/new.html.erb_spec.rb'
-    - 'spec/views/spec_languages/show.html.erb_spec.rb'
-
 # Offense count: 16
 Metrics/AbcSize:
   Max: 34
