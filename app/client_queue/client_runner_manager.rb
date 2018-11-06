@@ -67,7 +67,7 @@ class ClientRunnerManager
                params = {})
     spec_language = params[:spec_language] || Rails.application.config.default_spec_language
     test = [test] unless test.is_a?(Array)
-    test.reverse.each do |current_test|
+    test.reverse_each do |current_test|
       spec_language.each do |current_lang|
         @tests.push_test(current_test, branch, location,
                          spec_browser: params[:spec_browser],
