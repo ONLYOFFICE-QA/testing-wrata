@@ -36,7 +36,7 @@
         </div>
         <div class="field">
           <%= f.label :_status %><br/>
-          <%= f.select(:_status, options_for_select(Server::STATUSES_TO_MANUAL_SET), {}, class: 'form-control') %>
+          <%= f.select(:_status, options_for_select(Server::STATUSES_TO_MANUAL_SET, selected: @server._status), {}, class: 'form-control') %>
         </div>
         <div class="field">
           <%= f.label :self_destruction %><br/>
