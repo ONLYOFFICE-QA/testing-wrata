@@ -75,11 +75,7 @@ module RunThreadManager
   def move_next_start_on(run, hour, minute)
     hour ||= 0
     minute ||= 0
-    old_time = if run.next_start
-                 run.next_start
-               else
-                 run.start_time
-               end
+    old_time = run.next_start || run.start_time
     time = old_time + time_to_sec(hour.to_i, minute.to_i)
     time += time_to_sec(hour.to_i, minute.to_i) while Time.now > time
     Rails.logger.info 'move_next_start_on: update run info'

@@ -87,12 +87,6 @@ Style/MixinUsage:
     - 'bin/setup'
     - 'bin/update'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/UnneededCondition:
-  Exclude:
-    - 'app/workers/run_thread_manager.rb'
-
 # Offense count: 235
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
