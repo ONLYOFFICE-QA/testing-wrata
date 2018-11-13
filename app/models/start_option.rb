@@ -10,10 +10,9 @@ class StartOption < ActiveRecord::Base
 
   def create_options
     command = "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull --all --prune && git checkout #{shared_branch} && bundle install; " \
-        "cd ~/RubymineProjects/OnlineDocuments && git reset --hard && git pull --all --prune && git checkout #{docs_branch} && bundle install; " \
-        "cd ~/RubymineProjects/TeamLab && git reset --hard && git pull --all --prune && git checkout #{teamlab_branch} && bundle install; " \
-        "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull --all --prune && git checkout #{teamlab_api_branch}" \
-        "#{generate_region_command}"
+              "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull --all --prune && git checkout #{teamlab_api_branch}; " \
+              "#{update_projects_git(docs_branch)}" \
+              "#{generate_region_command}"
     command
   end
 
@@ -22,13 +21,13 @@ class StartOption < ActiveRecord::Base
 
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
-    region_command = ' && '
+    region_command = ''
     region_command +=
       "sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{portal_type}'/g\\\" #{portal_data_docs} && " \
       "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{portal_region}'/g\\\" #{portal_data_docs} && " \
       "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{portal_type}'/g\\\" #{portal_data_teamlab} && " \
       "sed -i \\\"s/@@server_region = '.*'/@@server_region = '#{portal_region}'/g\\\" #{portal_data_teamlab}"
-    region_command
+    "#{region_command};"
   end
 
   # Check if current server options tells, that
@@ -36,5 +35,20 @@ class StartOption < ActiveRecord::Base
   # @return [True, False] is test should run on custom portal
   def on_custom_portal?
     !(portal_type == 'info' || portal_type == 'com' || portal_type == 'default')
+  end
+
+  private
+
+  # @param branch [String] branch to use
+  # @return [String] command for update all projects
+  def update_projects_git(branch)
+    command = ''
+    projects = Project.all
+
+    projects.each do |project|
+      command << project.update_git_command(branch)
+    end
+
+    command
   end
 end

@@ -65,7 +65,7 @@ module TestManager
   end
 
   def generate_run_test_command(test, options)
-    docker_ssh_command("#{options.create_options}; "\
+    docker_ssh_command("#{options.create_options} "\
                        "#{open_folder_with_project(test)} && "\
                        "#{env_variables_options(options)} && "\
                        "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; "\

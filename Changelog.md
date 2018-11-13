@@ -8,6 +8,7 @@
 * Support any number of projects to run tests
 * Do not stop change branches if any branch non exists
 * Store `Projects` as model, not as config parameter 
+* Update not only two project on run command, but all
 
 ### Fixes
 * Fix silent fail if timeout while restoring image
