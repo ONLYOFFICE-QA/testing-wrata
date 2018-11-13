@@ -9,6 +9,7 @@
 * Do not stop change branches if any branch non exists
 * Store `Projects` as model, not as config parameter 
 * Update not only two project on run command, but all
+* Correctly use path for any project name
 
 ### Fixes
 * Fix silent fail if timeout while restoring image

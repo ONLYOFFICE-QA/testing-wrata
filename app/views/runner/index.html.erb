@@ -107,7 +107,7 @@
           <div id="file-list-tools">
             <%= collection_select(:projects,
                                   0,
-                                  Project.all,
+                                  Project.all.sort_by(&:name),
                                   :name,
                                   :name,
                                   {},
