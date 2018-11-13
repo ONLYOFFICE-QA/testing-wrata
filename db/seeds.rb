@@ -18,3 +18,6 @@ SpecLanguage.find_or_create_by(name: 'ru-RU')
 SpecBrowser.find_or_create_by(name: 'default')
 SpecBrowser.find_or_create_by(name: 'chrome')
 SpecBrowser.find_or_create_by(name: 'firefox')
+
+Project.find_or_create_by(name: 'ONLYOFFICE/testing-onlyoffice')
+Project.find_or_create_by(name: 'ONLYOFFICE/testing-documentserver')

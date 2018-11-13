@@ -107,9 +107,9 @@
           <div id="file-list-tools">
             <%= collection_select(:projects,
                                   0,
-                                  Rails.application.config.github_projects.sort,
-                                  :to_s,
-                                  :to_s,
+                                  Project.all,
+                                  :name,
+                                  :name,
                                   {},
                                   class: 'project-list form-control',
                                   'data-tooltip': true,
