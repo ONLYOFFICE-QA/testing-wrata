@@ -27,8 +27,5 @@ function projectFolder() {
     if (project == 'ONLYOFFICE/testing-onlyoffice') {
         return 'TeamLab';
     }
-    else {
-        return 'unknown';
-    }
-
+    return project.split('/').reverse()[0];
 }

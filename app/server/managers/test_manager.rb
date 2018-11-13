@@ -77,6 +77,10 @@ module TestManager
       "cd #{DOCS_PATH_WITHOUT_HOME}"
     elsif test_path.include? TEAMLAB_PROJECT_NAME
       "cd #{TEAMLAB_PATH_WITHOUT_HOME}"
+    else
+      path_after_projects = test_path.split('RubymineProjects/')[1]
+      project_name = path_after_projects.split('/').first
+      "cd ~/RubymineProjects/#{project_name}"
     end
   end
 

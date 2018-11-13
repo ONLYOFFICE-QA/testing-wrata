@@ -21,3 +21,4 @@ SpecBrowser.find_or_create_by(name: 'firefox')
 
 Project.find_or_create_by(name: 'ONLYOFFICE/testing-onlyoffice')
 Project.find_or_create_by(name: 'ONLYOFFICE/testing-documentserver')
+Project.find_or_create_by(name: 'onlyoffice-testing-robot/testing-api.onlyoffice.com')
