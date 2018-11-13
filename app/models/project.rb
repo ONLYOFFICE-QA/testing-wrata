@@ -10,6 +10,6 @@ class Project < ApplicationRecord
     return '~/RubymineProjects/OnlineDocuments' if name == 'ONLYOFFICE/testing-documentserver' # legacy project name
     return '~/RubymineProjects/TeamLab' if name == 'ONLYOFFICE/testing-onlyoffice' # legacy project name
 
-    name.split('/').last
+    "~/RubymineProjects/#{name.split('/').last}"
   end
 end
