@@ -16,6 +16,7 @@
 * Catch some more errors while reading test progress
 * Fix crash in thread operation while reading non-existing log
 * Fix server status in edit page
+* Do not require login in test environment
 
 ## 1.16.0 (2018-05-30)
 ### New features

@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
+    return if Rails.env.test?
+
     if signed_in?
       return redirect_to signin_path unless current_client.actions_allowed?
     else
