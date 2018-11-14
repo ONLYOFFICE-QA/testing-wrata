@@ -11,6 +11,7 @@
 * Store `Projects` as model, not as config parameter 
 * Update not only two project on run command, but all
 * Correctly use path for any project name
+* Use `font-awesome` instead of `glyphicons`
 
 ### Fixes
 * Fix silent fail if timeout while restoring image

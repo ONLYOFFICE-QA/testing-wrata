@@ -9,7 +9,7 @@ function htmlFileTree(treeNode) {
         var children = treeNode.children;
         resultHtml += '<div class="folder">';
         resultHtml += '<div class="add-button-folder active" data-test="' + name + '" style="">add</div>';
-        resultHtml += '<div class="folder-name"><i class="glyphicon glyphicon-folder-close"></i>' + name + "</div>";
+        resultHtml += '<div class="folder-name"><i class="fa fa-folder"></i>' + name + "</div>";
         resultHtml += '<div class="folder-inside" style="display: none">';
         for (var i = 0, len = children.length; i < len; i++) {
             resultHtml += htmlFileTree(children[i]);
@@ -25,8 +25,8 @@ function htmlFileTree(treeNode) {
         resultHtml += '<div class="file">';
         resultHtml += '<div class="add-button-file active" data-test="' + name + '" style="">add</div>';
         resultHtml += '<div class="file-name">';
-        resultHtml += '<i class="glyphicon glyphicon-file"></i>' + name;
-        resultHtml += '<i class="add-file glyphicon glyphicon-plus-sign"></i>';
+        resultHtml += '<i class="fa fa-file"></i>' + name;
+        resultHtml += '<i class="add-file fa fa-plus-circle"></i>';
         resultHtml += '</div>';
         resultHtml += '</div>';
     }

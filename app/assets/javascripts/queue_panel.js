@@ -15,7 +15,7 @@ function showBookedServers(servers) {
     }
 }
 function appendServerOnQueue(server) {
-    var node = $('<div class="server-node"><i class="glyphicon glyphicon-hdd"></i></div>');
+    var node = $('<div class="server-node"><i class="fa fa-hdd"></i></div>');
     var label = $('<label>').text(server);
     label.attr('title', server);
     node.append(label);
@@ -39,7 +39,7 @@ function appendTestsOnQueue(test) {
     props.append($('<label>').text(test.location).attr('title', 'Region: ' + test.location));
     props.append($('<label>').text(test.spec_browser).attr('title', 'Spec Browser: ' + test.spec_browser));
     props.append($('<label>').text(test.spec_language).attr('title', 'Spec Language: ' + test.spec_language));
-    var name = $('<div class="name"><i class="glyphicon glyphicon-leaf"></i>' + test.test_name + '</div>');
+    var name = $('<div class="name"><i class="fa fa-leaf"></i>' + test.test_name + '</div>');
     var testNode = $('<div class="test-node" data-id="' + test.id + '" data-path="' + test.test_path + '" title="' + test.test_path + '"></div>');
     testNode.append(name);
     testNode.append(props);

@@ -29,7 +29,7 @@ function makeAllAddButtonsVisible() {
 }
 
 function setEventToOpenFile(element) {
-    element.find(".glyphicon glyphicon-chevron-down").on('click', function () {
+    element.find(".fa fa-chevron-down").on('click', function () {
         // var elem = $(this).next(); //$('#idtest').is(':visible')
         var inside = element.find(".file-inside");
         var currentDisplay = inside.css("display");
@@ -43,7 +43,7 @@ function setEventToOpenFile(element) {
 }
 
 function setEventToDeleteFolderFromList() {
-    $(".file-name .glyphicon-remove").on('click', function () {
+    $(".file-name .fa-times").on('click', function () {
         if ($('#popup').is(':hidden')) {
             var path = $(this).parent().attr('data-qtip');
             $('.tab-content i.add-file').each(function () {
@@ -65,7 +65,7 @@ function setEventToDeleteFolderFromList() {
 
 
 function setEventToDeleteTestFromList() {
-    $(".name .glyphicon-remove").on('click', function () {
+    $(".name .fa-times").on('click', function () {
         hideStartPanel();
         unlockInactiveTab();
         unlockActiveBranchSelect();

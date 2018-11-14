@@ -48,10 +48,10 @@
         <div>Elapsed: <%= line.elapsed_time %></div>
       </td>
       <td class="center">
-        <i class="retest glyphicon glyphicon-repeat shower" data-path="<%= line.file %>" data-tm-branch="<%= start_option.teamlab_branch %>" data-doc-branch="<%= start_option.docs_branch %>" data-location="<%= start_option.server_location %>">
+        <i class="retest fa fa-redo shower" data-path="<%= line.file %>" data-tm-branch="<%= start_option.teamlab_branch %>" data-doc-branch="<%= start_option.docs_branch %>" data-location="<%= start_option.server_location %>">
           <span class="hidden-tool">Add this test in queue with current params</span>
         </i>
-        <i class="glyphicon glyphicon-trash delete-line shower" delete-data="<%= history_path(line) %>" data-method="delete">
+        <i class="fa fa-trash delete-line shower" delete-data="<%= history_path(line) %>" data-method="delete">
           <span class="hidden-tool">Delete this test from history</span>
         </i>
       </td>
