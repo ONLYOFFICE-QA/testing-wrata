@@ -18,6 +18,7 @@ module TestManager
   def env_variables_options(options)
     env_variables = 'export DISPLAY=:0.0'
     env_variables += " && export SPEC_BROWSER='#{options.spec_browser}'" unless options.spec_browser == SpecBrowser::DEFAULT
+    env_variables += " && export SPEC_REGION='#{options.portal_type}'"
     env_variables += " && export SPEC_LANGUAGE='#{options.spec_language}'"
     env_variables += " && export SPEC_SERVER_IP='#{options.portal_type}'" if options.on_custom_portal?
     env_variables
