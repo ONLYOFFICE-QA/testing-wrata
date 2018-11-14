@@ -3,6 +3,7 @@
 ## master
 ### New features
 * Ability to set `SPEC_BROWSER` to tests via env variables
+* Ability to set `SPEC_REGION` to test via env variable
 * Ability to set progress color according to test results (including Pending status)
 * Ability to send environment variables to docker run command
 * Support any number of projects to run tests
