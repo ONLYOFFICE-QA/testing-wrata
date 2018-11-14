@@ -47,15 +47,15 @@ function setDataOnServersView(data) {
         disableSelectServerSize(data[i].name);
         setServerSize(data[i].name, data[i].size);
         if (data[i].status) {
-            changeCreateOnDestroy(server.find('.glyphicon-off'));
+            changeCreateOnDestroy(server.find('.fa-power-off'));
             if('test' in data[i]) {
                 showTestProgress(server.find('.ui-progress-bar'), data[i].test.time, data[i].test.metadata);
                 setTestNameAndOptions(server.find('.ui-progress-bar .hidden-tool'), data[i].test);
                 fill_server_log(data[i].name, data[i].log);
-                server.find('.glyphicon-stop').show();
+                server.find('.fa-stop').show();
             } else {
                 server.find('.ui-progress-bar').hide();
-                server.find('.glyphicon-stop').hide();
+                server.find('.fa-stop').hide();
             }
             if('booked' in data[i]) {
                 showBookedClient(server.find('.user-icon'), data[i].booked.booked_client);
@@ -70,10 +70,10 @@ function setDataOnServersView(data) {
             }
         } else {
             server.find('.ui-progress-bar').hide();
-            server.find('.glyphicon-stop').hide();
+            server.find('.fa-stop').hide();
             hideUnbookButton(server.find("div.button"));
             hideBookedClient(server.find('.user-icon'));
-            changeDestroyOnCreate(server.find('.glyphicon-off'));
+            changeDestroyOnCreate(server.find('.fa-power-off'));
         }
         if (data[i]._status  == 'destroying') {
             server.find('.server-content').show();

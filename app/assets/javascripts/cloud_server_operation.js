@@ -28,7 +28,7 @@ function disableSelectServerSize(serverName) {
 }
 
 function eventForCreateAndDestroyServer(serverName) {
-    var actionButton = $("#" + serverName + ' .glyphicon-off');
+    var actionButton = $("#" + serverName + ' .fa-power-off');
     actionButton.on('click', function () {
         var action = actionButton.find('.hidden-tool').text();
         bootbox.confirm('Are you really want to ' + action + ' this server?', function(confirmed) {
@@ -61,12 +61,12 @@ function showServerSectionOverlay(server, message) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).find('.overlay-text').text(message);
     $(selector).show();
-    $("#" + server + ' .glyphicon-off').hide();
+    $("#" + server + ' .fa-power-off').hide();
 }
 function hideServerSectionOverlay(server) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).hide();
-    $("#" + server + ' .glyphicon-off').show();
+    $("#" + server + ' .fa-power-off').show();
 }
 function createServer(server, size) {
     $.ajax({

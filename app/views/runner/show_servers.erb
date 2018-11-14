@@ -38,22 +38,22 @@
             <div class="spec_language">SpecLanguage: Unknown</div>
           </span>
         </div>
-        <i class="user-icon glyphicon glyphicon-user">​<span class="hidden-tool">Facetostool</span></i>
+        <i class="user-icon fa fa-user">​<span class="hidden-tool">Facetostool</span></i>
       </div>
       <div class="server-content">
         <div class="mini-panel">
           <ul>
-            <li><i class="glyphicon glyphicon-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i>
+            <li><i class="fa fa-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i>
             </li>
             <li><%= select_tag :droplet_size,
                                options_for_select(OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper::DROPLET_SIZES, '1gb'),
                                :class => 'form-control server-size-select' %></li>
             <li>
-              <i class="glyphicon glyphicon-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i>
+              <i class="fa fa-power-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i>
             </li>
             <li>
               <%= link_to server_history_path(server), :target => '_blank' do %>
-                  <i class="glyphicon glyphicon-book shower"><span class="hidden-tool"> history</span></i>
+                  <i class="fa fa-book shower"><span class="hidden-tool"> history</span></i>
               <% end %>
             </li>
           </ul>

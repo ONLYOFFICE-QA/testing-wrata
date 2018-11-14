@@ -255,12 +255,12 @@ hr.deliver {
   background-color: #efefef;
 }
 
-.file-name .glyphicon-remove {
+.file-name .fa-times {
   margin-left: 3px;
   display: none;
 }
 
-.file-folder .file-name:hover i.glyphicon-remove {
+.file-folder .file-name:hover i.fa-times {
   display: inline-block;
 }
 
@@ -482,7 +482,7 @@ hr.deliver {
   cursor: help;
 }
 
-.glyphicon {
+.fa {
   cursor: pointer;
 }
 
@@ -761,7 +761,7 @@ label {
   color: rgba(0, 12, 53, .84);
 }
 
-.glyphicon-remove {
+.fa-times{
   cursor: pointer;
 }
 

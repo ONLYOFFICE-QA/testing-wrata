@@ -8,13 +8,13 @@ function setEventToOpenFolder() {
         var icon = $(this).children("i");
         if (currentDisplay == "none") {
             $(this).next(".folder-inside").css("display", "block");
-            icon.addClass("glyphicon-folder-open");
-            icon.removeClass("glyphicon-folder-close");
+            icon.addClass("fa-folder-open");
+            icon.removeClass("fa-folder");
         }
         else {
             $(this).next(".folder-inside").css("display", "none");
-            icon.addClass("glyphicon-folder-close");
-            icon.removeClass("glyphicon-folder-open");
+            icon.addClass("fa-folder");
+            icon.removeClass("fa-folder-open");
         }
     });
 }

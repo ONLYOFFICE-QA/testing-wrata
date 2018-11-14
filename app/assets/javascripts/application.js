@@ -261,7 +261,7 @@ function Runner() {
                 _self.eventToOpenLogBySelector('.log-opener span');
                 eventToBookServer(trimmed_data.find('.book-button'));
                 eventToUnbookServer(trimmed_data.find('.unbook-button'), false);
-                _self.eventToStopTest(trimmed_data.find('.glyphicon-stop'));
+                _self.eventToStopTest(trimmed_data.find('.fa-stop'));
                 initEventsForCreateDestroyButtons();
                 _self.eventToGetUpdatedDataFromServer();
                 _self.eventToShowCurrentRspecResult(trimmed_data.find('.ui-progress-bar'));
@@ -684,8 +684,8 @@ function openSidebar() {
     var sidebar = $("#sidebar");
     var ico = $("#open-ico");
     sidebar.css('display', 'block');
-    ico.addClass('glyphicon-chevron-left');
-    ico.removeClass('glyphicon-chevron-right');
+    ico.addClass('fa-chevron-left');
+    ico.removeClass('fa-chevron-right');
     $("#main").css("margin-left", "230px");
     $("#popup").find(".wrap").css("margin-left", "230px");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());
@@ -695,8 +695,8 @@ function closeSidebar() {
     var sidebar = $("#sidebar");
     var ico = $("#open-ico");
     sidebar.css('display', 'none');
-    ico.addClass('glyphicon-chevron-right');
-    ico.removeClass('glyphicon-chevron-left');
+    ico.addClass('fa-chevron-right');
+    ico.removeClass('fa-chevron-left');
     $("#main").css("margin-left", "0");
     $("#popup").find(".wrap").css("margin-left", "0");
     setToggleSidebarCoordinates(getNeededToggleCoordinates());

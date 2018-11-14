@@ -37,12 +37,12 @@
 <div class="side-wrap">
   <div style="position: relative">
     <div id="open-sidebar">
-      <i id="open-ico" class="glyphicon glyphicon-chevron-left" style="margin-top: 4px; left: -5px; top: -2px;"></i>
+      <i id="open-ico" class="fa fa-chevron-left" style="margin-top: 4px; left: -5px; top: -2px;"></i>
     </div>
     <div id="sidebar" class="sidebar-nav-abs">
       <div>
         <div id='list-name' class="inline">My Test List</div>
-        <i id="edit-list-name" class='inline glyphicon glyphicon-pencil'></i>
+        <i id="edit-list-name" class='inline fa fa-edit'></i>
       </div>
       <div class="list-window">
         <div id="sidebar-test-list">
@@ -50,7 +50,7 @@
       </div>
       <div class="start-panel">
         <div id='save-new'>
-          <i class="glyphicon glyphicon-floppy-save"></i>Save
+          <i class="fa fa-save"></i>Save
         </div>
         <div id='add-list'>Add in queue</div>
         <select id='list-region' class="region form-control">
@@ -69,29 +69,29 @@
   <div id="queue-panel">
     <div class="panel-header">
       <div class="server-list server-list-header">
-        <i id="destroy-servers" class="glyphicon glyphicon-off" title="Destroy all unbooked servers"></i>
+        <i id="destroy-servers" class="fa fa-power-off" title="Destroy all unbooked servers"></i>
         <div class="list-header">
-          <i class="glyphicon glyphicon-list-alt"></i>
+          <i class="fa fa-list-alt"></i>
           <span id="booked-servers-title">servers</span>
         </div>
-        <i id="clear-servers" class="glyphicon glyphicon-remove" title="Unbook All Servers"></i>
-        <i id="stop-booked" class="glyphicon glyphicon-stop" title="Stop Test On All Booked Servers"></i>
+        <i id="clear-servers" class="fa fa-times" title="Unbook All Servers"></i>
+        <i id="stop-booked" class="fa fa-stop" title="Stop Test On All Booked Servers"></i>
       </div>
       <div class="queue-list test-queue-list-header">
         <div class="list-header">
-          <i class="glyphicon glyphicon-list-alt"></i>
+          <i class="fa fa-list-alt"></i>
           <span id="test-queue-title">tests</span>
         </div>
-        <i id="remove-duplicates-tests" class="glyphicon glyphicon-indent-left" title="Remove duplicates in queue"></i>
-        <i id="shuffle-tests" class="glyphicon glyphicon-random" title="Shuffle tests"></i>
-        <i id="clear-tests" class="glyphicon glyphicon-trash"></i>
+        <i id="remove-duplicates-tests" class="fa fa-indent" title="Remove duplicates in queue"></i>
+        <i id="shuffle-tests" class="fa fa-random" title="Shuffle tests"></i>
+        <i id="clear-tests" class="fa fa-trash"></i>
       </div>
     </div>
     <div class="queues">
       <div style="float: left" class="center-panel-list server-list">
         <div id="server-queue">
-          <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server1</div>
-          <div class="server-node"><i class="glyphicon glyphicon-hdd"></i>server2</div>
+          <div class="server-node"><i class="fa fa-hdd"></i>server1</div>
+          <div class="server-node"><i class="fa fa-hdd"></i>server2</div>
         </div>
       </div>
       <div class="center-panel-list queue-list">
@@ -129,7 +129,7 @@
                                   class: 'region form-control spec-language',
                                   'data-tooltip': true,
                                   title: 'Browser') %>
-            <i class="update-tests glyphicon glyphicon-repeat"></i>
+            <i class="update-tests fa fa-redo"></i>
           </div>
         </div>
         <div class="tab-content">

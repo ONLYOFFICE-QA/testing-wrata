@@ -22,7 +22,7 @@ function addFileToSidebar(icon) {
     var file_name = icon.parent();
     var text = file_name.text();
     var path = file_name.parent().find('.add-button-file').attr('full-path');
-    var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='glyphicon glyphicon-file'></i><div class='file-name-text'>" + text + "</div><i class='glyphicon glyphicon-remove'></i><span class='hidden-tool'>" + text + "</span></div>";
+    var file_name_elem = "<div class='file-name shower' data-qtip='" + path + "'><i class='fa fa-file'></i><div class='file-name-text'>" + text + "</div><i class='fa fa-times'></i><span class='hidden-tool'>" + text + "</span></div>";
     var folder = $("<div class='file-folder'>" + file_name_elem + "</div>");
     $("#sidebar-test-list").append(folder);
     setEventToDeleteFolderFromList();
