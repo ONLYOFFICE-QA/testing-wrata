@@ -677,7 +677,7 @@ $(function () {
 
     eventToClosePopup();
 
-    myRunner.setEventToDeleteTestList($('#test_list_menu').find('li'));
+    myRunner.setEventToDeleteTestList($('#test_list_menu').find('div'));
 
 });
 
