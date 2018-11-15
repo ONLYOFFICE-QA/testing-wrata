@@ -1,6 +1,6 @@
 <%= yield :head %>
 <% if signed_in? %>
-    <div id="topnavbar" class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse">
       <div class="navbar-header">
         <a class="navbar-brand" href="/"><i class="fa fa-home"></i>TestRunner</a>
       </div>
@@ -42,7 +42,7 @@
       </div>
     </div>
 <% else %>
-    <div id="topnavbar" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand" href="/"><i class="fa fa-home"></i>TestRunner</a>
       </div>

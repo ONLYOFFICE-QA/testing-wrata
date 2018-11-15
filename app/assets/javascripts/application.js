@@ -703,7 +703,7 @@ function closeSidebar() {
 }
 
 function getSideBarHeight() {
-    var topNavHeight = $("#topnavbar").height();
+    var topNavHeight = $('.navbar').height();
     var windowHeight = $(window).height();
     return windowHeight - topNavHeight - constants.fixedBottom;
 }

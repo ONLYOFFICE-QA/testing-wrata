@@ -20,6 +20,10 @@
 * Fix server status in edit page
 * Do not require login in test environment
 
+### Refactor
+
+* Simplified, cleaner `navbar` style
+
 ## 1.16.0 (2018-05-30)
 ### New features
 * Add several new lags to SpecLanguage
