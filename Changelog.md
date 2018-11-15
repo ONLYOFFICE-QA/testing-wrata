@@ -23,6 +23,7 @@
 ### Refactor
 
 * Simplified, cleaner `navbar` style
+* Simplify `header` erb code
 
 ## 1.16.0 (2018-05-30)
 ### New features
