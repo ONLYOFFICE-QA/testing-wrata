@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootbox-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap'
 gem 'devise'
 gem 'exception_notification'
 gem 'font-awesome-rails'
