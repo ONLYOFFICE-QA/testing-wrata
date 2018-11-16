@@ -17,7 +17,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-flag icon-white"></i>Test Lists <b class="caret"></b>
           </a>
-          <div id="test_list_menu" class="dropdown-menu">
+          <div id="test_list_menu" class="dropdown-menu dropdown-menu-right">
             <% client_test_lists.each do |test_list| %>
               <div class="dropdown-item">
                 <a href="#"><%= test_list.name %></a>
@@ -32,7 +32,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-user icon-white"></i><%= current_client.login %><b class="caret"></b>
           </a>
-          <div class="dropdown-menu">
+          <div class="dropdown-menu dropdown-menu-right">
             <%= link_to 'Servers', servers_url, class: 'dropdown-item' %>
             <%= link_to 'Run history', client_history_path(current_client), class: 'dropdown-item' %>
             <%= link_to 'Edit', edit_client_path(current_client), class: 'dropdown-item' %>
