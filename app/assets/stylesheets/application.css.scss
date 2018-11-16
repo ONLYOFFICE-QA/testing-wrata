@@ -13,8 +13,13 @@
  *= require font-awesome
  *= require jquery-ui
  */
+@import 'bootstrap';
 
 @font-face {
     font-family: "OpenSans";
     src: url("/assets/OpenSans-Light.ttf") format("ttf");
+}
+
+#main {
+  padding-top: 1em;
 }

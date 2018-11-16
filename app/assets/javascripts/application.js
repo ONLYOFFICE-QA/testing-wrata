@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootbox
 //= require bootstrap
+//= require popper
 //= require_tree
 //
 //
@@ -676,7 +677,7 @@ $(function () {
 
     eventToClosePopup();
 
-    myRunner.setEventToDeleteTestList($('#test_list_menu').find('li'));
+    myRunner.setEventToDeleteTestList($('#test_list_menu').find('div'));
 
 });
 
