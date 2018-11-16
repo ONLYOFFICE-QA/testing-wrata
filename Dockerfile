@@ -2,6 +2,7 @@ FROM ruby:2.5.0
 
 MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update -qq && apt-get install -y libpq-dev nodejs
 COPY ssh/ /root/.ssh/
 RUN chmod 600 /root/.ssh/*
