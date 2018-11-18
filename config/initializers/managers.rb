@@ -1,7 +1,7 @@
 # @return [Boolean] check if db already initialized
 def db_initialized?
   ActiveRecord::Base.connection.table_exists?(:servers)
-rescue PG::ConnectionBad
+rescue ActiveRecord::NoDatabaseError, PG::ConnectionBad
   false
 end
 
