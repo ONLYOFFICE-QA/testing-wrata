@@ -16,6 +16,7 @@ jobs:
          POSTGRES_DB: test
          POSTGRES_PASSWORD: ""
     steps:
+      - setup_remote_docker
       - checkout
       - run:
           name: Bundle Install
