@@ -15,7 +15,7 @@ RUN mkdir /root/wrata
 WORKDIR /root/wrata
 COPY . /root/wrata
 RUN bundle install
-RUN RAILS_ENV=production rake assets:precompile
+RUN rake assets:precompile
 ENV RAILS_SERVE_STATIC_FILES=true
 CMD rm -f /root/wrata/tmp/pids/server.pid && \
     RAILS_ENV=production rake db:create db:migrate db:seed && \
