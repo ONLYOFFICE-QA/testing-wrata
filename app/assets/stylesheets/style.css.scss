@@ -806,10 +806,6 @@ li select.branch {
   padding: 0;
 }
 
-ul.nav-tabs li {
-  position: relative;
-}
-
 a.with-start i {
   display: block;
 }
@@ -854,10 +850,6 @@ label#server, label#client {
 
 .server-header .test * {
   text-align: right;
-}
-
-.nav-tabs > li.active {
-  margin-bottom: -2px;
 }
 
 .pointer {

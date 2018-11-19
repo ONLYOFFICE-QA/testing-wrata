@@ -2,11 +2,11 @@
   <div class="col-md-8 col-md-offset-2">
 
     <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#">One server</a>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">One server</a>
       </li>
-      <li>
-        <%= link_to 'Many server', servers_create_multiple_path %>
+      <li class="nav-item">
+        <%= link_to 'Many server', servers_create_multiple_path, class: 'nav-link' %>
       </li>
     </ul>
     <%= form_for(@server) do |f| %>
