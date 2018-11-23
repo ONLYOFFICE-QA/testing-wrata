@@ -6,6 +6,7 @@
 * Ability to set `SPEC_REGION` to test via env variable
 * Ability to set progress color according to test results (including Pending status)
 * Ability to send environment variables to docker run command
+* Ability to run any `.sh` file from project
 * Support any number of projects to run tests
 * Do not stop change branches if any branch non exists
 * Store `Projects` as model, not as config parameter 
