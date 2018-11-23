@@ -50,6 +50,7 @@
 * Remove login form from header (it was duplicated in main window)
 * Remove support of `Strokes` (single test cases in Spec)
 * Remove duplicate unbook button and simplify CSS
+* Centering elements in login page
 
 ### Fixes
 * Fix broken `fetch-ip` button in server details
