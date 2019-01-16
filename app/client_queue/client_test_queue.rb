@@ -18,7 +18,7 @@ class ClientTestQueue
                      location: location,
                      test_name: test_name,
                      project: test_project,
-                     spec_browser: params[:spec_browser],
+                     spec_browser: params.fetch(:spec_browser, SpecBrowser::DEFAULT),
                      spec_language: params.fetch(:spec_language, 'en-us') }
     if params.fetch(:to_begin_of_queue, true)
       @tests.unshift(data_to_push)
