@@ -72,7 +72,7 @@ class ClientRunnerManager
     test.reverse_each do |current_test|
       spec_language.each do |current_lang|
         @tests.push_test(current_test, branch, location,
-                         spec_browser: params[:spec_browser],
+                         spec_browser: params.fetch(:spec_browser, SpecBrowser::DEFAULT),
                          spec_language: current_lang,
                          to_begin_of_queue: params.fetch(:to_begin_of_queue, true),
                          tm_branch: params[:tm_branch],

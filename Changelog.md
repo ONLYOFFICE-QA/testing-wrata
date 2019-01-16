@@ -23,6 +23,7 @@
 * Fix crash in thread operation while reading non-existing log
 * Fix server status in edit page
 * Do not require login in test environment
+* Fix adding DelayRun with empty `spec_browser`
 
 ### Refactor
 
