@@ -4,7 +4,8 @@ module HTMLResultManager
   READ_STATUS_EXCEPTIONS = [Errno::ECONNREFUSED,
                             Errno::ECONNRESET,
                             Errno::EHOSTUNREACH,
-                            Net::OpenTimeout].freeze
+                            Net::OpenTimeout,
+                            Net::ReadTimeout].freeze
 
   def result_url
     "http://#{@server_model.address}/#{@server_model.name}.html"
