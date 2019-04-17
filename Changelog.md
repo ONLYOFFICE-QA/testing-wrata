@@ -16,6 +16,7 @@
 * Upgrade to Bootstrap 4
 * Upgrade to Nodejs 10
 * Upgrade to Rails 5.2
+* Use ruby 2.6 as base docker image
 
 ### Fixes
 * Fix silent fail if timeout while restoring image
