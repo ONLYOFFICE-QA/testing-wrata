@@ -4,15 +4,9 @@ module ThreadManager
       loop do
         Thread.stop unless @test
         test_path = @test[:test_path]
-        location = @test[:location]
         clear_log_file
         @server_model.update_column(:executing_command_now, true)
-        test_options = StartOption.new(docs_branch: @test[:doc_branch],
-                                       teamlab_branch: @test[:tm_branch],
-                                       portal_type: location.split(' ')[0],
-                                       portal_region: location.split(' ')[1],
-                                       spec_browser: @test[:spec_browser],
-                                       spec_language: @test[:spec_language])
+        test_options = StartOption.new.init_from_test(@test)
         start_time = DateTime.now
         client = server_model.booked_client
         full_start_command = generate_full_start_command(test_path, test_options)
