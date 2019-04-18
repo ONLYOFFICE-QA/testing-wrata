@@ -45,6 +45,7 @@ class StartOption < ActiveRecord::Base
     @portal_region = test[:location].split(' ')[1]
     @spec_browser = test[:spec_browser]
     @spec_language = test[:spec_language]
+    self
   end
 
   private
