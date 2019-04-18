@@ -101,20 +101,10 @@ class RunnerController < ApplicationController
     servers = JSON.parse(servers_json)
 
     output_json = {}
-    server_data = []
-
-    servers.each do |server|
-      next unless server['name'].is_a?(String)
-
-      server_thread = Runner::Application.config.threads.get_thread_by_name(server['name'])
-      next unless server_thread
-
-      server_data << server_thread.get_info_from_server(current_client, with_log: server['with_log'])
-    end
 
     manager = Runner::Application.config.run_manager.find_manager_by_client_login(current_client.login)
 
-    output_json[:servers_data] = server_data
+    output_json[:servers_data] = fill_server_data(servers)
     output_json[:queue_data] = {}
     output_json[:queue_data][:servers] = manager.booked_servers
     output_json[:queue_data][:tests] = manager.tests
@@ -151,5 +141,23 @@ class RunnerController < ApplicationController
     Runner::Application.config.threads.destroy_unbooked_servers
 
     render body: nil
+  end
+
+  private
+
+  # @param servers [Array<String>] list of servers to get data
+  # @return [Array<Hash>] data about servers
+  def fill_server_data(servers)
+    server_data = []
+    servers.each do |server|
+      next unless server['name'].is_a?(String)
+
+      server_thread = Runner::Application.config.threads.get_thread_by_name(server['name'])
+      next unless server_thread
+
+      server_data << server_thread.get_info_from_server(current_client, with_log: server['with_log'])
+    end
+
+    server_data
   end
 end
