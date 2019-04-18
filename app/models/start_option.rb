@@ -40,11 +40,11 @@ class StartOption < ActiveRecord::Base
   # @param test [Hash] test with data to init
   def init_from_test(test)
     @docs_branch = test[:doc_branch]
-    @teamlab_branch = @test[:tm_branch]
-    @portal_type = @test[:location].split(' ')[0]
-    @portal_region = @test[:location].split(' ')[1]
-    @spec_browser = @test[:spec_browser]
-    @spec_language = @test[:spec_language]
+    @teamlab_branch = test[:tm_branch]
+    @portal_type = test[:location].split(' ')[0]
+    @portal_region = test[:location].split(' ')[1]
+    @spec_browser = test[:spec_browser]
+    @spec_language = test[:spec_language]
   end
 
   private
