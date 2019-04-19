@@ -59,5 +59,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.allow_concurrency = true
-  config.mock_cloud_server = false
+  config.mock_cloud_server = true
 end
