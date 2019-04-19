@@ -6,7 +6,7 @@ module ThreadManager
         test_path = @test[:test_path]
         clear_log_file
         @server_model.update_column(:executing_command_now, true)
-        test_options = StartOption.new.init_from_test(@test)
+        test_options = StartOption.from_test(@test)
         start_time = DateTime.now
         client = server_model.booked_client
         full_start_command = generate_full_start_command(test_path, test_options)
