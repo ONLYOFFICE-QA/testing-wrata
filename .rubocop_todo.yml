@@ -27,13 +27,6 @@ Metrics/MethodLength:
   Max: 27
 
 # Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredName.
-Naming/RescuedExceptionsVariableName:
-  Exclude:
-    - 'app/server/managers/html_result_manager.rb'
-
-# Offense count: 1
 Security/Open:
   Exclude:
     - 'app/server/managers/html_result_manager.rb'
