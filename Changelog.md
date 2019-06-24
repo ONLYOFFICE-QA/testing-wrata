@@ -1,6 +1,8 @@
 # Change log
 
 ## master
+
+## 1.17.0 (2019-06-24)
 ### New features
 * Ability to set `SPEC_BROWSER` to tests via env variables
 * Ability to set `SPEC_REGION` to test via env variable
