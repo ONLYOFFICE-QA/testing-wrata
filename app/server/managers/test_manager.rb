@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'process_exists'
 
 module TestManager
-  TEST_SPOT_USER_NAME = 'nct-at'.freeze
+  TEST_SPOT_USER_NAME = 'nct-at'
 
   # Determine which command is used to run test
   # @return [String] command to run test. Empty if not supported.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDelayedRuns < ActiveRecord::Migration[4.2]
   def change
     create_table :delayed_runs do |t|

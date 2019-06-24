@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Client < ActiveRecord::Base
   has_many :test_lists
   has_many :histories

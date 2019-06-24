@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PingManager
   SSH_PORT = 22
   PING_TIMEOUT = 1

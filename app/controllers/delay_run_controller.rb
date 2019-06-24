@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DelayRunController < ApplicationController
   before_action :manager
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestResultMailer < ApplicationMailer
   def spec_failed_email(history)
     @history = history

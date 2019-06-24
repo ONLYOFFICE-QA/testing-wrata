@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DropStrokesTable < ActiveRecord::Migration[5.1]
   def change
     drop_table :strokes do |t|

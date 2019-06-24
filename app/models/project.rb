@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   # @param branch [String] branch to update
   # @return [String] bash command to update git

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LogManager
   # @return [Integer] show how much of last log shown
   LAST_LINES_COUNT = 60

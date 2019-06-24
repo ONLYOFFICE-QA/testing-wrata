@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClientRunnerManager
   TIME_FOR_SCAN = 15
 

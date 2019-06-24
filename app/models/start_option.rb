@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StartOption < ActiveRecord::Base
   belongs_to :history
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServerDestroyerWorker
   def create_thread
     @server_destroyer_thread = Thread.new(caller: method(__method__).owner.to_s) do

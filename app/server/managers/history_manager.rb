@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HistoryManager
   def save_start_options_in_db(history_db_line, options, start_command)
     start_options = StartOption.new

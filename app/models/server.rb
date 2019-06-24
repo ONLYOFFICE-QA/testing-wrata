@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Server < ActiveRecord::Base
   include ServerTestOut
-  EXECUTOR_IMAGE_NAME = 'nct-at-docker'.freeze
-  EXECUTOR_TAG = 'nct-at'.freeze
-  DEFAULT_SERVER_SIZE = '1gb'.freeze
+  EXECUTOR_IMAGE_NAME = 'nct-at-docker'
+  EXECUTOR_TAG = 'nct-at'
+  DEFAULT_SERVER_SIZE = '1gb'
   STATUSES_TO_MANUAL_SET = %i[destroyed created].freeze
 
   has_many :histories

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Stuff for working with git
 module GitHelper
   # List all branches in github repo

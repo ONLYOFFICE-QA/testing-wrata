@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionsHelper
   def sign_in_(client)
     cookies.permanent[:remember_token] = client.remember_token

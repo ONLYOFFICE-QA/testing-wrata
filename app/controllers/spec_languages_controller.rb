@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SpecLanguagesController < ApplicationController
   before_action :set_spec_language, only: %i[show edit update destroy]
 

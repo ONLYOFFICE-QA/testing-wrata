@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestListsController < ApplicationController
   before_action :set_test_list, only: %i[show edit update destroy]
 
