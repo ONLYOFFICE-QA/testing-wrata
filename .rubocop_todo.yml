@@ -56,17 +56,6 @@ Style/MixinUsage:
     - 'bin/setup'
     - 'bin/update'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: ConvertCodeThatCanStartToReturnNil, Whitelist.
-# Whitelist: present?, blank?, presence, try, try!
-Style/SafeNavigation:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/sessions_controller.rb'
-    - 'app/models/history.rb'
-    - 'app/workers/server_destroyer_worker.rb'
-
 # Offense count: 262
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
