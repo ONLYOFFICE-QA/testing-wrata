@@ -10,7 +10,10 @@ class ClientTestQueue
   def push_test(test_path, branch, location, params = {})
     test_name = get_name_from_path(test_path)
     test_project = get_project(test_path)
-    params[:doc_branch], params[:tm_branch] = branches(test_project, branch, location.split(' ')[0]) if params[:doc_branch].nil? || params[:tm_branch].nil?
+    if params[:doc_branch].nil? || params[:tm_branch].nil?
+      params[:doc_branch] = branch
+      params[:tm_branch] = branch
+    end
     data_to_push = { test_path: reformat_path(test_path),
                      id: @id,
                      doc_branch: params[:doc_branch],
