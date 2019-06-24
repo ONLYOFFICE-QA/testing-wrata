@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @return [Boolean] check if db already initialized
 def db_initialized?
   ActiveRecord::Base.connection.table_exists?(:servers)

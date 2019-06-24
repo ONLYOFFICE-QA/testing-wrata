@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestFilesController < ApplicationController
   before_action :set_test_file, only: %i[show edit update destroy]
 

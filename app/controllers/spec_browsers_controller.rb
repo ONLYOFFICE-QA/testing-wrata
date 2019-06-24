@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SpecBrowsersController < ApplicationController
   before_action :set_spec_browser, only: %i[show edit update destroy]
 

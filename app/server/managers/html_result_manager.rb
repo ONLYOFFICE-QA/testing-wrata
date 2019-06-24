@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 module HTMLResultManager
   # @return [Array, Exception] exceptions which may occur if something wrong with reading status

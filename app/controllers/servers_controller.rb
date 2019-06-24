@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServersController < ApplicationController
   # GET /test_lists
   # GET /test_lists.json

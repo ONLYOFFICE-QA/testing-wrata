@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddStartOptionsDefaultValue < ActiveRecord::Migration[5.1]
   def change
     change_column_default :start_options, :docs_branch, from: nil, to: 'develop'

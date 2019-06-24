@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RunnerHelper
   def directory_hash(path, name = nil)
     data = { data: (name || path) }

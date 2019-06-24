@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ServersHelper
   def test_fail?(total_result)
     if total_result.nil?

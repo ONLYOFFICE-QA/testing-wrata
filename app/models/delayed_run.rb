@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DelayedRun < ActiveRecord::Base
   INFELICITY = 2 * 60 # 2 min update interval
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RunThreadManager
   DAY_TIME = 24 * 60 * 60
   WEEK_TIME = 7 * 24 * 60 * 60

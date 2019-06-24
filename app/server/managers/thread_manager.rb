@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ThreadManager
   def create_main_thread
     @main_thread = Thread.new(caller: method(__method__).owner.to_s) do

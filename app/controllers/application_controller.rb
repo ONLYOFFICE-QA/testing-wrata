@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -22,7 +24,7 @@ class ApplicationController < ActionController::Base
       @test_list.test_files.each(&:destroy)
       @test_list.destroy
     end
-    Runner::Application.config.delayed_runs.delete_runs_by_testlist_name(current_client, name) unless Runner::Application.config.delayed_runs.nil?
+    Runner::Application.config.delayed_runs&.delete_runs_by_testlist_name(current_client, name)
   end
 
   private

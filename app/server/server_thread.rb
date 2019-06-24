@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/server/managers/history_manager'
 require_relative '../../app/server/managers/html_result_manager'
 require_relative '../../app/server/managers/log_manager'

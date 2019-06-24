@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ServerTestOut
-  BEGIN_HTML_OUT = '-----BEGIN HTML OUTPUT-----'.freeze
-  END_HTML_OUT = '-----END HTML OUTPUT-----'.freeze
+  BEGIN_HTML_OUT = '-----BEGIN HTML OUTPUT-----'
+  END_HTML_OUT = '-----END HTML OUTPUT-----'
 
   # @return [Stirng] path to log of server
   def log_path

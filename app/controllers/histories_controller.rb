@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HistoriesController < ApplicationController
   before_action :set_history, only: %i[show edit update destroy log_file]
 

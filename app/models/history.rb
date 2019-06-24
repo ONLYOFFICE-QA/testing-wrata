@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class History < ActiveRecord::Base
-  FORCE_STOP_LOG_ENTRY = '-----TEST FORCE STOP-----'.freeze
+  FORCE_STOP_LOG_ENTRY = '-----TEST FORCE STOP-----'
   belongs_to :server
   belongs_to :client
   has_one :start_option
@@ -13,7 +15,7 @@ class History < ActiveRecord::Base
   # spec execution finished correctly, or something went wrong
   def spec_finished_correctly?
     return true if force_stop?
-    return true if exit_code && exit_code.zero?
+    return true if exit_code&.zero?
 
     total_result.include?('example')
   end

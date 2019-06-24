@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClientServers
   attr_accessor :servers_threads
 

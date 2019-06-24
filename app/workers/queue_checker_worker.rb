@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QueueCheckerWorker
   def create_thread
     @queue_checker_thread = Thread.new(caller: method(__method__).owner.to_s) do

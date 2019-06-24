@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'server_thread'
 class ServerThreads < ActionController::Base
   attr_accessor :lock

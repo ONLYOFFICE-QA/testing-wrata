@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestList < ActiveRecord::Base
   belongs_to :client
   has_many :test_files

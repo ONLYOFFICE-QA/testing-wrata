@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ServerDestroyerWorker
   def create_thread
     @server_destroyer_thread = Thread.new(caller: method(__method__).owner.to_s) do
       loop do
-        Runner::Application.config.threads.destroy_inactive_servers unless Runner::Application.config.threads.nil?
+        Runner::Application.config.threads&.destroy_inactive_servers
         sleep TIME_FOR_UPDATE
       end
     end

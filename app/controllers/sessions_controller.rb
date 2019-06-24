@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def new
-    redirect_to runner_path if current_client && current_client.verified
+    redirect_to runner_path if current_client&.verified
   end
 
   def create
     client = Client.find_by_login(params[:session][:login])
-    if client && client.authenticate(params[:session][:password])
+    if client&.authenticate(params[:session][:password])
       sign_in_ client
       redirect_to runner_path
     else
