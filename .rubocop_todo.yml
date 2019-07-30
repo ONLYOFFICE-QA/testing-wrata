@@ -135,15 +135,6 @@ Rails/TimeZone:
     - 'app/server/server_thread.rb'
     - 'app/workers/run_thread_manager.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/Validation:
-  Exclude:
-    - 'app/models/spec_browser.rb'
-    - 'app/models/spec_language.rb'
-
 # Offense count: 1
 Security/Open:
   Exclude:
