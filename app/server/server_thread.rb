@@ -55,7 +55,7 @@ class ServerThread
 
   def start_test(test)
     @test = test
-    @time_start = Time.now
+    @time_start = Time.zone.now
     start_progress_scan_thread
     start_log_scan_thread
     start_main_thread
