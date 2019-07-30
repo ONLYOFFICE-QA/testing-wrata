@@ -8,7 +8,7 @@
 
 # Offense count: 15
 Metrics/AbcSize:
-  Max: 31
+  Max: 32
 
 # Offense count: 10
 # Configuration parameters: CountComments, ExcludedMethods.
@@ -108,13 +108,6 @@ Rails/HasManyOrHasOneDependent:
 Rails/HelperInstanceVariable:
   Exclude:
     - 'app/helpers/sessions_helper.rb'
-
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: app/**/*.rb, config/**/*.rb, db/**/*.rb, lib/**/*.rb
-Rails/Output:
-  Exclude:
-    - 'app/controllers/runner_controller.rb'
 
 # Offense count: 15
 # Configuration parameters: Blacklist, Whitelist.
