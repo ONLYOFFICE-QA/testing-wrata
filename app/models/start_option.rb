@@ -58,7 +58,7 @@ class StartOption < ActiveRecord::Base
     projects = Project.all
 
     projects.each do |project|
-      command << project.update_git_command(branch)
+      command += project.update_git_command(branch)
     end
 
     command
