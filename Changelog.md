@@ -14,6 +14,7 @@
   `onlyoffice_github_helper`,
   `onlyoffice_rspec_result_parser` installed from gem, not github   
 * Minor cleanup of routes
+* Update `rails` to version 6
 
 ### Fixes
 
