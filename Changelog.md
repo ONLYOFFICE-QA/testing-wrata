@@ -2,6 +2,10 @@
 
 ## master
 
+### New features
+
+* Update `sprockets` to version 4
+
 ## 1.17.1 (2019-06-24)
 
 ### Fixes
