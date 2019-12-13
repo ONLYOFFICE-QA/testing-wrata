@@ -6,6 +6,10 @@
 
 * Update `sprockets` to version 4
 
+### Fixes
+
+* Fix memory leak on clear history
+
 ## 1.17.1 (2019-06-24)
 
 ### Fixes
