@@ -87,7 +87,7 @@ class ClientsController < ApplicationController
   def clear_history
     client = Client.find_by_login(params[:client])
     history = client.histories
-    history.destroy_all
+    history.in_batches(of: 100).destroy_all
 
     render body: nil
   end
