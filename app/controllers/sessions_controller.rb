@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    client = Client.find_by_login(params[:session][:login])
+    client = Client.find_by(login: params[:session][:login])
     if client&.authenticate(params[:session][:password])
       sign_in_ client
       redirect_to runner_path

@@ -19,7 +19,7 @@ module SessionsHelper
   attr_writer :current_client
 
   def current_client
-    @current_client ||= Client.find_by_remember_token(cookies[:remember_token])
+    @current_client ||= Client.find_by(remember_token: cookies[:remember_token])
   end
 
   def client_test_lists

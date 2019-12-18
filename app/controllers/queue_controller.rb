@@ -100,7 +100,7 @@ class QueueController < ApplicationController
 
   # @return [true, false] is server able to be booked
   def able_to_be_booked?
-    server = Server.find_by_name(params['server'])
+    server = Server.find_by(name: params['server'])
     server.book_client_id.nil?
   end
 end

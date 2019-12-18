@@ -10,6 +10,8 @@ class CreateStartOptions < ActiveRecord::Migration[4.2]
       t.string :portal_type
       t.string :portal_region
       t.text :start_command
+
+      t.timestamps
     end
   end
 end

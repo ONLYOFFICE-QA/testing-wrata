@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TestList < ActiveRecord::Base
+class TestList < ApplicationRecord
   belongs_to :client
   has_many :test_files
 

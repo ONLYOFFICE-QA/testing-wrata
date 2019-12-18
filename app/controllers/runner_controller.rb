@@ -54,7 +54,7 @@ class RunnerController < ApplicationController
       return
     end
 
-    old_test_list = current_client.test_lists.find_by_name(test_list_name)
+    old_test_list = current_client.test_lists.find_by(name: test_list_name)
     delete_testlist_by_id(old_test_list.id) if old_test_list
 
     @test_list = TestList.new(name: test_list_name)
@@ -68,7 +68,7 @@ class RunnerController < ApplicationController
       test_files_hash.values.each do |test_file_hash|
         test_file = TestFile.new(name: test_file_hash['file_name'])
         test_file.test_list = @test_list
-        puts test_file.errors.full_messages unless test_file.save
+        Rails.logger.error(test_file.errors.full_messages) unless test_file.save
       end
     end
 
@@ -78,7 +78,7 @@ class RunnerController < ApplicationController
   def load_test_list
     list_name = params['listName']
 
-    @test_list = current_client.test_lists.find_by_name(list_name)
+    @test_list = current_client.test_lists.find_by(name: list_name)
 
     respond_to do |format|
       format.json do

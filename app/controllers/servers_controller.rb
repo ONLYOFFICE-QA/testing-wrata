@@ -44,7 +44,7 @@ class ServersController < ApplicationController
   end
 
   def clear_history
-    server = Server.find_by_name(params['server'])
+    server = Server.find_by(name: params['server'])
     history = server.histories
     history.in_batches(of: 100).destroy_all
 
@@ -55,7 +55,7 @@ class ServersController < ApplicationController
     server = params['server']
     showed = params['showed']
 
-    server = Server.find_by_name(server)
+    server = Server.find_by(name: server)
     @history = server.histories.order('created_at DESC').limit(10).offset(showed.to_i)
     @controller = :server
 
@@ -65,7 +65,7 @@ class ServersController < ApplicationController
   end
 
   def server_history
-    server = Server.find_by_id(params[:id])
+    server = Server.find_by(id: params[:id])
     @name = server.name
     @history = server.histories.order('created_at DESC').limit(10)
     @controller = :server
@@ -118,7 +118,7 @@ class ServersController < ApplicationController
     @server = Server.find(params[:id])
 
     respond_to do |format|
-      if @server.update_attributes(server_params)
+      if @server.update(server_params)
         Runner::Application.config.threads.update_models
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }

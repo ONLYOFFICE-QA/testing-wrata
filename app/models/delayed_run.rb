@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DelayedRun < ActiveRecord::Base
+class DelayedRun < ApplicationRecord
   INFELICITY = 2 * 60 # 2 min update interval
 
   belongs_to :client
@@ -9,7 +9,7 @@ class DelayedRun < ActiveRecord::Base
   # @param time_to_run [ActiveSupport::TimeWithZone] time in which to check for start
   # @return [True, False] should delayed run start in this time
   def should_start_by_time?(time_to_run)
-    now = Time.now
+    now = Time.zone.now
     run_datetime = time_to_run.to_time
     if now.strftime('%d/%m/%y') == run_datetime.strftime('%d/%m/%y')
       time_diff = (now - run_datetime).abs
