@@ -42,13 +42,6 @@ Rails/Date:
   Exclude:
     - 'app/models/delayed_run.rb'
 
-# Offense count: 1
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: slashes, arguments
-Rails/FilePath:
-  Exclude:
-    - 'config/environments/development.rb'
-
 # Offense count: 6
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
