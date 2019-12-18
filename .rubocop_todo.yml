@@ -36,13 +36,6 @@ Rails/BulkChangeTable:
     - 'db/migrate/20171030160221_add_start_options_default_value.rb'
 
 # Offense count: 1
-# Configuration parameters: Include.
-# Include: db/migrate/*.rb
-Rails/CreateTableWithTimestamps:
-  Exclude:
-    - 'db/migrate/20131205123501_create_start_options.rb'
-
-# Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: strict, flexible
 Rails/Date:
