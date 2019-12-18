@@ -65,7 +65,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     respond_to do |format|
-      if @client.update_attributes(client_params)
+      if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else

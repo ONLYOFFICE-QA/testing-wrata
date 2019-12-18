@@ -84,7 +84,7 @@ module RunThreadManager
     time += time_to_sec(hour.to_i, minute.to_i) while Time.zone.now > time
     Rails.logger.info 'move_next_start_on: update run info'
     Rails.logger.info "move_next_start_on: old time: #{old_time}, new time: #{time}"
-    run.update_attributes(next_start: time)
+    run.update(next_start: time)
     false
   end
 

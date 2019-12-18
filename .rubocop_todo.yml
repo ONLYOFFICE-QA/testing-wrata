@@ -26,15 +26,6 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 27
 
-# Offense count: 4
-# Cop supports --auto-correct.
-Rails/ActiveRecordAliases:
-  Exclude:
-    - 'app/controllers/clients_controller.rb'
-    - 'app/controllers/servers_controller.rb'
-    - 'app/workers/delayed_run_manager.rb'
-    - 'app/workers/run_thread_manager.rb'
-
 # Offense count: 2
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql

@@ -16,7 +16,7 @@ class DelayedRunManager
   end
 
   def change_run(params)
-    update_attributes(params)
+    update(params)
     init_runs_from_db
   end
 

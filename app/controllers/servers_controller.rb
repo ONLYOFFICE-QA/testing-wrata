@@ -118,7 +118,7 @@ class ServersController < ApplicationController
     @server = Server.find(params[:id])
 
     respond_to do |format|
-      if @server.update_attributes(server_params)
+      if @server.update(server_params)
         Runner::Application.config.threads.update_models
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
         format.json { head :no_content }
