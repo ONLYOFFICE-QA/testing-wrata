@@ -35,18 +35,6 @@ Rails/ActiveRecordAliases:
     - 'app/workers/delayed_run_manager.rb'
     - 'app/workers/run_thread_manager.rb'
 
-# Offense count: 7
-# Cop supports --auto-correct.
-Rails/ApplicationRecord:
-  Exclude:
-    - 'app/models/client.rb'
-    - 'app/models/delayed_run.rb'
-    - 'app/models/history.rb'
-    - 'app/models/server.rb'
-    - 'app/models/start_option.rb'
-    - 'app/models/test_file.rb'
-    - 'app/models/test_list.rb'
-
 # Offense count: 2
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql

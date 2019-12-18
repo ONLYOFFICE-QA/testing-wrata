@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class History < ActiveRecord::Base
+class History < ApplicationRecord
   FORCE_STOP_LOG_ENTRY = '-----TEST FORCE STOP-----'
   belongs_to :server
   belongs_to :client

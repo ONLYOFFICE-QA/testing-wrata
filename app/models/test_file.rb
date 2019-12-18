@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TestFile < ActiveRecord::Base
+class TestFile < ApplicationRecord
   belongs_to :test_list
 
   validates :name, presence: true

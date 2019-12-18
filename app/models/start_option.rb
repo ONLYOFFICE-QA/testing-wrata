@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StartOption < ActiveRecord::Base
+class StartOption < ApplicationRecord
   belongs_to :history
 
   # @return [String] full server region with server type

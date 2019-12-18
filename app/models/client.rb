@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Client < ActiveRecord::Base
+class Client < ApplicationRecord
   has_many :test_lists
   has_many :histories
   has_many :delayed_runs

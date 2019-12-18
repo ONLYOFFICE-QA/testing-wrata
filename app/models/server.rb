@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Server < ActiveRecord::Base
+class Server < ApplicationRecord
   include ServerTestOut
   EXECUTOR_IMAGE_NAME = 'nct-at-docker'
   EXECUTOR_TAG = 'nct-at'

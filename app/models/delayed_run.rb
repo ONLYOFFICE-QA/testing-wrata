@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DelayedRun < ActiveRecord::Base
+class DelayedRun < ApplicationRecord
   INFELICITY = 2 * 60 # 2 min update interval
 
   belongs_to :client
