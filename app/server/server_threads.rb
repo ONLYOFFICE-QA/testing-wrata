@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'server_thread'
-class ServerThreads < ActionController::Base
+class ServerThreads < ApplicationController
   attr_accessor :lock
 
   def init_threads

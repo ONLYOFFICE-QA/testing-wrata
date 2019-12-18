@@ -35,12 +35,6 @@ Rails/ActiveRecordAliases:
     - 'app/workers/delayed_run_manager.rb'
     - 'app/workers/run_thread_manager.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Rails/ApplicationController:
-  Exclude:
-    - 'app/server/server_threads.rb'
-
 # Offense count: 7
 # Cop supports --auto-correct.
 Rails/ApplicationRecord:
