@@ -42,21 +42,6 @@ Rails/Date:
   Exclude:
     - 'app/models/delayed_run.rb'
 
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: Whitelist.
-# Whitelist: find_by_sql
-Rails/DynamicFindBy:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/clients_controller.rb'
-    - 'app/controllers/queue_controller.rb'
-    - 'app/controllers/runner_controller.rb'
-    - 'app/controllers/servers_controller.rb'
-    - 'app/controllers/sessions_controller.rb'
-    - 'app/helpers/sessions_helper.rb'
-    - 'app/workers/run_thread_manager.rb'
-
 # Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: slashes, arguments

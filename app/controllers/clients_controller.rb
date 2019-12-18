@@ -76,7 +76,7 @@ class ClientsController < ApplicationController
   end
 
   def client_history
-    client = Client.find_by_id(params[:id])
+    client = Client.find_by(id: params[:id])
     @name = client.login
     @history = client.histories.order('created_at DESC').limit(10)
     @controller = :client
@@ -85,7 +85,7 @@ class ClientsController < ApplicationController
   end
 
   def clear_history
-    client = Client.find_by_login(params[:client])
+    client = Client.find_by(login: params[:client])
     history = client.histories
     history.in_batches(of: 100).destroy_all
 
@@ -96,7 +96,7 @@ class ClientsController < ApplicationController
     name = params['name']
     showed = params['showed']
 
-    client = Client.find_by_login(name)
+    client = Client.find_by(login: name)
     @history = client.histories.order('created_at DESC').limit(10).offset(showed.to_i)
     @controller = :client
 

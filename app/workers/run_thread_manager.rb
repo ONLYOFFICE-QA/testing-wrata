@@ -34,7 +34,7 @@ module RunThreadManager
     when 'test_list'
       raise NoMethodError, 'You cannot add run to queue with empty name' if run.name.empty?
 
-      test_list = run.client.test_lists.find_by_name(run.name)
+      test_list = run.client.test_lists.find_by(name: run.name)
       names = test_list.test_files.inject([]) do |arr, test_file|
         arr << test_file.name
       end

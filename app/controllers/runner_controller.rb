@@ -54,7 +54,7 @@ class RunnerController < ApplicationController
       return
     end
 
-    old_test_list = current_client.test_lists.find_by_name(test_list_name)
+    old_test_list = current_client.test_lists.find_by(name: test_list_name)
     delete_testlist_by_id(old_test_list.id) if old_test_list
 
     @test_list = TestList.new(name: test_list_name)
@@ -78,7 +78,7 @@ class RunnerController < ApplicationController
   def load_test_list
     list_name = params['listName']
 
-    @test_list = current_client.test_lists.find_by_name(list_name)
+    @test_list = current_client.test_lists.find_by(name: list_name)
 
     respond_to do |format|
       format.json do
