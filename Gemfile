@@ -17,7 +17,7 @@ gem 'onlyoffice_rspec_result_parser', git: 'https://github.com/onlyoffice-testin
 gem 'pg'
 gem 'process_exists'
 gem 'puma'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.2'
 gem 'uglifier'
 
 group :development, :test do
