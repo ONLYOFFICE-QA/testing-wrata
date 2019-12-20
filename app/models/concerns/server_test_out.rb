@@ -44,7 +44,7 @@ module ServerTestOut
   def force_stop_log_append(result)
     File.open(log_path, 'a+') do |f|
       f << ServerTestOut::BEGIN_HTML_OUT
-      f << result.force_encoding('UTF-8')
+      f << result.dup.force_encoding('UTF-8')
       f << ServerTestOut::END_HTML_OUT
       f << History::FORCE_STOP_LOG_ENTRY
     end
