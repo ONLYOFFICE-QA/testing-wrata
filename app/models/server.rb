@@ -60,18 +60,12 @@ class Server < ApplicationRecord
 
   # Set ip info depending of mocking
   def set_ip_info
-    new_address = if Rails.application.config.mock_cloud_server
-                    '127.0.0.1'
-                  else
-                    RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
-                  end
+    new_address = RunnerManagers.digital_ocean.get_droplet_ip_by_name(name)
     update_column(:address, new_address)
   end
 
   # Start creation and wait for it
   def restore_image_and_wait(server_size)
-    return if Rails.application.config.mock_cloud_server
-
     begin
       RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc3', server_size, tags: EXECUTOR_TAG)
     rescue StandardError => e
@@ -83,15 +77,11 @@ class Server < ApplicationRecord
 
   # Destroy server and wait for it
   def destroy_and_wait_for_it
-    return if Rails.application.config.mock_cloud_server
-
-    begin
-      check_ability_to_destroy(name)
-      RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
-    rescue StandardError => e
-      update_column(:_status, :created)
-      raise e
-    end
+    check_ability_to_destroy(name)
+    RunnerManagers.digital_ocean.destroy_droplet_by_name(name)
+  rescue StandardError => e
+    update_column(:_status, :created)
+    raise e
   end
 
   # Check if droplet can be destroyed

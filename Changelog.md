@@ -5,6 +5,7 @@
 ### New features
 
 * Update `sprockets` to version 4
+* Remove `mock_cloud_server` config option
 
 ### Fixes
 
