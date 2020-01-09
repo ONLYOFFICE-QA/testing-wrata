@@ -10,6 +10,7 @@
 ### Fixes
 
 * Fix memory leak on clear history
+* Remove unused `ssh/config` and `ssh/id_rsa.pub`
 
 ## 1.17.1 (2019-06-24)
 
