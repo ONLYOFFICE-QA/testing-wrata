@@ -4,8 +4,8 @@ MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update -qq && apt-get install -y libpq-dev nodejs
-COPY ssh/ /root/.ssh/
-RUN chmod 600 /root/.ssh/*
+COPY ssh/id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
 
 WORKDIR /tmp
 COPY Gemfile* /tmp/

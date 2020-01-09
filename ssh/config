@@ -1,5 +1,0 @@
-# ssh/config
-# Git keys
-host github
-     user git
-     identityfile /root/.ssh/id_rsa
