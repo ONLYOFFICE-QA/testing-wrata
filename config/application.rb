@@ -35,7 +35,10 @@ module Runner
     config.i18n.enforce_available_locales = true
     config.middleware.use Rack::Deflater
     config.delayed_runs = nil
-    config.github_helper = OnlyofficeGithubHelper::GithubClient.new
+
+    config.github_helper = OnlyofficeGithubHelper::GithubClient.new(user: Rails.application.credentials.github_user,
+                                                                    password: Rails.application.credentials.github_user_password)
+
     config.run_manager = nil
     config.threads = nil
     config.server_destroyer = nil
