@@ -159,7 +159,7 @@ GEM
     parser (2.7.0.2)
       ast (~> 2.4.0)
     pg (1.2.2)
-    popper_js (1.14.5)
+    popper_js (1.16.0)
     process_exists (0.2.0)
     public_suffix (4.0.3)
     puma (4.3.1)
