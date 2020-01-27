@@ -7,6 +7,7 @@
 * Update `sprockets` to version 4
 * Remove `mock_cloud_server` config option
 * Store `github` access data in credentials
+* `config/master.key` in `.dockerignore`
 
 ### Fixes
 

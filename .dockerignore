@@ -1,3 +1,4 @@
 tmp
 .git
 log/*.log
+/config/master.key
