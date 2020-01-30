@@ -2,6 +2,8 @@
 
 ## master
 
+## 1.18.0 (2020-01-30)
+
 ### New features
 
 * Update `sprockets` to version 4
