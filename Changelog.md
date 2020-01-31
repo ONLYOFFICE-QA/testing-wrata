@@ -2,6 +2,10 @@
 
 ## master
 
+### New Features
+
+* Access nodes via password
+
 ## 1.18.0 (2020-01-30)
 
 ### New features

@@ -3,8 +3,6 @@
 require 'process_exists'
 
 module TestManager
-  TEST_SPOT_USER_NAME = 'nct-at'
-
   # Determine which command is used to run test
   # @return [String] command to run test. Empty if not supported.
   def command_executioner(test)
@@ -40,8 +38,10 @@ module TestManager
   end
 
   def generate_ssh_command(command)
+    "sshpass -p #{Rails.application.credentials.ssh_pass} " \
     'ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no '\
-    "#{TEST_SPOT_USER_NAME}@#{@server_model.address} <<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
+    "#{Rails.application.credentials.ssh_user}@#{@server_model.address} "\
+    "<<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
 
   def docker_command(command)
