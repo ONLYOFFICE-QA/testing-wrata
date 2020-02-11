@@ -84,7 +84,7 @@ GEM
     childprocess (3.0.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crass (1.0.6)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
