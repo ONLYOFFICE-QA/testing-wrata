@@ -7,7 +7,12 @@ AllCops:
   Exclude:
     - db/schema.rb
 
-# Until https://github.com/rubocop-hq/rubocop/issues/6893
-Naming/RescuedExceptionsVariableName:
-  Exclude:
-    - 'app/server/managers/html_result_manager.rb'
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
