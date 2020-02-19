@@ -65,7 +65,7 @@ class RunnerController < ApplicationController
 
       test_files_hash = test_list_hash['file_tests']
 
-      test_files_hash.values.each do |test_file_hash|
+      test_files_hash.each_value do |test_file_hash|
         test_file = TestFile.new(name: test_file_hash['file_name'])
         test_file.test_list = @test_list
         Rails.logger.error(test_file.errors.full_messages) unless test_file.save
