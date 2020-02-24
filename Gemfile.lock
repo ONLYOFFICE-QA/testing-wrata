@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper
-  revision: 301b97b658b3b9430c8561b1678fc6ed01c3980e
+  revision: 3327b43a37154400abbbfb552f19a70880bde7b9
   specs:
     onlyoffice_digitalocean_wrapper (0.2.0)
       droplet_kit (~> 3)
