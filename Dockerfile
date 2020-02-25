@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.7.0
 
 MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
 
