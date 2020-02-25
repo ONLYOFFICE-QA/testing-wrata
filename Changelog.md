@@ -6,6 +6,7 @@
 
 * Access nodes via password
 * Remove ability to login to node via ssh key
+* Actualize Bundler to v.2
 
 ## 1.18.0 (2020-01-30)
 
