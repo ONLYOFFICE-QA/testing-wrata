@@ -5,6 +5,7 @@
 ### New Features
 
 * Access nodes via password
+* Remove ability to login to node via ssh key
 
 ## 1.18.0 (2020-01-30)
 
