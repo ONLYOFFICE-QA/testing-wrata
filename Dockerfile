@@ -8,6 +8,7 @@ RUN apt-get update -qq && apt-get install -y libpq-dev \
                                              sshpass
 WORKDIR /tmp
 COPY Gemfile* /tmp/
+RUN gem install bundler
 RUN bundle install
 
 RUN mkdir /root/wrata
