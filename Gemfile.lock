@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper
-  revision: 3327b43a37154400abbbfb552f19a70880bde7b9
+  revision: 94eb9a6adf2101f94ea8c025e933ab66dd192323
   specs:
-    onlyoffice_digitalocean_wrapper (0.2.0)
+    onlyoffice_digitalocean_wrapper (0.3.0)
       droplet_kit (~> 3)
       onlyoffice_logger_helper (~> 1)
 
@@ -295,7 +295,7 @@ DEPENDENCIES
   jquery-ui-rails
   listen
   net-ping
-  onlyoffice_digitalocean_wrapper (~> 0.2)!
+  onlyoffice_digitalocean_wrapper (~> 0.3)!
   onlyoffice_github_helper!
   onlyoffice_rspec_result_parser!
   overcommit
