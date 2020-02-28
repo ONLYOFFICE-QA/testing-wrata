@@ -162,7 +162,7 @@ GEM
     popper_js (1.16.0)
     process_exists (0.2.0)
     public_suffix (4.0.3)
-    puma (4.3.1)
+    puma (4.3.2)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
