@@ -39,7 +39,9 @@ module TestManager
 
   def generate_ssh_command(command)
     "sshpass -p #{Rails.application.credentials.ssh_pass} " \
-    'ssh -o ConnectTimeout=10 -o UserKnownHostsFile=/dev/null '\
+    'ssh -o ConnectTimeout=10 '\
+    '-o StrictHostKeyChecking=no' \
+    '-o UserKnownHostsFile=/dev/null '\
     "#{Rails.application.credentials.ssh_user}@#{@server_model.address} "\
     "<<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
