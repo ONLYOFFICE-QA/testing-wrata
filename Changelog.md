@@ -8,6 +8,10 @@
 * Remove ability to login to node via ssh key
 * Actualize Bundler to v.2
 
+### Fixes
+
+* Fix problem with known host with ssh login
+
 ## 1.18.0 (2020-01-30)
 
 ### New features
