@@ -49,6 +49,11 @@ class StartOption < ApplicationRecord
                     spec_language: test[:spec_language])
   end
 
+  # @return [String] remove all sensitive data from start command
+  def safe_start_command
+    start_command&.gsub(Rails.application.credentials.ssh_pass, '[SSH_PASS]')
+  end
+
   private
 
   # @param branch [String] branch to use
