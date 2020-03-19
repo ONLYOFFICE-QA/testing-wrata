@@ -49,15 +49,15 @@ module Runner
       address: 'smtp.gmail.com',
       port: 587,
       domain: 'wrata.onlyoffice.com',
-      user_name: Rails.application.secrets.gmail_username,
-      password: Rails.application.secrets.gmail_password,
+      user_name: Rails.application.credentials.failure_notification_username,
+      password: Rails.application.credentials.failure_notification_password,
       authentication: 'plain',
       enable_starttls_auto: true
     }
     config.middleware.use ExceptionNotification::Rack,
                           email: {
                             email_prefix: '[wrata] ',
-                            sender_address: Rails.application.secrets.gmail_username,
+                            sender_address: Rails.application.credentials.failure_notification_username,
                             exception_recipients: [Rails.application.secrets.admin_email]
                           }
     config.default_spec_language = ['en-US']
