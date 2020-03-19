@@ -7,6 +7,7 @@
 * Access nodes via password
 * Remove ability to login to node via ssh key
 * Actualize Bundler to v.2
+* Store `action_mailer.smtp_settings` in secret credentials
 
 ### Fixes
 
