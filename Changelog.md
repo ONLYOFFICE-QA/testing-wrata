@@ -10,6 +10,9 @@
 * Store `action_mailer.smtp_settings` in secret credentials
 * Store `admin_email` in secret credentials
 * Remove deprecated secrets keys
+* `onlyoffice_digitalocean_wrapper`, 
+  `onlyoffice_github_helper`,
+  `onlyoffice_rspec_result_parser` installed from gem, not github   
 
 ### Fixes
 

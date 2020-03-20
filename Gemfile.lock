@@ -1,25 +1,3 @@
-GIT
-  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper
-  revision: d1f732deb253e48c4851ecbfe27a936db3a925e1
-  specs:
-    onlyoffice_digitalocean_wrapper (0.3.0)
-      droplet_kit (~> 3)
-      onlyoffice_logger_helper (~> 1)
-
-GIT
-  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_github_helper
-  revision: 591257cfc4d2fc56ad5eceb2965ea1a69071bb83
-  specs:
-    onlyoffice_github_helper (0.0.1)
-      octokit (~> 4)
-
-GIT
-  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser
-  revision: 2fc67d98b79e168d555852bdc829b31f1f2cdd1a
-  specs:
-    onlyoffice_rspec_result_parser (0.0.1)
-      nokogiri (~> 1.6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -150,7 +128,14 @@ GEM
     octokit (4.17.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
+    onlyoffice_digitalocean_wrapper (0.3.0)
+      droplet_kit (~> 3)
+      onlyoffice_logger_helper (~> 1)
+    onlyoffice_github_helper (0.1.1)
+      octokit (~> 4)
     onlyoffice_logger_helper (1.0.2)
+    onlyoffice_rspec_result_parser (0.1.0)
+      nokogiri (~> 1.6)
     orm_adapter (0.5.0)
     overcommit (0.52.1)
       childprocess (>= 0.6.3, < 4)
@@ -295,9 +280,9 @@ DEPENDENCIES
   jquery-ui-rails
   listen
   net-ping
-  onlyoffice_digitalocean_wrapper (~> 0.3)!
-  onlyoffice_github_helper!
-  onlyoffice_rspec_result_parser!
+  onlyoffice_digitalocean_wrapper
+  onlyoffice_github_helper
+  onlyoffice_rspec_result_parser
   overcommit
   pg
   process_exists
