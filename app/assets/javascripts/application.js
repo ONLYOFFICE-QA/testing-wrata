@@ -27,9 +27,6 @@ $.ajaxSetup({
 
 const STATUS = {
     UPDATE_INTERVAL: 10000,
-    ONLINE: 0,
-    OFFLINE: 1,
-    WAIT: 2
 };
 
 const MAX_LENGTH = 26;
@@ -273,30 +270,6 @@ function Runner() {
         });
     };
 
-    this.showTestsView = function () {
-        var project = activeProject();
-        $.ajax({
-            url: 'runner/show_tests',
-            context: this,
-            async: true,
-            type: 'GET',
-            success: function (data) {
-                var trimmed_data = trim_data(data);
-                var fileTab = $(".tests-block .tab-content")
-                fileTab.html(trimmed_data);
-                setEventToOpenFolder();
-                eventToAddFile();
-                selectProject(project);
-                eventToAddTestInQueue(trimmed_data.find('.add-button-file'));
-                eventToAddFolderInQueue(trimmed_data.find('.add-button-folder'));
-                addFullPaths(fileTab)
-            },
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
-        });
-    };
-
     this.eventForPullProjectsAndFillTests = function(elem) {
         elem.on('click', function() {
             _self.pullProjectsAndFillTests();
@@ -379,26 +352,6 @@ function Runner() {
     this.setEventToDeleteTestList = function (list_menu) {
         list_menu.find('i.delete-test-list').on('click', function () {
             _self.EventToDeleteTestList($(this).parent());
-        });
-    };
-
-    this.eventToChangeLocationForTest = function(elem) {
-        elem.change(function(){
-            var test_id = elem.parent().parent().attr('data-id');
-            var new_location = elem.val();
-            _self.changeLocationForTest(test_id, new_location);
-        });
-    };
-
-    this.changeLocationForTest = function(test_id, new_location) {
-        $.ajax({
-            url: 'queue/change_test_location',
-            data: { test_id: test_id, new_location: new_location },
-            context: this,
-            type: 'POST',
-            error: function (xhr, type, errorThrown) {
-                ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-            }
         });
     };
 
@@ -802,14 +755,6 @@ function verifyListName(listName) {
         }
     });
     return result;
-}
-
-function HtmlEncode(val) {
-    return $("<div/>").text(val).html();
-}
-
-function HtmlDecode(val) {
-    return $("<div/>").html(val).text();
 }
 
 function showStartPanel() {

@@ -165,17 +165,6 @@ class ServersController < ApplicationController
 
   private
 
-  def set_server_status(server_name, status)
-    server = Runner::Application.config.threads.get_thread_by_name(server_name)
-    server.server_model.update_attribute(:_status, status)
-    Runner::Application.config.threads.update_models
-  end
-
-  def update_server_ip(server_name, new_address)
-    server = Server.where(name: server_name).first
-    server.update_attribute(:address, new_address)
-  end
-
   def server_params
     params.require(:server).permit(:address, :description, :name, :comp_name, :_status, :book_client_id, :last_activity_date, :executing_command_now, :self_destruction)
   end

@@ -102,14 +102,6 @@ class ClientRunnerManager
     end
   end
 
-  def change_tests(tests)
-    @tests = ClientTestQueue.new(tests)
-  end
-
-  def change_servers(servers)
-    @client_servers = ClientServers.new(servers)
-  end
-
   def ready_to_start?
     !(@tests.empty? || @client_servers.empty?)
   end

@@ -31,14 +31,6 @@ class ClientServers
     @servers_threads.delete(name: server_name, server_thread: Runner::Application.config.threads.get_thread_by_name(server_name))
   end
 
-  def server_by_name(server_name)
-    server = nil
-    @servers_threads.each do |current|
-      server = current[:server_thread] if current[:name] == server_name
-    end
-    server
-  end
-
   def clear
     @servers_threads.clear
   end

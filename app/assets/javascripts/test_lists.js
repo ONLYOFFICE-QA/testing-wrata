@@ -71,26 +71,3 @@ function setEventToDeleteTestFromList() {
         unlockActiveBranchSelect();
     });
 }
-
-function setEventToAddToList(element) {
-    $(element).on('click', function () {
-        addTestToList($(this));
-        openSidebar();
-        var path = $('#test_file_name').attr('data-qtip');
-        $('.tab-pane.active input').each(function () {
-            var current_path = $(this).attr('id');
-            if (current_path == path) {
-                $(this).parent().find('i.add-file').css('display', 'none');
-            }
-        });
-    });
-}
-
-function addTestToList(icon_add) {
-    setEventToDeleteTestFromList();
-    setIconToAdded(icon_add);
-    showStartPanel();
-    icon_add.off("click");
-    lockInactiveTab();
-    lockActiveBranchSelect();
-}

@@ -21,11 +21,6 @@ module ServerTestOut
     "echo #{END_HTML_OUT};"
   end
 
-  # @return [String] html result not in container
-  def last_test_file
-    "/tmp/#{name}.html"
-  end
-
   # @return [String] get final result of test
   def final_result_html
     full_log = File.read(log_path)

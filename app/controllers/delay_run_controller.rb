@@ -9,19 +9,19 @@ class DelayRunController < ApplicationController
   end
 
   def add_run
-    @run = Runner::Application.config.delayed_runs.add_run(params, current_client)
+    @run = Runner::Application.config.delayed_runs.add_run(delayed_run_params, current_client)
 
     render layout: false
   end
 
   def change_run
-    Runner::Application.config.delayed_runs.change_run(params)
+    Runner::Application.config.delayed_runs.change_run(delayed_run_params)
 
     render body: nil
   end
 
   def delete_run
-    Runner::Application.config.delayed_runs.delete_run(params['id'])
+    Runner::Application.config.delayed_runs.delete_run(delayed_run_params['id'])
 
     render body: nil
   end
