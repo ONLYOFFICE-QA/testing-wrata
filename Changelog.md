@@ -13,6 +13,7 @@
 * `onlyoffice_digitalocean_wrapper`, 
   `onlyoffice_github_helper`,
   `onlyoffice_rspec_result_parser` installed from gem, not github   
+* Minor cleanup of routes
 
 ### Fixes
 
