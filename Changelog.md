@@ -20,6 +20,10 @@
 * Fix problem with known host with ssh login
 * Hide real ssh pass on `server_history` page
 
+### Changes
+
+* Remove hidden unused files
+
 ## 1.18.0 (2020-01-30)
 
 ### New features
