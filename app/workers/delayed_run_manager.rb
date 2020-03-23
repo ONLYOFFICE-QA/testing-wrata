@@ -58,14 +58,4 @@ class DelayedRunManager
     init_runs_from_db
     run
   end
-
-  def update_attributes(props)
-    run = DelayedRun.find(props['id'])
-    run.method = props['method']
-    run.location = props['location']
-    run.start_time = props['start_time']
-    run.next_start = props['start_time']
-    init_runs_from_db
-    run.save
-  end
 end

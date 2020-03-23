@@ -42,8 +42,4 @@ class DelayRunController < ApplicationController
       render signin_path
     end
   end
-
-  def delayed_run_params
-    params.require(:delayed_run).permit(:name, :f_type, :method, :client_id, :start_time, :next_start)
-  end
 end

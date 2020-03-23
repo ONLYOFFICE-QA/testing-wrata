@@ -9,12 +9,6 @@ class ApplicationController < ActionController::Base
   # before_filter :create_threads
   before_action :require_login
 
-  # Force signout to prevent CSRF attacks
-  def handle_unverified_request
-    sign_out_
-    super
-  end
-
   protected
 
   def delete_testlist_by_id(id)
