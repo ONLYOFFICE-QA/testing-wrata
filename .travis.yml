@@ -1,12 +1,15 @@
 language: ruby
-services: docker
+services:
+  - docker
+  - postgresql
 rvm: 2.7
 install: bundle install --without development
 jobs:
   include:
-    - stage: Default docker build
-      script: docker build .
     - stage: run tests
       script:
+        - psql -c 'create database wrata_test;' -U postgres
         - RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
         - bundle exec rake
+    - stage: Default docker build
+      script: docker build .
