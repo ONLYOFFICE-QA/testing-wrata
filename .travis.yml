@@ -1,0 +1,12 @@
+language: ruby
+services: docker
+rvm: 2.7
+install: bundle install --without development
+jobs:
+  include:
+    - stage: Default docker build
+      script: docker build .
+    - stage: run tests
+      script:
+        - RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
+        - bundle exec rake
