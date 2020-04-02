@@ -11,8 +11,10 @@ class StartOption < ApplicationRecord
   end
 
   def create_options
-    command = "cd ~/RubymineProjects/SharedFunctional && git reset --hard && git pull --all --prune && git checkout #{shared_branch} && bundle install; " \
-              "cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && git pull --all --prune && git checkout #{teamlab_api_branch}; " \
+    command = 'cd ~/RubymineProjects/SharedFunctional && git reset --hard && ' \
+              "git pull --all --prune && git checkout #{shared_branch} && bundle install; " \
+              'cd ~/RubymineProjects/TeamLabAPI2 && git reset --hard && ' \
+              "git pull --all --prune && git checkout #{teamlab_api_branch}; " \
               "#{update_projects_git(docs_branch)}" \
               "#{generate_region_command}"
     command

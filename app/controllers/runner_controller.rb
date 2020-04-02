@@ -90,11 +90,6 @@ class RunnerController < ApplicationController
       end
       format.html
     end
-
-    # render json: {
-    #    'html' => render_to_string(partial: 'load_test_list', :formats => [:html], :handlers=>[:erb], :layout => false, locals: {test_list: @test_list}),
-    #    'project' => 'docs'
-    # }
   end
 
   def updated_data
