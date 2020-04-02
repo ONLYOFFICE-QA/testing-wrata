@@ -166,7 +166,15 @@ class ServersController < ApplicationController
   private
 
   def server_params
-    params.require(:server).permit(:address, :description, :name, :comp_name, :_status, :book_client_id, :last_activity_date, :executing_command_now, :self_destruction)
+    params.require(:server).permit(:address,
+                                   :description,
+                                   :name,
+                                   :comp_name,
+                                   :_status,
+                                   :book_client_id,
+                                   :last_activity_date,
+                                   :executing_command_now,
+                                   :self_destruction)
   end
 
   def multi_servers_params
