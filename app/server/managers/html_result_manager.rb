@@ -29,7 +29,7 @@ module HTMLResultManager
   def read_progress
     return '' unless html_progress_exist?
 
-    open(result_url, &:read)
+    URI.open(result_url, &:read)
   rescue *READ_STATUS_EXCEPTIONS => e
     Rails.logger.warn("read_progress of #{@server_model.name} is failed with #{e}")
     ''
