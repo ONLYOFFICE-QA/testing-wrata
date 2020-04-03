@@ -21,6 +21,7 @@
 * Fix problem with known host with ssh login
 * Hide real ssh pass on `server_history` page
 * Fix docker-compose with actual version of postgresql
+* Fix warning for using `open` instead of `URI.open`
 
 ### Changes
 
