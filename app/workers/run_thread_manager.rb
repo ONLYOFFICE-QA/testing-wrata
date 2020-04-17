@@ -46,7 +46,7 @@ module RunThreadManager
 
   def method_timing(run)
     method = run[:method]
-    if method =~ /once/
+    if /once/.match?(method)
       if run.should_start_by_time?(run.start_time)
         add_to_queue run
         delete_from_db run
