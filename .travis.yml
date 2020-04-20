@@ -3,7 +3,6 @@ services:
   - docker
   - postgresql
 rvm: 2.7
-install: bundle install --without development
 jobs:
   include:
     - stage: markdownlint
@@ -12,6 +11,7 @@ jobs:
         - markdownlint *.md
     - stage: run tests
       script:
+        - bundle install --without development
         - psql -c 'create database wrata_test;' -U postgres
         - RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
         - bundle exec rake
