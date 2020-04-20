@@ -56,7 +56,7 @@ module TestManager
     'docker rm -f $(docker ps -a -q); '\
     "docker pull #{Rails.application.config.node_docker_image}; "\
     "docker run #{docker_keys} #{Rails.application.config.node_docker_image} "\
-    "bash -c \"bash /before-run.sh; sudo chmod 777 /var/www/html/; #{command}\" " \
+    "bash -c \"bash /before-run.sh; chmod 777 /var/www/html/; #{command}\" " \
   end
 
   def docker_ssh_command(command)
