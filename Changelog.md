@@ -31,6 +31,7 @@
 * Remove table columns for deprecated projects
 * Remove all workaround for home path
 * Remove `sudo` for commands inside node container
+* Speedup travis test by not installing not-needed gems
 
 ## 1.18.0 (2020-01-30)
 
