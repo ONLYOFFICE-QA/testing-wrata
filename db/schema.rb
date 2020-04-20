@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_11_130732) do
+ActiveRecord::Schema.define(version: 2020_04_20_085308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,11 +92,11 @@ ActiveRecord::Schema.define(version: 2019_10_11_130732) do
   create_table "start_options", id: :serial, force: :cascade do |t|
     t.string "docs_branch", default: "develop"
     t.string "teamlab_branch", default: "master"
-    t.string "shared_branch", default: "master"
-    t.string "teamlab_api_branch", default: "develop"
     t.string "portal_type", default: "info"
     t.string "portal_region", default: "us"
     t.text "start_command"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer "history_id"
     t.string "spec_language", default: "en-us"
     t.string "spec_browser"
