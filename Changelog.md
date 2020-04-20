@@ -28,6 +28,7 @@
 * Remove hidden unused files
 * Remove `devise#secret_key` - it's replaced by `RAILS_MASTER_KEY`
 * Remove table columns for deprecated projects
+* Remove all workaround for home path
 
 ## 1.18.0 (2020-01-30)
 
