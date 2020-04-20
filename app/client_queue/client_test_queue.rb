@@ -16,7 +16,7 @@ class ClientTestQueue
       params[:doc_branch] = branch
       params[:tm_branch] = branch
     end
-    data_to_push = { test_path: reformat_path(test_path),
+    data_to_push = { test_path: test_path,
                      id: @id,
                      doc_branch: params[:doc_branch],
                      tm_branch: params[:tm_branch],
@@ -31,10 +31,6 @@ class ClientTestQueue
       @tests << data_to_push
     end
     @id += 1
-  end
-
-  def reformat_path(test_path)
-    test_path.include?(HOME_DIRECTORY) ? test_path.gsub(HOME_DIRECTORY, '~') : test_path
   end
 
   def empty?

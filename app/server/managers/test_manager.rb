@@ -26,7 +26,7 @@ module TestManager
   end
 
   def generate_full_start_command(test_path, options)
-    generate_run_test_command(test_path.gsub('~', '$HOME'), options)
+    generate_run_test_command(test_path, options)
   end
 
   def execute_command(command)
