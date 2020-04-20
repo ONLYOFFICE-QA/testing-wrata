@@ -2,7 +2,7 @@
 
 ## How to update
 
-```
+```shell script
 git pull --prune
 docker-compose up -d --no-deps --build app
 ```

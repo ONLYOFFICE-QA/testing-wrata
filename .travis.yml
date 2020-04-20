@@ -6,6 +6,10 @@ rvm: 2.7
 install: bundle install --without development
 jobs:
   include:
+    - stage: markdownlint
+      script:
+        - npm install -g markdownlint-cli
+        - markdownlint *.md
     - stage: run tests
       script:
         - psql -c 'create database wrata_test;' -U postgres
