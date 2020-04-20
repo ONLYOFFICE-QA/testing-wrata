@@ -6,8 +6,6 @@ module HistoryManager
     start_options.history = history_db_line
     start_options.docs_branch = options.docs_branch
     start_options.teamlab_branch = options.teamlab_branch
-    start_options.shared_branch = options.shared_branch
-    start_options.teamlab_api_branch = options.teamlab_api_branch
     start_options.portal_type = options.portal_type
     start_options.portal_region = options.portal_region
     start_options.start_command = start_command
