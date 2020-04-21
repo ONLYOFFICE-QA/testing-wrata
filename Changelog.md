@@ -1,6 +1,8 @@
 # Change log
 
-## master
+## master (unreleased)
+
+## 1.19.0 (2020-04-24)
 
 ### New Features
 
