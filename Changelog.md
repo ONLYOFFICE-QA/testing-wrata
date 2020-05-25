@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Option to return flatten file list in `GET /runner/file_list`
+
 ## 1.19.0 (2020-04-24)
 
 ### New Features

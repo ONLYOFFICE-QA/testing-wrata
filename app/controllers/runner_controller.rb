@@ -26,9 +26,14 @@ class RunnerController < ApplicationController
   def file_tree
     project = params['project']
     refs = params['refs']
+    flatten = params['flatten'] || false
     return render body: nil, status: :bad_request if project.nil? || refs.nil?
 
-    file_tree = Rails.application.config.github_helper.file_tree(project, refs: refs)
+    file_tree = if flatten
+                  Rails.application.config.github_helper.file_list(project, refs: refs)
+                else
+                  Rails.application.config.github_helper.file_tree(project, refs: refs)
+                end
     render plain: file_tree.to_json
   end
 
