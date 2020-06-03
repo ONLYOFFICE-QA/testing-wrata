@@ -104,9 +104,7 @@ function eventToRetest(elem) {
             url: '/queue/retest',
             data: {
                 test_path: clicked.attr('data-path'),
-                tm_branch: clicked.attr('data-tm-branch'),
-                doc_branch: clicked.attr('data-doc-branch'),
-                location: clicked.attr('data-location')
+                start_option_id: clicked.attr('data-start-option-id')
             },
             async: false,
             type: 'POST',
