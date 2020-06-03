@@ -21,12 +21,11 @@ function openDelayRuns() {
     });
 }
 
-function saveDelayedRun(f_type, name, method, start_time, location) {
+function saveDelayedRun(name, method, start_time, location) {
     $.ajax({
         url: 'delay_run/add_run',
         data: {
             method:      method,
-            f_type:      f_type,
             start_time:  start_time,
             name:        name,
             location:    location
@@ -99,7 +98,6 @@ function eventToChangeDelayedRun(elem) {
 function eventToSaveDelayedRun(elem) {
     elem.click(function(){
         var row = $(this).parent();
-        var f_type = 'test_list';
         var name = row.find('.list-name select').val();
         var start_date = row.find('.date input').val();
         var start_time_h = row.find('.time .hour').val();
@@ -107,7 +105,7 @@ function eventToSaveDelayedRun(elem) {
         var start_time = start_date + ' ' + start_time_h + ':' + start_time_m;
         var location = row.find('.location select').val();
         var method = parseRunMethod(row.find('.run-method select').val(), row.find('.each-time .hour').val(), row.find('.each-time .min').val());
-        saveDelayedRun(f_type, name, method, start_time, location);
+        saveDelayedRun(name, method, start_time, location);
         row.fadeOut('slow');
     });
 }
