@@ -46,7 +46,7 @@
         <div>Elapsed: <%= line.elapsed_time %></div>
       </td>
       <td class="center">
-        <i class="retest fa fa-repeat shower" data-path="<%= line.file %>" data-tm-branch="<%= start_option.teamlab_branch %>" data-doc-branch="<%= start_option.docs_branch %>" data-location="<%= start_option.server_location %>">
+        <i class="retest fa fa-repeat shower" data-start-option-id="<%= start_option.id %>" data-path="<%= line.file %>">
           <span class="hidden-tool">Add this test in queue with current params</span>
         </i>
         <i class="fa fa-trash delete-line shower" delete-data="<%= history_path(line) %>" data-method="delete">

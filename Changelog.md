@@ -6,6 +6,10 @@
 
 * Option to return flatten file list in `GET /runner/file_list`
 
+### Fixes
+
+* Retest button now add test with all correct params
+
 ## 1.19.0 (2020-04-24)
 
 ### New Features
