@@ -11,9 +11,8 @@ class StartOption < ApplicationRecord
   end
 
   def create_options
-    command = "#{update_projects_git(docs_branch)}" \
-              "#{generate_region_command}"
-    command
+    "#{update_projects_git(docs_branch)}" \
+    "#{generate_region_command}"
   end
 
   def generate_region_command
