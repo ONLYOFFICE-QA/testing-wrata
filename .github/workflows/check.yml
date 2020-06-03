@@ -1,0 +1,35 @@
+name: check
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          ruby: [2.4, 2.5, 2.6, 2.7, head]
+      steps:
+        - uses: actions/checkout@v2
+        - name: Set up Ruby ${{ matrix.ruby }}
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: ${{ matrix.ruby }}
+        - name: Build and test with Rake
+            run: |
+              gem install bundler
+              bundle install --jobs 4 --retry 3  --without development
+              psql -c 'create database wrata_test;' -U postgres
+              RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
+              bundle exec rake
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: docker build .
+  markdownline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: markdownlint check
+        run: |
+          npm install -g markdownlint-cli
+          markdownlint *.md
