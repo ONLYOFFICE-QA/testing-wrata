@@ -1,0 +1,22 @@
+<div class="global-results">
+  <div class="processing">
+    <div></div>
+    <span class="value"><%= @rspec_result.processing %>%</span>
+  </div>
+  <script>
+      $('.processing div').css('width', '<%= @rspec_result.processing %>%');
+      $(document).ready(function(){
+          if ($('.popup-content').find('.failed').length == 0) {
+              $('.processing div').addClass('success')
+          }else {
+              $('.processing div').addClass('fail')
+          }
+      })
+  </script>
+  <div class="totals"><span><%= @rspec_result.total %></span></div>
+  <div class="totals-time"><span><%= @rspec_result.time %></span></div>
+</div>
+<div class="describe-content">
+  <% @main_describe = @rspec_result.describe if @rspec_result.describe %>
+  <%= render 'histories/show_html_results/create_main_describe' %>
+</div>
