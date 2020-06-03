@@ -23,6 +23,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Build and test with Rake
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3  --without development
