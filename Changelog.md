@@ -30,6 +30,10 @@
 * Store `certs` inside project folder
 * Use `nginx:alpine` image to reduce size
 
+### Changes
+
+* Use Github Actions instead of travis-ci
+
 ## 1.19.0 (2020-04-24)
 
 ### New Features
