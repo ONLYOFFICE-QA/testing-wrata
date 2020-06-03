@@ -6,31 +6,12 @@
         <div class="describe-child">
             <% unless main_describe.child.empty? %>
                 <% main_describe.child.each do |cur_child| %>
-                    <% @example = cur_child %>
                     <% if cur_child.class == OnlyofficeRspecResultParser::Example %>
+                        <% @example = cur_child %>
                         <% render "histories/show_html_results/create_example" %>
                     <% elsif cur_child.class == OnlyofficeRspecResultParser::Describe %>
-                        <% create_describe(cur_child) %>
-                    <% end %>
-                <% end %>
-            <% end %>
-        </div>
-    </div>
-<% end %>
-
-<% def create_describe(describe) %>
-    <div class="describe">
-        <div class="describe-head">
-            <div class="describe-name"><%= describe.text %></div>
-        </div>
-        <div class="describe-child">
-            <% unless describe.child.empty? %>
-                <% describe.child.each do |cur_child| %>
-                    <% @example = cur_child %>
-                    <% if cur_child.class == OnlyofficeRspecResultParser::Example %>
-                        <%= render "histories/show_html_results/create_example" %>
-                    <% elsif cur_child.class == OnlyofficeRspecResultParser::Describe %>
-                        <% create_describe(cur_child) %>
+                        <% @describe = cur_child %>
+                        <%= render 'histories/show_html_results/create_describe' %>
                     <% end %>
                 <% end %>
             <% end %>
