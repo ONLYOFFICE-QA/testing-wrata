@@ -50,7 +50,6 @@ class DelayedRunManager
     run = DelayedRun.new
     run.client = client
     run.method = props['method']
-    run.f_type = props['f_type']
     run.name = props['name']
     run.location = props['location']
     run.start_time = props['start_time']

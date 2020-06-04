@@ -47,12 +47,12 @@
             </li>
             <li><%= select_tag :droplet_size,
                                options_for_select(OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper::DROPLET_SIZES, '1gb'),
-                               :class => 'form-control server-size-select' %></li>
+                               class: 'form-control server-size-select' %></li>
             <li>
               <i class="fa fa-power-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i>
             </li>
             <li>
-              <%= link_to server_history_path(server), :target => '_blank' do %>
+              <%= link_to server_history_path(server), target: '_blank' do %>
                   <i class="fa fa-book shower"><span class="hidden-tool"> history</span></i>
               <% end %>
             </li>

@@ -1,0 +1,25 @@
+<div class="example <%= @example.passed %>">
+  <div class="example-head">
+    <div class="example-name"><%= @example.text %></div>
+    <% unless @example.passed == 'not_implemented' %>
+      <div class="example-time"><%= @example.duration %></div>
+    <% end  %>
+  </div>
+  <% if @example.passed == 'failed' %>
+    <div class="fail-details">
+      <% if @example.page_url %>
+        <div class="fail-text">
+          <div>Page Url: <%= link_to(@example.page_url) %></div>
+        </div>
+      <% end %>
+      <% if @example.screenshot %>
+        <div class="fail-screenshot">
+          <div><%= link_to(image_tag(@example.screenshot), @example.screenshot, target: :_blank) %></div>
+        </div>
+      <% end %>
+      <div class="fail-text"><div><%= html_escape(@example.message) %></div></div>
+      <div class="fail-code-path"><%=  @example.backtrace %></div>
+      <div class="fail-code"><%=raw @example.code %></div>
+    </div>
+  <% end %>
+</div>

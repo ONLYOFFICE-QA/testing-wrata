@@ -10,6 +10,12 @@
 
 * Retest button now add test with all correct params
 
+### Changes
+
+* Remove useless `DelayRun#f_type`
+* Remove some more unused code
+* Simplify some erb files by moving to partials
+
 ## 1.19.0 (2020-04-24)
 
 ### New Features
