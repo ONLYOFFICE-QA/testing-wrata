@@ -5,6 +5,7 @@
 ### New Features
 
 * Option to return flatten file list in `GET /runner/file_list`
+* `/clients/api_keys` page now provide command with path to file
 
 ### Fixes
 
