@@ -16,6 +16,7 @@
 * Remove useless `DelayRun#f_type`
 * Remove some more unused code
 * Simplify some erb files by moving to partials
+* Change default nginx config to use SSL
 
 ## 1.19.0 (2020-04-24)
 

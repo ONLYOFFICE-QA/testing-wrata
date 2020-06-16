@@ -16,3 +16,10 @@ github_password: pass # password of user
 ssh_user: user # username for node
 ssh_pass: pass # password for node
 ```
+
+## SSL Setup
+
+By default this repo require SSL certificates to work.  
+`/root/certs/tls.crt` and `/root/certs/tls.key` should
+exists on your host, outside docker  
+You can disable it by changing `nginx.conf`
