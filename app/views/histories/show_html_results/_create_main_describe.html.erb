@@ -7,7 +7,7 @@
       <% @main_describe.child.each do |cur_child| %>
         <% if cur_child.class == OnlyofficeRspecResultParser::Example %>
           <% @example = cur_child %>
-          <% render "histories/show_html_results/create_example" %>
+          <%= render "histories/show_html_results/create_example" %>
         <% elsif cur_child.class == OnlyofficeRspecResultParser::Describe %>
           <% @describe = cur_child %>
           <%= render 'histories/show_html_results/create_describe' %>
