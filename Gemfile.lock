@@ -85,7 +85,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.4.3)
+    diff-lcs (1.4.4)
     droplet_kit (3.8.0)
       faraday (>= 0.15)
       kartograph (~> 0.2.3)
