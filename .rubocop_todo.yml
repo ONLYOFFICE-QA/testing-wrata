@@ -112,13 +112,6 @@ Style/ArrayCoercion:
   Exclude:
     - 'app/client_queue/client_runner_manager.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/CaseLikeIf:
-  Exclude:
-    - 'app/client_queue/client_test_queue.rb'
-    - 'app/workers/run_thread_manager.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
