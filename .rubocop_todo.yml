@@ -142,12 +142,6 @@ Style/MixinUsage:
   Exclude:
     - 'bin/update'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: SafeForConstants.
-Style/RedundantFetchBlock:
-  Exclude:
-    - 'config/puma.rb'
 
 # Offense count: 17
 # Cop supports --auto-correct.
