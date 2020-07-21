@@ -70,8 +70,8 @@ class ClientRunnerManager
   def add_test(test, branch, location,
                params = {})
     spec_language = params[:spec_language] || Rails.application.config.default_spec_language
-    spec_language = [spec_language] unless spec_language.is_a?(Array)
-    test = [test] unless test.is_a?(Array)
+    spec_language = Array(spec_language)
+    test = Array(test)
     test.reverse_each do |current_test|
       spec_language.each do |current_lang|
         @tests.push_test(current_test, branch, location,

@@ -106,12 +106,6 @@ Style/AccessorGrouping:
   Exclude:
     - 'app/server/server_thread.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/ArrayCoercion:
-  Exclude:
-    - 'app/client_queue/client_runner_manager.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
