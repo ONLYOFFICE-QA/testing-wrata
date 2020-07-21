@@ -75,12 +75,6 @@ Rails/MatchRoute:
   Exclude:
     - 'config/routes.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Rails/Pluck:
-  Exclude:
-    - 'app/client_queue/client_runner_manager.rb'
-
 # Offense count: 13
 # Configuration parameters: ForbiddenMethods, AllowedMethods.
 # ForbiddenMethods: decrement!, decrement_counter, increment!, increment_counter, insert, insert!, insert_all, insert_all!, toggle!, touch, touch_all, update_all, update_attribute, update_column, update_columns, update_counters, upsert, upsert_all

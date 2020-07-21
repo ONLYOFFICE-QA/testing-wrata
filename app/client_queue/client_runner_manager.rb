@@ -97,7 +97,7 @@ class ClientRunnerManager
   end
 
   def delete_all_servers
-    booked_servers = @client_servers.servers_threads.collect { |e| e[:name] }
+    booked_servers = @client_servers.servers_threads.pluck(:name)
     booked_servers.each do |current_name|
       delete_server(current_name)
     end
