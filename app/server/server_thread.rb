@@ -15,9 +15,7 @@ class ServerThread
   include TestManager
   include ThreadManager
 
-  attr_accessor :server_model, :_status
-  attr_accessor :ssh_pid
-  attr_accessor :log
+  attr_accessor :server_model, :_status, :ssh_pid, :log
 
   attr_reader :client
 

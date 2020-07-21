@@ -43,12 +43,13 @@ module RunThreadManager
 
   def method_timing(run)
     method = run[:method]
-    if /once/.match?(method)
+    case method
+    when /once/
       if run.should_start_by_time?(run.start_time)
         add_to_queue run
         delete_from_db run
       end
-    elsif method.match(/hours/) || method.match(/minutes/)
+    when /hours/, /minutes/
       if check_each_round run
         add_to_queue run
         hours, minutes = run.extract_minutes_and_hours

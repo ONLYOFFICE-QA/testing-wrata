@@ -92,9 +92,10 @@ class ClientTestQueue
     doc_branch = DOCS_DEFAULT_BRANCH
     if project == DOCS_TAB_NAME
       doc_branch = branch
-      if region == INFO_SERVER
+      case region
+      when INFO_SERVER
         teamlab_branch = TEAMLAB_INFO_MAIN_BRANCH
-      elsif region == COM_SERVER
+      when COM_SERVER
         teamlab_branch = TEAMLAB_COM_MAIN_BRANCH
       end
     end
