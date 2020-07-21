@@ -76,7 +76,7 @@ Rails.application.routes.draw do
 
   get '/signup',  to: 'clients#new'
   get '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  delete '/signout', to: 'sessions#destroy'
 
   get 'empty_pages/empty_test_list', as: 'empty_test_list'
 end
