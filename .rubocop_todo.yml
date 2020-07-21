@@ -98,14 +98,6 @@ Rails/UniqueValidationWithoutIndex:
     - 'app/models/spec_browser.rb'
     - 'app/models/spec_language.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: separated, grouped
-Style/AccessorGrouping:
-  Exclude:
-    - 'app/server/server_thread.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
