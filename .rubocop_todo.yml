@@ -90,12 +90,6 @@ Style/Documentation:
   Enabled: false
 
 # Offense count: 1
-# Cop supports --auto-correct.
-Style/GlobalStdStream:
-  Exclude:
-    - 'config/environments/production.rb'
-
-# Offense count: 1
 Style/MixinUsage:
   Exclude:
     - 'bin/update'
