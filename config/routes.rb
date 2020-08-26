@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/clients/api_keys'
   resources :clients
+  get 'profile', to: 'clients#show'
   # should always be on top of `resources :servers`
   # for correctly shown current status
   get '/servers/show_current_results'

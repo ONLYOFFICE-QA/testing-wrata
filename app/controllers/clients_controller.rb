@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @client = Client.find(params[:id])
+    @client = Client.find(client_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -121,5 +121,13 @@ class ClientsController < ApplicationController
                                    :verified,
                                    :env_file,
                                    :project)
+  end
+
+  # Get id of user from params or use current client ID
+  # @return [Integer] id of use
+  def client_id
+    return param[:id] if params[:id]
+
+    current_client[:id]
   end
 end
