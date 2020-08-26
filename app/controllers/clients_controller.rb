@@ -126,7 +126,7 @@ class ClientsController < ApplicationController
   # Get id of user from params or use current client ID
   # @return [Integer] id of use
   def client_id
-    return param[:id] if params[:id]
+    return params[:id] if params[:id]
 
     current_client[:id]
   end
