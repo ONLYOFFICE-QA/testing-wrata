@@ -8,6 +8,7 @@
 * `/clients/api_keys` page now provide command with path to file
 * Get current user info by `GET /profile`
 * Add `rubocop` check in CI
+* Add support of `rubocop-rspec`
 
 ### Fixes
 
