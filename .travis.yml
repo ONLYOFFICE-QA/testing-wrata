@@ -13,7 +13,7 @@ jobs:
       script:
         - bundle config set with 'development'
         - bundle install
-        - rubocop
+        - bundle exec rubocop
     - stage: run tests
       script:
         - bundle install --without development
