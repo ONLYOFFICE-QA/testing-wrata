@@ -9,6 +9,11 @@ jobs:
       script:
         - npm install -g markdownlint-cli
         - markdownlint *.md
+    - stage: rubocop
+      script:
+        - bundle config set with 'development'
+        - bundle install
+        - rubocop
     - stage: run tests
       script:
         - bundle install --without development
