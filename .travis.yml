@@ -13,7 +13,6 @@ jobs:
       script:
         - bundle config set with 'development'
         - bundle install
-        - find / -iname .ruby-version 2>/dev/null
         - bundle exec rubocop
     - stage: run tests
       script:
