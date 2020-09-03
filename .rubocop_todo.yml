@@ -27,15 +27,6 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 27
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: SkipBlocks, EnforcedStyle.
-# SupportedStyles: described_class, explicit
-RSpec/DescribedClass:
-  Exclude:
-    - 'spec/client_test_queue_spec.rb'
-    - 'spec/models/spec_language_spec.rb'
-
 # Offense count: 5
 # Configuration parameters: CustomIncludeMethods.
 RSpec/EmptyExampleGroup:
