@@ -26,7 +26,9 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rubocop-minitest'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'scss_lint', require: false
 end

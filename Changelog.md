@@ -7,6 +7,9 @@
 * Option to return flatten file list in `GET /runner/file_list`
 * `/clients/api_keys` page now provide command with path to file
 * Get current user info by `GET /profile`
+* Add `rubocop` check in CI
+* Add support of `rubocop-minitest`
+* Add support of `rubocop-rspec`
 
 ### Fixes
 

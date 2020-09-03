@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'projects/index', type: :view do
-  before(:each) do
+  before do
     assign(:projects, [
              Project.create!(
                name: 'Name'

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'spec_browsers/index', type: :view do
-  before(:each) do
+  before do
     assign(:spec_browsers, [
              SpecBrowser.create!(
                name: 'Name1'

@@ -15,7 +15,7 @@ describe ClientTestQueue do
     second_queue_entry[:id] = 2
     third_queue_entry = simple_queue_entry.dup
     third_queue_entry[:id] = 3
-    queue = ClientTestQueue.new([simple_queue_entry, second_queue_entry, third_queue_entry])
+    queue = described_class.new([simple_queue_entry, second_queue_entry, third_queue_entry])
     queue.remove_duplicates
     expect(queue.tests.length).to eq(1)
     expect(queue.tests.first).to eq(simple_queue_entry)
@@ -32,7 +32,7 @@ describe ClientTestQueue do
     second_queue_entry = simple_queue_entry.dup
     second_queue_entry[:id] = 2
     second_queue_entry[:doc_branch] = 'master'
-    queue = ClientTestQueue.new([simple_queue_entry, second_queue_entry])
+    queue = described_class.new([simple_queue_entry, second_queue_entry])
     queue.remove_duplicates
     expect(queue.tests.length).to eq(2)
     expect(queue.tests[0]).to eq(simple_queue_entry)

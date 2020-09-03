@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'spec_browsers/new', type: :view do
-  before(:each) do
+  before do
     assign(:spec_browser, SpecBrowser.new(
                             name: 'MyString'
                           ))

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'projects/show', type: :view do
-  before(:each) do
+  before do
     @project = assign(:project, Project.create!(
                                   name: 'Name'
                                 ))

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'spec_languages/edit', type: :view do
-  before(:each) do
+  before do
     @spec_language = assign(:spec_language, SpecLanguage.create!(
                                               name: 'MyString'
                                             ))

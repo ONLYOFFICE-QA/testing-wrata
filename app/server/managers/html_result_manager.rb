@@ -60,15 +60,13 @@ module HTMLResultManager
 
   def full_results_of_test
     results = nil
-    if @test
-      if html_progress_exist?
-        begin
-          results = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html(read_progress)
-        rescue StandardError => e
-          Rails.logger.error e.message
-          Rails.logger.error e.backtrace.join("\n")
-          results = nil
-        end
+    if @test && html_progress_exist?
+      begin
+        results = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html(read_progress)
+      rescue StandardError => e
+        Rails.logger.error e.message
+        Rails.logger.error e.backtrace.join("\n")
+        results = nil
       end
     end
     results

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe SpecLanguage, type: :model do
   before do
-    @spec_lang = SpecLanguage.create!(name: 'Lang1')
+    @spec_lang = described_class.create!(name: 'Lang1')
   end
 
   it 'When there are already a same spec lang' do
