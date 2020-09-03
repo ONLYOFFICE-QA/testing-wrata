@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'projects/edit', type: :view do
-  before(:each) do
+  before do
     @project = assign(:project, Project.create!(
                                   name: 'MyString'
                                 ))

@@ -43,25 +43,6 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/client_test_queue_spec.rb'
 
-# Offense count: 12
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: implicit, each, example
-RSpec/HookArgument:
-  Exclude:
-    - 'spec/views/projects/edit.html.erb_spec.rb'
-    - 'spec/views/projects/index.html.erb_spec.rb'
-    - 'spec/views/projects/new.html.erb_spec.rb'
-    - 'spec/views/projects/show.html.erb_spec.rb'
-    - 'spec/views/spec_browsers/edit.html.erb_spec.rb'
-    - 'spec/views/spec_browsers/index.html.erb_spec.rb'
-    - 'spec/views/spec_browsers/new.html.erb_spec.rb'
-    - 'spec/views/spec_browsers/show.html.erb_spec.rb'
-    - 'spec/views/spec_languages/edit.html.erb_spec.rb'
-    - 'spec/views/spec_languages/index.html.erb_spec.rb'
-    - 'spec/views/spec_languages/new.html.erb_spec.rb'
-    - 'spec/views/spec_languages/show.html.erb_spec.rb'
-
 # Offense count: 4
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:

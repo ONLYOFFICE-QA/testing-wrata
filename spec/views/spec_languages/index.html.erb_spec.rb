@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'spec_languages/index', type: :view do
-  before(:each) do
+  before do
     assign(:spec_languages, [
              SpecLanguage.create!(
                name: 'Name2'
