@@ -22,7 +22,7 @@ class History < ApplicationRecord
 
   # Send mail notification if something went wrong
   def notify_failure
-    # return if spec_finished_correctly?
+    return if spec_finished_correctly?
 
     TestResultMailer.spec_failed_email(self).deliver_now
   rescue StandardError => e
