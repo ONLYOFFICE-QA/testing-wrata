@@ -10,8 +10,8 @@
       <% if @controller == :client %>
           <td class="center"><%= line.server.name unless line.server.nil? %></td>
       <% end %>
-      <td class="center">
-        <div style="display: inline-block">
+      <td class="center history-entry-file-column">
+        <div>
           <div class="history-log">
             <%= line.file.gsub(RUBYMINE_PROJECTS_PATH, '') %>
           </div>
@@ -45,7 +45,7 @@
         <div>Ended at: <%= line.created_at %></div>
         <div>Elapsed: <%= line.elapsed_time %></div>
       </td>
-      <td class="center">
+      <td class="center history-entry-options-column">
         <i class="retest fa fa-repeat shower" data-start-option-id="<%= start_option.id %>" data-path="<%= line.file %>">
           <span class="hidden-tool">Add this test in queue with current params</span>
         </i>

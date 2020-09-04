@@ -17,6 +17,8 @@
 * Fix `/clinets/api_keys` command if key folder not exists
 * Fix rendering example in Rspec's html
 * Fix service failure if `History#notify_failure` cannot send mail
+* Remove extra unused css rules for `.history-log`
+* Fix css problem with history table is too width
 
 ### Changes
 
