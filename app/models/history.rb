@@ -25,6 +25,8 @@ class History < ApplicationRecord
     return if spec_finished_correctly?
 
     TestResultMailer.spec_failed_email(self).deliver_now
+  rescue StandardError => e
+    Rails.logger.warn("[notify_failure] Sending mail failed with: #{e}")
   end
 
   # @return [String] time of test execution in minutes
