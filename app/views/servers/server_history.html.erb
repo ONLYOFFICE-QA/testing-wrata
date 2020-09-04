@@ -38,18 +38,18 @@
     <button id="clear-history" class="btn btn-primary" style="position: absolute; top: 58px; right: 20px;">
       <i class="fa fa-trash"></i>Clear history
     </button>
-    <table class="table table-bordered table-hovers">
+    <table class="history-table table table-bordered table-hovers">
       <thead>
       <tr>
         <th class="center">Client</th>
         <% if @controller == :client %>
             <th class="center">Server</th>
         <% end %>
-        <th class="center">File</th>
+        <th class="center history-entry-file-column">File</th>
         <th class="center">Result</th>
         <th class="center">Run params</th>
         <th class="center">Execution Time</th>
-        <th class="center">Options</th>
+        <th class="center history-entry-options-column">Options</th>
       </tr>
       </thead>
       <tbody>

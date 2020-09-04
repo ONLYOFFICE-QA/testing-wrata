@@ -5,3 +5,16 @@
 .success {
   background-color: rgb(223, 240, 216);
 }
+
+.history-table {
+  table-layout: fixed;
+}
+
+.history-entry-file-column {
+  overflow-wrap: break-word;
+  width: 50%;
+}
+
+.history-entry-options-column {
+  width: 3%;
+}
