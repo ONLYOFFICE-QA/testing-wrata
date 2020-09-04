@@ -16,6 +16,7 @@
 * Retest button now add test with all correct params
 * Fix `/clinets/api_keys` command if key folder not exists
 * Fix rendering example in Rspec's html
+* Fix service failure if `History#notify_failure` cannot send mail
 
 ### Changes
 
