@@ -16,7 +16,7 @@ jobs:
         - bundle exec rubocop
     - stage: run tests
       script:
-        - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+        - curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
         - bundle install --without development
         - psql -c 'create database wrata_test;' -U postgres
         - RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
