@@ -17,6 +17,7 @@ jobs:
     - stage: run tests
       script:
         - curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+        - sudo apt-get -y install nodejs 
         - bundle install --without development
         - psql -c 'create database wrata_test;' -U postgres
         - RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
