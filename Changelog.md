@@ -19,6 +19,7 @@
 * Fix service failure if `History#notify_failure` cannot send mail
 * Remove extra unused css rules for `.history-log`
 * Fix css problem with history table is too width
+* Fix error with using non-actual nodejs with `markdownlint`
 
 ### Changes
 
