@@ -6,12 +6,11 @@ rvm: 2.7
 jobs:
   include:
     - stage: markdownlint
-      node_js: 12
       script:
-#        - rm -rf ~/.nvm
-#        - curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-#        - sudo apt -y install nodejs
-        - npm install -g markdownlint-cli
+        - rm -rf ~/.nvm
+        - curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+        - sudo apt -y install nodejs
+        - sudo npm install -g markdownlint-cli
         - markdownlint *.md
     - stage: rubocop
       script:
