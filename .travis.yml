@@ -8,7 +8,7 @@ jobs:
     - stage: markdownlint
       script:
         - curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-        - sudo apt -y install nodejs npm
+        - sudo apt -y install nodejs
         - npm install -g markdownlint-cli
         - markdownlint *.md
     - stage: rubocop
