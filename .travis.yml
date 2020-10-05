@@ -7,6 +7,7 @@ jobs:
   include:
     - stage: markdownlint
       script:
+        - rm -rf ~/.nvm
         - curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
         - sudo apt -y install nodejs
         - npm install -g markdownlint-cli
