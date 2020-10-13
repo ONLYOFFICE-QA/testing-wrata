@@ -140,7 +140,7 @@ GEM
     octokit (4.18.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
-    onlyoffice_digitalocean_wrapper (0.4.1)
+    onlyoffice_digitalocean_wrapper (0.5.0)
       droplet_kit (~> 3)
       onlyoffice_logger_helper (~> 1)
     onlyoffice_github_helper (0.1.1)
