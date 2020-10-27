@@ -39,6 +39,7 @@ jobs:
           gem install bundler
           bundle config set with 'development'
           bundle install --jobs 4 --retry 3
+          sudo service postgresql start
           psql -h $POSTGRES_HOST -U postgres -p $POSTGRES_PORT -c 'create database wrata_test;'
           RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
           bundle exec rake
