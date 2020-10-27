@@ -30,6 +30,7 @@
 * Store `certs` inside project folder
 * Use `nginx:alpine` image to reduce size
 * Use Github Actions instead of travis-ci
+* Use dependabot config, not service config
 
 ## 1.19.0 (2020-04-24)
 
