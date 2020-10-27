@@ -4,20 +4,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.allow-failures }}
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     strategy:
       matrix:
         ruby: [ 2.7 ]
@@ -31,15 +17,18 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - name: Build and test with Rake
-        env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+      - name: Setup postgresql
+        run: |
+          sudo apt-get -y install postgresql libpq-dev
+          sudo service postgresql start
+          psql -h localhost -U postgres -p 5432 -c 'create database wrata_test;'
+      - name: Setup dependencies
         run: |
           gem install bundler
           bundle config set with 'development'
           bundle install --jobs 4 --retry 3
-          psql -h $POSTGRES_HOST -U postgres -p $POSTGRES_PORT -c 'create database wrata_test;'
+      - name: Run tests
+        run: |
           RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
           bundle exec rake
 #  docker-build:
