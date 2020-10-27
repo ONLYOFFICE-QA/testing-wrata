@@ -30,6 +30,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+      - name: Setup dependencies
+        run: |
+          gem install bundler
+          bundle config set with 'development'
+          bundle install --jobs 4 --retry 3
       - name: Setup test database
         env:
           RAILS_ENV: test
@@ -40,16 +45,6 @@ jobs:
         run: |
           cp config/database.ci.yml config/database.yml
           rake db:create db:migrate db:seed
-      - name: Setup postgresql
-        run: |
-          sudo apt-get -y install postgresql libpq-dev
-          sudo service postgresql start
-          sudo -u postgres psql -h localhost -U postgres -p 5432 -c 'create database wrata_test;'
-      - name: Setup dependencies
-        run: |
-          gem install bundler
-          bundle config set with 'development'
-          bundle install --jobs 4 --retry 3
       - name: Run tests
         run: bundle exec rake
 #  docker-build:
