@@ -22,9 +22,9 @@ jobs:
       matrix:
         ruby: [ 2.7 ]
         allow-failures: [ false ]
-        include:
-          - ruby: head
-            allow-failures: true
+#        include:
+#          - ruby: head
+#            allow-failures: true
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby ${{ matrix.ruby }}
@@ -39,36 +39,35 @@ jobs:
           gem install bundler
           bundle config set with 'development'
           bundle install --jobs 4 --retry 3
-          sudo service postgresql start
           psql -h $POSTGRES_HOST -U postgres -p $POSTGRES_PORT -c 'create database wrata_test;'
           RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
           bundle exec rake
-  docker-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker build .
-  markdownlint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - name: markdownlint check
-        run: |
-          npm install -g markdownlint-cli
-          markdownlint *.md
-  rubocop:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-      - name: Setup rubocop
-        run: |
-          bundle config set with 'development'
-          bundle install
-      - name: Run Rubocop
-        run: rubocop
+#  docker-build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Build docker image
+#        run: docker build .
+#  markdownlint:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v1
+#      - name: markdownlint check
+#        run: |
+#          npm install -g markdownlint-cli
+#          markdownlint *.md
+#  rubocop:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up Ruby 2.7
+#        uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 2.7
+#      - name: Setup rubocop
+#        run: |
+#          bundle config set with 'development'
+#          bundle install
+#      - name: Run Rubocop
+#        run: rubocop
