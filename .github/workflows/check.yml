@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get -y install postgresql libpq-dev
           sudo service postgresql start
-          psql -h localhost -U postgres -p 5432 -c 'create database wrata_test;'
+          sudo -u postgres psql -h localhost -U postgres -p 5432 -c 'create database wrata_test;'
       - name: Setup dependencies
         run: |
           gem install bundler
