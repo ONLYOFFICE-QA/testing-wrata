@@ -3,6 +3,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.allow-failures }}
     services:
       postgres:
         image: postgres:13
@@ -15,7 +16,11 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     strategy:
       matrix:
-        ruby: [2.7, head]
+        ruby: [ 2.7 ]
+        allow-failures: [ false ]
+        include:
+          - ruby: head
+            allow-failures: true
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby ${{ matrix.ruby }}
