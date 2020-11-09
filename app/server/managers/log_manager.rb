@@ -46,11 +46,11 @@ module LogManager
   end
 
   def last_log_data
-    if !log_file_empty?
+    if log_file_empty?
+      @log = EMPTY_STRING
+    else
       lines = read_log
       @log = lines.last(LAST_LINES_COUNT).join('')
-    else
-      @log = EMPTY_STRING
     end
   end
 

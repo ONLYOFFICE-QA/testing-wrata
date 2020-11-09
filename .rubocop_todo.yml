@@ -111,12 +111,6 @@ Style/MixinUsage:
   Exclude:
     - 'bin/update'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/NegatedIfElseCondition:
-  Exclude:
-    - 'app/server/managers/log_manager.rb'
-
 # Offense count: 17
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
