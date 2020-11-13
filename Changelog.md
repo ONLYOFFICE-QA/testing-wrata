@@ -31,7 +31,7 @@
 * Use `nginx:alpine` image to reduce size
 * Use Github Actions instead of travis-ci
 * Use dependabot config, not service config
-* Fixes from update `rubocop` to `v1.2.0`
+* Fixes from update `rubocop` to `v1.3.0`
 
 ## 1.19.0 (2020-04-24)
 
