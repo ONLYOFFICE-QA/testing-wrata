@@ -3,6 +3,7 @@
 module ServerTestOut
   BEGIN_HTML_OUT = '-----BEGIN HTML OUTPUT-----'
   END_HTML_OUT = '-----END HTML OUTPUT-----'
+  FINAL_MATCH_REGEXP = /#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m.freeze
 
   # @return [Stirng] path to log of server
   def log_path
@@ -24,7 +25,7 @@ module ServerTestOut
   # @return [String] get final result of test
   def final_result_html
     full_log = File.read(log_path)
-    match = full_log.match(/#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m)
+    match = full_log.match(FINAL_MATCH_REGEXP)
     return '' unless match
 
     match[1]
