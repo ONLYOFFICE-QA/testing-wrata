@@ -32,6 +32,7 @@
 * Use Github Actions instead of travis-ci
 * Use dependabot config, not service config
 * Fixes from update `rubocop` to `v1.3.0`
+* Fixes from update `rubocop-performance` to `v1.9.0`
 
 ## 1.19.0 (2020-04-24)
 
