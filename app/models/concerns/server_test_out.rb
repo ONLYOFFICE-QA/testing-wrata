@@ -29,7 +29,7 @@ module ServerTestOut
     return '' unless match
 
     match[1]
-  rescue Errno::ENOENT => e
+  rescue ArgumentError, Errno::ENOENT => e
     Rails.logger.error("Could not read full log: #{e}")
     ''
   end
