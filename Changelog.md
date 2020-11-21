@@ -20,6 +20,7 @@
 * Remove extra unused css rules for `.history-log`
 * Fix css problem with history table is too width
 * Fix error with using non-actual nodejs with `markdownlint`
+* Fix server restart on `ArgumentError` for parsing test result
 
 ### Changes
 
