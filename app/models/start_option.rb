@@ -40,8 +40,8 @@ class StartOption < ApplicationRecord
   def self.from_test(test)
     StartOption.new(docs_branch: test[:doc_branch],
                     teamlab_branch: test[:tm_branch],
-                    portal_type: test[:location].split(' ')[0],
-                    portal_region: test[:location].split(' ')[1],
+                    portal_type: test[:location].split[0],
+                    portal_region: test[:location].split[1],
                     spec_browser: test[:spec_browser],
                     spec_language: test[:spec_language])
   end
