@@ -47,9 +47,9 @@ module Runner
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
+      address: Rails.application.credentials.failure_notification_domain,
       port: 587,
-      domain: 'wrata.onlyoffice.com',
+      domain: Rails.application.credentials.failure_notification_domain,
       user_name: Rails.application.credentials.failure_notification_username,
       password: Rails.application.credentials.failure_notification_password,
       authentication: 'plain',
