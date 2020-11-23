@@ -50,12 +50,12 @@ module LogManager
       @log = EMPTY_STRING
     else
       lines = read_log
-      @log = lines.last(LAST_LINES_COUNT).join('')
+      @log = lines.last(LAST_LINES_COUNT).join
     end
   end
 
   def full_log
-    return read_log.join('') if log_file_exist?
+    return read_log.join if log_file_exist?
 
     EMPTY_STRING
   end
