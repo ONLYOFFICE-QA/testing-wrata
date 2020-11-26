@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add test log to `SpecFailed` mail notification
+
 ### Changes
 
 * Fixes from `rubocop` update to `1.4.0`
