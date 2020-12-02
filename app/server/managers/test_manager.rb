@@ -6,7 +6,7 @@ module TestManager
   # Determine which command is used to run test
   # @return [String] command to run test. Empty if not supported.
   def command_executioner(test)
-    return 'rspec' if test.end_with?('_spec.rb')
+    return 'bundle exec rspec' if test.end_with?('_spec.rb')
     return 'ruby' if test.end_with?('rb')
     return 'bash' if test.end_with?('.sh')
 

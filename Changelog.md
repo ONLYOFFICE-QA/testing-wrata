@@ -6,6 +6,10 @@
 
 * Add test log to `SpecFailed` mail notification
 
+### Fixes
+
+* Fix call `rspec` command in gem somehow outdated
+
 ### Changes
 
 * Fixes from `rubocop` update to `1.4.0`
