@@ -14,6 +14,7 @@
 
 * Fixes from `rubocop` update to `1.4.0`
 * Send email notification not from gmail, but custom sender in secrets
+* Change `Changelog.md` to `CHANGELOG.md`
 
 ## 1.20.0 (2020-11-21)
 
