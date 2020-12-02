@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 1.21.0 (2020-12-02)
+
 ### New Features
 
 * Add test log to `SpecFailed` mail notification
