@@ -23,3 +23,10 @@ By default this repo require SSL certificates to work.
 `./certs/tls.crt` and `./certs/tls.key` should
 exists on your host, outside docker  
 You can disable it by changing `nginx.conf`
+
+## Troubleshooting
+
+* For `uninitialized constant HtmlWithPassedTime (NameError)`
+  error in logs you should add `rspec_passed_time_formatter`
+  gem dependency in project file.  
+  Since [#857](https://github.com/ONLYOFFICE/testing-wrata/pull/857)
