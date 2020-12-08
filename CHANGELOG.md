@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Fix error on clicking rspec results for non-rspec files
+
 ## 1.21.0 (2020-12-02)
 
 ### New Features

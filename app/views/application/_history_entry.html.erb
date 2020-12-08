@@ -19,9 +19,13 @@
         <%= link_to 'Download', histories_log_file_url(id: line.id), class: 'btn btn-xs btn-info' %>
       </td>
       <td class="center">
-        <div class="open-results" data-id="<%= line.id %>">
-          <%= line.total_result.nil? || line.total_result == '' ? 'No final results' : line.total_result %>
-        </div>
+        <% if line.total_result.nil? || line.total_result == '' %>
+          RSpec results not found
+        <% else %>
+          <div class="open-results" data-id="<%= line.id %>">
+            <%= line.total_result %>
+          </div>
+        <% end %>
       </td>
       <td class="center options">
         <% start_option = line.start_option.nil? ? StartOption.new : line.start_option %>
