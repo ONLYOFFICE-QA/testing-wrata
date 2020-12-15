@@ -17,6 +17,7 @@ class StartOption < ApplicationRecord
 
   def generate_region_command
     return '' if portal_type == 'default'
+    return '' if on_custom_portal?
 
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
     portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'

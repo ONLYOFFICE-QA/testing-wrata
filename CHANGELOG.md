@@ -5,6 +5,7 @@
 ### Fixes
 
 * Fix error on clicking rspec results for non-rspec files
+* Fix `sed` error for test start script for custom service url
 
 ## 1.21.0 (2020-12-02)
 
