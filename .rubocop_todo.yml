@@ -137,14 +137,6 @@ Style/StderrPuts:
   Exclude:
     - 'bin/yarn'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: .
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: percent
-  MinSize: 10
-
 # Offense count: 18
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
