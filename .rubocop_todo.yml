@@ -137,19 +137,6 @@ Style/StderrPuts:
   Exclude:
     - 'bin/yarn'
 
-# Offense count: 11
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'bin/yarn'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
-    - 'config/environments/test.rb'
-    - 'config/puma.rb'
-    - 'db/migrate/20201215150554_create_active_storage_tables.active_storage.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: .
