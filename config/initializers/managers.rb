@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
+# @return [Array, Exception] list of exception if DB not initialized
+DB_NOT_INITIALIZED_EXCEPTIONS = [ActiveRecord::ConnectionNotEstablished,
+                                 ActiveRecord::NoDatabaseError,
+                                 PG::ConnectionBad].freeze
+
 # @return [Boolean] check if db already initialized
 def db_initialized?
   ActiveRecord::Base.connection.table_exists?(:servers)
-rescue ActiveRecord::NoDatabaseError, PG::ConnectionBad
+rescue *DB_NOT_INITIALIZED_EXCEPTIONS
   false
 end
 
