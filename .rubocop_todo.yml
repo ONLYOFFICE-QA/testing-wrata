@@ -120,17 +120,6 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'config/initializers/new_framework_defaults_6_1.rb'
-    - 'config/initializers/permissions_policy.rb'
-    - 'db/migrate/20201215150554_create_active_storage_tables.active_storage.rb'
-    - 'db/migrate/20201215155647_add_service_name_to_active_storage_blobs.active_storage.rb'
-
 # Offense count: 1
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
