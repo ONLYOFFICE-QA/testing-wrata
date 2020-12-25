@@ -2,6 +2,11 @@
 
 ## master (unreleased)
 
+### Changes
+
+* `Servers`, `Run History` and `API Keys` links in user dropdown
+  will open in new tab
+
 ### Fixes
 
 * Fix error on clicking rspec results for non-rspec files

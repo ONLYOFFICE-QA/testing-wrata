@@ -33,10 +33,10 @@
             <i class="fa fa-user icon-white"></i><%= current_client.login %><b class="caret"></b>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to 'Servers', servers_url, class: 'dropdown-item' %>
-            <%= link_to 'Run history', client_history_path(current_client), class: 'dropdown-item' %>
+            <%= link_to 'Servers', servers_url, class: 'dropdown-item', target: '_blank' %>
+            <%= link_to 'Run history', client_history_path(current_client), class: 'dropdown-item', target: '_blank' %>
             <%= link_to 'Edit', edit_client_path(current_client), class: 'dropdown-item' %>
-            <%= link_to 'API Keys', clients_api_keys_path, class: 'dropdown-item' %>
+            <%= link_to 'API Keys', clients_api_keys_path, class: 'dropdown-item', target: '_blank' %>
             <div class="dropdown-divider"></div>
             <%= link_to "Sign out", signout_path, method: "delete", class: 'dropdown-item' %>
           </div>
