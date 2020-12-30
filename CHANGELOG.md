@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `ruby-3.0` to CI
+
 ### Changes
 
 * `Servers`, `Run History` and `API Keys` links in user dropdown
