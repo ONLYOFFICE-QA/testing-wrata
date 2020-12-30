@@ -147,7 +147,7 @@ GEM
     onlyoffice_github_helper (0.1.1)
       octokit (~> 4)
     onlyoffice_logger_helper (1.1.0)
-    onlyoffice_rspec_result_parser (0.1.2)
+    onlyoffice_rspec_result_parser (0.2.0)
       nokogiri (~> 1.6)
     orm_adapter (0.5.0)
     overcommit (0.57.0)
