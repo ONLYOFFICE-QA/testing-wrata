@@ -10,6 +10,7 @@
 
 * `Servers`, `Run History` and `API Keys` links in user dropdown
   will open in new tab
+* Upgrade to Rails 6.1
 
 ### Fixes
 
