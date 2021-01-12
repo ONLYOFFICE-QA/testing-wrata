@@ -105,7 +105,7 @@ GEM
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    faraday-net_http (1.0.0)
+    faraday-net_http (1.0.1)
     ffi (1.14.2)
     font-awesome-rails (4.7.0.6)
       railties (>= 3.2, < 6.2)
@@ -151,7 +151,7 @@ GEM
     onlyoffice_digitalocean_wrapper (0.5.0)
       droplet_kit (~> 3)
       onlyoffice_logger_helper (~> 1)
-    onlyoffice_github_helper (0.1.1)
+    onlyoffice_github_helper (0.2.0)
       octokit (~> 4)
     onlyoffice_logger_helper (1.1.0)
     onlyoffice_rspec_result_parser (0.2.0)
