@@ -13,6 +13,7 @@
 * Upgrade to Rails 6.1
 * Reduce production log level to `:warn`
 * Do not install development gems in production Docker
+* Split `test` and `development` gem groups
 
 ### Fixes
 
