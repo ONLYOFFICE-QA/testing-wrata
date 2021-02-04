@@ -4,6 +4,9 @@ module ServerTestOut
   BEGIN_HTML_OUT = '-----BEGIN HTML OUTPUT-----'
   END_HTML_OUT = '-----END HTML OUTPUT-----'
   FINAL_MATCH_REGEXP = /#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m.freeze
+  # @return [Array<Exception>] list of exceptions happens on log read failure
+  LOG_READ_FAILURE_EXCEPTIONS = [ArgumentError,
+                                 Errno::ENOENT].freeze
 
   # @return [Stirng] path to log of server
   def log_path
@@ -29,7 +32,7 @@ module ServerTestOut
     return '' unless match
 
     match[1]
-  rescue ArgumentError, Errno::ENOENT => e
+  rescue *ServerTestOut::LOG_READ_FAILURE_EXCEPTIONS => e
     Rails.logger.error("Could not read full log: #{e}")
     ''
   end
