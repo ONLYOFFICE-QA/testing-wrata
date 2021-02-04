@@ -9,7 +9,8 @@ RUN apt-get update -qq && apt-get install -y libpq-dev \
 WORKDIR /tmp
 COPY Gemfile* /tmp/
 RUN gem install bundler
-RUN bundle install
+RUN bundle config set without 'development' && \
+    bundle install
 
 RUN mkdir /root/wrata
 WORKDIR /root/wrata

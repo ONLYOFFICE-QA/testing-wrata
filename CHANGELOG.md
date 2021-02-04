@@ -12,6 +12,7 @@
   will open in new tab
 * Upgrade to Rails 6.1
 * Reduce production log level to `:warn`
+* Do not install development gems in production Docker
 
 ### Fixes
 
