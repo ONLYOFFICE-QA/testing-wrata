@@ -10,6 +10,7 @@ gem 'font-awesome-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'listen'
 gem 'net-ping'
 gem 'onlyoffice_digitalocean_wrapper'
 gem 'onlyoffice_github_helper'
@@ -20,15 +21,17 @@ gem 'puma'
 gem 'rails', '~> 6.0'
 gem 'uglifier'
 
-group :development, :test do
-  gem 'listen'
+group :development do
   gem 'overcommit'
-  gem 'rails-controller-testing'
-  gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-minitest'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'scss_lint', require: false
+end
+
+group :test do
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
