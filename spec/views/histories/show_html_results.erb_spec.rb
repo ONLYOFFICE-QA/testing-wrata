@@ -29,6 +29,6 @@ RSpec.describe 'histories/show_html_results', type: :view do
   it 'Contains at least single example-name' do
     render
 
-    expect(rendered).to match(/example-name/)
+    expect(rendered).to match(/pipa/)
   end
 end
