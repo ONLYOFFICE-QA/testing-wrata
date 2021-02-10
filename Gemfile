@@ -18,7 +18,7 @@ gem 'onlyoffice_rspec_result_parser'
 gem 'pg'
 gem 'process_exists'
 gem 'puma'
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 6.1'
 gem 'uglifier'
 
 group :development do
