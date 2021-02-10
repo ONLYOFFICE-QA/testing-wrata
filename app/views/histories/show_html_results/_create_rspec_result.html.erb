@@ -18,5 +18,9 @@
 </div>
 <div class="describe-content">
   <% @main_describe = @rspec_result.describe if @rspec_result.describe %>
-  <%= render 'histories/show_html_results/create_main_describe' %>
+  <% if @main_describe %>
+    <%= render 'histories/show_html_results/create_main_describe' %>
+  <% else %>
+    <%= render 'histories/show_html_results/no_result' %>
+  <% end %>
 </div>

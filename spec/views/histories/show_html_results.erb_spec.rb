@@ -31,4 +31,11 @@ RSpec.describe 'histories/show_html_results', type: :view do
 
     expect(rendered).to match(/example-name/)
   end
+
+  it 'Handle error if result is empty' do
+    @rspec_result = OnlyofficeRspecResultParser::RspecResult.new('')
+    render
+
+    expect(rendered).to match(/There was an error parsing rspec results./)
+  end
 end

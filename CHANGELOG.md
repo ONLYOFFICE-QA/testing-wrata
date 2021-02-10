@@ -20,6 +20,7 @@
 * Fix error on clicking rspec results for non-rspec files
 * Fix `sed` error for test start script for custom service url
 * Fix service failure if `LogManager#read_log` fail with incorrect encoding
+* Gracefully handle failure on trying to look for rspec-results
 
 ## 1.21.0 (2020-12-02)
 
