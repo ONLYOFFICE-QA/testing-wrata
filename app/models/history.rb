@@ -22,7 +22,7 @@ class History < ApplicationRecord
 
   # @return [True, False] if a single test executed via spec
   def spec_tests_executed?
-    total_result.exclude?('0 examples')
+    total_result.start_with?('0 examples')
   end
 
   # Send mail notification if something went wrong
