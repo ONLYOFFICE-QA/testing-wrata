@@ -5,6 +5,7 @@
 ### New Features
 
 * Add `ruby-3.0` to CI
+* Send notification if `spec` finished run without single test
 
 ### Changes
 

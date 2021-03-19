@@ -30,7 +30,7 @@ module HistoryManager
     history.start_time = options[:start_time]
     history.exit_code = options[:exit_code]
     Runner::Application.config.threads.lock.synchronize { history.save }
-    history.notify_failure
+    history.spec_finished_notifications
     history
   end
 end
