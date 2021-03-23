@@ -6,6 +6,7 @@
 
 * Add `ruby-3.0` to CI
 * Send notification if `spec` finished run without single test
+* Add `dependabot` config for default Dockerfile updates
 
 ### Changes
 
