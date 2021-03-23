@@ -16,6 +16,7 @@
 * Do not install development gems in production Docker
 * Split `test` and `development` gem groups
 * Enable http2 for default server
+* Set ruby version to `ruby 3.0.0` in default Dockerfile 
 
 ### Fixes
 
