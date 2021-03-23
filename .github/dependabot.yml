@@ -9,6 +9,6 @@ updates:
   - dependency-type: direct
   - dependency-type: indirect
 - package-ecosystem: docker
-    directory: "/"
-    schedule:
-      interval: daily
+  directory: "/"
+  schedule:
+    interval: daily
