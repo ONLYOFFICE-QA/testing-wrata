@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 1.22.0 (2021-04-05)
+
 ### New Features
 
 * Add `ruby-3.0` to CI
