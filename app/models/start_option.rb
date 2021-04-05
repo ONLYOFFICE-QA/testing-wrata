@@ -20,7 +20,7 @@ class StartOption < ApplicationRecord
     return '' if on_custom_portal?
 
     portal_data_docs = '~/RubymineProjects/OnlineDocuments/data/portal_data.rb'
-    portal_data_teamlab = '~/RubymineProjects/TeamLab/Framework/StaticDataTeamLab.rb'
+    portal_data_teamlab = '~/RubymineProjects/TeamLab/framework/static_data_teamlab.rb'
     region_command = ''
     region_command +=
       "sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{portal_type}'/g\\\" #{portal_data_docs} && " \
