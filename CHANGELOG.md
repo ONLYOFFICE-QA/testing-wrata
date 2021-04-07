@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `login` field to api config file page
+
 ## 1.22.0 (2021-04-05)
 
 ### New Features
