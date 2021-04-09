@@ -6,6 +6,10 @@
 
 * Add `login` field to api config file page
 
+### Changes
+
+* Send full region string (like `com us`) in `SPEC_REGION` env
+
 ## 1.22.0 (2021-04-05)
 
 ### New Features
