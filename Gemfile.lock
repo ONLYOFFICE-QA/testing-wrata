@@ -90,7 +90,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
-    droplet_kit (3.13.0)
+    droplet_kit (3.13.1)
       faraday (>= 0.15)
       kartograph (~> 0.2.3)
       resource_kit (~> 0.1.5)
