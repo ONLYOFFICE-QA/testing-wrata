@@ -12,36 +12,32 @@
           <a id="delay-runs" href="#" class="nav-link">DelayRuns</a>
         </li>
         <li class="nav-item dropdown">
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-flag icon-white"></i>Test Lists <b class="caret"></b>
-            </button>
-            <ul id="test_list_menu" class="dropdown-menu dropdown-menu-end">
-              <% client_test_lists.each do |test_list| %>
-                <div class="dropdown-item">
-                  <a href="#"><%= test_list.name %></a>
-                  <i class="fa fa-trash delete-test-list" delete-data="<%= test_list_path(test_list) %>"></i>
-                </div>
-              <% end %>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item">Create new</a>
-            </ul>
-          </div>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-flag icon-white"></i>Test Lists<b class="caret"></b>
+          </a>
+          <ul id="test_list_menu" class="dropdown-menu dropdown-menu-end">
+            <% client_test_lists.each do |test_list| %>
+              <div class="dropdown-item">
+                <a href="#"><%= test_list.name %></a>
+                <i class="fa fa-trash delete-test-list" delete-data="<%= test_list_path(test_list) %>"></i>
+              </div>
+            <% end %>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item">Create new</a>
+          </ul>
         </li>
         <li class="nav-item dropdown">
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-user icon-white"></i><%= current_client.login %><b class="caret"></b>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <%= link_to 'Servers', servers_url, class: 'dropdown-item', target: '_blank' %>
-              <%= link_to 'Run history', client_history_path(current_client), class: 'dropdown-item', target: '_blank' %>
-              <%= link_to 'Edit', edit_client_path(current_client), class: 'dropdown-item' %>
-              <%= link_to 'API Keys', clients_api_keys_path, class: 'dropdown-item', target: '_blank' %>
-              <div class="dropdown-divider"></div>
-              <%= link_to "Sign out", signout_path, method: "delete", class: 'dropdown-item' %>
-            </ul>
-          </div>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user icon-white"></i><%= current_client.login %><b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <%= link_to 'Servers', servers_url, class: 'dropdown-item', target: '_blank' %>
+            <%= link_to 'Run history', client_history_path(current_client), class: 'dropdown-item', target: '_blank' %>
+            <%= link_to 'Edit', edit_client_path(current_client), class: 'dropdown-item' %>
+            <%= link_to 'API Keys', clients_api_keys_path, class: 'dropdown-item', target: '_blank' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Sign out", signout_path, method: "delete", class: 'dropdown-item' %>
+          </ul>
         </li>
       </ul>
     </div>
