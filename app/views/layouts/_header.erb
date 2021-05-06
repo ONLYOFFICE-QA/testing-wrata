@@ -13,7 +13,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-flag icon-white"></i>Test Lists<b class="caret"></b>
+            <i class="fa fa-flag icon-white"></i>Test Lists
           </a>
           <ul id="test_list_menu" class="dropdown-menu dropdown-menu-end">
             <% client_test_lists.each do |test_list| %>
@@ -28,7 +28,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-user icon-white"></i><%= current_client.login %><b class="caret"></b>
+            <i class="fa fa-user icon-white"></i><%= current_client.login %>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <%= link_to 'Servers', servers_url, class: 'dropdown-item', target: '_blank' %>
