@@ -11,21 +11,21 @@
         </div>
     <% end %>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :login, 'Login', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_field :login, class: 'form-control' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :password, 'Password', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.password_field :password, class: 'form-control' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :password_confirmation, 'Confirmation', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.password_field :password_confirmation, class: 'form-control' %>
@@ -33,7 +33,7 @@
     </div>
     <div style="margin-top: 10px"></div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <div style="font-size: 14px" class="col-sm-2 control-label bold">Project:</div>
 
       <div class="col-sm-offset-2 col-sm-10">
@@ -50,7 +50,7 @@
     </div>
 
     <% if current_client.admin? %>
-        <div class="form-group">
+        <div class="mb-3 mb-3">
           <%= f.label :verified, 'Verified', class: 'col-sm-2 control-label' %>
           <div class="col-sm-10">
             <%= f.check_box :verified %>
@@ -60,35 +60,35 @@
 
     <div style="margin-top: 10px"></div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :first_name, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_field :first_name, class: 'form-control' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :second_name, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_field :second_name, class: 'form-control' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :post, 'Position', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_field :post, class: 'form-control' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <%= f.label :env_file, 'ENV file (one env per line)', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_area(:env_file, class: 'form-control', rows: 15, placeholder: 'ENV1=test')%>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3 mb-3">
       <div class="col-sm-offset-2 col-sm-10">
         <%= f.button 'Save', class: 'btn btn-primary', type: 'submit', name: 'commit' %>
       </div>
