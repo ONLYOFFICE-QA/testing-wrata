@@ -3,21 +3,21 @@
   <h1 class="sing-in-header">Sign in</h1>
   <%= form_for(:session, url: sessions_path, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= f.label :login, class: 'offset-sm-4 col-sm-5 control-label' %>
       <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :login, class: 'form-control', autocomplete: 'email' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= f.label :password, class: 'offset-sm-4 col-sm-5 control-label' %>
       <div class="offset-sm-4 col-sm-5">
         <%= f.password_field :password, class: 'form-control', autocomplete: 'password' %>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <div class="offset-sm-4 col-sm-5">
         <%= f.button "Log in", class: 'btn btn-primary', type: 'submit', name: 'commit' %>
       </div>
