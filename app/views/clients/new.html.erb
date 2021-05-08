@@ -1,26 +1,27 @@
 <% provide(:title, 'Sign up') %>
-<h1 style="margin-left: 9%">Sign Up</h1>
+<div class="user-editing-block">
+  <h1>Sign Up</h1>
 
-<%= form_for(@client, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+  <%= form_for(@client, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
     <%= render 'shared/error_messages' %>
 
     <div class="mb-3 ms-3">
-      <%= f.label :login, 'Login*', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :login, 'Login*', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :login, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 ms-3">
-      <%= f.label :password, 'Password*', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :password, 'Password*', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.password_field :password, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 ms-3">
-      <%= f.label :password_confirmation, 'Confirmation*', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :password_confirmation, 'Confirmation*', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     </div>
@@ -28,9 +29,9 @@
     <div style="margin-top: 10px"></div>
 
     <div class="mb-3 ms-3">
-      <div style="font-size: 14px" class="col-sm-2 control-label bold">Project:</div>
+      <div style="font-size: 14px" class="offset-sm-4 col-sm-5 control-label bold">Project:</div>
 
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-2 offset-sm-4 col-sm-5">
         <div class="radio-inline">
           <%= f.radio_button :project, 'docs', checked: true %>
           <%= label :project_docs, 'Online Document' %>
@@ -46,32 +47,33 @@
     <div style="margin-top: 10px"></div>
 
     <div class="mb-3 ms-3">
-      <%= f.label :first_name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :first_name, class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :first_name, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 ms-3">
-      <%= f.label :second_name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :second_name, class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :second_name, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 ms-3">
-      <%= f.label :post, 'Position', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :post, 'Position', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :post, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 ms-3">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-2 offset-sm-4 col-sm-5">
         <%= f.button 'Create account', class: 'btn btn-primary', type: 'submit', name: 'commit' %>
       </div>
     </div>
 
-<% end %>
+  <% end %>
+</div>
 
-<%= link_to 'Back', runner_path, style: 'margin-left: 9%' %>
+<%= link_to 'Back', runner_path, class: 'offset-sm-4 col-sm-5' %>
