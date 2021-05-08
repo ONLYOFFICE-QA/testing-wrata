@@ -789,11 +789,11 @@ li select.branch {
   height: 20px;
 }
 
-.tests-block select.form-control {
-  padding: 0;
+.tests-block select.form-select {
+  padding: 0 0 0 5px;
 }
 
-.form-control.server-size-select {
+.form-select.server-size-select {
   height: auto;
   padding: 0;
 }
