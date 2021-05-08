@@ -2,12 +2,12 @@
   width: 50%;
 }
 
-.login-block {
+.user-editing-block {
   display: flex;
   flex-direction: column;
   margin-top: 6em;
 }
 
-.sing-up-link, .sing-in-header {
+.user-editing-block > h1 {
   margin: auto;
 }

@@ -12,31 +12,31 @@
     <% end %>
 
     <div class="mb-3 mb-3">
-      <%= f.label :login, 'Login', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :login, 'Login', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :login, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 mb-3">
-      <%= f.label :password, 'Password', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :password, 'Password', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.password_field :password, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 mb-3">
-      <%= f.label :password_confirmation, 'Confirmation', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :password_confirmation, 'Confirmation', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     </div>
     <div style="margin-top: 10px"></div>
 
     <div class="mb-3 mb-3">
-      <div style="font-size: 14px" class="col-sm-2 control-label bold">Project:</div>
+      <div style="font-size: 14px" class="offset-sm-4 col-sm-5 control-label bold">Project:</div>
 
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-2 offset-sm-4 col-sm-5">
         <div class="radio-inline">
           <%= f.radio_button :project, 'docs', checked: true %>
           <%= label :project_docs, 'Online Document' %>
@@ -51,8 +51,8 @@
 
     <% if current_client.admin? %>
         <div class="mb-3 mb-3">
-          <%= f.label :verified, 'Verified', class: 'col-sm-2 control-label' %>
-          <div class="col-sm-10">
+          <%= f.label :verified, 'Verified', class: 'offset-sm-4 col-sm-5 control-label' %>
+          <div class="offset-sm-4 col-sm-5">
             <%= f.check_box :verified %>
           </div>
         </div>
@@ -61,35 +61,35 @@
     <div style="margin-top: 10px"></div>
 
     <div class="mb-3 mb-3">
-      <%= f.label :first_name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :first_name, class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :first_name, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 mb-3">
-      <%= f.label :second_name, class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :second_name, class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :second_name, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 mb-3">
-      <%= f.label :post, 'Position', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :post, 'Position', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :post, class: 'form-control' %>
       </div>
     </div>
 
     <div class="mb-3 mb-3">
-      <%= f.label :env_file, 'ENV file (one env per line)', class: 'col-sm-2 control-label' %>
-      <div class="col-sm-10">
+      <%= f.label :env_file, 'ENV file (one env per line)', class: 'offset-sm-4 col-sm-5 control-label' %>
+      <div class="offset-sm-4 col-sm-5">
         <%= f.text_area(:env_file, class: 'form-control', rows: 15, placeholder: 'ENV1=test')%>
       </div>
     </div>
 
     <div class="mb-3 mb-3">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-2 offset-sm-4 col-sm-5">
         <%= f.button 'Save', class: 'btn btn-primary', type: 'submit', name: 'commit' %>
       </div>
     </div>
