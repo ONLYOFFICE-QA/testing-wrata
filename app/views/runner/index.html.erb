@@ -110,11 +110,11 @@
                                   :name,
                                   :name,
                                   {},
-                                  class: 'project-list form-select-sm form-select',
+                                  class: 'project-list form-control',
                                   'data-tooltip': true,
                                   title: 'Project') %>
-            <select id="docs-branches" class="branch form-select"></select>
-            <select id='portal-list' class="region form-select form-select-sm">
+            <select id="docs-branches" class="branch form-control"></select>
+            <select id='portal-list' class="region form-control">
               <% REGION_LIST.each do |region| %>
                 <option <%= 'selected' if region == DEFAULT_REGION %>><%= region %></option>
               <% end %>
@@ -125,7 +125,7 @@
                                   :name,
                                   :name,
                                   {},
-                                  class: 'region form-select form-select-sm spec-language',
+                                  class: 'region form-control spec-language',
                                   'data-tooltip': true,
                                   title: 'Browser') %>
             <i class="update-tests fa fa-repeat"></i>
@@ -148,7 +148,7 @@
                               :name,
                               :name,
                               {},
-                              class: 'form-select form-select-sm spec-language',
+                              class: 'form-control spec-language',
                               multiple: true,
                               size: SpecLanguage.all.length) %>
       </div>
