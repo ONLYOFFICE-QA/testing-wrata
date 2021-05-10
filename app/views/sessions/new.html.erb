@@ -1,23 +1,23 @@
 <% provide(:title, "Sign in") %>
-<div class="user-editing-block">
-  <h1>Sign in</h1>
+<div class="login-block">
+  <h1 class="sing-in-header">Sign in</h1>
   <%= form_for(:session, url: sessions_path, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
 
-    <div class="mb-3">
+    <div class="form-group">
       <%= f.label :login, class: 'offset-sm-4 col-sm-5 control-label' %>
       <div class="offset-sm-4 col-sm-5">
         <%= f.text_field :login, class: 'form-control', autocomplete: 'email' %>
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <%= f.label :password, class: 'offset-sm-4 col-sm-5 control-label' %>
       <div class="offset-sm-4 col-sm-5">
         <%= f.password_field :password, class: 'form-control', autocomplete: 'password' %>
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group">
       <div class="offset-sm-4 col-sm-5">
         <%= f.button "Log in", class: 'btn btn-primary', type: 'submit', name: 'commit' %>
       </div>
@@ -25,5 +25,5 @@
     <!--<input class="btn btn-primary" name="commit" type="submit" value="Log in">-->
   <% end %>
 
-  <p class="offset-sm-4 col-sm-5">New user? <%= link_to "Sign up now!", signup_path %></p>
+  <p class="sing-up-link">New user? <%= link_to "Sign up now!", signup_path %></p>
 </div>
