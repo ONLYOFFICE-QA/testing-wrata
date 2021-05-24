@@ -11,6 +11,7 @@
 ### Changes
 
 * Send full region string (like `com us`) in `SPEC_REGION` env
+* Increase puma and db thread count from 50
 
 ## 1.22.0 (2021-04-05)
 
