@@ -71,7 +71,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.16)
     bootbox-rails (0.5.0)
-    bootstrap (5.0.0)
+    bootstrap (5.0.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.9.2, < 3)
       sassc-rails (>= 2.0.0)
@@ -339,4 +339,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   2.2.6
+   2.2.15
