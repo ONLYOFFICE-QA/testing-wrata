@@ -3,7 +3,7 @@ development: &default
   encoding: unicode
   database: wrata_development
   host: localhost
-  pool: 50
+  pool: 500
   username: postgres
 
 # Warning: The database defined as "test" will be erased and
