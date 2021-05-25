@@ -45,9 +45,11 @@
           <ul>
             <li><i class="fa fa-stop shower" data-server="<%= server.name %>"><span class="hidden-tool"> stop</span></i>
             </li>
-            <li><%= select_tag :droplet_size,
+            <li>
+              <%= select_tag :droplet_size,
                                options_for_select(OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper::DROPLET_SIZES, '1gb'),
-                               class: 'form-control server-size-select' %></li>
+                               class: 'form-select server-size-select' %>
+            </li>
             <li>
               <i class="fa fa-power-off destroy shower" data-server="<%= server.name %>"><span class="hidden-tool"> destroy</span></i>
             </li>

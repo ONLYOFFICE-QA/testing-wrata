@@ -1,6 +1,8 @@
-<h1>Editing client</h1>
+<div class="user-editing-block">
+  <h1>Editing client</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
+</div>
 
-<%= link_to 'Show', @client %> |
+<%= link_to 'Show', @client, class: 'offset-sm-4 col-sm-5' %> |
 <%= link_to 'Back', clients_path %>
