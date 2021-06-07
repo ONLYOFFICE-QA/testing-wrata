@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add instruction to README how to update `nginx` container
+
 ## 1.23.0 (2021-04-20)
 
 ### New Features
