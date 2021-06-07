@@ -24,6 +24,15 @@ By default this repo require SSL certificates to work.
 exists on your host, outside docker  
 You can disable it by changing `nginx.conf`
 
+## How to update `nginx` container
+
+```shell
+docker-compose stop
+docker-compose rm web
+docker-compose pull web
+docker-compose up -d
+```
+
 ## Troubleshooting
 
 * For `uninitialized constant HtmlWithPassedTime (NameError)`
