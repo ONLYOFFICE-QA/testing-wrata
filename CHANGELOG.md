@@ -6,6 +6,11 @@
 
 * Add instruction to README how to update `nginx` container
 
+### Changes
+
+* Increase puma and db thread count from 50
+* Update `bootstrap` to v5
+
 ## 1.23.0 (2021-04-20)
 
 ### New Features
@@ -15,7 +20,6 @@
 ### Changes
 
 * Send full region string (like `com us`) in `SPEC_REGION` env
-* Increase puma and db thread count from 50
 
 ## 1.22.0 (2021-04-05)
 
