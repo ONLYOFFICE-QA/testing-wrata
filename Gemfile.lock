@@ -76,7 +76,7 @@ GEM
       popper_js (>= 2.9.2, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
-    childprocess (4.0.0)
+    childprocess (4.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.9)
