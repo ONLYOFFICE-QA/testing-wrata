@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ClientsControllerTest < ActionController::TestCase
-  setup do
+  before do
     @client = clients(:one)
   end
 
