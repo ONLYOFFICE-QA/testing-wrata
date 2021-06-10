@@ -11,3 +11,6 @@ AllCops:
     - vendor/bundle/**/*
   NewCops: enable
 
+# Until https://github.com/rubocop/rubocop-rspec/issues/1160
+RSpec/Rails/AvoidSetupHook:
+  Enabled: false
