@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ServersControllerTest < ActionController::TestCase
-  before do
+  setup do
     @server = servers(:one)
     Runner::Application.config.threads = ServerThreads.new.init_threads
   end

@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class TestListsControllerTest < ActionController::TestCase
-  before do
+  setup do
     @test_list = test_lists(:one)
   end
 

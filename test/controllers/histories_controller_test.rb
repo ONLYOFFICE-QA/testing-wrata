@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class HistoriesControllerTest < ActionController::TestCase
-  before do
+  setup do
     @history = histories(:one)
     @server = servers(:one)
     @client = clients(:one)
