@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Fix broken `DelayRun` change time methods
+
 ## 1.24.0 (2021-06-08)
 
 ### New Features
