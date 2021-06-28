@@ -6,6 +6,10 @@
 
 * Add `sentry` support
 
+### Fixes
+
+* Fix ApiKeys command on Firefox
+
 ## 1.24.1 (2021-06-11)
 
 ### Fixes
