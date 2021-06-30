@@ -68,7 +68,7 @@ class SpecBrowsersController < ApplicationController
     @spec_browser = SpecBrowser.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the allowlist through.
   def spec_browser_params
     params.require(:spec_browser).permit(:name)
   end

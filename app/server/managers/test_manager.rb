@@ -39,11 +39,11 @@ module TestManager
 
   def generate_ssh_command(command)
     "sshpass -p #{Rails.application.credentials.ssh_pass} " \
-    'ssh -o ConnectTimeout=10 '\
-    '-o StrictHostKeyChecking=no ' \
-    '-o UserKnownHostsFile=/dev/null '\
-    "#{Rails.application.credentials.ssh_user}@#{@server_model.address} "\
-    "<<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
+      'ssh -o ConnectTimeout=10 '\
+      '-o StrictHostKeyChecking=no ' \
+      '-o UserKnownHostsFile=/dev/null '\
+      "#{Rails.application.credentials.ssh_user}@#{@server_model.address} "\
+      "<<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
   end
 
   def docker_command(command)
@@ -54,9 +54,9 @@ module TestManager
                   "#{docker_run_environments}"\
                   '--shm-size=2g'
     'docker rm -f $(docker ps -a -q); '\
-    "docker pull #{Rails.application.config.node_docker_image}; "\
-    "docker run #{docker_keys} #{Rails.application.config.node_docker_image} "\
-    "bash -c \"bash /before-run.sh; chmod 777 /var/www/html/; #{command}\" " \
+      "docker pull #{Rails.application.config.node_docker_image}; "\
+      "docker run #{docker_keys} #{Rails.application.config.node_docker_image} "\
+      "bash -c \"bash /before-run.sh; chmod 777 /var/www/html/; #{command}\" " \
   end
 
   def docker_ssh_command(command)
