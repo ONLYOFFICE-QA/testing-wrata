@@ -21,8 +21,8 @@ module ServerTestOut
   # @return [String] command to ouput test result
   def output_result
     "echo '#{BEGIN_HTML_OUT}';" \
-    "cat #{result_in_container};" \
-    "echo #{END_HTML_OUT};"
+      "cat #{result_in_container};" \
+      "echo #{END_HTML_OUT};"
   end
 
   # @return [String] get final result of test

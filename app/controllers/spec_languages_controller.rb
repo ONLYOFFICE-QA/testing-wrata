@@ -68,7 +68,7 @@ class SpecLanguagesController < ApplicationController
     @spec_language = SpecLanguage.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the allowlist through.
   def spec_language_params
     params.require(:spec_language).permit(:name)
   end
