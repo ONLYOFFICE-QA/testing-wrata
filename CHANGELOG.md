@@ -5,6 +5,7 @@
 ### New Features
 
 * Add `sentry` support
+* Add logging to `stdout` in dev environment
 
 ### Fixes
 
