@@ -10,6 +10,7 @@
 ### Fixes
 
 * Fix ApiKeys command on Firefox
+* Do not hard crash if some user is lost for DelayRun
 
 ## 1.24.1 (2021-06-11)
 
