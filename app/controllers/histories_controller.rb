@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'zip'
+
 class HistoriesController < ApplicationController
   before_action :set_history, only: %i[show edit update destroy log_file]
 
@@ -72,6 +74,29 @@ class HistoriesController < ApplicationController
 
   def log_file
     send_data @history.log, filename: "wrata-history-#{@history.id}.log"
+  end
+
+  def logs
+    histories = current_client.histories
+    filename = 'my_archive.zip'
+    temp_file = Tempfile.new(filename)
+
+    begin
+      Zip::File.open(temp_file.path, create: true) do |zip|
+        histories.each do |history|
+          name = "#{history.created_at.in_time_zone}.log"
+          log_file = Tempfile.new(name)
+          log_file.write(history.to_log_file)
+          zip.add(name, log_file.path)
+        end
+      end
+
+      zip_data = File.read(temp_file.path)
+      send_data(zip_data, type: 'application/zip', disposition: 'attachment', filename: filename)
+    ensure # important steps below
+      temp_file.close
+      temp_file.unlink
+    end
   end
 
   private

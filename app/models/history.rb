@@ -56,4 +56,10 @@ class History < ApplicationRecord
       notify_failure
     end
   end
+
+  # @return [String] convert to log file format
+  def to_log_file
+    "Execution log for file: #{file}\n\n"\
+      "#{log}\n\n"
+  end
 end
