@@ -27,6 +27,11 @@ module RunThreadManager
 
   def add_to_queue(run)
     Rails.logger.info 'add_to_queue: start test'
+    unless run.client
+      Rails.logger.error("Non-existing user for this run: `#{run}")
+      return
+    end
+
     manager = Runner::Application.config.run_manager.find_manager_by_client_login(run.client.login)
     return unless manager
 
