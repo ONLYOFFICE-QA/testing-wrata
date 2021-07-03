@@ -102,6 +102,9 @@ class HistoriesController < ApplicationController
   end
 
   # Method used to form archive file
+  # @param [Array<ActiveRecord>] histories list
+  # @param [Tempfile] file file to write archive
+  # @return [nil]
   def form_log_archive(histories, file)
     Zip::File.open(file.path, create: true) do |zip|
       histories.each do |history|
