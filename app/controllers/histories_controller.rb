@@ -77,23 +77,14 @@ class HistoriesController < ApplicationController
   end
 
   def logs
-    histories = current_client.histories
     filename = "wrata_logs_archive_#{current_client.login}_#{DateTime.now}.zip"
     temp_file = Tempfile.new(filename)
 
     begin
-      Zip::File.open(temp_file.path, create: true) do |zip|
-        histories.each do |history|
-          name = "wrata_log_#{history.created_at.in_time_zone}.log"
-          log_file = Tempfile.new(name)
-          log_file.write(history.to_log_file)
-          zip.add(name, log_file.path)
-        end
-      end
-
-      zip_data = File.read(temp_file.path)
-      send_data(zip_data, type: 'application/zip', disposition: 'attachment', filename: filename)
-    ensure # important steps below
+      form_log_archive(current_client.histories, temp_file)
+      send_data(File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename: filename)
+    rescue StandardError => e
+      Rails.logger.error("Something error happened while forming logs #{e}")
       temp_file.close
       temp_file.unlink
     end
@@ -108,5 +99,17 @@ class HistoriesController < ApplicationController
 
   def history_params
     params.require(:history).permit(:log, :file, :server_id, :client_id, :total_result)
+  end
+
+  # Method used to form archive file
+  def form_log_archive(histories, file)
+    Zip::File.open(file.path, create: true) do |zip|
+      histories.each do |history|
+        name = "wrata_log_#{history.created_at.in_time_zone}.log"
+        log_file = Tempfile.new(name)
+        log_file.write(history.to_log_file)
+        zip.add(name, log_file.path)
+      end
+    end
   end
 end
