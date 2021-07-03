@@ -78,13 +78,13 @@ class HistoriesController < ApplicationController
 
   def logs
     histories = current_client.histories
-    filename = 'my_archive.zip'
+    filename = "wrata_logs_archive_#{current_client.login}_#{DateTime.now}.zip"
     temp_file = Tempfile.new(filename)
 
     begin
       Zip::File.open(temp_file.path, create: true) do |zip|
         histories.each do |history|
-          name = "#{history.created_at.in_time_zone}.log"
+          name = "wrata_log_#{history.created_at.in_time_zone}.log"
           log_file = Tempfile.new(name)
           log_file.write(history.to_log_file)
           zip.add(name, log_file.path)
