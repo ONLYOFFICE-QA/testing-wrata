@@ -6,6 +6,7 @@
 
 * Add `sentry` support
 * Add logging to `stdout` in dev environment
+* Add description how to run `docker-compose` locally
 
 ### Fixes
 
