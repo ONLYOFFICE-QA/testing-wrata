@@ -33,6 +33,12 @@ docker-compose pull web
 docker-compose up -d
 ```
 
+## How to backup database
+
+```shell
+docker exec testing-wrata_db_1 pg_dumpall -c -U postgres | gzip > dump_$(date +"%Y-%m-%d_%H_%M_%S").gz
+```
+
 ## Troubleshooting
 
 * For `uninitialized constant HtmlWithPassedTime (NameError)`
