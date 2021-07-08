@@ -110,9 +110,10 @@ class HistoriesController < ApplicationController
     Zip::File.open(file.path, create: true) do |zip|
       histories.each do |history|
         name = history.log_filename
-        log_file = Tempfile.new(history.log_filename)
-        log_file.write(history.to_log_file)
-        zip.add(name, log_file.path)
+        zip.get_output_stream(name) do |f|
+          f.write(history.to_log_file)
+        end
+        zip.commit
       end
     end
   end
