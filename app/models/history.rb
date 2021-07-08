@@ -62,4 +62,9 @@ class History < ApplicationRecord
     "Execution log for file: #{file}\n\n"\
       "#{log}\n\n"
   end
+
+  # @return [String] filename for log file
+  def log_filename
+    "wrata-log-#{created_at.in_time_zone.strftime('%Y-%m-%d %H-%m-%s-%L %z')}.log"
+  end
 end
