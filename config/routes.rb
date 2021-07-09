@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # should always be on top of `resources :histories`
   # for server_history rspec-result correctly shown
   get '/histories/log_file'
-  get '/histories/logs'
+  get '/histories/user_logs_archive'
   resources :histories
   get '/client_history/show_more', to: 'clients#show_more'
   get '/client_history/:id', to: 'clients#client_history', as: 'client_history'

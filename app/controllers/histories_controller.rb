@@ -3,6 +3,8 @@
 require 'zip'
 
 class HistoriesController < ApplicationController
+  # @return [Integer] max histories in single archive
+  MAX_HISTORIES_IN_ARCHIVE = 500
   before_action :set_history, only: %i[show edit update destroy log_file]
 
   # GET /histories
@@ -76,12 +78,12 @@ class HistoriesController < ApplicationController
     send_data @history.log, filename: "wrata-history-#{@history.id}.log"
   end
 
-  def logs
+  def user_logs_archive
     filename = "wrata_logs_archive_#{current_client.login}_#{DateTime.now}.zip"
     temp_file = Tempfile.new(filename)
 
     begin
-      form_log_archive(current_client.histories.last(50), temp_file)
+      form_log_archive(current_client.histories.last(MAX_HISTORIES_IN_ARCHIVE), temp_file)
       send_data(File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename: filename)
     rescue StandardError => e
       Rails.logger.error("Something error happened while forming logs #{e}")
