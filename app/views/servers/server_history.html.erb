@@ -34,10 +34,16 @@
     <div class="popup-overlay" style="display: none">
       <div class="popup-window"></div>
     </div>
-    <h1>Runs on <label id="<%= @controller.to_s %>"><%= @name %></label>:</h1>
-    <button id="clear-history" class="btn btn-primary" style="position: absolute; top: 58px; right: 20px;">
+    <h1 style="float: left"'>Runs on <label id="<%= @controller.to_s %>"><%= @name %></label>:</h1>
+    <button id="clear-history" class="btn btn-primary right-floating-button">
       <i class="fa fa-trash"></i>Clear history
     </button>
+    <% if @controller == :client %>
+      <%= link_to histories_user_logs_archive_url, class: 'btn btn-primary right-floating-button' do %>
+        <i class="fa fa-download" aria-hidden="true" target="_blank"></i>Download <%= HistoriesController::MAX_HISTORIES_IN_ARCHIVE %> logs files
+      <% end %>
+    <% end %>
+
     <table class="history-table table table-bordered table-hovers">
       <thead>
       <tr>

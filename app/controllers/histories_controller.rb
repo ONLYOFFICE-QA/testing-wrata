@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require 'zip'
+
 class HistoriesController < ApplicationController
+  # @return [Integer] max histories in single archive
+  MAX_HISTORIES_IN_ARCHIVE = 500
   before_action :set_history, only: %i[show edit update destroy log_file]
 
   # GET /histories
@@ -74,6 +78,21 @@ class HistoriesController < ApplicationController
     send_data @history.log, filename: "wrata-history-#{@history.id}.log"
   end
 
+  def user_logs_archive
+    filename = "wrata_logs_archive_#{current_client.login}_#{DateTime.now}.zip"
+    temp_file = Tempfile.new(filename)
+
+    begin
+      form_log_archive(current_client.histories.last(MAX_HISTORIES_IN_ARCHIVE), temp_file)
+      send_data(File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename: filename)
+    rescue StandardError => e
+      Rails.logger.error("Something error happened while forming logs #{e}")
+      temp_file.close
+      temp_file.unlink
+      render plain: "Could not create log archive with error: #{e}"
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -83,5 +102,21 @@ class HistoriesController < ApplicationController
 
   def history_params
     params.require(:history).permit(:log, :file, :server_id, :client_id, :total_result)
+  end
+
+  # Method used to form archive file
+  # @param [Array<ActiveRecord>] histories list
+  # @param [Tempfile] file file to write archive
+  # @return [nil]
+  def form_log_archive(histories, file)
+    Zip::File.open(file.path, create: true) do |zip|
+      histories.each do |history|
+        name = history.log_filename
+        zip.get_output_stream(name) do |f|
+          f.write(history.to_log_file)
+        end
+        zip.commit
+      end
+    end
   end
 end
