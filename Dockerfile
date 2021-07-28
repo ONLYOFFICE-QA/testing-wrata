@@ -1,11 +1,13 @@
-FROM ruby:3.0.2
+FROM ruby:3.0.2-alpine
 
 MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
 
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get update -qq && apt-get install -y libpq-dev \
-                                             nodejs \
-                                             sshpass
+RUN apk add --update build-base \
+                     nodejs \
+                     openssh-client \
+                     postgresql-dev \
+                     sshpass \
+                     tzdata
 WORKDIR /tmp
 COPY Gemfile* /tmp/
 RUN gem install bundler
