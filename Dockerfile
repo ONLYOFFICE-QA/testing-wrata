@@ -2,12 +2,12 @@ FROM ruby:3.0.2-alpine
 
 LABEL maintainer="shockwavenn@gmail.com"
 
-RUN apk add --update build-base \
-                     nodejs \
-                     openssh-client \
-                     postgresql-dev \
-                     sshpass \
-                     tzdata
+RUN apk add --no-cache build-base \
+                       nodejs \
+                       openssh-client \
+                       postgresql-dev \
+                       sshpass \
+                       tzdata
 WORKDIR /tmp
 COPY Gemfile* /tmp/
 RUN gem install bundler
