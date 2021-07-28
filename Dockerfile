@@ -1,6 +1,6 @@
 FROM ruby:3.0.2-alpine
 
-MAINTAINER Pavel.Lobashov "shockwavenn@gmail.com"
+LABEL maintainer="shockwavenn@gmail.com"
 
 RUN apk add --update build-base \
                      nodejs \
