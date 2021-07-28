@@ -17,6 +17,7 @@
 ### Changes
 
 * Use `alpine` as base image for app
+* Fix several issues with Dockerfile using `hadolint`
 
 ## 1.24.1 (2021-06-11)
 
