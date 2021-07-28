@@ -19,8 +19,8 @@ services:
     image: nginx:alpine
     volumes:
       # For local compose uncomment volume below and comment `./nginx-ssl.conf`
-      # - "./nginx.conf:/etc/nginx/conf.d/default.conf"
-      - "./nginx-ssl.conf:/etc/nginx/conf.d/default.conf"
+      - "./nginx.conf:/etc/nginx/conf.d/default.conf"
+#      - "./nginx-ssl.conf:/etc/nginx/conf.d/default.conf"
       - ./certs:/etc/nginx/certs
     depends_on:
       - app
