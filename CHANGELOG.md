@@ -4,7 +4,6 @@
 
 ### New Features
 
-* Add `sentry` support
 * Add logging to `stdout` in dev environment
 * Add description how to run `docker-compose` locally
 * Add ability to download all log files for Client
