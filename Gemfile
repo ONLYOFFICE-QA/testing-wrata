@@ -20,8 +20,6 @@ gem 'process_exists'
 gem 'puma'
 gem 'rails', '~> 6.1'
 gem 'rubyzip'
-gem 'sentry-rails'
-gem 'sentry-ruby'
 gem 'uglifier'
 
 group :development do
