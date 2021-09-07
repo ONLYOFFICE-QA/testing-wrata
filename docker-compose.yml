@@ -5,6 +5,8 @@ services:
     restart: always
     environment:
       POSTGRES_HOST_AUTH_METHOD: 'trust'
+    volumes:
+      - db_data:/var/lib/postgresql/data
   app:
     build: .
     depends_on:
@@ -28,3 +30,5 @@ services:
       - 80:80
       - 443:443
     restart: always
+volumes:
+  db_data:
