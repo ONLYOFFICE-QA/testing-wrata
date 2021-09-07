@@ -62,18 +62,7 @@ class ServerThread
   def get_info_from_server(current_client, with_log: false)
     server_info = {}
     server_info[:name] = @server_model.name
-    if @test
-      server_info[:test] = {
-        name: slice_project_path(@test[:test_path]),
-        location: @test[:location],
-        metadata: @test_metadata,
-        time: testing_time,
-        doc_branch: @test[:doc_branch],
-        tm_branch: @test[:tm_branch],
-        spec_browser: @test[:spec_browser],
-        spec_language: @test[:spec_language]
-      }
-    end
+    server_info[:test] = form_test_data(@test) if @test
     if @client && !@server_model.book_client_id.nil?
       server_info[:booked] = {
         booked_client: @client.login,
@@ -120,5 +109,23 @@ class ServerThread
     return nil unless @test
 
     @test[:test_name]
+  end
+
+  private
+
+  # Form test data by test info
+  # @param [Hash] test data
+  # @return [Hash] test data
+  def form_test_data(test)
+    {
+      name: slice_project_path(test[:test_path]),
+      location: test[:location],
+      metadata: @test_metadata,
+      time: testing_time,
+      doc_branch: test[:doc_branch],
+      tm_branch: test[:tm_branch],
+      spec_browser: test[:spec_browser],
+      spec_language: test[:spec_language]
+    }
   end
 end
