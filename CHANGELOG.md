@@ -20,6 +20,7 @@
 * Fix several issues with Dockerfile using `hadolint`
 * Store db data in volume for `docker-compose`.  
   **Warning** Backup your db data before upgrading
+* Improve ssl config with advices from digicert.com
 
 ## 1.24.1 (2021-06-11)
 
