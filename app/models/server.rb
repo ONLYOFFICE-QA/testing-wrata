@@ -67,7 +67,11 @@ class Server < ApplicationRecord
   # Start creation and wait for it
   def restore_image_and_wait(server_size)
     begin
-      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME, name, 'nyc3', server_size, tags: EXECUTOR_TAG)
+      RunnerManagers.digital_ocean.restore_image_by_name(EXECUTOR_IMAGE_NAME,
+                                                         name,
+                                                         'nyc3',
+                                                         server_size,
+                                                         tags: EXECUTOR_TAG)
     rescue StandardError => e
       update_column(:_status, :destroyed)
       raise e

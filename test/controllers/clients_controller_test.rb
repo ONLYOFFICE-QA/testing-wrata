@@ -36,7 +36,8 @@ class ClientsControllerTest < ActionController::TestCase
   end
 
   test 'should update client' do
-    put :update, params: { id: @client, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass' } }
+    put :update,
+        params: { id: @client, client: { login: 'new_login', password: 'new_pass', password_confirmation: 'new_pass' } }
     assert_redirected_to client_path(assigns(:client))
   end
 

@@ -21,7 +21,8 @@ class ServersControllerTest < ActionController::TestCase
 
   test 'should create server' do
     assert_difference('Server.count') do
-      post :create, params: { server: { address: @server.address, description: @server.description, name: @server.name } }
+      post :create,
+           params: { server: { address: @server.address, description: @server.description, name: @server.name } }
     end
 
     assert_redirected_to server_path(assigns(:server))
@@ -38,7 +39,9 @@ class ServersControllerTest < ActionController::TestCase
   end
 
   test 'should update server' do
-    put :update, params: { id: @server, server: { address: @server.address, description: @server.description, name: @server.name } }
+    put :update,
+        params: { id: @server,
+                  server: { address: @server.address, description: @server.description, name: @server.name } }
     assert_redirected_to server_path(assigns(:server))
   end
 
