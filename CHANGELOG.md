@@ -7,7 +7,7 @@
 * Add logging to `stdout` in dev environment
 * Add description how to run `docker-compose` locally
 * Add ability to download all log files for Client
-* Force usage of TLSv1.3-only on https configuration
+* Force usage of `TSLv1.2` and `TLSv1.3` on https configuration
 
 ### Fixes
 
