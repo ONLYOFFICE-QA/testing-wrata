@@ -21,6 +21,8 @@
 * Store db data in volume for `docker-compose`.  
   **Warning** Backup your db data before upgrading
 * Improve ssl config by enable session cache and disabling weak ciphers
+* Actualize rubocop configs and minor changes to code
+* Remove `./script' directory, since new rails project do not use it
 
 ## 1.24.1 (2021-06-11)
 

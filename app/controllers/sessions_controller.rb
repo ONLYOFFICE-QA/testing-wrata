@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       sign_in_ client
       redirect_to runner_path
     else
-      flash[:error] = 'Invalid login/password combination. Or your account still not verified. Contact admin' # Not quite right!
+      flash[:error] = invalid_login_message
       render 'new'
     end
   end
@@ -21,5 +21,13 @@ class SessionsController < ApplicationController
   def destroy
     sign_out_
     redirect_to runner_path
+  end
+
+  private
+
+  # @return [String] message shown if cerdentials invalid
+  def invalid_login_message
+    'Invalid login/password combination. Or your account still not verified. '\
+      'Contact admin'
   end
 end
