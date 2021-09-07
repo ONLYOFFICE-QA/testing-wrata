@@ -17,6 +17,8 @@
 
 * Use `alpine` as base image for app
 * Fix several issues with Dockerfile using `hadolint`
+* Store db data in volume for `docker-compose`.  
+  **Warning** Backup your db data before upgrading
 
 ## 1.24.1 (2021-06-11)
 
