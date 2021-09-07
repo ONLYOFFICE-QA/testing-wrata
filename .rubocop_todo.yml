@@ -32,6 +32,15 @@ Metrics/MethodLength:
 RSpec/ExampleLength:
   Max: 15
 
+# Offense count: 4
+# Configuration parameters: AssignmentOnly.
+RSpec/InstanceVariable:
+  Exclude:
+    - 'spec/models/spec_language_spec.rb'
+    - 'spec/views/projects/edit.html.erb_spec.rb'
+    - 'spec/views/spec_browsers/edit.html.erb_spec.rb'
+    - 'spec/views/spec_languages/edit.html.erb_spec.rb'
+
 # Offense count: 3
 RSpec/MultipleExpectations:
   Max: 3
