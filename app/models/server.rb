@@ -32,7 +32,6 @@ class Server < ApplicationRecord
     server_size ||= DEFAULT_SERVER_SIZE
     update_column(:_status, :creating)
     restore_image_and_wait(server_size)
-    set_ip_info
     update_column(:_status, :created)
     update_column(:size, server_size)
     update_column(:last_activity_date, Time.current)
@@ -77,6 +76,8 @@ class Server < ApplicationRecord
       raise e
     end
     RunnerManagers.digital_ocean.wait_until_droplet_have_status(name, 'active', timeout: 60 * 15)
+    set_ip_info
+    OnlyofficeDigitaloceanWrapper::SshChecker.new(address).wait_until_ssh_up
   end
 
   # Destroy server and wait for it
