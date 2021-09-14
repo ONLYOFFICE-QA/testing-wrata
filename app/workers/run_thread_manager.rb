@@ -92,6 +92,6 @@ module RunThreadManager
   end
 
   def time_to_sec(hours, minute)
-    hours * 60 * 60 + minute * 60
+    (hours * 60 * 60) + (minute * 60)
   end
 end
