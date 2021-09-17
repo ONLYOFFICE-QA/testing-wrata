@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 1.25.0 (2021-09-17)
+
 ### New Features
 
 * Add logging to `stdout` in dev environment
