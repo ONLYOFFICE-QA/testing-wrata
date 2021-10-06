@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Do not show detailed stack of error in production
+
 ## 1.25.0 (2021-09-17)
 
 ### New Features
