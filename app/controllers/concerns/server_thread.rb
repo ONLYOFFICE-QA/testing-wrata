@@ -1,19 +1,12 @@
 # frozen_string_literal: true
 
-require_relative '../../app/server/managers/history_manager'
-require_relative '../../app/server/managers/html_result_manager'
-require_relative '../../app/server/managers/log_manager'
-require_relative '../../app/server/managers/ping_manager'
-require_relative '../../app/server/managers/test_manager'
-require_relative '../../app/server/managers/thread_manager'
-
 class ServerThread
-  include HistoryManager
-  include HTMLResultManager
-  include LogManager
-  include PingManager
-  include TestManager
-  include ThreadManager
+  include ServerThreadMethods::HistoryManager
+  include ServerThreadMethods::HtmlResultManager
+  include ServerThreadMethods::LogManager
+  include ServerThreadMethods::PingManager
+  include ServerThreadMethods::TestManager
+  include ServerThreadMethods::ThreadManager
 
   attr_accessor :server_model, :_status, :ssh_pid, :log
 

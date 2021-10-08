@@ -5,6 +5,7 @@
 ### Changes
 
 * Do not show detailed stack of error in production
+* Major refactor in source code file path to be in complain with `zeitwerk`
 
 ## 1.25.0 (2021-09-17)
 
