@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'server_thread'
 class ServerThreads < ApplicationController
   attr_accessor :lock
 

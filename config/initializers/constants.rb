@@ -2,7 +2,6 @@
 
 DOCS_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments"
 TEAMLAB_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab"
-SERVERS_LOGS_PATH = 'app/server/logs'
 DOCS_PROJECT_NAME = 'OnlineDocuments'
 TEAMLAB_PROJECT_NAME = 'TeamLab'
 DOCS_PATH_WITHOUT_HOME = '~/RubymineProjects/OnlineDocuments'

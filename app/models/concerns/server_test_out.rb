@@ -10,7 +10,7 @@ module ServerTestOut
 
   # @return [Stirng] path to log of server
   def log_path
-    "#{SERVERS_LOGS_PATH}/#{name}.txt"
+    "tmp/node-#{name}.log"
   end
 
   # @return [String] html result in container
