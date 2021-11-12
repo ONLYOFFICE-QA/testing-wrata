@@ -2,7 +2,7 @@
  * Created by lobashov-2 on 18.05.17.
  */
 
-function htmlFileTree(treeNode) {
+window.htmlFileTree = function(treeNode) {
     var resultHtml = '';
     var name = treeNode.name;
     if ('children' in treeNode) {
@@ -33,7 +33,7 @@ function htmlFileTree(treeNode) {
     return resultHtml;
 }
 
-function renderFileTree(project, ref) {
+window.renderFileTree = function(project, ref) {
     if (project === undefined) {
         project = activeProject();
     }
@@ -71,23 +71,23 @@ function renderFileTree(project, ref) {
     });
 }
 
-function activeProject() {
+window.activeProject = function() {
     return $('#projects_0 option:selected').val();
 }
 
-function showFileTreeOverlay() {
+window.showFileTreeOverlay = function() {
     $(".section-overlay.file-tree-overlay").show();
 }
 
-function hideFileTreeOverlay() {
+window.hideFileTreeOverlay = function() {
     $(".section-overlay.file-tree-overlay").hide();
 }
 
-function fetchBranchesAndShowFiles() {
+window.fetchBranchesAndShowFiles = function() {
     fetchBranches(activeProject(), $('#docs-branches'));
 }
 
-function fetchBranches(project, control) {
+window.fetchBranches = function(project, control) {
     $.ajax({
         url: 'runner/branches',
         context: this,
@@ -110,7 +110,7 @@ function fetchBranches(project, control) {
 }
 
 
-function setGitReferences(control, branches, tags) {
+window.setGitReferences = function(control, branches, tags) {
     clearElementInside(control);
     control.append($("<option disabled>Branches</option>"));
     for(var i = 0; i < branches.length; i++) {

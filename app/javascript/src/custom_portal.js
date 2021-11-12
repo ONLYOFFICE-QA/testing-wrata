@@ -2,7 +2,7 @@
  * Created by Pavel.Lobashov on 15.03.16.
  */
 
-function add_portal_to_list(list_element) {
+window.add_portal_to_list = function(list_element) {
     var defaultValue = "http://"
     bootbox.prompt(
         {
@@ -21,7 +21,7 @@ function add_portal_to_list(list_element) {
 
 }
 
-function eventForAddNewPortal(elem) {
+window.eventForAddNewPortal = function(elem) {
     elem = elem || $("#portal-list");
     $(elem).change(function () {
         if (elem.val() == 'custom') {

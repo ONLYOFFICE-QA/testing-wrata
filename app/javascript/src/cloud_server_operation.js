@@ -3,23 +3,23 @@
  */
 
 
-function isServerCreated(serverSize) {
+window.isServerCreated = function(serverSize) {
     var destroyButton = $("#" + serverSize + ' .destroy');
     return destroyButton.length == 1
 }
 
-function setServerSize(serverSize, size) {
+window.setServerSize = function(serverSize, size) {
     var serverSizeSelect = $("#" + serverSize + ' .server-size-select');
     serverSizeSelect.val(size);
 }
 
-function getSelectedServerSize(serverName) {
+window.getSelectedServerSize = function(serverName) {
     var serverSizeSelect = $("#" + serverName + ' .server-size-select');
     return serverSizeSelect.val();
 }
 
 
-function disableSelectServerSize(serverName) {
+window.disableSelectServerSize = function(serverName) {
     if (isServerCreated(serverName)) {
         $("#" + serverName + ' .server-size-select').attr("disabled", true);
     } else {
@@ -27,7 +27,7 @@ function disableSelectServerSize(serverName) {
     }
 }
 
-function eventForCreateAndDestroyServer(serverName) {
+window.eventForCreateAndDestroyServer = function(serverName) {
     var actionButton = $("#" + serverName + ' .fa-power-off');
     actionButton.on('click', function () {
         var action = actionButton.find('.hidden-tool').text();
@@ -40,14 +40,14 @@ function eventForCreateAndDestroyServer(serverName) {
     });
 }
 
-function initEventsForCreateDestroyButtons() {
+window.initEventsForCreateDestroyButtons = function() {
     var servers = serverList();
     servers.forEach(function(element) {
         eventForCreateAndDestroyServer(element);
     });
 }
 
-function createAndDestroyServer(action, serverName, serverSize) {
+window.createAndDestroyServer = function(action, serverName, serverSize) {
     if (action == 'create') {
         showServerSectionOverlay(serverName, 'Creating...');
         createServer(serverName, serverSize);
@@ -57,18 +57,18 @@ function createAndDestroyServer(action, serverName, serverSize) {
     }
     disableSelectServerSize(serverName);
 }
-function showServerSectionOverlay(server, message) {
+window.showServerSectionOverlay = function(server, message) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).find('.overlay-text').text(message);
     $(selector).show();
     $("#" + server + ' .fa-power-off').hide();
 }
-function hideServerSectionOverlay(server) {
+window.hideServerSectionOverlay = function(server) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).hide();
     $("#" + server + ' .fa-power-off').show();
 }
-function createServer(server, size) {
+window.createServer = function(server, size) {
     $.ajax({
         url: 'servers/cloud_server_create',
         type: 'POST',
@@ -85,7 +85,7 @@ function createServer(server, size) {
         }
     });
 }
-function destroyServer(server) {
+window.destroyServer = function(server) {
     $.ajax({
         url: 'servers/cloud_server_destroy',
         type: 'POST',
@@ -105,7 +105,7 @@ function destroyServer(server) {
     });
 }
 
-function serverList() {
+window.serverList = function() {
     var servers = [];
     $("#servers div.server").each(function(index, element) {
         servers.push(element.id);
