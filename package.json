@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@rails/webpacker": "5.4.3",
+    "jquery": "^3.6.0",
+    "jquery-ui-dist": "^1.12.1",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
