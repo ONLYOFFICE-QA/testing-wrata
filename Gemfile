@@ -25,6 +25,7 @@ gem 'rails', '~> 7.0'
 gem 'rubyzip'
 gem 'sprockets-rails'
 gem 'uglifier'
+gem 'webpacker'
 
 group :development do
   gem 'overcommit'
