@@ -4,6 +4,7 @@ $(function () {
 });
 
 require('jquery-ui');
+import 'bootstrap/dist/js/bootstrap';
 
 import '../src/main'
 import '../src/file_tree/file_tree_events'
