@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Fix failure when `EOFError` happened during html result read
+
 ### Changes
 
 * Do not show detailed stack of error in production

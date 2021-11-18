@@ -5,7 +5,8 @@ require 'open-uri'
 module ServerThreadMethods
   module HtmlResultManager
     # @return [Array, Exception] exceptions which may occur if something wrong with reading status
-    READ_STATUS_EXCEPTIONS = [Errno::ECONNREFUSED,
+    READ_STATUS_EXCEPTIONS = [EOFError,
+                              Errno::ECONNREFUSED,
                               Errno::ECONNRESET,
                               Errno::EHOSTUNREACH,
                               Net::OpenTimeout,
