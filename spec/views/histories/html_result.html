@@ -22,8 +22,7 @@
 
         function removeClass(element_id, classname) {
             var elem = document.getElementById(element_id);
-            var classlist = elem.className.replace(classname,'');
-            elem.className = classlist;
+            elem.className = elem.className.replace(classname,'');
         }
 
         function moveProgressBar(percentDone) {
