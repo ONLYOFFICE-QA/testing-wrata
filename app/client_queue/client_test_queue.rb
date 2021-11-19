@@ -93,9 +93,9 @@ class ClientTestQueue
     if project == DOCS_TAB_NAME
       doc_branch = branch
       case region
-      when INFO_SERVER
+      when 'info'
         teamlab_branch = 'develop'
-      when COM_SERVER
+      when 'com'
         teamlab_branch = 'master'
       end
     end
