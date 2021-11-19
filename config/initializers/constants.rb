@@ -14,7 +14,6 @@ TEAMLAB_INFO_MAIN_BRANCH = 'develop'
 TEAMLAB_COM_MAIN_BRANCH = 'master'
 DOCS_TAB_NAME = 'docs'
 TEAMLAB_TAB_NAME = 'teamlab'
-SUCCESS_TEST_STR = ' 0 failures'
 INFO_SERVER = 'info'
 COM_SERVER = 'com'
 TIME_FOR_UPDATE = 15
