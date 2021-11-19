@@ -6,7 +6,6 @@ DOCS_PROJECT_NAME = 'OnlineDocuments'
 TEAMLAB_PROJECT_NAME = 'TeamLab'
 DOCS_PATH_WITHOUT_HOME = '~/RubymineProjects/OnlineDocuments'
 TEAMLAB_PATH_WITHOUT_HOME = '~/RubymineProjects/TeamLab'
-HOME_DIRECTORY = "/#{ENV['HOME']}"
 RUBYMINE_PROJECTS_PATH = "/#{ENV['HOME']}/RubymineProjects"
 TEAMLAB_DEFAULT_BRANCH = 'develop'
 DOCS_DEFAULT_BRANCH = 'develop'
