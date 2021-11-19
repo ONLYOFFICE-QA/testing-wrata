@@ -17,7 +17,6 @@ TEAMLAB_TAB_NAME = 'teamlab'
 SUCCESS_TEST_STR = ' 0 failures'
 INFO_SERVER = 'info'
 COM_SERVER = 'com'
-EMPTY_STRING = ''
 TIME_FOR_UPDATE = 15
 REGION_LIST = ['info us', 'info eu', 'info sg', 'com us', 'com eu', 'com sg', 'com org', 'default', 'custom'].freeze
 DEFAULT_REGION = 'default'
