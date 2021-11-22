@@ -27,8 +27,8 @@ services:
     depends_on:
       - app
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     restart: always
 volumes:
   db_data:
