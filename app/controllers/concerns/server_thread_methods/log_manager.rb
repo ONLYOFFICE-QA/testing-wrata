@@ -18,7 +18,7 @@ module ServerThreadMethods
     end
 
     def clear_log_file
-      @log = EMPTY_STRING
+      @log = ''
       File.open(@server_model.log_path, 'w') { |f| f.write('') } if log_file_exist?
     end
 
@@ -48,7 +48,7 @@ module ServerThreadMethods
 
     def last_log_data
       if log_file_empty?
-        @log = EMPTY_STRING
+        @log = ''
       else
         lines = read_log
         @log = lines.last(LAST_LINES_COUNT).join
@@ -58,7 +58,7 @@ module ServerThreadMethods
     def full_log
       return read_log.join if log_file_exist?
 
-      EMPTY_STRING
+      ''
     end
 
     private

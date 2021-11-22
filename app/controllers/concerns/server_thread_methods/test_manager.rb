@@ -81,9 +81,9 @@ module ServerThreadMethods
 
     def open_folder_with_project(test_path)
       if test_path.include? DOCS_PROJECT_NAME
-        "cd #{DOCS_PATH_WITHOUT_HOME}"
+        'cd ~/RubymineProjects/OnlineDocuments'
       elsif test_path.include? TEAMLAB_PROJECT_NAME
-        "cd #{TEAMLAB_PATH_WITHOUT_HOME}"
+        'cd ~/RubymineProjects/TeamLab'
       else
         path_after_projects = test_path.split('RubymineProjects/')[1]
         project_name = path_after_projects.split('/').first

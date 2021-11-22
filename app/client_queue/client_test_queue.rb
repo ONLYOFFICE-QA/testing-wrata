@@ -88,15 +88,15 @@ class ClientTestQueue
   end
 
   def branches(project, branch, region)
-    teamlab_branch = TEAMLAB_DEFAULT_BRANCH
-    doc_branch = DOCS_DEFAULT_BRANCH
+    teamlab_branch = 'develop'
+    doc_branch = 'develop'
     if project == DOCS_TAB_NAME
       doc_branch = branch
       case region
-      when INFO_SERVER
-        teamlab_branch = TEAMLAB_INFO_MAIN_BRANCH
-      when COM_SERVER
-        teamlab_branch = TEAMLAB_COM_MAIN_BRANCH
+      when 'info'
+        teamlab_branch = 'develop'
+      when 'com'
+        teamlab_branch = 'master'
       end
     end
     teamlab_branch = branch if project == TEAMLAB_TAB_NAME

@@ -89,7 +89,7 @@ class ServerThread
     return false if @server_model.executing_command_now
     return false if @server_model.last_activity_date.nil? # do not destroy if there is no data about last run
 
-    inactive_time > TIMEOUT_SERVER_SELFDESTROY
+    inactive_time > destruction_timeout
   end
 
   def slice_project_path(file_name)
@@ -120,5 +120,10 @@ class ServerThread
       spec_browser: test[:spec_browser],
       spec_language: test[:spec_language]
     }
+  end
+
+  # @return [Integer] timeout after which server will be destroyed
+  def destruction_timeout
+    60 * 60
   end
 end
