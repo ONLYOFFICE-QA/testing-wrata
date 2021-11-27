@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `CodeQL` check in CI
+
 ### Fixes
 
 * Fix failure when `EOFError` happened during html result read
