@@ -9,6 +9,7 @@
 ### Fixes
 
 * Fix failure when `EOFError` happened during html result read
+* Fix several `Stored cross-site scripting`
 
 ### Changes
 
