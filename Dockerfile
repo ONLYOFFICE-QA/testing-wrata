@@ -3,6 +3,7 @@ FROM ruby:3.0.3-alpine
 LABEL maintainer="shockwavenn@gmail.com"
 
 RUN apk add --no-cache build-base \
+                       git \
                        nodejs \
                        openssh-client \
                        postgresql-dev \

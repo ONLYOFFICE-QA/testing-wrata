@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
   # before_filter :create_threads
   before_action :require_login
 
+  helper_method :wrata_version
+
+  # @return [String] version of product
+  def wrata_version
+    @wrata_version ||= `git describe`
+  rescue StandardError => e
+    Rails.logger.warn("Cannot get wrata version with `#{e}` error")
+    @wrata_version = 'Unknown'
+  end
+
   protected
 
   def delete_testlist_by_id(id)
