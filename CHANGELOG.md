@@ -5,6 +5,7 @@
 ### New Features
 
 * Add `CodeQL` check in CI
+* Add version info in footer
 
 ### Fixes
 
