@@ -16,3 +16,10 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 task default: %i[test spec]
+
+desc 'Task to add tag with version to repo'
+task add_repo_tag: :environment do
+  version = "v#{File.read('VERSION')}".strip
+  `git tag -a #{version} -m "#{version}"`
+  `git push --tags`
+end
