@@ -1,4 +1,6 @@
-# This is my README
+# wrata
+
+This project is used to run scripts on distributed network with parallel execution
 
 ## How to update
 
