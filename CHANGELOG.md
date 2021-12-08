@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 1.26.0 (2021-12-08)
+
 ### New Features
 
 * Add `CodeQL` check in CI
