@@ -307,7 +307,7 @@
 * Use `bootbox.confirm` instead of JS native `confirm`
 * Store spec exit status and send notification only if failed
 * Use nginx in `docker-compose`
-* Add `api_keys` page for gettin api access keys
+* Add `api_keys` page with list of api access keys
 * Add start time to `ServerHistory` page (fix [#325](https://github.com/ONLYOFFICE/testing-wrata/issues/325))
 
 ### Refactor
@@ -329,7 +329,7 @@
 * Fix redirect loop for non-verified clients
 * Fix copy server IP by click
 * Fix using custom branches while adding folder
-* Fix scroll lags by deleting slimscroll plugin
+* Fix scroll lags by deleting `slimscroll` plugin
 * Fix long machine name undercutting in DO (fix [#294](https://github.com/ONLYOFFICE/testing-wrata/issues/294))
 
 ## 1.13
@@ -355,7 +355,7 @@
   for non-existing server
 * Fix null element while clicking cancel in custom portal field (fix #226)
 * Fix render `RunnderController#updated_data` in browser
-* Do not initilize `run_manager` if user is not confirmed
+* Do not initialize `run_manager` if user is not confirmed
 * Speed-up of FrontEnd
 
 ## 1.12
@@ -483,7 +483,7 @@
 
 ## 1.7.0
 
-* You can use now not only branch, but tags as identificators
+* You can use now not only branch, but tags as identifier
 * Ensure, that webserver can be run on `puma` server (Was already included in Gemfile)
 * Update Gemfile.lock version of files
 
