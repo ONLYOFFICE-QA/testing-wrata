@@ -53,3 +53,11 @@ docker-compose start app
   error in logs you should add `rspec_passed_time_formatter`
   gem dependency in project file.  
   Since [#857](https://github.com/ONLYOFFICE/testing-wrata/pull/857)
+
+## How to release new version (for maintainers)
+
+1. Update `VERSION` file
+2. Update `CHANGELOG.md` by adding version line after `master (unreleased)`
+3. Create PR with those changes and merge to `master`
+4. On `master` run `rake add_repo_tag`
+5. On `GitHub` create new release via web-browser and add info from `CHANGELOG.md`
