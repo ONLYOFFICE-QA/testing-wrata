@@ -6,6 +6,7 @@
 
 * Add `CodeQL` check in CI
 * Add version info in footer
+* Add `VERSION` file in root of project
 
 ### Fixes
 
