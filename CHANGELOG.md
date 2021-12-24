@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Fix minor rubocop issue after upgrade rubocop to `v1.24.0`
+
 ## 1.26.0 (2021-12-08)
 
 ### New Features

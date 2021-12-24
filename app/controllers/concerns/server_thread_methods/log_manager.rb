@@ -19,7 +19,7 @@ module ServerThreadMethods
 
     def clear_log_file
       @log = ''
-      File.open(@server_model.log_path, 'w') { |f| f.write('') } if log_file_exist?
+      File.write(@server_model.log_path, '') if log_file_exist?
     end
 
     def delete_log_file
