@@ -5,6 +5,7 @@
 ### Changes
 
 * Fix minor rubocop issue after upgrade rubocop to `v1.24.0`
+* Fix migration issues after upgrade `rubocop-rspec` to `v2.13.0`
 
 ## 1.26.0 (2021-12-08)
 
