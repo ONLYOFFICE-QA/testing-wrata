@@ -90,6 +90,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    digest (3.1.0)
     droplet_kit (3.16.0)
       faraday (>= 0.15)
       kartograph (~> 0.2.3)
@@ -129,6 +130,7 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     iniparse (1.5.0)
+    io-wait (0.2.1)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -154,6 +156,13 @@ GEM
     minitest (5.15.0)
     multipart-post (2.1.1)
     net-ping (2.0.8)
+    net-protocol (0.1.2)
+      io-wait
+      timeout
+    net-smtp (0.3.1)
+      digest
+      net-protocol
+      timeout
     net-telnet (0.2.0)
     nio4r (2.5.8)
     nokogiri (1.12.5)
@@ -299,6 +308,7 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    timeout (0.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
@@ -330,6 +340,7 @@ DEPENDENCIES
   jquery-ui-rails
   listen
   net-ping
+  net-smtp
   onlyoffice_digitalocean_wrapper
   onlyoffice_github_helper
   onlyoffice_rspec_result_parser
