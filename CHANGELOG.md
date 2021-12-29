@@ -11,6 +11,11 @@
 * Fix minor rubocop issue after upgrade rubocop to `v1.24.0`
 * Fix migration issues after upgrade `rubocop-rspec` to `v2.13.0`
 * Remove `ruby-2.7` from CI, since we use `ruby-3.0` for base
+* Use `ruby:3.1.0-alpine` as base image
+
+### Fixes
+
+* Fix `mail` related startup problem on `ruby-3.1`
 
 ## 1.26.0 (2021-12-08)
 
