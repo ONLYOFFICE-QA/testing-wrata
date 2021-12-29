@@ -2,10 +2,15 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `ruby-3.0` to CI
+
 ### Changes
 
 * Fix minor rubocop issue after upgrade rubocop to `v1.24.0`
 * Fix migration issues after upgrade `rubocop-rspec` to `v2.13.0`
+* Remove `ruby-2.7` from CI, since we use `ruby-3.0` for base
 
 ## 1.26.0 (2021-12-08)
 
