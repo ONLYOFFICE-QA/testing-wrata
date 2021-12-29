@@ -155,7 +155,15 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.15.0)
     multipart-post (2.1.1)
+    net-imap (0.2.2)
+      digest
+      net-protocol
+      strscan
     net-ping (2.0.8)
+    net-pop (0.1.1)
+      digest
+      net-protocol
+      timeout
     net-protocol (0.1.2)
       io-wait
       timeout
@@ -305,6 +313,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    strscan (3.0.1)
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -339,7 +348,9 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   listen
+  net-imap
   net-ping
+  net-pop
   net-smtp
   onlyoffice_digitalocean_wrapper
   onlyoffice_github_helper
@@ -361,4 +372,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   2.3.2
+   2.3.3
