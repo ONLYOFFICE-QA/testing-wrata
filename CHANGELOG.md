@@ -12,6 +12,7 @@
 * Fix migration issues after upgrade `rubocop-rspec` to `v2.13.0`
 * Remove `ruby-2.7` from CI, since we use `ruby-3.0` for base
 * Use `ruby:3.1.0-alpine` as base image
+* Migrate autoloader to `:zeitwerk`
 
 ### Fixes
 
