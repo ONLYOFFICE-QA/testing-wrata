@@ -21,7 +21,7 @@ gem 'onlyoffice_rspec_result_parser'
 gem 'pg'
 gem 'process_exists'
 gem 'puma'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0'
 gem 'rubyzip'
 gem 'uglifier'
 
