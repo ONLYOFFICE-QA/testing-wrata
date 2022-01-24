@@ -12,10 +12,12 @@ rescue *DB_NOT_INITIALIZED_EXCEPTIONS
   false
 end
 
-if db_initialized?
-  Rails.application.config.threads = ServerThreads.new.init_threads
-  Rails.application.config.delayed_runs = DelayedRunManager.new
-  Rails.application.config.run_manager = RunnerManagers.new
-  Rails.application.config.server_destroyer = ServerDestroyerWorker.new.start_thread
-  Rails.application.config.queue_checker = QueueCheckerWorker.new.start_thread
+Rails.application.config.to_prepare do
+  if db_initialized?
+    Rails.application.config.threads = ServerThreads.new.init_threads
+    Rails.application.config.delayed_runs = DelayedRunManager.new
+    Rails.application.config.run_manager = RunnerManagers.new
+    Rails.application.config.server_destroyer = ServerDestroyerWorker.new.start_thread
+    Rails.application.config.queue_checker = QueueCheckerWorker.new.start_thread
+  end
 end
