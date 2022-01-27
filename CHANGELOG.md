@@ -13,6 +13,7 @@
 * Remove `ruby-2.7` from CI, since we use `ruby-3.0` for base
 * Use `ruby:3.1.0-alpine` as base image
 * Migrate autoloader to `:zeitwerk`
+* Update rails framework default from v5.1 to v6.1
 
 ### Fixes
 
