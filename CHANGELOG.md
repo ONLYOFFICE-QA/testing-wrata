@@ -14,6 +14,7 @@
 * Use `ruby:3.1.0-alpine` as base image
 * Migrate autoloader to `:zeitwerk`
 * Update rails framework default from v5.1 to v6.1
+* Actualize `nodejs` version in CI
 
 ### Fixes
 
