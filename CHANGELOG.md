@@ -17,6 +17,7 @@
 * Update rails framework default from v5.1 to v6.1
 * Actualize `nodejs` version in CI
 * Migrate to `rails-7` and it's configuration defaults
+* Check `dependabot` at 8:00 Moscow time daily
 
 ### Fixes
 
