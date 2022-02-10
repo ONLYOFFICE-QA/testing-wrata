@@ -11,7 +11,7 @@ jobs:
           POSTGRES_USER: rails_github_actions
           POSTGRES_DB: rails_github_actions_test
           POSTGRES_PASSWORD: postgres
-        ports: [ "5432:5432" ]
+        ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -19,8 +19,8 @@ jobs:
           --health-retries 5
     strategy:
       matrix:
-        ruby: [ '3.0', '3.1' ]
-        allow-failures: [ false ]
+        ruby: ['3.0', '3.1']
+        allow-failures: [false]
         include:
           - ruby: head
             allow-failures: true
@@ -52,17 +52,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build docker image
         run: docker build .
-  markdownlint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '16'
-      - name: markdownlint check
-        run: |
-          npm install -g markdownlint-cli
-          markdownlint *.md
   rubocop:
     runs-on: ubuntu-latest
     steps:
