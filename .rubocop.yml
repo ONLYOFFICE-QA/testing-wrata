@@ -4,7 +4,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
 inherit_from:
-    - .rubocop_todo.yml
+  - .rubocop_todo.yml
 AllCops:
   Exclude:
     - db/schema.rb
