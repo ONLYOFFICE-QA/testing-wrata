@@ -120,7 +120,7 @@ class ServersController < ApplicationController
     respond_to do |format|
       if @server.update(server_params)
         Runner::Application.config.threads.update_models
-        format.html { redirect_to @server, notice: 'Server was successfully updated.' }
+        format.html { redirect_to @server, notice: t(:server_updated_notice) }
         format.json { head :no_content }
       else
         format.html { render 'edit' }
@@ -145,7 +145,7 @@ class ServersController < ApplicationController
   def destroy
     Server.find(params[:id]).destroy
     Runner::Application.config.threads.delete_threads
-    flash[:success] = 'Server deleted'
+    flash[:success] = t(:server_deleted_flash)
     redirect_to servers_url
   end
 

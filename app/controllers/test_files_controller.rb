@@ -28,7 +28,7 @@ class TestFilesController < ApplicationController
 
     respond_to do |format|
       if @test_file.save
-        format.html { redirect_to @test_file, notice: 'Test file was successfully created.' }
+        format.html { redirect_to @test_file, notice: t(:test_files_created_notice) }
         format.json { render action: 'show', status: :created, location: @test_file }
       else
         format.html { render 'new' }
@@ -42,7 +42,7 @@ class TestFilesController < ApplicationController
   def update
     respond_to do |format|
       if @test_file.update(test_file_params)
-        format.html { redirect_to @test_file, notice: 'Test file was successfully updated.' }
+        format.html { redirect_to @test_file, notice: t(:test_files_updated_notice) }
         format.json { head :no_content }
       else
         format.html { render 'edit' }

@@ -28,7 +28,7 @@ class SpecLanguagesController < ApplicationController
 
     respond_to do |format|
       if @spec_language.save
-        format.html { redirect_to @spec_language, notice: 'Spec language was successfully created.' }
+        format.html { redirect_to @spec_language, notice: t(:spec_language_created_notice) }
         format.json { render :show, status: :created, location: @spec_language }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SpecLanguagesController < ApplicationController
   def update
     respond_to do |format|
       if @spec_language.update(spec_language_params)
-        format.html { redirect_to @spec_language, notice: 'Spec language was successfully updated.' }
+        format.html { redirect_to @spec_language, notice: t(:spec_language_updated_notice) }
         format.json { render :show, status: :ok, location: @spec_language }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SpecLanguagesController < ApplicationController
   def destroy
     @spec_language.destroy
     respond_to do |format|
-      format.html { redirect_to spec_languages_url, notice: 'Spec language was successfully destroyed.' }
+      format.html { redirect_to spec_languages_url, notice: t(:spec_language_destroyed_notice) }
       format.json { head :no_content }
     end
   end

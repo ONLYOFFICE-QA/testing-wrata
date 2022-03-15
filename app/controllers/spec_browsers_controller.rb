@@ -28,7 +28,7 @@ class SpecBrowsersController < ApplicationController
 
     respond_to do |format|
       if @spec_browser.save
-        format.html { redirect_to @spec_browser, notice: 'Spec browser was successfully created.' }
+        format.html { redirect_to @spec_browser, notice: t(:spec_browser_created_notice) }
         format.json { render :show, status: :created, location: @spec_browser }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SpecBrowsersController < ApplicationController
   def update
     respond_to do |format|
       if @spec_browser.update(spec_browser_params)
-        format.html { redirect_to @spec_browser, notice: 'Spec browser was successfully updated.' }
+        format.html { redirect_to @spec_browser, notice: t(:spec_browser_updated_notice) }
         format.json { render :show, status: :ok, location: @spec_browser }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SpecBrowsersController < ApplicationController
   def destroy
     @spec_browser.destroy
     respond_to do |format|
-      format.html { redirect_to spec_browsers_url, notice: 'Spec browser was successfully destroyed.' }
+      format.html { redirect_to spec_browsers_url, notice: t(:spec_browser_destroyed_notice) }
       format.json { head :no_content }
     end
   end

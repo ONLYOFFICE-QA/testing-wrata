@@ -43,7 +43,7 @@ class ClientsController < ApplicationController
 
     if @client.save
       sign_in_ @client
-      flash[:success] = 'Your account successfully created. Please wait for verification by admin'
+      flash[:success] = t(:create_account_flash)
       Rails.application.config.run_manager.add_user(@client)
       redirect_to runner_path
     else
@@ -55,7 +55,7 @@ class ClientsController < ApplicationController
     client = Client.find(params[:id])
     Rails.application.config.run_manager.remove_user(client)
     client.destroy
-    flash[:success] = 'User deleted'
+    flash[:success] = t(:delete_account_flash)
     redirect_to clients_url
   end
 
@@ -66,7 +66,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to @client, notice: t(:update_account_notice) }
         format.json { head :no_content }
       else
         format.html { render 'edit' }
