@@ -33,7 +33,7 @@ class TestListsController < ApplicationController
 
     respond_to do |format|
       if @test_list.save
-        format.html { redirect_to @test_list, notice: 'Test list was successfully created.' }
+        format.html { redirect_to @test_list, notice: t(:test_list_created_notice) }
         format.json { render action: 'show', status: :created, location: @test_list }
       else
         format.html { render 'new' }
@@ -47,7 +47,7 @@ class TestListsController < ApplicationController
   def update
     respond_to do |format|
       if @test_list.update(test_list_params)
-        format.html { redirect_to @test_list, notice: 'Test list was successfully updated.' }
+        format.html { redirect_to @test_list, notice: t(:test_list_updated_notice) }
         format.json { head :no_content }
       else
         format.html { render 'edit' }

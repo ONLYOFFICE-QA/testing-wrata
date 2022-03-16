@@ -32,7 +32,7 @@ class HistoriesController < ApplicationController
 
     respond_to do |format|
       if @history.save
-        format.html { redirect_to @history, notice: 'History was successfully created.' }
+        format.html { redirect_to @history, notice: t(:history_created_notice) }
         format.json { render action: 'show', status: :created, location: @history }
       else
         format.html { render 'new' }
@@ -46,7 +46,7 @@ class HistoriesController < ApplicationController
   def update
     respond_to do |format|
       if @history.update(history_params)
-        format.html { redirect_to @history, notice: 'History was successfully updated.' }
+        format.html { redirect_to @history, notice: t(:history_updated_notice) }
         format.json { head :no_content }
       else
         format.html { render 'edit' }
