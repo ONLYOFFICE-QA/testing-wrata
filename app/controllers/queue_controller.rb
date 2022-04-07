@@ -24,13 +24,17 @@ class QueueController < ApplicationController
   end
 
   def add_test
-    @manager.add_test(params['test_path'], params['branch'], params['location'],
-                      to_begin_of_queue: true,
-                      spec_browser: params['spec_browser'],
-                      spec_language: params['spec_language'],
-                      tm_branch: params['teamlab_branch'],
-                      doc_branch: params['doc_branch'])
+    add_single_test_from_params(params['test_path'], params)
 
+    render body: nil
+  end
+
+  # Add several tests to queue
+  # @return [Void]
+  def add_tests
+    params['test_paths'].each do |test_path|
+      add_single_test_from_params(test_path, params)
+    end
     render body: nil
   end
 
@@ -105,5 +109,18 @@ class QueueController < ApplicationController
   def able_to_be_booked?
     server = Server.find_by(name: params['server'])
     server.book_client_id.nil?
+  end
+
+  # Add only single test from params and it's name
+  # @param [String] test_path path to test
+  # @param [Hash] params list of all params
+  # @return [Void]
+  def add_single_test_from_params(test_path, params)
+    @manager.add_test(test_path, params['branch'], params['location'],
+                      to_begin_of_queue: true,
+                      spec_browser: params['spec_browser'],
+                      spec_language: params['spec_language'],
+                      tm_branch: params['teamlab_branch'],
+                      doc_branch: params['doc_branch'])
   end
 end
