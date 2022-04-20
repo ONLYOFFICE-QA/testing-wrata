@@ -19,7 +19,8 @@ RUN bundle config set without 'development' && \
 RUN mkdir /root/wrata
 WORKDIR /root/wrata
 COPY . /root/wrata
-RUN bundle install
+RUN bundle install && \
+    yarn install
 RUN rake assets:precompile
 ENV RAILS_SERVE_STATIC_FILES=true
 CMD ["sh", "entrypoint.sh"]
