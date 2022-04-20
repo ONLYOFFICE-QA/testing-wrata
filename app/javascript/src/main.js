@@ -1,8 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-    }
-});
 
 const STATUS = {
     UPDATE_INTERVAL: 10000,
@@ -59,6 +54,12 @@ window.trim_data = function(data) {
 }
 
 window.Runner = function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     var _self = this;
     var testListUpdating = false;
 

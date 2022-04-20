@@ -1,10 +1,6 @@
-console.log('Hello World from Webpacker');
-$(function () {
-    console.log('Hello World from Webpacker jquery');
-});
-
 require('jquery-ui');
 import 'bootstrap/dist/js/bootstrap';
+global.bootbox = require('bootbox');
 
 import '../src/main'
 import '../src/file_tree/file_tree_events'

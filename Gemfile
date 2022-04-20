@@ -2,7 +2,6 @@
 
 source 'https://rubygems.org'
 
-gem 'bootbox-rails'
 gem 'bootstrap'
 gem 'devise'
 gem 'exception_notification'

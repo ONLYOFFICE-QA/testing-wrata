@@ -1,4 +1,6 @@
 {
+  "name": "testing-wrata",
+  "license": "AGPL-3.0",
   "dependencies": {
     "@popperjs/core": "^2.10.2",
     "@rails/webpacker": "5.4.3",
