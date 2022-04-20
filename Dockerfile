@@ -19,8 +19,7 @@ RUN bundle config set without 'development' && \
 RUN mkdir /root/wrata
 WORKDIR /root/wrata
 COPY . /root/wrata
-RUN bundle install && \
-    bundle exec rails webpacker:install
+RUN bundle install
 RUN rake assets:precompile
 ENV RAILS_SERVE_STATIC_FILES=true
 CMD ["sh", "entrypoint.sh"]
