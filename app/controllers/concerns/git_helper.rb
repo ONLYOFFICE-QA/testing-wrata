@@ -9,6 +9,9 @@ module GitHelper
     branches = Rails.application.config.github_helper.branches(github_repo)
     promoted_master = promote_branch(branches, 'master')
     promote_branch(promoted_master, 'develop')
+  rescue StandardError => e
+    Rails.logger.error("Cannot get list of branches in #{github_repo} with #{e}")
+    ['Unknown branch']
   end
 
   # Get list of tags in github repo
@@ -16,6 +19,9 @@ module GitHelper
   # @return [Array, String] list of tags
   def get_tags(github_repo)
     Rails.application.config.github_helper.tags(github_repo)
+  rescue StandardError => e
+    Rails.logger.error("Cannot get list of tags in #{github_repo} with #{e}")
+    ['Unknown tags']
   end
 
   private

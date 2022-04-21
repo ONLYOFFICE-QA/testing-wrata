@@ -7,6 +7,10 @@
 * Add `Queue#add_tests` POST endpoint
 * Migrate to `WebPacker`
 
+## Changes
+
+* Do not fail if GitHub is not initialized for some reason
+
 ## 1.27.0 (2022-03-31)
 
 ### New Features
