@@ -42,7 +42,7 @@ class RunnerController < ApplicationController
   end
 
   def show_servers
-    @servers = Runner::Application.config.threads.all_servers_from_threads
+    @servers = Runner::Application.config.threads&.all_servers_from_threads || []
 
     render layout: false
   end
@@ -108,12 +108,12 @@ class RunnerController < ApplicationController
 
     output_json = {}
 
-    manager = Runner::Application.config.run_manager.find_manager_by_client_login(current_client.login)
+    manager = Runner::Application.config.run_manager&.find_manager_by_client_login(current_client.login)
 
     output_json[:servers_data] = fill_server_data(servers)
     output_json[:queue_data] = {}
-    output_json[:queue_data][:servers] = manager.booked_servers
-    output_json[:queue_data][:tests] = manager.tests
+    output_json[:queue_data][:servers] = manager&.booked_servers
+    output_json[:queue_data][:tests] = manager&.tests
 
     output_json = output_json.to_json
 
