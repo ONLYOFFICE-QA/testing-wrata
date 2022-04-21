@@ -35,6 +35,10 @@ class RunnerController < ApplicationController
                   Rails.application.config.github_helper.file_tree(project, refs: refs)
                 end
     render plain: file_tree.to_json
+  rescue StandardError => e
+    Rails.logger.error("Cannot get file_tree because #{e}")
+
+    render plain: { name: '', children: [] }.to_json
   end
 
   def show_servers
