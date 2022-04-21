@@ -5,6 +5,7 @@
 ## New Features
 
 * Add `Queue#add_tests` POST endpoint
+* Migrate to `WebPacker`
 
 ## 1.27.0 (2022-03-31)
 
