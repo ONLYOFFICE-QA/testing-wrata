@@ -2,10 +2,10 @@
  * Created by lobashov-2 on 21.05.17.
  */
 
-function getDocBranch() {
+window.getDocBranch = function() {
     return $('#docs-branches').val();
 }
 
-function getSelectedPortalUrl() {
+window.getSelectedPortalUrl = function() {
     return $('#portal-list option:selected').val();
 }

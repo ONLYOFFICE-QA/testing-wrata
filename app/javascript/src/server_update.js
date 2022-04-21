@@ -2,7 +2,7 @@
  * Created by lobashov-2 on 10.03.17.
  */
 
-function getUpdatedDataFromServer() {
+window.getUpdatedDataFromServer = function() {
     $.ajax({
         url: 'runner/updated_data.json',
         type: 'GET',
@@ -27,7 +27,7 @@ function getUpdatedDataFromServer() {
     });
 }
 
-function getAllServers() {
+window.getAllServers = function() {
     var servers = [];
     $('.server').each(function () {
         var server_name = $(this).attr('id');
@@ -37,7 +37,7 @@ function getAllServers() {
     return JSON.stringify(servers);
 }
 
-function setDataOnServersView(data) {
+window.setDataOnServersView = function(data) {
     for (var i = 0; i < data.length; i++) {
         var selector = "div[id='" + data[i].name + "']";
         var server = $(selector);
@@ -87,7 +87,7 @@ function setDataOnServersView(data) {
     }
 }
 
-function setStatusToServerView(server, status) {
+window.setStatusToServerView = function(server, status) {
     if (status === true) {
         server.removeClass('off');
     }
@@ -96,11 +96,11 @@ function setStatusToServerView(server, status) {
     }
 }
 
-function setServerIp(server, ip) {
+window.setServerIp = function(server, ip) {
     server.find('.server-ip span').text(ip);
 }
 
-function changeCreateOnDestroy(button) {
+window.changeCreateOnDestroy = function(button) {
     if (button.hasClass('create')) {
         button.removeClass('create');
         button.addClass('destroy');
@@ -108,7 +108,7 @@ function changeCreateOnDestroy(button) {
     }
 }
 
-function showTestProgress(progress_elem, time, metadata) {
+window.showTestProgress = function(progress_elem, time, metadata) {
     var progress = 0;
     if (metadata != null) {
         progress = metadata.processing;
@@ -125,7 +125,7 @@ function showTestProgress(progress_elem, time, metadata) {
     progress_elem.show();
 }
 
-function setTestNameAndOptions(hidden_elem, test) {
+window.setTestNameAndOptions = function(hidden_elem, test) {
     hidden_elem.find('.name').text(test.name);
     hidden_elem.find('.location').text(test.location);
     hidden_elem.find('.test-progress').text(testProgressLine(test));
@@ -136,34 +136,34 @@ function setTestNameAndOptions(hidden_elem, test) {
     hidden_elem.find('.spec_language').text('Spec Language: ' + test.spec_language);
 }
 
-function showBookedClient(userIcon, userName) {
+window.showBookedClient = function(userIcon, userName) {
     userIcon.find('span').text(userName);
     userIcon.css('visibility', 'visible');
 }
 
-function showUnbookButton(button) {
+window.showUnbookButton = function(button) {
     changeBookButtonOnUnbook(button);
     button.show();
     button.css('visibility', 'visible');
     eventToUnbookServer(button, false);
 }
 
-function hideUnbookButton(button) {
+window.hideUnbookButton = function(button) {
     button.hide();
 }
 
-function hideBookedClient(userIcon) {
+window.hideBookedClient = function(userIcon) {
     userIcon.find('span').text('');
     userIcon.css('visibility', 'hidden');
 }
 
-function showBookButton(button) {
+window.showBookButton = function(button) {
     changeUnbookButtonOnBook(button);
     button.show();
     eventToBookServer(button);
 }
 
-function changeDestroyOnCreate(button) {
+window.changeDestroyOnCreate = function(button) {
     if (button.hasClass('destroy')) {
         button.removeClass('destroy');
         button.addClass('create');
@@ -171,15 +171,15 @@ function changeDestroyOnCreate(button) {
     }
 }
 
-function clearServersQueue() {
+window.clearServersQueue = function() {
     clearElementInside($('#server-queue'));
 }
 
-function clearTestsQueue() {
+window.clearTestsQueue = function() {
     clearElementInside($('#test-queue'));
 }
 
-function copyServerIpToClipboardEvent(serverName) {
+window.copyServerIpToClipboardEvent = function(serverName) {
     var copyTextareaBtn = $("#" + serverName + ' .server-ip span');
 
     copyTextareaBtn.on('click', function () {
@@ -191,14 +191,14 @@ function copyServerIpToClipboardEvent(serverName) {
     });
 }
 
-function selectObjectForCopy(jqueryObject) {
+window.selectObjectForCopy = function(jqueryObject) {
     var range = document.createRange();
     range.selectNode(jqueryObject.get(0));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
 }
 
-function testProgressLine(test) {
+window.testProgressLine = function(test) {
     if (test.metadata == null) {
         return 'Progress is not available';
     }

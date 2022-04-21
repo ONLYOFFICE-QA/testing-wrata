@@ -35,6 +35,7 @@ jobs:
           gem install bundler
           bundle config set with 'development'
           bundle install --jobs 4 --retry 3
+          yarn install
       - name: Setup test database and run tests
         env:
           RAILS_ENV: test

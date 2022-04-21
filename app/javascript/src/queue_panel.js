@@ -2,34 +2,34 @@
  * Created by lobashov-2 on 10.03.17.
  */
 
-function setDataOnQueuePanel(queue_data) {
+window.setDataOnQueuePanel = function(queue_data) {
     showBookedServers(queue_data.servers);
     setBookedServersCount(queue_data.servers.length);
     showTestsFromQueue(queue_data.tests);
     showTestsInQueueCount(queue_data.tests.length);
 }
-function showBookedServers(servers) {
+window.showBookedServers = function(servers) {
     var sortedServers = servers.sort();
     for(var i = 0; i < sortedServers.length; i++) {
         appendServerOnQueue(sortedServers[i]);
     }
 }
-function appendServerOnQueue(server) {
+window.appendServerOnQueue = function(server) {
     var node = $('<div class="server-node"><i class="fa fa-hdd"></i></div>');
     var label = $('<label>').text(server);
     label.attr('title', server);
     node.append(label);
     $('#server-queue').append(node);
 }
-function setBookedServersCount(serversCount) {
+window.setBookedServersCount = function(serversCount) {
     $('#booked-servers-title').text('Servers (' + serversCount + ')');
 }
-function showTestsFromQueue(tests) {
+window.showTestsFromQueue = function(tests) {
     for(var i = 0; i < tests.length; i++) {
         appendTestsOnQueue(tests[i]);
     }
 }
-function appendTestsOnQueue(test) {
+window.appendTestsOnQueue = function(test) {
     if (typeof regionSelector === 'undefined') {
         generateRegionSelect();
     }
@@ -45,15 +45,15 @@ function appendTestsOnQueue(test) {
     testNode.append(props);
     $('#test-queue').append(testNode);
 }
-function showTestsInQueueCount(testsCount) {
+window.showTestsInQueueCount = function(testsCount) {
     $('#test-queue-title').text('Tests (' + testsCount + ')');
 }
 
-function checkQueueEmpty() {
+window.checkQueueEmpty = function() {
     return !document.getElementById('test-queue').hasChildNodes();
 }
 
-function toggleClearTestButton() {
+window.toggleClearTestButton = function() {
     if (checkQueueEmpty()) {
         $('#clear-tests').hide();
     } else {
@@ -61,7 +61,7 @@ function toggleClearTestButton() {
     }
 }
 
-function toggleShuffleTestButton() {
+window.toggleShuffleTestButton = function() {
     if (checkQueueEmpty()) {
         $('#shuffle-tests').hide();
     } else {
@@ -69,7 +69,7 @@ function toggleShuffleTestButton() {
     }
 }
 
-function toggleRemoveDuplicatesQueue() {
+window.toggleRemoveDuplicatesQueue = function() {
     if (checkQueueEmpty()) {
         $('#remove-duplicates-tests').hide();
     } else {
@@ -77,7 +77,7 @@ function toggleRemoveDuplicatesQueue() {
     }
 }
 
-function generateRegionSelect() {
+window.generateRegionSelect = function() {
     regionSelector = '';
     getRegionList().forEach(function(entry) {
         regionSelector += '<option>' + entry + '</option>';
@@ -85,7 +85,7 @@ function generateRegionSelect() {
     return regionSelector;
 }
 
-function getRegionList() {
+window.getRegionList = function() {
     var optionValues = [];
 
     $('#list-region option').each(function() {
@@ -94,7 +94,7 @@ function getRegionList() {
     return optionValues;
 }
 
-function addTestInQueue(test_path, branch, location) {
+window.addTestInQueue = function(test_path, branch, location) {
     $.ajax({
         url: 'queue/add_test',
         context: this,

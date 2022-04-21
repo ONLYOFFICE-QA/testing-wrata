@@ -2,7 +2,7 @@
  * Created by lobashov-2 on 7/7/15.
  */
 
-function showMoreData(data) {
+window.showMoreData = function(data) {
     if (data.length === 0) {
         $('#show-more').hide();
     } else {
@@ -15,7 +15,7 @@ function showMoreData(data) {
     }
 }
 
-function showMoreHistoryForServer() {
+window.showMoreHistoryForServer = function() {
     var current_showed = $('tbody tr').length;
     var server = $('#server').text();
     $.ajax({
@@ -35,7 +35,7 @@ function showMoreHistoryForServer() {
     });
 }
 
-function showMoreHistoryForClient() {
+window.showMoreHistoryForClient = function() {
     var current_showed = $('tbody tr').length;
     var name = $('#client').text();
     $.ajax({
@@ -55,7 +55,7 @@ function showMoreHistoryForClient() {
     });
 }
 
-function clearHistoryOnServer(server_name) {
+window.clearHistoryOnServer = function(server_name) {
     $.ajax({
         url: '/servers/clear_history',
         type: 'POST',
@@ -77,7 +77,7 @@ function clearHistoryOnServer(server_name) {
     });
 }
 
-function eventToDeleteHistoryLine(elem) {
+window.eventToDeleteHistoryLine = function(elem) {
     elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
@@ -97,7 +97,7 @@ function eventToDeleteHistoryLine(elem) {
     });
 }
 
-function eventToRetest(elem) {
+window.eventToRetest = function(elem) {
     elem.on('click', function () {
         var clicked = $(this);
         $.ajax({
@@ -118,7 +118,7 @@ function eventToRetest(elem) {
     });
 }
 
-function eventToShowFullStartOption(elem) {
+window.eventToShowFullStartOption = function(elem) {
     elem.click(
         function () {
             var to_show = $(this.parentNode).find('.full-command');
@@ -126,21 +126,21 @@ function eventToShowFullStartOption(elem) {
         });
 }
 
-function eventToClearHistoryOnServer(elem) {
+window.eventToClearHistoryOnServer = function(elem) {
     elem.on('click', function () {
         var server_name = $('#server').text();
         clearHistoryOnServer(server_name);
     });
 }
 
-function eventToClearHistoryOnClient(elem) {
+window.eventToClearHistoryOnClient = function(elem) {
     elem.on('click', function () {
         var name = $('#client').text();
         clearHistoryOnClient(name);
     });
 }
 
-function eventToOpenRspecResults(elem) {
+window.eventToOpenRspecResults = function(elem) {
     elem.on('click', function () {
         var clicked = $(this);
         $.ajax({

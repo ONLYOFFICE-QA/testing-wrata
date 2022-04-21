@@ -3,7 +3,7 @@
  */
 
 
-function unbookServer(server_name, button, hide_button) {
+window.unbookServer = function(server_name, button, hide_button) {
     button = typeof button === 'undefined' ? null : button;
     hide_button = typeof hide_button === 'undefined' ? null : hide_button;
     $.ajax({
@@ -32,7 +32,7 @@ function unbookServer(server_name, button, hide_button) {
     });
 }
 
-function changeUnbookButtonOnBook(button) {
+window.changeUnbookButtonOnBook = function(button) {
     var className = button.attr('class');
     if (className.indexOf('unbook') != -1) {
         button.removeClass('unbook-button');
@@ -41,7 +41,7 @@ function changeUnbookButtonOnBook(button) {
     }
 }
 
-function changeBookButtonOnUnbook(button) {
+window.changeBookButtonOnUnbook = function(button) {
     var className = button.attr('class');
     if (className.indexOf('unbook') == -1) {
         button.removeClass('book-button');
@@ -50,14 +50,14 @@ function changeBookButtonOnUnbook(button) {
     }
 }
 
-function eventToBookServer(elements) {
+window.eventToBookServer = function(elements) {
     offEventsOnElem(elements);
     elements.on('click', function() {
         bookServer($(this), $(this).attr('data-server'));
     });
 }
 
-function toggleUnbookAllServersButton() {
+window.toggleUnbookAllServersButton = function() {
     if (checkAnyBookedServers()) {
         $('#clear-servers').show();
     } else {
@@ -65,7 +65,7 @@ function toggleUnbookAllServersButton() {
     }
 }
 
-function bookServer(button, server_name) {
+window.bookServer = function(button, server_name) {
     $.ajax({
         url: 'queue/book_server',
         context: this,
@@ -86,18 +86,18 @@ function bookServer(button, server_name) {
     });
 }
 
-function eventToUnbookServer(elements, hide_button) {
+window.eventToUnbookServer = function(elements, hide_button) {
     offEventsOnElem(elements);
     elements.on('click', function() {
         unbookServer($(this).attr('data-server'), $(this), hide_button);
     });
 }
 
-function checkAnyBookedServers() {
+window.checkAnyBookedServers = function() {
     return document.getElementById('server-queue').hasChildNodes();
 }
 
-function toggleStopAllBookedServers() {
+window.toggleStopAllBookedServers = function() {
     if (checkAnyBookedServers()) {
         $('#stop-booked').show();
     } else {

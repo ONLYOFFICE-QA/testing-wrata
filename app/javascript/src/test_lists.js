@@ -3,7 +3,7 @@
  */
 
 
-function getTestList() {
+window.getTestList = function() {
     var name = $('#list-name').text();
     var file_selectors = $('.file-folder');
     var file_tests = getTestFiles(file_selectors);
@@ -13,7 +13,7 @@ function getTestList() {
     return file_list;                          //
 }
 
-function createNewList() {
+window.createNewList = function() {
     $("#sidebar-test-list").html("");
     $("#list-name").text("New Test List");
     hideStartPanel();
@@ -22,13 +22,13 @@ function createNewList() {
     makeAllAddButtonsVisible();
 }
 
-function makeAllAddButtonsVisible() {
+window.makeAllAddButtonsVisible = function() {
     $('.tab-content i.add-file').each(function () {
         $(this).css('display', 'inline-block');
     });
 }
 
-function setEventToOpenFile(element) {
+window.setEventToOpenFile = function(element) {
     element.find(".fa fa-chevron-down").on('click', function () {
         // var elem = $(this).next(); //$('#idtest').is(':visible')
         var inside = element.find(".file-inside");
@@ -42,7 +42,7 @@ function setEventToOpenFile(element) {
     });
 }
 
-function setEventToDeleteFolderFromList() {
+window.setEventToDeleteFolderFromList = function() {
     $(".file-name .fa-times").on('click', function () {
         if ($('#popup').is(':hidden')) {
             var path = $(this).parent().attr('data-qtip');
@@ -64,7 +64,7 @@ function setEventToDeleteFolderFromList() {
 }
 
 
-function setEventToDeleteTestFromList() {
+window.setEventToDeleteTestFromList = function() {
     $(".name .fa-times").on('click', function () {
         hideStartPanel();
         unlockInactiveTab();

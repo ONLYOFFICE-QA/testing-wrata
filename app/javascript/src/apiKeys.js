@@ -1,4 +1,5 @@
-function copyKeysToClipboard() {
+// function copyKeysToClipboard() {
+window.copyKeysToClipboard = function() {
     var dataToCopy = $('#api-keys');
     selectObjectForCopy(dataToCopy);
     document.execCommand('copy');

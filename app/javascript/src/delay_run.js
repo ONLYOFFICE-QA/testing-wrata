@@ -2,13 +2,13 @@
  * Created by runner on 3/3/14.
  */
 
-function eventForOpenDelayRuns(elem) {
+window.eventForOpenDelayRuns = function(elem) {
     elem.on('click', function(){
         openDelayRuns();
     });
 }
 
-function openDelayRuns() {
+window.openDelayRuns = function() {
     $.ajax({
         url: '/delay_run',
         type: 'GET',
@@ -21,7 +21,7 @@ function openDelayRuns() {
     });
 }
 
-function saveDelayedRun(name, method, start_time, location) {
+window.saveDelayedRun = function(name, method, start_time, location) {
     $.ajax({
         url: 'delay_run/add_run',
         data: {
@@ -47,7 +47,7 @@ function saveDelayedRun(name, method, start_time, location) {
     });
 }
 
-function saveChangedRun(run_id, method, start_time, location) {
+window.saveChangedRun = function(run_id, method, start_time, location) {
     $.ajax({
         url: 'delay_run/change_run',
         data: {
@@ -65,7 +65,7 @@ function saveChangedRun(run_id, method, start_time, location) {
     });
 }
 
-function deleteRun(run_id) {
+window.deleteRun = function(run_id) {
     $.ajax({
         url: 'delay_run/delete_run',
         data: {
@@ -80,7 +80,7 @@ function deleteRun(run_id) {
     });
 }
 
-function eventToChangeDelayedRun(elem) {
+window.eventToChangeDelayedRun = function(elem) {
     elem.click(function(){
         var row = $(this).parent();
         var id = row.attr('data-id');
@@ -95,7 +95,7 @@ function eventToChangeDelayedRun(elem) {
     });
 }
 
-function eventToSaveDelayedRun(elem) {
+window.eventToSaveDelayedRun = function(elem) {
     elem.click(function(){
         var row = $(this).parent();
         var name = row.find('.list-name select').val();
@@ -110,7 +110,7 @@ function eventToSaveDelayedRun(elem) {
     });
 }
 
-function eventToDeleteDelayedRun(elem) {
+window.eventToDeleteDelayedRun = function(elem) {
     elem.click(function(){
         var row = $(this).parent();
         var id = row.attr('data-id');
@@ -121,14 +121,14 @@ function eventToDeleteDelayedRun(elem) {
     });
 }
 
-function eventForCalendar(input) {
+window.eventForCalendar = function(input) {
     input.pickmeup({
         hide_on_select:  true,
         format:         'd/m/Y'
     });
 }
 
-function parseRunMethod(method, hour, min) {
+window.parseRunMethod = function(method, hour, min) {
     var run_method = '';
     if (method == 'once') {
         run_method = method;
@@ -148,7 +148,7 @@ function parseRunMethod(method, hour, min) {
     return run_method;
 }
 
-function addRow() {
+window.addRow = function() {
     $.ajax({
         url: 'delay_run/add_delayed_row',
         type: 'GET',
@@ -170,7 +170,7 @@ function addRow() {
     });
 }
 
-function eventToShowEachTimeInputs(select) {
+window.eventToShowEachTimeInputs = function(select) {
 
     select.change(function(){
         if ($(this).val() == 'each time') {
@@ -182,7 +182,7 @@ function eventToShowEachTimeInputs(select) {
     });
 }
 
-function eventToDeleteRow(elem) {
+window.eventToDeleteRow = function(elem) {
     elem.on('click', function(){
         $(this).parent().fadeOut('slow', function(){
             $(this).remove();
@@ -190,13 +190,13 @@ function eventToDeleteRow(elem) {
     });
 }
 
-function eventToAddRow(elem) {
+window.eventToAddRow = function(elem) {
     elem.on('click', function() {
         addRow();
     });
 }
 
-function dataChangeEvent(elem) {
+window.dataChangeEvent = function(elem) {
     elem.keyup(function () {
         $(this).parent().parent().find('.save-changed-run i').fadeIn();
     });
@@ -205,7 +205,7 @@ function dataChangeEvent(elem) {
     });
 }
 
-function delayRunsEvents(trimmed_data) {
+window.delayRunsEvents = function(trimmed_data) {
     eventForCalendar(trimmed_data.find('.date input'));
     eventToChangeDelayedRun(trimmed_data.find('.save-changed-run'));
     eventToDeleteDelayedRun(trimmed_data.find('.delete-run'));

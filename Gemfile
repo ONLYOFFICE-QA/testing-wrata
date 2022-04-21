@@ -2,7 +2,6 @@
 
 source 'https://rubygems.org'
 
-gem 'bootbox-rails'
 gem 'bootstrap'
 gem 'devise'
 gem 'exception_notification'
@@ -25,6 +24,7 @@ gem 'rails', '~> 7.0'
 gem 'rubyzip'
 gem 'sprockets-rails'
 gem 'uglifier'
+gem 'webpacker'
 
 group :development do
   gem 'overcommit'

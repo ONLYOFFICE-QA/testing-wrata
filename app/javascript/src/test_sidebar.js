@@ -2,14 +2,14 @@
  * Created by lobashov-2 on 21.05.17.
  */
 
-function getSidebarFileTest(file_folder) {
+window.getSidebarFileTest = function(file_folder) {
     var file_name = file_folder.find('.file-name').attr('data-qtip');
     var file_test = {};
     file_test.file_name = file_name;
     return file_test;
 }
 
-function getTestFiles(server_tests_list) {
+window.getTestFiles = function(server_tests_list) {
     var file_tests = [];
     server_tests_list.each(function () {
         var file_test = getSidebarFileTest($(this));
@@ -18,7 +18,7 @@ function getTestFiles(server_tests_list) {
     return file_tests;
 }
 
-function addFileToSidebar(icon) {
+window.addFileToSidebar = function(icon) {
     var file_name = icon.parent();
     var text = file_name.text();
     var path = file_name.parent().find('.add-button-file').attr('full-path');
@@ -33,7 +33,7 @@ function addFileToSidebar(icon) {
     lockActiveBranchSelect();
 }
 
-function eventToAddFile() {
+window.eventToAddFile = function() {
     var icons = $('.tab-content i.add-file');
     offEventsOnElem(icons);
     icons.on('click', function () {

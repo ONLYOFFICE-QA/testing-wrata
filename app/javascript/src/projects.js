@@ -2,7 +2,7 @@
  * Created by lobashov-2 on 21.05.17.
  */
 
-function eventOnChangeProject() {
+window.eventOnChangeProject = function() {
     $('#projects_0').change(function () {
         setTimeout(function() {
             fetchBranchesAndShowFiles();
@@ -10,13 +10,13 @@ function eventOnChangeProject() {
     });
 }
 
-function selectProject(project) {
+window.selectProject = function(project) {
     $("#projects_0").filter(function () {
         return $(this).html() == project;
     }).prop('selected', true);
 }
 
-function eventOnChangeBranch() {
+window.eventOnChangeBranch = function() {
     $('#docs-branches').change(function () {
         renderFileTree();
     });
