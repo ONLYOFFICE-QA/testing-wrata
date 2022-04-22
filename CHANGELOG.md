@@ -11,6 +11,7 @@
 
 * Do not fail if GitHub is not initialized for some reason
 * Do not crash frontend if Initializers are not loaded
+* Fix `rubocop-1.28.1` code issues
 
 ## 1.27.0 (2022-03-31)
 
