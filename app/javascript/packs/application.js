@@ -1,4 +1,5 @@
 require('jquery-ui');
+import {} from 'jquery-ujs'
 import 'bootstrap/dist/js/bootstrap';
 global.bootbox = require('bootbox');
 
