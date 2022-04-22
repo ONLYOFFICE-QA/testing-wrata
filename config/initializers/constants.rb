@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-DOCS_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/OnlineDocuments"
-TEAMLAB_PROJECT_PATH = "/#{ENV['HOME']}/RubymineProjects/TeamLab"
+DOCS_PROJECT_PATH = "/#{Dir.home}/RubymineProjects/OnlineDocuments"
+TEAMLAB_PROJECT_PATH = "/#{Dir.home}/RubymineProjects/TeamLab"
 DOCS_PROJECT_NAME = 'OnlineDocuments'
 TEAMLAB_PROJECT_NAME = 'TeamLab'
-RUBYMINE_PROJECTS_PATH = "/#{ENV['HOME']}/RubymineProjects"
+RUBYMINE_PROJECTS_PATH = "/#{Dir.home}/RubymineProjects"
 DOCS_TAB_NAME = 'docs'
 TEAMLAB_TAB_NAME = 'teamlab'
 TIME_FOR_UPDATE = 15
