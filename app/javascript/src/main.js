@@ -54,12 +54,6 @@ window.trim_data = function(data) {
 }
 
 window.Runner = function() {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     var _self = this;
     var testListUpdating = false;
 
