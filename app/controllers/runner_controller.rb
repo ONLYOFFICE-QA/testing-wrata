@@ -27,7 +27,6 @@ class RunnerController < ApplicationController
     project = params['project']
     refs = params['refs']
     flatten = params['flatten'] || false
-    return render body: nil, status: :bad_request if project.nil? || refs.nil?
 
     file_tree = if flatten
                   Rails.application.config.github_helper.file_list(project, refs: refs)
@@ -112,8 +111,8 @@ class RunnerController < ApplicationController
 
     output_json[:servers_data] = fill_server_data(servers)
     output_json[:queue_data] = {}
-    output_json[:queue_data][:servers] = manager&.booked_servers
-    output_json[:queue_data][:tests] = manager&.tests
+    output_json[:queue_data][:servers] = manager&.booked_servers || []
+    output_json[:queue_data][:tests] = manager&.tests || []
 
     output_json = output_json.to_json
 
