@@ -59,7 +59,7 @@ class TestListsController < ApplicationController
   # DELETE /test_lists/1
   # DELETE /test_lists/1.json
   def destroy
-    delete_testlist_by_id(params[:id])
+    TestList.find(params[:id]).destroy_with_client_cleanup(current_client)
 
     render body: nil
   end
