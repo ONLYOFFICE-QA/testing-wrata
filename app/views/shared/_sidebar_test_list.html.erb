@@ -1,0 +1,28 @@
+<div class="side-wrap">
+  <div style="position: relative">
+    <div id="open-sidebar">
+      <i id="open-ico" class="fa fa-chevron-left" style="margin-top: 4px; left: -5px; top: -2px;"></i>
+    </div>
+    <div id="sidebar" class="sidebar-nav-abs">
+      <div>
+        <div id='list-name' class="inline">My Test List</div>
+        <i id="edit-list-name" class='inline fa fa-edit'></i>
+      </div>
+      <div class="list-window">
+        <div id="sidebar-test-list">
+        </div>
+      </div>
+      <div class="start-panel">
+        <div id='save-new'>
+          <i class="fa fa-save"></i>Save
+        </div>
+        <div id='add-list'>Add in queue</div>
+        <select id='list-region' class="region form-control">
+          <% REGION_LIST.each do |region| %>
+            <option><%= region %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
