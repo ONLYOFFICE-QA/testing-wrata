@@ -18,6 +18,7 @@
 ### Fixes
 
 * Fix almost all non-GET/POST request with require of `jquery-ujs`
+* Fix failure on opening test list on history page
 
 ## 1.27.0 (2022-03-31)
 

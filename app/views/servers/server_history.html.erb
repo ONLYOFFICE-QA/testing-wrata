@@ -1,5 +1,6 @@
 <% content_for :head do %>
     <script type="text/javascript">
+        let myRunner = new Runner();
         $(document).ready(function () {
             eventToDeleteHistoryLine($('.delete-line'));
             eventToRetest($('.retest'));
@@ -12,6 +13,9 @@
         });
     </script>
 <% end %>
+
+<%= render 'shared/sidebar_test_list' %>
+
 <% if @history.empty? %>
     <h1>History list for this server is empty!</h1>
 <% else %>
