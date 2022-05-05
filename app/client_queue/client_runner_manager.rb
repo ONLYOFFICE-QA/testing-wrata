@@ -7,7 +7,7 @@ class ClientRunnerManager
 
   def initialize(client)
     @client = client
-    init_tests
+    @client_test_queue = ClientTestQueue.new
     init_servers
   end
 
@@ -17,13 +17,9 @@ class ClientRunnerManager
     @client_servers.servers_threads.each do |server|
       next unless server[:server_thread].free?
 
-      next_test = @tests.shift_test
+      next_test = @client_test_queue.shift_test
       server[:server_thread].start_test(next_test) if next_test
     end
-  end
-
-  def init_tests
-    @tests = ClientTestQueue.new
   end
 
   def init_servers
@@ -41,15 +37,15 @@ class ClientRunnerManager
   end
 
   def tests
-    @tests.tests
+    @client_test_queue.tests
   end
 
   def swap_tests(test_id1, test_id2, in_start)
-    @tests.swap_tests(test_id1, test_id2, in_start)
+    @client_test_queue.swap_tests(test_id1, test_id2, in_start)
   end
 
   def change_test_location(test_id, new_location)
-    @tests.change_test_location(test_id, new_location)
+    @client_test_queue.change_test_location(test_id, new_location)
   end
 
   def clear_booked_servers
@@ -57,15 +53,15 @@ class ClientRunnerManager
   end
 
   def clear_test_queue
-    @tests.clear
+    @client_test_queue.clear
   end
 
   def shuffle_test
-    @tests.shuffle
+    @client_test_queue.shuffle
   end
 
   def remove_duplicates
-    @tests.remove_duplicates
+    @client_test_queue.remove_duplicates
   end
 
   def add_test(test, branch, location,
@@ -75,12 +71,12 @@ class ClientRunnerManager
     test = Array(test)
     test.reverse_each do |current_test|
       spec_language.each do |current_lang|
-        @tests.push_test(current_test, branch, location,
-                         spec_browser: params.fetch(:spec_browser, SpecBrowser::DEFAULT),
-                         spec_language: current_lang,
-                         to_begin_of_queue: params.fetch(:to_begin_of_queue, true),
-                         tm_branch: params[:tm_branch],
-                         doc_branch: params[:doc_branch])
+        @client_test_queue.push_test(current_test, branch, location,
+                                     spec_browser: params.fetch(:spec_browser, SpecBrowser::DEFAULT),
+                                     spec_language: current_lang,
+                                     to_begin_of_queue: params.fetch(:to_begin_of_queue, true),
+                                     tm_branch: params[:tm_branch],
+                                     doc_branch: params[:doc_branch])
       end
     end
   end
@@ -90,7 +86,7 @@ class ClientRunnerManager
   end
 
   def delete_test(test_id)
-    @tests.delete_test(test_id)
+    @client_test_queue.delete_test(test_id)
   end
 
   def delete_server(server_name)
@@ -105,6 +101,6 @@ class ClientRunnerManager
   end
 
   def ready_to_start?
-    !(@tests.empty? || @client_servers.empty?)
+    !(@client_test_queue.empty? || @client_servers.empty?)
   end
 end
