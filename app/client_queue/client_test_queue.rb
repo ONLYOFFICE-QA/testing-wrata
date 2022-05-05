@@ -60,11 +60,6 @@ class ClientTestQueue
     end
   end
 
-  def change_test_location(test_id, new_location)
-    test = @tests.find { |cur_test| cur_test[:id] == test_id }
-    test[:location] = new_location
-  end
-
   def clear
     @tests.clear
   end

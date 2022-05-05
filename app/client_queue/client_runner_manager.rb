@@ -44,10 +44,6 @@ class ClientRunnerManager
     @client_test_queue.swap_tests(test_id1, test_id2, in_start)
   end
 
-  def change_test_location(test_id, new_location)
-    @client_test_queue.change_test_location(test_id, new_location)
-  end
-
   def clear_booked_servers
     @client_servers.clear
   end

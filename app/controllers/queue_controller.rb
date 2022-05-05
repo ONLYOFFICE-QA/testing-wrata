@@ -88,12 +88,6 @@ class QueueController < ApplicationController
     render body: nil
   end
 
-  def change_test_location
-    @manager.change_test_location(params['test_id'].to_i, params['new_location'])
-
-    render body: nil
-  end
-
   private
 
   def manager
