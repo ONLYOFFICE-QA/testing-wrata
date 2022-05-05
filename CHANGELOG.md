@@ -15,6 +15,7 @@
 * Fix `rubocop-1.28.1` code issues
 * Refactor `TestList#destroy_with_client_cleanup`
 * Rename badly named variable for `ClientTestQueue`
+* Remove unused `change_test_location` method and endpoint
 
 ### Fixes
 

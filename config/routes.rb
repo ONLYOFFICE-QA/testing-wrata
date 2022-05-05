@@ -57,7 +57,6 @@ Rails.application.routes.draw do
   post 'queue/shuffle_tests'
   post 'queue/swap_tests'
   post 'queue/delete_test'
-  post 'queue/change_test_location'
   post 'queue/clear_tests'
   post 'queue/retest'
 
