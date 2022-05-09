@@ -96,12 +96,6 @@ Style/MixinUsage:
   Exclude:
     - 'bin/update'
 
-# Offense count: 1
-# This cop supports unsafe auto-correction (--auto-correct-all).
-Style/SlicingWithRange:
-  Exclude:
-    - 'app/client_queue/client_test_queue.rb'
-
 # Offense count: 7
 # This cop supports safe auto-correction (--auto-correct).
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns, IgnoredPatterns.

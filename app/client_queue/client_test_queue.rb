@@ -75,7 +75,7 @@ class ClientTestQueue
   end
 
   def get_name_from_path(test_path)
-    test_path[(test_path.rindex('/') + 1)..-1]
+    test_path[(test_path.rindex('/') + 1)..]
   end
 
   def get_project(test_path)
