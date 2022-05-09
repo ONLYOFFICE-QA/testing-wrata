@@ -15,8 +15,8 @@ class RunnerController < ApplicationController
     respond_to do |format|
       format.json do
         render json: {
-          branches: branches,
-          tags: tags
+          branches:,
+          tags:
         }.to_json
       end
       format.html
@@ -29,9 +29,9 @@ class RunnerController < ApplicationController
     flatten = params['flatten'] || false
 
     file_tree = if flatten
-                  Rails.application.config.github_helper.file_list(project, refs: refs)
+                  Rails.application.config.github_helper.file_list(project, refs:)
                 else
-                  Rails.application.config.github_helper.file_tree(project, refs: refs)
+                  Rails.application.config.github_helper.file_tree(project, refs:)
                 end
     render plain: file_tree.to_json
   rescue StandardError => e

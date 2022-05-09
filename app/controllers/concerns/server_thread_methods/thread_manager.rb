@@ -18,7 +18,7 @@ module ServerThreadMethods
                               test_options,
                               full_start_command,
                               client,
-                              start_time: start_time,
+                              start_time:,
                               exit_code: exit_status)
           @server_model.update_column(:executing_command_now, false)
           @server_model.update_column(:last_activity_date, Time.current)
