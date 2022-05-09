@@ -66,7 +66,11 @@ module RunThreadManager
   end
 
   def check_each_round(run)
-    run.should_start_by_time?(run.next_start) || run.start_time
+    if run.next_start
+      run.should_start_by_time?(run.next_start)
+    else
+      run.should_start_by_time?(run.start_time)
+    end
   end
 
   def delete_from_db(run)
