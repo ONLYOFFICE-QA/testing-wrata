@@ -96,14 +96,6 @@ Style/MixinUsage:
   Exclude:
     - 'bin/update'
 
-# Offense count: 3
-# This cop supports safe auto-correction (--auto-correct).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: literals, strict
-Style/MutableConstant:
-  Exclude:
-    - 'config/initializers/constants.rb'
-
 # Offense count: 1
 # This cop supports safe auto-correction (--auto-correct).
 Style/RedundantCondition:
