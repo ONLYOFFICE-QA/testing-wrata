@@ -3,7 +3,7 @@
 module ServerTestOut
   BEGIN_HTML_OUT = '-----BEGIN HTML OUTPUT-----'
   END_HTML_OUT = '-----END HTML OUTPUT-----'
-  FINAL_MATCH_REGEXP = /#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m.freeze
+  FINAL_MATCH_REGEXP = /#{BEGIN_HTML_OUT}(.*)#{END_HTML_OUT}/m
   # @return [Array<Exception>] list of exceptions happens on log read failure
   LOG_READ_FAILURE_EXCEPTIONS = [ArgumentError,
                                  Errno::ENOENT].freeze

@@ -22,7 +22,7 @@ class ClientServers
   def add_server(server_name, client)
     server_thread = Runner::Application.config.threads.get_thread_by_name(server_name)
     server_thread.book_server(client)
-    @servers_threads << { name: server_name, server_thread: server_thread }
+    @servers_threads << { name: server_name, server_thread: }
   end
 
   def delete_server(server_name)

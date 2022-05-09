@@ -16,12 +16,12 @@ class ClientTestQueue
       params[:doc_branch] = branch
       params[:tm_branch] = branch
     end
-    data_to_push = { test_path: test_path,
+    data_to_push = { test_path:,
                      id: @id,
                      doc_branch: params[:doc_branch],
                      tm_branch: params[:tm_branch],
-                     location: location,
-                     test_name: test_name,
+                     location:,
+                     test_name:,
                      project: test_project,
                      spec_browser: params.fetch(:spec_browser, SpecBrowser::DEFAULT),
                      spec_language: params.fetch(:spec_language, 'en-us') }
@@ -75,7 +75,7 @@ class ClientTestQueue
   end
 
   def get_name_from_path(test_path)
-    test_path[(test_path.rindex('/') + 1)..-1]
+    test_path[(test_path.rindex('/') + 1)..]
   end
 
   def get_project(test_path)

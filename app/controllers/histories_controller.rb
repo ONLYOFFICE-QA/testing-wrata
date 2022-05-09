@@ -84,7 +84,7 @@ class HistoriesController < ApplicationController
 
     begin
       form_log_archive(current_client.histories.last(MAX_HISTORIES_IN_ARCHIVE), temp_file)
-      send_data(File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename: filename)
+      send_data(File.read(temp_file.path), type: 'application/zip', disposition: 'attachment', filename:)
     rescue StandardError => e
       Rails.logger.error("Something error happened while forming logs #{e}")
       temp_file.close

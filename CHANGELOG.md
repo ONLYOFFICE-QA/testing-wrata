@@ -16,6 +16,7 @@
 * Refactor `TestList#destroy_with_client_cleanup`
 * Rename badly named variable for `ClientTestQueue`
 * Remove unused `change_test_location` method and endpoint
+* Drop `ruby-3.0` support
 
 ### Fixes
 
