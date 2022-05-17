@@ -399,6 +399,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rubyzip
+  sassc-rails
   scss_lint
   selenium-webdriver
   sprockets-rails
