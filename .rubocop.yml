@@ -11,12 +11,3 @@ AllCops:
     - vendor/bundle/**/*
   NewCops: enable
   TargetRubyVersion: 3.1
-
-# Until https://github.com/rubocop/rubocop-rspec/issues/1160
-RSpec/Rails/AvoidSetupHook:
-  Enabled: false
-
-# Until https://github.com/rubocop/rubocop/issues/10605
-Style/RedundantCondition:
-  Exclude:
-    - 'app/workers/run_thread_manager.rb'
