@@ -18,6 +18,7 @@
 * Remove unused `change_test_location` method and endpoint
 * Drop `ruby-3.0` support
 * Explicitly require `sassc-rails` dependency
+* Migrate to `terser` from deprecated `UglifyJS`
 
 ### Fixes
 

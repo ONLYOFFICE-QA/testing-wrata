@@ -24,7 +24,7 @@ gem 'rails', '~> 7.0'
 gem 'rubyzip'
 gem 'sassc-rails'
 gem 'sprockets-rails'
-gem 'uglifier'
+gem 'terser'
 gem 'webpacker'
 
 group :development do
