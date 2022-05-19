@@ -11,15 +11,11 @@ window.htmlFileTree = function(treeNode) {
         resultHtml += '<div class="add-button-folder active" data-test="' + name + '" style="">add</div>';
         resultHtml += '<div class="folder-name"><i class="fa fa-folder"></i>' + name + "</div>";
         resultHtml += '<div class="folder-inside" style="display: none">';
-        for (var i = 0, len = children.length; i < len; i++) {
-            resultHtml += htmlFileTree(children[i]);
-        }
+        children.forEach(element => (resultHtml += htmlFileTree(element)));
         resultHtml += '</div>';
         resultHtml += '</div>';
     } else if (treeNode.constructor === Array) {
-        for (var i = 0, len = treeNode.length; i < len; i++) {
-            resultHtml += htmlFileTree(treeNode[i]);
-        }
+        treeNode.forEach(element => (resultHtml += htmlFileTree(element)));
     }
     else {
         resultHtml += '<div class="file">';
@@ -113,11 +109,7 @@ window.fetchBranches = function(project, control) {
 window.setGitReferences = function(control, branches, tags) {
     clearElementInside(control);
     control.append($("<option disabled>Branches</option>"));
-    for(var i = 0; i < branches.length; i++) {
-        control.append($("<option>" + branches[i] + "</option>"));
-    }
+    branches.forEach(element => (control.append($("<option>" + element + "</option>"))));
     control.append($("<option disabled>Tags</option>"));
-    for(var i = 0; i < tags.length; i++) {
-        control.append($("<option>" + tags[i] + "</option>"));
-    }
+    tags.forEach(element => (control.append($("<option>" + element + "</option>"))));
 };
