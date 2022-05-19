@@ -70,9 +70,6 @@ window.clearHistoryOnServer = function(server_name) {
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-        },
-        complete: function() {
-            location.reload();
         }
     });
 };

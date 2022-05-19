@@ -876,9 +876,6 @@ window.clearHistoryOnClient = function(client) {
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-        },
-        complete: function() {
-            location.reload();
         }
     });
 };
