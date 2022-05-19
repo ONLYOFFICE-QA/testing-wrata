@@ -13,6 +13,10 @@
     "webpack-cli": "^4.9.2"
   },
   "devDependencies": {
+    "jshint": "^2.13.4",
     "webpack-dev-server": "^4.8.1"
+  },
+  "jshintConfig": {
+    "esversion": 6
   }
 }
