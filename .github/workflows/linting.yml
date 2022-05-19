@@ -36,4 +36,4 @@ jobs:
       - name: Check JavaScript files using `jshint`
         run: |
           yarn install
-          yarn run jshint
+          yarn run jshint .
