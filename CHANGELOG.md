@@ -7,6 +7,7 @@
 * Add `Queue#add_tests` POST endpoint
 * Migrate to `WebPacker`
 * Add `WebDriver` tests wit `capybara`
+* Add `jshint` check in CI
 
 ### Changes
 
