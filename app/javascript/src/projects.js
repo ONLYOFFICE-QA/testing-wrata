@@ -8,16 +8,16 @@ window.eventOnChangeProject = function() {
             fetchBranchesAndShowFiles();
         }, 100);
     });
-}
+};
 
 window.selectProject = function(project) {
     $("#projects_0").filter(function () {
         return $(this).html() == project;
     }).prop('selected', true);
-}
+};
 
 window.eventOnChangeBranch = function() {
     $('#docs-branches').change(function () {
         renderFileTree();
     });
-}
+};

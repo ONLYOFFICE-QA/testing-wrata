@@ -3,4 +3,4 @@
 
 window.getSpecBrowser = function() {
     return $('#browser_0').val();
-}
+};

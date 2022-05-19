@@ -15,19 +15,19 @@ window.fetch_server_log = function(server_name) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.fill_server_log = function(server_name, log) {
     var log_div = $("#" + server_name + ' .log');
     log_div.text(log);
-}
+};
 
 window.empty_server_log = function(server_name) {
     var log_div = $("#" + server_name + ' .log');
     log_div.text('');
-}
+};
 
 window.server_log_visible = function(server_name) {
     var log_div = $("#" + server_name + ' .log');
     return log_div.is(':visible');
-}
+};

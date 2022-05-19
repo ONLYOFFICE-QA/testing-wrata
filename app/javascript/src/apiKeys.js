@@ -6,4 +6,4 @@ window.copyKeysToClipboard = function() {
     dataToCopy.fadeOut('normal', function () {
         dataToCopy.delay(200).fadeIn();
     });
-}
+};

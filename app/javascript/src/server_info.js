@@ -29,4 +29,4 @@ window.update_ip_value = function(value) {
 
 window.fetchCurrentServerIp = function() {
     fetch_server_ip($( "#server_name" ).val());
-}
+};

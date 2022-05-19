@@ -31,7 +31,7 @@ window.htmlFileTree = function(treeNode) {
         resultHtml += '</div>';
     }
     return resultHtml;
-}
+};
 
 window.renderFileTree = function(project, ref) {
     if (project === undefined) {
@@ -69,23 +69,23 @@ window.renderFileTree = function(project, ref) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.activeProject = function() {
     return $('#projects_0 option:selected').val();
-}
+};
 
 window.showFileTreeOverlay = function() {
     $(".section-overlay.file-tree-overlay").show();
-}
+};
 
 window.hideFileTreeOverlay = function() {
     $(".section-overlay.file-tree-overlay").hide();
-}
+};
 
 window.fetchBranchesAndShowFiles = function() {
     fetchBranches(activeProject(), $('#docs-branches'));
-}
+};
 
 window.fetchBranches = function(project, control) {
     $.ajax({
@@ -107,7 +107,7 @@ window.fetchBranches = function(project, control) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 
 window.setGitReferences = function(control, branches, tags) {
@@ -120,4 +120,4 @@ window.setGitReferences = function(control, branches, tags) {
     for(var i = 0; i < tags.length; i++) {
         control.append($("<option>" + tags[i] + "</option>"));
     }
-}
+};

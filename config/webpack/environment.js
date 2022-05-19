@@ -1,4 +1,4 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
 
 const webpack = require('webpack');
 environment.plugins.append('Provide', new webpack.ProvidePlugin({
@@ -12,4 +12,4 @@ const aliasConfig = {
 };
 environment.config.set('resolve.alias', aliasConfig);
 
-module.exports = environment
+module.exports = environment;

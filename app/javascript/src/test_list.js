@@ -10,14 +10,14 @@ window.fullPathForFile = function(file) {
         parent_folder = parent_folder.parentNode.parentNode.parentNode.children[0];
     }
     return full_path;
-}
+};
 
 window.addFullPaths = function(root_folder) {
     var project_folder = projectFolder();
     root_folder.find('.add-button-file').each(function () {
         $(this).attr('full-path', '~/RubymineProjects/' + project_folder + '/' + fullPathForFile($(this)));
     });
-}
+};
 
 window.projectFolder = function() {
     var project = activeProject();
@@ -28,4 +28,4 @@ window.projectFolder = function() {
         return 'TeamLab';
     }
     return project.split('/').reverse()[0];
-}
+};

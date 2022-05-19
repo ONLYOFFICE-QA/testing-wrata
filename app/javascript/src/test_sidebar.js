@@ -7,7 +7,7 @@ window.getSidebarFileTest = function(file_folder) {
     var file_test = {};
     file_test.file_name = file_name;
     return file_test;
-}
+};
 
 window.getTestFiles = function(server_tests_list) {
     var file_tests = [];
@@ -16,7 +16,7 @@ window.getTestFiles = function(server_tests_list) {
         file_tests.push(file_test);
     });
     return file_tests;
-}
+};
 
 window.addFileToSidebar = function(icon) {
     var file_name = icon.parent();
@@ -31,7 +31,7 @@ window.addFileToSidebar = function(icon) {
     openSidebar();
     lockInactiveTab();
     lockActiveBranchSelect();
-}
+};
 
 window.eventToAddFile = function() {
     var icons = $('.tab-content i.add-file');
@@ -39,4 +39,4 @@ window.eventToAddFile = function() {
     icons.on('click', function () {
         addFileToSidebar($(this));
     });
-}
+};

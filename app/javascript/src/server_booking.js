@@ -30,7 +30,7 @@ window.unbookServer = function(server_name, button, hide_button) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.changeUnbookButtonOnBook = function(button) {
     var className = button.attr('class');
@@ -39,7 +39,7 @@ window.changeUnbookButtonOnBook = function(button) {
         button.text('book');
         button.addClass('book-button');
     }
-}
+};
 
 window.changeBookButtonOnUnbook = function(button) {
     var className = button.attr('class');
@@ -48,14 +48,14 @@ window.changeBookButtonOnUnbook = function(button) {
         button.text('unbook');
         button.addClass('unbook-button');
     }
-}
+};
 
 window.eventToBookServer = function(elements) {
     offEventsOnElem(elements);
     elements.on('click', function() {
         bookServer($(this), $(this).attr('data-server'));
     });
-}
+};
 
 window.toggleUnbookAllServersButton = function() {
     if (checkAnyBookedServers()) {
@@ -63,7 +63,7 @@ window.toggleUnbookAllServersButton = function() {
     } else {
         $('#clear-servers').hide();
     }
-}
+};
 
 window.bookServer = function(button, server_name) {
     $.ajax({
@@ -84,18 +84,18 @@ window.bookServer = function(button, server_name) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.eventToUnbookServer = function(elements, hide_button) {
     offEventsOnElem(elements);
     elements.on('click', function() {
         unbookServer($(this).attr('data-server'), $(this), hide_button);
     });
-}
+};
 
 window.checkAnyBookedServers = function() {
     return document.getElementById('server-queue').hasChildNodes();
-}
+};
 
 window.toggleStopAllBookedServers = function() {
     if (checkAnyBookedServers()) {
@@ -103,4 +103,4 @@ window.toggleStopAllBookedServers = function() {
     } else {
         $('#stop-booked').hide();
     }
-}
+};

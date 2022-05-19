@@ -25,7 +25,7 @@ window.getUpdatedDataFromServer = function() {
             console.log(e.message);
         }
     });
-}
+};
 
 window.getAllServers = function() {
     var servers = [];
@@ -35,7 +35,7 @@ window.getAllServers = function() {
         servers.push({name: server_name, with_log: is_log_displayed});
     });
     return JSON.stringify(servers);
-}
+};
 
 window.setDataOnServersView = function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -85,7 +85,7 @@ window.setDataOnServersView = function(data) {
             hideServerSectionOverlay(data[i].name);
         }
     }
-}
+};
 
 window.setStatusToServerView = function(server, status) {
     if (status === true) {
@@ -94,11 +94,11 @@ window.setStatusToServerView = function(server, status) {
     else {
         server.addClass('off');
     }
-}
+};
 
 window.setServerIp = function(server, ip) {
     server.find('.server-ip span').text(ip);
-}
+};
 
 window.changeCreateOnDestroy = function(button) {
     if (button.hasClass('create')) {
@@ -106,7 +106,7 @@ window.changeCreateOnDestroy = function(button) {
         button.addClass('destroy');
         button.find('span').text('destroy');
     }
-}
+};
 
 window.showTestProgress = function(progress_elem, time, metadata) {
     var progress = 0;
@@ -123,7 +123,7 @@ window.showTestProgress = function(progress_elem, time, metadata) {
     }
     progress_elem.find('.value').text(progress + '% ' + time);
     progress_elem.show();
-}
+};
 
 window.setTestNameAndOptions = function(hidden_elem, test) {
     hidden_elem.find('.name').text(test.name);
@@ -134,34 +134,34 @@ window.setTestNameAndOptions = function(hidden_elem, test) {
     hidden_elem.find('.tm_branch').text('OnlyOffice Branch: ' + test.tm_branch);
     hidden_elem.find('.spec_browser').text('Spec Browser: ' + test.spec_browser);
     hidden_elem.find('.spec_language').text('Spec Language: ' + test.spec_language);
-}
+};
 
 window.showBookedClient = function(userIcon, userName) {
     userIcon.find('span').text(userName);
     userIcon.css('visibility', 'visible');
-}
+};
 
 window.showUnbookButton = function(button) {
     changeBookButtonOnUnbook(button);
     button.show();
     button.css('visibility', 'visible');
     eventToUnbookServer(button, false);
-}
+};
 
 window.hideUnbookButton = function(button) {
     button.hide();
-}
+};
 
 window.hideBookedClient = function(userIcon) {
     userIcon.find('span').text('');
     userIcon.css('visibility', 'hidden');
-}
+};
 
 window.showBookButton = function(button) {
     changeUnbookButtonOnBook(button);
     button.show();
     eventToBookServer(button);
-}
+};
 
 window.changeDestroyOnCreate = function(button) {
     if (button.hasClass('destroy')) {
@@ -169,15 +169,15 @@ window.changeDestroyOnCreate = function(button) {
         button.addClass('create');
         button.find('span').text('create');
     }
-}
+};
 
 window.clearServersQueue = function() {
     clearElementInside($('#server-queue'));
-}
+};
 
 window.clearTestsQueue = function() {
     clearElementInside($('#test-queue'));
-}
+};
 
 window.copyServerIpToClipboardEvent = function(serverName) {
     var copyTextareaBtn = $("#" + serverName + ' .server-ip span');
@@ -189,14 +189,14 @@ window.copyServerIpToClipboardEvent = function(serverName) {
             copyTextareaBtn.delay(200).fadeIn();
         });
     });
-}
+};
 
 window.selectObjectForCopy = function(jqueryObject) {
     var range = document.createRange();
     range.selectNode(jqueryObject.get(0));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
-}
+};
 
 window.testProgressLine = function(test) {
     if (test.metadata == null) {
@@ -213,4 +213,4 @@ window.testProgressLine = function(test) {
         line += ', Failed: ' + test.metadata.failed_count;
     }
     return line;
-}
+};
