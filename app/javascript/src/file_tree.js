@@ -27,7 +27,7 @@ window.htmlFileTree = function(treeNode) {
         resultHtml += '</div>';
     }
     return resultHtml;
-};
+}
 
 window.renderFileTree = function(project, ref) {
     if (project === undefined) {
