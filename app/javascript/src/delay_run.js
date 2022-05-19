@@ -6,7 +6,7 @@ window.eventForOpenDelayRuns = function(elem) {
     elem.on('click', function(){
         openDelayRuns();
     });
-}
+};
 
 window.openDelayRuns = function() {
     $.ajax({
@@ -19,7 +19,7 @@ window.openDelayRuns = function() {
             $('.popup-window').html(trimmed_data);
         }
     });
-}
+};
 
 window.saveDelayedRun = function(name, method, start_time, location) {
     $.ajax({
@@ -45,7 +45,7 @@ window.saveDelayedRun = function(name, method, start_time, location) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.saveChangedRun = function(run_id, method, start_time, location) {
     $.ajax({
@@ -63,7 +63,7 @@ window.saveChangedRun = function(run_id, method, start_time, location) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.deleteRun = function(run_id) {
     $.ajax({
@@ -78,7 +78,7 @@ window.deleteRun = function(run_id) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.eventToChangeDelayedRun = function(elem) {
     elem.click(function(){
@@ -93,7 +93,7 @@ window.eventToChangeDelayedRun = function(elem) {
         saveChangedRun(id, method, start_time, location);
         $(this).find('i').fadeOut('slow');
     });
-}
+};
 
 window.eventToSaveDelayedRun = function(elem) {
     elem.click(function(){
@@ -108,7 +108,7 @@ window.eventToSaveDelayedRun = function(elem) {
         saveDelayedRun(name, method, start_time, location);
         row.fadeOut('slow');
     });
-}
+};
 
 window.eventToDeleteDelayedRun = function(elem) {
     elem.click(function(){
@@ -119,14 +119,14 @@ window.eventToDeleteDelayedRun = function(elem) {
             $(this).remove();
         });
     });
-}
+};
 
 window.eventForCalendar = function(input) {
     input.pickmeup({
         hide_on_select:  true,
         format:         'd/m/Y'
     });
-}
+};
 
 window.parseRunMethod = function(method, hour, min) {
     var run_method = '';
@@ -146,7 +146,7 @@ window.parseRunMethod = function(method, hour, min) {
         }
     }
     return run_method;
-}
+};
 
 window.addRow = function() {
     $.ajax({
@@ -168,7 +168,7 @@ window.addRow = function() {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.eventToShowEachTimeInputs = function(select) {
 
@@ -180,7 +180,7 @@ window.eventToShowEachTimeInputs = function(select) {
             $(this).parent().next().fadeOut();
         }
     });
-}
+};
 
 window.eventToDeleteRow = function(elem) {
     elem.on('click', function(){
@@ -188,13 +188,13 @@ window.eventToDeleteRow = function(elem) {
             $(this).remove();
         });
     });
-}
+};
 
 window.eventToAddRow = function(elem) {
     elem.on('click', function() {
         addRow();
     });
-}
+};
 
 window.dataChangeEvent = function(elem) {
     elem.keyup(function () {
@@ -203,7 +203,7 @@ window.dataChangeEvent = function(elem) {
     elem.change(function () {
         $(this).parent().parent().find('.save-changed-run i').fadeIn();
     });
-}
+};
 
 window.delayRunsEvents = function(trimmed_data) {
     eventForCalendar(trimmed_data.find('.date input'));
@@ -213,7 +213,7 @@ window.delayRunsEvents = function(trimmed_data) {
     dataChangeEvent(trimmed_data.find('select'));
     dataChangeEvent(trimmed_data.find('.date input'));
     eventToAddRow(trimmed_data.find('.add-run-button'));
-}
+};
 
 $(document).ready(function(){
     eventForOpenDelayRuns($('#delay-runs'));
