@@ -3,4 +3,4 @@
 
 window.getSpecLanguage = function() {
     return $('#language_0').val();
-}
+};

@@ -5,18 +5,18 @@
 
 window.isServerCreated = function(serverSize) {
     var destroyButton = $("#" + serverSize + ' .destroy');
-    return destroyButton.length == 1
-}
+    return destroyButton.length == 1;
+};
 
 window.setServerSize = function(serverSize, size) {
     var serverSizeSelect = $("#" + serverSize + ' .server-size-select');
     serverSizeSelect.val(size);
-}
+};
 
 window.getSelectedServerSize = function(serverName) {
     var serverSizeSelect = $("#" + serverName + ' .server-size-select');
     return serverSizeSelect.val();
-}
+};
 
 
 window.disableSelectServerSize = function(serverName) {
@@ -25,7 +25,7 @@ window.disableSelectServerSize = function(serverName) {
     } else {
         $("#" + serverName + ' .server-size-select').removeAttr("disabled");
     }
-}
+};
 
 window.eventForCreateAndDestroyServer = function(serverName) {
     var actionButton = $("#" + serverName + ' .fa-power-off');
@@ -38,14 +38,14 @@ window.eventForCreateAndDestroyServer = function(serverName) {
             }
         });
     });
-}
+};
 
 window.initEventsForCreateDestroyButtons = function() {
     var servers = serverList();
     servers.forEach(function(element) {
         eventForCreateAndDestroyServer(element);
     });
-}
+};
 
 window.createAndDestroyServer = function(action, serverName, serverSize) {
     if (action == 'create') {
@@ -56,18 +56,18 @@ window.createAndDestroyServer = function(action, serverName, serverSize) {
         destroyServer(serverName);
     }
     disableSelectServerSize(serverName);
-}
+};
 window.showServerSectionOverlay = function(server, message) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).find('.overlay-text').text(message);
     $(selector).show();
     $("#" + server + ' .fa-power-off').hide();
-}
+};
 window.hideServerSectionOverlay = function(server) {
     var selector = 'div#' + server + ' .section-overlay';
     $(selector).hide();
     $("#" + server + ' .fa-power-off').show();
-}
+};
 window.createServer = function(server, size) {
     $.ajax({
         url: 'servers/cloud_server_create',
@@ -84,7 +84,7 @@ window.createServer = function(server, size) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 window.destroyServer = function(server) {
     $.ajax({
         url: 'servers/cloud_server_destroy',
@@ -103,7 +103,7 @@ window.destroyServer = function(server) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.serverList = function() {
     var servers = [];
@@ -111,4 +111,4 @@ window.serverList = function() {
         servers.push(element.id);
     });
     return servers;
-}
+};

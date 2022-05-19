@@ -3,7 +3,7 @@
  */
 
 window.add_portal_to_list = function(list_element) {
-    var defaultValue = "http://"
+    var defaultValue = "http://";
     bootbox.prompt(
         {
             title: "Enter Portal name",
@@ -19,7 +19,7 @@ window.add_portal_to_list = function(list_element) {
             }
         });
 
-}
+};
 
 window.eventForAddNewPortal = function(elem) {
     elem = elem || $("#portal-list");
@@ -28,4 +28,4 @@ window.eventForAddNewPortal = function(elem) {
             add_portal_to_list(elem);
         }
     });
-}
+};

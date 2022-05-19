@@ -11,7 +11,7 @@ window.getTestList = function() {
     file_list.name = name;             //LIKE
     file_list.file_tests = file_tests;      //HASH
     return file_list;                          //
-}
+};
 
 window.createNewList = function() {
     $("#sidebar-test-list").html("");
@@ -20,13 +20,13 @@ window.createNewList = function() {
     unlockInactiveTab();
     unlockActiveBranchSelect();
     makeAllAddButtonsVisible();
-}
+};
 
 window.makeAllAddButtonsVisible = function() {
     $('.tab-content i.add-file').each(function () {
         $(this).css('display', 'inline-block');
     });
-}
+};
 
 window.setEventToOpenFile = function(element) {
     element.find(".fa fa-chevron-down").on('click', function () {
@@ -40,7 +40,7 @@ window.setEventToOpenFile = function(element) {
             inside.slideUp();
         }
     });
-}
+};
 
 window.setEventToDeleteFolderFromList = function() {
     $(".file-name .fa-times").on('click', function () {
@@ -61,7 +61,7 @@ window.setEventToDeleteFolderFromList = function() {
         unlockInactiveTab();
         unlockActiveBranchSelect();
     });
-}
+};
 
 
 window.setEventToDeleteTestFromList = function() {
@@ -70,4 +70,4 @@ window.setEventToDeleteTestFromList = function() {
         unlockInactiveTab();
         unlockActiveBranchSelect();
     });
-}
+};

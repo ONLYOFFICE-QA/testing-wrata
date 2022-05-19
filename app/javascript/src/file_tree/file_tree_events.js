@@ -17,7 +17,7 @@ window.setEventToOpenFolder = function() {
             icon.removeClass("fa-folder-open");
         }
     });
-}
+};
 
 window.eventToAddTestInQueue = function(elem) {
     elem.on('click', function(){
@@ -25,7 +25,7 @@ window.eventToAddTestInQueue = function(elem) {
         getUpdatedDataFromServer();
         imitateHover($('.test-node :first'));
     });
-}
+};
 
 window.addFolderInQueue = function(folder_elem) {
     var tests = [];
@@ -38,11 +38,11 @@ window.addFolderInQueue = function(folder_elem) {
         addTestInQueue(tests, branch, location);
     }
 
-}
+};
 
 window.eventToAddFolderInQueue = function(folder_elem) {
     folder_elem.on('click', function(){
         addFolderInQueue($(this).parent());
         getUpdatedDataFromServer();
     });
-}
+};

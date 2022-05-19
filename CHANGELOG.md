@@ -7,6 +7,7 @@
 * Add `Queue#add_tests` POST endpoint
 * Migrate to `WebPacker`
 * Add `WebDriver` tests wit `capybara`
+* Add `jshint` check in CI
 
 ### Changes
 
@@ -19,6 +20,7 @@
 * Drop `ruby-3.0` support
 * Explicitly require `sassc-rails` dependency
 * Migrate to `terser` from deprecated `UglifyJS`
+* Actualize `jshint` config and fix some issues
 
 ### Fixes
 

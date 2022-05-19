@@ -7,28 +7,28 @@ window.setDataOnQueuePanel = function(queue_data) {
     setBookedServersCount(queue_data.servers.length);
     showTestsFromQueue(queue_data.tests);
     showTestsInQueueCount(queue_data.tests.length);
-}
+};
 window.showBookedServers = function(servers) {
     var sortedServers = servers.sort();
     for(var i = 0; i < sortedServers.length; i++) {
         appendServerOnQueue(sortedServers[i]);
     }
-}
+};
 window.appendServerOnQueue = function(server) {
     var node = $('<div class="server-node"><i class="fa fa-hdd"></i></div>');
     var label = $('<label>').text(server);
     label.attr('title', server);
     node.append(label);
     $('#server-queue').append(node);
-}
+};
 window.setBookedServersCount = function(serversCount) {
     $('#booked-servers-title').text('Servers (' + serversCount + ')');
-}
+};
 window.showTestsFromQueue = function(tests) {
     for(var i = 0; i < tests.length; i++) {
         appendTestsOnQueue(tests[i]);
     }
-}
+};
 window.appendTestsOnQueue = function(test) {
     if (typeof regionSelector === 'undefined') {
         generateRegionSelect();
@@ -44,14 +44,14 @@ window.appendTestsOnQueue = function(test) {
     testNode.append(name);
     testNode.append(props);
     $('#test-queue').append(testNode);
-}
+};
 window.showTestsInQueueCount = function(testsCount) {
     $('#test-queue-title').text('Tests (' + testsCount + ')');
-}
+};
 
 window.checkQueueEmpty = function() {
     return !document.getElementById('test-queue').hasChildNodes();
-}
+};
 
 window.toggleClearTestButton = function() {
     if (checkQueueEmpty()) {
@@ -59,7 +59,7 @@ window.toggleClearTestButton = function() {
     } else {
         $('#clear-tests').show();
     }
-}
+};
 
 window.toggleShuffleTestButton = function() {
     if (checkQueueEmpty()) {
@@ -67,7 +67,7 @@ window.toggleShuffleTestButton = function() {
     } else {
         $('#shuffle-tests').show();
     }
-}
+};
 
 window.toggleRemoveDuplicatesQueue = function() {
     if (checkQueueEmpty()) {
@@ -75,7 +75,7 @@ window.toggleRemoveDuplicatesQueue = function() {
     } else {
         $('#remove-duplicates-tests').show();
     }
-}
+};
 
 window.generateRegionSelect = function() {
     regionSelector = '';
@@ -83,7 +83,7 @@ window.generateRegionSelect = function() {
         regionSelector += '<option>' + entry + '</option>';
     });
     return regionSelector;
-}
+};
 
 window.getRegionList = function() {
     var optionValues = [];
@@ -92,7 +92,7 @@ window.getRegionList = function() {
         optionValues.push($(this).val());
     });
     return optionValues;
-}
+};
 
 window.addTestInQueue = function(test_path, branch, location) {
     $.ajax({
@@ -116,4 +116,4 @@ window.addTestInQueue = function(test_path, branch, location) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};

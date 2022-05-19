@@ -25,3 +25,15 @@ jobs:
         run: |
           npm install -g markdownlint-cli
           markdownlint *.md
+  jshint:
+    name: jshint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - name: Check JavaScript files using `jshint`
+        run: |
+          yarn install
+          yarn run jshint .

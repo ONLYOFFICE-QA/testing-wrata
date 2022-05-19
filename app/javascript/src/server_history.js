@@ -13,7 +13,7 @@ window.showMoreData = function(data) {
         eventToShowFullStartOption(trimmed_data.find('.open-full-command'));
         eventToRetest(trimmed_data.find('.retest'));
     }
-}
+};
 
 window.showMoreHistoryForServer = function() {
     var current_showed = $('tbody tr').length;
@@ -33,7 +33,7 @@ window.showMoreHistoryForServer = function() {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.showMoreHistoryForClient = function() {
     var current_showed = $('tbody tr').length;
@@ -53,7 +53,7 @@ window.showMoreHistoryForClient = function() {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
         }
     });
-}
+};
 
 window.clearHistoryOnServer = function(server_name) {
     $.ajax({
@@ -70,12 +70,9 @@ window.clearHistoryOnServer = function(server_name) {
         },
         error: function (xhr, type, errorThrown) {
             ajaxErrorUnlessPageRefresh(xhr, type, errorThrown);
-        },
-        complete: function() {
-            location.reload();
         }
     });
-}
+};
 
 window.eventToDeleteHistoryLine = function(elem) {
     elem.on('click', function () {
@@ -95,7 +92,7 @@ window.eventToDeleteHistoryLine = function(elem) {
             }
         });
     });
-}
+};
 
 window.eventToRetest = function(elem) {
     elem.on('click', function () {
@@ -116,7 +113,7 @@ window.eventToRetest = function(elem) {
             }
         });
     });
-}
+};
 
 window.eventToShowFullStartOption = function(elem) {
     elem.click(
@@ -124,21 +121,21 @@ window.eventToShowFullStartOption = function(elem) {
             var to_show = $(this.parentNode).find('.full-command');
             $(to_show).fadeToggle();
         });
-}
+};
 
 window.eventToClearHistoryOnServer = function(elem) {
     elem.on('click', function () {
         var server_name = $('#server').text();
         clearHistoryOnServer(server_name);
     });
-}
+};
 
 window.eventToClearHistoryOnClient = function(elem) {
     elem.on('click', function () {
         var name = $('#client').text();
         clearHistoryOnClient(name);
     });
-}
+};
 
 window.eventToOpenRspecResults = function(elem) {
     elem.on('click', function () {
@@ -160,4 +157,4 @@ window.eventToOpenRspecResults = function(elem) {
             }
         });
     });
-}
+};
