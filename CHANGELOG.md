@@ -21,6 +21,7 @@
 * Explicitly require `sassc-rails` dependency
 * Migrate to `terser` from deprecated `UglifyJS`
 * Actualize `jshint` config and fix some issues
+* Remove dependency of `jQuery` gems, they are now in `yarn`
 
 ### Fixes
 

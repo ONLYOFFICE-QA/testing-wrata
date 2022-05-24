@@ -7,8 +7,6 @@ gem 'devise'
 gem 'exception_notification'
 gem 'font-awesome-rails'
 gem 'jbuilder'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'listen'
 gem 'net-imap' # until https://github.com/mikel/mail/pull/1439
 gem 'net-ping'
