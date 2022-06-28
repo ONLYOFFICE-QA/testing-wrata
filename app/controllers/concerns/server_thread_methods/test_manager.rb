@@ -40,23 +40,23 @@ module ServerThreadMethods
 
     def generate_ssh_command(command)
       "sshpass -p #{Rails.application.credentials.ssh_pass} " \
-        'ssh -o ConnectTimeout=10 '\
+        'ssh -o ConnectTimeout=10 ' \
         '-o StrictHostKeyChecking=no ' \
-        '-o UserKnownHostsFile=/dev/null '\
-        "#{Rails.application.credentials.ssh_user}@#{@server_model.address} "\
+        '-o UserKnownHostsFile=/dev/null ' \
+        "#{Rails.application.credentials.ssh_user}@#{@server_model.address} " \
         "<<'SSHCOMMAND'\n#{command}\nSSHCOMMAND"
     end
 
     def docker_command(command)
-      docker_keys = '--privileged=true '\
-                    "-h docker-on-#{@server_model.name} "\
-                    '--rm '\
-                    '-p 80:80 '\
-                    "#{docker_run_environments}"\
+      docker_keys = '--privileged=true ' \
+                    "-h docker-on-#{@server_model.name} " \
+                    '--rm ' \
+                    '-p 80:80 ' \
+                    "#{docker_run_environments}" \
                     '--shm-size=2g'
-      'docker rm -f $(docker ps -a -q); '\
-        "docker pull #{Rails.application.config.node_docker_image}; "\
-        "docker run #{docker_keys} #{Rails.application.config.node_docker_image} "\
+      'docker rm -f $(docker ps -a -q); ' \
+        "docker pull #{Rails.application.config.node_docker_image}; " \
+        "docker run #{docker_keys} #{Rails.application.config.node_docker_image} " \
         "bash -c \"bash /before-run.sh; chmod 777 /var/www/html/; #{command}\" " \
     end
 
@@ -72,10 +72,10 @@ module ServerThreadMethods
     end
 
     def generate_run_test_command(test, options)
-      docker_ssh_command("#{options.create_options} "\
-                         "#{open_folder_with_project(test)} && "\
-                         "#{env_variables_options(options)} && "\
-                         "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; "\
+      docker_ssh_command("#{options.create_options} " \
+                         "#{open_folder_with_project(test)} && " \
+                         "#{env_variables_options(options)} && " \
+                         "#{command_executioner(test)} '#{test}' #{save_to_html} 2>&1; " \
                          "#{@server_model.output_result}")
     end
 

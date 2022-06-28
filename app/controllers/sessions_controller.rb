@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   # @return [String] message shown if cerdentials invalid
   def invalid_login_message
-    'Invalid login/password combination. Or your account still not verified. '\
+    'Invalid login/password combination. Or your account still not verified. ' \
       'Contact admin'
   end
 end
