@@ -124,7 +124,7 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    i18n (1.10.0)
+    i18n (1.11.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     iniparse (1.5.0)
