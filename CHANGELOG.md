@@ -29,6 +29,7 @@
 * Fix failure on opening test list on history page
 * Fix typo in html structure
 * Fix incorrect font assets path
+* Fix language bar position on 1366x768 screen
 
 ## 1.27.0 (2022-03-31)
 
