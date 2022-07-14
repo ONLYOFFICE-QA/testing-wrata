@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v1.28.0 (2022-07-14)
+
 ### New Features
 
 * Add `Queue#add_tests` POST endpoint
