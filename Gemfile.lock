@@ -314,7 +314,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     strscan (3.0.3)
-    terser (1.1.11)
+    terser (1.1.12)
       execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     thread_safe (0.3.6)
