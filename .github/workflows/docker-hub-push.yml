@@ -32,4 +32,4 @@ jobs:
           push: true
           tags: |
             onlyofficeqa/wrata:latest
-            onlyofficeqa/wrata:$GIT_DESCRIBE_VERSION
+            onlyofficeqa/wrata:${{ env.GIT_DESCRIBE_VERSION }}
