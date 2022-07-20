@@ -3,6 +3,7 @@ FROM ruby:3.1.2-alpine
 LABEL maintainer="shockwavenn@gmail.com"
 
 RUN apk add --no-cache build-base \
+                       gcompat \
                        git \
                        nodejs \
                        openssh-client \
