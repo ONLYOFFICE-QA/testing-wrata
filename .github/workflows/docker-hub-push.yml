@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Set tag environment variable
         run: |
-          echo "$(git describe)" >> $GIT_DESCRIBE_VERSION
+          echo "git_describe_version=$(git describe)" >> $GITHUB_ENV
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -33,4 +33,4 @@ jobs:
           push: true
           tags: |
             onlyofficeqa/wrata:latest
-            onlyofficeqa/wrata:${{ env.GIT_DESCRIBE_VERSION }}
+            onlyofficeqa/wrata:${{ env.git_describe_version }}
