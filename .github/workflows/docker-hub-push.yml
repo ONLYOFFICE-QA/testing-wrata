@@ -26,4 +26,4 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: onlyofficeqa/wrata:latest, onlyofficeqa/wrata:${GITHUB_REF}
+          tags: onlyofficeqa/wrata:latest
