@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `CI` action to build docker image
+
 ## v1.28.0 (2022-07-14)
 
 ### New Features
