@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set tag environment variable
+        run: |
+          echo "$(git describe)" >> $GITHUB_ENV
+          echo $GITHUB_ENV
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -26,4 +30,6 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: onlyofficeqa/wrata:${{ github.sha }}
+          tags: |
+            onlyofficeqa/wrata:latest
+            onlyofficeqa/wrata:$GITHUB_ENV
