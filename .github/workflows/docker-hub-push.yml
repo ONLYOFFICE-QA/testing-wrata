@@ -1,10 +1,10 @@
 name: docker-hub-push
 on:
   push:
-#    branches:
-#      - 'master'
-#    tags:
-#      - '*'
+    branches:
+      - 'master'
+    tags:
+      - '*'
 jobs:
   docker:
     runs-on: ubuntu-latest
