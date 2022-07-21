@@ -6,6 +6,10 @@
 
 * Add `CI` action to build docker image
 
+### Fixes
+
+* Fix failures on `server_history` for unknown server id
+
 ## v1.28.0 (2022-07-14)
 
 ### New Features
