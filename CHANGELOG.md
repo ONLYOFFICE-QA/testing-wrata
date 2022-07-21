@@ -6,6 +6,10 @@
 
 * Add `CI` action to build docker image
 
+### Changes
+
+* Use already built docker image in `docker-compose`
+
 ### Fixes
 
 * Fix failures on `server_history` for unknown server id
