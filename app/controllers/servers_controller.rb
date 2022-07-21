@@ -66,6 +66,8 @@ class ServersController < ApplicationController
 
   def server_history
     server = Server.find_by(id: params[:id])
+    render404 && return unless server
+
     @name = server.name
     @history = server.histories.order('created_at DESC').limit(10)
     @controller = :server

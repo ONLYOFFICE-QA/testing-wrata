@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     @wrata_version = 'Unknown'
   end
 
+  # Render 404 page for incorrect urls
+  def render404
+    respond_to do |format|
+      format.html { render file: Rails.public_path.join('404.html'), layout: false, status: :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
   private
 
   def require_login
