@@ -9,6 +9,7 @@
 ### Changes
 
 * Use already built docker image in `docker-compose`
+* Actualize `yarn` dependencies
 
 ### Fixes
 
