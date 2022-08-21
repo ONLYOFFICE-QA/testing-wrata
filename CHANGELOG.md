@@ -14,6 +14,7 @@
 ### Fixes
 
 * Fix failures on `server_history` for unknown server id
+* Fix errors while calling `http://hot/runner/index`
 
 ## v1.28.0 (2022-07-14)
 
