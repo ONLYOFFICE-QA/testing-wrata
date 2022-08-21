@@ -2,11 +2,11 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'runner#main_page', as: 'runner'
 
   resources :projects
   resources :spec_browsers
   resources :spec_languages
-  root to: 'runner#index', as: 'runner'
 
   get '/clients/api_keys'
   resources :clients
@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   post '/servers/cloud_server_create'
   post '/servers/cloud_server_destroy'
 
-  get 'runner/index'
   get 'runner/show_servers'
   get 'runner/show_tests'
   get 'runner/load_test_list'

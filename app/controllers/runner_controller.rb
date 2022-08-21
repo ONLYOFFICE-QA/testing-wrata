@@ -5,7 +5,7 @@ require 'find'
 class RunnerController < ApplicationController
   include GitHelper
 
-  def index
+  def main_page
     @controller = :runner
   end
 
