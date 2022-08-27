@@ -15,6 +15,7 @@
 
 * Fix failures on `server_history` for unknown server id
 * Fix errors while calling `http://hot/runner/index`
+* Add 403 error when someone try to be redirected from login page
 
 ## v1.28.0 (2022-07-14)
 

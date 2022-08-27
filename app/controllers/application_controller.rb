@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     @wrata_version = 'Unknown'
   end
 
+  # Render 403 page for forbidden urls
+  def render403
+    respond_to do |format|
+      format.html { render file: Rails.public_path.join('403.html'), layout: false, status: :not_found }
+      format.xml  { head :forbidden }
+      format.any  { head :forbidden }
+    end
+  end
+
   # Render 404 page for incorrect urls
   def render404
     respond_to do |format|
@@ -36,7 +45,12 @@ class ApplicationController < ActionController::Base
     if signed_in?
       return redirect_to signin_path unless current_client.actions_allowed?
     else
-      redirect_to signin_path
+      begin
+        redirect_to signin_path
+      rescue ActionController::Redirecting::UnsafeRedirectError => e
+        Rails.logger.warn("Someone trying to login with redirect: #{e}")
+        render403
+      end
     end
   end
 end
