@@ -33,6 +33,10 @@ module ServerThreadMethods
       Runner::Application.config.threads.lock.synchronize { history.save }
       history.spec_finished_notifications
       history
+    rescue StandardError => e
+      Rails.logger.error("Failed to save `#{last_test}` run history in db")
+      Rails.logger.error("#{e.message}\n#{e.backtrace.join("\n")}")
+      nil
     end
   end
 end
