@@ -35,8 +35,7 @@ module ServerTestOut
 
   # @return [String] get final result of test
   def final_result_html
-    full_log = log
-    match = full_log.match(FINAL_MATCH_REGEXP)
+    match = log.match(FINAL_MATCH_REGEXP)
     return '' unless match
 
     match[1]
