@@ -25,10 +25,17 @@ module ServerTestOut
       "echo #{END_HTML_OUT};"
   end
 
+  # @return [String] log file content
+  def log
+    File.read(log_path).encode(Encoding.find('UTF-8'),
+                               invalid: :replace,
+                               undef: :replace,
+                               replace: '')
+  end
+
   # @return [String] get final result of test
   def final_result_html
-    full_log = File.read(log_path)
-    match = full_log.match(FINAL_MATCH_REGEXP)
+    match = log.match(FINAL_MATCH_REGEXP)
     return '' unless match
 
     match[1]

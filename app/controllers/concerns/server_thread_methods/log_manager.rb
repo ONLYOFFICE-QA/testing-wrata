@@ -65,7 +65,7 @@ module ServerThreadMethods
 
     # @return [Array<String>] server log for current thread
     def read_log
-      File.read(@server_model.log_path).lines
+      @server_model.log.lines
     rescue *ServerTestOut::LOG_READ_FAILURE_EXCEPTIONS => e
       Rails.logger.warn("Read file #{@server_model.log_path} is failed with #{e}")
       ['']
