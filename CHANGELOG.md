@@ -17,6 +17,7 @@
 * Fix errors while calling `http://hot/runner/index`
 * Add 403 error when someone try to be redirected from login page
 * Log failure on saving run information to DB, but not crash application
+* Force read log file in UTF-8 encoding
 
 ## v1.28.0 (2022-07-14)
 
