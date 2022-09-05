@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v1.29.0 (2022-09-05)
+
 ### New Features
 
 * Add `CI` action to build docker image
