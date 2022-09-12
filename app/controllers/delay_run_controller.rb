@@ -38,7 +38,7 @@ class DelayRunController < ApplicationController
     if current_client
       @manager = Runner::Application.config.run_manager.find_manager_by_client_login(current_client.login)
     else
-      flash[:empty_pages] = t(:not_authorized_flash)
+      flash.now[:empty_pages] = t(:not_authorized_flash)
       render signin_path
     end
   end

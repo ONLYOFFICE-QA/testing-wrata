@@ -102,7 +102,7 @@ class ServersController < ApplicationController
       end
       redirect_to servers_url
     else
-      flash[:error] = errors
+      flash.now[:error] = errors
       render action: 'create_multiple'
     end
   end
