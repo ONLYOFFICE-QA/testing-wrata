@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       sign_in_ client
       redirect_to runner_path
     else
-      flash[:error] = invalid_login_message
+      flash.now[:error] = invalid_login_message
       render 'new'
     end
   end
