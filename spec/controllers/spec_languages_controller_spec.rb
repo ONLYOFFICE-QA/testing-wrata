@@ -25,11 +25,11 @@ RSpec.describe SpecLanguagesController, type: :controller do
   # SpecLanguage. As you add validations to SpecLanguage, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    { name: 'en-US' }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { name: '1' }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -104,14 +104,14 @@ RSpec.describe SpecLanguagesController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { name: 'en-GB' }
       end
 
       it 'updates the requested spec_language' do
         spec_language = SpecLanguage.create! valid_attributes
         put :update, params: { id: spec_language.to_param, spec_language: new_attributes }, session: valid_session
         spec_language.reload
-        skip('Add assertions for updated state')
+        expect(spec_language[:name]).to eq(new_attributes[:name])
       end
 
       it 'assigns the requested spec_language as @spec_language' do

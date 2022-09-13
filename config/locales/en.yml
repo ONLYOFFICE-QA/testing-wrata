@@ -54,3 +54,10 @@ en:
   test_list_updated_notice: "Test list was successfully updated."
   mailer_something_wrong_with_test_title: "Something wrong happened with test"
   mailer_not_a_single_test_title: "There was not a single test in executed spec"
+  activerecord:
+    errors:
+      models:
+        spec_browser:
+          invalid: 'Browser name should be a single word'
+        spec_language:
+          invalid: 'Only allows letters and hyphen'

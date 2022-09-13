@@ -4,5 +4,5 @@ class SpecBrowser < ApplicationRecord
   # @return [String] default value of browser
   DEFAULT = 'default'
 
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/ }
 end
