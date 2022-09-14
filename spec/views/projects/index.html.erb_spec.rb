@@ -6,16 +6,16 @@ RSpec.describe 'projects/index', type: :view do
   before do
     assign(:projects, [
              Project.create!(
-               name: 'Name'
+               name: 'Name1'
              ),
              Project.create!(
-               name: 'Name'
+               name: 'Name2'
              )
            ])
   end
 
   it 'renders a list of projects' do
     render
-    assert_select 'tr>td', text: 'Name'.to_s, count: 2
+    assert_select 'tr>td', text: /Name./, count: 2
   end
 end
