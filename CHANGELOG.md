@@ -12,6 +12,7 @@
 
 * Use already built docker image in `docker-compose`
 * Actualize `yarn` dependencies
+* Add some validation for `Project`, `SpecBrowser`, `SpecLanguage` models
 
 ### Fixes
 

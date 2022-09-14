@@ -6,16 +6,16 @@ RSpec.describe 'spec_browsers/index', type: :view do
   before do
     assign(:spec_browsers, [
              SpecBrowser.create!(
-               name: 'Name1'
+               name: 'chrome'
              ),
              SpecBrowser.create!(
-               name: 'Name2'
+               name: 'chromeanother'
              )
            ])
   end
 
   it 'renders a list of spec_browsers' do
     render
-    assert_select 'tr>td', text: /Name./, count: 2
+    assert_select 'tr>td', text: /chrome.*/, count: 2
   end
 end

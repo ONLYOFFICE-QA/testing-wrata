@@ -30,11 +30,11 @@ RSpec.describe SpecBrowsersController, type: :controller do
   # SpecBrowser. As you add validations to SpecBrowser, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    { name: 'chrome' }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { name: 'Another Chrome' }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -44,9 +44,9 @@ RSpec.describe SpecBrowsersController, type: :controller do
 
   describe 'GET #index' do
     it 'returns a success response' do
-      SpecBrowser.create! valid_attributes
+      spec_browser = SpecBrowser.create! valid_attributes
       get :index, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(assigns(:spec_browsers)).to eq([spec_browser])
     end
   end
 
@@ -54,14 +54,14 @@ RSpec.describe SpecBrowsersController, type: :controller do
     it 'returns a success response' do
       spec_browser = SpecBrowser.create! valid_attributes
       get :show, params: { id: spec_browser.to_param }, session: valid_session
-      expect(response).to be_success
+      expect(assigns(:spec_browser)).to eq(spec_browser)
     end
   end
 
   describe 'GET #new' do
     it 'returns a success response' do
       get :new, params: {}, session: valid_session
-      expect(response).to be_successful
+      expect(assigns(:spec_browser)).to be_a(SpecBrowser)
     end
   end
 
@@ -69,7 +69,7 @@ RSpec.describe SpecBrowsersController, type: :controller do
     it 'returns a success response' do
       spec_browser = SpecBrowser.create! valid_attributes
       get :edit, params: { id: spec_browser.to_param }, session: valid_session
-      expect(response).to be_success
+      expect(assigns(:spec_browser)).to eq(spec_browser)
     end
   end
 
@@ -88,9 +88,14 @@ RSpec.describe SpecBrowsersController, type: :controller do
     end
 
     context 'with invalid params' do
-      it "returns a success response (i.e. to display the 'new' template)" do
+      it 'assigns a newly created but unsaved spec_browser as @spec_browser' do
         post :create, params: { spec_browser: invalid_attributes }, session: valid_session
-        expect(response).to be_success
+        expect(assigns(:spec_browser)).to be_a_new(SpecBrowser)
+      end
+
+      it "re-renders the 'new' template" do
+        post :create, params: { spec_browser: invalid_attributes }, session: valid_session
+        expect(response).to render_template('new')
       end
     end
   end
@@ -98,14 +103,14 @@ RSpec.describe SpecBrowsersController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { name: 'firefox' }
       end
 
       it 'updates the requested spec_browser' do
         spec_browser = SpecBrowser.create! valid_attributes
         put :update, params: { id: spec_browser.to_param, spec_browser: new_attributes }, session: valid_session
         spec_browser.reload
-        skip('Add assertions for updated state')
+        expect(spec_browser[:name]).to eq(new_attributes[:name])
       end
 
       it 'redirects to the spec_browser' do
@@ -116,10 +121,16 @@ RSpec.describe SpecBrowsersController, type: :controller do
     end
 
     context 'with invalid params' do
-      it "returns a success response (i.e. to display the 'edit' template)" do
+      it 'assigns the spec_browser as @spec_browser' do
         spec_browser = SpecBrowser.create! valid_attributes
         put :update, params: { id: spec_browser.to_param, spec_browser: invalid_attributes }, session: valid_session
-        expect(response).to be_success
+        expect(assigns(:spec_browser)).to eq(spec_browser)
+      end
+
+      it "re-renders the 'edit' template" do
+        spec_browser = SpecBrowser.create! valid_attributes
+        put :update, params: { id: spec_browser.to_param, spec_browser: invalid_attributes }, session: valid_session
+        expect(response).to render_template('edit')
       end
     end
   end

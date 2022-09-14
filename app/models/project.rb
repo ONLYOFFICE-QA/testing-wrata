@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
+  validates :name, uniqueness: true, length: { maximum: 256 }
+
   # @param branch [String] branch to update
   # @return [String] bash command to update git
   def update_git_command(branch)
