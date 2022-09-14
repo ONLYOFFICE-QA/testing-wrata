@@ -43,7 +43,7 @@ class TestListsControllerTest < ActionController::TestCase
 
   test 'should destroy test_list' do
     assert_difference('TestList.count', -1) do
-      delete :destroy, params: { id: @test_list }
+      p delete :destroy, params: { id: @test_list }
     end
 
     assert_response :success
