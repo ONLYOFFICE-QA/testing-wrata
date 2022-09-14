@@ -57,6 +57,8 @@ en:
   activerecord:
     errors:
       models:
+        project:
+          invalid: 'Max project length is 256 characters'
         spec_browser:
           invalid: 'Browser name should be a single word'
         spec_language:
