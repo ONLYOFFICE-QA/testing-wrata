@@ -147,6 +147,9 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.16.3)
+    minitest-rails (7.0.0)
+      minitest (~> 5.10)
+      railties (~> 7.0.0)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -353,6 +356,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder
   listen
+  minitest-rails
   net-imap
   net-ping
   net-pop

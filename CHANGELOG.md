@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Actualize `minitest-rails` dependency
+
 ## v1.29.0 (2022-09-05)
 
 ### New Features
