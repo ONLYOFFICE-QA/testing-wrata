@@ -59,12 +59,9 @@ class TestListsController < ApplicationController
   # DELETE /test_lists/1
   # DELETE /test_lists/1.json
   def destroy
-    @test_list.destroy_with_client_cleanup(current_client)
+    TestList.find(params[:id]).destroy_with_client_cleanup(current_client)
 
-    respond_to do |format|
-      format.html { redirect_to test_lists_url }
-      format.json { head :no_content }
-    end
+    render body: nil
   end
 
   private
