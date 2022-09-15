@@ -47,6 +47,6 @@ class TestFilesControllerTest < ActionController::TestCase
       delete :destroy, params: { id: @test_file }
     end
 
-    assert_response :success
+    assert_redirected_to test_files_path
   end
 end

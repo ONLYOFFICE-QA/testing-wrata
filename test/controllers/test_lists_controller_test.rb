@@ -46,6 +46,6 @@ class TestListsControllerTest < ActionController::TestCase
       delete :destroy, params: { id: @test_list }
     end
 
-    assert_redirected_to test_lists_path
+    assert_response :success
   end
 end
