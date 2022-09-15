@@ -3,7 +3,3 @@
 one:
   name: MyString
   client_id: 1
-
-two:
-  name: MyString
-  client_id: 1

@@ -4,10 +4,3 @@ one:
   server_id: 1
   client_id: 1
   total_result: 1
-
-two:
-  log: two_log
-  file: two_file.rb
-  server_id: 2
-  client_id: 2
-  total_result: 2

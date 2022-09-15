@@ -4,8 +4,3 @@ one:
   name: one_server
   description: first_server
   address: 127.0.0.1
-
-two:
-  name: two_server
-  description: second_server
-  address: localhost
