@@ -7,11 +7,3 @@ one:
   second_name: one_second_name
   post: one_post
   id: 1
-
-two:
-  login: two_login
-  password: two_password
-  first_name: two_name
-  second_name: two_second_name
-  post: two_post
-  id: 2

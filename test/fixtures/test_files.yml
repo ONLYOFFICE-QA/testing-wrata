@@ -3,7 +3,3 @@
 one:
   name: one_test_file
   test_list_id: 1
-
-two:
-  name: two_test_file
-  test_list_id: 2

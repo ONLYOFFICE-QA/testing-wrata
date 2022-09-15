@@ -42,7 +42,6 @@ class TestListsControllerTest < ActionController::TestCase
   end
 
   test 'should destroy test_list' do
-    skip('Not working for some reason in CircleCi') # TODO: Fix it
     assert_difference('TestList.count', -1) do
       delete :destroy, params: { id: @test_list }
     end
