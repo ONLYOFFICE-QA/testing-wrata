@@ -59,7 +59,6 @@ class TestListsController < ApplicationController
   # DELETE /test_lists/1
   # DELETE /test_lists/1.json
   def destroy
-    puts "destroy_login #{current_client[:login]}"
     @test_list.destroy_with_client_cleanup(current_client)
 
     respond_to do |format|

@@ -44,7 +44,7 @@ class TestFilesControllerTest < ActionController::TestCase
 
   test 'should destroy test_file' do
     assert_difference('TestFile.count', -1) do
-      p delete :destroy, params: { id: @test_file }
+      delete :destroy, params: { id: @test_file }
     end
 
     assert_redirected_to test_files_path
