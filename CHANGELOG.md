@@ -2,9 +2,14 @@
 
 ## master (unreleased)
 
+### New Feature
+
+* Ability to measure test coverage via `simplecov`
+
 ### Changes
 
 * Actualize `minitest-rails` dependency
+* Increase test coverage
 
 ## v1.29.0 (2022-09-05)
 
