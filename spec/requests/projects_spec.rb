@@ -76,7 +76,7 @@ RSpec.describe '/projects', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { name: 'NEW-ORG/new-repo' }
       end
 
       it 'updates the requested project' do
