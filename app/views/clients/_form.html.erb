@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <% if current_client.admin? %>
+    <% if current_client&.admin? %>
         <div class="mb-3 mb-3">
           <%= f.label :verified, 'Verified', class: 'offset-sm-4 col-sm-5 control-label' %>
           <div class="offset-sm-4 col-sm-5">

@@ -1,0 +1,4 @@
+one:
+  name: one_server
+  description: first_server
+  address: 127.0.0.1

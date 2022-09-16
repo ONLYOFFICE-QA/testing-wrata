@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require 'capybara/rspec'
 
 Capybara.javascript_driver = :selenium_headless
