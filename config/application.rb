@@ -68,6 +68,7 @@ module Runner
     config.node_docker_image = 'onlyofficetestingrobot/nct-at-testing-node:latest'
 
     config.generators do |generators|
+      generators.integration_tool :rspec
       generators.test_framework :rspec
     end
   end

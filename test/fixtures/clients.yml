@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  login: one_login
-  password: one_password
-  first_name: one_name
-  second_name: one_second_name
-  post: one_post
-  id: 1
