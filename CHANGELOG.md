@@ -8,7 +8,7 @@
 
 ### Changes
 
-* Actualize `minitest-rails` dependency
+* Remove `minitest-rails` dependency
 * Increase test coverage
 
 ## v1.29.0 (2022-09-05)
