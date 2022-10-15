@@ -10,6 +10,7 @@
 
 * Remove `minitest-rails` dependency
 * Increase test coverage
+* Change title for `info` window
 
 ## v1.29.0 (2022-09-05)
 
