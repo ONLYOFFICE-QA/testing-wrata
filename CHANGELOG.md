@@ -12,6 +12,10 @@
 * Increase test coverage
 * Change title for `info` window
 
+### Fixes
+
+* Fix history client name position
+
 ## v1.29.0 (2022-09-05)
 
 ### New Features

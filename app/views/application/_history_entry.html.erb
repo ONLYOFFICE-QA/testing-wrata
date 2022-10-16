@@ -1,6 +1,6 @@
 <% @history.each do |line| %>
     <tr class="<%= test_result(line.total_result) %>">
-      <td class="center">
+      <td class="center history-entry-user-name">
         <% if line.client.nil? %>
             Guest
         <% else %>
