@@ -51,16 +51,6 @@ class ClientsController < ApplicationController
     end
   end
 
-  def destroy
-    client = Client.find(params[:id])
-    Rails.application.config.run_manager.remove_user(client)
-    client.destroy
-    flash[:success] = t(:delete_account_flash)
-    redirect_to clients_url
-  end
-
-  # PUT /clients/1
-  # PUT /clients/1.json
   def update
     @client = Client.find(params[:id])
 
@@ -73,6 +63,16 @@ class ClientsController < ApplicationController
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PUT /clients/1
+  # PUT /clients/1.json
+  def destroy
+    client = Client.find(params[:id])
+    Rails.application.config.run_manager.remove_user(client)
+    client.destroy
+    flash[:success] = t(:delete_account_flash)
+    redirect_to clients_url
   end
 
   def client_history
