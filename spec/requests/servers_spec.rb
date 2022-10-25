@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/servers', type: :request do
+RSpec.describe '/servers' do
   let(:valid_attributes) do
     { name: 'server-1' }
   end

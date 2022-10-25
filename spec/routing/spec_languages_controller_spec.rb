@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SpecLanguagesController, type: :routing do
+RSpec.describe SpecLanguagesController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/spec_languages').to route_to('spec_languages#index')

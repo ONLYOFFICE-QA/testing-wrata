@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe HistoriesController, type: :routing do
+RSpec.describe HistoriesController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/histories').to route_to('histories#index')

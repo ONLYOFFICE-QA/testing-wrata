@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'projects/new', type: :view do
+RSpec.describe 'projects/new' do
   before do
     assign(:project, Project.new(
                        name: 'MyString'

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'spec_languages/index', type: :view do
+RSpec.describe 'spec_languages/index' do
   before do
     assign(:spec_languages, [
              SpecLanguage.create!(

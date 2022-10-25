@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'spec_browsers/edit', type: :view do
+RSpec.describe 'spec_browsers/edit' do
   before do
     @spec_browser = assign(:spec_browser, SpecBrowser.create!(
                                             name: 'MyString'

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'spec_browsers/index', type: :view do
+RSpec.describe 'spec_browsers/index' do
   before do
     assign(:spec_browsers, [
              SpecBrowser.create!(

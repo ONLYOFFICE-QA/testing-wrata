@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'projects/index', type: :view do
+RSpec.describe 'projects/index' do
   before do
     assign(:projects, [
              Project.create!(

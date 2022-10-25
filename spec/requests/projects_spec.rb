@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/projects', type: :request do
+RSpec.describe '/projects' do
   let(:valid_attributes) do
     { name: 'ORGANIZATION/repo' }
   end

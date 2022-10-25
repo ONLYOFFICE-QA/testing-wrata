@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'the sign in process', type: :feature, js: true do
+describe 'the sign in process', js: true do
   it 'Test List can be created on History page' do
     client = Client.create(login: 'user@example.com', password: 'password')
     Server.create(id: 1, name: 'server1', address: '192.168.0.0')

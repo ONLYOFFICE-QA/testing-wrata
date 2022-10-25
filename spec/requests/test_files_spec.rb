@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/test_files', type: :request do
+RSpec.describe '/test_files' do
   fixtures(:test_lists)
 
   let(:valid_attributes) do

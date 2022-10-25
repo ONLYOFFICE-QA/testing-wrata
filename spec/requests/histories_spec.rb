@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/histories', type: :request do
+RSpec.describe '/histories' do
   fixtures :all
 
   let(:valid_attributes) do

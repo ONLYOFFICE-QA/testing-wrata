@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ClientsController, type: :routing do
+RSpec.describe ClientsController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/clients').to route_to('clients#index')
