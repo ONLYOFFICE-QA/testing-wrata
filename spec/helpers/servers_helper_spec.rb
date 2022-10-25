@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ServersHelper, type: :helper do
+RSpec.describe ServersHelper do
   describe 'test_fail?' do
     it 'test_fail? is falsey for string without failures' do
       expect(helper).not_to be_test_fail(' 0 failures')

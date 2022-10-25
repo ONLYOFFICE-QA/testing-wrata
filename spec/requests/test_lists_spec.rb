@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-RSpec.describe '/test_lists', type: :request do
+RSpec.describe '/test_lists' do
   fixtures(:clients)
 
   let(:valid_attributes) do

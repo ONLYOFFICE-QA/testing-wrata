@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Project, type: :model do
+RSpec.describe Project do
   it 'is valid with default attributes' do
     expect(described_class.new).to be_valid
   end

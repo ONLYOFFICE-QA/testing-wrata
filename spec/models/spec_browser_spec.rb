@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SpecBrowser, type: :model do
+RSpec.describe SpecBrowser do
   it 'is valid with some name' do
     expect(described_class.new(name: 'chrome')).to be_valid
   end

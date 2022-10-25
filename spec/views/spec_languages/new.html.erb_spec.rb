@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'spec_languages/new', type: :view do
+RSpec.describe 'spec_languages/new' do
   before do
     assign(:spec_language, SpecLanguage.new(
                              name: 'MyString'

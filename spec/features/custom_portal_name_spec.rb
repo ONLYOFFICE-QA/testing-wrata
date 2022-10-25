@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'custom portal name window', type: :feature, js: true do
+describe 'custom portal name window', js: true do
   it 'calling custom portal name will show portal name input' do
     client = Client.create(login: 'user@example.com', password: 'password')
     visit '/sessions/new'

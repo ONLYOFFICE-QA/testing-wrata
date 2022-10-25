@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SpecLanguage, type: :model do
+RSpec.describe SpecLanguage do
   before do
     @spec_lang = described_class.create!(name: 'en-US')
   end

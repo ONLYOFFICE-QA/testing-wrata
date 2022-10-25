@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe TestListsController, type: :routing do
+RSpec.describe TestListsController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/test_lists').to route_to('test_lists#index')

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'the sign in process', type: :feature do
+describe 'the sign in process' do
   it 'signing in with fake user result in failure' do
     visit '/sessions/new'
     fill_in('Login', with: 'test@example.com')

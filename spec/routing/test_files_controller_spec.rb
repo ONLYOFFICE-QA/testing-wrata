@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe TestFilesController, type: :routing do
+RSpec.describe TestFilesController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/test_files').to route_to('test_files#index')

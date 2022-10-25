@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/clients', type: :request do
+RSpec.describe '/clients' do
   let(:valid_attributes) do
     { login: 'User1', password: '123' }
   end

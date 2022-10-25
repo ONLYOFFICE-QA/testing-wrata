@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/spec_languages', type: :request do
+RSpec.describe '/spec_languages' do
   let(:valid_attributes) do
     { name: 'en-US' }
   end

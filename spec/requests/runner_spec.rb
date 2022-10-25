@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Runner', type: :request do
+RSpec.describe 'Runner' do
   describe 'GET main page' do
     it 'main page returns ok' do
       get(runner_path)

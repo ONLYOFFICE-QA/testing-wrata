@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'histories/show_html_results', type: :view do
+RSpec.describe 'histories/show_html_results' do
   before do
     @rspec_result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html('spec/views/histories/html_result.html')
   end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SpecBrowsersController, type: :routing do
+RSpec.describe SpecBrowsersController do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/spec_browsers').to route_to('spec_browsers#index')

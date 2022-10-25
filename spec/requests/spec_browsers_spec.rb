@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '/spec_browsers', type: :request do
+RSpec.describe '/spec_browsers' do
   let(:valid_attributes) do
     { name: 'chrome' }
   end

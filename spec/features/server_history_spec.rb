@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Server History', type: :feature do
+describe 'Server History' do
   it 'Opening incorrectr server history entry show correct 404' do
     client = Client.create(login: 'user@example.com', password: 'password')
     visit('/sessions/new')
