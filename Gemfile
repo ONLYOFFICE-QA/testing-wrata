@@ -8,10 +8,7 @@ gem 'exception_notification'
 gem 'font-awesome-rails'
 gem 'jbuilder'
 gem 'listen'
-gem 'net-imap' # until https://github.com/mikel/mail/pull/1439
 gem 'net-ping'
-gem 'net-pop' # until https://github.com/mikel/mail/pull/1439
-gem 'net-smtp' # until https://github.com/mikel/mail/pull/1439
 gem 'onlyoffice_digitalocean_wrapper'
 gem 'onlyoffice_github_helper'
 gem 'onlyoffice_rspec_result_parser'

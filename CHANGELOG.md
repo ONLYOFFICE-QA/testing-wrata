@@ -11,6 +11,7 @@
 * Remove `minitest-rails` dependency
 * Increase test coverage
 * Change title for `info` window
+* Remove `net-*` requirements, which not needed any more on `ruby-3.1`
 
 ### Fixes
 
