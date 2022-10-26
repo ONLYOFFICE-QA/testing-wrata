@@ -349,10 +349,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder
   listen
-  net-imap
   net-ping
-  net-pop
-  net-smtp
   onlyoffice_digitalocean_wrapper
   onlyoffice_github_helper
   onlyoffice_rspec_result_parser
