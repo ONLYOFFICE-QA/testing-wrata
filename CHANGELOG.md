@@ -12,6 +12,7 @@
 * Increase test coverage
 * Change title for `info` window
 * Remove `net-*` requirements, which not needed any more on `ruby-3.1`
+* Explicitly add `rspec` gem as test dependency
 
 ### Fixes
 
