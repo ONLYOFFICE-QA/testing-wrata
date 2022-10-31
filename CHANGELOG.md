@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v1.30.0 (2022-10-31)
+
 ### New Feature
 
 * Ability to measure test coverage via `simplecov`
