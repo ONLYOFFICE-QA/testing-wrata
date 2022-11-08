@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class RunnerManagers
-  TIME_FOR_SCAN = 15
-
   attr_accessor :managers
 
   def initialize
