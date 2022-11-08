@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# GitHub project for whom tests should be run and file list should be rendered
 class Project < ApplicationRecord
   validates :name, uniqueness: true, length: { maximum: 256 }
 

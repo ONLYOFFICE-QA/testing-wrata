@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Model for running spec by shedule or with delay
+# Mostly used for running Daily and Hourly check for production servers
 class DelayedRun < ApplicationRecord
   INFELICITY = 2 * 60 # 2 min update interval
 

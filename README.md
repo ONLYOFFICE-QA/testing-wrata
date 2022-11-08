@@ -2,7 +2,29 @@
 
 This project is used to run scripts on distributed network with parallel execution
 
+## How it works
+
+Basically workflow consists of several simple steps:
+
+1. Creating DigitalOcean droplets (`Server` class model in project code)
+with specified count.
+Count of servers depends of tasks.
+Some projects has a small number of rspec files,
+so 1-5 droplets is enough
+Some of them got 10000s of specs and requires 10s of droplets
+2. Adding `rspec` files from project to test list with specified parameters
+(testing server url, language, browser, etc...)
+3. Each of those `rspec` files are run on one of droplets,
+chosen from free one in queue
+4. After each of `rspec` files are finished - servers can be turn-off manually
+or via non-active timeout (Default 1 hour)
+
 ## How to update
+
+This should be done after ~1 hour after merging PR to master
+Because this [task](https://github.com/ONLYOFFICE/testing-wrata/blob/46786484e8ba852c3af6321e2889b949448776e5/.github/workflows/docker-hub-push.yml#L1)
+will create docker hub image with name `onlyofficeqa/wrata:latest`
+and this task is not very fast
 
 ```shell script
 git pull --prune

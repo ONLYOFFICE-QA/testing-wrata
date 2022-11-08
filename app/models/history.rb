@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Model for entry in run spec history
+# Have details of which file run, how test finished (with or without failrues) and etc
 class History < ApplicationRecord
   FORCE_STOP_LOG_ENTRY = '-----TEST FORCE STOP-----'
   belongs_to :server
