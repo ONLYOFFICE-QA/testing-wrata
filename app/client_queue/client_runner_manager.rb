@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ClientRunnerManager
-  TIME_FOR_SCAN = 15
-
   attr_reader :client
 
   def initialize(client)

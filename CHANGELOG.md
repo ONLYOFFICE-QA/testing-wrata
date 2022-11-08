@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Remove several unused constants
+
 ## v1.30.0 (2022-10-31)
 
 ### New Feature
