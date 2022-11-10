@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Options of rspec to run with
+# Like end test server location, branch, and other options
 class StartOption < ApplicationRecord
   belongs_to :history
 

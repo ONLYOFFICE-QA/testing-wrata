@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# A single DigitalOcean server which used for running tests
 class Server < ApplicationRecord
   include ServerTestOut
   EXECUTOR_IMAGE_NAME = 'nct-at-docker'

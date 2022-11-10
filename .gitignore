@@ -29,3 +29,7 @@ tags
 yarn-debug.log*
 .yarn-integrity
 coverage
+
+# Ignore all documentation
+.yardoc
+doc

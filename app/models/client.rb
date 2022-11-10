@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Model for single user, logged in in wrata
+# Usually each user is created for different projects
+# (like one for `testing-documentserver`, one for `testing-onlyoffice` etc...)
 class Client < ApplicationRecord
   has_many :test_lists
   has_many :histories

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# A queue of spec which belong to current user
 class TestList < ApplicationRecord
   belongs_to :client
   has_many :test_files
