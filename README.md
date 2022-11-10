@@ -33,6 +33,15 @@ docker-compose up -d --no-deps --build app
 
 ## Credential options
 
+This config is stored in `config/credentials.yml.enc` file, encrypted  
+To edit stored data you should create file `config/master.key` with secret word
+specified secure password storage
+(search password file by `config/master.key`)  
+And after that call `bin/rails credentials:edit` to edit secret file,
+to add or remove values
+
+Example of file layout is:
+
 ```yaml
 secret_key_base: key # secret key
 github_user: user # user of github to fetch projects
