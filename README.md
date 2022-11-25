@@ -48,6 +48,9 @@ github_user: user # user of github to fetch projects
 github_password: pass # password of user
 ssh_user: user # username for node
 ssh_pass: pass # password for node
+admin_emails:
+  - email1@domain1.com
+  - email2@domain.com
 ```
 
 ## SSL Setup
@@ -79,6 +82,22 @@ docker-compose stop app
 zcat dump*.gz | docker exec -i testing-wrata_db_1 psql -U postgres
 docker-compose start app
 ```
+
+## Admin acctount
+
+Admin account is account that have same name as email in `admin_emails` list in secrets
+Admin account is different in two ways:
+
+1. Admin can add new users to wrata via `https://wrata-url/clients` page
+2. Admin email recieve notifications about with some failure information which includes:
+   * `spec_no_tests_executed_email` - this mean some rspec do not output any result.
+      Usually this mean something is not properly configure.
+      For example spec contains not a single `it`
+   * `spec_failed_email` - this mean spec failed mid-execution.
+     Usually this is a networking error and simple restart of `spec` can help
+   * All other failures - this is some bad code.
+     Sometimes then creating Droplet in DigitalOcean - DO servers return 500
+     instead of creating ones. Usually fixed by restarting create process
 
 ## Troubleshooting
 
