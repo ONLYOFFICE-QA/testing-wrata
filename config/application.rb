@@ -62,7 +62,7 @@ module Runner
                           email: {
                             email_prefix: '[wrata] ',
                             sender_address: Rails.application.credentials.failure_notification_username,
-                            exception_recipients: [Rails.application.credentials.admin_email]
+                            exception_recipients: Rails.application.credentials.admin_emails
                           }
     config.default_spec_language = ['en-US']
     config.node_docker_image = 'onlyofficetestingrobot/nct-at-testing-node:latest'
