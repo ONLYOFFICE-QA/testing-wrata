@@ -22,7 +22,7 @@ class Client < ApplicationRecord
 
   # @return [True, False] is current user is admin
   def admin?
-    Rails.application.credentials.admin_emails.include?(login)
+    Rails.application.config.admin_emails.include?(login)
   end
 
   # @return [True, False] Check if any actions are allowed
