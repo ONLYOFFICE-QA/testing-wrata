@@ -43,6 +43,7 @@ module Runner
     config.github_helper = OnlyofficeGithubHelper::GithubClient.new(user: Rails.application.credentials.github_user,
                                                                     password: Rails.application.credentials.github_user_password)
 
+    config.admin_emails = Rails.application.credentials.admin_emails || []
     config.run_manager = nil
     config.threads = nil
     config.server_destroyer = nil
@@ -62,7 +63,7 @@ module Runner
                           email: {
                             email_prefix: '[wrata] ',
                             sender_address: Rails.application.credentials.failure_notification_username,
-                            exception_recipients: [Rails.application.credentials.admin_email]
+                            exception_recipients: config.admin_emails
                           }
     config.default_spec_language = ['en-US']
     config.node_docker_image = 'onlyofficetestingrobot/nct-at-testing-node:latest'
