@@ -83,13 +83,13 @@ zcat dump*.gz | docker exec -i testing-wrata_db_1 psql -U postgres
 docker-compose start app
 ```
 
-## Admin acctount
+## Admin account
 
 Admin account is account that have same name as email in `admin_emails` list in secrets
 Admin account is different in two ways:
 
 1. Admin can add new users to wrata via `https://wrata-url/clients` page
-2. Admin email recieve notifications about with some failure information which includes:
+2. Admin email receive notifications about with some failure information which includes:
    * `spec_no_tests_executed_email` - this mean some rspec do not output any result.
       Usually this mean something is not properly configure.
       For example spec contains not a single `it`
