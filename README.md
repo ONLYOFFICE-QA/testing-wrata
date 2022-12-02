@@ -28,7 +28,8 @@ and this task is not very fast
 
 ```shell script
 git pull --prune
-docker-compose up -d --no-deps --build app
+docker compose pull app
+docker compose up -d
 ```
 
 ## Credential options
