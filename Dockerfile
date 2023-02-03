@@ -1,4 +1,4 @@
-FROM ruby:3.1.3-alpine
+FROM ruby:3.2.0-alpine
 
 LABEL maintainer="shockwavenn@gmail.com"
 # To fix Error: error:0308010C:digital envelope routines::unsupported

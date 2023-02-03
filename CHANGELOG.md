@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Use `ruby-3.2` as base for application
+
 ### Changes
 
 * Remove several unused constants
