@@ -53,6 +53,7 @@ jobs:
           cp config/database.ci.yml config/database.yml
           rake db:create db:migrate db:seed
           yarn install
+          rake assets:precompile
           bundle exec rake spec
   docker-build:
     runs-on: ubuntu-latest
