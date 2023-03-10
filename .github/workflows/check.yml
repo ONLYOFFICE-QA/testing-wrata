@@ -26,6 +26,10 @@ jobs:
             allow-failures: true
     steps:
       - uses: actions/checkout@v2
+      - name: Setup nodejs 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - name: Set up Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
