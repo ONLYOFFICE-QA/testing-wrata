@@ -23,7 +23,7 @@ or via non-active timeout (Default 1 hour)
 
 This should be done after ~1 hour after merging PR to master
 Because this [task](https://github.com/ONLYOFFICE/testing-wrata/blob/46786484e8ba852c3af6321e2889b949448776e5/.github/workflows/docker-hub-push.yml#L1)
-will create docker hub image with name `onlyofficeqa/wrata:latest`
+will create docker hub image with name `onlyoffice/wrata:latest`
 and this task is not very fast
 
 ```shell script

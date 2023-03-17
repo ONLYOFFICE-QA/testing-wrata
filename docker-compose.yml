@@ -8,7 +8,7 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
   app:
-    image: onlyofficeqa/wrata
+    image: onlyoffice/wrata
     depends_on:
       - db
     tty: true
