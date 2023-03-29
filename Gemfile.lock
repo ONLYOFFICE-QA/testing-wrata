@@ -295,7 +295,7 @@ GEM
       faraday (>= 0.17.3, < 3)
     scss_lint (0.59.0)
       sass (~> 3.5, >= 3.5.5)
-    selenium-webdriver (4.7.0)
+    selenium-webdriver (4.8.5)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
