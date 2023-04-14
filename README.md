@@ -106,6 +106,12 @@ Admin account is different in two ways:
   error in logs you should add `rspec_passed_time_formatter`
   gem dependency in project file.  
   Since [#857](https://github.com/ONLYOFFICE/testing-wrata/pull/857)
+* High SQL storage usage - this is normal, because we store all logs in database
+  and they are not deleted automatically.  
+  You can delete them manually by logging as active user, going to
+  `Profile` -> `Run history` -> `Clear history`.  
+  After that you should wait some time for postgres
+  to delete all data or trigger `VACUUM` manually
 
 ## How to release new version (for maintainers)
 
