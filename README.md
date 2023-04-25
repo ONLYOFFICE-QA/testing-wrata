@@ -117,8 +117,9 @@ Admin account is different in two ways:
   It's out of our control, you only can recover in this situation  
   First via DigitalOcean control panel check status of this server  
   Usually it will be already created  
-  Next open https://wrata-url/servers, find the node in question and change it's status to 'created'  
-  After that usually self-destruction mechanism triggered due to known problem, 
+  Next open [https://wrata-url/servers](https://wrata-url/servers),
+  find the node in question and change it's status to 'created'  
+  After that usually self-destruction mechanism triggered due to known problem,
   and server will be destroyed automatically  
   After that recreate server as usual, via Create button or REST API
 
