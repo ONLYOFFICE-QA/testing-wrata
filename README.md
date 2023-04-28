@@ -115,8 +115,8 @@ Admin account is different in two ways:
 * node is hangup on creation  
   Usually this happens when DigitalOcean return 500 error on server creation.  
   It's out of our control, you only can recover in this situation  
-  First via DigitalOcean control panel check status of this server  
-  Usually it will be already created  
+  First via DigitalOcean control panel check status of this server (is it created or not)  
+  Usually it will be already created (if not - just change wrata status to `destroyed`)
   Next open [https://wrata-url/servers](https://wrata-url/servers),
   find the node in question and change it's status to 'created'  
   After that usually self-destruction mechanism triggered due to known problem,
