@@ -45,7 +45,7 @@ jobs:
           sudo apt update && sudo apt-get -y install firefox
           wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz
           tar -xvf geckodriver-v0.31.0-linux64.tar.gz
-          mv geckodriver /usr/bin/geckodriver
+          sudo mv geckodriver /usr/bin/geckodriver
           echo $PATH
       - name: Setup test database and run tests
         env:
