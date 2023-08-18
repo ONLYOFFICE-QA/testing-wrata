@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     return if Rails.env.test?
 
     if signed_in?
-      return redirect_to signin_path unless current_client.actions_allowed?
+      redirect_to signin_path unless current_client.actions_allowed?
     else
       begin
         redirect_to signin_path

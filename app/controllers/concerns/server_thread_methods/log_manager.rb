@@ -7,7 +7,7 @@ module ServerThreadMethods
 
     def log_file_empty?
       if log_file_exist?
-        File.zero?(@server_model.log_path)
+        File.empty?(@server_model.log_path)
       else
         true
       end
