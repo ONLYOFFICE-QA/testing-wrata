@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+Selenium::WebDriver.logger.level = :debug
+
 describe 'custom portal name window', js: true do
   it 'calling custom portal name will show portal name input' do
     client = Client.create(login: 'user@example.com', password: 'password')
