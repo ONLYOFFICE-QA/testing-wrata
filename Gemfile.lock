@@ -189,7 +189,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.3)
-    popper_js (2.11.7)
+    popper_js (2.11.8)
     process_exists (0.2.0)
     public_suffix (5.0.3)
     puma (6.3.0)
