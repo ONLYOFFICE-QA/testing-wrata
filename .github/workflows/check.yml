@@ -43,8 +43,8 @@ jobs:
       - name: Setup geckodriver and firefox
         run: |
           sudo apt update && sudo apt-get -y install firefox
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz
-          tar -xvf geckodriver-v0.31.0-linux64.tar.gz
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+          tar -xvf geckodriver-v0.33.0-linux64.tar.gz
           sudo mv geckodriver /snap/bin/geckodriver
       - name: Setup test database and run tests
         env:
