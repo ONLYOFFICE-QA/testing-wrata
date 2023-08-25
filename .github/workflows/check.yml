@@ -42,6 +42,7 @@ jobs:
           yarn install
       - name: Setup geckodriver and firefox
         run: |
+          sudo add-apt-repository ppa:mozillateam/ppa
           sudo apt update && sudo apt-get -y install firefox-esr
           wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz
           tar -xvf geckodriver-v0.31.0-linux64.tar.gz
