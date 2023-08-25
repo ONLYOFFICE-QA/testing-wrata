@@ -2,6 +2,9 @@
   "name": "testing-wrata",
   "license": "AGPL-3.0",
   "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.20.0",
     "@popperjs/core": "^2.11.5",
     "@rails/webpacker": "5.4.3",
     "bootbox": "^5.5.2",
