@@ -5,7 +5,7 @@ class RunnerManagers
 
   def initialize
     @managers = []
-    Client.all.each do |client|
+    Client.find_each do |client|
       @managers << ClientRunnerManager.new(client)
     end
   end
