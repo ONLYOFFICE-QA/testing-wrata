@@ -11,14 +11,3 @@ AllCops:
     - vendor/bundle/**/*
   NewCops: enable
   TargetRubyVersion: 3.2
-
-# Until https://github.com/rubocop/rubocop-rspec/issues/1385
-RSpec:
-  Language:
-    Expectations:
-      - assert_select
-
-# Until https://github.com/rubocop/rubocop/issues/11143
-Lint/RedundantCopDisableDirective:
-  Exclude:
-    - db/migrate/20220210092014_add_service_name_to_active_storage_blobs.active_storage.rb
