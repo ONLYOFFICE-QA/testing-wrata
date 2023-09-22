@@ -8,6 +8,6 @@ describe 'custom portal name window', :js do
     fill_in('Password', with: client.password)
     click_button('Log in')
     select('custom', from: 'portal-list')
-    expect(page).to have_selector('.bootbox', visible: :visible)
+    expect(page).to have_css('.bootbox', visible: :visible)
   end
 end
