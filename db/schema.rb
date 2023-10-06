@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_065143) do
+ActiveRecord::Schema[7.1].define(version: 2022_09_14_065143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_065143) do
     t.string "password_digest"
     t.string "remember_token"
     t.string "project"
-    t.boolean "verified", default: false
+    t.boolean "verified", default: false, null: false
     t.string "env_file", default: ""
     t.index ["remember_token"], name: "index_clients_on_remember_token"
   end
@@ -96,11 +96,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_065143) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.string "comp_name"
-    t.string "_status", default: "destroyed"
+    t.text "_status", default: "destroyed"
     t.integer "book_client_id"
     t.datetime "last_activity_date", precision: nil
-    t.boolean "executing_command_now", default: false
-    t.boolean "self_destruction", default: true
+    t.boolean "executing_command_now", default: false, null: false
+    t.boolean "self_destruction", default: true, null: false
     t.string "size", default: "1gb"
   end
 
