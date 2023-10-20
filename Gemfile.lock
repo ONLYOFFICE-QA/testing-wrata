@@ -362,7 +362,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stringio (3.0.8)
-    terser (1.1.18)
+    terser (1.1.19)
       execjs (>= 0.3.0, < 3)
     thor (1.2.2)
     thread_safe (0.3.6)
