@@ -86,10 +86,9 @@ GEM
     base64 (0.1.1)
     bcrypt (3.1.19)
     bigdecimal (3.1.4)
-    bootstrap (5.3.1)
+    bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
-      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
