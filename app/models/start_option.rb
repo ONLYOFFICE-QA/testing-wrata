@@ -25,10 +25,10 @@ class StartOption < ApplicationRecord
     portal_data_teamlab = '~/RubymineProjects/TeamLab/framework/static_data_teamlab.rb'
     region_command = ''
     region_command +=
-      "sed -i \\\"s/@create_portal_domain = '.*'/@create_portal_domain = '.#{portal_type}'/g\\\" #{portal_data_docs} && " \
-      "sed -i \\\"s/@create_portal_region = '.*'/@create_portal_region = '#{portal_region}'/g\\\" #{portal_data_docs} && " \
-      "sed -i \\\"s/@@portal_type = '.*'/@@portal_type = '.#{portal_type}'/g\\\" #{portal_data_teamlab} && " \
-      "sed -i \\\"s/@@server_region = '.*'/@@server_region = '#{portal_region}'/g\\\" #{portal_data_teamlab}"
+      "#{sed_replace_config(portal_data_docs, '@create_portal_domain', ".#{portal_type}")} && " \
+      "#{sed_replace_config(portal_data_docs, '@create_portal_region', portal_region)} && " \
+      "#{sed_replace_config(portal_data_teamlab, '@@portal_type', ".#{portal_type}")} && " \
+      "#{sed_replace_config(portal_data_teamlab, '@@server_region', portal_region)}"
     "#{region_command};"
   end
 
@@ -67,5 +67,14 @@ class StartOption < ApplicationRecord
     end
 
     command
+  end
+
+  # Sed command for updating config files
+  # @param file [String] file to update
+  # @param key [String] key to update
+  # @param value [String] value to set
+  # @return [String] sed command
+  def sed_replace_config(file, key, value)
+    "sed -i \\\"s/#{key} = '.*'/#{key} = '#{value}'/g\\\" #{file}"
   end
 end
