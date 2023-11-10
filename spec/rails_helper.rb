@@ -56,7 +56,7 @@ RSpec.configure do |config|
   #       # ...
   #     end
   #
-  # The different available types are documented in the features, such as in
+  # The different available types are documented in the system, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
@@ -64,4 +64,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.before(:each, type: :system) do
+    driven_by :rack_test # rack_test by default, for performance
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless # selenium when we need javascript
+  end
 end
