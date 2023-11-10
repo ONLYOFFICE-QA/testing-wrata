@@ -45,8 +45,10 @@ module Runner
     config.middleware.use Rack::Deflater
     config.delayed_runs = nil
 
-    config.github_helper = OnlyofficeGithubHelper::GithubClient.new(user: Rails.application.credentials.github_user,
-                                                                    password: Rails.application.credentials.github_user_password)
+    config.github_helper = OnlyofficeGithubHelper::GithubClient.new(
+      user: Rails.application.credentials.github_user,
+      password: Rails.application.credentials.github_user_password
+    )
 
     config.admin_emails = Rails.application.credentials.admin_emails || []
     config.run_manager = nil
