@@ -22,11 +22,13 @@ gem 'sprockets-rails'
 gem 'terser'
 gem 'webpacker'
 
+# Without this gem in development - not all rake rspec tasks are loaded
+# See details https://github.com/rspec/rspec-rails#installation
+# And in test it should be because it's required in tests
+gem 'rspec-rails', groups: %i[development test]
+
 group :development do
   gem 'overcommit'
-  # Without this gem in development - not all rake rspec tasks are loaded
-  # See details https://github.com/rspec/rspec-rails#installation
-  gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
@@ -37,7 +39,6 @@ end
 group :test do
   gem 'capybara'
   gem 'rspec'
-  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
