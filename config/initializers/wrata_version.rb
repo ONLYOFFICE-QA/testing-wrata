@@ -6,7 +6,10 @@ def fetch_wrata_version
   version = `git describe 2>&1`
   # When shallow copy of repo, git describe return error
   # fatal: No names found, cannot describe anything.
-  version = 'Unknown' if version.include?('fatal')
+  if version.include?('fatal')
+    Rails.logger.warn('Git repo is shallow copy, cannot get wrata version')
+    version = 'Unknown'
+  end
   version
 rescue StandardError => e
   Rails.logger.warn("Cannot get wrata version with `#{e}` error")
