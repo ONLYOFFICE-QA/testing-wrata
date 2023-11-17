@@ -13,13 +13,7 @@ class ApplicationController < ActionController::Base
 
   # @return [String] version of product
   def wrata_version
-    @wrata_version ||= `git describe 2>&1`
-    # When shallow copy of repo, git describe return error
-    # fatal: No names found, cannot describe anything.
-    @wrata_version = 'Unknown' if @wrata_version.include?('fatal')
-  rescue StandardError => e
-    Rails.logger.warn("Cannot get wrata version with `#{e}` error")
-    @wrata_version = 'Unknown'
+    Rails.application.config.wrata_version
   end
 
   # Render 403 page for forbidden urls
