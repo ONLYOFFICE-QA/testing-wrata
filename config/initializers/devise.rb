@@ -250,7 +250,7 @@ Devise.setup do |config|
   #
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the servers scope, it would be:
-  # config.omniauth_path_prefix = "/my_engine/servers/auth
+  # config.omniauth_path_prefix = "/my_engine/servers/auth"
 
   # Until https://github.com/heartcombo/devise/issues/5644 is resolved
   # To fix deprecation warning on run:
