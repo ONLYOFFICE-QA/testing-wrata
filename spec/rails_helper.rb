@@ -67,7 +67,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.before(:each, type: :system) do
-    driven_by :rack_test # rack_test by default, for performance
+    driven_by(:rack_test) # rack_test by default, for performance
   end
 
   config.before(:each, :js, type: :system) do
