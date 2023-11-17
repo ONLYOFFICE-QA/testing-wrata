@@ -24,6 +24,7 @@ gem 'webpacker'
 
 group :development do
   gem 'overcommit'
+  gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
