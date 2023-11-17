@@ -13,10 +13,7 @@ class ApplicationController < ActionController::Base
 
   # @return [String] version of product
   def wrata_version
-    @wrata_version ||= `git describe`
-  rescue StandardError => e
-    Rails.logger.warn("Cannot get wrata version with `#{e}` error")
-    @wrata_version = 'Unknown'
+    Rails.application.config.wrata_version
   end
 
   # Render 403 page for forbidden urls

@@ -79,5 +79,6 @@ module Runner
       generators.integration_tool :rspec
       generators.test_framework :rspec
     end
+    config.wrata_version = 'Unknown'
   end
 end

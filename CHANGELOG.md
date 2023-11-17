@@ -30,6 +30,7 @@
 ### Fixes
 
 * Fix history client name position
+* Properly cache `wrata_version` value
 
 ## v1.29.0 (2022-09-05)
 
