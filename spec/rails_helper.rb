@@ -66,11 +66,14 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Use rack tests by default, they are fast, but no JS
   config.before(:each, type: :system) do
-    driven_by(:rack_test) # rack_test by default, for performance
+    driven_by(:rack_test)
   end
 
+  # If JS is required - use capybara with selenium
   config.before(:each, :js, type: :system) do
-    driven_by(Capybara.javascript_driver) # selenium when we need javascript
+    driven_by(Capybara.javascript_driver)
   end
 end
