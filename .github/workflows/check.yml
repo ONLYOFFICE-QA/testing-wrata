@@ -40,11 +40,16 @@ jobs:
           bundle config set with 'development'
           bundle install --jobs 4 --retry 3
           yarn install
-      - name: Update to current stable google-chrome
+      - name: Setup geckodriver and firefox
+        env:
+          geckodriver_version: v0.33.0
         run: |
-          echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get -y update
-          sudo apt-get -y install google-chrome-stable
+          google-chrome --version
+          sudo add-apt-repository ppa:mozillateam/ppa
+          sudo apt update && sudo apt-get -y install firefox-esr
+          wget https://github.com/mozilla/geckodriver/releases/download/$geckodriver_version/geckodriver-$geckodriver_version-linux64.tar.gz
+          tar -xvf geckodriver-$geckodriver_version-linux64.tar.gz
+          mv geckodriver /usr/local/bin/geckodriver
       - name: Setup test database and run tests
         env:
           RAILS_ENV: test
