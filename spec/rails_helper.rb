@@ -7,7 +7,9 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-require 'capybara/rails'
+require 'capybara/rspec'
+
+Capybara.javascript_driver = :selenium_headless
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -67,7 +69,7 @@ RSpec.configure do |config|
     driven_by :rack_test # rack_test by default, for performance
   end
 
-  config.before(:each, type: :system, js: true) do
-    driven_by :selenium_headless # selenium when we need javascript
+  config.before(:each, :js, type: :system) do
+    driven_by(Capybara.javascript_driver) # selenium when we need javascript
   end
 end
