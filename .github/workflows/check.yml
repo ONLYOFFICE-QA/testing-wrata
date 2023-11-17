@@ -44,6 +44,7 @@ jobs:
         env:
           geckodriver_version: v0.33.0
         run: |
+          google-chrome --version
           sudo add-apt-repository ppa:mozillateam/ppa
           sudo apt update && sudo apt-get -y install firefox-esr
           wget https://github.com/mozilla/geckodriver/releases/download/$geckodriver_version/geckodriver-$geckodriver_version-linux64.tar.gz
