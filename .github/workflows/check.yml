@@ -41,11 +41,13 @@ jobs:
           bundle install --jobs 4 --retry 3
           yarn install
       - name: Setup geckodriver and firefox
+        env:
+          geckodriver_version: v0.33.0
         run: |
           sudo add-apt-repository ppa:mozillateam/ppa
           sudo apt update && sudo apt-get -y install firefox-esr
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz
-          tar -xvf geckodriver-v0.31.0-linux64.tar.gz
+          wget https://github.com/mozilla/geckodriver/releases/download/$geckodriver_version/geckodriver-$geckodriver_version-linux64.tar.gz
+          tar -xvf geckodriver-$geckodriver_version-linux64.tar.gz
           mv geckodriver /usr/local/bin/geckodriver
       - name: Setup test database and run tests
         env:

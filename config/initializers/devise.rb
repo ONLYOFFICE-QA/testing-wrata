@@ -251,4 +251,11 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the servers scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/servers/auth"
+
+  # Until https://github.com/heartcombo/devise/issues/5644 is resolved
+  # To fix deprecation warning on run:
+  #
+  # DEPRECATION WARNING: `Rails.application.secrets` is deprecated in favor of `Rails.application.credentials`
+  # and will be removed in Rails 7.2. (called from <top (required)> at testing-wrata/config/environment.rb:7)
+  config.secret_key = Rails.application.secret_key_base
 end
