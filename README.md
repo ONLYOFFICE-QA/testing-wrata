@@ -44,8 +44,6 @@ or via non-active timeout (Default 1 hour)
    docker rm wrata-debug-psql
    ```
 
-```shell
-
 ## How to update
 
 This should be done after ~1 hour after merging PR to master
