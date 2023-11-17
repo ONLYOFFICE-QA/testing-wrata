@@ -24,6 +24,8 @@ gem 'webpacker'
 
 group :development do
   gem 'overcommit'
+  # Without this gem in development - not all rake rspec tasks are loaded
+  # See details https://github.com/rspec/rspec-rails#installation
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-performance'
