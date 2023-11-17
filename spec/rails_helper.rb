@@ -69,4 +69,8 @@ RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test # rack_test by default, for performance
   end
+
+  config.before(:each, :js, type: :system) do
+    driven_by(Capybara.javascript_driver) # selenium when we need javascript
+  end
 end
