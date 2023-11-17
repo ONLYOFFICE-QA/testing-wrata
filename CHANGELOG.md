@@ -13,6 +13,10 @@
   `Rails.application.credentials.admin_emails` to have several admins
 * Change Docker Hub organization from `onlyofficeqa` to `onlyoffice`
 
+### Fixes
+
+* Fix log spam for `git describe` for shallow copy of repo
+
 ## v1.30.0 (2022-10-31)
 
 ### New Feature
