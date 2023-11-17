@@ -22,6 +22,7 @@ or via non-active timeout (Default 1 hour)
 ## How to start debug session
 
 1. Start docker container with disposable database:
+
    ```shell
    docker run --rm \
      --name wrata-debug-psql \
@@ -32,14 +33,19 @@ or via non-active timeout (Default 1 hour)
      -p 5432:5432 \
      postgres
    ```
+
 2. Run DB migrations:
+
    ```shell
    ENV=develoment rake db:create db:migrate db:seed
    ```
+
 3. Start Rails debug session in RubyMine. Set `RAILS_MASTER_KEY` env correctly.
-4. Open `http://localhost:3000` in browser and create new admin with username from `config/credentials.yml.enc`
+4. Open `http://localhost:3000` in browser and create new admin
+   with username from `config/credentials.yml.enc`
 5. Do your debug
 6. After debug is done stop DB. It automatically removed after stop:
+
    ```shell
    docker stop wrata-debug-psql
    ```
