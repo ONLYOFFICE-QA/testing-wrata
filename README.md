@@ -19,6 +19,33 @@ chosen from free one in queue
 4. After each of `rspec` files are finished - servers can be turn-off manually
 or via non-active timeout (Default 1 hour)
 
+## How to start debug session
+
+1. Start docker container with disposable database:
+   ```shell
+   docker run --rm \
+     --name wrata-debug-psql \
+     -e POSTGRES_HOST_AUTH_METHOD=trust \
+     -e POSTGRES_USER=postgres \
+     -e POSTGRES_DB=wrata_development \
+     -d \
+     -p 5432:5432 \
+     postgres
+   ```
+2. Run DB migrations:
+   ```shell
+   ENV=develoment rake db:create db:migrate db:seed
+   ```
+3. Start Rails debug session in RubyMine. Set `RAILS_MASTER_KEY` env correctly.
+4. Open `http://localhost:3000` in browser and create new admin with username from `config/credentials.yml.enc`
+5. Do your debug
+6. After debug is done kill DB container via:
+   ```shell
+   docker rm wrata-debug-psql
+   ```
+
+```shell
+
 ## How to update
 
 This should be done after ~1 hour after merging PR to master
