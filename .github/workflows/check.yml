@@ -59,6 +59,7 @@ jobs:
         run: |
           cp config/database.ci.yml config/database.yml
           rake db:create db:migrate db:seed
+          bundle exec rspec spec
   docker-build:
     runs-on: ubuntu-latest
     steps:
