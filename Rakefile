@@ -9,12 +9,6 @@ require 'rspec/core/rake_task'
 
 Runner::Application.load_tasks
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.pattern = Dir.glob('spec/**/*_spec.rb')
-end
-
-task default: :spec
-
 desc 'Task to add tag with version to repo'
 task add_repo_tag: :environment do
   version = "v#{File.read('VERSION')}".strip
