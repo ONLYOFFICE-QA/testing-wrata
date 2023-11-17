@@ -39,9 +39,9 @@ or via non-active timeout (Default 1 hour)
 3. Start Rails debug session in RubyMine. Set `RAILS_MASTER_KEY` env correctly.
 4. Open `http://localhost:3000` in browser and create new admin with username from `config/credentials.yml.enc`
 5. Do your debug
-6. After debug is done kill DB container via:
+6. After debug is done stop DB. It automatically removed after stop:
    ```shell
-   docker rm wrata-debug-psql
+   docker stop wrata-debug-psql
    ```
 
 ## How to update
