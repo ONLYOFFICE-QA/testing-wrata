@@ -5,8 +5,8 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('config/application', __dir__)
-require 'rspec/core/rake_task'
 
+require 'rspec/core/rake_task' if Rails.env.test?
 Runner::Application.load_tasks
 
 desc 'Task to add tag with version to repo'

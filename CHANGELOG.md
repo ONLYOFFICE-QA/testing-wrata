@@ -12,6 +12,7 @@
 * `Rails.application.credentials.admin_email` is now an array of
   `Rails.application.credentials.admin_emails` to have several admins
 * Change Docker Hub organization from `onlyofficeqa` to `onlyoffice`
+* Do not install `test` gem dependencies in production
 
 ### Fixes
 
@@ -148,7 +149,7 @@
 
 * Use `alpine` as base image for app
 * Fix several issues with Dockerfile using `hadolint`
-* Store db data in volume for `docker-compose`.  
+* Store db data in volume for `docker-compose`.
   **Warning** Backup your db data before upgrading
 * Improve ssl config by enable session cache and disabling weak ciphers
 * Actualize rubocop configs and minor changes to code
