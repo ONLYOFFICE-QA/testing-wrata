@@ -14,6 +14,7 @@
 * Change Docker Hub organization from `onlyofficeqa` to `onlyoffice`
 * Do not install `test` gem dependencies in production
 * Remove useless bundler caching from Dockerfile
+* Dramatically reduce docker image size by using multistage build
 
 ### Fixes
 
