@@ -27,7 +27,8 @@ RUN apk add --no-cache git \
                        openssh-client \
                        sshpass \
                        tzdata
+COPY . /root/wrata
 WORKDIR /root/wrata
 COPY --from=builder /usr/local/bundle /usr/local/bundle
-COPY --from=builder /root/wrata /root/wrata
+COPY --from=builder /root/wrata/public/assets /root/wrata/public/assets
 CMD ["sh", "entrypoint.sh"]
