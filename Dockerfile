@@ -17,7 +17,7 @@ RUN apk add --no-cache build-base \
 WORKDIR /tmp
 COPY Gemfile* /tmp/
 RUN gem install bundler
-RUN bundle config set without 'development' && \
+RUN bundle config set without 'development test' && \
     bundle install
 
 RUN mkdir /root/wrata
