@@ -149,7 +149,7 @@
 
 * Use `alpine` as base image for app
 * Fix several issues with Dockerfile using `hadolint`
-* Store db data in volume for `docker-compose`.
+* Store db data in volume for `docker-compose`.  
   **Warning** Backup your db data before upgrading
 * Improve ssl config by enable session cache and disabling weak ciphers
 * Actualize rubocop configs and minor changes to code
