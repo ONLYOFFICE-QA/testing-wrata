@@ -12,6 +12,7 @@
 * `Rails.application.credentials.admin_email` is now an array of
   `Rails.application.credentials.admin_emails` to have several admins
 * Change Docker Hub organization from `onlyofficeqa` to `onlyoffice`
+* Do not install `test` gem dependencies in production
 
 ### Fixes
 
