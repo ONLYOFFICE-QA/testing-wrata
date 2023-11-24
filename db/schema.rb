@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2022_09_14_065143) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_24_154251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2022_09_14_065143) do
     t.string "project"
     t.boolean "verified", default: false, null: false
     t.string "env_file", default: ""
+    t.index ["login"], name: "index_clients_on_login", unique: true
     t.index ["remember_token"], name: "index_clients_on_remember_token"
   end
 
@@ -108,12 +109,14 @@ ActiveRecord::Schema[7.1].define(version: 2022_09_14_065143) do
     t.string "name"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name"], name: "index_spec_browsers_on_name", unique: true
   end
 
   create_table "spec_languages", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name"], name: "index_spec_languages_on_name", unique: true
   end
 
   create_table "start_options", id: :serial, force: :cascade do |t|
