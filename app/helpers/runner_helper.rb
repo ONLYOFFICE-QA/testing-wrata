@@ -2,7 +2,7 @@
 
 module RunnerHelper
   def directory_hash(path, name = nil)
-    data = { data: (name || path) }
+    data = { data: name || path }
     data[:children] = children = []
     data[:path] = path
     Dir.foreach(path).sort.each do |entry|
