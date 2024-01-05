@@ -5,7 +5,7 @@ describe 'the sign in process' do
     visit '/sessions/new'
     fill_in('Login', with: 'test@example.com')
     fill_in('Password', with: '12345678')
-    click_button('Log in')
+    click_on('Log in')
     expect(page).to have_content 'Invalid login/password'
   end
 
@@ -14,7 +14,7 @@ describe 'the sign in process' do
     visit '/sessions/new'
     fill_in('Login', with: client.login)
     fill_in('Password', with: client.password)
-    click_button('Log in')
-    expect(page).not_to have_content 'Invalid login/password'
+    click_on('Log in')
+    expect(page).to have_no_content 'Invalid login/password'
   end
 end

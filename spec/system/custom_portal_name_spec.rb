@@ -6,7 +6,7 @@ describe 'custom portal name window', :js do
     visit '/sessions/new'
     fill_in('Login', with: client.login)
     fill_in('Password', with: client.password)
-    click_button('Log in')
+    click_on('Log in')
     select('custom', from: 'portal-list')
     expect(page).to have_css('.bootbox', visible: :visible)
   end
