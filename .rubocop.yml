@@ -10,4 +10,4 @@ AllCops:
     - db/schema.rb
     - vendor/bundle/**/*
   NewCops: enable
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.3

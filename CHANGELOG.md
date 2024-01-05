@@ -4,7 +4,7 @@
 
 ### New Features
 
-* Use `ruby-3.2` as base for application
+* Use `ruby-3.3` as base for application
 
 ### Changes
 

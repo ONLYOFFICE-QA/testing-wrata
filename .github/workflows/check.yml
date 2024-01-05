@@ -19,7 +19,7 @@ jobs:
           --health-retries 5
     strategy:
       matrix:
-        ruby: ['3.2']
+        ruby: ['3.3']
         allow-failures: [false]
         include:
           - ruby: head
@@ -70,10 +70,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby 3.2
+      - name: Set up latest ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
+          ruby-version: ruby
       - name: Setup rubocop
         run: |
           bundle config set with 'development'
