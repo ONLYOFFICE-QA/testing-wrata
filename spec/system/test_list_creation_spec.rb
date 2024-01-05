@@ -7,10 +7,10 @@ describe 'the sign in process', :js do
     visit '/sessions/new'
     fill_in('Login', with: client.login)
     fill_in('Password', with: client.password)
-    click_button('Log in')
+    click_on('Log in')
     sleep 10
     visit '/server_history/1'
-    click_link('Test Lists')
+    click_on('Test Lists')
     find(:xpath, '//ul[@id="test_list_menu"]/a').click
     expect(page).to have_content 'New Test List'
   end
