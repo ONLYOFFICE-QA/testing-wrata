@@ -6,6 +6,7 @@
 
 * Use `ruby-3.3` as base for application
 * Add `hadolint` check to CI
+* Add `github-actions` check in Dependabot
 
 ### Changes
 
