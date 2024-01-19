@@ -25,7 +25,7 @@ jobs:
           - ruby: head
             allow-failures: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup nodejs 16
         uses: actions/setup-node@v3
         with:
@@ -63,13 +63,13 @@ jobs:
   docker-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Build docker image
         run: docker build .
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up latest ruby
         uses: ruby/setup-ruby@v1
         with:
