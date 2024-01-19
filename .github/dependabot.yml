@@ -16,3 +16,9 @@ updates:
       interval: daily
       time: "08:00"
       timezone: "Europe/Moscow"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "08:00"
+      timezone: "Europe/Moscow"
