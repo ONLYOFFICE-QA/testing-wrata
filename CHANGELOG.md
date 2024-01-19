@@ -5,6 +5,7 @@
 ### New Features
 
 * Use `ruby-3.3` as base for application
+* Add `hadolint` check to CI
 
 ### Changes
 
