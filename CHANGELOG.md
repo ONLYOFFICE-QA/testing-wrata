@@ -16,6 +16,7 @@
 * Remove useless bundler caching from Dockerfile
 * Dramatically reduce docker image size by using multistage build
 * Fix `rubocop-capybara-2.20.0` warnings
+* Remove extra docker step to install bundler
 
 ### Fixes
 

@@ -13,8 +13,7 @@ RUN apk add --no-cache build-base \
                        yarn
 WORKDIR /root/wrata
 COPY . /root/wrata
-RUN gem install bundler && \
-    bundle config set without 'development test' && \
+RUN bundle config set without 'development test' && \
     bundle install && \
     yarn install
 RUN rake assets:precompile
