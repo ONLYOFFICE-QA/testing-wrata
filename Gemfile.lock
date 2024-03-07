@@ -212,7 +212,6 @@ GEM
       racc
     pg (1.5.5)
     popper_js (2.11.8)
-    prism (0.24.0)
     process_exists (0.2.0)
     psych (5.1.2)
       stringio
@@ -307,9 +306,8 @@ GEM
       rubocop-ast (>= 1.30.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.31.0)
+    rubocop-ast (1.31.1)
       parser (>= 3.3.0.4)
-      prism (>= 0.24.0)
     rubocop-capybara (2.20.0)
       rubocop (~> 1.41)
     rubocop-factory_bot (2.25.1)
