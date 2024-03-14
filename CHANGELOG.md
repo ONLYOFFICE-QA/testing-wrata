@@ -20,6 +20,7 @@
 * Fix `rubocop-capybara-2.20.0` warnings
 * Remove extra docker step to install bundler
 * Actualize `rails_helper` to fix Rails warnings
+* Fix rubocop `Layout/EmptyLineAfterMagicComment` cop
 
 ### Fixes
 
