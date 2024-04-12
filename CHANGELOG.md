@@ -21,6 +21,7 @@
 * Remove extra docker step to install bundler
 * Actualize `rails_helper` to fix Rails warnings
 * Fix rubocop `Layout/EmptyLineAfterMagicComment` cop
+* Fix `rubocop-1.63.1` warnings
 
 ### Fixes
 
