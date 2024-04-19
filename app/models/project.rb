@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   def update_git_command(branch)
     "echo Start updating #{project_path} project ; " \
       "cd #{project_path} && " \
-      'git reset -q --hard && ' \
+      'git reset --hard && ' \
       'git pull --all --prune && ' \
       "git checkout #{branch} && " \
       'bundle install; ' \
