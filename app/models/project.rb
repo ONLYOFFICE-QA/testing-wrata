@@ -7,7 +7,13 @@ class Project < ApplicationRecord
   # @param branch [String] branch to update
   # @return [String] bash command to update git
   def update_git_command(branch)
-    "cd #{project_path} && git reset --hard && git pull --all --prune && git checkout #{branch} && bundle install; "
+    "echo Start updating #{project_path} project; " \
+      "cd #{project_path} && " \
+      'git reset --hard && ' \
+      'git pull --all --prune && ' \
+      "git checkout #{branch} && " \
+      'bundle install; ' \
+      "echo Finished updating #{project_path} project; "
   end
 
   # @return [String] path to project
