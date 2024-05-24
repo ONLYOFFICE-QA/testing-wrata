@@ -118,7 +118,8 @@ GEM
     diff-lcs (1.5.1)
     docile (1.4.0)
     drb (2.2.1)
-    droplet_kit (3.20.0)
+    droplet_kit (3.21.0)
+      bigdecimal
       faraday (>= 0.15)
       faraday-retry (~> 2.2.0)
       kartograph (~> 0.2.8)
