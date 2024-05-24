@@ -23,6 +23,7 @@
 * Actualize `rails_helper` to fix Rails warnings
 * Fix rubocop `Layout/EmptyLineAfterMagicComment` cop
 * Fix `rubocop-1.63.1` warnings
+* Fix `rubocop-1.64` cop `Style/SuperArguments` warnings.
 
 ### Fixes
 
