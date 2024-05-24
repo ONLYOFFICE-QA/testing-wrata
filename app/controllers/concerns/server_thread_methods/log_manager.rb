@@ -29,9 +29,7 @@ module ServerThreadMethods
     def create_log_scan_thread
       @log_scan_thread = Thread.new(caller: method(__method__).owner.to_s) do
         loop do
-          unless @test # Stop Thread if test was ended
-            Thread.stop                                 #
-          end
+          Thread.stop unless @test # Stop Thread if test was ended
           last_log_data                                 # check each TIME_FOR_UPDATE new log
           sleep TIME_FOR_UPDATE                         #
         end
