@@ -32,9 +32,11 @@ gem 'rspec-rails', groups: %i[development test]
 group :development do
   gem 'overcommit'
   gem 'rubocop'
+  gem 'rubocop-capybara', '~> 2'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rubocop-rspec_rails', '~> 2'
   gem 'scss_lint', require: false
 end
 

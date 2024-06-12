@@ -309,6 +309,8 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.3)
       parser (>= 3.3.1.0)
+    rubocop-capybara (2.21.0)
+      rubocop (~> 1.41)
     rubocop-performance (1.21.0)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
@@ -319,6 +321,9 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rspec (3.0.1)
       rubocop (~> 1.61)
+    rubocop-rspec_rails (2.30.0)
+      rubocop (~> 1.61)
+      rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     sass (3.7.4)
@@ -413,9 +418,11 @@ DEPENDENCIES
   rspec
   rspec-rails
   rubocop
+  rubocop-capybara (~> 2)
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  rubocop-rspec_rails (~> 2)
   rubyzip
   sassc-rails
   scss_lint
