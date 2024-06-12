@@ -25,6 +25,7 @@
 * Fix `rubocop-1.63.1` warnings
 * Fix `rubocop-1.64` cop `Style/SuperArguments` warnings.
 * Actualize JS dependencies
+* Update rubocop config to support v3 of `rubocop-rspec`
 
 ### Fixes
 
