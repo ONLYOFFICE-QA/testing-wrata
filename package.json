@@ -2,10 +2,12 @@
   "name": "testing-wrata",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.24.7",
     "@babel/plugin-proposal-private-methods": "^7.18.6",
     "@babel/plugin-proposal-private-property-in-object": "^7.20.0",
+    "@babel/preset-env": "^7.24.7",
     "@popperjs/core": "^2.11.5",
+    "babel-loader": "^9.1.3",
     "bootbox": "^5.5.2",
     "bootstrap": "^5.1.3",
     "jquery": "^3.6.0",
@@ -22,5 +24,8 @@
   },
   "scripts": {
     "build": "webpack --config ./config/webpack/webpack.config.js"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
   }
 }
