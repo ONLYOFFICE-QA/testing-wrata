@@ -70,4 +70,3 @@ module.exports = {
         extensions: ['.js', '.jsx', '.scss', '.css'],
     },
 };
-console.log('Fonts alias path:', path.resolve(__dirname, '../../app/assets/fonts'));
