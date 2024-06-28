@@ -19,9 +19,11 @@ module.exports = {
     },
     output: {
         filename: "[name].js",
-        sourceMapFilename: "[file].map",
-        chunkFormat: "module",
-        path: path.resolve(__dirname, '..', '..', 'app/assets/builds')
+        chunkFilename: "[name]-[contenthash].digested.js",
+        sourceMapFilename: "[file]-[fullhash].map",
+        path: path.resolve(__dirname, '..', '..', 'app/assets/builds'),
+        hashFunction: "sha256",
+        hashDigestLength: 64,
     },
     plugins: [
         new webpack.optimize.LimitChunkCountPlugin({
@@ -42,6 +44,10 @@ module.exports = {
                 test: /\.(?:sa|sc|c)ss$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
+            {
+                test: /\.(png|jpe?g|gif|eot|woff2|woff|ttf|svg)$/i,
+                use: 'file-loader',
+            }
         ],
     },
     resolve: {
