@@ -46,12 +46,26 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|jpe?g|gif|eot|woff2|woff|ttf|svg)$/i,
+                test: /\.(png|jpe?g|gif|eot|svg)$/i,
                 use: 'file-loader',
-            }
+            },
+            {
+                test: /\.(ttf|otf|eot|woff|woff2)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/',
+                        publicPath: '../fonts/',
+                    },
+                },
+            },
         ],
     },
     resolve: {
+        alias: {
+            fonts: path.resolve(__dirname, 'app/assets/fonts')
+        },
         // Add additional file types
         extensions: ['.js', '.jsx', '.scss', '.css'],
     },
