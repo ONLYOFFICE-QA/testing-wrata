@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>RunnerDemo</title>
-  <%= favicon_link_tag %>
+  <%#= favicon_link_tag %>
   <%= stylesheet_link_tag "application", media: "all" %>
-  <%= javascript_pack_tag 'application' %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <%= csrf_meta_tags %>

@@ -33,3 +33,6 @@ coverage
 # Ignore all documentation
 .yardoc
 doc
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

@@ -9,6 +9,7 @@ gem 'devise'
 gem 'exception_notification'
 gem 'font-awesome-rails'
 gem 'jbuilder'
+gem 'jsbundling-rails'
 gem 'listen'
 gem 'net-ping'
 gem 'onlyoffice_digitalocean_wrapper'
@@ -22,7 +23,6 @@ gem 'rubyzip'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'terser'
-gem 'webpacker'
 
 # Without this gem in development - not all rake rspec tasks are loaded
 # See details https://github.com/rspec/rspec-rails#installation
