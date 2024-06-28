@@ -56,7 +56,7 @@ module.exports = {
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'fonts/',
-                        publicPath: '../fonts/',
+                        publicPath: 'fonts/',
                     },
                 },
             },
@@ -70,3 +70,4 @@ module.exports = {
         extensions: ['.js', '.jsx', '.scss', '.css'],
     },
 };
+console.log('Fonts alias path:', path.resolve(__dirname, '../../app/assets/fonts'));
