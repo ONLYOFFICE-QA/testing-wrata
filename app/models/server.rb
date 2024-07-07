@@ -7,6 +7,8 @@ class Server < ApplicationRecord
   EXECUTOR_TAG = 'nct-at'
   DEFAULT_SERVER_SIZE = '1gb'
   STATUSES_TO_MANUAL_SET = %i[destroyed created].freeze
+  # @return [Integer] interval in seconds for checking image restore status
+  CLOUD_IMAGE_RESTORE_INTERVAL = 20
 
   has_many :histories
 
@@ -76,7 +78,10 @@ class Server < ApplicationRecord
       update_column(:_status, :destroyed)
       raise e
     end
-    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name, 'active', timeout: 60 * 15)
+    RunnerManagers.digital_ocean.wait_until_droplet_have_status(name,
+                                                                'active',
+                                                                timeout: 60 * 15,
+                                                                interval: CLOUD_IMAGE_RESTORE_INTERVAL)
     set_ip_info
     OnlyofficeDigitaloceanWrapper::SshChecker.new(address).wait_until_ssh_up
   end
