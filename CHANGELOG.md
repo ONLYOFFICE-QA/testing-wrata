@@ -32,6 +32,7 @@
 
 * Fix log spam for `git describe` for shallow copy of repo
 * Fix missing `public/pack` directory in Docker image
+* Fix warning for `docker build` about case of `AS` statement
 
 ## v1.30.0 (2022-10-31)
 
