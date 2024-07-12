@@ -28,6 +28,7 @@
 * Update rubocop config to support v3 of `rubocop-rspec`
 * Increase image restore check interval to reduce DO api load
 * Remove obsolete `version` field from `docker-compose.yml`
+* Freeze `postgres` container with specific major version (`13`)
 
 ### Fixes
 
