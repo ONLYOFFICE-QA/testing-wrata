@@ -29,5 +29,5 @@ RUN apk add --no-cache git \
 COPY . /root/wrata
 WORKDIR /root/wrata
 COPY --from=builder /usr/local/bundle /usr/local/bundle
-COPY --from=builder /root/wrata/public/assets /root/wrata/public/assets
+COPY --from=builder /root/wrata/public /root/wrata/public
 CMD ["sh", "entrypoint.sh"]
