@@ -116,7 +116,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
-    docile (1.4.0)
+    docile (1.4.1)
     drb (2.2.1)
     droplet_kit (3.21.0)
       bigdecimal
