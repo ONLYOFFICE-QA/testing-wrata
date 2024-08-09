@@ -42,7 +42,7 @@ jobs:
           yarn install
       - name: Setup geckodriver and firefox
         env:
-          geckodriver_version: v0.33.0
+          geckodriver_version: v0.35.0
         run: |
           sudo add-apt-repository ppa:mozillateam/ppa
           sudo apt update && sudo apt-get -y install firefox-esr
