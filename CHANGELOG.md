@@ -29,6 +29,7 @@
 * Increase image restore check interval to reduce DO api load
 * Remove obsolete `version` field from `docker-compose.yml`
 * Freeze `postgres` container with specific major version (`13`)
+* Upgrade `geckodriver` from `v0.33.0` to `v0.35.0`
 
 ### Fixes
 
