@@ -23,12 +23,8 @@ module Runner
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
-
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Moscow' # +0400
+    # config.eager_load_paths << Rails.root.join("extras")
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
