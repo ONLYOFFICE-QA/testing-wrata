@@ -24,7 +24,6 @@ module ServerThreadMethods
           @server_model.update_column(:last_activity_date, Time.current)
           last_log_data
           delete_log_file
-          ActiveRecord::Base.clear_active_connections!
           @test = nil
         end
       end
