@@ -11,7 +11,7 @@
 
 ### Changes
 
-* Upgrade rails to `rails-7.2.0`
+* Upgrade rails to `rails-7.2.1`
 * Remove several unused constants
 * `Rails.application.credentials.admin_email` is now an array of
   `Rails.application.credentials.admin_emails` to have several admins
