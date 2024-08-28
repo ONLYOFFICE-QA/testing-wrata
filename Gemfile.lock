@@ -172,7 +172,7 @@ GEM
     minitest (5.25.1)
     net-http (0.4.1)
       uri
-    net-imap (0.4.14)
+    net-imap (0.4.15)
       date
       net-protocol
     net-ping (2.0.8)
