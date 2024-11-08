@@ -263,7 +263,7 @@ GEM
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
-    reline (0.5.10)
+    reline (0.5.11)
       io-console (~> 0.5)
     resource_kit (0.1.8)
       addressable (>= 2.3.6, < 3.0.0)
