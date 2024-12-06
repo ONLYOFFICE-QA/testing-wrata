@@ -342,7 +342,7 @@ GEM
       faraday (>= 0.17.3, < 3)
     scss_lint (0.60.0)
       sass (~> 3.5, >= 3.5.5)
-    securerandom (0.3.2)
+    securerandom (0.4.0)
     selenium-webdriver (4.27.0)
       base64 (~> 0.2)
       logger (~> 1.4)
