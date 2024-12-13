@@ -376,7 +376,7 @@ GEM
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     uri (1.0.2)
-    useragent (0.16.10)
+    useragent (0.16.11)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
