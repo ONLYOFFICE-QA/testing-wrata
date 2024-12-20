@@ -124,7 +124,7 @@ GEM
       kartograph (~> 0.2.8)
       resource_kit (~> 0.1.5)
       virtus (>= 1.0.3, <= 3)
-    erubi (1.13.0)
+    erubi (1.13.1)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
       activesupport (>= 5.2, < 8)
