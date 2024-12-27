@@ -1,4 +1,4 @@
-FROM ruby:3.3.6-alpine AS builder
+FROM ruby:3.4.1-alpine AS builder
 
 LABEL maintainer="shockwavenn@gmail.com"
 # To fix Error: error:0308010C:digital envelope routines::unsupported
@@ -18,7 +18,7 @@ RUN bundle config set without 'development test' && \
     yarn install
 RUN rake assets:precompile
 
-FROM ruby:3.3.6-alpine
+FROM ruby:3.4.1-alpine
 ENV RAILS_SERVE_STATIC_FILES=true
 RUN apk add --no-cache git \
                        libpq \
