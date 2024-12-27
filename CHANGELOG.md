@@ -4,7 +4,7 @@
 
 ### New Features
 
-* Use `ruby-3.3` as base for application
+* Use `ruby-3.4` as base for application
 * Add `hadolint` check to CI
 * Add `github-actions` check in Dependabot
 * Add additional entries about project update start and stop in run log
