@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## v1.31.0 (2025-01-03)
+
 ### New Features
 
 * Use `ruby-3.4` as base for application
