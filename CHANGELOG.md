@@ -1,5 +1,7 @@
 # Change log
 
+## v1.31.0 (2024-01-03)
+
 ## master (unreleased)
 
 ### New Features
