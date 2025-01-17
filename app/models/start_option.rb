@@ -36,7 +36,7 @@ class StartOption < ApplicationRecord
   # this test should be run on custom portal
   # @return [True, False] is test should run on custom portal
   def on_custom_portal?
-    !(portal_type == 'info' || portal_type == 'com' || portal_type == 'default')
+    %w[info com default].exclude?(portal_type)
   end
 
   # @param test [Hash] test with data to init

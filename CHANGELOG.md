@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Fix minor code issue found by `rubocop-1.70.0`
+
 ## v1.31.0 (2025-01-03)
 
 ### New Features
