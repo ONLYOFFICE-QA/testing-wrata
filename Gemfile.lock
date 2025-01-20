@@ -142,7 +142,7 @@ GEM
       railties (>= 3.2, < 9.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     iniparse (1.5.0)
