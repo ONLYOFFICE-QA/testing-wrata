@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Workaround a bug for failing build on arm64
+
 ### Changes
 
 * Fix minor code issue found by `rubocop-1.70.0`
