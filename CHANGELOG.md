@@ -5,6 +5,7 @@
 ### Fixes
 
 * Workaround a bug for failing build on arm64
+* Fix `rubocop-1.72.0` cop `Lint/CopDirectiveSyntax`
 
 ### Changes
 
