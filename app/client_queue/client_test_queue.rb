@@ -33,9 +33,7 @@ class ClientTestQueue
     @id += 1
   end
 
-  def empty?
-    @tests.empty?
-  end
+  delegate :empty?, to: :@tests
 
   def shift_test
     @tests.shift
@@ -60,9 +58,7 @@ class ClientTestQueue
     end
   end
 
-  def clear
-    @tests.clear
-  end
+  delegate :clear, to: :@tests
 
   def shuffle
     @tests.shuffle!

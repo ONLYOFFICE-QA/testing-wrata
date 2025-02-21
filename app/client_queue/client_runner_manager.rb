@@ -33,13 +33,9 @@ class ClientRunnerManager
     @client_servers.servers_from_queue
   end
 
-  def tests
-    @client_test_queue.tests
-  end
+  delegate :tests, to: :@client_test_queue
 
-  def swap_tests(test_id1, test_id2, in_start)
-    @client_test_queue.swap_tests(test_id1, test_id2, in_start)
-  end
+  delegate :swap_tests, to: :@client_test_queue
 
   def clear_booked_servers
     @client_servers.clear
@@ -53,9 +49,7 @@ class ClientRunnerManager
     @client_test_queue.shuffle
   end
 
-  def remove_duplicates
-    @client_test_queue.remove_duplicates
-  end
+  delegate :remove_duplicates, to: :@client_test_queue
 
   def add_test(test, branch, location,
                params = {})
@@ -78,13 +72,9 @@ class ClientRunnerManager
     @client_servers.add_server(server_name, client)
   end
 
-  def delete_test(test_id)
-    @client_test_queue.delete_test(test_id)
-  end
+  delegate :delete_test, to: :@client_test_queue
 
-  def delete_server(server_name)
-    @client_servers.delete_server(server_name)
-  end
+  delegate :delete_server, to: :@client_servers
 
   def delete_all_servers
     booked_servers = @client_servers.servers_threads.pluck(:name)
