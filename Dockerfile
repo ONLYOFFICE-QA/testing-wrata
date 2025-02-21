@@ -10,6 +10,7 @@ RUN apk add --no-cache build-base \
                        nodejs \
                        postgresql-dev \
                        tzdata \
+                       yaml-dev \
                        yarn
 WORKDIR /root/wrata
 COPY . /root/wrata
