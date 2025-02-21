@@ -15,9 +15,7 @@ class ClientServers
     servers
   end
 
-  def empty?
-    @servers_threads.empty?
-  end
+  delegate :empty?, to: :@servers_threads
 
   def add_server(server_name, client)
     server_thread = Runner::Application.config.threads.get_thread_by_name(server_name)
@@ -32,7 +30,5 @@ class ClientServers
                             server_thread: Runner::Application.config.threads.get_thread_by_name(server_name))
   end
 
-  def clear
-    @servers_threads.clear
-  end
+  delegate :clear, to: :@servers_threads
 end
