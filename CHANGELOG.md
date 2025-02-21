@@ -7,6 +7,7 @@
 * Workaround a bug for failing build on arm64
 * Fix `rubocop-1.72.0` cop `Lint/CopDirectiveSyntax`
 * Run `rubocop` in CI through `bundle exec`
+* Fix missing `yaml-dev` since Docker image upgrade to `ruby:3.4.2-alpine`
 
 ### Changes
 
